@@ -28,6 +28,7 @@
 #include <json.hpp>
 
 #include "../logger.hpp"
+#include "../common_utilities.hpp"
 #include "path_private.hpp"
 
 
@@ -39,6 +40,9 @@ static void get_namespaces_from_xml_doc(xmlNodePtr root, std::unordered_set<std:
         if (curr->type == XML_ELEMENT_NODE && curr->ns && curr->ns->href)
         {
             namespaces.insert(std::string{reinterpret_cast<const char*>(curr->ns->href)});
+            if (curr->nsDef && curr->nsDef->href) {
+            	namespaces.insert(std::string{reinterpret_cast<const char*>(curr->nsDef->href)});
+            }
         }
         get_namespaces_from_xml_doc(curr->children, namespaces);
     }
@@ -204,10 +208,14 @@ ydk::path::RootSchemaNodeImpl::populate_module_schema(const struct lys_module* m
 void
 ydk::path::RootSchemaNodeImpl::populate_new_schemas_from_payload(const std::string& payload, ydk::EncodingFormat format)
 {
+    YLOG_DEBUG("Populating new schema from payload:\n{}", payload);
     std::vector<const lys_module*> modules;
     if (format == ydk::EncodingFormat::XML)
     {
-        auto namespaces = get_namespaces_from_xml_payload(payload);
+        std::string xml_str = trim(payload);
+        if (xml_str.substr(0, 5) != "<?xml")
+            xml_str = "<data>" + payload + "</data>";
+        auto namespaces = get_namespaces_from_xml_payload(xml_str);
         modules = m_priv_repo->get_new_ly_modules_from_lookup(m_ctx, namespaces, m_name_namespace_lookup);
     }
     else
@@ -316,7 +324,7 @@ ydk::path::RootSchemaNodeImpl::find(const std::string& path)
     std::string full_path{"/"};
     full_path+=path;
 
-    const struct lys_node* found_node = ly_ctx_get_node(m_ctx, nullptr, full_path.c_str());
+    const struct lys_node* found_node = ly_ctx_get_node(m_ctx, nullptr, full_path.c_str(), 0);
 
     if (found_node){
         auto p = reinterpret_cast<SchemaNode*>(found_node->priv);

@@ -7951,9 +7951,8 @@ bool MplsTe::GlobalAttributes::AutoTunnel::has_leaf_or_child_of_name(const std::
 
 MplsTe::GlobalAttributes::AutoTunnel::Pcc::Pcc()
     :
-    tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange>())
+    tunnel_range(nullptr) // presence node
 {
-    tunnel_range->parent = this;
 
     yang_name = "pcc"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -8137,9 +8136,8 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::has_leaf_or_child_o
 
 MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::P2PAutoTunnel()
     :
-    tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange>())
+    tunnel_range(nullptr) // presence node
 {
-    tunnel_range->parent = this;
 
     yang_name = "p2p-auto-tunnel"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -8326,10 +8324,9 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::Backup()
     affinity_ignore{YType::empty, "affinity-ignore"}
     	,
     timers(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers>())
-	,tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange>())
+	,tunnel_range(nullptr) // presence node
 {
     timers->parent = this;
-    tunnel_range->parent = this;
 
     yang_name = "backup"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -8716,11 +8713,10 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::Mesh()
     :
     mesh_groups(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups>())
 	,timers(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers>())
-	,tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange>())
+	,tunnel_range(nullptr) // presence node
 {
     mesh_groups->parent = this;
     timers->parent = this;
-    tunnel_range->parent = this;
 
     yang_name = "mesh"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -9359,9 +9355,8 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::has_leaf_or_child_
 
 MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::P2MpAutoTunnel()
     :
-    tunnel_range(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange>())
+    tunnel_range(nullptr) // presence node
 {
-    tunnel_range->parent = this;
 
     yang_name = "p2mp-auto-tunnel"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
 }

@@ -19172,8 +19172,9 @@ const Enum::YLeaf SubAddressFamily::rt_constraint {7, "rt-constraint"};
 const Enum::YLeaf SubAddressFamily::mvpn {8, "mvpn"};
 const Enum::YLeaf SubAddressFamily::flow {9, "flow"};
 const Enum::YLeaf SubAddressFamily::vpn_mcast {10, "vpn-mcast"};
-const Enum::YLeaf SubAddressFamily::saf_none {11, "saf-none"};
-const Enum::YLeaf SubAddressFamily::saf_unknown {12, "saf-unknown"};
+const Enum::YLeaf SubAddressFamily::evpn {11, "evpn"};
+const Enum::YLeaf SubAddressFamily::saf_none {12, "saf-none"};
+const Enum::YLeaf SubAddressFamily::saf_unknown {13, "saf-unknown"};
 
 const Enum::YLeaf AddressFamily::ipv4 {0, "ipv4"};
 const Enum::YLeaf AddressFamily::ipv6 {1, "ipv6"};

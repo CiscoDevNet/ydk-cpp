@@ -14,9 +14,11 @@ namespace Cisco_IOS_XR_segment_routing_ms_oper {
 Srms::Srms()
     :
     mapping(std::make_shared<Srms::Mapping>())
+	,adjacency_sid(std::make_shared<Srms::AdjacencySid>())
 	,policy(std::make_shared<Srms::Policy>())
 {
     mapping->parent = this;
+    adjacency_sid->parent = this;
     policy->parent = this;
 
     yang_name = "srms"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-oper"; is_top_level_class = true; has_list_ancestor = false;
@@ -29,6 +31,7 @@ Srms::~Srms()
 bool Srms::has_data() const
 {
     return (mapping !=  nullptr && mapping->has_data())
+	|| (adjacency_sid !=  nullptr && adjacency_sid->has_data())
 	|| (policy !=  nullptr && policy->has_data());
 }
 
@@ -36,6 +39,7 @@ bool Srms::has_operation() const
 {
     return is_set(yfilter)
 	|| (mapping !=  nullptr && mapping->has_operation())
+	|| (adjacency_sid !=  nullptr && adjacency_sid->has_operation())
 	|| (policy !=  nullptr && policy->has_operation());
 }
 
@@ -66,6 +70,15 @@ std::shared_ptr<Entity> Srms::get_child_by_name(const std::string & child_yang_n
         return mapping;
     }
 
+    if(child_yang_name == "adjacency-sid")
+    {
+        if(adjacency_sid == nullptr)
+        {
+            adjacency_sid = std::make_shared<Srms::AdjacencySid>();
+        }
+        return adjacency_sid;
+    }
+
     if(child_yang_name == "policy")
     {
         if(policy == nullptr)
@@ -85,6 +98,11 @@ std::map<std::string, std::shared_ptr<Entity>> Srms::get_children() const
     if(mapping != nullptr)
     {
         children["mapping"] = mapping;
+    }
+
+    if(adjacency_sid != nullptr)
+    {
+        children["adjacency-sid"] = adjacency_sid;
     }
 
     if(policy != nullptr)
@@ -130,7 +148,7 @@ std::map<std::pair<std::string, std::string>, std::string> Srms::get_namespace_i
 
 bool Srms::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mapping" || name == "policy")
+    if(name == "mapping" || name == "adjacency-sid" || name == "policy")
         return true;
     return false;
 }
@@ -1139,6 +1157,1287 @@ void Srms::Mapping::MappingIpv6::MappingMi::Addr::set_filter(const std::string &
 }
 
 bool Srms::Mapping::MappingIpv6::MappingMi::Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::AdjacencySid()
+    :
+    l2_adjacency(std::make_shared<Srms::AdjacencySid::L2Adjacency>())
+{
+    l2_adjacency->parent = this;
+
+    yang_name = "adjacency-sid"; yang_parent_name = "srms"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::AdjacencySid::~AdjacencySid()
+{
+}
+
+bool Srms::AdjacencySid::has_data() const
+{
+    return (l2_adjacency !=  nullptr && l2_adjacency->has_data());
+}
+
+bool Srms::AdjacencySid::has_operation() const
+{
+    return is_set(yfilter)
+	|| (l2_adjacency !=  nullptr && l2_adjacency->has_operation());
+}
+
+std::string Srms::AdjacencySid::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::AdjacencySid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2-adjacency")
+    {
+        if(l2_adjacency == nullptr)
+        {
+            l2_adjacency = std::make_shared<Srms::AdjacencySid::L2Adjacency>();
+        }
+        return l2_adjacency;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(l2_adjacency != nullptr)
+    {
+        children["l2-adjacency"] = l2_adjacency;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2-adjacency")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::L2Adjacency()
+    :
+    interfaces(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces>())
+{
+    interfaces->parent = this;
+
+    yang_name = "l2-adjacency"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::AdjacencySid::L2Adjacency::~L2Adjacency()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::has_data() const
+{
+    return (interfaces !=  nullptr && interfaces->has_data());
+}
+
+bool Srms::AdjacencySid::L2Adjacency::has_operation() const
+{
+    return is_set(yfilter)
+	|| (interfaces !=  nullptr && interfaces->has_operation());
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/adjacency-sid/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2-adjacency";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interfaces")
+    {
+        if(interfaces == nullptr)
+        {
+            interfaces = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces>();
+        }
+        return interfaces;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(interfaces != nullptr)
+    {
+        children["interfaces"] = interfaces;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::AdjacencySid::L2Adjacency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interfaces()
+{
+
+    yang_name = "interfaces"; yang_parent_name = "l2-adjacency"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::~Interfaces()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::has_data() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::has_operation() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/adjacency-sid/l2-adjacency/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface>();
+        c->parent = this;
+        interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : interface)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::Interface()
+    :
+    interface_name{YType::str, "interface-name"}
+    	,
+    address_family(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily>())
+{
+    address_family->parent = this;
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::~Interface()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::has_data() const
+{
+    return interface_name.is_set
+	|| (address_family !=  nullptr && address_family->has_data());
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| (address_family !=  nullptr && address_family->has_operation());
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srms/adjacency-sid/l2-adjacency/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-family")
+    {
+        if(address_family == nullptr)
+        {
+            address_family = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily>();
+        }
+        return address_family;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(address_family != nullptr)
+    {
+        children["address-family"] = address_family;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "interface-name")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::AddressFamily()
+    :
+    ipv4(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4>())
+	,ipv6(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6>())
+{
+    ipv4->parent = this;
+    ipv6->parent = this;
+
+    yang_name = "address-family"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::~AddressFamily()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::has_data() const
+{
+    return (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4")
+    {
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6>();
+        }
+        return ipv6;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ipv4 != nullptr)
+    {
+        children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        children["ipv6"] = ipv6;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::Ipv4()
+{
+
+    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::~Ipv4()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::has_data() const
+{
+    for (std::size_t index=0; index<sid_record.size(); index++)
+    {
+        if(sid_record[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::has_operation() const
+{
+    for (std::size_t index=0; index<sid_record.size(); index++)
+    {
+        if(sid_record[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sid-record")
+    {
+        auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord>();
+        c->parent = this;
+        sid_record.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : sid_record)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-record")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::SidRecord()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    sid_value{YType::int32, "sid-value"},
+    interface_name{YType::str, "interface-name"},
+    sid_value_xr{YType::uint32, "sid-value-xr"},
+    sid_type_xr{YType::uint32, "sid-type-xr"},
+    address_family{YType::uint32, "address-family"},
+    has_nexthop{YType::boolean, "has-nexthop"},
+    interface_count{YType::int32, "interface-count"},
+    interface_delete_count{YType::int32, "interface-delete-count"}
+    	,
+    nexthop_address(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress>())
+{
+    nexthop_address->parent = this;
+
+    yang_name = "sid-record"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::~SidRecord()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::has_data() const
+{
+    return sid_type.is_set
+	|| sid_value.is_set
+	|| interface_name.is_set
+	|| sid_value_xr.is_set
+	|| sid_type_xr.is_set
+	|| address_family.is_set
+	|| has_nexthop.is_set
+	|| interface_count.is_set
+	|| interface_delete_count.is_set
+	|| (nexthop_address !=  nullptr && nexthop_address->has_data());
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(sid_value.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(sid_value_xr.yfilter)
+	|| ydk::is_set(sid_type_xr.yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(has_nexthop.yfilter)
+	|| ydk::is_set(interface_count.yfilter)
+	|| ydk::is_set(interface_delete_count.yfilter)
+	|| (nexthop_address !=  nullptr && nexthop_address->has_operation());
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sid-record";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (sid_value.is_set || is_set(sid_value.yfilter)) leaf_name_data.push_back(sid_value.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (sid_value_xr.is_set || is_set(sid_value_xr.yfilter)) leaf_name_data.push_back(sid_value_xr.get_name_leafdata());
+    if (sid_type_xr.is_set || is_set(sid_type_xr.yfilter)) leaf_name_data.push_back(sid_type_xr.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (has_nexthop.is_set || is_set(has_nexthop.yfilter)) leaf_name_data.push_back(has_nexthop.get_name_leafdata());
+    if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
+    if (interface_delete_count.is_set || is_set(interface_delete_count.yfilter)) leaf_name_data.push_back(interface_delete_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nexthop-address")
+    {
+        if(nexthop_address == nullptr)
+        {
+            nexthop_address = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress>();
+        }
+        return nexthop_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(nexthop_address != nullptr)
+    {
+        children["nexthop-address"] = nexthop_address;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-value")
+    {
+        sid_value = value;
+        sid_value.value_namespace = name_space;
+        sid_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-value-xr")
+    {
+        sid_value_xr = value;
+        sid_value_xr.value_namespace = name_space;
+        sid_value_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-type-xr")
+    {
+        sid_type_xr = value;
+        sid_type_xr.value_namespace = name_space;
+        sid_type_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-nexthop")
+    {
+        has_nexthop = value;
+        has_nexthop.value_namespace = name_space;
+        has_nexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-count")
+    {
+        interface_count = value;
+        interface_count.value_namespace = name_space;
+        interface_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-delete-count")
+    {
+        interface_delete_count = value;
+        interface_delete_count.value_namespace = name_space;
+        interface_delete_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "sid-value")
+    {
+        sid_value.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "sid-value-xr")
+    {
+        sid_value_xr.yfilter = yfilter;
+    }
+    if(value_path == "sid-type-xr")
+    {
+        sid_type_xr.yfilter = yfilter;
+    }
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "has-nexthop")
+    {
+        has_nexthop.yfilter = yfilter;
+    }
+    if(value_path == "interface-count")
+    {
+        interface_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-delete-count")
+    {
+        interface_delete_count.yfilter = yfilter;
+    }
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nexthop-address" || name == "sid-type" || name == "sid-value" || name == "interface-name" || name == "sid-value-xr" || name == "sid-type-xr" || name == "address-family" || name == "has-nexthop" || name == "interface-count" || name == "interface-delete-count")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::NexthopAddress()
+    :
+    af{YType::enumeration, "af"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "nexthop-address"; yang_parent_name = "sid-record"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::~NexthopAddress()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::has_data() const
+{
+    return af.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nexthop-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af")
+    {
+        af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::Ipv6()
+{
+
+    yang_name = "ipv6"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::~Ipv6()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::has_data() const
+{
+    for (std::size_t index=0; index<sid_record.size(); index++)
+    {
+        if(sid_record[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::has_operation() const
+{
+    for (std::size_t index=0; index<sid_record.size(); index++)
+    {
+        if(sid_record[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sid-record")
+    {
+        auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord>();
+        c->parent = this;
+        sid_record.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : sid_record)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-record")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::SidRecord()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    sid_value{YType::int32, "sid-value"},
+    interface_name{YType::str, "interface-name"},
+    sid_value_xr{YType::uint32, "sid-value-xr"},
+    sid_type_xr{YType::uint32, "sid-type-xr"},
+    address_family{YType::uint32, "address-family"},
+    has_nexthop{YType::boolean, "has-nexthop"},
+    interface_count{YType::int32, "interface-count"},
+    interface_delete_count{YType::int32, "interface-delete-count"}
+    	,
+    nexthop_address(std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress>())
+{
+    nexthop_address->parent = this;
+
+    yang_name = "sid-record"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::~SidRecord()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::has_data() const
+{
+    return sid_type.is_set
+	|| sid_value.is_set
+	|| interface_name.is_set
+	|| sid_value_xr.is_set
+	|| sid_type_xr.is_set
+	|| address_family.is_set
+	|| has_nexthop.is_set
+	|| interface_count.is_set
+	|| interface_delete_count.is_set
+	|| (nexthop_address !=  nullptr && nexthop_address->has_data());
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(sid_value.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(sid_value_xr.yfilter)
+	|| ydk::is_set(sid_type_xr.yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(has_nexthop.yfilter)
+	|| ydk::is_set(interface_count.yfilter)
+	|| ydk::is_set(interface_delete_count.yfilter)
+	|| (nexthop_address !=  nullptr && nexthop_address->has_operation());
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sid-record";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (sid_value.is_set || is_set(sid_value.yfilter)) leaf_name_data.push_back(sid_value.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (sid_value_xr.is_set || is_set(sid_value_xr.yfilter)) leaf_name_data.push_back(sid_value_xr.get_name_leafdata());
+    if (sid_type_xr.is_set || is_set(sid_type_xr.yfilter)) leaf_name_data.push_back(sid_type_xr.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (has_nexthop.is_set || is_set(has_nexthop.yfilter)) leaf_name_data.push_back(has_nexthop.get_name_leafdata());
+    if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
+    if (interface_delete_count.is_set || is_set(interface_delete_count.yfilter)) leaf_name_data.push_back(interface_delete_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nexthop-address")
+    {
+        if(nexthop_address == nullptr)
+        {
+            nexthop_address = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress>();
+        }
+        return nexthop_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(nexthop_address != nullptr)
+    {
+        children["nexthop-address"] = nexthop_address;
+    }
+
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-value")
+    {
+        sid_value = value;
+        sid_value.value_namespace = name_space;
+        sid_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-value-xr")
+    {
+        sid_value_xr = value;
+        sid_value_xr.value_namespace = name_space;
+        sid_value_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-type-xr")
+    {
+        sid_type_xr = value;
+        sid_type_xr.value_namespace = name_space;
+        sid_type_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-nexthop")
+    {
+        has_nexthop = value;
+        has_nexthop.value_namespace = name_space;
+        has_nexthop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-count")
+    {
+        interface_count = value;
+        interface_count.value_namespace = name_space;
+        interface_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-delete-count")
+    {
+        interface_delete_count = value;
+        interface_delete_count.value_namespace = name_space;
+        interface_delete_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "sid-value")
+    {
+        sid_value.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "sid-value-xr")
+    {
+        sid_value_xr.yfilter = yfilter;
+    }
+    if(value_path == "sid-type-xr")
+    {
+        sid_type_xr.yfilter = yfilter;
+    }
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "has-nexthop")
+    {
+        has_nexthop.yfilter = yfilter;
+    }
+    if(value_path == "interface-count")
+    {
+        interface_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-delete-count")
+    {
+        interface_delete_count.yfilter = yfilter;
+    }
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nexthop-address" || name == "sid-type" || name == "sid-value" || name == "interface-name" || name == "sid-value-xr" || name == "sid-type-xr" || name == "address-family" || name == "has-nexthop" || name == "interface-count" || name == "interface-delete-count")
+        return true;
+    return false;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::NexthopAddress()
+    :
+    af{YType::enumeration, "af"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "nexthop-address"; yang_parent_name = "sid-record"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::~NexthopAddress()
+{
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::has_data() const
+{
+    return af.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nexthop-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af")
+    {
+        af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af" || name == "ipv4" || name == "ipv6")
         return true;
@@ -3187,6 +4486,213 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::has_leaf_or_chi
     return false;
 }
 
+Srlb::Srlb()
+    :
+    srlb_inconsistency(std::make_shared<Srlb::SrlbInconsistency>())
+{
+    srlb_inconsistency->parent = this;
+
+    yang_name = "srlb"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-oper"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+Srlb::~Srlb()
+{
+}
+
+bool Srlb::has_data() const
+{
+    return (srlb_inconsistency !=  nullptr && srlb_inconsistency->has_data());
+}
+
+bool Srlb::has_operation() const
+{
+    return is_set(yfilter)
+	|| (srlb_inconsistency !=  nullptr && srlb_inconsistency->has_operation());
+}
+
+std::string Srlb::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srlb";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srlb::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srlb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srlb-inconsistency")
+    {
+        if(srlb_inconsistency == nullptr)
+        {
+            srlb_inconsistency = std::make_shared<Srlb::SrlbInconsistency>();
+        }
+        return srlb_inconsistency;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srlb::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(srlb_inconsistency != nullptr)
+    {
+        children["srlb-inconsistency"] = srlb_inconsistency;
+    }
+
+    return children;
+}
+
+void Srlb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srlb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Srlb::clone_ptr() const
+{
+    return std::make_shared<Srlb>();
+}
+
+std::string Srlb::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string Srlb::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function Srlb::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Srlb::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Srlb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlb-inconsistency")
+        return true;
+    return false;
+}
+
+Srlb::SrlbInconsistency::SrlbInconsistency()
+    :
+    start_srlb_range{YType::uint32, "start-srlb-range"},
+    end_srlb_range{YType::uint32, "end-srlb-range"}
+{
+
+    yang_name = "srlb-inconsistency"; yang_parent_name = "srlb"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Srlb::SrlbInconsistency::~SrlbInconsistency()
+{
+}
+
+bool Srlb::SrlbInconsistency::has_data() const
+{
+    return start_srlb_range.is_set
+	|| end_srlb_range.is_set;
+}
+
+bool Srlb::SrlbInconsistency::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_srlb_range.yfilter)
+	|| ydk::is_set(end_srlb_range.yfilter);
+}
+
+std::string Srlb::SrlbInconsistency::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-oper:srlb/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Srlb::SrlbInconsistency::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srlb-inconsistency";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Srlb::SrlbInconsistency::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_srlb_range.is_set || is_set(start_srlb_range.yfilter)) leaf_name_data.push_back(start_srlb_range.get_name_leafdata());
+    if (end_srlb_range.is_set || is_set(end_srlb_range.yfilter)) leaf_name_data.push_back(end_srlb_range.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Srlb::SrlbInconsistency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Srlb::SrlbInconsistency::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Srlb::SrlbInconsistency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-srlb-range")
+    {
+        start_srlb_range = value;
+        start_srlb_range.value_namespace = name_space;
+        start_srlb_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-srlb-range")
+    {
+        end_srlb_range = value;
+        end_srlb_range.value_namespace = name_space;
+        end_srlb_range.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Srlb::SrlbInconsistency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-srlb-range")
+    {
+        start_srlb_range.yfilter = yfilter;
+    }
+    if(value_path == "end-srlb-range")
+    {
+        end_srlb_range.yfilter = yfilter;
+    }
+}
+
+bool Srlb::SrlbInconsistency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-srlb-range" || name == "end-srlb-range")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SidTypeEnum::absolute {1, "absolute"};
+const Enum::YLeaf SidTypeEnum::index_ {2, "index"};
+
 const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
 const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
 
@@ -3197,6 +4703,10 @@ const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
 const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
 const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
 const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
+
+const Enum::YLeaf SrmsAf::none {0, "none"};
+const Enum::YLeaf SrmsAf::ipv4 {1, "ipv4"};
+const Enum::YLeaf SrmsAf::ipv6 {2, "ipv6"};
 
 
 }

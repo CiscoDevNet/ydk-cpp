@@ -1,0 +1,741 @@
+#ifndef _TAILF_AAA_
+#define _TAILF_AAA_
+
+#include <memory>
+#include <vector>
+#include <string>
+#include <ydk/types.hpp>
+#include <ydk/errors.hpp>
+
+namespace cisco_ios_xr {
+namespace tailf_aaa {
+
+class Aaa : public ydk::Entity
+{
+    public:
+        Aaa();
+        ~Aaa();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Authentication; //type: Aaa::Authentication
+        class Authorization; //type: Aaa::Authorization
+        class Ios; //type: Aaa::Ios
+        class PrivilegedAccess; //type: Aaa::PrivilegedAccess
+        class Accounting; //type: Aaa::Accounting
+        class UserGroup; //type: Aaa::UserGroup
+        class DisasterRecovery; //type: Aaa::DisasterRecovery
+
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization> authorization;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios> ios; // presence node
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::PrivilegedAccess> privileged_access;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::UserGroup> user_group;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::DisasterRecovery> disaster_recovery;
+        
+}; // Aaa
+
+
+class Aaa::Authentication : public ydk::Entity
+{
+    public:
+        Authentication();
+        ~Authentication();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Users; //type: Aaa::Authentication::Users
+        class Groups; //type: Aaa::Authentication::Groups
+
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Users> users;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Groups> groups;
+        
+}; // Aaa::Authentication
+
+
+class Aaa::Authentication::Users : public ydk::Entity
+{
+    public:
+        Users();
+        ~Users();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class User; //type: Aaa::Authentication::Users::User
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Users::User> > user;
+        
+}; // Aaa::Authentication::Users
+
+
+class Aaa::Authentication::Users::User : public ydk::Entity
+{
+    public:
+        User();
+        ~User();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf uid; //type: int32
+        ydk::YLeaf gid; //type: int32
+        ydk::YLeaf password; //type: string
+        ydk::YLeaf ssh_keydir; //type: string
+        ydk::YLeaf homedir; //type: string
+
+}; // Aaa::Authentication::Users::User
+
+
+class Aaa::Authentication::Groups : public ydk::Entity
+{
+    public:
+        Groups();
+        ~Groups();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Group; //type: Aaa::Authentication::Groups::Group
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Groups::Group> > group;
+        
+}; // Aaa::Authentication::Groups
+
+
+class Aaa::Authentication::Groups::Group : public ydk::Entity
+{
+    public:
+        Group();
+        ~Group();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf gid; //type: int32
+        ydk::YLeaf users; //type: string
+
+}; // Aaa::Authentication::Groups::Group
+
+
+class Aaa::Authorization : public ydk::Entity
+{
+    public:
+        Authorization();
+        ~Authorization();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmdrules; //type: Aaa::Authorization::Cmdrules
+        class Datarules; //type: Aaa::Authorization::Datarules
+
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Cmdrules> cmdrules;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Datarules> datarules;
+        
+}; // Aaa::Authorization
+
+
+class Aaa::Authorization::Cmdrules : public ydk::Entity
+{
+    public:
+        Cmdrules();
+        ~Cmdrules();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Cmdrule; //type: Aaa::Authorization::Cmdrules::Cmdrule
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Cmdrules::Cmdrule> > cmdrule;
+        
+}; // Aaa::Authorization::Cmdrules
+
+
+class Aaa::Authorization::Cmdrules::Cmdrule : public ydk::Entity
+{
+    public:
+        Cmdrule();
+        ~Cmdrule();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf context; //type: string
+        ydk::YLeaf command; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf ops; //type: Cmdoperationtype
+        ydk::YLeaf action; //type: Action
+
+}; // Aaa::Authorization::Cmdrules::Cmdrule
+
+
+class Aaa::Authorization::Datarules : public ydk::Entity
+{
+    public:
+        Datarules();
+        ~Datarules();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Datarule; //type: Aaa::Authorization::Datarules::Datarule
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Datarules::Datarule> > datarule;
+        
+}; // Aaa::Authorization::Datarules
+
+
+class Aaa::Authorization::Datarules::Datarule : public ydk::Entity
+{
+    public:
+        Datarule();
+        ~Datarule();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf namespace_; //type: string
+        ydk::YLeaf context; //type: string
+        ydk::YLeaf keypath; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf ops; //type: Dataoperationtype
+        ydk::YLeaf action; //type: Action
+
+}; // Aaa::Authorization::Datarules::Datarule
+
+
+class Aaa::Ios : public ydk::Entity
+{
+    public:
+        Ios();
+        ~Ios();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Level; //type: Aaa::Ios::Level
+        class Privilege; //type: Aaa::Ios::Privilege
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Level> > level;
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Privilege> > privilege;
+        
+}; // Aaa::Ios
+
+
+class Aaa::Ios::Level : public ydk::Entity
+{
+    public:
+        Level();
+        ~Level();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf nr; //type: int32
+        ydk::YLeaf secret; //type: string
+        ydk::YLeaf password; //type: string
+        ydk::YLeaf prompt; //type: string
+
+}; // Aaa::Ios::Level
+
+
+class Aaa::Ios::Privilege : public ydk::Entity
+{
+    public:
+        Privilege();
+        ~Privilege();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mode; //type: one of string, enumeration
+        class Level; //type: Aaa::Ios::Privilege::Level
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Privilege::Level> > level;
+        
+}; // Aaa::Ios::Privilege
+
+
+class Aaa::Ios::Privilege::Level : public ydk::Entity
+{
+    public:
+        Level();
+        ~Level();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nr; //type: int32
+        class Command; //type: Aaa::Ios::Privilege::Level::Command
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Privilege::Level::Command> > command;
+        
+}; // Aaa::Ios::Privilege::Level
+
+
+class Aaa::Ios::Privilege::Level::Command : public ydk::Entity
+{
+    public:
+        Command();
+        ~Command();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+
+}; // Aaa::Ios::Privilege::Level::Command
+
+
+class Aaa::PrivilegedAccess : public ydk::Entity
+{
+    public:
+        PrivilegedAccess();
+        ~PrivilegedAccess();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf shell_access; //type: string
+        ydk::YLeaf first_user; //type: string
+        ydk::YLeaf first_user_change; //type: string
+        ydk::YLeaf current_disaster_recovery_user; //type: string
+
+}; // Aaa::PrivilegedAccess
+
+
+class Aaa::Accounting : public ydk::Entity
+{
+    public:
+        Accounting();
+        ~Accounting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf log_data; //type: string
+
+}; // Aaa::Accounting
+
+
+class Aaa::UserGroup : public ydk::Entity
+{
+    public:
+        UserGroup();
+        ~UserGroup();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf grp_data; //type: string
+
+}; // Aaa::UserGroup
+
+
+class Aaa::DisasterRecovery : public ydk::Entity
+{
+    public:
+        DisasterRecovery();
+        ~DisasterRecovery();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        //type: string (refers to cisco_ios_xr::tailf_aaa::Aaa::Authentication::Users::User::name)
+        ydk::YLeaf username;
+        ydk::YLeaf password; //type: string
+
+}; // Aaa::DisasterRecovery
+
+class Alias : public ydk::Entity
+{
+    public:
+        Alias();
+        ~Alias();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf expansion; //type: string
+
+}; // Alias
+
+class Session : public ydk::Entity
+{
+    public:
+        Session();
+        ~Session();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        ydk::YLeaf complete_on_space; //type: boolean
+        ydk::YLeaf ignore_leading_space; //type: boolean
+        ydk::YLeaf idle_timeout; //type: uint64
+        ydk::YLeaf paginate; //type: boolean
+        ydk::YLeaf history; //type: uint64
+        ydk::YLeaf autowizard; //type: boolean
+        ydk::YLeaf show_defaults; //type: boolean
+        ydk::YLeaf display_level; //type: uint64
+        ydk::YLeaf prompt1; //type: string
+        ydk::YLeaf prompt2; //type: string
+
+}; // Session
+
+class User : public ydk::Entity
+{
+    public:
+        User();
+        ~User();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf description; //type: string
+        class Alias; //type: User::Alias
+        class Session; //type: User::Session
+
+        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::User::Alias> > alias;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::User::Session> session;
+        
+}; // User
+
+
+class User::Alias : public ydk::Entity
+{
+    public:
+        Alias();
+        ~Alias();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf expansion; //type: string
+
+}; // User::Alias
+
+
+class User::Session : public ydk::Entity
+{
+    public:
+        Session();
+        ~Session();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf complete_on_space; //type: boolean
+        ydk::YLeaf ignore_leading_space; //type: boolean
+        ydk::YLeaf idle_timeout; //type: uint64
+        ydk::YLeaf paginate; //type: boolean
+        ydk::YLeaf history; //type: uint64
+        ydk::YLeaf autowizard; //type: boolean
+        ydk::YLeaf show_defaults; //type: boolean
+        ydk::YLeaf display_level; //type: uint64
+        ydk::YLeaf prompt1; //type: string
+        ydk::YLeaf prompt2; //type: string
+
+}; // User::Session
+
+class Dataoperationtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf r;
+        static const ydk::Enum::YLeaf rx;
+        static const ydk::Enum::YLeaf x;
+        static const ydk::Enum::YLeaf rw;
+        static const ydk::Enum::YLeaf rwx;
+        static const ydk::Enum::YLeaf wx;
+        static const ydk::Enum::YLeaf w;
+        static const ydk::Enum::YLeaf c;
+        static const ydk::Enum::YLeaf cr;
+        static const ydk::Enum::YLeaf cu;
+        static const ydk::Enum::YLeaf cd;
+        static const ydk::Enum::YLeaf cx;
+        static const ydk::Enum::YLeaf cru;
+        static const ydk::Enum::YLeaf crd;
+        static const ydk::Enum::YLeaf crx;
+        static const ydk::Enum::YLeaf cud;
+        static const ydk::Enum::YLeaf cux;
+        static const ydk::Enum::YLeaf cdx;
+        static const ydk::Enum::YLeaf crud;
+        static const ydk::Enum::YLeaf crux;
+        static const ydk::Enum::YLeaf crdx;
+        static const ydk::Enum::YLeaf cudx;
+        static const ydk::Enum::YLeaf crudx;
+        static const ydk::Enum::YLeaf ru;
+        static const ydk::Enum::YLeaf rd;
+        static const ydk::Enum::YLeaf rud;
+        static const ydk::Enum::YLeaf rux;
+        static const ydk::Enum::YLeaf rdx;
+        static const ydk::Enum::YLeaf u;
+        static const ydk::Enum::YLeaf ud;
+        static const ydk::Enum::YLeaf ux;
+        static const ydk::Enum::YLeaf d;
+        static const ydk::Enum::YLeaf dx;
+
+};
+
+class Cmdoperationtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf r;
+        static const ydk::Enum::YLeaf rx;
+        static const ydk::Enum::YLeaf x;
+
+};
+
+class Action : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf accept;
+        static const ydk::Enum::YLeaf reject;
+        static const ydk::Enum::YLeaf accept_log;
+
+};
+
+class Builtinmodes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exec;
+        static const ydk::Enum::YLeaf configure;
+
+};
+
+class Builtinmodes_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exec;
+        static const ydk::Enum::YLeaf configure;
+
+};
+
+
+}
+}
+
+#endif /* _TAILF_AAA_ */
+

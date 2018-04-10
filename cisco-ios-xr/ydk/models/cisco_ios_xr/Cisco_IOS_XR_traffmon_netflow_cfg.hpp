@@ -90,12 +90,12 @@ class NetFlow::FlowExporterMaps::FlowExporterMap : public ydk::Entity
         ydk::YLeaf dscp; //type: uint32
         ydk::YLeaf packet_length; //type: uint32
         class Udp; //type: NetFlow::FlowExporterMaps::FlowExporterMap::Udp
-        class Versions; //type: NetFlow::FlowExporterMaps::FlowExporterMap::Versions
         class Destination; //type: NetFlow::FlowExporterMaps::FlowExporterMap::Destination
+        class Version; //type: NetFlow::FlowExporterMaps::FlowExporterMap::Version
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Udp> udp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Versions> versions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Destination> destination;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Version> version;
         
 }; // NetFlow::FlowExporterMaps::FlowExporterMap
 
@@ -121,79 +121,6 @@ class NetFlow::FlowExporterMaps::FlowExporterMap::Udp : public ydk::Entity
 }; // NetFlow::FlowExporterMaps::FlowExporterMap::Udp
 
 
-class NetFlow::FlowExporterMaps::FlowExporterMap::Versions : public ydk::Entity
-{
-    public:
-        Versions();
-        ~Versions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Version; //type: NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version> > version;
-        
-}; // NetFlow::FlowExporterMaps::FlowExporterMap::Versions
-
-
-class NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version : public ydk::Entity
-{
-    public:
-        Version();
-        ~Version();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf version_number; //type: uint32
-        ydk::YLeaf options_template_timeout; //type: uint32
-        ydk::YLeaf common_template_timeout; //type: uint32
-        ydk::YLeaf data_template_timeout; //type: uint32
-        class Options; //type: NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options> options;
-        
-}; // NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version
-
-
-class NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options : public ydk::Entity
-{
-    public:
-        Options();
-        ~Options();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface_table_export_timeout; //type: uint32
-        ydk::YLeaf sampler_table_export_timeout; //type: uint32
-        ydk::YLeaf vrf_table_export_timeout; //type: uint32
-
-}; // NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options
-
-
 class NetFlow::FlowExporterMaps::FlowExporterMap::Destination : public ydk::Entity
 {
     public:
@@ -215,6 +142,56 @@ class NetFlow::FlowExporterMaps::FlowExporterMap::Destination : public ydk::Enti
         ydk::YLeaf vrf_name; //type: string
 
 }; // NetFlow::FlowExporterMaps::FlowExporterMap::Destination
+
+
+class NetFlow::FlowExporterMaps::FlowExporterMap::Version : public ydk::Entity
+{
+    public:
+        Version();
+        ~Version();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf version_type; //type: uint32
+        ydk::YLeaf options_template_timeout; //type: uint32
+        ydk::YLeaf common_template_timeout; //type: uint32
+        ydk::YLeaf data_template_timeout; //type: uint32
+        class Options; //type: NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options> options;
+        
+}; // NetFlow::FlowExporterMaps::FlowExporterMap::Version
+
+
+class NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options : public ydk::Entity
+{
+    public:
+        Options();
+        ~Options();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_table_export_timeout; //type: uint32
+        ydk::YLeaf sampler_table_export_timeout; //type: uint32
+        ydk::YLeaf vrf_table_export_timeout; //type: uint32
+
+}; // NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options
 
 
 class NetFlow::FlowSamplerMaps : public ydk::Entity

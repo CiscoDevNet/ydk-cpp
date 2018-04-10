@@ -234,7 +234,16 @@ bool HwModule::SliceIds::has_leaf_or_child_of_name(const std::string & name) con
 
 HwModule::SliceIds::SliceId::SliceId()
     :
-    slice_num{YType::int32, "slice-num"}
+    slice_num{YType::int32, "slice-num"},
+    slice_id{YType::uint32, "slice-id"},
+    client_rate{YType::enumeration, "client-rate"},
+    trunk_rate{YType::enumeration, "trunk-rate"},
+    hardware_status{YType::enumeration, "hardware-status"},
+    dp_fpga_fw_type{YType::str, "dp-fpga-fw-type"},
+    dp_fpga_fw_ver{YType::str, "dp-fpga-fw-ver"},
+    need_upg{YType::uint32, "need-upg"},
+    encryption_supported{YType::boolean, "encryption-supported"},
+    lldp_drop_status{YType::boolean, "lldp-drop-status"}
 {
 
     yang_name = "slice-id"; yang_parent_name = "slice-ids"; is_top_level_class = false; has_list_ancestor = false;
@@ -246,23 +255,41 @@ HwModule::SliceIds::SliceId::~SliceId()
 
 bool HwModule::SliceIds::SliceId::has_data() const
 {
-    for (std::size_t index=0; index<slice_info.size(); index++)
+    for (std::size_t index=0; index<client_port.size(); index++)
     {
-        if(slice_info[index]->has_data())
+        if(client_port[index]->has_data())
             return true;
     }
-    return slice_num.is_set;
+    return slice_num.is_set
+	|| slice_id.is_set
+	|| client_rate.is_set
+	|| trunk_rate.is_set
+	|| hardware_status.is_set
+	|| dp_fpga_fw_type.is_set
+	|| dp_fpga_fw_ver.is_set
+	|| need_upg.is_set
+	|| encryption_supported.is_set
+	|| lldp_drop_status.is_set;
 }
 
 bool HwModule::SliceIds::SliceId::has_operation() const
 {
-    for (std::size_t index=0; index<slice_info.size(); index++)
+    for (std::size_t index=0; index<client_port.size(); index++)
     {
-        if(slice_info[index]->has_operation())
+        if(client_port[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(slice_num.yfilter);
+	|| ydk::is_set(slice_num.yfilter)
+	|| ydk::is_set(slice_id.yfilter)
+	|| ydk::is_set(client_rate.yfilter)
+	|| ydk::is_set(trunk_rate.yfilter)
+	|| ydk::is_set(hardware_status.yfilter)
+	|| ydk::is_set(dp_fpga_fw_type.yfilter)
+	|| ydk::is_set(dp_fpga_fw_ver.yfilter)
+	|| ydk::is_set(need_upg.yfilter)
+	|| ydk::is_set(encryption_supported.yfilter)
+	|| ydk::is_set(lldp_drop_status.yfilter);
 }
 
 std::string HwModule::SliceIds::SliceId::get_absolute_path() const
@@ -284,6 +311,15 @@ std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::get_
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (slice_num.is_set || is_set(slice_num.yfilter)) leaf_name_data.push_back(slice_num.get_name_leafdata());
+    if (slice_id.is_set || is_set(slice_id.yfilter)) leaf_name_data.push_back(slice_id.get_name_leafdata());
+    if (client_rate.is_set || is_set(client_rate.yfilter)) leaf_name_data.push_back(client_rate.get_name_leafdata());
+    if (trunk_rate.is_set || is_set(trunk_rate.yfilter)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
+    if (hardware_status.is_set || is_set(hardware_status.yfilter)) leaf_name_data.push_back(hardware_status.get_name_leafdata());
+    if (dp_fpga_fw_type.is_set || is_set(dp_fpga_fw_type.yfilter)) leaf_name_data.push_back(dp_fpga_fw_type.get_name_leafdata());
+    if (dp_fpga_fw_ver.is_set || is_set(dp_fpga_fw_ver.yfilter)) leaf_name_data.push_back(dp_fpga_fw_ver.get_name_leafdata());
+    if (need_upg.is_set || is_set(need_upg.yfilter)) leaf_name_data.push_back(need_upg.get_name_leafdata());
+    if (encryption_supported.is_set || is_set(encryption_supported.yfilter)) leaf_name_data.push_back(encryption_supported.get_name_leafdata());
+    if (lldp_drop_status.is_set || is_set(lldp_drop_status.yfilter)) leaf_name_data.push_back(lldp_drop_status.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -291,11 +327,11 @@ std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::get_
 
 std::shared_ptr<Entity> HwModule::SliceIds::SliceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "slice-info")
+    if(child_yang_name == "client-port")
     {
-        auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo>();
+        auto c = std::make_shared<HwModule::SliceIds::SliceId::ClientPort>();
         c->parent = this;
-        slice_info.push_back(c);
+        client_port.push_back(c);
         return c;
     }
 
@@ -307,7 +343,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slice_info)
+    for (auto const & c : client_port)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -326,136 +362,6 @@ void HwModule::SliceIds::SliceId::set_value(const std::string & value_path, cons
         slice_num.value_namespace = name_space;
         slice_num.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void HwModule::SliceIds::SliceId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "slice-num")
-    {
-        slice_num.yfilter = yfilter;
-    }
-}
-
-bool HwModule::SliceIds::SliceId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "slice-info" || name == "slice-num")
-        return true;
-    return false;
-}
-
-HwModule::SliceIds::SliceId::SliceInfo::SliceInfo()
-    :
-    slice_id{YType::uint32, "slice-id"},
-    client_rate{YType::enumeration, "client-rate"},
-    trunk_rate{YType::enumeration, "trunk-rate"},
-    hardware_status{YType::enumeration, "hardware-status"},
-    dp_fpga_fw_type{YType::str, "dp-fpga-fw-type"},
-    dp_fpga_fw_ver{YType::str, "dp-fpga-fw-ver"},
-    need_upg{YType::uint32, "need-upg"},
-    encryption_supported{YType::boolean, "encryption-supported"},
-    lldp_drop_status{YType::boolean, "lldp-drop-status"}
-{
-
-    yang_name = "slice-info"; yang_parent_name = "slice-id"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-HwModule::SliceIds::SliceId::SliceInfo::~SliceInfo()
-{
-}
-
-bool HwModule::SliceIds::SliceId::SliceInfo::has_data() const
-{
-    for (std::size_t index=0; index<client_port.size(); index++)
-    {
-        if(client_port[index]->has_data())
-            return true;
-    }
-    return slice_id.is_set
-	|| client_rate.is_set
-	|| trunk_rate.is_set
-	|| hardware_status.is_set
-	|| dp_fpga_fw_type.is_set
-	|| dp_fpga_fw_ver.is_set
-	|| need_upg.is_set
-	|| encryption_supported.is_set
-	|| lldp_drop_status.is_set;
-}
-
-bool HwModule::SliceIds::SliceId::SliceInfo::has_operation() const
-{
-    for (std::size_t index=0; index<client_port.size(); index++)
-    {
-        if(client_port[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(slice_id.yfilter)
-	|| ydk::is_set(client_rate.yfilter)
-	|| ydk::is_set(trunk_rate.yfilter)
-	|| ydk::is_set(hardware_status.yfilter)
-	|| ydk::is_set(dp_fpga_fw_type.yfilter)
-	|| ydk::is_set(dp_fpga_fw_ver.yfilter)
-	|| ydk::is_set(need_upg.yfilter)
-	|| ydk::is_set(encryption_supported.yfilter)
-	|| ydk::is_set(lldp_drop_status.yfilter);
-}
-
-std::string HwModule::SliceIds::SliceId::SliceInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "slice-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::SliceInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (slice_id.is_set || is_set(slice_id.yfilter)) leaf_name_data.push_back(slice_id.get_name_leafdata());
-    if (client_rate.is_set || is_set(client_rate.yfilter)) leaf_name_data.push_back(client_rate.get_name_leafdata());
-    if (trunk_rate.is_set || is_set(trunk_rate.yfilter)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
-    if (hardware_status.is_set || is_set(hardware_status.yfilter)) leaf_name_data.push_back(hardware_status.get_name_leafdata());
-    if (dp_fpga_fw_type.is_set || is_set(dp_fpga_fw_type.yfilter)) leaf_name_data.push_back(dp_fpga_fw_type.get_name_leafdata());
-    if (dp_fpga_fw_ver.is_set || is_set(dp_fpga_fw_ver.yfilter)) leaf_name_data.push_back(dp_fpga_fw_ver.get_name_leafdata());
-    if (need_upg.is_set || is_set(need_upg.yfilter)) leaf_name_data.push_back(need_upg.get_name_leafdata());
-    if (encryption_supported.is_set || is_set(encryption_supported.yfilter)) leaf_name_data.push_back(encryption_supported.get_name_leafdata());
-    if (lldp_drop_status.is_set || is_set(lldp_drop_status.yfilter)) leaf_name_data.push_back(lldp_drop_status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "client-port")
-    {
-        auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo::ClientPort>();
-        c->parent = this;
-        client_port.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : client_port)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void HwModule::SliceIds::SliceId::SliceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
     if(value_path == "slice-id")
     {
         slice_id = value;
@@ -512,8 +418,12 @@ void HwModule::SliceIds::SliceId::SliceInfo::set_value(const std::string & value
     }
 }
 
-void HwModule::SliceIds::SliceId::SliceInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void HwModule::SliceIds::SliceId::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "slice-num")
+    {
+        slice_num.yfilter = yfilter;
+    }
     if(value_path == "slice-id")
     {
         slice_id.yfilter = yfilter;
@@ -552,27 +462,27 @@ void HwModule::SliceIds::SliceId::SliceInfo::set_filter(const std::string & valu
     }
 }
 
-bool HwModule::SliceIds::SliceId::SliceInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool HwModule::SliceIds::SliceId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-port" || name == "slice-id" || name == "client-rate" || name == "trunk-rate" || name == "hardware-status" || name == "dp-fpga-fw-type" || name == "dp-fpga-fw-ver" || name == "need-upg" || name == "encryption-supported" || name == "lldp-drop-status")
+    if(name == "client-port" || name == "slice-num" || name == "slice-id" || name == "client-rate" || name == "trunk-rate" || name == "hardware-status" || name == "dp-fpga-fw-type" || name == "dp-fpga-fw-ver" || name == "need-upg" || name == "encryption-supported" || name == "lldp-drop-status")
         return true;
     return false;
 }
 
-HwModule::SliceIds::SliceId::SliceInfo::ClientPort::ClientPort()
+HwModule::SliceIds::SliceId::ClientPort::ClientPort()
     :
     client_name{YType::str, "client-name"},
     if_index{YType::uint32, "if-index"}
 {
 
-    yang_name = "client-port"; yang_parent_name = "slice-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-port"; yang_parent_name = "slice-id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-HwModule::SliceIds::SliceId::SliceInfo::ClientPort::~ClientPort()
+HwModule::SliceIds::SliceId::ClientPort::~ClientPort()
 {
 }
 
-bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::has_data() const
+bool HwModule::SliceIds::SliceId::ClientPort::has_data() const
 {
     for (std::size_t index=0; index<trunk_port.size(); index++)
     {
@@ -583,7 +493,7 @@ bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::has_data() const
 	|| if_index.is_set;
 }
 
-bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::has_operation() const
+bool HwModule::SliceIds::SliceId::ClientPort::has_operation() const
 {
     for (std::size_t index=0; index<trunk_port.size(); index++)
     {
@@ -595,14 +505,14 @@ bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::has_operation() const
 	|| ydk::is_set(if_index.yfilter);
 }
 
-std::string HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_segment_path() const
+std::string HwModule::SliceIds::SliceId::ClientPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client-port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::ClientPort::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -613,11 +523,11 @@ std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::Slic
 
 }
 
-std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> HwModule::SliceIds::SliceId::ClientPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trunk-port")
     {
-        auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort>();
+        auto c = std::make_shared<HwModule::SliceIds::SliceId::ClientPort::TrunkPort>();
         c->parent = this;
         trunk_port.push_back(c);
         return c;
@@ -626,7 +536,7 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::ClientPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -642,7 +552,7 @@ std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::Slic
     return children;
 }
 
-void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void HwModule::SliceIds::SliceId::ClientPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-name")
     {
@@ -658,7 +568,7 @@ void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::set_value(const std::st
     }
 }
 
-void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::set_filter(const std::string & value_path, YFilter yfilter)
+void HwModule::SliceIds::SliceId::ClientPort::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "client-name")
     {
@@ -670,14 +580,14 @@ void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::set_filter(const std::s
     }
 }
 
-bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::has_leaf_or_child_of_name(const std::string & name) const
+bool HwModule::SliceIds::SliceId::ClientPort::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "trunk-port" || name == "client-name" || name == "if-index")
         return true;
     return false;
 }
 
-HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::TrunkPort()
+HwModule::SliceIds::SliceId::ClientPort::TrunkPort::TrunkPort()
     :
     trunk_name{YType::str, "trunk-name"},
     if_index{YType::uint32, "if-index"},
@@ -687,18 +597,18 @@ HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::TrunkPort()
     yang_name = "trunk-port"; yang_parent_name = "client-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::~TrunkPort()
+HwModule::SliceIds::SliceId::ClientPort::TrunkPort::~TrunkPort()
 {
 }
 
-bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::has_data() const
+bool HwModule::SliceIds::SliceId::ClientPort::TrunkPort::has_data() const
 {
     return trunk_name.is_set
 	|| if_index.is_set
 	|| percentage.is_set;
 }
 
-bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::has_operation() const
+bool HwModule::SliceIds::SliceId::ClientPort::TrunkPort::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(trunk_name.yfilter)
@@ -706,14 +616,14 @@ bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::has_operatio
 	|| ydk::is_set(percentage.yfilter);
 }
 
-std::string HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_segment_path() const
+std::string HwModule::SliceIds::SliceId::ClientPort::TrunkPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "trunk-port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::ClientPort::TrunkPort::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -725,19 +635,19 @@ std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::Slic
 
 }
 
-std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> HwModule::SliceIds::SliceId::ClientPort::TrunkPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::ClientPort::TrunkPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void HwModule::SliceIds::SliceId::ClientPort::TrunkPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "trunk-name")
     {
@@ -759,7 +669,7 @@ void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::set_value(co
     }
 }
 
-void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::set_filter(const std::string & value_path, YFilter yfilter)
+void HwModule::SliceIds::SliceId::ClientPort::TrunkPort::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "trunk-name")
     {
@@ -775,7 +685,7 @@ void HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::set_filter(c
     }
 }
 
-bool HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::has_leaf_or_child_of_name(const std::string & name) const
+bool HwModule::SliceIds::SliceId::ClientPort::TrunkPort::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "trunk-name" || name == "if-index" || name == "percentage")
         return true;

@@ -35,6 +35,11 @@ module ydktest-aug-ietf-5 {
     description "aug-identity";
   }
 
+  identity derived-aug-identity {
+    description "derived aug-identity";
+    base aug-identity;
+  }
+  
   augment /base-one:cpython/base-one:doc {
     leaf aug-5-identityref {
       type identityref {

@@ -3597,6 +3597,7 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf mac_counts_invalid; //type: boolean
         ydk::YLeaf local_mac_count; //type: uint32
         ydk::YLeaf remote_mac_count; //type: uint32
         ydk::YLeaf static_mac_count; //type: uint32

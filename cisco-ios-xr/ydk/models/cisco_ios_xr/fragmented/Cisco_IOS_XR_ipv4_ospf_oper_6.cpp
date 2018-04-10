@@ -12,6 +12,249 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_oper {
 
+Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessInformation()
+    :
+    protocol_areas(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas>())
+	,protocol_summary(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolSummary>())
+	,redistributions(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::Redistributions>())
+	,process_areas(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessAreas>())
+	,process_summary(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary>())
+{
+    protocol_areas->parent = this;
+    protocol_summary->parent = this;
+    redistributions->parent = this;
+    process_areas->parent = this;
+    process_summary->parent = this;
+
+    yang_name = "process-information"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospf::Processes::Process::DefaultVrf::ProcessInformation::~ProcessInformation()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::has_data() const
+{
+    return (protocol_areas !=  nullptr && protocol_areas->has_data())
+	|| (protocol_summary !=  nullptr && protocol_summary->has_data())
+	|| (redistributions !=  nullptr && redistributions->has_data())
+	|| (process_areas !=  nullptr && process_areas->has_data())
+	|| (process_summary !=  nullptr && process_summary->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| (protocol_areas !=  nullptr && protocol_areas->has_operation())
+	|| (protocol_summary !=  nullptr && protocol_summary->has_operation())
+	|| (redistributions !=  nullptr && redistributions->has_operation())
+	|| (process_areas !=  nullptr && process_areas->has_operation())
+	|| (process_summary !=  nullptr && process_summary->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "process-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "protocol-areas")
+    {
+        if(protocol_areas == nullptr)
+        {
+            protocol_areas = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas>();
+        }
+        return protocol_areas;
+    }
+
+    if(child_yang_name == "protocol-summary")
+    {
+        if(protocol_summary == nullptr)
+        {
+            protocol_summary = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolSummary>();
+        }
+        return protocol_summary;
+    }
+
+    if(child_yang_name == "redistributions")
+    {
+        if(redistributions == nullptr)
+        {
+            redistributions = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::Redistributions>();
+        }
+        return redistributions;
+    }
+
+    if(child_yang_name == "process-areas")
+    {
+        if(process_areas == nullptr)
+        {
+            process_areas = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessAreas>();
+        }
+        return process_areas;
+    }
+
+    if(child_yang_name == "process-summary")
+    {
+        if(process_summary == nullptr)
+        {
+            process_summary = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary>();
+        }
+        return process_summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(protocol_areas != nullptr)
+    {
+        children["protocol-areas"] = protocol_areas;
+    }
+
+    if(protocol_summary != nullptr)
+    {
+        children["protocol-summary"] = protocol_summary;
+    }
+
+    if(redistributions != nullptr)
+    {
+        children["redistributions"] = redistributions;
+    }
+
+    if(process_areas != nullptr)
+    {
+        children["process-areas"] = process_areas;
+    }
+
+    if(process_summary != nullptr)
+    {
+        children["process-summary"] = process_summary;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::ProcessInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::DefaultVrf::ProcessInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-areas" || name == "protocol-summary" || name == "redistributions" || name == "process-areas" || name == "process-summary")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::ProtocolAreas()
+{
+
+    yang_name = "protocol-areas"; yang_parent_name = "process-information"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::~ProtocolAreas()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::has_data() const
+{
+    for (std::size_t index=0; index<protocol_area.size(); index++)
+    {
+        if(protocol_area[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::has_operation() const
+{
+    for (std::size_t index=0; index<protocol_area.size(); index++)
+    {
+        if(protocol_area[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protocol-areas";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "protocol-area")
+    {
+        auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::ProtocolArea>();
+        c->parent = this;
+        protocol_area.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : protocol_area)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-area")
+        return true;
+    return false;
+}
+
 Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::ProtocolArea::ProtocolArea()
     :
     area_id{YType::int32, "area-id"},
@@ -16178,9 +16421,6 @@ bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea
 }
 
 Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoTlv()
-    :
-    sr_algo_length{YType::uint16, "sr-algo-length"},
-    sr_algo_value{YType::str, "sr-algo-value"}
 {
 
     yang_name = "sr-algo-tlv"; yang_parent_name = "opaque-ritlv"; is_top_level_class = false; has_list_ancestor = true;
@@ -16192,15 +16432,22 @@ Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsa
 
 bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::has_data() const
 {
-    return sr_algo_length.is_set
-	|| sr_algo_value.is_set;
+    for (std::size_t index=0; index<sr_algo_value.size(); index++)
+    {
+        if(sr_algo_value[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::has_operation() const
 {
-    return is_set(yfilter)
-	|| ydk::is_set(sr_algo_length.yfilter)
-	|| ydk::is_set(sr_algo_value.yfilter);
+    for (std::size_t index=0; index<sr_algo_value.size(); index++)
+    {
+        if(sr_algo_value[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
 std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_segment_path() const
@@ -16214,8 +16461,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sr_algo_length.is_set || is_set(sr_algo_length.yfilter)) leaf_name_data.push_back(sr_algo_length.get_name_leafdata());
-    if (sr_algo_value.is_set || is_set(sr_algo_value.yfilter)) leaf_name_data.push_back(sr_algo_value.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -16223,6 +16468,14 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
 
 std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "sr-algo-value")
+    {
+        auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue>();
+        c->parent = this;
+        sr_algo_value.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -16230,40 +16483,106 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Default
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : sr_algo_value)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "sr-algo-length")
-    {
-        sr_algo_length = value;
-        sr_algo_length.value_namespace = name_space;
-        sr_algo_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sr-algo-value")
-    {
-        sr_algo_value = value;
-        sr_algo_value.value_namespace = name_space;
-        sr_algo_value.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "sr-algo-length")
-    {
-        sr_algo_length.yfilter = yfilter;
-    }
-    if(value_path == "sr-algo-value")
-    {
-        sr_algo_value.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-algo-length" || name == "sr-algo-value")
+    if(name == "sr-algo-value")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::SrAlgoValue()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "sr-algo-value"; yang_parent_name = "sr-algo-tlv"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::~SrAlgoValue()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-algo-value";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoValue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -22839,391 +23158,6 @@ void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData:
 bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv4PceAddr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pceipv4-addr")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::Ipv6PceAddr()
-    :
-    pceipv6_addr{YType::str, "pceipv6-addr"}
-{
-
-    yang_name = "ipv6pce-addr"; yang_parent_name = "pced-addr"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::~Ipv6PceAddr()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::has_data() const
-{
-    return pceipv6_addr.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(pceipv6_addr.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6pce-addr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pceipv6_addr.is_set || is_set(pceipv6_addr.yfilter)) leaf_name_data.push_back(pceipv6_addr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "pceipv6-addr")
-    {
-        pceipv6_addr = value;
-        pceipv6_addr.value_namespace = name_space;
-        pceipv6_addr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "pceipv6-addr")
-    {
-        pceipv6_addr.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedAddr::Ipv6PceAddr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pceipv6-addr")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::PcedScope()
-    :
-    lbit{YType::boolean, "lbit"},
-    rbit{YType::boolean, "rbit"},
-    rd_bit{YType::boolean, "rd-bit"},
-    sbit{YType::boolean, "sbit"},
-    sd_bit{YType::boolean, "sd-bit"},
-    ybit{YType::boolean, "ybit"},
-    pref_l{YType::uint8, "pref-l"},
-    pref_r{YType::uint8, "pref-r"},
-    pref_s{YType::uint8, "pref-s"},
-    pref_y{YType::uint8, "pref-y"},
-    all_scope_info_bits{YType::uint32, "all-scope-info-bits"}
-{
-
-    yang_name = "pced-scope"; yang_parent_name = "pcedtlv"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::~PcedScope()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::has_data() const
-{
-    return lbit.is_set
-	|| rbit.is_set
-	|| rd_bit.is_set
-	|| sbit.is_set
-	|| sd_bit.is_set
-	|| ybit.is_set
-	|| pref_l.is_set
-	|| pref_r.is_set
-	|| pref_s.is_set
-	|| pref_y.is_set
-	|| all_scope_info_bits.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lbit.yfilter)
-	|| ydk::is_set(rbit.yfilter)
-	|| ydk::is_set(rd_bit.yfilter)
-	|| ydk::is_set(sbit.yfilter)
-	|| ydk::is_set(sd_bit.yfilter)
-	|| ydk::is_set(ybit.yfilter)
-	|| ydk::is_set(pref_l.yfilter)
-	|| ydk::is_set(pref_r.yfilter)
-	|| ydk::is_set(pref_s.yfilter)
-	|| ydk::is_set(pref_y.yfilter)
-	|| ydk::is_set(all_scope_info_bits.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pced-scope";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lbit.is_set || is_set(lbit.yfilter)) leaf_name_data.push_back(lbit.get_name_leafdata());
-    if (rbit.is_set || is_set(rbit.yfilter)) leaf_name_data.push_back(rbit.get_name_leafdata());
-    if (rd_bit.is_set || is_set(rd_bit.yfilter)) leaf_name_data.push_back(rd_bit.get_name_leafdata());
-    if (sbit.is_set || is_set(sbit.yfilter)) leaf_name_data.push_back(sbit.get_name_leafdata());
-    if (sd_bit.is_set || is_set(sd_bit.yfilter)) leaf_name_data.push_back(sd_bit.get_name_leafdata());
-    if (ybit.is_set || is_set(ybit.yfilter)) leaf_name_data.push_back(ybit.get_name_leafdata());
-    if (pref_l.is_set || is_set(pref_l.yfilter)) leaf_name_data.push_back(pref_l.get_name_leafdata());
-    if (pref_r.is_set || is_set(pref_r.yfilter)) leaf_name_data.push_back(pref_r.get_name_leafdata());
-    if (pref_s.is_set || is_set(pref_s.yfilter)) leaf_name_data.push_back(pref_s.get_name_leafdata());
-    if (pref_y.is_set || is_set(pref_y.yfilter)) leaf_name_data.push_back(pref_y.get_name_leafdata());
-    if (all_scope_info_bits.is_set || is_set(all_scope_info_bits.yfilter)) leaf_name_data.push_back(all_scope_info_bits.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lbit")
-    {
-        lbit = value;
-        lbit.value_namespace = name_space;
-        lbit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rbit")
-    {
-        rbit = value;
-        rbit.value_namespace = name_space;
-        rbit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rd-bit")
-    {
-        rd_bit = value;
-        rd_bit.value_namespace = name_space;
-        rd_bit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sbit")
-    {
-        sbit = value;
-        sbit.value_namespace = name_space;
-        sbit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sd-bit")
-    {
-        sd_bit = value;
-        sd_bit.value_namespace = name_space;
-        sd_bit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ybit")
-    {
-        ybit = value;
-        ybit.value_namespace = name_space;
-        ybit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pref-l")
-    {
-        pref_l = value;
-        pref_l.value_namespace = name_space;
-        pref_l.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pref-r")
-    {
-        pref_r = value;
-        pref_r.value_namespace = name_space;
-        pref_r.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pref-s")
-    {
-        pref_s = value;
-        pref_s.value_namespace = name_space;
-        pref_s.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pref-y")
-    {
-        pref_y = value;
-        pref_y.value_namespace = name_space;
-        pref_y.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "all-scope-info-bits")
-    {
-        all_scope_info_bits = value;
-        all_scope_info_bits.value_namespace = name_space;
-        all_scope_info_bits.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lbit")
-    {
-        lbit.yfilter = yfilter;
-    }
-    if(value_path == "rbit")
-    {
-        rbit.yfilter = yfilter;
-    }
-    if(value_path == "rd-bit")
-    {
-        rd_bit.yfilter = yfilter;
-    }
-    if(value_path == "sbit")
-    {
-        sbit.yfilter = yfilter;
-    }
-    if(value_path == "sd-bit")
-    {
-        sd_bit.yfilter = yfilter;
-    }
-    if(value_path == "ybit")
-    {
-        ybit.yfilter = yfilter;
-    }
-    if(value_path == "pref-l")
-    {
-        pref_l.yfilter = yfilter;
-    }
-    if(value_path == "pref-r")
-    {
-        pref_r.yfilter = yfilter;
-    }
-    if(value_path == "pref-s")
-    {
-        pref_s.yfilter = yfilter;
-    }
-    if(value_path == "pref-y")
-    {
-        pref_y.yfilter = yfilter;
-    }
-    if(value_path == "all-scope-info-bits")
-    {
-        all_scope_info_bits.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Pcedtlv::PcedScope::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lbit" || name == "rbit" || name == "rd-bit" || name == "sbit" || name == "sd-bit" || name == "ybit" || name == "pref-l" || name == "pref-r" || name == "pref-s" || name == "pref-y" || name == "all-scope-info-bits")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::SrAlgoTlv()
-    :
-    sr_algo_length{YType::uint16, "sr-algo-length"},
-    sr_algo_value{YType::str, "sr-algo-value"}
-{
-
-    yang_name = "sr-algo-tlv"; yang_parent_name = "opaque-ritlv"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::~SrAlgoTlv()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::has_data() const
-{
-    return sr_algo_length.is_set
-	|| sr_algo_value.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sr_algo_length.yfilter)
-	|| ydk::is_set(sr_algo_value.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sr-algo-tlv";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sr_algo_length.is_set || is_set(sr_algo_length.yfilter)) leaf_name_data.push_back(sr_algo_length.get_name_leafdata());
-    if (sr_algo_value.is_set || is_set(sr_algo_value.yfilter)) leaf_name_data.push_back(sr_algo_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sr-algo-length")
-    {
-        sr_algo_length = value;
-        sr_algo_length.value_namespace = name_space;
-        sr_algo_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sr-algo-value")
-    {
-        sr_algo_value = value;
-        sr_algo_value.value_namespace = name_space;
-        sr_algo_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sr-algo-length")
-    {
-        sr_algo_length.yfilter = yfilter;
-    }
-    if(value_path == "sr-algo-value")
-    {
-        sr_algo_value.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sr-algo-length" || name == "sr-algo-value")
         return true;
     return false;
 }

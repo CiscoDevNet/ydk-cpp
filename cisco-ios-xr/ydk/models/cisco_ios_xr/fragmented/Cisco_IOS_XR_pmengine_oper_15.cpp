@@ -11,6 +11,3016 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pmengine_oper {
 
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::Cd()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::int32, "minimum"},
+    average{YType::int32, "average"},
+    maximum{YType::int32, "maximum"},
+    minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "cd"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::~Cd()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Cd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::Dgd()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "dgd"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::~Dgd()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dgd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Dgd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::Pmd()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "pmd"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::~Pmd()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pmd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pmd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::Osnr()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "osnr"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::~Osnr()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "osnr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Osnr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::CenterWavelength()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "center-wavelength"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::~CenterWavelength()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "center-wavelength";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::Pdl()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "pdl"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::~Pdl()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pdl";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pdl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::Pcr()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "pcr"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::~Pcr()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pcr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pcr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::Pn()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "pn"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::~Pn()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::Pn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::RxSigPow()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "rx-sig-pow"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::~RxSigPow()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-sig-pow";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::LowSigFreqOff()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::int32, "minimum"},
+    average{YType::int32, "average"},
+    maximum{YType::int32, "maximum"},
+    minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "low-sig-freq-off"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::~LowSigFreqOff()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "low-sig-freq-off";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::AmpliGain()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "ampli-gain"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::~AmpliGain()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ampli-gain";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::AmpliGainTilt()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "ampli-gain-tilt"; yang_parent_name = "optics-hour24-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::~AmpliGainTilt()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ampli-gain-tilt";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24OpticsHistories::OpticsHour24OpticsHistory::OpticsHour24OpticsTimeLineInstances::OpticsHour24OpticsTimeLineInstance::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistories()
+{
+
+    yang_name = "optics-hour24fec-histories"; yang_parent_name = "optics-hour24-history"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::~OpticsHour24FecHistories()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::has_data() const
+{
+    for (std::size_t index=0; index<optics_hour24fec_history.size(); index++)
+    {
+        if(optics_hour24fec_history[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::has_operation() const
+{
+    for (std::size_t index=0; index<optics_hour24fec_history.size(); index++)
+    {
+        if(optics_hour24fec_history[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-hour24fec-histories";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "optics-hour24fec-history")
+    {
+        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory>();
+        c->parent = this;
+        optics_hour24fec_history.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : optics_hour24fec_history)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24fec-history")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecHistory()
+    :
+    number{YType::int32, "number"}
+    	,
+    optics_hour24fec_time_line_instances(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances>())
+{
+    optics_hour24fec_time_line_instances->parent = this;
+
+    yang_name = "optics-hour24fec-history"; yang_parent_name = "optics-hour24fec-histories"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::~OpticsHour24FecHistory()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::has_data() const
+{
+    return number.is_set
+	|| (optics_hour24fec_time_line_instances !=  nullptr && optics_hour24fec_time_line_instances->has_data());
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| (optics_hour24fec_time_line_instances !=  nullptr && optics_hour24fec_time_line_instances->has_operation());
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-hour24fec-history" <<"[number='" <<number <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "optics-hour24fec-time-line-instances")
+    {
+        if(optics_hour24fec_time_line_instances == nullptr)
+        {
+            optics_hour24fec_time_line_instances = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances>();
+        }
+        return optics_hour24fec_time_line_instances;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(optics_hour24fec_time_line_instances != nullptr)
+    {
+        children["optics-hour24fec-time-line-instances"] = optics_hour24fec_time_line_instances;
+    }
+
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24fec-time-line-instances" || name == "number")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstances()
+{
+
+    yang_name = "optics-hour24fec-time-line-instances"; yang_parent_name = "optics-hour24fec-history"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::~OpticsHour24FecTimeLineInstances()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::has_data() const
+{
+    for (std::size_t index=0; index<optics_hour24fec_time_line_instance.size(); index++)
+    {
+        if(optics_hour24fec_time_line_instance[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::has_operation() const
+{
+    for (std::size_t index=0; index<optics_hour24fec_time_line_instance.size(); index++)
+    {
+        if(optics_hour24fec_time_line_instance[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-hour24fec-time-line-instances";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "optics-hour24fec-time-line-instance")
+    {
+        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance>();
+        c->parent = this;
+        optics_hour24fec_time_line_instance.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : optics_hour24fec_time_line_instance)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24fec-time-line-instance")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::OpticsHour24FecTimeLineInstance()
+    :
+    number{YType::int32, "number"},
+    index_{YType::uint32, "index"},
+    valid{YType::boolean, "valid"},
+    timestamp{YType::str, "timestamp"},
+    last_clear_time{YType::str, "last-clear-time"},
+    last_clear15_min_time{YType::str, "last-clear15-min-time"},
+    last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
+    last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
+    sec30_support{YType::boolean, "sec30-support"}
+    	,
+    ec_bits(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits>())
+	,uc_words(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords>())
+	,pre_fec_ber(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer>())
+	,post_fec_ber(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer>())
+	,q(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q>())
+	,qmargin(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin>())
+{
+    ec_bits->parent = this;
+    uc_words->parent = this;
+    pre_fec_ber->parent = this;
+    post_fec_ber->parent = this;
+    q->parent = this;
+    qmargin->parent = this;
+
+    yang_name = "optics-hour24fec-time-line-instance"; yang_parent_name = "optics-hour24fec-time-line-instances"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::~OpticsHour24FecTimeLineInstance()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::has_data() const
+{
+    return number.is_set
+	|| index_.is_set
+	|| valid.is_set
+	|| timestamp.is_set
+	|| last_clear_time.is_set
+	|| last_clear15_min_time.is_set
+	|| last_clear30_sec_time.is_set
+	|| last_clear24_hr_time.is_set
+	|| sec30_support.is_set
+	|| (ec_bits !=  nullptr && ec_bits->has_data())
+	|| (uc_words !=  nullptr && uc_words->has_data())
+	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_data())
+	|| (post_fec_ber !=  nullptr && post_fec_ber->has_data())
+	|| (q !=  nullptr && q->has_data())
+	|| (qmargin !=  nullptr && qmargin->has_data());
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| (ec_bits !=  nullptr && ec_bits->has_operation())
+	|| (uc_words !=  nullptr && uc_words->has_operation())
+	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
+	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
+	|| (q !=  nullptr && q->has_operation())
+	|| (qmargin !=  nullptr && qmargin->has_operation());
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-hour24fec-time-line-instance" <<"[number='" <<number <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ec-bits")
+    {
+        if(ec_bits == nullptr)
+        {
+            ec_bits = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits>();
+        }
+        return ec_bits;
+    }
+
+    if(child_yang_name == "uc-words")
+    {
+        if(uc_words == nullptr)
+        {
+            uc_words = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::UcWords>();
+        }
+        return uc_words;
+    }
+
+    if(child_yang_name == "pre-fec-ber")
+    {
+        if(pre_fec_ber == nullptr)
+        {
+            pre_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PreFecBer>();
+        }
+        return pre_fec_ber;
+    }
+
+    if(child_yang_name == "post-fec-ber")
+    {
+        if(post_fec_ber == nullptr)
+        {
+            post_fec_ber = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::PostFecBer>();
+        }
+        return post_fec_ber;
+    }
+
+    if(child_yang_name == "q")
+    {
+        if(q == nullptr)
+        {
+            q = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Q>();
+        }
+        return q;
+    }
+
+    if(child_yang_name == "qmargin")
+    {
+        if(qmargin == nullptr)
+        {
+            qmargin = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::Qmargin>();
+        }
+        return qmargin;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ec_bits != nullptr)
+    {
+        children["ec-bits"] = ec_bits;
+    }
+
+    if(uc_words != nullptr)
+    {
+        children["uc-words"] = uc_words;
+    }
+
+    if(pre_fec_ber != nullptr)
+    {
+        children["pre-fec-ber"] = pre_fec_ber;
+    }
+
+    if(post_fec_ber != nullptr)
+    {
+        children["post-fec-ber"] = post_fec_ber;
+    }
+
+    if(q != nullptr)
+    {
+        children["q"] = q;
+    }
+
+    if(qmargin != nullptr)
+    {
+        children["qmargin"] = qmargin;
+    }
+
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "uc-words" || name == "pre-fec-ber" || name == "post-fec-ber" || name == "q" || name == "qmargin" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+        return true;
+    return false;
+}
+
 PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsHour24History::OpticsHour24FecHistories::OpticsHour24FecHistory::OpticsHour24FecTimeLineInstances::OpticsHour24FecTimeLineInstance::EcBits::EcBits()
     :
     data{YType::uint64, "data"},
@@ -1350,6 +4360,8 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,pn(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn>())
 	,rx_sig_pow(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow>())
 	,low_sig_freq_off(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff>())
+	,ampli_gain(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain>())
+	,ampli_gain_tilt(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt>())
 {
     lbc->parent = this;
     lbc_pc->parent = this;
@@ -1365,6 +4377,8 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     pn->parent = this;
     rx_sig_pow->parent = this;
     low_sig_freq_off->parent = this;
+    ampli_gain->parent = this;
+    ampli_gain_tilt->parent = this;
 
     yang_name = "optics-second30-optics-time-line-instance"; yang_parent_name = "optics-second30-optics-time-line-instances"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -1397,7 +4411,9 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| (pcr !=  nullptr && pcr->has_data())
 	|| (pn !=  nullptr && pn->has_data())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_data())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data())
+	|| (ampli_gain !=  nullptr && ampli_gain->has_data())
+	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_data());
 }
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::has_operation() const
@@ -1425,7 +4441,9 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| (pcr !=  nullptr && pcr->has_operation())
 	|| (pn !=  nullptr && pn->has_operation())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_operation())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation())
+	|| (ampli_gain !=  nullptr && ampli_gain->has_operation())
+	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_operation());
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::get_segment_path() const
@@ -1581,6 +4599,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
         return low_sig_freq_off;
     }
 
+    if(child_yang_name == "ampli-gain")
+    {
+        if(ampli_gain == nullptr)
+        {
+            ampli_gain = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain>();
+        }
+        return ampli_gain;
+    }
+
+    if(child_yang_name == "ampli-gain-tilt")
+    {
+        if(ampli_gain_tilt == nullptr)
+        {
+            ampli_gain_tilt = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt>();
+        }
+        return ampli_gain_tilt;
+    }
+
     return nullptr;
 }
 
@@ -1656,6 +4692,16 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     if(low_sig_freq_off != nullptr)
     {
         children["low-sig-freq-off"] = low_sig_freq_off;
+    }
+
+    if(ampli_gain != nullptr)
+    {
+        children["ampli-gain"] = ampli_gain;
+    }
+
+    if(ampli_gain_tilt != nullptr)
+    {
+        children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
     return children;
@@ -1761,7 +4807,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "ampli-gain" || name == "ampli-gain-tilt" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
@@ -1773,8 +4819,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -1792,8 +4840,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -1805,8 +4855,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -1826,8 +4878,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -1878,6 +4932,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -1889,6 +4949,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -1920,6 +4986,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -1927,6 +4997,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -1936,7 +5010,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -1948,8 +5022,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -1967,8 +5043,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -1980,8 +5058,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -2001,8 +5081,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -2053,6 +5135,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -2064,6 +5152,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2095,6 +5189,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -2102,6 +5200,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2111,7 +5213,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -2123,8 +5225,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -2142,8 +5246,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -2155,8 +5261,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -2176,8 +5284,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -2228,6 +5338,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -2239,6 +5355,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2270,6 +5392,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -2277,6 +5403,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2286,7 +5416,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -2298,8 +5428,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -2317,8 +5449,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -2330,8 +5464,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -2351,8 +5487,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -2403,6 +5541,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -2414,6 +5558,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2445,6 +5595,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -2452,6 +5606,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2461,7 +5619,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Opr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -2473,8 +5631,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -2492,8 +5652,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -2505,8 +5667,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -2526,8 +5690,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -2578,6 +5744,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -2589,6 +5761,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2620,6 +5798,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -2627,6 +5809,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2636,7 +5822,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Cd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -2648,8 +5834,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -2667,8 +5855,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -2680,8 +5870,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -2701,8 +5893,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -2753,6 +5947,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -2764,6 +5964,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2795,6 +6001,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -2802,6 +6012,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2811,7 +6025,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Dgd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -2823,8 +6037,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -2842,8 +6058,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -2855,8 +6073,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -2876,8 +6096,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -2928,6 +6150,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -2939,6 +6167,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2970,6 +6204,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -2977,6 +6215,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -2986,7 +6228,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pmd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -2998,8 +6240,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -3017,8 +6261,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -3030,8 +6276,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -3051,8 +6299,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -3103,6 +6353,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -3114,6 +6370,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3145,6 +6407,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -3152,6 +6418,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3161,7 +6431,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Osnr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -3173,8 +6443,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -3192,8 +6464,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -3205,8 +6479,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -3226,8 +6502,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -3278,6 +6556,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -3289,6 +6573,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3320,6 +6610,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -3327,6 +6621,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3336,7 +6634,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -3348,8 +6646,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -3367,8 +6667,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -3380,8 +6682,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -3401,8 +6705,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -3453,6 +6759,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -3464,6 +6776,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3495,6 +6813,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -3502,6 +6824,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3511,7 +6837,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pdl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -3523,8 +6849,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -3542,8 +6870,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -3555,8 +6885,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -3576,8 +6908,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -3628,6 +6962,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -3639,6 +6979,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3670,6 +7016,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -3677,6 +7027,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3686,7 +7040,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pcr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -3698,8 +7052,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -3717,8 +7073,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -3730,8 +7088,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -3751,8 +7111,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -3803,6 +7165,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -3814,6 +7182,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3845,6 +7219,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -3852,6 +7230,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -3861,7 +7243,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::Pn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -3873,8 +7255,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -3892,8 +7276,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -3905,8 +7291,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -3926,8 +7314,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -3978,6 +7368,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -3989,6 +7385,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4020,6 +7422,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -4027,6 +7433,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4036,7 +7446,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -4048,8 +7458,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -4067,8 +7479,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -4080,8 +7494,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -4101,8 +7517,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -4153,6 +7571,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -4164,6 +7588,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4195,6 +7625,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -4202,6 +7636,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4211,7 +7649,413 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::AmpliGain()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "ampli-gain"; yang_parent_name = "optics-second30-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::~AmpliGain()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ampli-gain";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::AmpliGainTilt()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "ampli-gain-tilt"; yang_parent_name = "optics-second30-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::~AmpliGainTilt()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ampli-gain-tilt";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsSecond30History::OpticsSecond30OpticsHistories::OpticsSecond30OpticsHistory::OpticsSecond30OpticsTimeLineInstances::OpticsSecond30OpticsTimeLineInstance::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -6129,6 +9973,8 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
 	,pn(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn>())
 	,rx_sig_pow(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow>())
 	,low_sig_freq_off(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff>())
+	,ampli_gain(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain>())
+	,ampli_gain_tilt(std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt>())
 {
     lbc->parent = this;
     lbc_pc->parent = this;
@@ -6144,6 +9990,8 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     pn->parent = this;
     rx_sig_pow->parent = this;
     low_sig_freq_off->parent = this;
+    ampli_gain->parent = this;
+    ampli_gain_tilt->parent = this;
 
     yang_name = "optics-minute15-optics-time-line-instance"; yang_parent_name = "optics-minute15-optics-time-line-instances"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -6176,7 +10024,9 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| (pcr !=  nullptr && pcr->has_data())
 	|| (pn !=  nullptr && pn->has_data())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_data())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data())
+	|| (ampli_gain !=  nullptr && ampli_gain->has_data())
+	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_data());
 }
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::has_operation() const
@@ -6204,7 +10054,9 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| (pcr !=  nullptr && pcr->has_operation())
 	|| (pn !=  nullptr && pn->has_operation())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_operation())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation())
+	|| (ampli_gain !=  nullptr && ampli_gain->has_operation())
+	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_operation());
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::get_segment_path() const
@@ -6360,6 +10212,24 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
         return low_sig_freq_off;
     }
 
+    if(child_yang_name == "ampli-gain")
+    {
+        if(ampli_gain == nullptr)
+        {
+            ampli_gain = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain>();
+        }
+        return ampli_gain;
+    }
+
+    if(child_yang_name == "ampli-gain-tilt")
+    {
+        if(ampli_gain_tilt == nullptr)
+        {
+            ampli_gain_tilt = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt>();
+        }
+        return ampli_gain_tilt;
+    }
+
     return nullptr;
 }
 
@@ -6435,6 +10305,16 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     if(low_sig_freq_off != nullptr)
     {
         children["low-sig-freq-off"] = low_sig_freq_off;
+    }
+
+    if(ampli_gain != nullptr)
+    {
+        children["ampli-gain"] = ampli_gain;
+    }
+
+    if(ampli_gain_tilt != nullptr)
+    {
+        children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
     return children;
@@ -6540,7 +10420,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "ampli-gain" || name == "ampli-gain-tilt" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
@@ -6552,8 +10432,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -6571,8 +10453,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -6584,8 +10468,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -6605,8 +10491,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -6657,6 +10545,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -6668,6 +10562,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6699,6 +10599,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -6706,6 +10610,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6715,7 +10623,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -6727,8 +10635,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -6746,8 +10656,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -6759,8 +10671,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -6780,8 +10694,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -6832,6 +10748,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -6843,6 +10765,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6874,6 +10802,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -6881,6 +10813,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6890,7 +10826,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -6902,8 +10838,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -6921,8 +10859,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -6934,8 +10874,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -6955,8 +10897,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -7007,6 +10951,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -7018,6 +10968,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7049,6 +11005,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -7056,6 +11016,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7065,7 +11029,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -7077,8 +11041,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -7096,8 +11062,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -7109,8 +11077,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -7130,8 +11100,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -7182,6 +11154,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -7193,6 +11171,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7224,6 +11208,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -7231,6 +11219,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7240,7 +11232,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Opr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -7252,8 +11244,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -7271,8 +11265,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -7284,8 +11280,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -7305,8 +11303,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -7357,6 +11357,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -7368,6 +11374,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7399,6 +11411,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -7406,6 +11422,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7415,7 +11435,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Cd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -7427,8 +11447,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -7446,8 +11468,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -7459,8 +11483,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -7480,8 +11506,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -7532,6 +11560,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -7543,6 +11577,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7574,6 +11614,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -7581,6 +11625,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7590,7 +11638,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Dgd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -7602,8 +11650,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -7621,8 +11671,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -7634,8 +11686,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -7655,8 +11709,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -7707,6 +11763,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -7718,6 +11780,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7749,6 +11817,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -7756,6 +11828,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7765,7 +11841,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pmd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -7777,8 +11853,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -7796,8 +11874,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -7809,8 +11889,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -7830,8 +11912,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -7882,6 +11966,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -7893,6 +11983,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7924,6 +12020,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -7931,6 +12031,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -7940,7 +12044,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Osnr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -7952,8 +12056,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -7971,8 +12077,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -7984,8 +12092,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8005,8 +12115,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8057,6 +12169,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8068,6 +12186,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8099,6 +12223,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8106,6 +12234,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8115,7 +12247,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8127,8 +12259,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -8146,8 +12280,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8159,8 +12295,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8180,8 +12318,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8232,6 +12372,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8243,6 +12389,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8274,6 +12426,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8281,6 +12437,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8290,7 +12450,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8302,8 +12462,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -8321,8 +12483,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8334,8 +12498,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8355,8 +12521,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8407,6 +12575,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8418,6 +12592,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8449,6 +12629,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8456,6 +12640,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8465,7 +12653,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8477,8 +12665,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -8496,8 +12686,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8509,8 +12701,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8530,8 +12724,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8582,6 +12778,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8593,6 +12795,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8624,6 +12832,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8631,6 +12843,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8640,7 +12856,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8652,8 +12868,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -8671,8 +12889,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8684,8 +12904,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8705,8 +12927,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8757,6 +12981,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8768,6 +12998,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8799,6 +13035,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8806,6 +13046,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8815,7 +13059,7 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -8827,8 +13071,10 @@ PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistori
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
@@ -8846,8 +13092,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -8859,8 +13107,10 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -8880,8 +13130,10 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -8932,6 +13184,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -8943,6 +13201,12 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8974,6 +13238,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     {
         minimum_threshold.yfilter = yfilter;
     }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -8981,6 +13249,10 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -8990,7 +13262,413 @@ void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::AmpliGain()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "ampli-gain"; yang_parent_name = "optics-minute15-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::~AmpliGain()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ampli-gain";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::AmpliGainTilt()
+    :
+    valid{YType::boolean, "valid"},
+    minimum{YType::str, "minimum"},
+    average{YType::str, "average"},
+    maximum{YType::str, "maximum"},
+    minimum_threshold{YType::str, "minimum-threshold"},
+    configured_min_thresh{YType::str, "configured-min-thresh"},
+    minimum_tca_report{YType::boolean, "minimum-tca-report"},
+    maximum_threshold{YType::str, "maximum-threshold"},
+    configured_max_thresh{YType::str, "configured-max-thresh"},
+    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+{
+
+    yang_name = "ampli-gain-tilt"; yang_parent_name = "optics-minute15-optics-time-line-instance"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::~AmpliGainTilt()
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::has_data() const
+{
+    return valid.is_set
+	|| minimum.is_set
+	|| average.is_set
+	|| maximum.is_set
+	|| minimum_threshold.is_set
+	|| configured_min_thresh.is_set
+	|| minimum_tca_report.is_set
+	|| maximum_threshold.is_set
+	|| configured_max_thresh.is_set
+	|| maximum_tca_report.is_set;
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(configured_min_thresh.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(configured_max_thresh.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter);
+}
+
+std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ampli-gain-tilt";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum")
+    {
+        minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "average")
+    {
+        average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum")
+    {
+        maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh = value;
+        configured_min_thresh.value_namespace = name_space;
+        configured_min_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh = value;
+        configured_max_thresh.value_namespace = name_space;
+        configured_max_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-min-thresh")
+    {
+        configured_min_thresh.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "configured-max-thresh")
+    {
+        configured_max_thresh.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
         return true;
     return false;
 }

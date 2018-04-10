@@ -12,6 +12,7 @@ module ydktest-sanity-augm {
   //import ietf-inet-types { prefix "inet"; }
 
   //import Cisco-IOS-XR-types { prefix "xr"; }
+
   import ydktest-sanity { prefix "ysanity"; }
 
 
@@ -86,7 +87,6 @@ module ydktest-sanity-augm {
     }
   }
 
-  
   grouping one-twin-aug {
     description "augment runner with same name container but different namespace";
     container one {
@@ -98,7 +98,71 @@ module ydktest-sanity-augm {
     }
   }
 
+  /////////////////////////////////////////////////////////
+  // native / interface / Tunnel
+  /////////////////////////////////////////////////////////
+  grouping config-interface-tunnel-grouping {
+    container nhrp {
+      description
+        "NHRP Interface commands";
+      container event-publisher {
+        description
+          "Enable NHRP smart spoke feature";
+        leaf max-event-timeout {
+          description
+            "Number of seconds";
+          type uint8 {
+            range "1..22";
+          }
+        }
+      }
+      leaf group {
+        description
+          "group name string";
+        type string;
+      }
+    }
 
+    container tunnel {
+      description
+        "protocol-over-protocol tunneling";
+
+      // interface * / tunnel bandwidth
+      container bandwidth {
+        description
+          "Set tunnel bandwidth informational parameter";
+        leaf receive {
+          description
+            "Receive bandwidth";
+          type uint32;
+        }
+        leaf transmit {
+          description
+            "Transmit bandwidth";
+          type uint32;
+        }
+      }
+
+      // interface * / tunnel source
+      leaf source {
+        description
+          "source of tunnel packets";
+        type string;
+      }
+
+      // interface * / tunnel destination
+      leaf destination {
+        description
+          "destination of tunnel";
+        type string;
+      }
+    }
+  }
+
+
+  /////////////////////////////////////////////////////////
+  // augmentation
+  /////////////////////////////////////////////////////////
   augment "/ysanity:runner" {
     description "augment to one";
     uses one-twin-aug;
@@ -109,7 +173,7 @@ module ydktest-sanity-augm {
     uses one-aug-level;
   }
   
-    augment "/ysanity:runner/ysanity:one" {
+  augment "/ysanity:runner/ysanity:one" {
     description "augment leaf to one";
     uses leaf-aug;
   }
@@ -126,6 +190,10 @@ module ydktest-sanity-augm {
       description "integer value type";
       type boolean;
     }
+  }
+
+  augment "/ysanity:native/ysanity:interface/ysanity:Tunnel" {
+    uses config-interface-tunnel-grouping;
   }
 
 }

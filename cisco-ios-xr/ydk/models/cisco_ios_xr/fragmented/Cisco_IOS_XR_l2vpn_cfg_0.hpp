@@ -705,6 +705,7 @@ class L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect:
         ydk::YLeaf eviid; //type: uint32
         ydk::YLeaf remote_acid; //type: uint32
         ydk::YLeaf source_acid; //type: uint32
+        ydk::YLeaf class_; //type: string
 
 }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireEvpns::PseudowireEvpn
 
@@ -3992,6 +3993,13 @@ class L2vpnLogging : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
+
+};
+
+class MacFlushMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mvrp;
 
 };
 

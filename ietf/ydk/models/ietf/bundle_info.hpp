@@ -27,7 +27,7 @@
 
 namespace ydk
 {
-#define ydk_ietf_models_path "/usr/local/share/ietf@0.1.4"
+#define ydk_ietf_models_path "/usr/local/share/ietf@0.1.5"
 }
 
 #endif /* _BUNDLE_INFO_HPP_ */

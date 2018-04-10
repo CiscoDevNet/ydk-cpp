@@ -1799,11 +1799,11 @@ class L2Vpnv2::Nodes::Node::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::
 }; // L2Vpnv2::Nodes::Node::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange
 
 
-class L2Vpnv2::Nodes::Node::GenericInterfaces : public ydk::Entity
+class L2Vpnv2::Nodes::Node::GenericInterfaceLists : public ydk::Entity
 {
     public:
-        GenericInterfaces();
-        ~GenericInterfaces();
+        GenericInterfaceLists();
+        ~GenericInterfaceLists();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1815,18 +1815,18 @@ class L2Vpnv2::Nodes::Node::GenericInterfaces : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class GenericInterface; //type: L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface
+        class GenericInterfaceList; //type: L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface> > generic_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList> > generic_interface_list;
         
-}; // L2Vpnv2::Nodes::Node::GenericInterfaces
+}; // L2Vpnv2::Nodes::Node::GenericInterfaceLists
 
 
-class L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface : public ydk::Entity
+class L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList : public ydk::Entity
 {
     public:
-        GenericInterface();
-        ~GenericInterface();
+        GenericInterfaceList();
+        ~GenericInterfaceList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1843,14 +1843,14 @@ class L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface : public ydk::En
         ydk::YLeaf interface_list_id; //type: uint32
         ydk::YLeaf number_of_interfaces; //type: uint32
         ydk::YLeaf items; //type: uint32
-        class Interface; //type: L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface
+        class Interface; //type: L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface> > interface;
         
-}; // L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface
+}; // L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList
 
 
-class L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface : public ydk::Entity
+class L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1871,7 +1871,7 @@ class L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface : pub
         ydk::YLeaf not_supported_replications; //type: uint32
         ydk::YLeaf is_fib_downloaded; //type: boolean
 
-}; // L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface
+}; // L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface
 
 
 class L2Vpnv2::Nodes::Node::MstpVlans : public ydk::Entity
@@ -3211,6 +3211,9 @@ class L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::F
         ydk::YLeaf last_time_status_down; //type: string
         ydk::YLeaf time_elapsed_status_down; //type: uint32
         ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf data_path_down; //type: boolean
+        ydk::YLeaf use_tunnel_path; //type: boolean
+        ydk::YLeaf odn_configured; //type: boolean
         ydk::YLeaf pseudo_wire_type_mismatched; //type: boolean
         ydk::YLeaf payload_bytes_mismatched; //type: boolean
         ydk::YLeaf bitrate_mismatched; //type: boolean

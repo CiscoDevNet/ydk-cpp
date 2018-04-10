@@ -43,6 +43,7 @@ class Aaa : public ydk::Entity
         class AaaMobile; //type: Aaa::AaaMobile
         class AaaDot1X; //type: Aaa::AaaDot1X
         class RadiusAttribute; //type: Aaa::RadiusAttribute
+        class PasswordPolicies; //type: Aaa::PasswordPolicies
         class ServerGroups; //type: Aaa::ServerGroups
         class Usernames; //type: Aaa::Usernames
         class Taskgroups; //type: Aaa::Taskgroups
@@ -60,6 +61,7 @@ class Aaa : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::AaaMobile> aaa_mobile;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::AaaDot1X> aaa_dot1x;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::RadiusAttribute> radius_attribute;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::PasswordPolicies> password_policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::ServerGroups> server_groups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::Usernames> usernames;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::Taskgroups> taskgroups;
@@ -117,10 +119,10 @@ class Aaa::Accountings::Accounting : public ydk::Entity
         ydk::YLeaf rp_failover; //type: AaaAccountingRpFailover
         ydk::YLeaf broadcast; //type: AaaAccountingBroadcast
         ydk::YLeaf type_xr; //type: AaaAccounting
-        ydk::YLeaf method1; //type: AaaMethod
-        ydk::YLeaf method2; //type: AaaMethod
-        ydk::YLeaf method3; //type: AaaMethod
-        ydk::YLeaf method4; //type: AaaMethod
+        ydk::YLeaf method1; //type: AaaMethodAccounting
+        ydk::YLeaf method2; //type: AaaMethodAccounting
+        ydk::YLeaf method3; //type: AaaMethodAccounting
+        ydk::YLeaf method4; //type: AaaMethodAccounting
         ydk::YLeaf server_group_name1; //type: string
         ydk::YLeaf server_group_name2; //type: string
         ydk::YLeaf server_group_name3; //type: string
@@ -1114,6 +1116,115 @@ class Aaa::RadiusAttribute::FormatOthers::FormatOther : public ydk::Entity
 }; // Aaa::RadiusAttribute::FormatOthers::FormatOther
 
 
+class Aaa::PasswordPolicies : public ydk::Entity
+{
+    public:
+        PasswordPolicies();
+        ~PasswordPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class PasswordPolicy; //type: Aaa::PasswordPolicies::PasswordPolicy
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::PasswordPolicies::PasswordPolicy> > password_policy;
+        
+}; // Aaa::PasswordPolicies
+
+
+class Aaa::PasswordPolicies::PasswordPolicy : public ydk::Entity
+{
+    public:
+        PasswordPolicy();
+        ~PasswordPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf lower_case; //type: uint32
+        ydk::YLeaf upper_case; //type: uint32
+        ydk::YLeaf max_length; //type: uint32
+        ydk::YLeaf min_char_change; //type: uint32
+        ydk::YLeaf special_char; //type: uint32
+        ydk::YLeaf numeric; //type: uint32
+        ydk::YLeaf min_length; //type: uint32
+        ydk::YLeaf authen_max_attempts; //type: uint32
+        class Lifetime; //type: Aaa::PasswordPolicies::PasswordPolicy::Lifetime
+        class LockoutTime; //type: Aaa::PasswordPolicies::PasswordPolicy::LockoutTime
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::PasswordPolicies::PasswordPolicy::Lifetime> lifetime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::PasswordPolicies::PasswordPolicy::LockoutTime> lockout_time;
+        
+}; // Aaa::PasswordPolicies::PasswordPolicy
+
+
+class Aaa::PasswordPolicies::PasswordPolicy::Lifetime : public ydk::Entity
+{
+    public:
+        Lifetime();
+        ~Lifetime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf years; //type: uint32
+        ydk::YLeaf months; //type: uint32
+        ydk::YLeaf hours; //type: uint32
+        ydk::YLeaf minutes; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf days; //type: uint32
+
+}; // Aaa::PasswordPolicies::PasswordPolicy::Lifetime
+
+
+class Aaa::PasswordPolicies::PasswordPolicy::LockoutTime : public ydk::Entity
+{
+    public:
+        LockoutTime();
+        ~LockoutTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hours; //type: uint32
+        ydk::YLeaf minutes; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf days; //type: uint32
+
+}; // Aaa::PasswordPolicies::PasswordPolicy::LockoutTime
+
+
 class Aaa::ServerGroups : public ydk::Entity
 {
     public:
@@ -1819,11 +1930,35 @@ class Aaa::Usernames::Username : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf secret; //type: string
         ydk::YLeaf password; //type: string
+        class PasswordPolicy; //type: Aaa::Usernames::Username::PasswordPolicy
         class UsergroupUnderUsernames; //type: Aaa::Usernames::Username::UsergroupUnderUsernames
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::Usernames::Username::PasswordPolicy> password_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_lib_cfg::Aaa::Usernames::Username::UsergroupUnderUsernames> usergroup_under_usernames;
         
 }; // Aaa::Usernames::Username
+
+
+class Aaa::Usernames::Username::PasswordPolicy : public ydk::Entity
+{
+    public:
+        PasswordPolicy();
+        ~PasswordPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf password; //type: string
+
+}; // Aaa::Usernames::Username::PasswordPolicy
 
 
 class Aaa::Usernames::Username::UsergroupUnderUsernames : public ydk::Entity
@@ -2784,7 +2919,7 @@ class Aaa::Radius::Ipv6 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Aaa::Radius::Ipv6
 
@@ -3119,7 +3254,7 @@ class Aaa::Radius::Ipv4 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Aaa::Radius::Ipv4
 
@@ -3552,7 +3687,7 @@ class Aaa::Tacacs::Ipv6 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Aaa::Tacacs::Ipv6
 
@@ -3625,7 +3760,7 @@ class Aaa::Tacacs::Ipv4 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Aaa::Tacacs::Ipv4
 

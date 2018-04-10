@@ -183,6 +183,9 @@ const Enum::YLeaf Ipv4AclFragFlags::dont_fragment {1, "dont-fragment"};
 const Enum::YLeaf Ipv4AclFragFlags::is_fragment {2, "is-fragment"};
 const Enum::YLeaf Ipv4AclFragFlags::first_fragment {4, "first-fragment"};
 const Enum::YLeaf Ipv4AclFragFlags::last_fragment {8, "last-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_is_fragment {3, "dont-fragment-is-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_first_fragment {5, "dont-fragment-first-fragment"};
+const Enum::YLeaf Ipv4AclFragFlags::dont_fragment_last_fragment {9, "dont-fragment-last-fragment"};
 
 const Enum::YLeaf Ipv4AclTcpBitsNumber::established {20, "established"};
 const Enum::YLeaf Ipv4AclTcpBitsNumber::ack {16, "ack"};

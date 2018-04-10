@@ -204,7 +204,7 @@ class ObjectGroup::Port::Objects::Object::Operators::Operator : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_type; //type: PortOperator
-        ydk::YLeaf port; //type: one of enumeration, uint32
+        ydk::YLeaf port; //type: one of uint32, enumeration
         ydk::YLeaf operator_type_xr; //type: uint32
         ydk::YLeaf port_xr; //type: uint32
 
@@ -250,8 +250,8 @@ class ObjectGroup::Port::Objects::Object::PortRanges::PortRange : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf start_port; //type: one of enumeration, uint32
-        ydk::YLeaf end_port; //type: one of enumeration, uint32
+        ydk::YLeaf start_port; //type: one of uint32, enumeration
+        ydk::YLeaf end_port; //type: one of uint32, enumeration
         ydk::YLeaf start_port_xr; //type: uint32
         ydk::YLeaf end_port_xr; //type: uint32
 

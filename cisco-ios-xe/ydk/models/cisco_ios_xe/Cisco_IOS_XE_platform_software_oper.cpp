@@ -26,11 +26,21 @@ CiscoPlatformSoftware::~CiscoPlatformSoftware()
 
 bool CiscoPlatformSoftware::has_data() const
 {
+    for (std::size_t index=0; index<q_filesystem.size(); index++)
+    {
+        if(q_filesystem[index]->has_data())
+            return true;
+    }
     return (control_processes !=  nullptr && control_processes->has_data());
 }
 
 bool CiscoPlatformSoftware::has_operation() const
 {
+    for (std::size_t index=0; index<q_filesystem.size(); index++)
+    {
+        if(q_filesystem[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| (control_processes !=  nullptr && control_processes->has_operation());
 }
@@ -62,6 +72,14 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::stri
         return control_processes;
     }
 
+    if(child_yang_name == "q-filesystem")
+    {
+        auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem>();
+        c->parent = this;
+        q_filesystem.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -72,6 +90,15 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::get_childr
     if(control_processes != nullptr)
     {
         children["control-processes"] = control_processes;
+    }
+
+    count = 0;
+    for (auto const & c : q_filesystem)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -112,7 +139,7 @@ std::map<std::pair<std::string, std::string>, std::string> CiscoPlatformSoftware
 
 bool CiscoPlatformSoftware::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "control-processes")
+    if(name == "control-processes" || name == "q-filesystem")
         return true;
     return false;
 }
@@ -1397,6 +1424,382 @@ void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerC
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "user" || name == "system" || name == "nice" || name == "idle" || name == "irq" || name == "sirq" || name == "io-wait")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::QFilesystem::QFilesystem()
+    :
+    fru{YType::enumeration, "fru"},
+    slotnum{YType::int16, "slotnum"},
+    baynum{YType::int16, "baynum"},
+    chassisnum{YType::int16, "chassisnum"}
+{
+
+    yang_name = "q-filesystem"; yang_parent_name = "cisco-platform-software"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+CiscoPlatformSoftware::QFilesystem::~QFilesystem()
+{
+}
+
+bool CiscoPlatformSoftware::QFilesystem::has_data() const
+{
+    for (std::size_t index=0; index<partitions.size(); index++)
+    {
+        if(partitions[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<core_files.size(); index++)
+    {
+        if(core_files[index]->has_data())
+            return true;
+    }
+    return fru.is_set
+	|| slotnum.is_set
+	|| baynum.is_set
+	|| chassisnum.is_set;
+}
+
+bool CiscoPlatformSoftware::QFilesystem::has_operation() const
+{
+    for (std::size_t index=0; index<partitions.size(); index++)
+    {
+        if(partitions[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<core_files.size(); index++)
+    {
+        if(core_files[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(fru.yfilter)
+	|| ydk::is_set(slotnum.yfilter)
+	|| ydk::is_set(baynum.yfilter)
+	|| ydk::is_set(chassisnum.yfilter);
+}
+
+std::string CiscoPlatformSoftware::QFilesystem::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CiscoPlatformSoftware::QFilesystem::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "q-filesystem" <<"[fru='" <<fru <<"']" <<"[slotnum='" <<slotnum <<"']" <<"[baynum='" <<baynum <<"']" <<"[chassisnum='" <<chassisnum <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::QFilesystem::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fru.is_set || is_set(fru.yfilter)) leaf_name_data.push_back(fru.get_name_leafdata());
+    if (slotnum.is_set || is_set(slotnum.yfilter)) leaf_name_data.push_back(slotnum.get_name_leafdata());
+    if (baynum.is_set || is_set(baynum.yfilter)) leaf_name_data.push_back(baynum.get_name_leafdata());
+    if (chassisnum.is_set || is_set(chassisnum.yfilter)) leaf_name_data.push_back(chassisnum.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "partitions")
+    {
+        auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem::Partitions>();
+        c->parent = this;
+        partitions.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "core-files")
+    {
+        auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem::CoreFiles>();
+        c->parent = this;
+        core_files.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesystem::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : partitions)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : core_files)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void CiscoPlatformSoftware::QFilesystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fru")
+    {
+        fru = value;
+        fru.value_namespace = name_space;
+        fru.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slotnum")
+    {
+        slotnum = value;
+        slotnum.value_namespace = name_space;
+        slotnum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "baynum")
+    {
+        baynum = value;
+        baynum.value_namespace = name_space;
+        baynum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chassisnum")
+    {
+        chassisnum = value;
+        chassisnum.value_namespace = name_space;
+        chassisnum.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CiscoPlatformSoftware::QFilesystem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fru")
+    {
+        fru.yfilter = yfilter;
+    }
+    if(value_path == "slotnum")
+    {
+        slotnum.yfilter = yfilter;
+    }
+    if(value_path == "baynum")
+    {
+        baynum.yfilter = yfilter;
+    }
+    if(value_path == "chassisnum")
+    {
+        chassisnum.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::QFilesystem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "partitions" || name == "core-files" || name == "fru" || name == "slotnum" || name == "baynum" || name == "chassisnum")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::QFilesystem::Partitions::Partitions()
+    :
+    name{YType::str, "name"},
+    total_size{YType::uint64, "total-size"},
+    used_size{YType::uint64, "used-size"}
+{
+
+    yang_name = "partitions"; yang_parent_name = "q-filesystem"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+CiscoPlatformSoftware::QFilesystem::Partitions::~Partitions()
+{
+}
+
+bool CiscoPlatformSoftware::QFilesystem::Partitions::has_data() const
+{
+    return name.is_set
+	|| total_size.is_set
+	|| used_size.is_set;
+}
+
+bool CiscoPlatformSoftware::QFilesystem::Partitions::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(total_size.yfilter)
+	|| ydk::is_set(used_size.yfilter);
+}
+
+std::string CiscoPlatformSoftware::QFilesystem::Partitions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "partitions" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::QFilesystem::Partitions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (total_size.is_set || is_set(total_size.yfilter)) leaf_name_data.push_back(total_size.get_name_leafdata());
+    if (used_size.is_set || is_set(used_size.yfilter)) leaf_name_data.push_back(used_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::Partitions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesystem::Partitions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void CiscoPlatformSoftware::QFilesystem::Partitions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-size")
+    {
+        total_size = value;
+        total_size.value_namespace = name_space;
+        total_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "used-size")
+    {
+        used_size = value;
+        used_size.value_namespace = name_space;
+        used_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CiscoPlatformSoftware::QFilesystem::Partitions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "total-size")
+    {
+        total_size.yfilter = yfilter;
+    }
+    if(value_path == "used-size")
+    {
+        used_size.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::QFilesystem::Partitions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "total-size" || name == "used-size")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::QFilesystem::CoreFiles::CoreFiles()
+    :
+    filename{YType::str, "filename"},
+    time{YType::str, "time"}
+{
+
+    yang_name = "core-files"; yang_parent_name = "q-filesystem"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+CiscoPlatformSoftware::QFilesystem::CoreFiles::~CoreFiles()
+{
+}
+
+bool CiscoPlatformSoftware::QFilesystem::CoreFiles::has_data() const
+{
+    return filename.is_set
+	|| time.is_set;
+}
+
+bool CiscoPlatformSoftware::QFilesystem::CoreFiles::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(filename.yfilter)
+	|| ydk::is_set(time.yfilter);
+}
+
+std::string CiscoPlatformSoftware::QFilesystem::CoreFiles::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "core-files" <<"[filename='" <<filename <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::QFilesystem::CoreFiles::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (filename.is_set || is_set(filename.yfilter)) leaf_name_data.push_back(filename.get_name_leafdata());
+    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::CoreFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesystem::CoreFiles::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void CiscoPlatformSoftware::QFilesystem::CoreFiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "filename")
+    {
+        filename = value;
+        filename.value_namespace = name_space;
+        filename.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time")
+    {
+        time = value;
+        time.value_namespace = name_space;
+        time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CiscoPlatformSoftware::QFilesystem::CoreFiles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filename")
+    {
+        filename.yfilter = yfilter;
+    }
+    if(value_path == "time")
+    {
+        time.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::QFilesystem::CoreFiles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filename" || name == "time")
         return true;
     return false;
 }

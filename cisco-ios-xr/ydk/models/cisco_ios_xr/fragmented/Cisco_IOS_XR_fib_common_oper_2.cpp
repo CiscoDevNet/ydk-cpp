@@ -13930,7 +13930,8 @@ Fib::Nodes::Node::Protocols::Protocol::Misc::Misc()
     mi_cpuless_count{YType::uint32, "mi-cpuless-count"},
     mi_prefer_aib_routes_over_rib_oper{YType::boolean, "mi-prefer-aib-routes-over-rib-oper"},
     mi_prefer_aib_routes_over_rib_cfg{YType::boolean, "mi-prefer-aib-routes-over-rib-cfg"},
-    mi_xpl_ldi_enabled{YType::boolean, "mi-xpl-ldi-enabled"}
+    mi_xpl_ldi_enabled{YType::boolean, "mi-xpl-ldi-enabled"},
+    mi_frr_follow_bgp_pic{YType::boolean, "mi-frr-follow-bgp-pic"}
     	,
     mi_issu_state(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState>())
 	,mi_plat_capabilities(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities>())
@@ -14028,6 +14029,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::has_data() const
 	|| mi_prefer_aib_routes_over_rib_oper.is_set
 	|| mi_prefer_aib_routes_over_rib_cfg.is_set
 	|| mi_xpl_ldi_enabled.is_set
+	|| mi_frr_follow_bgp_pic.is_set
 	|| (mi_issu_state !=  nullptr && mi_issu_state->has_data())
 	|| (mi_plat_capabilities !=  nullptr && mi_plat_capabilities->has_data());
 }
@@ -14116,6 +14118,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::has_operation() const
 	|| ydk::is_set(mi_prefer_aib_routes_over_rib_oper.yfilter)
 	|| ydk::is_set(mi_prefer_aib_routes_over_rib_cfg.yfilter)
 	|| ydk::is_set(mi_xpl_ldi_enabled.yfilter)
+	|| ydk::is_set(mi_frr_follow_bgp_pic.yfilter)
 	|| (mi_issu_state !=  nullptr && mi_issu_state->has_operation())
 	|| (mi_plat_capabilities !=  nullptr && mi_plat_capabilities->has_operation());
 }
@@ -14152,6 +14155,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
     if (mi_prefer_aib_routes_over_rib_oper.is_set || is_set(mi_prefer_aib_routes_over_rib_oper.yfilter)) leaf_name_data.push_back(mi_prefer_aib_routes_over_rib_oper.get_name_leafdata());
     if (mi_prefer_aib_routes_over_rib_cfg.is_set || is_set(mi_prefer_aib_routes_over_rib_cfg.yfilter)) leaf_name_data.push_back(mi_prefer_aib_routes_over_rib_cfg.get_name_leafdata());
     if (mi_xpl_ldi_enabled.is_set || is_set(mi_xpl_ldi_enabled.yfilter)) leaf_name_data.push_back(mi_xpl_ldi_enabled.get_name_leafdata());
+    if (mi_frr_follow_bgp_pic.is_set || is_set(mi_frr_follow_bgp_pic.yfilter)) leaf_name_data.push_back(mi_frr_follow_bgp_pic.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14529,6 +14533,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Misc::set_value(const std::string & 
         mi_xpl_ldi_enabled.value_namespace = name_space;
         mi_xpl_ldi_enabled.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "mi-frr-follow-bgp-pic")
+    {
+        mi_frr_follow_bgp_pic = value;
+        mi_frr_follow_bgp_pic.value_namespace = name_space;
+        mi_frr_follow_bgp_pic.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Misc::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14617,11 +14627,15 @@ void Fib::Nodes::Node::Protocols::Protocol::Misc::set_filter(const std::string &
     {
         mi_xpl_ldi_enabled.yfilter = yfilter;
     }
+    if(value_path == "mi-frr-follow-bgp-pic")
+    {
+        mi_frr_follow_bgp_pic.yfilter = yfilter;
+    }
 }
 
 bool Fib::Nodes::Node::Protocols::Protocol::Misc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mi-issu-state" || name == "mi-plat-capabilities" || name == "mi-idb-ext-cleanup-failed-count" || name == "mi-lrpf-stats-fail" || name == "mi-lrpf-stats-act" || name == "mi-lrpf-num" || name == "mi-idb-lsec-enabled-num" || name == "mi-num-lisp-eid" || name == "mi-num-lisp-valid-eid" || name == "mi-cpuless-node" || name == "mi-proto-dbg-stat" || name == "mi-idb-purge-cntr" || name == "mi-del" || name == "mi-frr-stat" || name == "mi-pfi-ifh-upd" || name == "mi-pfi-ifh-del" || name == "mi-pfi-ifh-stale" || name == "mi-tot-plat-upd-time" || name == "mi-tot-gtrie-time" || name == "mi-tot-dnld-time" || name == "mi-clock-time" || name == "mi-cpu-time" || name == "mi-shm-reset-ts" || name == "mi-idb-recycle-count" || name == "mi-idb-recycle-cleanup-count" || name == "mi-num-mgmt-list" || name == "mi-num-virtual-ll-addresses-added" || name == "mi-num-virtual-ll-addresses-deleted" || name == "mi-num-virtual-ll-addresses-dropped" || name == "mi-num-virtual-ll-addresses-cached" || name == "mi-cpuless-init" || name == "mi-cpuless-count" || name == "mi-prefer-aib-routes-over-rib-oper" || name == "mi-prefer-aib-routes-over-rib-cfg" || name == "mi-xpl-ldi-enabled")
+    if(name == "mi-issu-state" || name == "mi-plat-capabilities" || name == "mi-idb-ext-cleanup-failed-count" || name == "mi-lrpf-stats-fail" || name == "mi-lrpf-stats-act" || name == "mi-lrpf-num" || name == "mi-idb-lsec-enabled-num" || name == "mi-num-lisp-eid" || name == "mi-num-lisp-valid-eid" || name == "mi-cpuless-node" || name == "mi-proto-dbg-stat" || name == "mi-idb-purge-cntr" || name == "mi-del" || name == "mi-frr-stat" || name == "mi-pfi-ifh-upd" || name == "mi-pfi-ifh-del" || name == "mi-pfi-ifh-stale" || name == "mi-tot-plat-upd-time" || name == "mi-tot-gtrie-time" || name == "mi-tot-dnld-time" || name == "mi-clock-time" || name == "mi-cpu-time" || name == "mi-shm-reset-ts" || name == "mi-idb-recycle-count" || name == "mi-idb-recycle-cleanup-count" || name == "mi-num-mgmt-list" || name == "mi-num-virtual-ll-addresses-added" || name == "mi-num-virtual-ll-addresses-deleted" || name == "mi-num-virtual-ll-addresses-dropped" || name == "mi-num-virtual-ll-addresses-cached" || name == "mi-cpuless-init" || name == "mi-cpuless-count" || name == "mi-prefer-aib-routes-over-rib-oper" || name == "mi-prefer-aib-routes-over-rib-cfg" || name == "mi-xpl-ldi-enabled" || name == "mi-frr-follow-bgp-pic")
         return true;
     return false;
 }

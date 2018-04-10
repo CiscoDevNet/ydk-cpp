@@ -19,8 +19,10 @@ Watchdog::Watchdog()
     overload_throttle_timeout{YType::uint32, "overload-throttle-timeout"}
     	,
     threshold_memory(std::make_shared<Watchdog::ThresholdMemory>())
+	,disk_limit(std::make_shared<Watchdog::DiskLimit>())
 {
     threshold_memory->parent = this;
+    disk_limit->parent = this;
 
     yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-watchd-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -35,7 +37,8 @@ bool Watchdog::has_data() const
 	|| restart_deadlock_disable.is_set
 	|| restart_memoryhog_disable.is_set
 	|| overload_throttle_timeout.is_set
-	|| (threshold_memory !=  nullptr && threshold_memory->has_data());
+	|| (threshold_memory !=  nullptr && threshold_memory->has_data())
+	|| (disk_limit !=  nullptr && disk_limit->has_data());
 }
 
 bool Watchdog::has_operation() const
@@ -45,7 +48,8 @@ bool Watchdog::has_operation() const
 	|| ydk::is_set(restart_deadlock_disable.yfilter)
 	|| ydk::is_set(restart_memoryhog_disable.yfilter)
 	|| ydk::is_set(overload_throttle_timeout.yfilter)
-	|| (threshold_memory !=  nullptr && threshold_memory->has_operation());
+	|| (threshold_memory !=  nullptr && threshold_memory->has_operation())
+	|| (disk_limit !=  nullptr && disk_limit->has_operation());
 }
 
 std::string Watchdog::get_segment_path() const
@@ -79,6 +83,15 @@ std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_ya
         return threshold_memory;
     }
 
+    if(child_yang_name == "disk-limit")
+    {
+        if(disk_limit == nullptr)
+        {
+            disk_limit = std::make_shared<Watchdog::DiskLimit>();
+        }
+        return disk_limit;
+    }
+
     return nullptr;
 }
 
@@ -89,6 +102,11 @@ std::map<std::string, std::shared_ptr<Entity>> Watchdog::get_children() const
     if(threshold_memory != nullptr)
     {
         children["threshold-memory"] = threshold_memory;
+    }
+
+    if(disk_limit != nullptr)
+    {
+        children["disk-limit"] = disk_limit;
     }
 
     return children;
@@ -169,7 +187,7 @@ std::map<std::pair<std::string, std::string>, std::string> Watchdog::get_namespa
 
 bool Watchdog::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "threshold-memory" || name == "overload-notification" || name == "restart-deadlock-disable" || name == "restart-memoryhog-disable" || name == "overload-throttle-timeout")
+    if(name == "threshold-memory" || name == "disk-limit" || name == "overload-notification" || name == "restart-deadlock-disable" || name == "restart-memoryhog-disable" || name == "overload-throttle-timeout")
         return true;
     return false;
 }
@@ -280,6 +298,118 @@ void Watchdog::ThresholdMemory::set_filter(const std::string & value_path, YFilt
 }
 
 bool Watchdog::ThresholdMemory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minor" || name == "severe" || name == "critical")
+        return true;
+    return false;
+}
+
+Watchdog::DiskLimit::DiskLimit()
+    :
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
+{
+
+    yang_name = "disk-limit"; yang_parent_name = "watchdog"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Watchdog::DiskLimit::~DiskLimit()
+{
+}
+
+bool Watchdog::DiskLimit::has_data() const
+{
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
+}
+
+bool Watchdog::DiskLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
+}
+
+std::string Watchdog::DiskLimit::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-watchd-cfg:watchdog/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Watchdog::DiskLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disk-limit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Watchdog::DiskLimit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Watchdog::DiskLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Watchdog::DiskLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Watchdog::DiskLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minor")
+    {
+        minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Watchdog::DiskLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+}
+
+bool Watchdog::DiskLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minor" || name == "severe" || name == "critical")
         return true;

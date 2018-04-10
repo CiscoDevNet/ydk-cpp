@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_fib_common_cfg {
 
 Fib::Fib()
     :
-    prefer_aib_routes{YType::boolean, "prefer-aib-routes"}
+    prefer_aib_routes{YType::boolean, "prefer-aib-routes"},
+    frr_follow_bgp_pic{YType::boolean, "frr-follow-bgp-pic"}
     	,
     pbts_forward_class_fallbacks(std::make_shared<Fib::PbtsForwardClassFallbacks>())
 	,platform(std::make_shared<Fib::Platform>())
@@ -31,6 +32,7 @@ Fib::~Fib()
 bool Fib::has_data() const
 {
     return prefer_aib_routes.is_set
+	|| frr_follow_bgp_pic.is_set
 	|| (pbts_forward_class_fallbacks !=  nullptr && pbts_forward_class_fallbacks->has_data())
 	|| (platform !=  nullptr && platform->has_data());
 }
@@ -39,6 +41,7 @@ bool Fib::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefer_aib_routes.yfilter)
+	|| ydk::is_set(frr_follow_bgp_pic.yfilter)
 	|| (pbts_forward_class_fallbacks !=  nullptr && pbts_forward_class_fallbacks->has_operation())
 	|| (platform !=  nullptr && platform->has_operation());
 }
@@ -55,6 +58,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::get_name_leaf_data() const
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (prefer_aib_routes.is_set || is_set(prefer_aib_routes.yfilter)) leaf_name_data.push_back(prefer_aib_routes.get_name_leafdata());
+    if (frr_follow_bgp_pic.is_set || is_set(frr_follow_bgp_pic.yfilter)) leaf_name_data.push_back(frr_follow_bgp_pic.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -108,6 +112,12 @@ void Fib::set_value(const std::string & value_path, const std::string & value, c
         prefer_aib_routes.value_namespace = name_space;
         prefer_aib_routes.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "frr-follow-bgp-pic")
+    {
+        frr_follow_bgp_pic = value;
+        frr_follow_bgp_pic.value_namespace = name_space;
+        frr_follow_bgp_pic.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fib::set_filter(const std::string & value_path, YFilter yfilter)
@@ -115,6 +125,10 @@ void Fib::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "prefer-aib-routes")
     {
         prefer_aib_routes.yfilter = yfilter;
+    }
+    if(value_path == "frr-follow-bgp-pic")
+    {
+        frr_follow_bgp_pic.yfilter = yfilter;
     }
 }
 
@@ -145,7 +159,7 @@ std::map<std::pair<std::string, std::string>, std::string> Fib::get_namespace_id
 
 bool Fib::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pbts-forward-class-fallbacks" || name == "platform" || name == "prefer-aib-routes")
+    if(name == "pbts-forward-class-fallbacks" || name == "platform" || name == "prefer-aib-routes" || name == "frr-follow-bgp-pic")
         return true;
     return false;
 }

@@ -7774,9 +7774,9 @@ GenericInterfaceLists::~GenericInterfaceLists()
 
 bool GenericInterfaceLists::has_data() const
 {
-    for (std::size_t index=0; index<generic_interface.size(); index++)
+    for (std::size_t index=0; index<generic_interface_list.size(); index++)
     {
-        if(generic_interface[index]->has_data())
+        if(generic_interface_list[index]->has_data())
             return true;
     }
     return false;
@@ -7784,9 +7784,9 @@ bool GenericInterfaceLists::has_data() const
 
 bool GenericInterfaceLists::has_operation() const
 {
-    for (std::size_t index=0; index<generic_interface.size(); index++)
+    for (std::size_t index=0; index<generic_interface_list.size(); index++)
     {
-        if(generic_interface[index]->has_operation())
+        if(generic_interface_list[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
@@ -7810,11 +7810,11 @@ std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::get_name_l
 
 std::shared_ptr<Entity> GenericInterfaceLists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "generic-interface")
+    if(child_yang_name == "generic-interface-list")
     {
-        auto c = std::make_shared<GenericInterfaceLists::GenericInterface>();
+        auto c = std::make_shared<GenericInterfaceLists::GenericInterfaceList>();
         c->parent = this;
-        generic_interface.push_back(c);
+        generic_interface_list.push_back(c);
         return c;
     }
 
@@ -7826,7 +7826,7 @@ std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : generic_interface)
+    for (auto const & c : generic_interface_list)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7872,35 +7872,35 @@ std::map<std::pair<std::string, std::string>, std::string> GenericInterfaceLists
 
 bool GenericInterfaceLists::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "generic-interface")
+    if(name == "generic-interface-list")
         return true;
     return false;
 }
 
-GenericInterfaceLists::GenericInterface::GenericInterface()
+GenericInterfaceLists::GenericInterfaceList::GenericInterfaceList()
     :
     generic_interface_list_name{YType::str, "generic-interface-list-name"},
     enable{YType::empty, "enable"}
     	,
-    interfaces(std::make_shared<GenericInterfaceLists::GenericInterface::Interfaces>())
+    interfaces(std::make_shared<GenericInterfaceLists::GenericInterfaceList::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "generic-interface"; yang_parent_name = "generic-interface-lists"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-interface-list"; yang_parent_name = "generic-interface-lists"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-GenericInterfaceLists::GenericInterface::~GenericInterface()
+GenericInterfaceLists::GenericInterfaceList::~GenericInterfaceList()
 {
 }
 
-bool GenericInterfaceLists::GenericInterface::has_data() const
+bool GenericInterfaceLists::GenericInterfaceList::has_data() const
 {
     return generic_interface_list_name.is_set
 	|| enable.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
 
-bool GenericInterfaceLists::GenericInterface::has_operation() const
+bool GenericInterfaceLists::GenericInterfaceList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(generic_interface_list_name.yfilter)
@@ -7908,21 +7908,21 @@ bool GenericInterfaceLists::GenericInterface::has_operation() const
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
-std::string GenericInterfaceLists::GenericInterface::get_absolute_path() const
+std::string GenericInterfaceLists::GenericInterfaceList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-cfg:generic-interface-lists/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string GenericInterfaceLists::GenericInterface::get_segment_path() const
+std::string GenericInterfaceLists::GenericInterfaceList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-interface" <<"[generic-interface-list-name='" <<generic_interface_list_name <<"']";
+    path_buffer << "generic-interface-list" <<"[generic-interface-list-name='" <<generic_interface_list_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInterfaceList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7933,13 +7933,13 @@ std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInt
 
 }
 
-std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GenericInterfaceLists::GenericInterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
         if(interfaces == nullptr)
         {
-            interfaces = std::make_shared<GenericInterfaceLists::GenericInterface::Interfaces>();
+            interfaces = std::make_shared<GenericInterfaceLists::GenericInterfaceList::Interfaces>();
         }
         return interfaces;
     }
@@ -7947,7 +7947,7 @@ std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7959,7 +7959,7 @@ std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInt
     return children;
 }
 
-void GenericInterfaceLists::GenericInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void GenericInterfaceLists::GenericInterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "generic-interface-list-name")
     {
@@ -7975,7 +7975,7 @@ void GenericInterfaceLists::GenericInterface::set_value(const std::string & valu
     }
 }
 
-void GenericInterfaceLists::GenericInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void GenericInterfaceLists::GenericInterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "generic-interface-list-name")
     {
@@ -7987,24 +7987,24 @@ void GenericInterfaceLists::GenericInterface::set_filter(const std::string & val
     }
 }
 
-bool GenericInterfaceLists::GenericInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool GenericInterfaceLists::GenericInterfaceList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interfaces" || name == "generic-interface-list-name" || name == "enable")
         return true;
     return false;
 }
 
-GenericInterfaceLists::GenericInterface::Interfaces::Interfaces()
+GenericInterfaceLists::GenericInterfaceList::Interfaces::Interfaces()
 {
 
-    yang_name = "interfaces"; yang_parent_name = "generic-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "generic-interface-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-GenericInterfaceLists::GenericInterface::Interfaces::~Interfaces()
+GenericInterfaceLists::GenericInterfaceList::Interfaces::~Interfaces()
 {
 }
 
-bool GenericInterfaceLists::GenericInterface::Interfaces::has_data() const
+bool GenericInterfaceLists::GenericInterfaceList::Interfaces::has_data() const
 {
     for (std::size_t index=0; index<interface.size(); index++)
     {
@@ -8014,7 +8014,7 @@ bool GenericInterfaceLists::GenericInterface::Interfaces::has_data() const
     return false;
 }
 
-bool GenericInterfaceLists::GenericInterface::Interfaces::has_operation() const
+bool GenericInterfaceLists::GenericInterfaceList::Interfaces::has_operation() const
 {
     for (std::size_t index=0; index<interface.size(); index++)
     {
@@ -8024,14 +8024,14 @@ bool GenericInterfaceLists::GenericInterface::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
-std::string GenericInterfaceLists::GenericInterface::Interfaces::get_segment_path() const
+std::string GenericInterfaceLists::GenericInterfaceList::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInterface::Interfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInterfaceList::Interfaces::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8040,11 +8040,11 @@ std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInt
 
 }
 
-std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GenericInterfaceLists::GenericInterfaceList::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<GenericInterfaceLists::GenericInterface::Interfaces::Interface>();
+        auto c = std::make_shared<GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
         return c;
@@ -8053,7 +8053,7 @@ std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::Interfaces::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterface::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterfaceList::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8069,22 +8069,22 @@ std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInt
     return children;
 }
 
-void GenericInterfaceLists::GenericInterface::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void GenericInterfaceLists::GenericInterfaceList::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void GenericInterfaceLists::GenericInterface::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void GenericInterfaceLists::GenericInterfaceList::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool GenericInterfaceLists::GenericInterface::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool GenericInterfaceLists::GenericInterfaceList::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
         return true;
     return false;
 }
 
-GenericInterfaceLists::GenericInterface::Interfaces::Interface::Interface()
+GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
     enable{YType::empty, "enable"}
@@ -8093,31 +8093,31 @@ GenericInterfaceLists::GenericInterface::Interfaces::Interface::Interface()
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-GenericInterfaceLists::GenericInterface::Interfaces::Interface::~Interface()
+GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::~Interface()
 {
 }
 
-bool GenericInterfaceLists::GenericInterface::Interfaces::Interface::has_data() const
+bool GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::has_data() const
 {
     return interface_name.is_set
 	|| enable.is_set;
 }
 
-bool GenericInterfaceLists::GenericInterface::Interfaces::Interface::has_operation() const
+bool GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string GenericInterfaceLists::GenericInterface::Interfaces::Interface::get_segment_path() const
+std::string GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInterface::Interfaces::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8128,19 +8128,19 @@ std::vector<std::pair<std::string, LeafData> > GenericInterfaceLists::GenericInt
 
 }
 
-std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterface::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void GenericInterfaceLists::GenericInterface::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -8156,7 +8156,7 @@ void GenericInterfaceLists::GenericInterface::Interfaces::Interface::set_value(c
     }
 }
 
-void GenericInterfaceLists::GenericInterface::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -8168,7 +8168,7 @@ void GenericInterfaceLists::GenericInterface::Interfaces::Interface::set_filter(
     }
 }
 
-bool GenericInterfaceLists::GenericInterface::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "enable")
         return true;
@@ -8609,6 +8609,7 @@ bool Evpn::EvpnTables::has_leaf_or_child_of_name(const std::string & name) const
 
 Evpn::EvpnTables::EvpnTimers::EvpnTimers()
     :
+    evpn_carving{YType::uint32, "evpn-carving"},
     evpn_recovery{YType::uint32, "evpn-recovery"},
     enable{YType::empty, "enable"},
     evpn_peering{YType::uint32, "evpn-peering"}
@@ -8623,7 +8624,8 @@ Evpn::EvpnTables::EvpnTimers::~EvpnTimers()
 
 bool Evpn::EvpnTables::EvpnTimers::has_data() const
 {
-    return evpn_recovery.is_set
+    return evpn_carving.is_set
+	|| evpn_recovery.is_set
 	|| enable.is_set
 	|| evpn_peering.is_set;
 }
@@ -8631,6 +8633,7 @@ bool Evpn::EvpnTables::EvpnTimers::has_data() const
 bool Evpn::EvpnTables::EvpnTimers::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(evpn_carving.yfilter)
 	|| ydk::is_set(evpn_recovery.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(evpn_peering.yfilter);
@@ -8654,6 +8657,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnTimers::get
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (evpn_carving.is_set || is_set(evpn_carving.yfilter)) leaf_name_data.push_back(evpn_carving.get_name_leafdata());
     if (evpn_recovery.is_set || is_set(evpn_recovery.yfilter)) leaf_name_data.push_back(evpn_recovery.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (evpn_peering.is_set || is_set(evpn_peering.yfilter)) leaf_name_data.push_back(evpn_peering.get_name_leafdata());
@@ -8676,6 +8680,12 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnTimers::get
 
 void Evpn::EvpnTables::EvpnTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "evpn-carving")
+    {
+        evpn_carving = value;
+        evpn_carving.value_namespace = name_space;
+        evpn_carving.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "evpn-recovery")
     {
         evpn_recovery = value;
@@ -8698,6 +8708,10 @@ void Evpn::EvpnTables::EvpnTimers::set_value(const std::string & value_path, con
 
 void Evpn::EvpnTables::EvpnTimers::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "evpn-carving")
+    {
+        evpn_carving.yfilter = yfilter;
+    }
     if(value_path == "evpn-recovery")
     {
         evpn_recovery.yfilter = yfilter;
@@ -8714,7 +8728,7 @@ void Evpn::EvpnTables::EvpnTimers::set_filter(const std::string & value_path, YF
 
 bool Evpn::EvpnTables::EvpnTimers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-recovery" || name == "enable" || name == "evpn-peering")
+    if(name == "evpn-carving" || name == "evpn-recovery" || name == "enable" || name == "evpn-peering")
         return true;
     return false;
 }
@@ -9065,6 +9079,7 @@ Evpn::EvpnTables::Evpnevis::Evpnevi::Evpnevi()
     evi_reorig_disable{YType::empty, "evi-reorig-disable"},
     evi_advertise_mac_deprecated{YType::empty, "evi-advertise-mac-deprecated"},
     evpnevi_description{YType::str, "evpnevi-description"},
+    evi_ecmp_disable{YType::empty, "evi-ecmp-disable"},
     evi_unknown_unicast_flooding_disable{YType::empty, "evi-unknown-unicast-flooding-disable"},
     evpn_evi_cw_disable{YType::empty, "evpn-evi-cw-disable"}
     	,
@@ -9089,6 +9104,7 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_data() const
 	|| evi_reorig_disable.is_set
 	|| evi_advertise_mac_deprecated.is_set
 	|| evpnevi_description.is_set
+	|| evi_ecmp_disable.is_set
 	|| evi_unknown_unicast_flooding_disable.is_set
 	|| evpn_evi_cw_disable.is_set
 	|| (evi_load_balancing !=  nullptr && evi_load_balancing->has_data())
@@ -9103,6 +9119,7 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_operation() const
 	|| ydk::is_set(evi_reorig_disable.yfilter)
 	|| ydk::is_set(evi_advertise_mac_deprecated.yfilter)
 	|| ydk::is_set(evpnevi_description.yfilter)
+	|| ydk::is_set(evi_ecmp_disable.yfilter)
 	|| ydk::is_set(evi_unknown_unicast_flooding_disable.yfilter)
 	|| ydk::is_set(evpn_evi_cw_disable.yfilter)
 	|| (evi_load_balancing !=  nullptr && evi_load_balancing->has_operation())
@@ -9132,6 +9149,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
     if (evi_reorig_disable.is_set || is_set(evi_reorig_disable.yfilter)) leaf_name_data.push_back(evi_reorig_disable.get_name_leafdata());
     if (evi_advertise_mac_deprecated.is_set || is_set(evi_advertise_mac_deprecated.yfilter)) leaf_name_data.push_back(evi_advertise_mac_deprecated.get_name_leafdata());
     if (evpnevi_description.is_set || is_set(evpnevi_description.yfilter)) leaf_name_data.push_back(evpnevi_description.get_name_leafdata());
+    if (evi_ecmp_disable.is_set || is_set(evi_ecmp_disable.yfilter)) leaf_name_data.push_back(evi_ecmp_disable.get_name_leafdata());
     if (evi_unknown_unicast_flooding_disable.is_set || is_set(evi_unknown_unicast_flooding_disable.yfilter)) leaf_name_data.push_back(evi_unknown_unicast_flooding_disable.get_name_leafdata());
     if (evpn_evi_cw_disable.is_set || is_set(evpn_evi_cw_disable.yfilter)) leaf_name_data.push_back(evpn_evi_cw_disable.get_name_leafdata());
 
@@ -9219,6 +9237,12 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::set_value(const std::string & value_pa
         evpnevi_description.value_namespace = name_space;
         evpnevi_description.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "evi-ecmp-disable")
+    {
+        evi_ecmp_disable = value;
+        evi_ecmp_disable.value_namespace = name_space;
+        evi_ecmp_disable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "evi-unknown-unicast-flooding-disable")
     {
         evi_unknown_unicast_flooding_disable = value;
@@ -9251,6 +9275,10 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::set_filter(const std::string & value_p
     {
         evpnevi_description.yfilter = yfilter;
     }
+    if(value_path == "evi-ecmp-disable")
+    {
+        evi_ecmp_disable.yfilter = yfilter;
+    }
     if(value_path == "evi-unknown-unicast-flooding-disable")
     {
         evi_unknown_unicast_flooding_disable.yfilter = yfilter;
@@ -9263,7 +9291,7 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::set_filter(const std::string & value_p
 
 bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evi-load-balancing" || name == "evpnev-ibgp-auto-discovery" || name == "evi-advertise-mac" || name == "eviid" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpnevi-description" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
+    if(name == "evi-load-balancing" || name == "evpnev-ibgp-auto-discovery" || name == "evi-advertise-mac" || name == "eviid" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpnevi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
         return true;
     return false;
 }
@@ -9271,7 +9299,7 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_leaf_or_child_of_name(const std::s
 Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::EviLoadBalancing()
     :
     enable{YType::empty, "enable"},
-    evi_flow_label{YType::empty, "evi-flow-label"}
+    evi_static_flow_label{YType::empty, "evi-static-flow-label"}
 {
 
     yang_name = "evi-load-balancing"; yang_parent_name = "evpnevi"; is_top_level_class = false; has_list_ancestor = true;
@@ -9284,14 +9312,14 @@ Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::~EviLoadBalancing()
 bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::has_data() const
 {
     return enable.is_set
-	|| evi_flow_label.is_set;
+	|| evi_static_flow_label.is_set;
 }
 
 bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(evi_flow_label.yfilter);
+	|| ydk::is_set(evi_static_flow_label.yfilter);
 }
 
 std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::get_segment_path() const
@@ -9306,7 +9334,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::Evpnevis::Evpne
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (evi_flow_label.is_set || is_set(evi_flow_label.yfilter)) leaf_name_data.push_back(evi_flow_label.get_name_leafdata());
+    if (evi_static_flow_label.is_set || is_set(evi_static_flow_label.yfilter)) leaf_name_data.push_back(evi_static_flow_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9332,11 +9360,11 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::set_value(const std:
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "evi-flow-label")
+    if(value_path == "evi-static-flow-label")
     {
-        evi_flow_label = value;
-        evi_flow_label.value_namespace = name_space;
-        evi_flow_label.value_namespace_prefix = name_space_prefix;
+        evi_static_flow_label = value;
+        evi_static_flow_label.value_namespace = name_space;
+        evi_static_flow_label.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -9346,15 +9374,15 @@ void Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::set_filter(const std
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "evi-flow-label")
+    if(value_path == "evi-static-flow-label")
     {
-        evi_flow_label.yfilter = yfilter;
+        evi_static_flow_label.yfilter = yfilter;
     }
 }
 
 bool Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "evi-flow-label")
+    if(name == "enable" || name == "evi-static-flow-label")
         return true;
     return false;
 }
@@ -10448,6 +10476,7 @@ Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccess
     :
     evpn_virtual_access_vfi_recovery{YType::uint32, "evpn-virtual-access-vfi-recovery"},
     evpn_virtual_access_vfi_peering{YType::uint32, "evpn-virtual-access-vfi-peering"},
+    evpn_virtual_access_vfi_carving{YType::uint32, "evpn-virtual-access-vfi-carving"},
     enable{YType::empty, "enable"}
 {
 
@@ -10462,6 +10491,7 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualA
 {
     return evpn_virtual_access_vfi_recovery.is_set
 	|| evpn_virtual_access_vfi_peering.is_set
+	|| evpn_virtual_access_vfi_carving.is_set
 	|| enable.is_set;
 }
 
@@ -10470,6 +10500,7 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualA
     return is_set(yfilter)
 	|| ydk::is_set(evpn_virtual_access_vfi_recovery.yfilter)
 	|| ydk::is_set(evpn_virtual_access_vfi_peering.yfilter)
+	|| ydk::is_set(evpn_virtual_access_vfi_carving.yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
@@ -10486,6 +10517,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnVirtualAcce
 
     if (evpn_virtual_access_vfi_recovery.is_set || is_set(evpn_virtual_access_vfi_recovery.yfilter)) leaf_name_data.push_back(evpn_virtual_access_vfi_recovery.get_name_leafdata());
     if (evpn_virtual_access_vfi_peering.is_set || is_set(evpn_virtual_access_vfi_peering.yfilter)) leaf_name_data.push_back(evpn_virtual_access_vfi_peering.get_name_leafdata());
+    if (evpn_virtual_access_vfi_carving.is_set || is_set(evpn_virtual_access_vfi_carving.yfilter)) leaf_name_data.push_back(evpn_virtual_access_vfi_carving.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
@@ -10518,6 +10550,12 @@ void Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualA
         evpn_virtual_access_vfi_peering.value_namespace = name_space;
         evpn_virtual_access_vfi_peering.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "evpn-virtual-access-vfi-carving")
+    {
+        evpn_virtual_access_vfi_carving = value;
+        evpn_virtual_access_vfi_carving.value_namespace = name_space;
+        evpn_virtual_access_vfi_carving.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "enable")
     {
         enable = value;
@@ -10536,6 +10574,10 @@ void Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualA
     {
         evpn_virtual_access_vfi_peering.yfilter = yfilter;
     }
+    if(value_path == "evpn-virtual-access-vfi-carving")
+    {
+        evpn_virtual_access_vfi_carving.yfilter = yfilter;
+    }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
@@ -10544,7 +10586,7 @@ void Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualA
 
 bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccessVfiTimers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-virtual-access-vfi-recovery" || name == "evpn-virtual-access-vfi-peering" || name == "enable")
+    if(name == "evpn-virtual-access-vfi-recovery" || name == "evpn-virtual-access-vfi-peering" || name == "evpn-virtual-access-vfi-carving" || name == "enable")
         return true;
     return false;
 }
@@ -11012,7 +11054,7 @@ bool Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualE
 
 Evpn::EvpnTables::EvpnLoadBalancing::EvpnLoadBalancing()
     :
-    evpn_flow_label{YType::empty, "evpn-flow-label"},
+    evpn_static_flow_label{YType::empty, "evpn-static-flow-label"},
     enable{YType::empty, "enable"}
 {
 
@@ -11025,14 +11067,14 @@ Evpn::EvpnTables::EvpnLoadBalancing::~EvpnLoadBalancing()
 
 bool Evpn::EvpnTables::EvpnLoadBalancing::has_data() const
 {
-    return evpn_flow_label.is_set
+    return evpn_static_flow_label.is_set
 	|| enable.is_set;
 }
 
 bool Evpn::EvpnTables::EvpnLoadBalancing::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(evpn_flow_label.yfilter)
+	|| ydk::is_set(evpn_static_flow_label.yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
@@ -11054,7 +11096,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnLoadBalanci
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (evpn_flow_label.is_set || is_set(evpn_flow_label.yfilter)) leaf_name_data.push_back(evpn_flow_label.get_name_leafdata());
+    if (evpn_static_flow_label.is_set || is_set(evpn_static_flow_label.yfilter)) leaf_name_data.push_back(evpn_static_flow_label.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
@@ -11075,11 +11117,11 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnLoadBalanci
 
 void Evpn::EvpnTables::EvpnLoadBalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "evpn-flow-label")
+    if(value_path == "evpn-static-flow-label")
     {
-        evpn_flow_label = value;
-        evpn_flow_label.value_namespace = name_space;
-        evpn_flow_label.value_namespace_prefix = name_space_prefix;
+        evpn_static_flow_label = value;
+        evpn_static_flow_label.value_namespace = name_space;
+        evpn_static_flow_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
@@ -11091,9 +11133,9 @@ void Evpn::EvpnTables::EvpnLoadBalancing::set_value(const std::string & value_pa
 
 void Evpn::EvpnTables::EvpnLoadBalancing::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "evpn-flow-label")
+    if(value_path == "evpn-static-flow-label")
     {
-        evpn_flow_label.yfilter = yfilter;
+        evpn_static_flow_label.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
@@ -11103,7 +11145,7 @@ void Evpn::EvpnTables::EvpnLoadBalancing::set_filter(const std::string & value_p
 
 bool Evpn::EvpnTables::EvpnLoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-flow-label" || name == "enable")
+    if(name == "evpn-static-flow-label" || name == "enable")
         return true;
     return false;
 }
@@ -11456,6 +11498,7 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstance()
     evi_reorig_disable{YType::empty, "evi-reorig-disable"},
     evi_advertise_mac_deprecated{YType::empty, "evi-advertise-mac-deprecated"},
     evpnevi_description{YType::str, "evpnevi-description"},
+    evi_ecmp_disable{YType::empty, "evi-ecmp-disable"},
     evi_unknown_unicast_flooding_disable{YType::empty, "evi-unknown-unicast-flooding-disable"},
     evpn_evi_cw_disable{YType::empty, "evpn-evi-cw-disable"}
     	,
@@ -11482,6 +11525,7 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_data() const
 	|| evi_reorig_disable.is_set
 	|| evi_advertise_mac_deprecated.is_set
 	|| evpnevi_description.is_set
+	|| evi_ecmp_disable.is_set
 	|| evi_unknown_unicast_flooding_disable.is_set
 	|| evpn_evi_cw_disable.is_set
 	|| (evpn_instance_bgp_auto_discovery !=  nullptr && evpn_instance_bgp_auto_discovery->has_data())
@@ -11498,6 +11542,7 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_operation() const
 	|| ydk::is_set(evi_reorig_disable.yfilter)
 	|| ydk::is_set(evi_advertise_mac_deprecated.yfilter)
 	|| ydk::is_set(evpnevi_description.yfilter)
+	|| ydk::is_set(evi_ecmp_disable.yfilter)
 	|| ydk::is_set(evi_unknown_unicast_flooding_disable.yfilter)
 	|| ydk::is_set(evpn_evi_cw_disable.yfilter)
 	|| (evpn_instance_bgp_auto_discovery !=  nullptr && evpn_instance_bgp_auto_discovery->has_operation())
@@ -11529,6 +11574,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInstances::
     if (evi_reorig_disable.is_set || is_set(evi_reorig_disable.yfilter)) leaf_name_data.push_back(evi_reorig_disable.get_name_leafdata());
     if (evi_advertise_mac_deprecated.is_set || is_set(evi_advertise_mac_deprecated.yfilter)) leaf_name_data.push_back(evi_advertise_mac_deprecated.get_name_leafdata());
     if (evpnevi_description.is_set || is_set(evpnevi_description.yfilter)) leaf_name_data.push_back(evpnevi_description.get_name_leafdata());
+    if (evi_ecmp_disable.is_set || is_set(evi_ecmp_disable.yfilter)) leaf_name_data.push_back(evi_ecmp_disable.get_name_leafdata());
     if (evi_unknown_unicast_flooding_disable.is_set || is_set(evi_unknown_unicast_flooding_disable.yfilter)) leaf_name_data.push_back(evi_unknown_unicast_flooding_disable.get_name_leafdata());
     if (evpn_evi_cw_disable.is_set || is_set(evpn_evi_cw_disable.yfilter)) leaf_name_data.push_back(evpn_evi_cw_disable.get_name_leafdata());
 
@@ -11628,6 +11674,12 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::set_value(const std::string 
         evpnevi_description.value_namespace = name_space;
         evpnevi_description.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "evi-ecmp-disable")
+    {
+        evi_ecmp_disable = value;
+        evi_ecmp_disable.value_namespace = name_space;
+        evi_ecmp_disable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "evi-unknown-unicast-flooding-disable")
     {
         evi_unknown_unicast_flooding_disable = value;
@@ -11668,6 +11720,10 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::set_filter(const std::string
     {
         evpnevi_description.yfilter = yfilter;
     }
+    if(value_path == "evi-ecmp-disable")
+    {
+        evi_ecmp_disable.yfilter = yfilter;
+    }
     if(value_path == "evi-unknown-unicast-flooding-disable")
     {
         evi_unknown_unicast_flooding_disable.yfilter = yfilter;
@@ -11680,7 +11736,7 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::set_filter(const std::string
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-instance-bgp-auto-discovery" || name == "evpn-instance-advertise-mac" || name == "evpn-instance-load-balancing" || name == "eviid" || name == "encapsulation" || name == "side" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpnevi-description" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
+    if(name == "evpn-instance-bgp-auto-discovery" || name == "evpn-instance-advertise-mac" || name == "evpn-instance-load-balancing" || name == "eviid" || name == "encapsulation" || name == "side" || name == "evi-reorig-disable" || name == "evi-advertise-mac-deprecated" || name == "evpnevi-description" || name == "evi-ecmp-disable" || name == "evi-unknown-unicast-flooding-disable" || name == "evpn-evi-cw-disable")
         return true;
     return false;
 }
@@ -12555,7 +12611,7 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac::ha
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::EvpnInstanceLoadBalancing()
     :
     enable{YType::empty, "enable"},
-    evi_flow_label{YType::empty, "evi-flow-label"}
+    evi_static_flow_label{YType::empty, "evi-static-flow-label"}
 {
 
     yang_name = "evpn-instance-load-balancing"; yang_parent_name = "evpn-instance"; is_top_level_class = false; has_list_ancestor = true;
@@ -12568,14 +12624,14 @@ Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::~EvpnI
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::has_data() const
 {
     return enable.is_set
-	|| evi_flow_label.is_set;
+	|| evi_static_flow_label.is_set;
 }
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(evi_flow_label.yfilter);
+	|| ydk::is_set(evi_static_flow_label.yfilter);
 }
 
 std::string Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::get_segment_path() const
@@ -12590,7 +12646,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInstances::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (evi_flow_label.is_set || is_set(evi_flow_label.yfilter)) leaf_name_data.push_back(evi_flow_label.get_name_leafdata());
+    if (evi_static_flow_label.is_set || is_set(evi_static_flow_label.yfilter)) leaf_name_data.push_back(evi_static_flow_label.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12616,11 +12672,11 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::s
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "evi-flow-label")
+    if(value_path == "evi-static-flow-label")
     {
-        evi_flow_label = value;
-        evi_flow_label.value_namespace = name_space;
-        evi_flow_label.value_namespace_prefix = name_space_prefix;
+        evi_static_flow_label = value;
+        evi_static_flow_label.value_namespace = name_space;
+        evi_static_flow_label.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -12630,15 +12686,15 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::s
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "evi-flow-label")
+    if(value_path == "evi-static-flow-label")
     {
-        evi_flow_label.yfilter = yfilter;
+        evi_static_flow_label.yfilter = yfilter;
     }
 }
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "evi-flow-label")
+    if(name == "enable" || name == "evi-static-flow-label")
         return true;
     return false;
 }
@@ -12841,7 +12897,7 @@ bool Evpn::EvpnTables::EvpnInterfaces::has_leaf_or_child_of_name(const std::stri
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnInterface()
     :
     interface_name{YType::str, "interface-name"},
-    mac_flush{YType::empty, "mac-flush"}
+    mac_flush{YType::enumeration, "mac-flush"}
     	,
     evpnac_timers(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers>())
 	,ethernet_segment(std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment>())
@@ -12976,6 +13032,7 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::has_leaf_or_child_of_name(
 Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::EvpnacTimers()
     :
     evpnac_peering{YType::uint32, "evpnac-peering"},
+    evpnac_carving{YType::uint32, "evpnac-carving"},
     enable{YType::empty, "enable"},
     evpnac_recovery{YType::uint32, "evpnac-recovery"}
 {
@@ -12990,6 +13047,7 @@ Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::~EvpnacTimers()
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::has_data() const
 {
     return evpnac_peering.is_set
+	|| evpnac_carving.is_set
 	|| enable.is_set
 	|| evpnac_recovery.is_set;
 }
@@ -12998,6 +13056,7 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::has_operatio
 {
     return is_set(yfilter)
 	|| ydk::is_set(evpnac_peering.yfilter)
+	|| ydk::is_set(evpnac_carving.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(evpnac_recovery.yfilter);
 }
@@ -13014,6 +13073,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInterfaces:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (evpnac_peering.is_set || is_set(evpnac_peering.yfilter)) leaf_name_data.push_back(evpnac_peering.get_name_leafdata());
+    if (evpnac_carving.is_set || is_set(evpnac_carving.yfilter)) leaf_name_data.push_back(evpnac_carving.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (evpnac_recovery.is_set || is_set(evpnac_recovery.yfilter)) leaf_name_data.push_back(evpnac_recovery.get_name_leafdata());
 
@@ -13041,6 +13101,12 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::set_value(co
         evpnac_peering.value_namespace = name_space;
         evpnac_peering.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "evpnac-carving")
+    {
+        evpnac_carving = value;
+        evpnac_carving.value_namespace = name_space;
+        evpnac_carving.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "enable")
     {
         enable = value;
@@ -13061,6 +13127,10 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::set_filter(c
     {
         evpnac_peering.yfilter = yfilter;
     }
+    if(value_path == "evpnac-carving")
+    {
+        evpnac_carving.yfilter = yfilter;
+    }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
@@ -13073,7 +13143,7 @@ void Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::set_filter(c
 
 bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpnac-peering" || name == "enable" || name == "evpnac-recovery")
+    if(name == "evpnac-peering" || name == "evpnac-carving" || name == "enable" || name == "evpnac-recovery")
         return true;
     return false;
 }
@@ -13817,7 +13887,8 @@ Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPw
     :
     evpn_virtual_access_pw_recovery{YType::uint32, "evpn-virtual-access-pw-recovery"},
     evpn_virtual_access_pw_peering{YType::uint32, "evpn-virtual-access-pw-peering"},
-    enable{YType::empty, "enable"}
+    enable{YType::empty, "enable"},
+    evpn_virtual_access_pw_carving{YType::uint32, "evpn-virtual-access-pw-carving"}
 {
 
     yang_name = "evpn-virtual-access-pw-timers"; yang_parent_name = "evpn-virtual-access-pw"; is_top_level_class = false; has_list_ancestor = true;
@@ -13831,7 +13902,8 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAcc
 {
     return evpn_virtual_access_pw_recovery.is_set
 	|| evpn_virtual_access_pw_peering.is_set
-	|| enable.is_set;
+	|| enable.is_set
+	|| evpn_virtual_access_pw_carving.is_set;
 }
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers::has_operation() const
@@ -13839,7 +13911,8 @@ bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAcc
     return is_set(yfilter)
 	|| ydk::is_set(evpn_virtual_access_pw_recovery.yfilter)
 	|| ydk::is_set(evpn_virtual_access_pw_peering.yfilter)
-	|| ydk::is_set(enable.yfilter);
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(evpn_virtual_access_pw_carving.yfilter);
 }
 
 std::string Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers::get_segment_path() const
@@ -13856,6 +13929,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnVirtualAcce
     if (evpn_virtual_access_pw_recovery.is_set || is_set(evpn_virtual_access_pw_recovery.yfilter)) leaf_name_data.push_back(evpn_virtual_access_pw_recovery.get_name_leafdata());
     if (evpn_virtual_access_pw_peering.is_set || is_set(evpn_virtual_access_pw_peering.yfilter)) leaf_name_data.push_back(evpn_virtual_access_pw_peering.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (evpn_virtual_access_pw_carving.is_set || is_set(evpn_virtual_access_pw_carving.yfilter)) leaf_name_data.push_back(evpn_virtual_access_pw_carving.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13893,6 +13967,12 @@ void Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAcc
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "evpn-virtual-access-pw-carving")
+    {
+        evpn_virtual_access_pw_carving = value;
+        evpn_virtual_access_pw_carving.value_namespace = name_space;
+        evpn_virtual_access_pw_carving.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers::set_filter(const std::string & value_path, YFilter yfilter)
@@ -13909,11 +13989,15 @@ void Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAcc
     {
         enable.yfilter = yfilter;
     }
+    if(value_path == "evpn-virtual-access-pw-carving")
+    {
+        evpn_virtual_access_pw_carving.yfilter = yfilter;
+    }
 }
 
 bool Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-virtual-access-pw-recovery" || name == "evpn-virtual-access-pw-peering" || name == "enable")
+    if(name == "evpn-virtual-access-pw-recovery" || name == "evpn-virtual-access-pw-peering" || name == "enable" || name == "evpn-virtual-access-pw-carving")
         return true;
     return false;
 }

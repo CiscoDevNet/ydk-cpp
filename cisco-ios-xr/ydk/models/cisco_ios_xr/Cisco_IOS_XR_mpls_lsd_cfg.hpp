@@ -31,6 +31,7 @@ class MplsLsd : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf ltrace_multiplier; //type: uint32
         ydk::YLeaf app_reg_delay_disable; //type: empty
         ydk::YLeaf mpls_entropy_label; //type: empty
         ydk::YLeaf mpls_ip_ttl_propagate_disable; //type: MplsIpTtlPropagateDisable

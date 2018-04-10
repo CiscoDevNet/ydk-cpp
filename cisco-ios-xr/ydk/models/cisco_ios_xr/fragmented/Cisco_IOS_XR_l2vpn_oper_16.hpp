@@ -2082,7 +2082,7 @@ class L2Vpnv2::Active::Indexes::Index : public ydk::Entity
 
         ydk::YLeaf pool_id; //type: string
         ydk::YLeaf pool_id_xr; //type: uint32
-        ydk::YLeaf application_type; //type: L2vpnIdMgrApp
+        ydk::YLeaf application_type; //type: L2vpnIdMgrAppBag
         ydk::YLeaf allocated_ids; //type: uint32
         ydk::YLeaf zombied_ids; //type: uint32
         ydk::YLeaf pool_size; //type: uint32
@@ -2411,7 +2411,7 @@ class L2Vpnv2::Active::ProcFsm::XidInfo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf app_type; //type: L2vpnIdMgrApp
+        ydk::YLeaf app_type; //type: L2vpnIdMgrAppBag
         ydk::YLeaf sent_ids; //type: uint32
 
 }; // L2Vpnv2::Active::ProcFsm::XidInfo
@@ -2962,6 +2962,9 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf last_time_status_down; //type: string
         ydk::YLeaf time_elapsed_status_down; //type: uint32
         ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf data_path_down; //type: boolean
+        ydk::YLeaf use_tunnel_path; //type: boolean
+        ydk::YLeaf odn_configured; //type: boolean
         ydk::YLeaf pseudo_wire_type_mismatched; //type: boolean
         ydk::YLeaf payload_bytes_mismatched; //type: boolean
         ydk::YLeaf bitrate_mismatched; //type: boolean

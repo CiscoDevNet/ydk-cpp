@@ -123,6 +123,7 @@ class MdtOperData::MdtSubscriptions::Base : public ydk::Entity
         ydk::YLeaf no_filter; //type: uint32
         ydk::YLeaf xpath; //type: string
         ydk::YLeaf tdl_uri; //type: string
+        ydk::YLeaf transform_name; //type: string
 
 }; // MdtOperData::MdtSubscriptions::Base
 
@@ -148,6 +149,7 @@ class MdtOperData::MdtSubscriptions::MdtReceivers : public ydk::Entity
         ydk::YLeaf protocol; //type: string
         ydk::YLeaf state; //type: MdtReceiverState
         ydk::YLeaf comments; //type: string
+        ydk::YLeaf security_profile; //type: string
 
 }; // MdtOperData::MdtSubscriptions::MdtReceivers
 
@@ -176,6 +178,7 @@ class MdtOperData::MdtConnections : public ydk::Entity
         ydk::YLeaf transport; //type: string
         ydk::YLeaf peer_id; //type: string
         ydk::YLeaf state; //type: MdtConState
+        ydk::YLeaf security_profile; //type: string
         class MdtSubConStats; //type: MdtOperData::MdtConnections::MdtSubConStats
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_mdt_oper::MdtOperData::MdtConnections::MdtSubConStats> > mdt_sub_con_stats;

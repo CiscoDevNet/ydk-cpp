@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::List::Bandwidth : public ydk::Entity
+class Native::Interface::PortChannel::Snmp::Trap : public ydk::Entity
 {
     public:
-        Bandwidth();
-        ~Bandwidth();
+        Trap();
+        ~Trap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,17 +32,19 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bandwidth; //type: uint32
-        ydk::YLeaf sub_pool; //type: uint32
+        ydk::YLeaf link_status; //type: boolean
+        class LinkStatusCapas; //type: Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas
 
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::List::Bandwidth
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas> link_status_capas;
+        
+}; // Native::Interface::PortChannel::Snmp::Trap
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection : public ydk::Entity
+class Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas : public ydk::Entity
 {
     public:
-        PathSelection();
-        ~PathSelection();
+        LinkStatusCapas();
+        ~LinkStatusCapas();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -54,25 +56,18 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf metric; //type: Metric
-        ydk::YLeaf cost_limit; //type: uint32
-        ydk::YLeaf hop_limit; //type: uint8
-        ydk::YLeaf tiebreaker; //type: MplsTeTiebreakerType
-        class Invalidation; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Invalidation
-        class SegmentRouting; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::SegmentRouting
+        class LinkStatus; //type: Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Invalidation> invalidation;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::SegmentRouting> segment_routing;
-                class Metric;
-
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus> link_status;
+        
+}; // Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Invalidation : public ydk::Entity
+class Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus : public ydk::Entity
 {
     public:
-        Invalidation();
-        ~Invalidation();
+        LinkStatus();
+        ~LinkStatus();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,17 +79,18 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Inval
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: int32
-        ydk::YLeaf drop; //type: empty
+        class Permit; //type: Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit
 
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Invalidation
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit> permit;
+        
+}; // Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::SegmentRouting : public ydk::Entity
+class Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit : public ydk::Entity
 {
     public:
-        SegmentRouting();
-        ~SegmentRouting();
+        Permit();
+        ~Permit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -106,149 +102,12 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Segme
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf adjacency; //type: Adjacency
-        class Adjacency;
+        ydk::YLeaf duplicates; //type: empty
 
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::SegmentRouting
-
-
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Priority : public ydk::Entity
-{
-    public:
-        Priority();
-        ~Priority();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf setup_priority; //type: uint8
-        ydk::YLeaf hold_priority; //type: uint8
-
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Priority
+}; // Native::Interface::PortChannel::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::RecordRoute : public ydk::Entity
-{
-    public:
-        RecordRoute();
-        ~RecordRoute();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::RecordRoute
-
-
-class Native::Interface::Tunnel::Tunnel_::Rbscp : public ydk::Entity
-{
-    public:
-        Rbscp();
-        ~Rbscp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ack_split; //type: uint8
-        ydk::YLeaf delay; //type: empty
-        ydk::YLeaf input_drop; //type: uint8
-        ydk::YLeaf long_drop; //type: empty
-        ydk::YLeaf report; //type: empty
-        ydk::YLeaf window_stuff; //type: uint8
-
-}; // Native::Interface::Tunnel::Tunnel_::Rbscp
-
-
-class Native::Interface::Tunnel::Tunnel_::SrcPort : public ydk::Entity
-{
-    public:
-        SrcPort();
-        ~SrcPort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf port_num; //type: uint16
-        ydk::YLeaf dynamic; //type: empty
-
-}; // Native::Interface::Tunnel::Tunnel_::SrcPort
-
-
-class Native::Interface::Tunnel::Tunnel_::Udlr : public ydk::Entity
-{
-    public:
-        Udlr();
-        ~Udlr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_resolution; //type: empty
-        ydk::YLeaf receive_only; //type: string
-        ydk::YLeaf send_only; //type: string
-
-}; // Native::Interface::Tunnel::Tunnel_::Udlr
-
-
-class Native::Interface::Tunnel::Tunnel_::Vlan : public ydk::Entity
-{
-    public:
-        Vlan();
-        ~Vlan();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id1; //type: uint16
-        ydk::YLeaf hyphen; //type: empty
-        ydk::YLeaf id2; //type: uint16
-
-}; // Native::Interface::Tunnel::Tunnel_::Vlan
-
-
-class Native::Interface::Tunnel::Crypto : public ydk::Entity
+class Native::Interface::PortChannel::Crypto : public ydk::Entity
 {
     public:
         Crypto();
@@ -264,16 +123,16 @@ class Native::Interface::Tunnel::Crypto : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Map; //type: Native::Interface::Tunnel::Crypto::Map
-        class Ipsec; //type: Native::Interface::Tunnel::Crypto::Ipsec
+        class Map; //type: Native::Interface::PortChannel::Crypto::Map
+        class Ipsec; //type: Native::Interface::PortChannel::Crypto::Ipsec
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Crypto::Map> map;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Crypto::Ipsec> ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto::Map> map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto::Ipsec> ipsec;
         
-}; // Native::Interface::Tunnel::Crypto
+}; // Native::Interface::PortChannel::Crypto
 
 
-class Native::Interface::Tunnel::Crypto::Map : public ydk::Entity
+class Native::Interface::PortChannel::Crypto::Map : public ydk::Entity
 {
     public:
         Map();
@@ -293,10 +152,10 @@ class Native::Interface::Tunnel::Crypto::Map : public ydk::Entity
         ydk::YLeaf redundancy; //type: string
         ydk::YLeaf stateful; //type: empty
 
-}; // Native::Interface::Tunnel::Crypto::Map
+}; // Native::Interface::PortChannel::Crypto::Map
 
 
-class Native::Interface::Tunnel::Crypto::Ipsec : public ydk::Entity
+class Native::Interface::PortChannel::Crypto::Ipsec : public ydk::Entity
 {
     public:
         Ipsec();
@@ -317,10 +176,10 @@ class Native::Interface::Tunnel::Crypto::Ipsec : public ydk::Entity
         class DfBit;
         class Fragmentation;
 
-}; // Native::Interface::Tunnel::Crypto::Ipsec
+}; // Native::Interface::PortChannel::Crypto::Ipsec
 
 
-class Native::Interface::Tunnel::Cts : public ydk::Entity
+class Native::Interface::PortChannel::Cts : public ydk::Entity
 {
     public:
         Cts();
@@ -336,18 +195,14 @@ class Native::Interface::Tunnel::Cts : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sgt; //type: Sgt
-        class Manual; //type: Native::Interface::Tunnel::Cts::Manual
-        class RoleBased; //type: Native::Interface::Tunnel::Cts::RoleBased
+        class Manual; //type: Native::Interface::PortChannel::Cts::Manual
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual> manual; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::RoleBased> role_based;
-                class Sgt;
-
-}; // Native::Interface::Tunnel::Cts
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual> manual; // presence node
+        
+}; // Native::Interface::PortChannel::Cts
 
 
-class Native::Interface::Tunnel::Cts::Manual : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual : public ydk::Entity
 {
     public:
         Manual();
@@ -363,18 +218,18 @@ class Native::Interface::Tunnel::Cts::Manual : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Policy; //type: Native::Interface::Tunnel::Cts::Manual::Policy
-        class Sap; //type: Native::Interface::Tunnel::Cts::Manual::Sap
-        class Propagate; //type: Native::Interface::Tunnel::Cts::Manual::Propagate
+        class Policy; //type: Native::Interface::PortChannel::Cts::Manual::Policy
+        class Sap; //type: Native::Interface::PortChannel::Cts::Manual::Sap
+        class Propagate; //type: Native::Interface::PortChannel::Cts::Manual::Propagate
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Policy> policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Sap> sap;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Propagate> propagate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Policy> policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Sap> sap;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Propagate> propagate;
         
-}; // Native::Interface::Tunnel::Cts::Manual
+}; // Native::Interface::PortChannel::Cts::Manual
 
 
-class Native::Interface::Tunnel::Cts::Manual::Policy : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Policy : public ydk::Entity
 {
     public:
         Policy();
@@ -390,14 +245,14 @@ class Native::Interface::Tunnel::Cts::Manual::Policy : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Static; //type: Native::Interface::Tunnel::Cts::Manual::Policy::Static
+        class Static; //type: Native::Interface::PortChannel::Cts::Manual::Policy::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Policy::Static> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Policy::Static> static_;
         
-}; // Native::Interface::Tunnel::Cts::Manual::Policy
+}; // Native::Interface::PortChannel::Cts::Manual::Policy
 
 
-class Native::Interface::Tunnel::Cts::Manual::Policy::Static : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Policy::Static : public ydk::Entity
 {
     public:
         Static();
@@ -416,10 +271,10 @@ class Native::Interface::Tunnel::Cts::Manual::Policy::Static : public ydk::Entit
         ydk::YLeaf sgt; //type: uint16
         ydk::YLeaf trusted; //type: empty
 
-}; // Native::Interface::Tunnel::Cts::Manual::Policy::Static
+}; // Native::Interface::PortChannel::Cts::Manual::Policy::Static
 
 
-class Native::Interface::Tunnel::Cts::Manual::Sap : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Sap : public ydk::Entity
 {
     public:
         Sap();
@@ -435,14 +290,14 @@ class Native::Interface::Tunnel::Cts::Manual::Sap : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Pmk; //type: Native::Interface::Tunnel::Cts::Manual::Sap::Pmk
+        class Pmk; //type: Native::Interface::PortChannel::Cts::Manual::Sap::Pmk
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Sap::Pmk> > pmk;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Sap::Pmk> > pmk;
         
-}; // Native::Interface::Tunnel::Cts::Manual::Sap
+}; // Native::Interface::PortChannel::Cts::Manual::Sap
 
 
-class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Sap::Pmk : public ydk::Entity
 {
     public:
         Pmk();
@@ -459,14 +314,14 @@ class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf word; //type: string
-        class ModeList; //type: Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList
+        class ModeList; //type: Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList> mode_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList> mode_list;
         
-}; // Native::Interface::Tunnel::Cts::Manual::Sap::Pmk
+}; // Native::Interface::PortChannel::Cts::Manual::Sap::Pmk
 
 
-class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList : public ydk::Entity
 {
     public:
         ModeList();
@@ -482,16 +337,16 @@ class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class GcmEncrypt; //type: Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt
-        class NoEncap; //type: Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap
+        class GcmEncrypt; //type: Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt
+        class NoEncap; //type: Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt> gcm_encrypt; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap> no_encap; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt> gcm_encrypt; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap> no_encap; // presence node
         
-}; // Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList
+}; // Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList
 
 
-class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt : public ydk::Entity
 {
     public:
         GcmEncrypt();
@@ -507,14 +362,14 @@ class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Gmac; //type: Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac
+        class Gmac; //type: Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac> gmac; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac> gmac; // presence node
         
-}; // Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt
+}; // Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt
 
 
-class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac : public ydk::Entity
 {
     public:
         Gmac();
@@ -532,10 +387,10 @@ class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gm
 
         ydk::YLeaf null; //type: empty
 
-}; // Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac
+}; // Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac
 
 
-class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap : public ydk::Entity
 {
     public:
         NoEncap();
@@ -551,14 +406,14 @@ class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Gmac; //type: Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
+        class Gmac; //type: Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac> gmac; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac> gmac; // presence node
         
-}; // Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap
+}; // Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap
 
 
-class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac : public ydk::Entity
 {
     public:
         Gmac();
@@ -576,10 +431,10 @@ class Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac 
 
         ydk::YLeaf gcm_encrypt; //type: empty
 
-}; // Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
+}; // Native::Interface::PortChannel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
 
 
-class Native::Interface::Tunnel::Cts::Manual::Propagate : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Propagate : public ydk::Entity
 {
     public:
         Propagate();
@@ -597,14 +452,14 @@ class Native::Interface::Tunnel::Cts::Manual::Propagate : public ydk::Entity
 
         ydk::YLeaf sgt; //type: boolean
 
-}; // Native::Interface::Tunnel::Cts::Manual::Propagate
+}; // Native::Interface::PortChannel::Cts::Manual::Propagate
 
 
-class Native::Interface::Tunnel::Cts::RoleBased : public ydk::Entity
+class Native::Interface::PortChannel::Dot1X : public ydk::Entity
 {
     public:
-        RoleBased();
-        ~RoleBased();
+        Dot1X();
+        ~Dot1X();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -616,21 +471,28 @@ class Native::Interface::Tunnel::Cts::RoleBased : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enforcement; //type: empty
-        ydk::YLeafList sgt_cache; //type: list of  SgtCache
-        class SgtMap; //type: Native::Interface::Tunnel::Cts::RoleBased::SgtMap
+        ydk::YLeaf credentials; //type: string
+        ydk::YLeaf max_reauth_req; //type: uint8
+        ydk::YLeaf max_req; //type: uint8
+        ydk::YLeaf max_start; //type: uint8
+        ydk::YLeaf pae; //type: Pae
+        class Authenticator; //type: Native::Interface::PortChannel::Dot1X::Authenticator
+        class Supplicant; //type: Native::Interface::PortChannel::Dot1X::Supplicant
+        class Timeout; //type: Native::Interface::PortChannel::Dot1X::Timeout
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::RoleBased::SgtMap> sgt_map;
-                class SgtCache;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1X::Authenticator> authenticator;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1X::Supplicant> supplicant;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1X::Timeout> timeout;
+                class Pae;
 
-}; // Native::Interface::Tunnel::Cts::RoleBased
+}; // Native::Interface::PortChannel::Dot1X
 
 
-class Native::Interface::Tunnel::Cts::RoleBased::SgtMap : public ydk::Entity
+class Native::Interface::PortChannel::Dot1X::Authenticator : public ydk::Entity
 {
     public:
-        SgtMap();
-        ~SgtMap();
+        Authenticator();
+        ~Authenticator();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -642,40 +504,18 @@ class Native::Interface::Tunnel::Cts::RoleBased::SgtMap : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf security_group; //type: string
-        ydk::YLeaf sgt; //type: uint16
+        class Eap; //type: Native::Interface::PortChannel::Dot1X::Authenticator::Eap
 
-}; // Native::Interface::Tunnel::Cts::RoleBased::SgtMap
-
-
-class Native::Interface::Tunnel::Performance : public ydk::Entity
-{
-    public:
-        Performance();
-        ~Performance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Monitor; //type: Native::Interface::Tunnel::Performance::Monitor
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Performance::Monitor> monitor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1X::Authenticator::Eap> eap;
         
-}; // Native::Interface::Tunnel::Performance
+}; // Native::Interface::PortChannel::Dot1X::Authenticator
 
 
-class Native::Interface::Tunnel::Performance::Monitor : public ydk::Entity
+class Native::Interface::PortChannel::Dot1X::Authenticator::Eap : public ydk::Entity
 {
     public:
-        Monitor();
-        ~Monitor();
+        Eap();
+        ~Eap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -687,12 +527,84 @@ class Native::Interface::Tunnel::Performance::Monitor : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList context; //type: list of  string
+        ydk::YLeaf profile; //type: string
 
-}; // Native::Interface::Tunnel::Performance::Monitor
+}; // Native::Interface::PortChannel::Dot1X::Authenticator::Eap
 
 
-class Native::Interface::Tunnel::ServicePolicy : public ydk::Entity
+class Native::Interface::PortChannel::Dot1X::Supplicant : public ydk::Entity
+{
+    public:
+        Supplicant();
+        ~Supplicant();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Eap; //type: Native::Interface::PortChannel::Dot1X::Supplicant::Eap
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1X::Supplicant::Eap> eap;
+        
+}; // Native::Interface::PortChannel::Dot1X::Supplicant
+
+
+class Native::Interface::PortChannel::Dot1X::Supplicant::Eap : public ydk::Entity
+{
+    public:
+        Eap();
+        ~Eap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile; //type: string
+
+}; // Native::Interface::PortChannel::Dot1X::Supplicant::Eap
+
+
+class Native::Interface::PortChannel::Dot1X::Timeout : public ydk::Entity
+{
+    public:
+        Timeout();
+        ~Timeout();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_period; //type: uint16
+        ydk::YLeaf held_period; //type: uint16
+        ydk::YLeaf quiet_period; //type: uint16
+        ydk::YLeaf ratelimit_period; //type: uint16
+        ydk::YLeaf server_timeout; //type: uint16
+        ydk::YLeaf start_period; //type: uint16
+        ydk::YLeaf supp_timeout; //type: uint16
+        ydk::YLeaf tx_period; //type: uint16
+
+}; // Native::Interface::PortChannel::Dot1X::Timeout
+
+
+class Native::Interface::PortChannel::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -711,14 +623,14 @@ class Native::Interface::Tunnel::ServicePolicy : public ydk::Entity
         ydk::YLeaf history; //type: empty
         ydk::YLeaf input; //type: string
         ydk::YLeaf output; //type: string
-        class Type; //type: Native::Interface::Tunnel::ServicePolicy::Type
+        class Type; //type: Native::Interface::PortChannel::ServicePolicy::Type
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy::Type> type;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy::Type> type;
         
-}; // Native::Interface::Tunnel::ServicePolicy
+}; // Native::Interface::PortChannel::ServicePolicy
 
 
-class Native::Interface::Tunnel::ServicePolicy::Type : public ydk::Entity
+class Native::Interface::PortChannel::ServicePolicy::Type : public ydk::Entity
 {
     public:
         Type();
@@ -734,18 +646,18 @@ class Native::Interface::Tunnel::ServicePolicy::Type : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Control; //type: Native::Interface::Tunnel::ServicePolicy::Type::Control
-        class PerformanceMonitor; //type: Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor
-        class ServiceChain; //type: Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain
+        class Control; //type: Native::Interface::PortChannel::ServicePolicy::Type::Control
+        class PerformanceMonitor; //type: Native::Interface::PortChannel::ServicePolicy::Type::PerformanceMonitor
+        class ServiceChain; //type: Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy::Type::Control> control;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor> performance_monitor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain> service_chain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy::Type::Control> control;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy::Type::PerformanceMonitor> performance_monitor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain> service_chain;
         
-}; // Native::Interface::Tunnel::ServicePolicy::Type
+}; // Native::Interface::PortChannel::ServicePolicy::Type
 
 
-class Native::Interface::Tunnel::ServicePolicy::Type::Control : public ydk::Entity
+class Native::Interface::PortChannel::ServicePolicy::Type::Control : public ydk::Entity
 {
     public:
         Control();
@@ -763,10 +675,10 @@ class Native::Interface::Tunnel::ServicePolicy::Type::Control : public ydk::Enti
 
         ydk::YLeaf subscriber; //type: string
 
-}; // Native::Interface::Tunnel::ServicePolicy::Type::Control
+}; // Native::Interface::PortChannel::ServicePolicy::Type::Control
 
 
-class Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor : public ydk::Entity
+class Native::Interface::PortChannel::ServicePolicy::Type::PerformanceMonitor : public ydk::Entity
 {
     public:
         PerformanceMonitor();
@@ -786,10 +698,10 @@ class Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor : publi
         ydk::YLeaf name; //type: string
         class Direction;
 
-}; // Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor
+}; // Native::Interface::PortChannel::ServicePolicy::Type::PerformanceMonitor
 
 
-class Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain : public ydk::Entity
+class Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain : public ydk::Entity
 {
     public:
         ServiceChain();
@@ -805,16 +717,16 @@ class Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Input; //type: Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Input
-        class Output; //type: Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Output
+        class Input; //type: Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Input
+        class Output; //type: Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Output
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Input> input;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Output> output;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Input> input;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Output> output;
         
-}; // Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain
+}; // Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain
 
 
-class Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Input : public ydk::Entity
+class Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Input : public ydk::Entity
 {
     public:
         Input();
@@ -832,10 +744,10 @@ class Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Input : publ
 
         ydk::YLeaf name; //type: string
 
-}; // Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Input
+}; // Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Input
 
 
-class Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Output : public ydk::Entity
+class Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Output : public ydk::Entity
 {
     public:
         Output();
@@ -853,10 +765,10 @@ class Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Output : pub
 
         ydk::YLeaf name; //type: string
 
-}; // Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Output
+}; // Native::Interface::PortChannel::ServicePolicy::Type::ServiceChain::Output
 
 
-class Native::Interface::Tunnel::Lisp : public ydk::Entity
+class Native::Interface::PortChannel::Lisp : public ydk::Entity
 {
     public:
         Lisp();
@@ -873,14 +785,14 @@ class Native::Interface::Tunnel::Lisp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf extended_subnet_mode; //type: empty
-        class Mobility; //type: Native::Interface::Tunnel::Lisp::Mobility
+        class Mobility; //type: Native::Interface::PortChannel::Lisp::Mobility
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Lisp::Mobility> mobility;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp::Mobility> mobility;
         
-}; // Native::Interface::Tunnel::Lisp
+}; // Native::Interface::PortChannel::Lisp
 
 
-class Native::Interface::Tunnel::Lisp::Mobility : public ydk::Entity
+class Native::Interface::PortChannel::Lisp::Mobility : public ydk::Entity
 {
     public:
         Mobility();
@@ -896,18 +808,18 @@ class Native::Interface::Tunnel::Lisp::Mobility : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class DynamicEid; //type: Native::Interface::Tunnel::Lisp::Mobility::DynamicEid
-        class Discover; //type: Native::Interface::Tunnel::Lisp::Mobility::Discover
-        class Liveness; //type: Native::Interface::Tunnel::Lisp::Mobility::Liveness
+        class DynamicEid; //type: Native::Interface::PortChannel::Lisp::Mobility::DynamicEid
+        class Discover; //type: Native::Interface::PortChannel::Lisp::Mobility::Discover
+        class Liveness; //type: Native::Interface::PortChannel::Lisp::Mobility::Liveness
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Lisp::Mobility::DynamicEid> dynamic_eid;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Lisp::Mobility::Discover> discover;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Lisp::Mobility::Liveness> liveness;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp::Mobility::DynamicEid> dynamic_eid;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp::Mobility::Discover> discover;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp::Mobility::Liveness> liveness;
         
-}; // Native::Interface::Tunnel::Lisp::Mobility
+}; // Native::Interface::PortChannel::Lisp::Mobility
 
 
-class Native::Interface::Tunnel::Lisp::Mobility::DynamicEid : public ydk::Entity
+class Native::Interface::PortChannel::Lisp::Mobility::DynamicEid : public ydk::Entity
 {
     public:
         DynamicEid();
@@ -927,10 +839,10 @@ class Native::Interface::Tunnel::Lisp::Mobility::DynamicEid : public ydk::Entity
         ydk::YLeaf nbr_proxy_reply; //type: empty
         ydk::YLeaf requests; //type: uint8
 
-}; // Native::Interface::Tunnel::Lisp::Mobility::DynamicEid
+}; // Native::Interface::PortChannel::Lisp::Mobility::DynamicEid
 
 
-class Native::Interface::Tunnel::Lisp::Mobility::Discover : public ydk::Entity
+class Native::Interface::PortChannel::Lisp::Mobility::Discover : public ydk::Entity
 {
     public:
         Discover();
@@ -948,10 +860,10 @@ class Native::Interface::Tunnel::Lisp::Mobility::Discover : public ydk::Entity
 
         ydk::YLeaf arp; //type: boolean
 
-}; // Native::Interface::Tunnel::Lisp::Mobility::Discover
+}; // Native::Interface::PortChannel::Lisp::Mobility::Discover
 
 
-class Native::Interface::Tunnel::Lisp::Mobility::Liveness : public ydk::Entity
+class Native::Interface::PortChannel::Lisp::Mobility::Liveness : public ydk::Entity
 {
     public:
         Liveness();
@@ -970,10 +882,150 @@ class Native::Interface::Tunnel::Lisp::Mobility::Liveness : public ydk::Entity
         ydk::YLeaf test; //type: boolean
         ydk::YLeaf ttl; //type: uint8
 
-}; // Native::Interface::Tunnel::Lisp::Mobility::Liveness
+}; // Native::Interface::PortChannel::Lisp::Mobility::Liveness
 
 
-class Native::Interface::Tunnel::Ospfv3 : public ydk::Entity
+class Native::Interface::PortChannel::Mvrp : public ydk::Entity
+{
+    public:
+        Mvrp();
+        ~Mvrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mvrp; //type: empty
+        class Registration; //type: Native::Interface::PortChannel::Mvrp::Registration
+        class Timer; //type: Native::Interface::PortChannel::Mvrp::Timer
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp::Registration> registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp::Timer> timer;
+        
+}; // Native::Interface::PortChannel::Mvrp
+
+
+class Native::Interface::PortChannel::Mvrp::Registration : public ydk::Entity
+{
+    public:
+        Registration();
+        ~Registration();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fixed; //type: empty
+        ydk::YLeaf forbidden; //type: empty
+        ydk::YLeaf normal; //type: empty
+
+}; // Native::Interface::PortChannel::Mvrp::Registration
+
+
+class Native::Interface::PortChannel::Mvrp::Timer : public ydk::Entity
+{
+    public:
+        Timer();
+        ~Timer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf periodic; //type: empty
+        class Join; //type: Native::Interface::PortChannel::Mvrp::Timer::Join
+        class Leave; //type: Native::Interface::PortChannel::Mvrp::Timer::Leave
+        class LeaveAll; //type: Native::Interface::PortChannel::Mvrp::Timer::LeaveAll
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp::Timer::Join> join; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp::Timer::Leave> leave; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp::Timer::LeaveAll> leave_all; // presence node
+        
+}; // Native::Interface::PortChannel::Mvrp::Timer
+
+
+class Native::Interface::PortChannel::Mvrp::Timer::Join : public ydk::Entity
+{
+    public:
+        Join();
+        ~Join();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf y_range; //type: uint32
+
+}; // Native::Interface::PortChannel::Mvrp::Timer::Join
+
+
+class Native::Interface::PortChannel::Mvrp::Timer::Leave : public ydk::Entity
+{
+    public:
+        Leave();
+        ~Leave();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf y_range; //type: uint32
+
+}; // Native::Interface::PortChannel::Mvrp::Timer::Leave
+
+
+class Native::Interface::PortChannel::Mvrp::Timer::LeaveAll : public ydk::Entity
+{
+    public:
+        LeaveAll();
+        ~LeaveAll();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf y_range; //type: uint32
+
+}; // Native::Interface::PortChannel::Mvrp::Timer::LeaveAll
+
+
+class Native::Interface::PortChannel::Ospfv3 : public ydk::Entity
 {
     public:
         Ospfv3();
@@ -997,36 +1049,36 @@ class Native::Interface::Tunnel::Ospfv3 : public ydk::Entity
         ydk::YLeaf retransmit_interval; //type: uint32
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf transmit_delay; //type: uint32
-        class ProcessId; //type: Native::Interface::Tunnel::Ospfv3::ProcessId
-        class Authentication; //type: Native::Interface::Tunnel::Ospfv3::Authentication
-        class Bfd; //type: Native::Interface::Tunnel::Ospfv3::Bfd
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::Cost
-        class DatabaseFilter; //type: Native::Interface::Tunnel::Ospfv3::DatabaseFilter
-        class DemandCircuit; //type: Native::Interface::Tunnel::Ospfv3::DemandCircuit
-        class Encryption; //type: Native::Interface::Tunnel::Ospfv3::Encryption
-        class Manet; //type: Native::Interface::Tunnel::Ospfv3::Manet
-        class MultiArea; //type: Native::Interface::Tunnel::Ospfv3::MultiArea
-        class Neighbor; //type: Native::Interface::Tunnel::Ospfv3::Neighbor
-        class Network; //type: Native::Interface::Tunnel::Ospfv3::Network
-        class PrefixSuppression; //type: Native::Interface::Tunnel::Ospfv3::PrefixSuppression
+        class ProcessId; //type: Native::Interface::PortChannel::Ospfv3::ProcessId
+        class Authentication; //type: Native::Interface::PortChannel::Ospfv3::Authentication
+        class Bfd; //type: Native::Interface::PortChannel::Ospfv3::Bfd
+        class Cost; //type: Native::Interface::PortChannel::Ospfv3::Cost
+        class DatabaseFilter; //type: Native::Interface::PortChannel::Ospfv3::DatabaseFilter
+        class DemandCircuit; //type: Native::Interface::PortChannel::Ospfv3::DemandCircuit
+        class Encryption; //type: Native::Interface::PortChannel::Ospfv3::Encryption
+        class Manet; //type: Native::Interface::PortChannel::Ospfv3::Manet
+        class MultiArea; //type: Native::Interface::PortChannel::Ospfv3::MultiArea
+        class Neighbor; //type: Native::Interface::PortChannel::Ospfv3::Neighbor
+        class Network; //type: Native::Interface::PortChannel::Ospfv3::Network
+        class PrefixSuppression; //type: Native::Interface::PortChannel::Ospfv3::PrefixSuppression
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId> > process_id;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Bfd> bfd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost> cost;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::DatabaseFilter> database_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::DemandCircuit> demand_circuit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption> encryption;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Manet> manet;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::MultiArea> multi_area;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Neighbor> > neighbor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Network> network;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::PrefixSuppression> prefix_suppression; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId> > process_id;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Bfd> bfd; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::DemandCircuit> demand_circuit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption> encryption;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Manet> manet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::MultiArea> multi_area;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Neighbor> > neighbor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Network> network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::PrefixSuppression> prefix_suppression; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3
+}; // Native::Interface::PortChannel::Ospfv3
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId : public ydk::Entity
 {
     public:
         ProcessId();
@@ -1048,42 +1100,42 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId : public ydk::Entity
         ydk::YLeaf priority; //type: uint8
         ydk::YLeaf retransmit_interval; //type: uint32
         ydk::YLeaf transmit_delay; //type: uint32
-        class Authentication; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Authentication
-        class Bfd; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Bfd
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost
-        class DatabaseFilter; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFilter
-        class DemandCircuit; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::DemandCircuit
-        class FloodReduction; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::FloodReduction
-        class Manet; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Manet
-        class MtuIgnore; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::MtuIgnore
-        class MultiArea; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::MultiArea
-        class Neighbor; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor
-        class Network; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Network
-        class PrefixSuppression; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::PrefixSuppression
-        class Shutdown; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Shutdown
-        class Ipv4; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4
-        class Ipv6; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6
+        class Authentication; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Authentication
+        class Bfd; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Bfd
+        class Cost; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost
+        class DatabaseFilter; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::DatabaseFilter
+        class DemandCircuit; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::DemandCircuit
+        class FloodReduction; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::FloodReduction
+        class Manet; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Manet
+        class MtuIgnore; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::MtuIgnore
+        class MultiArea; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::MultiArea
+        class Neighbor; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor
+        class Network; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Network
+        class PrefixSuppression; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::PrefixSuppression
+        class Shutdown; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Shutdown
+        class Ipv4; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4
+        class Ipv6; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Bfd> bfd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost> cost;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFilter> database_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::DemandCircuit> demand_circuit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::FloodReduction> flood_reduction; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Manet> manet;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::MtuIgnore> mtu_ignore; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::MultiArea> multi_area;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor> > neighbor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Network> network;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::PrefixSuppression> prefix_suppression; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Shutdown> shutdown; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Bfd> bfd; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::DemandCircuit> demand_circuit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::FloodReduction> flood_reduction; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Manet> manet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::MtuIgnore> mtu_ignore; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::MultiArea> multi_area;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor> > neighbor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Network> network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::PrefixSuppression> prefix_suppression; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Shutdown> shutdown; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6> ipv6;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Authentication : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -1102,10 +1154,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Authentication : public ydk:
         ydk::YLeaf key_chain; //type: string
         ydk::YLeaf null; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Authentication
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Authentication
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Bfd : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -1123,10 +1175,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Bfd : public ydk::Entity
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Bfd
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Bfd
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -1143,14 +1195,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf value_; //type: uint32
-        class Dynamic; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic
+        class Dynamic; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic> dynamic; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic> dynamic; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic : public ydk::Entity
 {
     public:
         Dynamic();
@@ -1167,16 +1219,16 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_; //type: uint32
-        class Hysteresis; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis
-        class Weight; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight
+        class Hysteresis; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis
+        class Weight; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis> hysteresis; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight> weight;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis> hysteresis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight> weight;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis : public ydk::Entity
 {
     public:
         Hysteresis();
@@ -1195,10 +1247,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis : 
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight : public ydk::Entity
 {
     public:
         Weight();
@@ -1214,20 +1266,20 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2Factor; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor
-        class Latency; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency
-        class Resources; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
-        class Throughput; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput
+        class L2Factor; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency> latency; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources> resources; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput> throughput; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
 {
     public:
         L2Factor();
@@ -1245,10 +1297,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Fac
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency : public ydk::Entity
 {
     public:
         Latency();
@@ -1266,10 +1318,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Laten
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources : public ydk::Entity
 {
     public:
         Resources();
@@ -1287,10 +1339,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resou
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput : public ydk::Entity
 {
     public:
         Throughput();
@@ -1308,10 +1360,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throu
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFilter : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -1331,10 +1383,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFilter : public ydk:
         ydk::YLeaf disable; //type: empty
         class All;
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFilter
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::DatabaseFilter
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::DemandCircuit : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::DemandCircuit : public ydk::Entity
 {
     public:
         DemandCircuit();
@@ -1353,10 +1405,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::DemandCircuit : public ydk::
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf ignore; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::DemandCircuit
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::DemandCircuit
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::FloodReduction : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::FloodReduction : public ydk::Entity
 {
     public:
         FloodReduction();
@@ -1374,10 +1426,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::FloodReduction : public ydk:
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::FloodReduction
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::FloodReduction
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Manet : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Manet : public ydk::Entity
 {
     public:
         Manet();
@@ -1393,14 +1445,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Manet : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Peering; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering
+        class Peering; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering> peering;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering> peering;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Manet
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Manet
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering : public ydk::Entity
 {
     public:
         Peering();
@@ -1417,14 +1469,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_metrics; //type: uint32
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering::Cost
+        class Cost; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering::Cost
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering::Cost> cost;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering::Cost : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -1443,10 +1495,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering::Cost : publi
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering::Cost
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Manet::Peering::Cost
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::MtuIgnore : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::MtuIgnore : public ydk::Entity
 {
     public:
         MtuIgnore();
@@ -1464,10 +1516,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::MtuIgnore : public ydk::Enti
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::MtuIgnore
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::MtuIgnore
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::MultiArea : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::MultiArea : public ydk::Entity
 {
     public:
         MultiArea();
@@ -1483,14 +1535,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::MultiArea : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint32
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::MultiArea
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::MultiArea
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -1510,14 +1562,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor : public ydk::Entit
         ydk::YLeaf cost; //type: uint16
         ydk::YLeaf poll_interval; //type: uint32
         ydk::YLeaf priority; //type: uint8
-        class DatabaseFilter; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::DatabaseFilter
+        class DatabaseFilter; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor::DatabaseFilter
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor::DatabaseFilter> database_filter;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::DatabaseFilter : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -1536,10 +1588,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::DatabaseFilter : p
         ydk::YLeaf all; //type: All
         class All;
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::DatabaseFilter
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor::DatabaseFilter
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Network : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Network : public ydk::Entity
 {
     public:
         Network();
@@ -1559,14 +1611,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Network : public ydk::Entity
         ydk::YLeaf manet; //type: empty
         ydk::YLeaf non_broadcast; //type: empty
         ydk::YLeaf point_to_point; //type: empty
-        class PointToMultipoint; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Network::PointToMultipoint
+        class PointToMultipoint; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Network::PointToMultipoint
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Network::PointToMultipoint> point_to_multipoint; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Network::PointToMultipoint> point_to_multipoint; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Network
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Network
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Network::PointToMultipoint : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Network::PointToMultipoint : public ydk::Entity
 {
     public:
         PointToMultipoint();
@@ -1584,10 +1636,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Network::PointToMultipoint :
 
         ydk::YLeaf non_broadcast; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Network::PointToMultipoint
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Network::PointToMultipoint
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::PrefixSuppression : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::PrefixSuppression : public ydk::Entity
 {
     public:
         PrefixSuppression();
@@ -1605,10 +1657,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::PrefixSuppression : public y
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::PrefixSuppression
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::PrefixSuppression
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Shutdown : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Shutdown : public ydk::Entity
 {
     public:
         Shutdown();
@@ -1626,10 +1678,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Shutdown : public ydk::Entit
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Shutdown
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Shutdown
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4 : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -1650,40 +1702,40 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4 : public ydk::Entity
         ydk::YLeaf priority; //type: uint8
         ydk::YLeaf retransmit_interval; //type: uint32
         ydk::YLeaf transmit_delay; //type: uint32
-        class Area; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area
-        class Authentication; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Authentication
-        class Bfd; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Bfd
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
-        class DatabaseFilter; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DatabaseFilter
-        class DemandCircuit; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DemandCircuit
-        class FloodReduction; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::FloodReduction
-        class Manet; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet
-        class MtuIgnore; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MtuIgnore
-        class MultiArea; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MultiArea
-        class Neighbor; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor
-        class Network; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network
-        class PrefixSuppression; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::PrefixSuppression
-        class Shutdown; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Shutdown
+        class Area; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Area
+        class Authentication; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Authentication
+        class Bfd; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Bfd
+        class Cost; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost
+        class DatabaseFilter; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DatabaseFilter
+        class DemandCircuit; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DemandCircuit
+        class FloodReduction; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::FloodReduction
+        class Manet; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet
+        class MtuIgnore; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MtuIgnore
+        class MultiArea; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MultiArea
+        class Neighbor; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor
+        class Network; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network
+        class PrefixSuppression; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::PrefixSuppression
+        class Shutdown; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Shutdown
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area> > area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Bfd> bfd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost> cost;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DatabaseFilter> database_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DemandCircuit> demand_circuit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::FloodReduction> flood_reduction; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet> manet;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MtuIgnore> mtu_ignore; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MultiArea> multi_area;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor> > neighbor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network> network;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::PrefixSuppression> prefix_suppression; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Shutdown> shutdown; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Area> > area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Bfd> bfd; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DemandCircuit> demand_circuit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::FloodReduction> flood_reduction; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet> manet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MtuIgnore> mtu_ignore; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MultiArea> multi_area;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor> > neighbor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network> network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::PrefixSuppression> prefix_suppression; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Shutdown> shutdown; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Area : public ydk::Entity
 {
     public:
         Area();
@@ -1699,13 +1751,13 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf instance; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Area
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Authentication : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -1724,10 +1776,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Authentication : publi
         ydk::YLeaf key_chain; //type: string
         ydk::YLeaf null; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Authentication
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Authentication
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Bfd : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -1745,10 +1797,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Bfd : public ydk::Enti
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Bfd
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Bfd
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -1765,14 +1817,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf value_; //type: uint32
-        class Dynamic; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic
+        class Dynamic; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic> dynamic; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic> dynamic; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic : public ydk::Entity
 {
     public:
         Dynamic();
@@ -1789,16 +1841,16 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_; //type: uint32
-        class Hysteresis; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis
-        class Weight; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight
+        class Hysteresis; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis
+        class Weight; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis> hysteresis; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight> weight;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis> hysteresis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight> weight;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis : public ydk::Entity
 {
     public:
         Hysteresis();
@@ -1817,10 +1869,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hystere
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight : public ydk::Entity
 {
     public:
         Weight();
@@ -1836,20 +1888,20 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2Factor; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor
-        class Latency; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency
-        class Resources; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources
-        class Throughput; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput
+        class L2Factor; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency> latency; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources> resources; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput> throughput; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
 {
     public:
         L2Factor();
@@ -1867,10 +1919,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency : public ydk::Entity
 {
     public:
         Latency();
@@ -1888,10 +1940,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources : public ydk::Entity
 {
     public:
         Resources();
@@ -1909,10 +1961,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput : public ydk::Entity
 {
     public:
         Throughput();
@@ -1930,10 +1982,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DatabaseFilter : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -1953,10 +2005,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DatabaseFilter : publi
         ydk::YLeaf disable; //type: empty
         class All;
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DatabaseFilter
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DatabaseFilter
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DemandCircuit : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DemandCircuit : public ydk::Entity
 {
     public:
         DemandCircuit();
@@ -1975,10 +2027,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DemandCircuit : public
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf ignore; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DemandCircuit
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DemandCircuit
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::FloodReduction : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::FloodReduction : public ydk::Entity
 {
     public:
         FloodReduction();
@@ -1996,10 +2048,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::FloodReduction : publi
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::FloodReduction
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::FloodReduction
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet : public ydk::Entity
 {
     public:
         Manet();
@@ -2015,14 +2067,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Peering; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering
+        class Peering; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering> peering;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering> peering;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering : public ydk::Entity
 {
     public:
         Peering();
@@ -2039,14 +2091,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_metrics; //type: uint32
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost
+        class Cost; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost> cost;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -2065,10 +2117,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost :
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MtuIgnore : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MtuIgnore : public ydk::Entity
 {
     public:
         MtuIgnore();
@@ -2086,10 +2138,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MtuIgnore : public ydk
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MtuIgnore
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MtuIgnore
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MultiArea : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MultiArea : public ydk::Entity
 {
     public:
         MultiArea();
@@ -2105,14 +2157,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MultiArea : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint32
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MultiArea
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::MultiArea
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -2132,14 +2184,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor : public ydk:
         ydk::YLeaf cost; //type: uint16
         ydk::YLeaf poll_interval; //type: uint32
         ydk::YLeaf priority; //type: uint8
-        class DatabaseFilter; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter
+        class DatabaseFilter; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter> database_filter;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -2158,10 +2210,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilt
         ydk::YLeaf all; //type: All
         class All;
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network : public ydk::Entity
 {
     public:
         Network();
@@ -2181,14 +2233,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network : public ydk::
         ydk::YLeaf manet; //type: empty
         ydk::YLeaf non_broadcast; //type: empty
         ydk::YLeaf point_to_point; //type: empty
-        class PointToMultipoint; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
+        class PointToMultipoint; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint> point_to_multipoint; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint> point_to_multipoint; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint : public ydk::Entity
 {
     public:
         PointToMultipoint();
@@ -2206,10 +2258,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network::PointToMultip
 
         ydk::YLeaf non_broadcast; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::PrefixSuppression : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::PrefixSuppression : public ydk::Entity
 {
     public:
         PrefixSuppression();
@@ -2227,10 +2279,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::PrefixSuppression : pu
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::PrefixSuppression
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::PrefixSuppression
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Shutdown : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Shutdown : public ydk::Entity
 {
     public:
         Shutdown();
@@ -2248,10 +2300,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Shutdown : public ydk:
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Shutdown
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Shutdown
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6 : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -2272,40 +2324,40 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6 : public ydk::Entity
         ydk::YLeaf priority; //type: uint8
         ydk::YLeaf retransmit_interval; //type: uint32
         ydk::YLeaf transmit_delay; //type: uint32
-        class Area; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area
-        class Authentication; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Authentication
-        class Bfd; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Bfd
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
-        class DatabaseFilter; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DatabaseFilter
-        class DemandCircuit; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DemandCircuit
-        class FloodReduction; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::FloodReduction
-        class Manet; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet
-        class MtuIgnore; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MtuIgnore
-        class MultiArea; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MultiArea
-        class Neighbor; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor
-        class Network; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network
-        class PrefixSuppression; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::PrefixSuppression
-        class Shutdown; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Shutdown
+        class Area; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Area
+        class Authentication; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Authentication
+        class Bfd; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Bfd
+        class Cost; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost
+        class DatabaseFilter; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DatabaseFilter
+        class DemandCircuit; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DemandCircuit
+        class FloodReduction; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::FloodReduction
+        class Manet; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet
+        class MtuIgnore; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MtuIgnore
+        class MultiArea; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MultiArea
+        class Neighbor; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor
+        class Network; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network
+        class PrefixSuppression; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::PrefixSuppression
+        class Shutdown; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Shutdown
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area> > area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Bfd> bfd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost> cost;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DatabaseFilter> database_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DemandCircuit> demand_circuit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::FloodReduction> flood_reduction; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet> manet;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MtuIgnore> mtu_ignore; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MultiArea> multi_area;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor> > neighbor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network> network;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::PrefixSuppression> prefix_suppression; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Shutdown> shutdown; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Area> > area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Bfd> bfd; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DemandCircuit> demand_circuit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::FloodReduction> flood_reduction; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet> manet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MtuIgnore> mtu_ignore; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MultiArea> multi_area;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor> > neighbor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network> network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::PrefixSuppression> prefix_suppression; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Shutdown> shutdown; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Area : public ydk::Entity
 {
     public:
         Area();
@@ -2321,13 +2373,13 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf instance; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Area
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Authentication : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -2346,10 +2398,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Authentication : publi
         ydk::YLeaf key_chain; //type: string
         ydk::YLeaf null; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Authentication
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Authentication
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Bfd : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -2367,10 +2419,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Bfd : public ydk::Enti
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Bfd
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Bfd
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -2387,14 +2439,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf value_; //type: uint32
-        class Dynamic; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic
+        class Dynamic; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic> dynamic; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic> dynamic; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic : public ydk::Entity
 {
     public:
         Dynamic();
@@ -2411,16 +2463,16 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_; //type: uint32
-        class Hysteresis; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis
-        class Weight; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight
+        class Hysteresis; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis
+        class Weight; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis> hysteresis; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight> weight;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis> hysteresis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight> weight;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis : public ydk::Entity
 {
     public:
         Hysteresis();
@@ -2439,10 +2491,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hystere
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight : public ydk::Entity
 {
     public:
         Weight();
@@ -2458,20 +2510,20 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2Factor; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor
-        class Latency; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency
-        class Resources; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources
-        class Throughput; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput
+        class L2Factor; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency> latency; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources> resources; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput> throughput; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
 {
     public:
         L2Factor();
@@ -2489,10 +2541,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency : public ydk::Entity
 {
     public:
         Latency();
@@ -2510,10 +2562,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources : public ydk::Entity
 {
     public:
         Resources();
@@ -2531,10 +2583,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput : public ydk::Entity
 {
     public:
         Throughput();
@@ -2552,10 +2604,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight:
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DatabaseFilter : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -2575,10 +2627,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DatabaseFilter : publi
         ydk::YLeaf disable; //type: empty
         class All;
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DatabaseFilter
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DatabaseFilter
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DemandCircuit : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DemandCircuit : public ydk::Entity
 {
     public:
         DemandCircuit();
@@ -2597,10 +2649,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DemandCircuit : public
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf ignore; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DemandCircuit
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DemandCircuit
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::FloodReduction : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::FloodReduction : public ydk::Entity
 {
     public:
         FloodReduction();
@@ -2618,10 +2670,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::FloodReduction : publi
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::FloodReduction
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::FloodReduction
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet : public ydk::Entity
 {
     public:
         Manet();
@@ -2637,14 +2689,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Peering; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering
+        class Peering; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering> peering;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering> peering;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering : public ydk::Entity
 {
     public:
         Peering();
@@ -2661,14 +2713,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_metrics; //type: uint32
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost
+        class Cost; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost> cost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost> cost;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -2687,10 +2739,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost :
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MtuIgnore : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MtuIgnore : public ydk::Entity
 {
     public:
         MtuIgnore();
@@ -2708,10 +2760,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MtuIgnore : public ydk
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MtuIgnore
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MtuIgnore
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MultiArea : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MultiArea : public ydk::Entity
 {
     public:
         MultiArea();
@@ -2727,14 +2779,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MultiArea : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint32
+        ydk::YLeaf id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint32
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MultiArea
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::MultiArea
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -2754,14 +2806,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor : public ydk:
         ydk::YLeaf cost; //type: uint16
         ydk::YLeaf poll_interval; //type: uint32
         ydk::YLeaf priority; //type: uint8
-        class DatabaseFilter; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter
+        class DatabaseFilter; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter> database_filter;
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -2780,10 +2832,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilt
         ydk::YLeaf all; //type: All
         class All;
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network : public ydk::Entity
 {
     public:
         Network();
@@ -2803,14 +2855,14 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network : public ydk::
         ydk::YLeaf manet; //type: empty
         ydk::YLeaf non_broadcast; //type: empty
         ydk::YLeaf point_to_point; //type: empty
-        class PointToMultipoint; //type: Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint
+        class PointToMultipoint; //type: Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint> point_to_multipoint; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint> point_to_multipoint; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint : public ydk::Entity
 {
     public:
         PointToMultipoint();
@@ -2828,10 +2880,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network::PointToMultip
 
         ydk::YLeaf non_broadcast; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::PrefixSuppression : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::PrefixSuppression : public ydk::Entity
 {
     public:
         PrefixSuppression();
@@ -2849,10 +2901,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::PrefixSuppression : pu
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::PrefixSuppression
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::PrefixSuppression
 
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Shutdown : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Shutdown : public ydk::Entity
 {
     public:
         Shutdown();
@@ -2870,10 +2922,10 @@ class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Shutdown : public ydk:
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Shutdown
+}; // Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Shutdown
 
 
-class Native::Interface::Tunnel::Ospfv3::Authentication : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -2891,14 +2943,14 @@ class Native::Interface::Tunnel::Ospfv3::Authentication : public ydk::Entity
 
         ydk::YLeaf key_chain; //type: string
         ydk::YLeaf null; //type: empty
-        class Ipsec; //type: Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec
+        class Ipsec; //type: Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec> ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec> ipsec;
         
-}; // Native::Interface::Tunnel::Ospfv3::Authentication
+}; // Native::Interface::PortChannel::Ospfv3::Authentication
 
 
-class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec : public ydk::Entity
 {
     public:
         Ipsec();
@@ -2915,16 +2967,16 @@ class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf spi; //type: uint64
-        class Md5; //type: Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5
-        class Sha1; //type: Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1
+        class Md5; //type: Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5
+        class Sha1; //type: Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5> md5;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1> sha1;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5> md5;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1> sha1;
         
-}; // Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec
+}; // Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec
 
 
-class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5 : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5 : public ydk::Entity
 {
     public:
         Md5();
@@ -2940,14 +2992,14 @@ class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5 : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyString; //type: Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString
+        class KeyString; //type: Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5::KeyString> key_string;
         
-}; // Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5
+}; // Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5
 
 
-class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -2967,10 +3019,10 @@ class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString :
         ydk::YLeaf string; //type: string
         class Encrypt;
 
-}; // Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString
+}; // Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5::KeyString
 
 
-class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1 : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1 : public ydk::Entity
 {
     public:
         Sha1();
@@ -2986,14 +3038,14 @@ class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1 : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyString; //type: Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString
+        class KeyString; //type: Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1::KeyString> key_string;
         
-}; // Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1
+}; // Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1
 
 
-class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -3013,10 +3065,10 @@ class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString 
         ydk::YLeaf string; //type: string
         class Encrypt;
 
-}; // Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString
+}; // Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1::KeyString
 
 
-class Native::Interface::Tunnel::Ospfv3::Bfd : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -3034,10 +3086,10 @@ class Native::Interface::Tunnel::Ospfv3::Bfd : public ydk::Entity
 
         ydk::YLeaf disable; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::Bfd
+}; // Native::Interface::PortChannel::Ospfv3::Bfd
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost : public ydk::Entity
 {
     public:
         Cost();
@@ -3054,14 +3106,14 @@ class Native::Interface::Tunnel::Ospfv3::Cost : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf value_; //type: uint32
-        class Dynamic; //type: Native::Interface::Tunnel::Ospfv3::Cost::Dynamic
+        class Dynamic; //type: Native::Interface::PortChannel::Ospfv3::Cost::Dynamic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost::Dynamic> dynamic; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost::Dynamic> dynamic; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::Cost
+}; // Native::Interface::PortChannel::Ospfv3::Cost
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost::Dynamic : public ydk::Entity
 {
     public:
         Dynamic();
@@ -3078,16 +3130,16 @@ class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_; //type: uint32
-        class Hysteresis; //type: Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Hysteresis
-        class Weight; //type: Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight
+        class Hysteresis; //type: Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Hysteresis
+        class Weight; //type: Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Hysteresis> hysteresis; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight> weight;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Hysteresis> hysteresis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight> weight;
         
-}; // Native::Interface::Tunnel::Ospfv3::Cost::Dynamic
+}; // Native::Interface::PortChannel::Ospfv3::Cost::Dynamic
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Hysteresis : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Hysteresis : public ydk::Entity
 {
     public:
         Hysteresis();
@@ -3106,10 +3158,10 @@ class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Hysteresis : public ydk:
         ydk::YLeaf percent; //type: uint8
         ydk::YLeaf threshold; //type: uint32
 
-}; // Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Hysteresis
+}; // Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Hysteresis
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight : public ydk::Entity
 {
     public:
         Weight();
@@ -3125,20 +3177,20 @@ class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2Factor; //type: Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::L2Factor
-        class Latency; //type: Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Latency
-        class Resources; //type: Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Resources
-        class Throughput; //type: Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Throughput
+        class L2Factor; //type: Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::L2Factor
+        class Latency; //type: Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Latency
+        class Resources; //type: Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Resources
+        class Throughput; //type: Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Throughput
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Latency> latency; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Resources> resources; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Throughput> throughput; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::L2Factor> l2_factor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Latency> latency; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Resources> resources; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Throughput> throughput; // presence node
         
-}; // Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight
+}; // Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::L2Factor : public ydk::Entity
 {
     public:
         L2Factor();
@@ -3156,10 +3208,10 @@ class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::L2Factor : publi
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::L2Factor
+}; // Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::L2Factor
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Latency : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Latency : public ydk::Entity
 {
     public:
         Latency();
@@ -3177,10 +3229,10 @@ class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Latency : public
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Latency
+}; // Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Latency
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Resources : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Resources : public ydk::Entity
 {
     public:
         Resources();
@@ -3198,10 +3250,10 @@ class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Resources : publ
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Resources
+}; // Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Resources
 
 
-class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Throughput : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Throughput : public ydk::Entity
 {
     public:
         Throughput();
@@ -3219,10 +3271,10 @@ class Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Throughput : pub
 
         ydk::YLeaf value_; //type: uint8
 
-}; // Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Throughput
+}; // Native::Interface::PortChannel::Ospfv3::Cost::Dynamic::Weight::Throughput
 
 
-class Native::Interface::Tunnel::Ospfv3::DatabaseFilter : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::DatabaseFilter : public ydk::Entity
 {
     public:
         DatabaseFilter();
@@ -3241,10 +3293,10 @@ class Native::Interface::Tunnel::Ospfv3::DatabaseFilter : public ydk::Entity
         ydk::YLeaf all; //type: All
         class All;
 
-}; // Native::Interface::Tunnel::Ospfv3::DatabaseFilter
+}; // Native::Interface::PortChannel::Ospfv3::DatabaseFilter
 
 
-class Native::Interface::Tunnel::Ospfv3::DemandCircuit : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::DemandCircuit : public ydk::Entity
 {
     public:
         DemandCircuit();
@@ -3262,10 +3314,10 @@ class Native::Interface::Tunnel::Ospfv3::DemandCircuit : public ydk::Entity
 
         ydk::YLeaf ignore; //type: empty
 
-}; // Native::Interface::Tunnel::Ospfv3::DemandCircuit
+}; // Native::Interface::PortChannel::Ospfv3::DemandCircuit
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption : public ydk::Entity
 {
     public:
         Encryption();
@@ -3282,14 +3334,14 @@ class Native::Interface::Tunnel::Ospfv3::Encryption : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf null; //type: empty
-        class Ipsec; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec
+        class Ipsec; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec> ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec> ipsec;
         
-}; // Native::Interface::Tunnel::Ospfv3::Encryption
+}; // Native::Interface::PortChannel::Ospfv3::Encryption
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec : public ydk::Entity
 {
     public:
         Ipsec();
@@ -3307,16 +3359,16 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec : public ydk::Entity
 
         ydk::YLeaf spi; //type: uint64
         ydk::YLeaf esp; //type: empty
-        class Ipsec3Des; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des
-        class AesCbc; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc
+        class Ipsec3Des; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des
+        class AesCbc; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des> ipsec_3des;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc> aes_cbc;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des> ipsec_3des;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc> aes_cbc;
         
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des : public ydk::Entity
 {
     public:
         Ipsec3Des();
@@ -3332,14 +3384,14 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyString; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString
+        class KeyString; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString> key_string;
         
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -3359,10 +3411,10 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString
         ydk::YLeaf string; //type: string
         class Encrypt;
 
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc : public ydk::Entity
 {
     public:
         AesCbc();
@@ -3378,18 +3430,18 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AesCbc128; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128
-        class Aes192; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192
-        class Aes256; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256
+        class AesCbc128; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128
+        class Aes192; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192
+        class Aes256; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128> aes_cbc_128;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192> aes_192;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256> aes_256;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128> aes_cbc_128;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192> aes_192;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256> aes_256;
         
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128 : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128 : public ydk::Entity
 {
     public:
         AesCbc128();
@@ -3405,14 +3457,14 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128 : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyString; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString
+        class KeyString; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString> key_string;
         
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -3432,10 +3484,10 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::K
         ydk::YLeaf string; //type: string
         class Encrypt;
 
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192 : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192 : public ydk::Entity
 {
     public:
         Aes192();
@@ -3451,14 +3503,14 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192 : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyString; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString
+        class KeyString; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString> key_string;
         
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -3478,10 +3530,10 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyS
         ydk::YLeaf string; //type: string
         class Encrypt;
 
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256 : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256 : public ydk::Entity
 {
     public:
         Aes256();
@@ -3497,14 +3549,14 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256 : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyString; //type: Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
+        class KeyString; //type: Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString> key_string;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString> key_string;
         
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -3524,10 +3576,10 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyS
         ydk::YLeaf string; //type: string
         class Encrypt;
 
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
+}; // Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
 
 
-class Native::Interface::Tunnel::Ospfv3::Manet : public ydk::Entity
+class Native::Interface::PortChannel::Ospfv3::Manet : public ydk::Entity
 {
     public:
         Manet();
@@ -3543,75 +3595,13 @@ class Native::Interface::Tunnel::Ospfv3::Manet : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Peering; //type: Native::Interface::Tunnel::Ospfv3::Manet::Peering
+        class Peering; //type: Native::Interface::PortChannel::Ospfv3::Manet::Peering
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Manet::Peering> peering;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3::Manet::Peering> peering;
         
-}; // Native::Interface::Tunnel::Ospfv3::Manet
+}; // Native::Interface::PortChannel::Ospfv3::Manet
 
-
-class Native::Interface::Tunnel::Ospfv3::Manet::Peering : public ydk::Entity
-{
-    public:
-        Peering();
-        ~Peering();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf link_metrics; //type: uint32
-        class Cost; //type: Native::Interface::Tunnel::Ospfv3::Manet::Peering::Cost
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3::Manet::Peering::Cost> cost;
-        
-}; // Native::Interface::Tunnel::Ospfv3::Manet::Peering
-
-
-class Native::Interface::Tunnel::Ospfv3::Manet::Peering::Cost : public ydk::Entity
-{
-    public:
-        Cost();
-        ~Cost();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf percent; //type: uint8
-        ydk::YLeaf threshold; //type: uint32
-
-}; // Native::Interface::Tunnel::Ospfv3::Manet::Peering::Cost
-
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Metric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf igp;
-        static const ydk::Enum::YLeaf te;
-
-};
-
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::SegmentRouting::Adjacency : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protected_;
-        static const ydk::Enum::YLeaf unprotected;
-
-};
-
-class Native::Interface::Tunnel::Crypto::Ipsec::DfBit : public ydk::Enum
+class Native::Interface::PortChannel::Crypto::Ipsec::DfBit : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf clear;
@@ -3620,7 +3610,7 @@ class Native::Interface::Tunnel::Crypto::Ipsec::DfBit : public ydk::Enum
 
 };
 
-class Native::Interface::Tunnel::Crypto::Ipsec::Fragmentation : public ydk::Enum
+class Native::Interface::PortChannel::Crypto::Ipsec::Fragmentation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf after_encryption;
@@ -3628,22 +3618,16 @@ class Native::Interface::Tunnel::Crypto::Ipsec::Fragmentation : public ydk::Enum
 
 };
 
-class Native::Interface::Tunnel::Cts::Sgt : public ydk::Enum
+class Native::Interface::PortChannel::Dot1X::Pae : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inline_;
+        static const ydk::Enum::YLeaf authenticator;
+        static const ydk::Enum::YLeaf supplicant;
+        static const ydk::Enum::YLeaf both;
 
 };
 
-class Native::Interface::Tunnel::Cts::RoleBased::SgtCache : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf egress;
-        static const ydk::Enum::YLeaf ingress;
-
-};
-
-class Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor::Direction : public ydk::Enum
+class Native::Interface::PortChannel::ServicePolicy::Type::PerformanceMonitor::Direction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf input;
@@ -3651,49 +3635,49 @@ class Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor::Direct
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::ProcessId::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Neighbor::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Md5::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3701,7 +3685,7 @@ class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString::
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::Authentication::Ipsec::Sha1::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3709,14 +3693,14 @@ class Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString:
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::DatabaseFilter::All : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::DatabaseFilter::All : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf out;
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3724,7 +3708,7 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3732,7 +3716,7 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::K
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3740,7 +3724,7 @@ class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyS
 
 };
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt : public ydk::Enum
+class Native::Interface::PortChannel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;

@@ -159,6 +159,9 @@ class L2Vpnv2::Active::Xconnects::Xconnect::Segment2::PseudoWire : public ydk::E
         ydk::YLeaf last_time_status_down; //type: string
         ydk::YLeaf time_elapsed_status_down; //type: uint32
         ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf data_path_down; //type: boolean
+        ydk::YLeaf use_tunnel_path; //type: boolean
+        ydk::YLeaf odn_configured; //type: boolean
         ydk::YLeaf pseudo_wire_type_mismatched; //type: boolean
         ydk::YLeaf payload_bytes_mismatched; //type: boolean
         ydk::YLeaf bitrate_mismatched; //type: boolean
@@ -3519,6 +3522,9 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire : public y
         ydk::YLeaf last_time_status_down; //type: string
         ydk::YLeaf time_elapsed_status_down; //type: uint32
         ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf data_path_down; //type: boolean
+        ydk::YLeaf use_tunnel_path; //type: boolean
+        ydk::YLeaf odn_configured; //type: boolean
         ydk::YLeaf pseudo_wire_type_mismatched; //type: boolean
         ydk::YLeaf payload_bytes_mismatched; //type: boolean
         ydk::YLeaf bitrate_mismatched; //type: boolean

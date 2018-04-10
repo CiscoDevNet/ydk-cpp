@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_0.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_3.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_1.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_2.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_3.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_4.hpp"
 
 using namespace ydk;
@@ -21584,23 +21584,24 @@ const Enum::YLeaf L2vpnProcRole::v1_active_post_big_bang {5, "v1-active-post-big
 const Enum::YLeaf L2vpnProcRole::v1_standby_post_big_bang {6, "v1-standby-post-big-bang"};
 const Enum::YLeaf L2vpnProcRole::count {7, "count"};
 
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_virtual_ac {0, "l2vpn-id-mgr-app-type-virtual-ac"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_ac {1, "l2vpn-id-mgr-app-type-ac"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_pw {2, "l2vpn-id-mgr-app-type-pw"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_bd {3, "l2vpn-id-mgr-app-type-bd"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_fxc {4, "l2vpn-id-mgr-app-type-fxc"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_mp2mp {5, "l2vpn-id-mgr-app-type-mp2mp"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_rd {6, "l2vpn-id-mgr-app-type-rd"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_pbb {7, "l2vpn-id-mgr-app-type-pbb"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_if_list {8, "l2vpn-id-mgr-app-type-if-list"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_atom {9, "l2vpn-id-mgr-app-type-atom"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_global {10, "l2vpn-id-mgr-app-type-global"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_p_tree {11, "l2vpn-id-mgr-app-type-p-tree"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_pw_group {12, "l2vpn-id-mgr-app-type-pw-group"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_evpn {13, "l2vpn-id-mgr-app-type-evpn"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_evpn_lbl {14, "l2vpn-id-mgr-app-type-evpn-lbl"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_evpn_rd {15, "l2vpn-id-mgr-app-type-evpn-rd"};
-const Enum::YLeaf L2vpnIdMgrApp::l2vpn_id_mgr_app_type_count {16, "l2vpn-id-mgr-app-type-count"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_virtual_ac {0, "l2vpn-id-mgr-app-bag-type-virtual-ac"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_ac {1, "l2vpn-id-mgr-app-bag-type-ac"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_pw {2, "l2vpn-id-mgr-app-bag-type-pw"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_bd {3, "l2vpn-id-mgr-app-bag-type-bd"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_fxc {4, "l2vpn-id-mgr-app-bag-type-fxc"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_mp2mp {5, "l2vpn-id-mgr-app-bag-type-mp2mp"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_rd {6, "l2vpn-id-mgr-app-bag-type-rd"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_pbb {7, "l2vpn-id-mgr-app-bag-type-pbb"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_if_list {8, "l2vpn-id-mgr-app-bag-type-if-list"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_atom {9, "l2vpn-id-mgr-app-bag-type-atom"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_global {10, "l2vpn-id-mgr-app-bag-type-global"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_pw_group {11, "l2vpn-id-mgr-app-bag-type-pw-group"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_evpn {12, "l2vpn-id-mgr-app-bag-type-evpn"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_evpn_lbl {13, "l2vpn-id-mgr-app-bag-type-evpn-lbl"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_evpn_rd {14, "l2vpn-id-mgr-app-bag-type-evpn-rd"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_ital {15, "l2vpn-id-mgr-app-bag-type-ital"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_bp {16, "l2vpn-id-mgr-app-bag-type-bp"};
+const Enum::YLeaf L2vpnIdMgrAppBag::l2vpn_id_mgr_app_bag_type_count {17, "l2vpn-id-mgr-app-bag-type-count"};
 
 const Enum::YLeaf IccpSmPortState::unknown {0, "unknown"};
 const Enum::YLeaf IccpSmPortState::unconfigured {1, "unconfigured"};

@@ -33,10 +33,8 @@ class NetconfYang : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class CiscoIa; //type: NetconfYang::CiscoIa
-        class CiscoOdm; //type: NetconfYang::CiscoOdm
 
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa> cisco_ia;
-        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoOdm> cisco_odm;
         
 }; // NetconfYang
 
@@ -347,68 +345,6 @@ class NetconfYang::CiscoIa::Blocking::ConfdCfgCommand : public ydk::Entity
         ydk::YLeaf command; //type: string
 
 }; // NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
-
-
-class NetconfYang::CiscoOdm : public ydk::Entity
-{
-    public:
-        CiscoOdm();
-        ~CiscoOdm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf polling_enable; //type: boolean
-        ydk::YLeaf on_demand_default_time; //type: uint32
-        ydk::YLeaf on_demand_enable; //type: boolean
-        class Actions; //type: NetconfYang::CiscoOdm::Actions
-
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoOdm::Actions> > actions;
-        
-}; // NetconfYang::CiscoOdm
-
-
-class NetconfYang::CiscoOdm::Actions : public ydk::Entity
-{
-    public:
-        Actions();
-        ~Actions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf action_name; //type: Parsername
-        ydk::YLeaf polling_interval; //type: uint32
-        ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf cdb_xpath; //type: string
-        class Mode;
-
-}; // NetconfYang::CiscoOdm::Actions
-
-class NetconfYang::CiscoOdm::Actions::Mode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf poll;
-        static const ydk::Enum::YLeaf on_demand;
-        static const ydk::Enum::YLeaf none;
-
-};
 
 
 }

@@ -1559,7 +1559,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::Pcc : public ydk::Entity
 
         class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange> tunnel_range;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange> tunnel_range; // presence node
         
 }; // MplsTe::GlobalAttributes::AutoTunnel::Pcc
 
@@ -1606,7 +1606,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel : public ydk::Entity
 
         class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange> tunnel_range;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange> tunnel_range; // presence node
         
 }; // MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel
 
@@ -1656,7 +1656,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::Backup : public ydk::Entity
         class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers> timers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange> tunnel_range;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange> tunnel_range; // presence node
         
 }; // MplsTe::GlobalAttributes::AutoTunnel::Backup
 
@@ -1753,7 +1753,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::Mesh : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups> mesh_groups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers> timers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange> tunnel_range;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange> tunnel_range; // presence node
         
 }; // MplsTe::GlobalAttributes::AutoTunnel::Mesh
 
@@ -1897,7 +1897,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel : public ydk::Entity
 
         class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange> tunnel_range;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange> tunnel_range; // presence node
         
 }; // MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel
 

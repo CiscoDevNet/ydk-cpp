@@ -721,7 +721,7 @@ class Vlan::Nodes::Node::TagAllocations::TagAllocation : public ydk::Entity
 
         ydk::YLeaf interface; //type: string
         ydk::YLeaf first_tag; //type: uint32
-        ydk::YLeaf second_tag; //type: one of enumeration, uint32
+        ydk::YLeaf second_tag; //type: one of uint32, enumeration
         ydk::YLeaf interface_xr; //type: string
         ydk::YLeaf parent_interface; //type: string
         ydk::YLeaf service; //type: VlanService

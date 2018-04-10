@@ -129,7 +129,7 @@ class Keychain::Keies::Key::Key_::KeyId : public ydk::Entity
 
         ydk::YLeaf key_string; //type: string
         ydk::YLeaf type; //type: Enc
-        ydk::YLeaf key_id; //type: uint64
+        ydk::YLeaf key_id; //type: string
         ydk::YLeaf cryptographic_algorithm; //type: CrytoAlgo
         class Macsec; //type: Keychain::Keies::Key::Key_::KeyId::Macsec
         class SendLifetime; //type: Keychain::Keies::Key::Key_::KeyId::SendLifetime

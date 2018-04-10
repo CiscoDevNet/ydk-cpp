@@ -705,6 +705,7 @@ class L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect:
         ydk::YLeaf eviid; //type: uint32
         ydk::YLeaf remote_acid; //type: uint32
         ydk::YLeaf source_acid; //type: uint32
+        ydk::YLeaf class_; //type: string
 
 }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireEvpns::PseudowireEvpn
 
@@ -5518,18 +5519,18 @@ class GenericInterfaceLists : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class GenericInterface; //type: GenericInterfaceLists::GenericInterface
+        class GenericInterfaceList; //type: GenericInterfaceLists::GenericInterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::GenericInterfaceLists::GenericInterface> > generic_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::GenericInterfaceLists::GenericInterfaceList> > generic_interface_list;
         
 }; // GenericInterfaceLists
 
 
-class GenericInterfaceLists::GenericInterface : public ydk::Entity
+class GenericInterfaceLists::GenericInterfaceList : public ydk::Entity
 {
     public:
-        GenericInterface();
-        ~GenericInterface();
+        GenericInterfaceList();
+        ~GenericInterfaceList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -5544,14 +5545,14 @@ class GenericInterfaceLists::GenericInterface : public ydk::Entity
 
         ydk::YLeaf generic_interface_list_name; //type: string
         ydk::YLeaf enable; //type: empty
-        class Interfaces; //type: GenericInterfaceLists::GenericInterface::Interfaces
+        class Interfaces; //type: GenericInterfaceLists::GenericInterfaceList::Interfaces
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::GenericInterfaceLists::GenericInterface::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::GenericInterfaceLists::GenericInterfaceList::Interfaces> interfaces;
         
-}; // GenericInterfaceLists::GenericInterface
+}; // GenericInterfaceLists::GenericInterfaceList
 
 
-class GenericInterfaceLists::GenericInterface::Interfaces : public ydk::Entity
+class GenericInterfaceLists::GenericInterfaceList::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -5567,14 +5568,14 @@ class GenericInterfaceLists::GenericInterface::Interfaces : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Interface; //type: GenericInterfaceLists::GenericInterface::Interfaces::Interface
+        class Interface; //type: GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::GenericInterfaceLists::GenericInterface::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface> > interface;
         
-}; // GenericInterfaceLists::GenericInterface::Interfaces
+}; // GenericInterfaceLists::GenericInterfaceList::Interfaces
 
 
-class GenericInterfaceLists::GenericInterface::Interfaces::Interface : public ydk::Entity
+class GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -5593,7 +5594,7 @@ class GenericInterfaceLists::GenericInterface::Interfaces::Interface : public yd
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf enable; //type: empty
 
-}; // GenericInterfaceLists::GenericInterface::Interfaces::Interface
+}; // GenericInterfaceLists::GenericInterfaceList::Interfaces::Interface
 
 class Evpn : public ydk::Entity
 {
@@ -5688,6 +5689,7 @@ class Evpn::EvpnTables::EvpnTimers : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        ydk::YLeaf evpn_carving; //type: uint32
         ydk::YLeaf evpn_recovery; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf evpn_peering; //type: uint32
@@ -5791,6 +5793,7 @@ class Evpn::EvpnTables::Evpnevis::Evpnevi : public ydk::Entity
         ydk::YLeaf evi_reorig_disable; //type: empty
         ydk::YLeaf evi_advertise_mac_deprecated; //type: empty
         ydk::YLeaf evpnevi_description; //type: string
+        ydk::YLeaf evi_ecmp_disable; //type: empty
         ydk::YLeaf evi_unknown_unicast_flooding_disable; //type: empty
         ydk::YLeaf evpn_evi_cw_disable; //type: empty
         class EviLoadBalancing; //type: Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing
@@ -5821,7 +5824,7 @@ class Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
-        ydk::YLeaf evi_flow_label; //type: empty
+        ydk::YLeaf evi_static_flow_label; //type: empty
 
 }; // Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing
 
@@ -6069,6 +6072,7 @@ class Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtual
 
         ydk::YLeaf evpn_virtual_access_vfi_recovery; //type: uint32
         ydk::YLeaf evpn_virtual_access_vfi_peering; //type: uint32
+        ydk::YLeaf evpn_virtual_access_vfi_carving; //type: uint32
         ydk::YLeaf enable; //type: empty
 
 }; // Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccessVfiTimers
@@ -6190,7 +6194,7 @@ class Evpn::EvpnTables::EvpnLoadBalancing : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf evpn_flow_label; //type: empty
+        ydk::YLeaf evpn_static_flow_label; //type: empty
         ydk::YLeaf enable; //type: empty
 
 }; // Evpn::EvpnTables::EvpnLoadBalancing
@@ -6294,6 +6298,7 @@ class Evpn::EvpnTables::EvpnInstances::EvpnInstance : public ydk::Entity
         ydk::YLeaf evi_reorig_disable; //type: empty
         ydk::YLeaf evi_advertise_mac_deprecated; //type: empty
         ydk::YLeaf evpnevi_description; //type: string
+        ydk::YLeaf evi_ecmp_disable; //type: empty
         ydk::YLeaf evi_unknown_unicast_flooding_disable; //type: empty
         ydk::YLeaf evpn_evi_cw_disable; //type: empty
         class EvpnInstanceBgpAutoDiscovery; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
@@ -6498,7 +6503,7 @@ class Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
-        ydk::YLeaf evi_flow_label; //type: empty
+        ydk::YLeaf evi_static_flow_label; //type: empty
 
 }; // Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing
 
@@ -6568,7 +6573,7 @@ class Evpn::EvpnTables::EvpnInterfaces::EvpnInterface : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf mac_flush; //type: empty
+        ydk::YLeaf mac_flush; //type: MacFlushMode
         class EvpnacTimers; //type: Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers
         class EthernetSegment; //type: Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment
 
@@ -6595,6 +6600,7 @@ class Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf evpnac_peering; //type: uint32
+        ydk::YLeaf evpnac_carving; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf evpnac_recovery; //type: uint32
 
@@ -6774,6 +6780,7 @@ class Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAc
         ydk::YLeaf evpn_virtual_access_pw_recovery; //type: uint32
         ydk::YLeaf evpn_virtual_access_pw_peering; //type: uint32
         ydk::YLeaf enable; //type: empty
+        ydk::YLeaf evpn_virtual_access_pw_carving; //type: uint32
 
 }; // Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers
 
@@ -7220,6 +7227,13 @@ class L2vpnLogging : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enable;
         static const ydk::Enum::YLeaf disable;
+
+};
+
+class MacFlushMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mvrp;
 
 };
 

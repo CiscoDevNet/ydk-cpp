@@ -424,6 +424,8 @@ NetFlow::Statistics::Statistic::Producer::Statistics_::Statistics_()
     ipv6_egress_flows{YType::uint64, "ipv6-egress-flows"},
     mpls_ingress_flows{YType::uint64, "mpls-ingress-flows"},
     mpls_egress_flows{YType::uint64, "mpls-egress-flows"},
+    ipfix315_ingress_flows{YType::uint64, "ipfix315-ingress-flows"},
+    ipfix315_egress_flows{YType::uint64, "ipfix315-egress-flows"},
     drops_no_space{YType::uint64, "drops-no-space"},
     drops_others{YType::uint64, "drops-others"},
     unknown_ingress_flows{YType::uint64, "unknown-ingress-flows"},
@@ -447,6 +449,8 @@ bool NetFlow::Statistics::Statistic::Producer::Statistics_::has_data() const
 	|| ipv6_egress_flows.is_set
 	|| mpls_ingress_flows.is_set
 	|| mpls_egress_flows.is_set
+	|| ipfix315_ingress_flows.is_set
+	|| ipfix315_egress_flows.is_set
 	|| drops_no_space.is_set
 	|| drops_others.is_set
 	|| unknown_ingress_flows.is_set
@@ -464,6 +468,8 @@ bool NetFlow::Statistics::Statistic::Producer::Statistics_::has_operation() cons
 	|| ydk::is_set(ipv6_egress_flows.yfilter)
 	|| ydk::is_set(mpls_ingress_flows.yfilter)
 	|| ydk::is_set(mpls_egress_flows.yfilter)
+	|| ydk::is_set(ipfix315_ingress_flows.yfilter)
+	|| ydk::is_set(ipfix315_egress_flows.yfilter)
 	|| ydk::is_set(drops_no_space.yfilter)
 	|| ydk::is_set(drops_others.yfilter)
 	|| ydk::is_set(unknown_ingress_flows.yfilter)
@@ -489,6 +495,8 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::P
     if (ipv6_egress_flows.is_set || is_set(ipv6_egress_flows.yfilter)) leaf_name_data.push_back(ipv6_egress_flows.get_name_leafdata());
     if (mpls_ingress_flows.is_set || is_set(mpls_ingress_flows.yfilter)) leaf_name_data.push_back(mpls_ingress_flows.get_name_leafdata());
     if (mpls_egress_flows.is_set || is_set(mpls_egress_flows.yfilter)) leaf_name_data.push_back(mpls_egress_flows.get_name_leafdata());
+    if (ipfix315_ingress_flows.is_set || is_set(ipfix315_ingress_flows.yfilter)) leaf_name_data.push_back(ipfix315_ingress_flows.get_name_leafdata());
+    if (ipfix315_egress_flows.is_set || is_set(ipfix315_egress_flows.yfilter)) leaf_name_data.push_back(ipfix315_egress_flows.get_name_leafdata());
     if (drops_no_space.is_set || is_set(drops_no_space.yfilter)) leaf_name_data.push_back(drops_no_space.get_name_leafdata());
     if (drops_others.is_set || is_set(drops_others.yfilter)) leaf_name_data.push_back(drops_others.get_name_leafdata());
     if (unknown_ingress_flows.is_set || is_set(unknown_ingress_flows.yfilter)) leaf_name_data.push_back(unknown_ingress_flows.get_name_leafdata());
@@ -549,6 +557,18 @@ void NetFlow::Statistics::Statistic::Producer::Statistics_::set_value(const std:
         mpls_egress_flows = value;
         mpls_egress_flows.value_namespace = name_space;
         mpls_egress_flows.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipfix315-ingress-flows")
+    {
+        ipfix315_ingress_flows = value;
+        ipfix315_ingress_flows.value_namespace = name_space;
+        ipfix315_ingress_flows.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipfix315-egress-flows")
+    {
+        ipfix315_egress_flows = value;
+        ipfix315_egress_flows.value_namespace = name_space;
+        ipfix315_egress_flows.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drops-no-space")
     {
@@ -614,6 +634,14 @@ void NetFlow::Statistics::Statistic::Producer::Statistics_::set_filter(const std
     {
         mpls_egress_flows.yfilter = yfilter;
     }
+    if(value_path == "ipfix315-ingress-flows")
+    {
+        ipfix315_ingress_flows.yfilter = yfilter;
+    }
+    if(value_path == "ipfix315-egress-flows")
+    {
+        ipfix315_egress_flows.yfilter = yfilter;
+    }
     if(value_path == "drops-no-space")
     {
         drops_no_space.yfilter = yfilter;
@@ -642,7 +670,7 @@ void NetFlow::Statistics::Statistic::Producer::Statistics_::set_filter(const std
 
 bool NetFlow::Statistics::Statistic::Producer::Statistics_::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4-ingress-flows" || name == "ipv4-egress-flows" || name == "ipv6-ingress-flows" || name == "ipv6-egress-flows" || name == "mpls-ingress-flows" || name == "mpls-egress-flows" || name == "drops-no-space" || name == "drops-others" || name == "unknown-ingress-flows" || name == "unknown-egress-flows" || name == "waiting-servers" || name == "last-cleared")
+    if(name == "ipv4-ingress-flows" || name == "ipv4-egress-flows" || name == "ipv6-ingress-flows" || name == "ipv6-egress-flows" || name == "mpls-ingress-flows" || name == "mpls-egress-flows" || name == "ipfix315-ingress-flows" || name == "ipfix315-egress-flows" || name == "drops-no-space" || name == "drops-others" || name == "unknown-ingress-flows" || name == "unknown-egress-flows" || name == "waiting-servers" || name == "last-cleared")
         return true;
     return false;
 }

@@ -3370,6 +3370,7 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Conne
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile
 
@@ -3404,6 +3405,7 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Bgp :
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Bgp
 
@@ -3437,6 +3439,7 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Ospfv
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication
 
@@ -3470,6 +3473,7 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Eigrp
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Eigrp
 
@@ -3581,18 +3585,23 @@ class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf protocol_name; //type: Ospfv3Protocol
-        class AsYyAndAsXxAndProcessName; //type: Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName
+        ydk::YLeaf all_or_connected_or_static_prefix_list; //type: string
+        class Bgp; //type: Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp
+        class Ospfv3OrIsis; //type: Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis
+        class Eigrp; //type: Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName> > as_yy_and_as_xx_and_process_name;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp> > bgp;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis> > ospfv3_or_isis;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp> > eigrp;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut
 
 
-class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName : public ydk::Entity
+class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp : public ydk::Entity
 {
     public:
-        AsYyAndAsXxAndProcessName();
-        ~AsYyAndAsXxAndProcessName();
+        Bgp();
+        ~Bgp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3604,12 +3613,55 @@ class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_yy; //type: uint32
         ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf as_yy; //type: uint32
+        ydk::YLeaf prefix_list; //type: string
+
+}; // Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp
+
+
+class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis : public ydk::Entity
+{
+    public:
+        Ospfv3OrIsis();
+        ~Ospfv3OrIsis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf process_name; //type: string
         ydk::YLeaf prefix_list; //type: string
 
-}; // Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName
+}; // Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis
+
+
+class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp : public ydk::Entity
+{
+    public:
+        Eigrp();
+        ~Eigrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf prefix_list; //type: string
+
+}; // Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp
 
 
 class Ospfv3::Processes::Process::DefaultVrf::DistributeList : public ydk::Entity
@@ -3701,12 +3753,10 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit : public ydk::Ent
 
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf external_lsa; //type: uint32
         ydk::YLeaf include_stub; //type: empty
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
-        ydk::YLeaf summary_lsa; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::OnStartup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::OnStartup> on_startup;
@@ -3754,12 +3804,9 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit : public ydk::En
 
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf external_lsa; //type: uint32
-        ydk::YLeaf include_stub; //type: empty
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
-        ydk::YLeaf summary_lsa; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup> on_startup;
@@ -3805,14 +3852,14 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf external_lsa; //type: uint32
+        ydk::YLeaf summary_lsa; //type: uint32
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf external_lsa; //type: uint32
         ydk::YLeaf include_stub; //type: empty
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
-        ydk::YLeaf summary_lsa; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup> on_startup;
@@ -7745,6 +7792,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connec
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile
 
@@ -7779,6 +7827,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp : 
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp
 
@@ -7812,6 +7861,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication
 
@@ -7845,6 +7895,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp 
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
         ydk::YLeaf preserve_med; //type: empty
         ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp
 
@@ -7956,18 +8007,23 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf protocol_name; //type: Ospfv3Protocol
-        class AsYyAndAsXxAndProcessName; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName
+        ydk::YLeaf all_or_connected_or_static_prefix_list; //type: string
+        class Bgp; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp
+        class Ospfv3OrIsis; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis
+        class Eigrp; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName> > as_yy_and_as_xx_and_process_name;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp> > bgp;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis> > ospfv3_or_isis;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp> > eigrp;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName : public ydk::Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp : public ydk::Entity
 {
     public:
-        AsYyAndAsXxAndProcessName();
-        ~AsYyAndAsXxAndProcessName();
+        Bgp();
+        ~Bgp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -7979,12 +8035,55 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_yy; //type: uint32
         ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf as_yy; //type: uint32
+        ydk::YLeaf prefix_list; //type: string
+
+}; // Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp
+
+
+class Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis : public ydk::Entity
+{
+    public:
+        Ospfv3OrIsis();
+        ~Ospfv3OrIsis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf process_name; //type: string
         ydk::YLeaf prefix_list; //type: string
 
-}; // Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName
+}; // Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis
+
+
+class Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp : public ydk::Entity
+{
+    public:
+        Eigrp();
+        ~Eigrp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf prefix_list; //type: string
+
+}; // Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp
 
 
 class Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList : public ydk::Entity
@@ -8076,12 +8175,10 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit : public ydk::Enti
 
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf external_lsa; //type: uint32
         ydk::YLeaf include_stub; //type: empty
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
-        ydk::YLeaf summary_lsa; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup> on_startup;
@@ -8129,12 +8226,9 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit : public ydk::Ent
 
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf external_lsa; //type: uint32
-        ydk::YLeaf include_stub; //type: empty
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
-        ydk::YLeaf summary_lsa; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::OnStartup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::OnStartup> on_startup;
@@ -8180,14 +8274,14 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf external_lsa; //type: uint32
+        ydk::YLeaf summary_lsa; //type: uint32
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf external_lsa; //type: uint32
         ydk::YLeaf include_stub; //type: empty
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
-        ydk::YLeaf summary_lsa; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup> on_startup;

@@ -2596,7 +2596,10 @@ class L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::Bridge
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor; //type: string
+        ydk::YLeaf pw_type; //type: L2vpnpw
         ydk::YLeaf pseudowire_id; //type: uint32
+        ydk::YLeaf ve_id_vpls_id_0_3; //type: uint32
+        ydk::YLeaf vpls_id_4_7; //type: uint32
         ydk::YLeaf is_access; //type: boolean
         class Pseudowire; //type: L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire
         class SecurityParameters; //type: L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::SecurityParameters
@@ -2654,6 +2657,9 @@ class L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::Bridge
         ydk::YLeaf last_time_status_down; //type: string
         ydk::YLeaf time_elapsed_status_down; //type: uint32
         ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf data_path_down; //type: boolean
+        ydk::YLeaf use_tunnel_path; //type: boolean
+        ydk::YLeaf odn_configured; //type: boolean
         ydk::YLeaf pseudo_wire_type_mismatched; //type: boolean
         ydk::YLeaf payload_bytes_mismatched; //type: boolean
         ydk::YLeaf bitrate_mismatched; //type: boolean

@@ -65,16 +65,16 @@ ydk::path::SchemaNodeImpl::populate_augmented_schema_node(vector<lys_node*>& anc
         }
     }
     else {
-        while(node) {
-            auto p = node;
-            while(p && (p->nodetype == LYS_USES)) {
+        const struct lys_node *last = nullptr;
+        while (auto p = lys_getnext(last, node->parent, nullptr, 0)) {
+        	last = p;
+            while (p->nodetype == LYS_USES) {
                 p = p->child;
             }
             if (p) {
                 YLOG_DEBUG("Populating new schema node '{}'", string(p->name));
                 m_children.emplace_back(make_unique<SchemaNodeImpl>(this, const_cast<struct lys_node*>(p)));
             }
-            node = node->next;
         }
     }
 }
@@ -139,7 +139,7 @@ ydk::path::SchemaNodeImpl::find(const string& path)
     vector<SchemaNode*> ret;
     struct ly_ctx* ctx = m_node->module->ctx;
 
-    const struct lys_node* found_node = ly_ctx_get_node(ctx, m_node, path.c_str());
+    const struct lys_node* found_node = ly_ctx_get_node(ctx, m_node, path.c_str(), 0);
 
     if (found_node)
     {
@@ -260,6 +260,9 @@ ydk::path::SchemaNodeImpl::get_statement() const
         break;
     case LYS_ACTION:
         s.keyword = "action";
+        break;
+    case LYS_EXT:
+        s.keyword = "extension";
         break;
     case LYS_ANYDATA:
     case LYS_UNKNOWN:

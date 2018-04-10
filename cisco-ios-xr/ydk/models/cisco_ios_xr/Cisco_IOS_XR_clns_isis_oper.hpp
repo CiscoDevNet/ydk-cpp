@@ -18474,6 +18474,7 @@ class Isis::Instances::Instance::Protocol : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf vrf_context; //type: string
         ydk::YLeaf nsap_system_id; //type: string
         ydk::YLeaf valid_nsap_system_id; //type: boolean
         ydk::YLeaf instance_id; //type: uint16

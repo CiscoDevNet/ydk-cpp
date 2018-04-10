@@ -4534,7 +4534,7 @@ class Bfd::SessionMibs::SessionMib : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf discriminator; //type: int32
+        ydk::YLeaf discriminator; //type: uint32
         ydk::YLeaf local_discriminator; //type: uint32
         ydk::YLeaf remote_discriminator; //type: uint32
         ydk::YLeaf sessionversion; //type: uint32

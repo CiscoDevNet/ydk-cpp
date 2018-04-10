@@ -37,12 +37,12 @@ class Ptp : public ydk::Entity
         class LocalClock; //type: Ptp::LocalClock
         class InterfacePacketCounters; //type: Ptp::InterfacePacketCounters
         class AdvertisedClock; //type: Ptp::AdvertisedClock
-        class LeapSeconds; //type: Ptp::LeapSeconds
         class Interfaces; //type: Ptp::Interfaces
         class Dataset; //type: Ptp::Dataset
         class GlobalConfigurationError; //type: Ptp::GlobalConfigurationError
         class Grandmaster; //type: Ptp::Grandmaster
         class InterfaceUnicastPeers; //type: Ptp::InterfaceUnicastPeers
+        class UtcOffsetInfo; //type: Ptp::UtcOffsetInfo
         class Platform; //type: Ptp::Platform
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Nodes> nodes;
@@ -51,12 +51,12 @@ class Ptp : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::LocalClock> local_clock;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::InterfacePacketCounters> interface_packet_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::AdvertisedClock> advertised_clock;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::LeapSeconds> leap_seconds;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Dataset> dataset;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::GlobalConfigurationError> global_configuration_error;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Grandmaster> grandmaster;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::InterfaceUnicastPeers> interface_unicast_peers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo> utc_offset_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform> platform;
         
 }; // Ptp
@@ -1992,59 +1992,6 @@ class Ptp::AdvertisedClock::ClockProperties::Sender : public ydk::Entity
 }; // Ptp::AdvertisedClock::ClockProperties::Sender
 
 
-class Ptp::LeapSeconds : public ydk::Entity
-{
-    public:
-        LeapSeconds();
-        ~LeapSeconds();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf current_offset; //type: int16
-        ydk::YLeaf offset_valid; //type: boolean
-        ydk::YLeaf source_file; //type: string
-        ydk::YLeaf source_expiry_date; //type: uint32
-        ydk::YLeaf polling_frequency; //type: uint32
-        class LeapSecond; //type: Ptp::LeapSeconds::LeapSecond
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::LeapSeconds::LeapSecond> > leap_second;
-        
-}; // Ptp::LeapSeconds
-
-
-class Ptp::LeapSeconds::LeapSecond : public ydk::Entity
-{
-    public:
-        LeapSecond();
-        ~LeapSecond();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf offset; //type: int16
-        ydk::YLeaf offset_start_date; //type: uint64
-        ydk::YLeaf offset_applied; //type: boolean
-
-}; // Ptp::LeapSeconds::LeapSecond
-
-
 class Ptp::Interfaces : public ydk::Entity
 {
     public:
@@ -2505,6 +2452,7 @@ class Ptp::GlobalConfigurationError::ConfigurationErrors : public ydk::Entity
         ydk::YLeaf domain; //type: boolean
         ydk::YLeaf profile_priority1_config; //type: boolean
         ydk::YLeaf profile_priority2_value; //type: boolean
+        ydk::YLeaf utc_offset_change; //type: boolean
 
 }; // Ptp::GlobalConfigurationError::ConfigurationErrors
 
@@ -2938,6 +2886,216 @@ class Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::DelayResponseGran
         ydk::YLeaf grant_duration; //type: uint32
 
 }; // Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::DelayResponseGrant
+
+
+class Ptp::UtcOffsetInfo : public ydk::Entity
+{
+    public:
+        UtcOffsetInfo();
+        ~UtcOffsetInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf source_type; //type: uint8
+        ydk::YLeaf source_file; //type: string
+        ydk::YLeaf source_expiry_date; //type: uint32
+        ydk::YLeaf polling_frequency; //type: uint32
+        class CurrentOffsetInfo; //type: Ptp::UtcOffsetInfo::CurrentOffsetInfo
+        class CurrentGmOffsetInfo; //type: Ptp::UtcOffsetInfo::CurrentGmOffsetInfo
+        class ConfiguredOffsetInfo; //type: Ptp::UtcOffsetInfo::ConfiguredOffsetInfo
+        class PreviousGmOffsetInfo; //type: Ptp::UtcOffsetInfo::PreviousGmOffsetInfo
+        class HardwareOffsetInfo; //type: Ptp::UtcOffsetInfo::HardwareOffsetInfo
+        class GmLeapSecond; //type: Ptp::UtcOffsetInfo::GmLeapSecond
+        class ConfiguredLeapSecond; //type: Ptp::UtcOffsetInfo::ConfiguredLeapSecond
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo::CurrentOffsetInfo> current_offset_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo::CurrentGmOffsetInfo> current_gm_offset_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo::ConfiguredOffsetInfo> configured_offset_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo::PreviousGmOffsetInfo> previous_gm_offset_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo::HardwareOffsetInfo> hardware_offset_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo::GmLeapSecond> gm_leap_second;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo::ConfiguredLeapSecond> > configured_leap_second;
+        
+}; // Ptp::UtcOffsetInfo
+
+
+class Ptp::UtcOffsetInfo::CurrentOffsetInfo : public ydk::Entity
+{
+    public:
+        CurrentOffsetInfo();
+        ~CurrentOffsetInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf offset; //type: int16
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf flag; //type: uint8
+
+}; // Ptp::UtcOffsetInfo::CurrentOffsetInfo
+
+
+class Ptp::UtcOffsetInfo::CurrentGmOffsetInfo : public ydk::Entity
+{
+    public:
+        CurrentGmOffsetInfo();
+        ~CurrentGmOffsetInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf offset; //type: int16
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf flag; //type: uint8
+
+}; // Ptp::UtcOffsetInfo::CurrentGmOffsetInfo
+
+
+class Ptp::UtcOffsetInfo::ConfiguredOffsetInfo : public ydk::Entity
+{
+    public:
+        ConfiguredOffsetInfo();
+        ~ConfiguredOffsetInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf offset; //type: int16
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf flag; //type: uint8
+
+}; // Ptp::UtcOffsetInfo::ConfiguredOffsetInfo
+
+
+class Ptp::UtcOffsetInfo::PreviousGmOffsetInfo : public ydk::Entity
+{
+    public:
+        PreviousGmOffsetInfo();
+        ~PreviousGmOffsetInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf offset; //type: int16
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf flag; //type: uint8
+
+}; // Ptp::UtcOffsetInfo::PreviousGmOffsetInfo
+
+
+class Ptp::UtcOffsetInfo::HardwareOffsetInfo : public ydk::Entity
+{
+    public:
+        HardwareOffsetInfo();
+        ~HardwareOffsetInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf offset; //type: int16
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf flag; //type: uint8
+
+}; // Ptp::UtcOffsetInfo::HardwareOffsetInfo
+
+
+class Ptp::UtcOffsetInfo::GmLeapSecond : public ydk::Entity
+{
+    public:
+        GmLeapSecond();
+        ~GmLeapSecond();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf offset; //type: int16
+        ydk::YLeaf offset_start_date; //type: uint64
+        ydk::YLeaf offset_change; //type: int16
+        ydk::YLeaf offset_applied; //type: boolean
+
+}; // Ptp::UtcOffsetInfo::GmLeapSecond
+
+
+class Ptp::UtcOffsetInfo::ConfiguredLeapSecond : public ydk::Entity
+{
+    public:
+        ConfiguredLeapSecond();
+        ~ConfiguredLeapSecond();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf offset; //type: int16
+        ydk::YLeaf offset_start_date; //type: uint64
+        ydk::YLeaf offset_change; //type: int16
+        ydk::YLeaf offset_applied; //type: boolean
+
+}; // Ptp::UtcOffsetInfo::ConfiguredLeapSecond
 
 
 class Ptp::Platform : public ydk::Entity

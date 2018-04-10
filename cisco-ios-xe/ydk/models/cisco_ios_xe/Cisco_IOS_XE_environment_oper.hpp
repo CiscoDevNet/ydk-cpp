@@ -60,19 +60,25 @@ class EnvironmentSensors::EnvironmentSensor : public ydk::Entity
         ydk::YLeaf state; //type: string
         ydk::YLeaf current_reading; //type: uint32
         ydk::YLeaf sensor_units; //type: SensorUnitsType
+        ydk::YLeaf low_critical_threshold; //type: int32
+        ydk::YLeaf low_normal_threshold; //type: int32
+        ydk::YLeaf high_normal_threshold; //type: int32
+        ydk::YLeaf high_critical_threshold; //type: int32
 
 }; // EnvironmentSensors::EnvironmentSensor
 
 class SensorUnitsType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Watts;
-        static const ydk::Enum::YLeaf Celsius;
-        static const ydk::Enum::YLeaf milliVolts;
-        static const ydk::Enum::YLeaf Amperes;
-        static const ydk::Enum::YLeaf Volts_DC;
-        static const ydk::Enum::YLeaf Volts_AC;
-        static const ydk::Enum::YLeaf milliAmperes;
+        static const ydk::Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf celsius;
+        static const ydk::Enum::YLeaf millivolts;
+        static const ydk::Enum::YLeaf amperes;
+        static const ydk::Enum::YLeaf volts_dc;
+        static const ydk::Enum::YLeaf volts_ac;
+        static const ydk::Enum::YLeaf milliamperes;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf revolutions_per_minute;
 
 };
 

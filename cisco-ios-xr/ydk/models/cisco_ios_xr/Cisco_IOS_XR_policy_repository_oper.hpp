@@ -4647,6 +4647,7 @@ class SubAddressFamily : public ydk::Enum
         static const ydk::Enum::YLeaf mvpn;
         static const ydk::Enum::YLeaf flow;
         static const ydk::Enum::YLeaf vpn_mcast;
+        static const ydk::Enum::YLeaf evpn;
         static const ydk::Enum::YLeaf saf_none;
         static const ydk::Enum::YLeaf saf_unknown;
 

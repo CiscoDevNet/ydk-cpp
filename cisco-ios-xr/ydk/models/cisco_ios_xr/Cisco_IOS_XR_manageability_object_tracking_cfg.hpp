@@ -65,11 +65,13 @@ class ObjectTrackings::ObjectTracking : public ydk::Entity
         ydk::YLeaf type_boolean_list_and_enable; //type: empty
         ydk::YLeaf type_boolean_list_or_enable; //type: empty
         class TypeInterface; //type: ObjectTrackings::ObjectTracking::TypeInterface
+        class TypeRtr; //type: ObjectTrackings::ObjectTracking::TypeRtr
         class TypeList; //type: ObjectTrackings::ObjectTracking::TypeList
         class TypeRoute; //type: ObjectTrackings::ObjectTracking::TypeRoute
         class TypeBooleanList; //type: ObjectTrackings::ObjectTracking::TypeBooleanList
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeInterface> type_interface;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeRtr> type_rtr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList> type_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeRoute> type_route;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeBooleanList> type_boolean_list;
@@ -96,6 +98,27 @@ class ObjectTrackings::ObjectTracking::TypeInterface : public ydk::Entity
         ydk::YLeaf interface; //type: string
 
 }; // ObjectTrackings::ObjectTracking::TypeInterface
+
+
+class ObjectTrackings::ObjectTracking::TypeRtr : public ydk::Entity
+{
+    public:
+        TypeRtr();
+        ~TypeRtr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rtr; //type: uint32
+
+}; // ObjectTrackings::ObjectTracking::TypeRtr
 
 
 class ObjectTrackings::ObjectTracking::TypeList : public ydk::Entity

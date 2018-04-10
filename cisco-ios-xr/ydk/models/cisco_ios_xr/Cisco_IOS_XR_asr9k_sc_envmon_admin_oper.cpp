@@ -986,7 +986,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::SensorName()
     :
     name{YType::str, "name"},
-    value_brief{YType::int32, "value-brief"}
+    value_brief{YType::str, "value-brief"}
     	,
     thresholds(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds>())
 	,value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed>())
@@ -1205,7 +1205,7 @@ EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes:
     :
     type{YType::str, "type"},
     trap{YType::boolean, "trap"},
-    value_brief{YType::int32, "value-brief"}
+    value_brief{YType::str, "value-brief"}
     	,
     value_detailed(std::make_shared<EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed>())
 {

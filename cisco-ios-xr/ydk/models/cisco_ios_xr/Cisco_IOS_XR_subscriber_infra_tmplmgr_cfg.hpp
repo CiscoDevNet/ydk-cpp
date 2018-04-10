@@ -232,7 +232,7 @@ class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter : public ydk::Entity
         class Outbound; //type: DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound
         class Inbound; //type: DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound> outbound; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound> outbound;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound> inbound;
         
 }; // DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter
@@ -306,7 +306,7 @@ class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter : public ydk::Entity
         class Outbound; //type: DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound> inbound;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound> outbound; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound> outbound;
         
 }; // DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter
 
@@ -1572,7 +1572,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter : public yd
         class Outbound; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound
         class Inbound; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound> outbound; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound> outbound;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound> inbound;
         
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter
@@ -1646,7 +1646,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter : public yd
         class Outbound; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound> inbound;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound> outbound; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound> outbound;
         
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter
 
@@ -2540,7 +2540,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter :
         class Outbound; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound
         class Inbound; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound> outbound; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound> outbound;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound> inbound;
         
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter
@@ -2614,7 +2614,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter :
         class Outbound; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound> inbound;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound> outbound; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound> outbound;
         
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter
 

@@ -829,7 +829,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::has_leaf_or_ch
 
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::OuterTag()
     :
-    etype{YType::uint16, "etype"},
+    ether_type{YType::uint16, "ether-type"},
     priority{YType::uint8, "priority"},
     cfi{YType::uint8, "cfi"},
     vlan_id{YType::uint16, "vlan-id"}
@@ -844,7 +844,7 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::~OuterTag
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_data() const
 {
-    return etype.is_set
+    return ether_type.is_set
 	|| priority.is_set
 	|| cfi.is_set
 	|| vlan_id.is_set;
@@ -853,7 +853,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(etype.yfilter)
+	|| ydk::is_set(ether_type.yfilter)
 	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(cfi.yfilter)
 	|| ydk::is_set(vlan_id.yfilter);
@@ -870,7 +870,7 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interfac
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (etype.is_set || is_set(etype.yfilter)) leaf_name_data.push_back(etype.get_name_leafdata());
+    if (ether_type.is_set || is_set(ether_type.yfilter)) leaf_name_data.push_back(ether_type.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
     if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
@@ -893,11 +893,11 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
 
 void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "etype")
+    if(value_path == "ether-type")
     {
-        etype = value;
-        etype.value_namespace = name_space;
-        etype.value_namespace_prefix = name_space_prefix;
+        ether_type = value;
+        ether_type.value_namespace = name_space;
+        ether_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
@@ -921,9 +921,9 @@ void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_
 
 void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "etype")
+    if(value_path == "ether-type")
     {
-        etype.yfilter = yfilter;
+        ether_type.yfilter = yfilter;
     }
     if(value_path == "priority")
     {
@@ -941,14 +941,14 @@ void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::set_
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "etype" || name == "priority" || name == "cfi" || name == "vlan-id")
+    if(name == "ether-type" || name == "priority" || name == "cfi" || name == "vlan-id")
         return true;
     return false;
 }
 
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::InnerTag()
     :
-    etype{YType::uint16, "etype"},
+    ether_type{YType::uint16, "ether-type"},
     priority{YType::uint8, "priority"},
     cfi{YType::uint8, "cfi"},
     vlan_id{YType::uint16, "vlan-id"}
@@ -963,7 +963,7 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::~InnerTag
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::has_data() const
 {
-    return etype.is_set
+    return ether_type.is_set
 	|| priority.is_set
 	|| cfi.is_set
 	|| vlan_id.is_set;
@@ -972,7 +972,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::has_
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(etype.yfilter)
+	|| ydk::is_set(ether_type.yfilter)
 	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(cfi.yfilter)
 	|| ydk::is_set(vlan_id.yfilter);
@@ -989,7 +989,7 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interfac
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (etype.is_set || is_set(etype.yfilter)) leaf_name_data.push_back(etype.get_name_leafdata());
+    if (ether_type.is_set || is_set(ether_type.yfilter)) leaf_name_data.push_back(ether_type.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (cfi.is_set || is_set(cfi.yfilter)) leaf_name_data.push_back(cfi.get_name_leafdata());
     if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
@@ -1012,11 +1012,11 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
 
 void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "etype")
+    if(value_path == "ether-type")
     {
-        etype = value;
-        etype.value_namespace = name_space;
-        etype.value_namespace_prefix = name_space_prefix;
+        ether_type = value;
+        ether_type.value_namespace = name_space;
+        ether_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
@@ -1040,9 +1040,9 @@ void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::set_
 
 void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "etype")
+    if(value_path == "ether-type")
     {
-        etype.yfilter = yfilter;
+        ether_type.yfilter = yfilter;
     }
     if(value_path == "priority")
     {
@@ -1060,7 +1060,7 @@ void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::set_
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "etype" || name == "priority" || name == "cfi" || name == "vlan-id")
+    if(name == "ether-type" || name == "priority" || name == "cfi" || name == "vlan-id")
         return true;
     return false;
 }

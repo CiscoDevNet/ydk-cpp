@@ -5,7 +5,7 @@ submodule tailf-cli-extensions {
   }
 
   include tailf-meta-extensions {
-    revision-date 2013-11-07;
+    revision-date 2017-03-08;
   }
 
   organization "Tail-f Systems";
@@ -16,6 +16,49 @@ submodule tailf-cli-extensions {
 
      See also the 'display-' statements and the 'alt-name' statement
      in tailf-common.yang.";
+
+  revision 2017-03-08 {
+    description
+      "Released as part of Confd-6.4 / NCS-4.4.
+
+       Included latest revision of the tailf-meta-extensions submodule.";
+  }
+
+  revision 2017-01-26 {
+    description
+      "Released as part of Confd-6.3.1 / NCS-4.3.1.
+
+       Added tailf:cli-reset-full for user ordered lists.";
+  }
+
+  revision 2016-11-24 {
+    description
+      "Released as part of Confd-6.3 / NCS-4.3.
+
+       Added cli-diff-before.
+       Added cli-diff-set-before.
+       Added cli-diff-create-before.
+       Added cli-diff-modify-before.
+       Added cli-diff-delete-before.
+       Added cli-diff-after.
+       Added cli-diff-set-after.
+       Added cli-diff-create-after.
+       Added cli-diff-modify-after.
+       Added cli-diff-delete-after.";
+  }
+
+  revision 2016-05-04 {
+    description
+      "Released as part of Confd-6.2 / NCS-4.2.
+       Added cli-suppress-warning.";
+  }
+
+  revision 2016-04-08 {
+    description
+      "Released as part of ConfD-5.4 / NCS-3.4.
+
+       Added cli-suppress-quotes.";
+  }
 
   revision 2015-03-19 {
     description
@@ -221,6 +264,18 @@ submodule tailf-cli-extensions {
       "Released as part of ConfD-3.2.";
   }
 
+  extension cli-suppress-quotes {
+    tailf:use-in "leaf";
+    description
+      "Specifies that configuration data for a leaf should never be wrapped
+      with quotes. All internal data will be escaped to make sure it
+      can be presented correctly.
+
+      Can't be used for keys.
+
+      Used in J-, I- and C-style CLIs.";
+  }
+
   extension cli-show-no {
     tailf:use-in "leaf";
     tailf:use-in "list";
@@ -228,6 +283,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "refine";
     tailf:use-in "tailf:symlink";
     tailf:use-in "container";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that an optional leaf node or presence container
       should be displayed as 'no <name>' when it does not exist.
@@ -259,6 +317,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "refine";
     tailf:use-in "tailf:symlink";
     tailf:substatement "tailf:cli-reversed";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that a leaf of type boolean should be displayed as
        '<leafname>' if set to true, and 'no <leafname>' if set to
@@ -331,6 +392,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "list";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies a custom mode name, instead of the default which is the
       name of the list or container node.
@@ -380,6 +444,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "leaf-list";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies a custom display order for nodes with the
        tailf:cli-show-order-tag attribute. Nodes will be displayed
@@ -400,6 +467,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "container";
     tailf:use-in "list";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that a custom function will be invoked to find out the mode
       name, instead of using the default with is the name of the list
@@ -422,6 +492,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "container";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Creates a mode of the container.
 
@@ -449,6 +522,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "list";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Instructs the CLI engine to not make a mode of the list node.
 
@@ -535,6 +611,403 @@ submodule tailf-cli-extensions {
        Applies to C-style";
   }
 
+  extension cli-diff-before {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any changes made to this node
+       before any changes made to the target node(s).
+
+       Thus, the dependency will trigger when any changes
+       (created, modified or deleted) has been made to this node
+       while any changes (created, modified or deleted) has been made
+       to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-delete-before {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any delete operations made on this node
+       before any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been deleted
+       while any changes (created, modified or deleted) has been made
+       to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-set-before {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any set operations (created or modified) made on this node
+       before any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been set
+       (created or modified) while any changes (created, modified or deleted)
+       has been made to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-create-before {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any create operations made on this node
+       before any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been created
+       while any changes (created, modified or deleted) has been made
+       to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-modify-before {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any modify operations made on this node
+       before any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been modified
+       (not created or deleted) while any changes (created, modified or deleted)
+       has been made to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-after {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any changes made to this node
+       after any changes made to the target node(s).
+
+       Thus, the dependency will trigger when any changes
+       (created, modified or deleted) has been made to this node
+       while any changes (created, modified or deleted) has been made
+       to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-delete-after {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any delete operations made on this node
+       after any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been deleted
+       while any changes (created, modified or deleted) has been made
+       to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-set-after {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any set operations (created or modified) made on this node
+       after any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been set
+       (created or modified) while any changes (created, modified or deleted)
+       has been made to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-create-after {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any create operations made on this node
+       after any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been created
+       while any changes (created, modified or deleted) has been made
+       to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-diff-modify-after {
+    argument path {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:xpath-root";
+    tailf:substatement "tailf:cli-when-target-set";
+    tailf:substatement "tailf:cli-when-target-create";
+    tailf:substatement "tailf:cli-when-target-modify";
+    tailf:substatement "tailf:cli-when-target-delete";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:occurence "*";
+    description
+      "When displaying C-style configuration diffs,
+       display any modify operations made on this node
+       after any changes made to the target node(s).
+
+       Thus, the dependency will trigger when this node has been modified
+       (not created or deleted) while any changes (created, modified or deleted)
+       has been made to the target node(s).
+
+       Applies to C-style";
+  }
+
+  extension cli-when-target-set {
+    tailf:use-in "tailf:cli-diff-before";
+    tailf:use-in "tailf:cli-diff-delete-before";
+    tailf:use-in "tailf:cli-diff-set-before";
+    tailf:use-in "tailf:cli-diff-create-before";
+    tailf:use-in "tailf:cli-diff-modify-before";
+    tailf:use-in "tailf:cli-diff-after";
+    tailf:use-in "tailf:cli-diff-delete-after";
+    tailf:use-in "tailf:cli-diff-set-after";
+    tailf:use-in "tailf:cli-diff-create-after";
+    tailf:use-in "tailf:cli-diff-modify-after";
+    description
+      "Specify that the dependency should trigger when the target node(s)
+       has been set (created or modified).
+       Note; using this sub-statement is equivalent with using
+       both tailf:cli-when-target-create and tailf:cli-when-target-modify";
+  }
+
+  extension cli-when-target-create {
+    tailf:use-in "tailf:cli-diff-before";
+    tailf:use-in "tailf:cli-diff-delete-before";
+    tailf:use-in "tailf:cli-diff-set-before";
+    tailf:use-in "tailf:cli-diff-create-before";
+    tailf:use-in "tailf:cli-diff-modify-before";
+    tailf:use-in "tailf:cli-diff-after";
+    tailf:use-in "tailf:cli-diff-delete-after";
+    tailf:use-in "tailf:cli-diff-set-after";
+    tailf:use-in "tailf:cli-diff-create-after";
+    tailf:use-in "tailf:cli-diff-modify-after";
+    description
+      "Specify that the dependency should trigger when the target node(s)
+       has been created";
+  }
+
+  extension cli-when-target-modify {
+    tailf:use-in "tailf:cli-diff-before";
+    tailf:use-in "tailf:cli-diff-delete-before";
+    tailf:use-in "tailf:cli-diff-set-before";
+    tailf:use-in "tailf:cli-diff-create-before";
+    tailf:use-in "tailf:cli-diff-modify-before";
+    tailf:use-in "tailf:cli-diff-after";
+    tailf:use-in "tailf:cli-diff-delete-after";
+    tailf:use-in "tailf:cli-diff-set-after";
+    tailf:use-in "tailf:cli-diff-create-after";
+    tailf:use-in "tailf:cli-diff-modify-after";
+    description
+      "Specify that the dependency should trigger when the target node(s)
+       has been modified (not created or deleted)";
+  }
+
+  extension cli-when-target-delete {
+    tailf:use-in "tailf:cli-diff-before";
+    tailf:use-in "tailf:cli-diff-delete-before";
+    tailf:use-in "tailf:cli-diff-set-before";
+    tailf:use-in "tailf:cli-diff-create-before";
+    tailf:use-in "tailf:cli-diff-modify-before";
+    tailf:use-in "tailf:cli-diff-after";
+    tailf:use-in "tailf:cli-diff-delete-after";
+    tailf:use-in "tailf:cli-diff-set-after";
+    tailf:use-in "tailf:cli-diff-create-after";
+    tailf:use-in "tailf:cli-diff-modify-after";
+    description
+      "Specify that the dependency should trigger when the target node(s)
+       has been deleted";
+  }
 
   extension cli-diff-dependency {
     argument path {
@@ -552,6 +1025,9 @@ submodule tailf-cli-extensions {
     tailf:substatement "tailf:cli-trigger-on-set";
     tailf:substatement "tailf:cli-trigger-on-delete";
     tailf:substatement "tailf:cli-trigger-on-all";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     tailf:occurence "*";
     description
       "Tells the 'show configuration' command, and the diff generator
@@ -761,6 +1237,12 @@ submodule tailf-cli-extensions {
     tailf:use-in "list";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
+    tailf:substatement "tailf:cli-reset-full" {
+      tailf:occurence "?";
+    }
     description
       "Instructs the CLI engine to not generate 'insert' comments
        when displaying configuration changes of ordered-by user
@@ -769,10 +1251,19 @@ submodule tailf-cli-extensions {
        Should not be used together with tailf:cli-show-obu-comments";
   }
 
+  extension cli-reset-full {
+    tailf:use-in "tailf:cli-show-long-obu-diffs";
+    description
+      "Indicates that the list should be fully printed out on change.";
+  }
+
   extension cli-show-obu-comments {
     tailf:use-in "list";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Enforces the CLI engine to generate 'insert' comments
        when displaying configuration changes of ordered-by user
@@ -1053,6 +1544,8 @@ submodule tailf-cli-extensions {
 
       Can be used in key leafs only.
 
+      Note: This extension isn't applicable in actions
+
       Used in J-, I- and C-style CLIs.";
   }
 
@@ -1108,6 +1601,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "leaf";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Means that the integer key should not allow range expressions.
 
@@ -1122,6 +1618,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "refine";
     tailf:substatement "tailf:cli-range-type" {
       tailf:occurence "1";
+    }
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
     }
     description
       "Specifies that the key should support ranges.  A type matching the
@@ -1143,6 +1642,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "refine";
     tailf:substatement "tailf:cli-completion-id";
     tailf:substatement "tailf:cli-allow-caching";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that the list supports range expressions and that a custom
       function will be invoked to determine if an instance belong in
@@ -1174,6 +1676,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "refine";
     tailf:substatement "tailf:cli-completion-id";
     tailf:substatement "tailf:cli-allow-caching";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies a callback to invoke to get an array of
       instances matching a regular expression. This is used
@@ -1230,6 +1735,45 @@ submodule tailf-cli-extensions {
       See also /confdConfig/cli/allowWildcard in confd.conf(5).
 
       Used in J-, I- and C-style CLIs.";
+  }
+
+  extension cli-suppress-warning {
+    argument value {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "tailf:cli-run-template-enter";
+    tailf:use-in "tailf:cli-sequence-commands";
+    tailf:use-in "tailf:cli-hide-in-submode";
+    tailf:use-in "tailf:cli-boolean-no";
+    tailf:use-in "tailf:cli-compact-syntax";
+    tailf:use-in "tailf:cli-break-sequence-commands";
+    tailf:use-in "tailf:cli-show-long-obu-diffs";
+    tailf:use-in "tailf:cli-show-obu-comments";
+    tailf:use-in "tailf:cli-suppress-range";
+    tailf:use-in "tailf:cli-suppress-mode";
+    tailf:use-in "tailf:cli-custom-range";
+    tailf:use-in "tailf:cli-custom-range-actionpoint";
+    tailf:use-in "tailf:cli-custom-range-enumerator";
+    tailf:use-in "tailf:cli-drop-node-name";
+    tailf:use-in "tailf:cli-add-mode";
+    tailf:use-in "tailf:cli-mode-name";
+    tailf:use-in "tailf:cli-incomplete-command";
+    tailf:use-in "tailf:cli-full-command";
+    tailf:use-in "tailf:cli-mode-name-actionpoint";
+    tailf:use-in "tailf:cli-optional-in-sequence";
+    tailf:use-in "tailf:cli-prefix-key";
+    tailf:use-in "tailf:cli-show-no";
+    tailf:use-in "tailf:cli-show-order-tag";
+    tailf:use-in "tailf:cli-diff-dependency";
+    tailf:use-in "container";
+    description
+      "Avoid involving specific CLI-extension related YANG statements in
+       warnings related to certain yanger error codes. For a list of
+       yanger error codes do 'yanger -e'.
+
+       Used in I- and C-style CLIs.";
   }
 
   extension cli-configure-mode {
@@ -1348,6 +1892,7 @@ submodule tailf-cli-extensions {
     tailf:use-in "leaf";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    status deprecated;
     description
       "Do not display value if it is same as default.
 
@@ -1385,6 +1930,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "leaf-list";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that the name of a node is not present in the CLI.
 
@@ -1487,6 +2035,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "container";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Instructs the CLI engine to use the compact representation for this
       node in the 'show running-configuration' command.  The compact
@@ -1698,6 +2249,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that an auto-rendered command should be considered
       incomplete.  Can be used to prevent <cr> from appearing in
@@ -1715,6 +2269,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "tailf:symlink";
     tailf:use-in "container";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that an auto-rendered command should be considered complete,
       ie, no additional leaves or containers can be entered on the same
@@ -1730,6 +2287,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "refine";
     tailf:substatement "tailf:cli-reset-siblings";
     tailf:substatement "tailf:cli-reset-all-siblings";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that an auto-rendered command should only accept arguments
       in the same order as they are specified in the YANG model.
@@ -1800,6 +2360,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that previous cli-sequence-command declaration should
       stop at this point. Only applicable when a cli-sequence-command
@@ -1829,6 +2392,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies that this element is optional in the sequence. If it
        is set it must be set in the right sequence but may be skipped.
@@ -1868,6 +2434,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "container";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Hide leaf when submode has been entered. Mostly useful when
        leaf has to be entered in order to enter a submode. Also works
@@ -1893,6 +2462,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "refine";
     tailf:use-in "leaf-list";
     tailf:substatement "tailf:cli-before-key";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "This leaf has to be given as a prefix before entering the actual
       list keys. Very backwards but a construct that exists in some
@@ -1964,6 +2536,8 @@ submodule tailf-cli-extensions {
       If applied to a container or a list, any nodes below will
       also be case-sensitive.
 
+      This negates the cli-case-insensitive extension (see below).
+
       Note that this will override any case-sensitivity settings
       configured in confd.conf";
   }
@@ -1973,9 +2547,14 @@ submodule tailf-cli-extensions {
     tailf:use-in "list";
     tailf:use-in "leaf";
     description
-      "Specifies that node is case-insensitive.
-      If applied to a container or a list, any nodes below will
-      also be case-insensitive.
+      "Specifies that node is case-insensitive.  If applied to a container or
+      a list, any nodes below will also be case-insensitive.
+
+      Node names are discovered without care of the case. Also affect
+      matching of key values in lists. However it doesn't affect the
+      storing of a leaf value. E.g. a modification of a leaf value from
+      upper case to lower case is still considered a modification of
+      data.
 
       Note that this will override any case-insensitivity settings
       configured in confd.conf";
@@ -2223,6 +2802,8 @@ submodule tailf-cli-extensions {
       If the tailf:cli-max-words substatements is used then
       additional leaves may be entered.
 
+      Note: This extension isn't applicable in actions
+
       Used in I- and C-style CLIs.";
   }
 
@@ -2397,6 +2978,9 @@ submodule tailf-cli-extensions {
     tailf:use-in "container";
     tailf:use-in "tailf:symlink";
     tailf:use-in "refine";
+    tailf:substatement "tailf:cli-suppress-warning" {
+      tailf:occurence "*";
+    }
     description
       "Specifies a template string to be printed before each list entry is
       printed.
@@ -2451,6 +3035,12 @@ submodule tailf-cli-extensions {
       The template may contain a mix of text and expandable entries.
       Expandable entries all start with $( and end with a matching ).
       Parentheses and dollar signs need to be quoted in plain text.
+
+      (Disclaimer: tailf:cli-template-string will not respect
+       all CLI YANG extensions existing from expandable entries.
+       For instance, tailf:cli-no-name-on-delete will have no
+       effect when the value of a node with this extension is
+       fetched as a result of expanding CLI templates.)
 
       The template is expanded as follows:
 
@@ -2579,6 +3169,20 @@ submodule tailf-cli-extensions {
             (i.e., the node that the parameter refers to is a
             leaf-list), this expression evaluates to true if <value>
             is a member of the list.
+
+        Note that it is also possible to omit ':word2' in
+        order to print the entire statement, or nothing.
+        As an example $(conf?word1) will print 'word1' if conf
+        exists, otherwise it will print nothing.
+
+      $(cond??word1)
+
+        Double question marks can be used to achieve the same effect
+        as above, but with the distinction that the 'cond' variable
+        needs to be explicitly configured, in order to be evaluated
+        as existing. This is needed in the case of evaluating leafs
+        with default values, where the single question mark operator
+        would evaluate to existing even if not explicitly configured.
 
       $(parameter|filter)
 
@@ -2809,5 +3413,4 @@ submodule tailf-cli-extensions {
           + 'Encap $(encapsulation|upper), $(loopback?:loopback not set)\\n';
         }";
   }
-
 }

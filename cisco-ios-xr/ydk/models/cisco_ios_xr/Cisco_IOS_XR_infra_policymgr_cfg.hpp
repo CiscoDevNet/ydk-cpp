@@ -133,9 +133,9 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
         ydk::YLeafList ipv4_dscp; //type: list of  string
         ydk::YLeafList ipv6_dscp; //type: list of  string
         ydk::YLeafList dscp; //type: list of  string
-        ydk::YLeafList ipv4_precedence; //type: list of  one of string, uint8
-        ydk::YLeafList ipv6_precedence; //type: list of  one of string, uint8
-        ydk::YLeafList precedence; //type: list of  one of string, uint8
+        ydk::YLeafList ipv4_precedence; //type: list of  one of uint8, string
+        ydk::YLeafList ipv6_precedence; //type: list of  one of uint8, string
+        ydk::YLeafList precedence; //type: list of  one of uint8, string
         ydk::YLeafList qos_group; //type: list of  string
         ydk::YLeafList traffic_class; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
@@ -449,9 +449,9 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public ydk::Entity
         ydk::YLeafList ipv4_dscp; //type: list of  string
         ydk::YLeafList ipv6_dscp; //type: list of  string
         ydk::YLeafList dscp; //type: list of  string
-        ydk::YLeafList ipv4_precedence; //type: list of  one of string, uint8
-        ydk::YLeafList ipv6_precedence; //type: list of  one of string, uint8
-        ydk::YLeafList precedence; //type: list of  one of string, uint8
+        ydk::YLeafList ipv4_precedence; //type: list of  one of uint8, string
+        ydk::YLeafList ipv6_precedence; //type: list of  one of uint8, string
+        ydk::YLeafList precedence; //type: list of  one of uint8, string
         ydk::YLeafList qos_group; //type: list of  string
         ydk::YLeafList traffic_class; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
@@ -1299,7 +1299,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public
         ydk::YLeafList discard_class; //type: list of  uint8
         ydk::YLeafList dscp; //type: list of  string
         ydk::YLeafList mpls_exp; //type: list of  uint8
-        ydk::YLeafList precedence; //type: list of  one of string, uint8
+        ydk::YLeafList precedence; //type: list of  one of uint8, string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect
 
@@ -1328,8 +1328,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public ydk::Ent
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of string, uint8
-        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf precedence; //type: one of uint8, string
+        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8
@@ -1514,8 +1514,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of string, uint8
-        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf precedence; //type: one of uint8, string
+        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8
@@ -1577,8 +1577,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction:
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of string, uint8
-        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf precedence; //type: one of uint8, string
+        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8
@@ -1640,8 +1640,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of string, uint8
-        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf precedence; //type: one of uint8, string
+        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8

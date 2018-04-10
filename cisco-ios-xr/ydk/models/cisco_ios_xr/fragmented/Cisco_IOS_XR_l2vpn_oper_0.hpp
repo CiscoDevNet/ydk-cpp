@@ -5000,26 +5000,27 @@ class L2vpnProcRole : public ydk::Enum
 
 };
 
-class L2vpnIdMgrApp : public ydk::Enum
+class L2vpnIdMgrAppBag : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_virtual_ac;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_ac;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_pw;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_bd;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_fxc;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_mp2mp;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_rd;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_pbb;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_if_list;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_atom;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_global;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_p_tree;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_pw_group;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_evpn;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_evpn_lbl;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_evpn_rd;
-        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_type_count;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_virtual_ac;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_ac;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_pw;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_bd;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_fxc;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_mp2mp;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_rd;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_pbb;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_if_list;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_atom;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_global;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_pw_group;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_evpn;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_evpn_lbl;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_evpn_rd;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_ital;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_bp;
+        static const ydk::Enum::YLeaf l2vpn_id_mgr_app_bag_type_count;
 
 };
 

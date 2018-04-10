@@ -8490,44 +8490,44 @@ bool L2Vpnv2::Nodes::Node::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::M
     return false;
 }
 
-L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterfaces()
+L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceLists()
 {
 
-    yang_name = "generic-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-interface-lists"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-L2Vpnv2::Nodes::Node::GenericInterfaces::~GenericInterfaces()
+L2Vpnv2::Nodes::Node::GenericInterfaceLists::~GenericInterfaceLists()
 {
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::has_data() const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::has_data() const
 {
-    for (std::size_t index=0; index<generic_interface.size(); index++)
+    for (std::size_t index=0; index<generic_interface_list.size(); index++)
     {
-        if(generic_interface[index]->has_data())
+        if(generic_interface_list[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::has_operation() const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::has_operation() const
 {
-    for (std::size_t index=0; index<generic_interface.size(); index++)
+    for (std::size_t index=0; index<generic_interface_list.size(); index++)
     {
-        if(generic_interface[index]->has_operation())
+        if(generic_interface_list[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string L2Vpnv2::Nodes::Node::GenericInterfaces::get_segment_path() const
+std::string L2Vpnv2::Nodes::Node::GenericInterfaceLists::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-interfaces";
+    path_buffer << "generic-interface-lists";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInterfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInterfaceLists::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8536,25 +8536,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInte
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::GenericInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::GenericInterfaceLists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "generic-interface")
+    if(child_yang_name == "generic-interface-list")
     {
-        auto c = std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface>();
+        auto c = std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList>();
         c->parent = this;
-        generic_interface.push_back(c);
+        generic_interface_list.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInterfaceLists::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : generic_interface)
+    for (auto const & c : generic_interface_list)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8565,22 +8565,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInte
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::GenericInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Nodes::Node::GenericInterfaceLists::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpnv2::Nodes::Node::GenericInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Nodes::Node::GenericInterfaceLists::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "generic-interface")
+    if(name == "generic-interface-list")
         return true;
     return false;
 }
 
-L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::GenericInterface()
+L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::GenericInterfaceList()
     :
     interface_list_name{YType::str, "interface-list-name"},
     interface_list_name_xr{YType::str, "interface-list-name-xr"},
@@ -8589,14 +8589,14 @@ L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::GenericInterface()
     items{YType::uint32, "items"}
 {
 
-    yang_name = "generic-interface"; yang_parent_name = "generic-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-interface-list"; yang_parent_name = "generic-interface-lists"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::~GenericInterface()
+L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::~GenericInterfaceList()
 {
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::has_data() const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::has_data() const
 {
     for (std::size_t index=0; index<interface.size(); index++)
     {
@@ -8610,7 +8610,7 @@ bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::has_data() const
 	|| items.is_set;
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::has_operation() const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::has_operation() const
 {
     for (std::size_t index=0; index<interface.size(); index++)
     {
@@ -8625,14 +8625,14 @@ bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::has_operation() 
 	|| ydk::is_set(items.yfilter);
 }
 
-std::string L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::get_segment_path() const
+std::string L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-interface" <<"[interface-list-name='" <<interface_list_name <<"']";
+    path_buffer << "generic-interface-list" <<"[interface-list-name='" <<interface_list_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8646,11 +8646,11 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInte
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface>();
+        auto c = std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface>();
         c->parent = this;
         interface.push_back(c);
         return c;
@@ -8659,7 +8659,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterfac
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8675,7 +8675,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInte
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-name")
     {
@@ -8709,7 +8709,7 @@ void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::set_value(const 
     }
 }
 
-void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-list-name")
     {
@@ -8733,14 +8733,14 @@ void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::set_filter(const
     }
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "interface-list-name" || name == "interface-list-name-xr" || name == "interface-list-id" || name == "number-of-interfaces" || name == "items")
         return true;
     return false;
 }
 
-L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::Interface()
+L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
     pending_replications{YType::uint32, "pending-replications"},
@@ -8748,14 +8748,14 @@ L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::Interface(
     is_fib_downloaded{YType::boolean, "is-fib-downloaded"}
 {
 
-    yang_name = "interface"; yang_parent_name = "generic-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "generic-interface-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::~Interface()
+L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::~Interface()
 {
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::has_data() const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::has_data() const
 {
     return interface_name.is_set
 	|| pending_replications.is_set
@@ -8763,7 +8763,7 @@ bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::has_d
 	|| is_fib_downloaded.is_set;
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::has_operation() const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
@@ -8772,14 +8772,14 @@ bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::has_o
 	|| ydk::is_set(is_fib_downloaded.yfilter);
 }
 
-std::string L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::get_segment_path() const
+std::string L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8792,19 +8792,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::GenericInte
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -8832,7 +8832,7 @@ void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::set_v
     }
 }
 
-void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -8852,7 +8852,7 @@ void L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::set_f
     }
 }
 
-bool L2Vpnv2::Nodes::Node::GenericInterfaces::GenericInterface::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "pending-replications" || name == "not-supported-replications" || name == "is-fib-downloaded")
         return true;
@@ -15017,6 +15017,9 @@ L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::Flexibl
     last_time_status_down{YType::str, "last-time-status-down"},
     time_elapsed_status_down{YType::uint32, "time-elapsed-status-down"},
     shutdown{YType::boolean, "shutdown"},
+    data_path_down{YType::boolean, "data-path-down"},
+    use_tunnel_path{YType::boolean, "use-tunnel-path"},
+    odn_configured{YType::boolean, "odn-configured"},
     pseudo_wire_type_mismatched{YType::boolean, "pseudo-wire-type-mismatched"},
     payload_bytes_mismatched{YType::boolean, "payload-bytes-mismatched"},
     bitrate_mismatched{YType::boolean, "bitrate-mismatched"},
@@ -15126,6 +15129,9 @@ bool L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::Fl
 	|| last_time_status_down.is_set
 	|| time_elapsed_status_down.is_set
 	|| shutdown.is_set
+	|| data_path_down.is_set
+	|| use_tunnel_path.is_set
+	|| odn_configured.is_set
 	|| pseudo_wire_type_mismatched.is_set
 	|| payload_bytes_mismatched.is_set
 	|| bitrate_mismatched.is_set
@@ -15219,6 +15225,9 @@ bool L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::Fl
 	|| ydk::is_set(last_time_status_down.yfilter)
 	|| ydk::is_set(time_elapsed_status_down.yfilter)
 	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(data_path_down.yfilter)
+	|| ydk::is_set(use_tunnel_path.yfilter)
+	|| ydk::is_set(odn_configured.yfilter)
 	|| ydk::is_set(pseudo_wire_type_mismatched.yfilter)
 	|| ydk::is_set(payload_bytes_mismatched.yfilter)
 	|| ydk::is_set(bitrate_mismatched.yfilter)
@@ -15320,6 +15329,9 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::FlexibleXco
     if (last_time_status_down.is_set || is_set(last_time_status_down.yfilter)) leaf_name_data.push_back(last_time_status_down.get_name_leafdata());
     if (time_elapsed_status_down.is_set || is_set(time_elapsed_status_down.yfilter)) leaf_name_data.push_back(time_elapsed_status_down.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (data_path_down.is_set || is_set(data_path_down.yfilter)) leaf_name_data.push_back(data_path_down.get_name_leafdata());
+    if (use_tunnel_path.is_set || is_set(use_tunnel_path.yfilter)) leaf_name_data.push_back(use_tunnel_path.get_name_leafdata());
+    if (odn_configured.is_set || is_set(odn_configured.yfilter)) leaf_name_data.push_back(odn_configured.get_name_leafdata());
     if (pseudo_wire_type_mismatched.is_set || is_set(pseudo_wire_type_mismatched.yfilter)) leaf_name_data.push_back(pseudo_wire_type_mismatched.get_name_leafdata());
     if (payload_bytes_mismatched.is_set || is_set(payload_bytes_mismatched.yfilter)) leaf_name_data.push_back(payload_bytes_mismatched.get_name_leafdata());
     if (bitrate_mismatched.is_set || is_set(bitrate_mismatched.yfilter)) leaf_name_data.push_back(bitrate_mismatched.get_name_leafdata());
@@ -15688,6 +15700,24 @@ void L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::Fl
         shutdown = value;
         shutdown.value_namespace = name_space;
         shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "data-path-down")
+    {
+        data_path_down = value;
+        data_path_down.value_namespace = name_space;
+        data_path_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "use-tunnel-path")
+    {
+        use_tunnel_path = value;
+        use_tunnel_path.value_namespace = name_space;
+        use_tunnel_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "odn-configured")
+    {
+        odn_configured = value;
+        odn_configured.value_namespace = name_space;
+        odn_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-type-mismatched")
     {
@@ -16109,6 +16139,18 @@ void L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::Fl
     {
         shutdown.yfilter = yfilter;
     }
+    if(value_path == "data-path-down")
+    {
+        data_path_down.yfilter = yfilter;
+    }
+    if(value_path == "use-tunnel-path")
+    {
+        use_tunnel_path.yfilter = yfilter;
+    }
+    if(value_path == "odn-configured")
+    {
+        odn_configured.yfilter = yfilter;
+    }
     if(value_path == "pseudo-wire-type-mismatched")
     {
         pseudo_wire_type_mismatched.yfilter = yfilter;
@@ -16313,7 +16355,7 @@ void L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::Fl
 
 bool L2Vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer-id" || name == "encapsulation-info" || name == "local-interface" || name == "remote-interface" || name == "preferred-path" || name == "local-signalling" || name == "remote-signalling" || name == "statistics" || name == "p2mp-pw" || name == "local-source-address" || name == "ipv6-local-source-address" || name == "pseudo-wire-id" || name == "is-pwr-type" || name == "is-evpn-vpws-type" || name == "xconnect-id" || name == "state" || name == "pseudo-wire-state" || name == "protocol" || name == "pw-class-name" || name == "tag-rewrite" || name == "interworking" || name == "fe-ctype" || name == "evpn-src-acid" || name == "sequencing-type" || name == "resync-enabled" || name == "resync-threshold" || name == "local-control-word" || name == "remote-control-word" || name == "local-pseudo-wire-type" || name == "remote-pseudo-wire-type" || name == "imposed-vlan-id" || name == "time-created" || name == "time-elapsed-creation" || name == "last-time-status-changed" || name == "time-elapsed-status-changed" || name == "last-time-status-down" || name == "time-elapsed-status-down" || name == "shutdown" || name == "pseudo-wire-type-mismatched" || name == "payload-bytes-mismatched" || name == "bitrate-mismatched" || name == "rtp-mismatched" || name == "diff-ts-mismatched" || name == "sig-pkts-mismatched" || name == "cas-mismatched" || name == "payload-type-mismatched" || name == "freq-mismatched" || name == "ssrc-mismatched" || name == "mtu-mismatched" || name == "illegal-control-word" || name == "ad-remote-down" || name == "not-supported-qinq" || name == "local-label-failed" || name == "remote-label-failed" || name == "preferred-path-disable-fallback" || name == "backup-pw" || name == "primary-pw" || name == "backup-active" || name == "backup-force-active" || name == "disable-never" || name == "disable-delay" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "number-ma-cwithdraw-message-sent" || name == "num-ma-cwithdraw-msg-received" || name == "out-of-memory-state" || name == "transport-lsp-down" || name == "mac-limit-oper-down" || name == "pw-status-use" || name == "auto-discovery" || name == "ad-method" || name == "pwlsd-rewrite-failed" || name == "ldp-label-advertise-failed" || name == "is-vfi" || name == "is-multi-segment-pseudowire" || name == "pw-redundancy-one-way" || name == "load-balance" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-flow-label-code17-disabled" || name == "is-flow-label-static" || name == "is-partially-programmed" || name == "pw-redundancy-initial-delay" || name == "bridge-pw-type-mismatch" || name == "required-bw" || name == "admited-bw" || name == "forward-class" || name == "table-policy-name")
+    if(name == "peer-id" || name == "encapsulation-info" || name == "local-interface" || name == "remote-interface" || name == "preferred-path" || name == "local-signalling" || name == "remote-signalling" || name == "statistics" || name == "p2mp-pw" || name == "local-source-address" || name == "ipv6-local-source-address" || name == "pseudo-wire-id" || name == "is-pwr-type" || name == "is-evpn-vpws-type" || name == "xconnect-id" || name == "state" || name == "pseudo-wire-state" || name == "protocol" || name == "pw-class-name" || name == "tag-rewrite" || name == "interworking" || name == "fe-ctype" || name == "evpn-src-acid" || name == "sequencing-type" || name == "resync-enabled" || name == "resync-threshold" || name == "local-control-word" || name == "remote-control-word" || name == "local-pseudo-wire-type" || name == "remote-pseudo-wire-type" || name == "imposed-vlan-id" || name == "time-created" || name == "time-elapsed-creation" || name == "last-time-status-changed" || name == "time-elapsed-status-changed" || name == "last-time-status-down" || name == "time-elapsed-status-down" || name == "shutdown" || name == "data-path-down" || name == "use-tunnel-path" || name == "odn-configured" || name == "pseudo-wire-type-mismatched" || name == "payload-bytes-mismatched" || name == "bitrate-mismatched" || name == "rtp-mismatched" || name == "diff-ts-mismatched" || name == "sig-pkts-mismatched" || name == "cas-mismatched" || name == "payload-type-mismatched" || name == "freq-mismatched" || name == "ssrc-mismatched" || name == "mtu-mismatched" || name == "illegal-control-word" || name == "ad-remote-down" || name == "not-supported-qinq" || name == "local-label-failed" || name == "remote-label-failed" || name == "preferred-path-disable-fallback" || name == "backup-pw" || name == "primary-pw" || name == "backup-active" || name == "backup-force-active" || name == "disable-never" || name == "disable-delay" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "number-ma-cwithdraw-message-sent" || name == "num-ma-cwithdraw-msg-received" || name == "out-of-memory-state" || name == "transport-lsp-down" || name == "mac-limit-oper-down" || name == "pw-status-use" || name == "auto-discovery" || name == "ad-method" || name == "pwlsd-rewrite-failed" || name == "ldp-label-advertise-failed" || name == "is-vfi" || name == "is-multi-segment-pseudowire" || name == "pw-redundancy-one-way" || name == "load-balance" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-flow-label-code17-disabled" || name == "is-flow-label-static" || name == "is-partially-programmed" || name == "pw-redundancy-initial-delay" || name == "bridge-pw-type-mismatch" || name == "required-bw" || name == "admited-bw" || name == "forward-class" || name == "table-policy-name")
         return true;
     return false;
 }

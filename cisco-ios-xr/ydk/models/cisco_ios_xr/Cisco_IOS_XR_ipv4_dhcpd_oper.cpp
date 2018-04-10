@@ -439,6 +439,7 @@ DhcpClient::Nodes::Node::ClientStats::ClientStat::ClientStat()
     num_t1_timer_event{YType::uint32, "num-t1-timer-event"},
     num_t2_timer_event{YType::uint32, "num-t2-timer-event"},
     num_lease_timer_event{YType::uint32, "num-lease-timer-event"},
+    num_vbind_timer_event{YType::uint32, "num-vbind-timer-event"},
     num_discovers_sent_successfully{YType::uint32, "num-discovers-sent-successfully"},
     num_requests_sent_successfully{YType::uint32, "num-requests-sent-successfully"},
     num_releases_sent_successfully{YType::uint32, "num-releases-sent-successfully"},
@@ -459,6 +460,8 @@ DhcpClient::Nodes::Node::ClientStats::ClientStat::ClientStat()
     num_t2_timer_stop{YType::uint32, "num-t2-timer-stop"},
     num_lease_timer_start{YType::uint32, "num-lease-timer-start"},
     num_lease_timer_stop{YType::uint32, "num-lease-timer-stop"},
+    num_vbind_timer_start{YType::uint32, "num-vbind-timer-start"},
+    num_vbind_timer_stop{YType::uint32, "num-vbind-timer-stop"},
     num_invalid_events{YType::uint32, "num-invalid-events"},
     num_discovers_failed{YType::uint32, "num-discovers-failed"},
     num_requests_failed{YType::uint32, "num-requests-failed"},
@@ -497,6 +500,7 @@ bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_data() const
 	|| num_t1_timer_event.is_set
 	|| num_t2_timer_event.is_set
 	|| num_lease_timer_event.is_set
+	|| num_vbind_timer_event.is_set
 	|| num_discovers_sent_successfully.is_set
 	|| num_requests_sent_successfully.is_set
 	|| num_releases_sent_successfully.is_set
@@ -517,6 +521,8 @@ bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_data() const
 	|| num_t2_timer_stop.is_set
 	|| num_lease_timer_start.is_set
 	|| num_lease_timer_stop.is_set
+	|| num_vbind_timer_start.is_set
+	|| num_vbind_timer_stop.is_set
 	|| num_invalid_events.is_set
 	|| num_discovers_failed.is_set
 	|| num_requests_failed.is_set
@@ -549,6 +555,7 @@ bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_operation() const
 	|| ydk::is_set(num_t1_timer_event.yfilter)
 	|| ydk::is_set(num_t2_timer_event.yfilter)
 	|| ydk::is_set(num_lease_timer_event.yfilter)
+	|| ydk::is_set(num_vbind_timer_event.yfilter)
 	|| ydk::is_set(num_discovers_sent_successfully.yfilter)
 	|| ydk::is_set(num_requests_sent_successfully.yfilter)
 	|| ydk::is_set(num_releases_sent_successfully.yfilter)
@@ -569,6 +576,8 @@ bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_operation() const
 	|| ydk::is_set(num_t2_timer_stop.yfilter)
 	|| ydk::is_set(num_lease_timer_start.yfilter)
 	|| ydk::is_set(num_lease_timer_stop.yfilter)
+	|| ydk::is_set(num_vbind_timer_start.yfilter)
+	|| ydk::is_set(num_vbind_timer_stop.yfilter)
 	|| ydk::is_set(num_invalid_events.yfilter)
 	|| ydk::is_set(num_discovers_failed.yfilter)
 	|| ydk::is_set(num_requests_failed.yfilter)
@@ -609,6 +618,7 @@ std::vector<std::pair<std::string, LeafData> > DhcpClient::Nodes::Node::ClientSt
     if (num_t1_timer_event.is_set || is_set(num_t1_timer_event.yfilter)) leaf_name_data.push_back(num_t1_timer_event.get_name_leafdata());
     if (num_t2_timer_event.is_set || is_set(num_t2_timer_event.yfilter)) leaf_name_data.push_back(num_t2_timer_event.get_name_leafdata());
     if (num_lease_timer_event.is_set || is_set(num_lease_timer_event.yfilter)) leaf_name_data.push_back(num_lease_timer_event.get_name_leafdata());
+    if (num_vbind_timer_event.is_set || is_set(num_vbind_timer_event.yfilter)) leaf_name_data.push_back(num_vbind_timer_event.get_name_leafdata());
     if (num_discovers_sent_successfully.is_set || is_set(num_discovers_sent_successfully.yfilter)) leaf_name_data.push_back(num_discovers_sent_successfully.get_name_leafdata());
     if (num_requests_sent_successfully.is_set || is_set(num_requests_sent_successfully.yfilter)) leaf_name_data.push_back(num_requests_sent_successfully.get_name_leafdata());
     if (num_releases_sent_successfully.is_set || is_set(num_releases_sent_successfully.yfilter)) leaf_name_data.push_back(num_releases_sent_successfully.get_name_leafdata());
@@ -629,6 +639,8 @@ std::vector<std::pair<std::string, LeafData> > DhcpClient::Nodes::Node::ClientSt
     if (num_t2_timer_stop.is_set || is_set(num_t2_timer_stop.yfilter)) leaf_name_data.push_back(num_t2_timer_stop.get_name_leafdata());
     if (num_lease_timer_start.is_set || is_set(num_lease_timer_start.yfilter)) leaf_name_data.push_back(num_lease_timer_start.get_name_leafdata());
     if (num_lease_timer_stop.is_set || is_set(num_lease_timer_stop.yfilter)) leaf_name_data.push_back(num_lease_timer_stop.get_name_leafdata());
+    if (num_vbind_timer_start.is_set || is_set(num_vbind_timer_start.yfilter)) leaf_name_data.push_back(num_vbind_timer_start.get_name_leafdata());
+    if (num_vbind_timer_stop.is_set || is_set(num_vbind_timer_stop.yfilter)) leaf_name_data.push_back(num_vbind_timer_stop.get_name_leafdata());
     if (num_invalid_events.is_set || is_set(num_invalid_events.yfilter)) leaf_name_data.push_back(num_invalid_events.get_name_leafdata());
     if (num_discovers_failed.is_set || is_set(num_discovers_failed.yfilter)) leaf_name_data.push_back(num_discovers_failed.get_name_leafdata());
     if (num_requests_failed.is_set || is_set(num_requests_failed.yfilter)) leaf_name_data.push_back(num_requests_failed.get_name_leafdata());
@@ -734,6 +746,12 @@ void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_value(const std::stri
         num_lease_timer_event = value;
         num_lease_timer_event.value_namespace = name_space;
         num_lease_timer_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-vbind-timer-event")
+    {
+        num_vbind_timer_event = value;
+        num_vbind_timer_event.value_namespace = name_space;
+        num_vbind_timer_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-discovers-sent-successfully")
     {
@@ -854,6 +872,18 @@ void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_value(const std::stri
         num_lease_timer_stop = value;
         num_lease_timer_stop.value_namespace = name_space;
         num_lease_timer_stop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-vbind-timer-start")
+    {
+        num_vbind_timer_start = value;
+        num_vbind_timer_start.value_namespace = name_space;
+        num_vbind_timer_start.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-vbind-timer-stop")
+    {
+        num_vbind_timer_stop = value;
+        num_vbind_timer_stop.value_namespace = name_space;
+        num_vbind_timer_stop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-invalid-events")
     {
@@ -997,6 +1027,10 @@ void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_filter(const std::str
     {
         num_lease_timer_event.yfilter = yfilter;
     }
+    if(value_path == "num-vbind-timer-event")
+    {
+        num_vbind_timer_event.yfilter = yfilter;
+    }
     if(value_path == "num-discovers-sent-successfully")
     {
         num_discovers_sent_successfully.yfilter = yfilter;
@@ -1077,6 +1111,14 @@ void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_filter(const std::str
     {
         num_lease_timer_stop.yfilter = yfilter;
     }
+    if(value_path == "num-vbind-timer-start")
+    {
+        num_vbind_timer_start.yfilter = yfilter;
+    }
+    if(value_path == "num-vbind-timer-stop")
+    {
+        num_vbind_timer_stop.yfilter = yfilter;
+    }
     if(value_path == "num-invalid-events")
     {
         num_invalid_events.yfilter = yfilter;
@@ -1141,7 +1183,7 @@ void DhcpClient::Nodes::Node::ClientStats::ClientStat::set_filter(const std::str
 
 bool DhcpClient::Nodes::Node::ClientStats::ClientStat::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-ifhandle" || name == "interface-name" || name == "num-events-received" || name == "num-create-event-received" || name == "num-delete-event-received" || name == "num-reboot-event-received" || name == "num-reinit-event-received" || name == "num-packet-event-received" || name == "num-init-timer-eventi" || name == "num-t1-timer-event" || name == "num-t2-timer-event" || name == "num-lease-timer-event" || name == "num-discovers-sent-successfully" || name == "num-requests-sent-successfully" || name == "num-releases-sent-successfully" || name == "num-renews-sent-successfully" || name == "num-rebinds-sent-successfully" || name == "num-declines-sent-successfully" || name == "num-request-after-reboot-sent" || name == "num-valid-offers-received" || name == "num-valid-acks-received" || name == "num-valid-nacks-received" || name == "num-unicast-packet-sent-successfully" || name == "num-broadcast-packet-sent-success" || name == "num-init-timer-start" || name == "num-init-timer-stop" || name == "num-t1-timer-start" || name == "num-t1-timer-stop" || name == "num-t2-timer-start" || name == "num-t2-timer-stop" || name == "num-lease-timer-start" || name == "num-lease-timer-stop" || name == "num-invalid-events" || name == "num-discovers-failed" || name == "num-requests-failed" || name == "num-releases-failed" || name == "num-renews-failed" || name == "num-rebinds-failed" || name == "num-declines-failed" || name == "num-request-after-reboot-failed" || name == "num-invalid-offers" || name == "num-invalid-acks" || name == "num-invalid-nacks" || name == "num-invalid-packets" || name == "num-unicast-failed" || name == "num-broadcast-failed" || name == "num-xid-mismatch")
+    if(name == "client-ifhandle" || name == "interface-name" || name == "num-events-received" || name == "num-create-event-received" || name == "num-delete-event-received" || name == "num-reboot-event-received" || name == "num-reinit-event-received" || name == "num-packet-event-received" || name == "num-init-timer-eventi" || name == "num-t1-timer-event" || name == "num-t2-timer-event" || name == "num-lease-timer-event" || name == "num-vbind-timer-event" || name == "num-discovers-sent-successfully" || name == "num-requests-sent-successfully" || name == "num-releases-sent-successfully" || name == "num-renews-sent-successfully" || name == "num-rebinds-sent-successfully" || name == "num-declines-sent-successfully" || name == "num-request-after-reboot-sent" || name == "num-valid-offers-received" || name == "num-valid-acks-received" || name == "num-valid-nacks-received" || name == "num-unicast-packet-sent-successfully" || name == "num-broadcast-packet-sent-success" || name == "num-init-timer-start" || name == "num-init-timer-stop" || name == "num-t1-timer-start" || name == "num-t1-timer-stop" || name == "num-t2-timer-start" || name == "num-t2-timer-stop" || name == "num-lease-timer-start" || name == "num-lease-timer-stop" || name == "num-vbind-timer-start" || name == "num-vbind-timer-stop" || name == "num-invalid-events" || name == "num-discovers-failed" || name == "num-requests-failed" || name == "num-releases-failed" || name == "num-renews-failed" || name == "num-rebinds-failed" || name == "num-declines-failed" || name == "num-request-after-reboot-failed" || name == "num-invalid-offers" || name == "num-invalid-acks" || name == "num-invalid-nacks" || name == "num-invalid-packets" || name == "num-unicast-failed" || name == "num-broadcast-failed" || name == "num-xid-mismatch")
         return true;
     return false;
 }

@@ -309,12 +309,14 @@ class Vrrp::Ipv6::VirtualRouters::VirtualRouter : public ydk::Entity
         class ResignReceivedTime; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime
         class Ipv6OperationalAddress; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
         class Ipv6ConfiguredDownAddress; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
+        class TrackItemInfo; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo
         class StateChangeHistory; //type: Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo> > track_item_info;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
         
 }; // Vrrp::Ipv6::VirtualRouters::VirtualRouter
@@ -404,6 +406,32 @@ class Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress : pub
         ydk::YLeaf ipv6_address; //type: string
 
 }; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
+
+
+class Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo : public ydk::Entity
+{
+    public:
+        TrackItemInfo();
+        ~TrackItemInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf virtual_router_id_xr; //type: uint32
+        ydk::YLeaf tracked_item_type; //type: uint16
+        ydk::YLeaf tracked_item_index; //type: string
+        ydk::YLeaf state; //type: uint8
+        ydk::YLeaf priority; //type: uint8
+
+}; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo
 
 
 class Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory : public ydk::Entity
@@ -754,12 +782,14 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter : public ydk::Entity
         class ResignReceivedTime; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime
         class Ipv6OperationalAddress; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress
         class Ipv6ConfiguredDownAddress; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
+        class TrackItemInfo; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo
         class StateChangeHistory; //type: Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress> > ipv6_operational_address;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress> > ipv6_configured_down_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo> > track_item_info;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
         
 }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter
@@ -849,6 +879,32 @@ class Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress : pub
         ydk::YLeaf ipv6_address; //type: string
 
 }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
+
+
+class Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo : public ydk::Entity
+{
+    public:
+        TrackItemInfo();
+        ~TrackItemInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf virtual_router_id_xr; //type: uint32
+        ydk::YLeaf tracked_item_type; //type: uint16
+        ydk::YLeaf tracked_item_index; //type: string
+        ydk::YLeaf state; //type: uint8
+        ydk::YLeaf priority; //type: uint8
+
+}; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo
 
 
 class Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory : public ydk::Entity

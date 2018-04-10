@@ -657,8 +657,7 @@ bool Components::Component::PlatformProperties::has_leaf_or_child_of_name(const 
 Components::Component::PlatformProperties::PlatformProperty::PlatformProperty()
     :
     name{YType::str, "name"},
-    configurable{YType::boolean, "configurable"},
-    parent_platform_component_cname_key{YType::str, "parent-platform-component-cname-key"}
+    configurable{YType::boolean, "configurable"}
     	,
     value_(std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value>())
 {
@@ -675,7 +674,6 @@ bool Components::Component::PlatformProperties::PlatformProperty::has_data() con
 {
     return name.is_set
 	|| configurable.is_set
-	|| parent_platform_component_cname_key.is_set
 	|| (value_ !=  nullptr && value_->has_data());
 }
 
@@ -684,7 +682,6 @@ bool Components::Component::PlatformProperties::PlatformProperty::has_operation(
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(configurable.yfilter)
-	|| ydk::is_set(parent_platform_component_cname_key.yfilter)
 	|| (value_ !=  nullptr && value_->has_operation());
 }
 
@@ -701,7 +698,6 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformPr
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (configurable.is_set || is_set(configurable.yfilter)) leaf_name_data.push_back(configurable.get_name_leafdata());
-    if (parent_platform_component_cname_key.is_set || is_set(parent_platform_component_cname_key.yfilter)) leaf_name_data.push_back(parent_platform_component_cname_key.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -747,12 +743,6 @@ void Components::Component::PlatformProperties::PlatformProperty::set_value(cons
         configurable.value_namespace = name_space;
         configurable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key = value;
-        parent_platform_component_cname_key.value_namespace = name_space;
-        parent_platform_component_cname_key.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Components::Component::PlatformProperties::PlatformProperty::set_filter(const std::string & value_path, YFilter yfilter)
@@ -765,15 +755,11 @@ void Components::Component::PlatformProperties::PlatformProperty::set_filter(con
     {
         configurable.yfilter = yfilter;
     }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key.yfilter = yfilter;
-    }
 }
 
 bool Components::Component::PlatformProperties::PlatformProperty::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "value" || name == "name" || name == "configurable" || name == "parent-platform-component-cname-key")
+    if(name == "value" || name == "name" || name == "configurable")
         return true;
     return false;
 }
@@ -1003,8 +989,7 @@ bool Components::Component::PlatformSubcomponents::has_leaf_or_child_of_name(con
 
 Components::Component::PlatformSubcomponents::PlatformSubcomponent::PlatformSubcomponent()
     :
-    name{YType::str, "name"},
-    parent_platform_component_cname_key{YType::str, "parent-platform-component-cname-key"}
+    name{YType::str, "name"}
 {
 
     yang_name = "platform-subcomponent"; yang_parent_name = "platform-subcomponents"; is_top_level_class = false; has_list_ancestor = true;
@@ -1016,15 +1001,13 @@ Components::Component::PlatformSubcomponents::PlatformSubcomponent::~PlatformSub
 
 bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_data() const
 {
-    return name.is_set
-	|| parent_platform_component_cname_key.is_set;
+    return name.is_set;
 }
 
 bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(parent_platform_component_cname_key.yfilter);
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_segment_path() const
@@ -1039,7 +1022,6 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformSu
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (parent_platform_component_cname_key.is_set || is_set(parent_platform_component_cname_key.yfilter)) leaf_name_data.push_back(parent_platform_component_cname_key.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1065,12 +1047,6 @@ void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_val
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key = value;
-        parent_platform_component_cname_key.value_namespace = name_space;
-        parent_platform_component_cname_key.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1079,15 +1055,11 @@ void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_fil
     {
         name.yfilter = yfilter;
     }
-    if(value_path == "parent-platform-component-cname-key")
-    {
-        parent_platform_component_cname_key.yfilter = yfilter;
-    }
 }
 
 bool Components::Component::PlatformSubcomponents::PlatformSubcomponent::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "parent-platform-component-cname-key")
+    if(name == "name")
         return true;
     return false;
 }
@@ -1103,7 +1075,7 @@ const Enum::YLeaf PlatformCompType::comp_port {7, "comp-port"};
 const Enum::YLeaf PlatformCompType::comp_cpu {8, "comp-cpu"};
 const Enum::YLeaf PlatformCompType::comp_operating_system {9, "comp-operating-system"};
 const Enum::YLeaf PlatformCompType::comp_optical_channel {10, "comp-optical-channel"};
-const Enum::YLeaf PlatformCompType::CONTAINER {11, "CONTAINER"};
+const Enum::YLeaf PlatformCompType::comp_container {11, "comp-container"};
 
 const Enum::YLeaf PlatformPropValueType::property_string {0, "property-string"};
 const Enum::YLeaf PlatformPropValueType::property_boolean {1, "property-boolean"};

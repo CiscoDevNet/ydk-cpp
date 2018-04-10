@@ -32,8 +32,10 @@ class CiscoPlatformSoftware : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class ControlProcesses; //type: CiscoPlatformSoftware::ControlProcesses
+        class QFilesystem; //type: CiscoPlatformSoftware::QFilesystem
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses> control_processes;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::QFilesystem> > q_filesystem;
         
 }; // CiscoPlatformSoftware
 
@@ -294,6 +296,81 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::Per
         ydk::YLeaf io_wait; //type: decimal64
 
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat
+
+
+class CiscoPlatformSoftware::QFilesystem : public ydk::Entity
+{
+    public:
+        QFilesystem();
+        ~QFilesystem();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf fru; //type: BFru
+        ydk::YLeaf slotnum; //type: int16
+        ydk::YLeaf baynum; //type: int16
+        ydk::YLeaf chassisnum; //type: int16
+        class Partitions; //type: CiscoPlatformSoftware::QFilesystem::Partitions
+        class CoreFiles; //type: CiscoPlatformSoftware::QFilesystem::CoreFiles
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::QFilesystem::Partitions> > partitions;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::QFilesystem::CoreFiles> > core_files;
+        
+}; // CiscoPlatformSoftware::QFilesystem
+
+
+class CiscoPlatformSoftware::QFilesystem::Partitions : public ydk::Entity
+{
+    public:
+        Partitions();
+        ~Partitions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf total_size; //type: uint64
+        ydk::YLeaf used_size; //type: uint64
+
+}; // CiscoPlatformSoftware::QFilesystem::Partitions
+
+
+class CiscoPlatformSoftware::QFilesystem::CoreFiles : public ydk::Entity
+{
+    public:
+        CoreFiles();
+        ~CoreFiles();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf filename; //type: string
+        ydk::YLeaf time; //type: string
+
+}; // CiscoPlatformSoftware::QFilesystem::CoreFiles
 
 class BFru : public ydk::Enum
 {

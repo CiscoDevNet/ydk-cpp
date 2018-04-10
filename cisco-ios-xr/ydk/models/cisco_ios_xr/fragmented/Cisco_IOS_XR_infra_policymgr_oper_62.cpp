@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_62.hpp"
-#include "Cisco_IOS_XR_infra_policymgr_oper_68.hpp"
-#include "Cisco_IOS_XR_infra_policymgr_oper_64.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_63.hpp"
+#include "Cisco_IOS_XR_infra_policymgr_oper_64.hpp"
+#include "Cisco_IOS_XR_infra_policymgr_oper_68.hpp"
 
 using namespace ydk;
 
@@ -12935,8 +12935,6 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::PmapVarList::PmapVarList()
-    :
-    offset{YType::uint8, "offset"}
 {
 
     yang_name = "pmap-var-list"; yang_parent_name = "policy-map-bg"; is_top_level_class = false; has_list_ancestor = true;
@@ -12953,11 +12951,6 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
         if(pmap_var_list_arr[index]->has_data())
             return true;
     }
-    for (auto const & leaf : offset.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
     return false;
 }
 
@@ -12968,13 +12961,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
         if(pmap_var_list_arr[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : offset.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(offset.yfilter);
+    return is_set(yfilter);
 }
 
 std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::PmapVarList::get_segment_path() const
@@ -12989,8 +12976,6 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::Polic
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto offset_name_datas = offset.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), offset_name_datas.begin(), offset_name_datas.end());
     return leaf_name_data;
 
 }
@@ -13026,23 +13011,15 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
 
 void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::PmapVarList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "offset")
-    {
-        offset.append(value);
-    }
 }
 
 void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::PmapVarList::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "offset")
-    {
-        offset.yfilter = yfilter;
-    }
 }
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::PmapVarList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pmap-var-list-arr" || name == "offset")
+    if(name == "pmap-var-list-arr")
         return true;
     return false;
 }
@@ -13425,9 +13402,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::PolicyEventInfoBg()
     :
     event_type{YType::enumeration, "event-type"},
-    cond_eval{YType::enumeration, "cond-eval"},
-    avl_tree{YType::uint64, "avl-tree"},
-    flags{YType::uint32, "flags"}
+    cond_eval{YType::enumeration, "cond-eval"}
     	,
     class_infop(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop>())
 {
@@ -13444,8 +13419,6 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 {
     return event_type.is_set
 	|| cond_eval.is_set
-	|| avl_tree.is_set
-	|| flags.is_set
 	|| (class_infop !=  nullptr && class_infop->has_data());
 }
 
@@ -13454,8 +13427,6 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
     return is_set(yfilter)
 	|| ydk::is_set(event_type.yfilter)
 	|| ydk::is_set(cond_eval.yfilter)
-	|| ydk::is_set(avl_tree.yfilter)
-	|| ydk::is_set(flags.yfilter)
 	|| (class_infop !=  nullptr && class_infop->has_operation());
 }
 
@@ -13472,8 +13443,6 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::Polic
 
     if (event_type.is_set || is_set(event_type.yfilter)) leaf_name_data.push_back(event_type.get_name_leafdata());
     if (cond_eval.is_set || is_set(cond_eval.yfilter)) leaf_name_data.push_back(cond_eval.get_name_leafdata());
-    if (avl_tree.is_set || is_set(avl_tree.yfilter)) leaf_name_data.push_back(avl_tree.get_name_leafdata());
-    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13519,18 +13488,6 @@ void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
         cond_eval.value_namespace = name_space;
         cond_eval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "avl-tree")
-    {
-        avl_tree = value;
-        avl_tree.value_namespace = name_space;
-        avl_tree.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flags")
-    {
-        flags = value;
-        flags.value_namespace = name_space;
-        flags.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::set_filter(const std::string & value_path, YFilter yfilter)
@@ -13543,19 +13500,11 @@ void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
     {
         cond_eval.yfilter = yfilter;
     }
-    if(value_path == "avl-tree")
-    {
-        avl_tree.yfilter = yfilter;
-    }
-    if(value_path == "flags")
-    {
-        flags.yfilter = yfilter;
-    }
 }
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "class-infop" || name == "event-type" || name == "cond-eval" || name == "avl-tree" || name == "flags")
+    if(name == "class-infop" || name == "event-type" || name == "cond-eval")
         return true;
     return false;
 }

@@ -1971,10 +1971,6 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::MultiAccessControlList()
-    :
-    inbound{YType::str, "inbound"},
-    outbound{YType::str, "outbound"},
-    common{YType::str, "common"}
 {
 
     yang_name = "multi-access-control-list"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
@@ -1986,19 +1982,19 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_data() const
 {
-    for (auto const & leaf : inbound.getYLeafs())
+    for (std::size_t index=0; index<inbound.size(); index++)
     {
-        if(leaf.is_set)
+        if(inbound[index]->has_data())
             return true;
     }
-    for (auto const & leaf : outbound.getYLeafs())
+    for (std::size_t index=0; index<outbound.size(); index++)
     {
-        if(leaf.is_set)
+        if(outbound[index]->has_data())
             return true;
     }
-    for (auto const & leaf : common.getYLeafs())
+    for (std::size_t index=0; index<common.size(); index++)
     {
-        if(leaf.is_set)
+        if(common[index]->has_data())
             return true;
     }
     return false;
@@ -2006,25 +2002,22 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_operation() const
 {
-    for (auto const & leaf : inbound.getYLeafs())
+    for (std::size_t index=0; index<inbound.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(inbound[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : outbound.getYLeafs())
+    for (std::size_t index=0; index<outbound.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(outbound[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : common.getYLeafs())
+    for (std::size_t index=0; index<common.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(common[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(inbound.yfilter)
-	|| ydk::is_set(outbound.yfilter)
-	|| ydk::is_set(common.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::get_segment_path() const
@@ -2039,18 +2032,36 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::Interfa
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto inbound_name_datas = inbound.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), inbound_name_datas.begin(), inbound_name_datas.end());
-    auto outbound_name_datas = outbound.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), outbound_name_datas.begin(), outbound_name_datas.end());
-    auto common_name_datas = common.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), common_name_datas.begin(), common_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inbound")
+    {
+        auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound>();
+        c->parent = this;
+        inbound.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "outbound")
+    {
+        auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound>();
+        c->parent = this;
+        outbound.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "common")
+    {
+        auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common>();
+        c->parent = this;
+        common.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -2058,44 +2069,278 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : inbound)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : outbound)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : common)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "inbound")
-    {
-        inbound.append(value);
-    }
-    if(value_path == "outbound")
-    {
-        outbound.append(value);
-    }
-    if(value_path == "common")
-    {
-        common.append(value);
-    }
 }
 
 void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "inbound")
-    {
-        inbound.yfilter = yfilter;
-    }
-    if(value_path == "outbound")
-    {
-        outbound.yfilter = yfilter;
-    }
-    if(value_path == "common")
-    {
-        common.yfilter = yfilter;
-    }
 }
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "inbound" || name == "outbound" || name == "common")
+        return true;
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::Inbound()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "inbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::~Inbound()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inbound";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::Outbound()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "outbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::~Outbound()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "outbound";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::Common()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "common"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::~Common()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "common";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -4435,10 +4680,6 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Access
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::MultiAccessControlList()
-    :
-    inbound{YType::str, "inbound"},
-    outbound{YType::str, "outbound"},
-    common{YType::str, "common"}
 {
 
     yang_name = "multi-access-control-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
@@ -4450,19 +4691,19 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_data() const
 {
-    for (auto const & leaf : inbound.getYLeafs())
+    for (std::size_t index=0; index<inbound.size(); index++)
     {
-        if(leaf.is_set)
+        if(inbound[index]->has_data())
             return true;
     }
-    for (auto const & leaf : outbound.getYLeafs())
+    for (std::size_t index=0; index<outbound.size(); index++)
     {
-        if(leaf.is_set)
+        if(outbound[index]->has_data())
             return true;
     }
-    for (auto const & leaf : common.getYLeafs())
+    for (std::size_t index=0; index<common.size(); index++)
     {
-        if(leaf.is_set)
+        if(common[index]->has_data())
             return true;
     }
     return false;
@@ -4470,25 +4711,22 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_operation() const
 {
-    for (auto const & leaf : inbound.getYLeafs())
+    for (std::size_t index=0; index<inbound.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(inbound[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : outbound.getYLeafs())
+    for (std::size_t index=0; index<outbound.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(outbound[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : common.getYLeafs())
+    for (std::size_t index=0; index<common.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(common[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(inbound.yfilter)
-	|| ydk::is_set(outbound.yfilter)
-	|| ydk::is_set(common.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::get_segment_path() const
@@ -4503,18 +4741,36 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::Interfa
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto inbound_name_datas = inbound.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), inbound_name_datas.begin(), inbound_name_datas.end());
-    auto outbound_name_datas = outbound.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), outbound_name_datas.begin(), outbound_name_datas.end());
-    auto common_name_datas = common.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), common_name_datas.begin(), common_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inbound")
+    {
+        auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound>();
+        c->parent = this;
+        inbound.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "outbound")
+    {
+        auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound>();
+        c->parent = this;
+        outbound.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "common")
+    {
+        auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common>();
+        c->parent = this;
+        common.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -4522,44 +4778,278 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : inbound)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : outbound)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : common)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "inbound")
-    {
-        inbound.append(value);
-    }
-    if(value_path == "outbound")
-    {
-        outbound.append(value);
-    }
-    if(value_path == "common")
-    {
-        common.append(value);
-    }
 }
 
 void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "inbound")
-    {
-        inbound.yfilter = yfilter;
-    }
-    if(value_path == "outbound")
-    {
-        outbound.yfilter = yfilter;
-    }
-    if(value_path == "common")
-    {
-        common.yfilter = yfilter;
-    }
 }
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "inbound" || name == "outbound" || name == "common")
+        return true;
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::Inbound()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "inbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::~Inbound()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inbound";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::Outbound()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "outbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::~Outbound()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "outbound";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::Common()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "common"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::~Common()
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "common";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }

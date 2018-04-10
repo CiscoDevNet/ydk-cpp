@@ -204,7 +204,7 @@ class Lpts::Ipolicer::Flows::Flow : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf flow_type; //type: LptsFlow
-        ydk::YLeaf rate; //type: int32
+        ydk::YLeaf rate; //type: uint32
         class Precedences; //type: Lpts::Ipolicer::Flows::Flow::Precedences
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow::Precedences> precedences;
@@ -228,7 +228,7 @@ class Lpts::Ipolicer::Flows::Flow::Precedences : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList precedence; //type: list of  one of enumeration, uint32
+        ydk::YLeafList precedence; //type: list of  one of uint32, enumeration
 
 }; // Lpts::Ipolicer::Flows::Flow::Precedences
 

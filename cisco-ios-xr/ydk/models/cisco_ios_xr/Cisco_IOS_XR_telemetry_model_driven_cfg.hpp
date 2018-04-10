@@ -32,6 +32,9 @@ class TelemetryModelDriven : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf enable; //type: empty
+        ydk::YLeaf max_sensor_paths; //type: uint32
+        ydk::YLeaf max_containers_per_path; //type: uint32
+        ydk::YLeaf tcp_send_timeout; //type: uint32
         class SensorGroups; //type: TelemetryModelDriven::SensorGroups
         class Subscriptions; //type: TelemetryModelDriven::Subscriptions
         class DestinationGroups; //type: TelemetryModelDriven::DestinationGroups

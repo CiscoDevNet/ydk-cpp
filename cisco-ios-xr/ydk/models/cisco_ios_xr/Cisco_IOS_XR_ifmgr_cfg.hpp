@@ -133,7 +133,7 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         class NvSatelliteFabricNetwork; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork
         class Lldp; //type: InterfaceConfigurations::InterfaceConfiguration::Lldp
         class SpanMonitorSessions; //type: InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions
-        class CiscoIOSXRFreqsyncCfgFrequencySynchronization; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization
+        class FrequencySynchronization; //type: InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization
         class ServicePolicies; //type: InterfaceConfigurations::InterfaceConfiguration::ServicePolicies
         class Afs; //type: InterfaceConfigurations::InterfaceConfiguration::Afs
         class Statistics; //type: InterfaceConfigurations::InterfaceConfiguration::Statistics
@@ -150,7 +150,6 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         class TunnelTeAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes
         class TransportProfileTunnel; //type: InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel
         class MteTunnelAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes
-        class CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization
         class Portmode; //type: InterfaceConfigurations::InterfaceConfiguration::Portmode
         class Pbr; //type: InterfaceConfigurations::InterfaceConfiguration::Pbr
         class PerformanceManagement; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement
@@ -204,7 +203,7 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork> nv_satellite_fabric_network;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Lldp> lldp; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions> span_monitor_sessions;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization> cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization> frequency_synchronization;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::ServicePolicies> service_policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Afs> afs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Statistics> statistics;
@@ -221,7 +220,6 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes> tunnel_te_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel> transport_profile_tunnel;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes> mte_tunnel_attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization> cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Portmode> portmode;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Pbr> pbr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement> performance_management;
@@ -2639,14 +2637,14 @@ class InterfaceConfigurations::InterfaceConfiguration::Lacp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf system_priority; //type: uint32
-        ydk::YLeaf period; //type: one of enumeration, uint32
+        ydk::YLeaf period; //type: one of uint32, enumeration
         ydk::YLeaf collector_max_delay; //type: uint32
         ydk::YLeaf lacp_nonrevertive; //type: empty
         ydk::YLeaf mode; //type: BundleMode
         ydk::YLeaf fast_switchover; //type: empty
         ydk::YLeaf suppress_flaps; //type: uint32
         ydk::YLeaf system_mac; //type: string
-        ydk::YLeaf period_short; //type: one of enumeration, uint32
+        ydk::YLeaf period_short; //type: one of uint32, enumeration
         ydk::YLeaf churn_logging; //type: ChurnLogging
         class CiscoExtensions; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp::CiscoExtensions
         class Timeout; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp::Timeout
@@ -4468,7 +4466,7 @@ class InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::Vla
 
         ydk::YLeaf vlan_type; //type: Vlan
         ydk::YLeaf first_tag; //type: uint32
-        ydk::YLeaf second_tag; //type: one of enumeration, uint32
+        ydk::YLeaf second_tag; //type: one of uint32, enumeration
 
 }; // InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier
 
@@ -4540,26 +4538,26 @@ class InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsul
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf outer_tag_type; //type: Match
-        ydk::YLeaf outer_range1_low; //type: one of enumeration, uint32
-        ydk::YLeaf outer_range1_high; //type: one of enumeration, uint32
+        ydk::YLeaf outer_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf outer_range1_high; //type: one of uint32, enumeration
         ydk::YLeaf inner_tag_type; //type: Match
-        ydk::YLeaf inner_range1_low; //type: one of enumeration, uint32
+        ydk::YLeaf inner_range1_low; //type: one of uint32, enumeration
         ydk::YLeaf inner_range1_high; //type: uint32
-        ydk::YLeaf additional_range1_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range1_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range1_high; //type: uint32
-        ydk::YLeaf additional_range2_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range2_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range2_high; //type: uint32
-        ydk::YLeaf additional_range3_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range3_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range3_high; //type: uint32
-        ydk::YLeaf additional_range4_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range4_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range4_high; //type: uint32
-        ydk::YLeaf additional_range5_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range5_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range5_high; //type: uint32
-        ydk::YLeaf additional_range6_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range6_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range6_high; //type: uint32
-        ydk::YLeaf additional_range7_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range7_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range7_high; //type: uint32
-        ydk::YLeaf additional_range8_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range8_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range8_high; //type: uint32
         ydk::YLeaf outer_class_of_service; //type: uint32
         ydk::YLeaf inner_class_of_service; //type: uint32
@@ -4636,26 +4634,26 @@ class InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEnc
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf outer_tag_type; //type: Match
-        ydk::YLeaf outer_range1_low; //type: one of enumeration, uint32
-        ydk::YLeaf outer_range1_high; //type: one of enumeration, uint32
+        ydk::YLeaf outer_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf outer_range1_high; //type: one of uint32, enumeration
         ydk::YLeaf inner_tag_type; //type: Match
-        ydk::YLeaf inner_range1_low; //type: one of enumeration, uint32
+        ydk::YLeaf inner_range1_low; //type: one of uint32, enumeration
         ydk::YLeaf inner_range1_high; //type: uint32
-        ydk::YLeaf additional_range1_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range1_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range1_high; //type: uint32
-        ydk::YLeaf additional_range2_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range2_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range2_high; //type: uint32
-        ydk::YLeaf additional_range3_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range3_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range3_high; //type: uint32
-        ydk::YLeaf additional_range4_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range4_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range4_high; //type: uint32
-        ydk::YLeaf additional_range5_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range5_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range5_high; //type: uint32
-        ydk::YLeaf additional_range6_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range6_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range6_high; //type: uint32
-        ydk::YLeaf additional_range7_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range7_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range7_high; //type: uint32
-        ydk::YLeaf additional_range8_low; //type: one of enumeration, uint32
+        ydk::YLeaf additional_range8_low; //type: one of uint32, enumeration
         ydk::YLeaf additional_range8_high; //type: uint32
         ydk::YLeaf outer_class_of_service; //type: uint32
         ydk::YLeaf inner_class_of_service; //type: uint32
@@ -6248,11 +6246,11 @@ class InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::Span
 }; // InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Acl
 
 
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization : public ydk::Entity
 {
     public:
-        CiscoIOSXRFreqsyncCfgFrequencySynchronization();
-        ~CiscoIOSXRFreqsyncCfgFrequencySynchronization();
+        FrequencySynchronization();
+        ~FrequencySynchronization();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -6270,16 +6268,16 @@ class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFreq
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf priority; //type: uint32
         ydk::YLeaf wait_to_restore_time; //type: uint32
-        class InputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel
-        class OutputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel
+        class InputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel
+        class OutputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel> input_quality_level;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel> output_quality_level;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel> input_quality_level;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel> output_quality_level;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization
+}; // InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization
 
 
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel : public ydk::Entity
 {
     public:
         InputQualityLevel();
@@ -6300,10 +6298,10 @@ class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFreq
         ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
         ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
 
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel
+}; // InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel
 
 
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
 {
     public:
         OutputQualityLevel();
@@ -6324,7 +6322,7 @@ class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFreq
         ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
         ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
 
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel
+}; // InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel
 
 
 class InterfaceConfigurations::InterfaceConfiguration::ServicePolicies : public ydk::Entity
@@ -7071,12 +7069,13 @@ class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf dhcp; //type: empty
         class Secondaries; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries
         class Primary; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary
+        class Dhcp; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries> secondaries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary> primary; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp> dhcp;
         
 }; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses
 
@@ -7148,6 +7147,30 @@ class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::P
         ydk::YLeaf route_tag; //type: uint32
 
 }; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary
+
+
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp : public ydk::Entity
+{
+    public:
+        Dhcp();
+        ~Dhcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: empty
+        ydk::YLeaf option_code; //type: DhcpClientOptionCode
+        ydk::YLeaf format; //type: int32
+        ydk::YLeaf pattern; //type: string
+
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp
 
 
 class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses : public ydk::Entity
@@ -9792,85 +9815,6 @@ class InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logg
         ydk::YLeaf reroute_messsage; //type: empty
 
 }; // InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging
-
-
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization : public ydk::Entity
-{
-    public:
-        CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization();
-        ~CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ssm_disable; //type: empty
-        ydk::YLeaf time_of_day_priority; //type: uint32
-        ydk::YLeaf selection_input; //type: empty
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf wait_to_restore_time; //type: uint32
-        class InputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel
-        class OutputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel> input_quality_level;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel> output_quality_level;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization
-
-
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel : public ydk::Entity
-{
-    public:
-        InputQualityLevel();
-        ~InputQualityLevel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncQlOption
-        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
-
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel
-
-
-class InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel : public ydk::Entity
-{
-    public:
-        OutputQualityLevel();
-        ~OutputQualityLevel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncQlOption
-        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
-
-}; // InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel
 
 
 class InterfaceConfigurations::InterfaceConfiguration::Portmode : public ydk::Entity

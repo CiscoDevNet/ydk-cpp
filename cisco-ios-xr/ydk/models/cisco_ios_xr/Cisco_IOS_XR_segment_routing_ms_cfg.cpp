@@ -15,11 +15,15 @@ Sr::Sr()
     :
     enable{YType::empty, "enable"}
     	,
-    global_block(nullptr) // presence node
-	,local_block(nullptr) // presence node
+    local_block(nullptr) // presence node
 	,mappings(std::make_shared<Sr::Mappings>())
+	,adjacency_sid(std::make_shared<Sr::AdjacencySid>())
+	,global_block(nullptr) // presence node
+	,traffic_engineering(std::make_shared<Sr::TrafficEngineering>())
 {
     mappings->parent = this;
+    adjacency_sid->parent = this;
+    traffic_engineering->parent = this;
 
     yang_name = "sr"; yang_parent_name = "Cisco-IOS-XR-segment-routing-ms-cfg"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -31,18 +35,22 @@ Sr::~Sr()
 bool Sr::has_data() const
 {
     return enable.is_set
-	|| (global_block !=  nullptr && global_block->has_data())
 	|| (local_block !=  nullptr && local_block->has_data())
-	|| (mappings !=  nullptr && mappings->has_data());
+	|| (mappings !=  nullptr && mappings->has_data())
+	|| (adjacency_sid !=  nullptr && adjacency_sid->has_data())
+	|| (global_block !=  nullptr && global_block->has_data())
+	|| (traffic_engineering !=  nullptr && traffic_engineering->has_data());
 }
 
 bool Sr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| (global_block !=  nullptr && global_block->has_operation())
 	|| (local_block !=  nullptr && local_block->has_operation())
-	|| (mappings !=  nullptr && mappings->has_operation());
+	|| (mappings !=  nullptr && mappings->has_operation())
+	|| (adjacency_sid !=  nullptr && adjacency_sid->has_operation())
+	|| (global_block !=  nullptr && global_block->has_operation())
+	|| (traffic_engineering !=  nullptr && traffic_engineering->has_operation());
 }
 
 std::string Sr::get_segment_path() const
@@ -64,15 +72,6 @@ std::vector<std::pair<std::string, LeafData> > Sr::get_name_leaf_data() const
 
 std::shared_ptr<Entity> Sr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "global-block")
-    {
-        if(global_block == nullptr)
-        {
-            global_block = std::make_shared<Sr::GlobalBlock>();
-        }
-        return global_block;
-    }
-
     if(child_yang_name == "local-block")
     {
         if(local_block == nullptr)
@@ -91,6 +90,33 @@ std::shared_ptr<Entity> Sr::get_child_by_name(const std::string & child_yang_nam
         return mappings;
     }
 
+    if(child_yang_name == "adjacency-sid")
+    {
+        if(adjacency_sid == nullptr)
+        {
+            adjacency_sid = std::make_shared<Sr::AdjacencySid>();
+        }
+        return adjacency_sid;
+    }
+
+    if(child_yang_name == "global-block")
+    {
+        if(global_block == nullptr)
+        {
+            global_block = std::make_shared<Sr::GlobalBlock>();
+        }
+        return global_block;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering")
+    {
+        if(traffic_engineering == nullptr)
+        {
+            traffic_engineering = std::make_shared<Sr::TrafficEngineering>();
+        }
+        return traffic_engineering;
+    }
+
     return nullptr;
 }
 
@@ -98,11 +124,6 @@ std::map<std::string, std::shared_ptr<Entity>> Sr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(global_block != nullptr)
-    {
-        children["global-block"] = global_block;
-    }
-
     if(local_block != nullptr)
     {
         children["local-block"] = local_block;
@@ -111,6 +132,21 @@ std::map<std::string, std::shared_ptr<Entity>> Sr::get_children() const
     if(mappings != nullptr)
     {
         children["mappings"] = mappings;
+    }
+
+    if(adjacency_sid != nullptr)
+    {
+        children["adjacency-sid"] = adjacency_sid;
+    }
+
+    if(global_block != nullptr)
+    {
+        children["global-block"] = global_block;
+    }
+
+    if(traffic_engineering != nullptr)
+    {
+        children["Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering"] = traffic_engineering;
     }
 
     return children;
@@ -161,105 +197,7 @@ std::map<std::pair<std::string, std::string>, std::string> Sr::get_namespace_ide
 
 bool Sr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "global-block" || name == "local-block" || name == "mappings" || name == "enable")
-        return true;
-    return false;
-}
-
-Sr::GlobalBlock::GlobalBlock()
-    :
-    lower_bound{YType::uint32, "lower-bound"},
-    upper_bound{YType::uint32, "upper-bound"}
-{
-
-    yang_name = "global-block"; yang_parent_name = "sr"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Sr::GlobalBlock::~GlobalBlock()
-{
-}
-
-bool Sr::GlobalBlock::has_data() const
-{
-    return lower_bound.is_set
-	|| upper_bound.is_set;
-}
-
-bool Sr::GlobalBlock::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lower_bound.yfilter)
-	|| ydk::is_set(upper_bound.yfilter);
-}
-
-std::string Sr::GlobalBlock::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Sr::GlobalBlock::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global-block";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Sr::GlobalBlock::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Sr::GlobalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Sr::GlobalBlock::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Sr::GlobalBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lower-bound")
-    {
-        lower_bound = value;
-        lower_bound.value_namespace = name_space;
-        lower_bound.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "upper-bound")
-    {
-        upper_bound = value;
-        upper_bound.value_namespace = name_space;
-        upper_bound.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Sr::GlobalBlock::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lower-bound")
-    {
-        lower_bound.yfilter = yfilter;
-    }
-    if(value_path == "upper-bound")
-    {
-        upper_bound.yfilter = yfilter;
-    }
-}
-
-bool Sr::GlobalBlock::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lower-bound" || name == "upper-bound")
+    if(name == "local-block" || name == "mappings" || name == "adjacency-sid" || name == "global-block" || name == "traffic-engineering" || name == "enable")
         return true;
     return false;
 }
@@ -613,8 +551,5204 @@ bool Sr::Mappings::Mapping::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
+Sr::AdjacencySid::AdjacencySid()
+    :
+    interfaces(std::make_shared<Sr::AdjacencySid::Interfaces>())
+{
+    interfaces->parent = this;
+
+    yang_name = "adjacency-sid"; yang_parent_name = "sr"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::AdjacencySid::~AdjacencySid()
+{
+}
+
+bool Sr::AdjacencySid::has_data() const
+{
+    return (interfaces !=  nullptr && interfaces->has_data());
+}
+
+bool Sr::AdjacencySid::has_operation() const
+{
+    return is_set(yfilter)
+	|| (interfaces !=  nullptr && interfaces->has_operation());
+}
+
+std::string Sr::AdjacencySid::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::AdjacencySid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interfaces")
+    {
+        if(interfaces == nullptr)
+        {
+            interfaces = std::make_shared<Sr::AdjacencySid::Interfaces>();
+        }
+        return interfaces;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(interfaces != nullptr)
+    {
+        children["interfaces"] = interfaces;
+    }
+
+    return children;
+}
+
+void Sr::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
+}
+
+Sr::AdjacencySid::Interfaces::Interfaces()
+{
+
+    yang_name = "interfaces"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::AdjacencySid::Interfaces::~Interfaces()
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::has_data() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::AdjacencySid::Interfaces::has_operation() const
+{
+    for (std::size_t index=0; index<interface.size(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::AdjacencySid::Interfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/adjacency-sid/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::AdjacencySid::Interfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        auto c = std::make_shared<Sr::AdjacencySid::Interfaces::Interface>();
+        c->parent = this;
+        interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : interface)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::AdjacencySid::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::AdjacencySid::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::Interface()
+    :
+    interface{YType::str, "interface"}
+    	,
+    address_families(std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies>())
+{
+    address_families->parent = this;
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::~Interface()
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::has_data() const
+{
+    return interface.is_set
+	|| (address_families !=  nullptr && address_families->has_data());
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| (address_families !=  nullptr && address_families->has_operation());
+}
+
+std::string Sr::AdjacencySid::Interfaces::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/adjacency-sid/interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::AdjacencySid::Interfaces::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-families")
+    {
+        if(address_families == nullptr)
+        {
+            address_families = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies>();
+        }
+        return address_families;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(address_families != nullptr)
+    {
+        children["address-families"] = address_families;
+    }
+
+    return children;
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-families" || name == "interface")
+        return true;
+    return false;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamilies()
+{
+
+    yang_name = "address-families"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::~AddressFamilies()
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::has_data() const
+{
+    for (std::size_t index=0; index<address_family.size(); index++)
+    {
+        if(address_family[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::has_operation() const
+{
+    for (std::size_t index=0; index<address_family.size(); index++)
+    {
+        if(address_family[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-families";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-family")
+    {
+        auto c = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily>();
+        c->parent = this;
+        address_family.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : address_family)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family")
+        return true;
+    return false;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::AddressFamily()
+    :
+    address_family{YType::enumeration, "address-family"}
+    	,
+    next_hops(std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops>())
+{
+    next_hops->parent = this;
+
+    yang_name = "address-family"; yang_parent_name = "address-families"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::~AddressFamily()
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::has_data() const
+{
+    return address_family.is_set
+	|| (next_hops !=  nullptr && next_hops->has_data());
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| (next_hops !=  nullptr && next_hops->has_operation());
+}
+
+std::string Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family" <<"[address-family='" <<address_family <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hops")
+    {
+        if(next_hops == nullptr)
+        {
+            next_hops = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops>();
+        }
+        return next_hops;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(next_hops != nullptr)
+    {
+        children["next-hops"] = next_hops;
+    }
+
+    return children;
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hops" || name == "address-family")
+        return true;
+    return false;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHops()
+{
+
+    yang_name = "next-hops"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::~NextHops()
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::has_data() const
+{
+    for (std::size_t index=0; index<next_hop.size(); index++)
+    {
+        if(next_hop[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::has_operation() const
+{
+    for (std::size_t index=0; index<next_hop.size(); index++)
+    {
+        if(next_hop[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-hops";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hop")
+    {
+        auto c = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop>();
+        c->parent = this;
+        next_hop.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : next_hop)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop")
+        return true;
+    return false;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::NextHop()
+    :
+    ip_addr{YType::str, "ip-addr"}
+    	,
+    l2_adjacency_sid(std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid>())
+{
+    l2_adjacency_sid->parent = this;
+
+    yang_name = "next-hop"; yang_parent_name = "next-hops"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::~NextHop()
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::has_data() const
+{
+    return ip_addr.is_set
+	|| (l2_adjacency_sid !=  nullptr && l2_adjacency_sid->has_data());
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip_addr.yfilter)
+	|| (l2_adjacency_sid !=  nullptr && l2_adjacency_sid->has_operation());
+}
+
+std::string Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-hop" <<"[ip-addr='" <<ip_addr <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2-adjacency-sid")
+    {
+        if(l2_adjacency_sid == nullptr)
+        {
+            l2_adjacency_sid = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid>();
+        }
+        return l2_adjacency_sid;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(l2_adjacency_sid != nullptr)
+    {
+        children["l2-adjacency-sid"] = l2_adjacency_sid;
+    }
+
+    return children;
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+        ip_addr.value_namespace = name_space;
+        ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-addr")
+    {
+        ip_addr.yfilter = yfilter;
+    }
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2-adjacency-sid" || name == "ip-addr")
+        return true;
+    return false;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::L2AdjacencySid()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    absolute_sid{YType::uint32, "absolute-sid"},
+    index_sid{YType::uint32, "index-sid"},
+    srlb{YType::str, "srlb"}
+{
+
+    yang_name = "l2-adjacency-sid"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::~L2AdjacencySid()
+{
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::has_data() const
+{
+    return sid_type.is_set
+	|| absolute_sid.is_set
+	|| index_sid.is_set
+	|| srlb.is_set;
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(absolute_sid.yfilter)
+	|| ydk::is_set(index_sid.yfilter)
+	|| ydk::is_set(srlb.yfilter);
+}
+
+std::string Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2-adjacency-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (absolute_sid.is_set || is_set(absolute_sid.yfilter)) leaf_name_data.push_back(absolute_sid.get_name_leafdata());
+    if (index_sid.is_set || is_set(index_sid.yfilter)) leaf_name_data.push_back(index_sid.get_name_leafdata());
+    if (srlb.is_set || is_set(srlb.yfilter)) leaf_name_data.push_back(srlb.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "absolute-sid")
+    {
+        absolute_sid = value;
+        absolute_sid.value_namespace = name_space;
+        absolute_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "index-sid")
+    {
+        index_sid = value;
+        index_sid.value_namespace = name_space;
+        index_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlb")
+    {
+        srlb = value;
+        srlb.value_namespace = name_space;
+        srlb.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "absolute-sid")
+    {
+        absolute_sid.yfilter = yfilter;
+    }
+    if(value_path == "index-sid")
+    {
+        index_sid.yfilter = yfilter;
+    }
+    if(value_path == "srlb")
+    {
+        srlb.yfilter = yfilter;
+    }
+}
+
+bool Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-type" || name == "absolute-sid" || name == "index-sid" || name == "srlb")
+        return true;
+    return false;
+}
+
+Sr::GlobalBlock::GlobalBlock()
+    :
+    lower_bound{YType::uint32, "lower-bound"},
+    upper_bound{YType::uint32, "upper-bound"}
+{
+
+    yang_name = "global-block"; yang_parent_name = "sr"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::GlobalBlock::~GlobalBlock()
+{
+}
+
+bool Sr::GlobalBlock::has_data() const
+{
+    return lower_bound.is_set
+	|| upper_bound.is_set;
+}
+
+bool Sr::GlobalBlock::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(upper_bound.yfilter);
+}
+
+std::string Sr::GlobalBlock::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::GlobalBlock::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global-block";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::GlobalBlock::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::GlobalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::GlobalBlock::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::GlobalBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lower-bound")
+    {
+        lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::GlobalBlock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+}
+
+bool Sr::GlobalBlock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower-bound" || name == "upper-bound")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::TrafficEngineering()
+    :
+    enable{YType::empty, "enable"}
+    	,
+    on_demand_colors(std::make_shared<Sr::TrafficEngineering::OnDemandColors>())
+	,segments(std::make_shared<Sr::TrafficEngineering::Segments>())
+	,logging(std::make_shared<Sr::TrafficEngineering::Logging>())
+	,binding_sid_rules(std::make_shared<Sr::TrafficEngineering::BindingSidRules>())
+	,policies(std::make_shared<Sr::TrafficEngineering::Policies>())
+	,srte_interfaces(std::make_shared<Sr::TrafficEngineering::SrteInterfaces>())
+	,pcc(std::make_shared<Sr::TrafficEngineering::Pcc>())
+	,affinity_maps(std::make_shared<Sr::TrafficEngineering::AffinityMaps>())
+{
+    on_demand_colors->parent = this;
+    segments->parent = this;
+    logging->parent = this;
+    binding_sid_rules->parent = this;
+    policies->parent = this;
+    srte_interfaces->parent = this;
+    pcc->parent = this;
+    affinity_maps->parent = this;
+
+    yang_name = "traffic-engineering"; yang_parent_name = "sr"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::~TrafficEngineering()
+{
+}
+
+bool Sr::TrafficEngineering::has_data() const
+{
+    return enable.is_set
+	|| (on_demand_colors !=  nullptr && on_demand_colors->has_data())
+	|| (segments !=  nullptr && segments->has_data())
+	|| (logging !=  nullptr && logging->has_data())
+	|| (binding_sid_rules !=  nullptr && binding_sid_rules->has_data())
+	|| (policies !=  nullptr && policies->has_data())
+	|| (srte_interfaces !=  nullptr && srte_interfaces->has_data())
+	|| (pcc !=  nullptr && pcc->has_data())
+	|| (affinity_maps !=  nullptr && affinity_maps->has_data());
+}
+
+bool Sr::TrafficEngineering::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (on_demand_colors !=  nullptr && on_demand_colors->has_operation())
+	|| (segments !=  nullptr && segments->has_operation())
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (binding_sid_rules !=  nullptr && binding_sid_rules->has_operation())
+	|| (policies !=  nullptr && policies->has_operation())
+	|| (srte_interfaces !=  nullptr && srte_interfaces->has_operation())
+	|| (pcc !=  nullptr && pcc->has_operation())
+	|| (affinity_maps !=  nullptr && affinity_maps->has_operation());
+}
+
+std::string Sr::TrafficEngineering::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "on-demand-colors")
+    {
+        if(on_demand_colors == nullptr)
+        {
+            on_demand_colors = std::make_shared<Sr::TrafficEngineering::OnDemandColors>();
+        }
+        return on_demand_colors;
+    }
+
+    if(child_yang_name == "segments")
+    {
+        if(segments == nullptr)
+        {
+            segments = std::make_shared<Sr::TrafficEngineering::Segments>();
+        }
+        return segments;
+    }
+
+    if(child_yang_name == "logging")
+    {
+        if(logging == nullptr)
+        {
+            logging = std::make_shared<Sr::TrafficEngineering::Logging>();
+        }
+        return logging;
+    }
+
+    if(child_yang_name == "binding-sid-rules")
+    {
+        if(binding_sid_rules == nullptr)
+        {
+            binding_sid_rules = std::make_shared<Sr::TrafficEngineering::BindingSidRules>();
+        }
+        return binding_sid_rules;
+    }
+
+    if(child_yang_name == "policies")
+    {
+        if(policies == nullptr)
+        {
+            policies = std::make_shared<Sr::TrafficEngineering::Policies>();
+        }
+        return policies;
+    }
+
+    if(child_yang_name == "srte-interfaces")
+    {
+        if(srte_interfaces == nullptr)
+        {
+            srte_interfaces = std::make_shared<Sr::TrafficEngineering::SrteInterfaces>();
+        }
+        return srte_interfaces;
+    }
+
+    if(child_yang_name == "pcc")
+    {
+        if(pcc == nullptr)
+        {
+            pcc = std::make_shared<Sr::TrafficEngineering::Pcc>();
+        }
+        return pcc;
+    }
+
+    if(child_yang_name == "affinity-maps")
+    {
+        if(affinity_maps == nullptr)
+        {
+            affinity_maps = std::make_shared<Sr::TrafficEngineering::AffinityMaps>();
+        }
+        return affinity_maps;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(on_demand_colors != nullptr)
+    {
+        children["on-demand-colors"] = on_demand_colors;
+    }
+
+    if(segments != nullptr)
+    {
+        children["segments"] = segments;
+    }
+
+    if(logging != nullptr)
+    {
+        children["logging"] = logging;
+    }
+
+    if(binding_sid_rules != nullptr)
+    {
+        children["binding-sid-rules"] = binding_sid_rules;
+    }
+
+    if(policies != nullptr)
+    {
+        children["policies"] = policies;
+    }
+
+    if(srte_interfaces != nullptr)
+    {
+        children["srte-interfaces"] = srte_interfaces;
+    }
+
+    if(pcc != nullptr)
+    {
+        children["pcc"] = pcc;
+    }
+
+    if(affinity_maps != nullptr)
+    {
+        children["affinity-maps"] = affinity_maps;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-demand-colors" || name == "segments" || name == "logging" || name == "binding-sid-rules" || name == "policies" || name == "srte-interfaces" || name == "pcc" || name == "affinity-maps" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColors()
+{
+
+    yang_name = "on-demand-colors"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::~OnDemandColors()
+{
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::has_data() const
+{
+    for (std::size_t index=0; index<on_demand_color.size(); index++)
+    {
+        if(on_demand_color[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::has_operation() const
+{
+    for (std::size_t index=0; index<on_demand_color.size(); index++)
+    {
+        if(on_demand_color[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on-demand-colors";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandColors::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "on-demand-color")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor>();
+        c->parent = this;
+        on_demand_color.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : on_demand_color)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::OnDemandColors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::OnDemandColors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-demand-color")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColor()
+    :
+    color{YType::uint32, "color"},
+    enable{YType::empty, "enable"}
+    	,
+    on_demand_color_dyn_mpls(std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls>())
+{
+    on_demand_color_dyn_mpls->parent = this;
+
+    yang_name = "on-demand-color"; yang_parent_name = "on-demand-colors"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::~OnDemandColor()
+{
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::has_data() const
+{
+    return color.is_set
+	|| enable.is_set
+	|| (on_demand_color_dyn_mpls !=  nullptr && on_demand_color_dyn_mpls->has_data());
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (on_demand_color_dyn_mpls !=  nullptr && on_demand_color_dyn_mpls->has_operation());
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/on-demand-colors/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on-demand-color" <<"[color='" <<color <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "on-demand-color-dyn-mpls")
+    {
+        if(on_demand_color_dyn_mpls == nullptr)
+        {
+            on_demand_color_dyn_mpls = std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls>();
+        }
+        return on_demand_color_dyn_mpls;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(on_demand_color_dyn_mpls != nullptr)
+    {
+        children["on-demand-color-dyn-mpls"] = on_demand_color_dyn_mpls;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-demand-color-dyn-mpls" || name == "color" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMpls()
+    :
+    enable{YType::empty, "enable"}
+    	,
+    on_demand_color_dyn_mpls_metric(std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric>())
+	,on_demand_color_dyn_mpls_pce(std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce>())
+	,disjoint_path(nullptr) // presence node
+{
+    on_demand_color_dyn_mpls_metric->parent = this;
+    on_demand_color_dyn_mpls_pce->parent = this;
+
+    yang_name = "on-demand-color-dyn-mpls"; yang_parent_name = "on-demand-color"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::~OnDemandColorDynMpls()
+{
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::has_data() const
+{
+    return enable.is_set
+	|| (on_demand_color_dyn_mpls_metric !=  nullptr && on_demand_color_dyn_mpls_metric->has_data())
+	|| (on_demand_color_dyn_mpls_pce !=  nullptr && on_demand_color_dyn_mpls_pce->has_data())
+	|| (disjoint_path !=  nullptr && disjoint_path->has_data());
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (on_demand_color_dyn_mpls_metric !=  nullptr && on_demand_color_dyn_mpls_metric->has_operation())
+	|| (on_demand_color_dyn_mpls_pce !=  nullptr && on_demand_color_dyn_mpls_pce->has_operation())
+	|| (disjoint_path !=  nullptr && disjoint_path->has_operation());
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on-demand-color-dyn-mpls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "on-demand-color-dyn-mpls-metric")
+    {
+        if(on_demand_color_dyn_mpls_metric == nullptr)
+        {
+            on_demand_color_dyn_mpls_metric = std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric>();
+        }
+        return on_demand_color_dyn_mpls_metric;
+    }
+
+    if(child_yang_name == "on-demand-color-dyn-mpls-pce")
+    {
+        if(on_demand_color_dyn_mpls_pce == nullptr)
+        {
+            on_demand_color_dyn_mpls_pce = std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce>();
+        }
+        return on_demand_color_dyn_mpls_pce;
+    }
+
+    if(child_yang_name == "disjoint-path")
+    {
+        if(disjoint_path == nullptr)
+        {
+            disjoint_path = std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath>();
+        }
+        return disjoint_path;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(on_demand_color_dyn_mpls_metric != nullptr)
+    {
+        children["on-demand-color-dyn-mpls-metric"] = on_demand_color_dyn_mpls_metric;
+    }
+
+    if(on_demand_color_dyn_mpls_pce != nullptr)
+    {
+        children["on-demand-color-dyn-mpls-pce"] = on_demand_color_dyn_mpls_pce;
+    }
+
+    if(disjoint_path != nullptr)
+    {
+        children["disjoint-path"] = disjoint_path;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-demand-color-dyn-mpls-metric" || name == "on-demand-color-dyn-mpls-pce" || name == "disjoint-path" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::OnDemandColorDynMplsMetric()
+    :
+    metric_type{YType::enumeration, "metric-type"},
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "on-demand-color-dyn-mpls-metric"; yang_parent_name = "on-demand-color-dyn-mpls"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::~OnDemandColorDynMplsMetric()
+{
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::has_data() const
+{
+    return metric_type.is_set
+	|| enable.is_set;
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on-demand-color-dyn-mpls-metric";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric-type" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::OnDemandColorDynMplsPce()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "on-demand-color-dyn-mpls-pce"; yang_parent_name = "on-demand-color-dyn-mpls"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::~OnDemandColorDynMplsPce()
+{
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::has_data() const
+{
+    return enable.is_set;
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on-demand-color-dyn-mpls-pce";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::DisjointPath()
+    :
+    group_id{YType::uint32, "group-id"},
+    disjointness_type{YType::enumeration, "disjointness-type"},
+    sub_id{YType::uint32, "sub-id"}
+{
+
+    yang_name = "disjoint-path"; yang_parent_name = "on-demand-color-dyn-mpls"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::~DisjointPath()
+{
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::has_data() const
+{
+    return group_id.is_set
+	|| disjointness_type.is_set
+	|| sub_id.is_set;
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(group_id.yfilter)
+	|| ydk::is_set(disjointness_type.yfilter)
+	|| ydk::is_set(sub_id.yfilter);
+}
+
+std::string Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disjoint-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (disjointness_type.is_set || is_set(disjointness_type.yfilter)) leaf_name_data.push_back(disjointness_type.get_name_leafdata());
+    if (sub_id.is_set || is_set(sub_id.yfilter)) leaf_name_data.push_back(sub_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group-id")
+    {
+        group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disjointness-type")
+    {
+        disjointness_type = value;
+        disjointness_type.value_namespace = name_space;
+        disjointness_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-id")
+    {
+        sub_id = value;
+        sub_id.value_namespace = name_space;
+        sub_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+    if(value_path == "disjointness-type")
+    {
+        disjointness_type.yfilter = yfilter;
+    }
+    if(value_path == "sub-id")
+    {
+        sub_id.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-id" || name == "disjointness-type" || name == "sub-id")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Segments::Segments()
+{
+
+    yang_name = "segments"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Segments::~Segments()
+{
+}
+
+bool Sr::TrafficEngineering::Segments::has_data() const
+{
+    for (std::size_t index=0; index<segment.size(); index++)
+    {
+        if(segment[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Segments::has_operation() const
+{
+    for (std::size_t index=0; index<segment.size(); index++)
+    {
+        if(segment[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Segments::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Segments::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segments";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "segment")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Segments::Segment>();
+        c->parent = this;
+        segment.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : segment)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Segments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Segments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Segments::Segment::Segment()
+    :
+    path_name{YType::str, "path-name"},
+    enable{YType::empty, "enable"}
+    	,
+    segments(std::make_shared<Sr::TrafficEngineering::Segments::Segment::Segments_>())
+{
+    segments->parent = this;
+
+    yang_name = "segment"; yang_parent_name = "segments"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Segments::Segment::~Segment()
+{
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::has_data() const
+{
+    return path_name.is_set
+	|| enable.is_set
+	|| (segments !=  nullptr && segments->has_data());
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (segments !=  nullptr && segments->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Segments::Segment::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/segments/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Segments::Segment::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment" <<"[path-name='" <<path_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments::Segment::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path_name.is_set || is_set(path_name.yfilter)) leaf_name_data.push_back(path_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "segments")
+    {
+        if(segments == nullptr)
+        {
+            segments = std::make_shared<Sr::TrafficEngineering::Segments::Segment::Segments_>();
+        }
+        return segments;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::Segment::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(segments != nullptr)
+    {
+        children["segments"] = segments;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Segments::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path-name")
+    {
+        path_name = value;
+        path_name.value_namespace = name_space;
+        path_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Segments::Segment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-name")
+    {
+        path_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segments" || name == "path-name" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Segments::Segment::Segments_::Segments_()
+{
+
+    yang_name = "segments"; yang_parent_name = "segment"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Segments::Segment::Segments_::~Segments_()
+{
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::Segments_::has_data() const
+{
+    for (std::size_t index=0; index<segment.size(); index++)
+    {
+        if(segment[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::Segments_::has_operation() const
+{
+    for (std::size_t index=0; index<segment.size(); index++)
+    {
+        if(segment[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Segments::Segment::Segments_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segments";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments::Segment::Segments_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::Segment::Segments_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "segment")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_>();
+        c->parent = this;
+        segment.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::Segment::Segments_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : segment)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Segments::Segment::Segments_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Segments::Segment::Segments_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::Segments_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::Segment_()
+    :
+    segment_index{YType::uint32, "segment-index"},
+    segment_type{YType::enumeration, "segment-type"},
+    address{YType::str, "address"},
+    mpls_label{YType::uint32, "mpls-label"}
+{
+
+    yang_name = "segment"; yang_parent_name = "segments"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::~Segment_()
+{
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::has_data() const
+{
+    return segment_index.is_set
+	|| segment_type.is_set
+	|| address.is_set
+	|| mpls_label.is_set;
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(segment_index.yfilter)
+	|| ydk::is_set(segment_type.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment" <<"[segment-index='" <<segment_index <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (segment_index.is_set || is_set(segment_index.yfilter)) leaf_name_data.push_back(segment_index.get_name_leafdata());
+    if (segment_type.is_set || is_set(segment_type.yfilter)) leaf_name_data.push_back(segment_type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "segment-index")
+    {
+        segment_index = value;
+        segment_index.value_namespace = name_space;
+        segment_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "segment-type")
+    {
+        segment_type = value;
+        segment_type.value_namespace = name_space;
+        segment_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "segment-index")
+    {
+        segment_index.yfilter = yfilter;
+    }
+    if(value_path == "segment-type")
+    {
+        segment_type.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment-index" || name == "segment-type" || name == "address" || name == "mpls-label")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Logging::Logging()
+    :
+    policy_status{YType::empty, "policy-status"}
+{
+
+    yang_name = "logging"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Logging::~Logging()
+{
+}
+
+bool Sr::TrafficEngineering::Logging::has_data() const
+{
+    return policy_status.is_set;
+}
+
+bool Sr::TrafficEngineering::Logging::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policy_status.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Logging::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Logging::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logging";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Logging::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policy_status.is_set || is_set(policy_status.yfilter)) leaf_name_data.push_back(policy_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Logging::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policy-status")
+    {
+        policy_status = value;
+        policy_status.value_namespace = name_space;
+        policy_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-status")
+    {
+        policy_status.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Logging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-status")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::BindingSidRules::BindingSidRules()
+    :
+    explicit_(std::make_shared<Sr::TrafficEngineering::BindingSidRules::Explicit>())
+{
+    explicit_->parent = this;
+
+    yang_name = "binding-sid-rules"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::BindingSidRules::~BindingSidRules()
+{
+}
+
+bool Sr::TrafficEngineering::BindingSidRules::has_data() const
+{
+    return (explicit_ !=  nullptr && explicit_->has_data());
+}
+
+bool Sr::TrafficEngineering::BindingSidRules::has_operation() const
+{
+    return is_set(yfilter)
+	|| (explicit_ !=  nullptr && explicit_->has_operation());
+}
+
+std::string Sr::TrafficEngineering::BindingSidRules::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::BindingSidRules::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-sid-rules";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::BindingSidRules::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::BindingSidRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "explicit")
+    {
+        if(explicit_ == nullptr)
+        {
+            explicit_ = std::make_shared<Sr::TrafficEngineering::BindingSidRules::Explicit>();
+        }
+        return explicit_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::BindingSidRules::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(explicit_ != nullptr)
+    {
+        children["explicit"] = explicit_;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::BindingSidRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::BindingSidRules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::BindingSidRules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::BindingSidRules::Explicit::Explicit()
+    :
+    rule{YType::enumeration, "rule"}
+{
+
+    yang_name = "explicit"; yang_parent_name = "binding-sid-rules"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::BindingSidRules::Explicit::~Explicit()
+{
+}
+
+bool Sr::TrafficEngineering::BindingSidRules::Explicit::has_data() const
+{
+    return rule.is_set;
+}
+
+bool Sr::TrafficEngineering::BindingSidRules::Explicit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rule.yfilter);
+}
+
+std::string Sr::TrafficEngineering::BindingSidRules::Explicit::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/binding-sid-rules/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::BindingSidRules::Explicit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "explicit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::BindingSidRules::Explicit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule.is_set || is_set(rule.yfilter)) leaf_name_data.push_back(rule.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::BindingSidRules::Explicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::BindingSidRules::Explicit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::BindingSidRules::Explicit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule")
+    {
+        rule = value;
+        rule.value_namespace = name_space;
+        rule.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::BindingSidRules::Explicit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule")
+    {
+        rule.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::BindingSidRules::Explicit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policies()
+{
+
+    yang_name = "policies"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Policies::~Policies()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::has_data() const
+{
+    for (std::size_t index=0; index<policy.size(); index++)
+    {
+        if(policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Policies::has_operation() const
+{
+    for (std::size_t index=0; index<policy.size(); index++)
+    {
+        if(policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Policies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy>();
+        c->parent = this;
+        policy.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : policy)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Policies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Policies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::Policy()
+    :
+    policy_name{YType::str, "policy-name"},
+    shutdown{YType::empty, "shutdown"},
+    enable{YType::empty, "enable"}
+    	,
+    binding_sid(std::make_shared<Sr::TrafficEngineering::Policies::Policy::BindingSid>())
+	,policy_color_endpoint(nullptr) // presence node
+	,candidate_paths(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths>())
+{
+    binding_sid->parent = this;
+    candidate_paths->parent = this;
+
+    yang_name = "policy"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::~Policy()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::has_data() const
+{
+    return policy_name.is_set
+	|| shutdown.is_set
+	|| enable.is_set
+	|| (binding_sid !=  nullptr && binding_sid->has_data())
+	|| (policy_color_endpoint !=  nullptr && policy_color_endpoint->has_data())
+	|| (candidate_paths !=  nullptr && candidate_paths->has_data());
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (binding_sid !=  nullptr && binding_sid->has_operation())
+	|| (policy_color_endpoint !=  nullptr && policy_color_endpoint->has_operation())
+	|| (candidate_paths !=  nullptr && candidate_paths->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/policies/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy" <<"[policy-name='" <<policy_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "binding-sid")
+    {
+        if(binding_sid == nullptr)
+        {
+            binding_sid = std::make_shared<Sr::TrafficEngineering::Policies::Policy::BindingSid>();
+        }
+        return binding_sid;
+    }
+
+    if(child_yang_name == "policy-color-endpoint")
+    {
+        if(policy_color_endpoint == nullptr)
+        {
+            policy_color_endpoint = std::make_shared<Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint>();
+        }
+        return policy_color_endpoint;
+    }
+
+    if(child_yang_name == "candidate-paths")
+    {
+        if(candidate_paths == nullptr)
+        {
+            candidate_paths = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths>();
+        }
+        return candidate_paths;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(binding_sid != nullptr)
+    {
+        children["binding-sid"] = binding_sid;
+    }
+
+    if(policy_color_endpoint != nullptr)
+    {
+        children["policy-color-endpoint"] = policy_color_endpoint;
+    }
+
+    if(candidate_paths != nullptr)
+    {
+        children["candidate-paths"] = candidate_paths;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding-sid" || name == "policy-color-endpoint" || name == "candidate-paths" || name == "policy-name" || name == "shutdown" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::BindingSid::BindingSid()
+    :
+    binding_sid_type{YType::enumeration, "binding-sid-type"},
+    mpls_label{YType::uint32, "mpls-label"}
+{
+
+    yang_name = "binding-sid"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::BindingSid::~BindingSid()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::BindingSid::has_data() const
+{
+    return binding_sid_type.is_set
+	|| mpls_label.is_set;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::BindingSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(binding_sid_type.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::BindingSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::BindingSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (binding_sid_type.is_set || is_set(binding_sid_type.yfilter)) leaf_name_data.push_back(binding_sid_type.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::BindingSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "binding-sid-type")
+    {
+        binding_sid_type = value;
+        binding_sid_type.value_namespace = name_space;
+        binding_sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::BindingSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "binding-sid-type")
+    {
+        binding_sid_type.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::BindingSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding-sid-type" || name == "mpls-label")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::PolicyColorEndpoint()
+    :
+    color{YType::uint32, "color"},
+    end_point_type{YType::enumeration, "end-point-type"},
+    end_point_address{YType::str, "end-point-address"}
+{
+
+    yang_name = "policy-color-endpoint"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::~PolicyColorEndpoint()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::has_data() const
+{
+    return color.is_set
+	|| end_point_type.is_set
+	|| end_point_address.is_set;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color.yfilter)
+	|| ydk::is_set(end_point_type.yfilter)
+	|| ydk::is_set(end_point_address.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-color-endpoint";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+    if (end_point_type.is_set || is_set(end_point_type.yfilter)) leaf_name_data.push_back(end_point_type.get_name_leafdata());
+    if (end_point_address.is_set || is_set(end_point_address.yfilter)) leaf_name_data.push_back(end_point_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-point-type")
+    {
+        end_point_type = value;
+        end_point_type.value_namespace = name_space;
+        end_point_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-point-address")
+    {
+        end_point_address = value;
+        end_point_address.value_namespace = name_space;
+        end_point_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+    if(value_path == "end-point-type")
+    {
+        end_point_type.yfilter = yfilter;
+    }
+    if(value_path == "end-point-address")
+    {
+        end_point_address.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color" || name == "end-point-type" || name == "end-point-address")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::CandidatePaths()
+    :
+    enable{YType::empty, "enable"}
+    	,
+    preferences(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences>())
+{
+    preferences->parent = this;
+
+    yang_name = "candidate-paths"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::~CandidatePaths()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::has_data() const
+{
+    return enable.is_set
+	|| (preferences !=  nullptr && preferences->has_data());
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (preferences !=  nullptr && preferences->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "candidate-paths";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "preferences")
+    {
+        if(preferences == nullptr)
+        {
+            preferences = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences>();
+        }
+        return preferences;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(preferences != nullptr)
+    {
+        children["preferences"] = preferences;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "preferences" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preferences()
+{
+
+    yang_name = "preferences"; yang_parent_name = "candidate-paths"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::~Preferences()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::has_data() const
+{
+    for (std::size_t index=0; index<preference.size(); index++)
+    {
+        if(preference[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::has_operation() const
+{
+    for (std::size_t index=0; index<preference.size(); index++)
+    {
+        if(preference[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "preferences";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "preference")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference>();
+        c->parent = this;
+        preference.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : preference)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "preference")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Preference()
+    :
+    path_index{YType::uint32, "path-index"},
+    enable{YType::empty, "enable"}
+    	,
+    constraints(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints>())
+	,path_infos(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos>())
+{
+    constraints->parent = this;
+    path_infos->parent = this;
+
+    yang_name = "preference"; yang_parent_name = "preferences"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::~Preference()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::has_data() const
+{
+    return path_index.is_set
+	|| enable.is_set
+	|| (constraints !=  nullptr && constraints->has_data())
+	|| (path_infos !=  nullptr && path_infos->has_data());
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(path_index.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (constraints !=  nullptr && constraints->has_operation())
+	|| (path_infos !=  nullptr && path_infos->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "preference" <<"[path-index='" <<path_index <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (path_index.is_set || is_set(path_index.yfilter)) leaf_name_data.push_back(path_index.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "constraints")
+    {
+        if(constraints == nullptr)
+        {
+            constraints = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints>();
+        }
+        return constraints;
+    }
+
+    if(child_yang_name == "path-infos")
+    {
+        if(path_infos == nullptr)
+        {
+            path_infos = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos>();
+        }
+        return path_infos;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(constraints != nullptr)
+    {
+        children["constraints"] = constraints;
+    }
+
+    if(path_infos != nullptr)
+    {
+        children["path-infos"] = path_infos;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "path-index")
+    {
+        path_index = value;
+        path_index.value_namespace = name_space;
+        path_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-index")
+    {
+        path_index.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "constraints" || name == "path-infos" || name == "path-index" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::Constraints()
+    :
+    enable{YType::empty, "enable"}
+    	,
+    affinity_rules(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules>())
+{
+    affinity_rules->parent = this;
+
+    yang_name = "constraints"; yang_parent_name = "preference"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::~Constraints()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::has_data() const
+{
+    return enable.is_set
+	|| (affinity_rules !=  nullptr && affinity_rules->has_data());
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (affinity_rules !=  nullptr && affinity_rules->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "constraints";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-rules")
+    {
+        if(affinity_rules == nullptr)
+        {
+            affinity_rules = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules>();
+        }
+        return affinity_rules;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(affinity_rules != nullptr)
+    {
+        children["affinity-rules"] = affinity_rules;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-rules" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRules()
+{
+
+    yang_name = "affinity-rules"; yang_parent_name = "constraints"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::~AffinityRules()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::has_data() const
+{
+    for (std::size_t index=0; index<affinity_rule.size(); index++)
+    {
+        if(affinity_rule[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_rule.size(); index++)
+    {
+        if(affinity_rule[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-rules";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-rule")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule>();
+        c->parent = this;
+        affinity_rule.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : affinity_rule)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-rule")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::AffinityRule()
+    :
+    rule{YType::enumeration, "rule"},
+    color{YType::str, "color"}
+{
+
+    yang_name = "affinity-rule"; yang_parent_name = "affinity-rules"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::~AffinityRule()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::has_data() const
+{
+    return rule.is_set
+	|| color.is_set;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rule.yfilter)
+	|| ydk::is_set(color.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-rule" <<"[rule='" <<rule <<"']" <<"[color='" <<color <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rule.is_set || is_set(rule.yfilter)) leaf_name_data.push_back(rule.get_name_leafdata());
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rule")
+    {
+        rule = value;
+        rule.value_namespace = name_space;
+        rule.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule")
+    {
+        rule.yfilter = yfilter;
+    }
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule" || name == "color")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfos()
+{
+
+    yang_name = "path-infos"; yang_parent_name = "preference"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::~PathInfos()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::has_data() const
+{
+    for (std::size_t index=0; index<path_info.size(); index++)
+    {
+        if(path_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::has_operation() const
+{
+    for (std::size_t index=0; index<path_info.size(); index++)
+    {
+        if(path_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-infos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-info")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo>();
+        c->parent = this;
+        path_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : path_info)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-info")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::PathInfo()
+    :
+    type{YType::enumeration, "type"},
+    hop_type{YType::enumeration, "hop-type"},
+    segment_list_name{YType::str, "segment-list-name"},
+    weight{YType::int32, "weight"},
+    enable{YType::empty, "enable"}
+    	,
+    pce(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce>())
+	,metric(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric>())
+{
+    pce->parent = this;
+    metric->parent = this;
+
+    yang_name = "path-info"; yang_parent_name = "path-infos"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::~PathInfo()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::has_data() const
+{
+    return type.is_set
+	|| hop_type.is_set
+	|| segment_list_name.is_set
+	|| weight.is_set
+	|| enable.is_set
+	|| (pce !=  nullptr && pce->has_data())
+	|| (metric !=  nullptr && metric->has_data());
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(segment_list_name.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (pce !=  nullptr && pce->has_operation())
+	|| (metric !=  nullptr && metric->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-info" <<"[type='" <<type <<"']" <<"[hop-type='" <<hop_type <<"']" <<"[segment-list-name='" <<segment_list_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (segment_list_name.is_set || is_set(segment_list_name.yfilter)) leaf_name_data.push_back(segment_list_name.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pce")
+    {
+        if(pce == nullptr)
+        {
+            pce = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce>();
+        }
+        return pce;
+    }
+
+    if(child_yang_name == "metric")
+    {
+        if(metric == nullptr)
+        {
+            metric = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric>();
+        }
+        return metric;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(pce != nullptr)
+    {
+        children["pce"] = pce;
+    }
+
+    if(metric != nullptr)
+    {
+        children["metric"] = metric;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "segment-list-name")
+    {
+        segment_list_name = value;
+        segment_list_name.value_namespace = name_space;
+        segment_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "segment-list-name")
+    {
+        segment_list_name.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pce" || name == "metric" || name == "type" || name == "hop-type" || name == "segment-list-name" || name == "weight" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::Pce()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "pce"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::~Pce()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::has_data() const
+{
+    return enable.is_set;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pce";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pce::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Metric()
+    :
+    sid_limit{YType::uint32, "sid-limit"},
+    metric_type{YType::enumeration, "metric-type"},
+    enable{YType::empty, "enable"}
+    	,
+    margin(std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin>())
+{
+    margin->parent = this;
+
+    yang_name = "metric"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::~Metric()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::has_data() const
+{
+    return sid_limit.is_set
+	|| metric_type.is_set
+	|| enable.is_set
+	|| (margin !=  nullptr && margin->has_data());
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_limit.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (margin !=  nullptr && margin->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "metric";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_limit.is_set || is_set(sid_limit.yfilter)) leaf_name_data.push_back(sid_limit.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "margin")
+    {
+        if(margin == nullptr)
+        {
+            margin = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin>();
+        }
+        return margin;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(margin != nullptr)
+    {
+        children["margin"] = margin;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-limit")
+    {
+        sid_limit = value;
+        sid_limit.value_namespace = name_space;
+        sid_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-limit")
+    {
+        sid_limit.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "margin" || name == "sid-limit" || name == "metric-type" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::Margin()
+    :
+    value_type{YType::enumeration, "value-type"},
+    absolute_value{YType::uint32, "absolute-value"},
+    relative_value{YType::uint32, "relative-value"}
+{
+
+    yang_name = "margin"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::~Margin()
+{
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::has_data() const
+{
+    return value_type.is_set
+	|| absolute_value.is_set
+	|| relative_value.is_set;
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_type.yfilter)
+	|| ydk::is_set(absolute_value.yfilter)
+	|| ydk::is_set(relative_value.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "margin";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_type.is_set || is_set(value_type.yfilter)) leaf_name_data.push_back(value_type.get_name_leafdata());
+    if (absolute_value.is_set || is_set(absolute_value.yfilter)) leaf_name_data.push_back(absolute_value.get_name_leafdata());
+    if (relative_value.is_set || is_set(relative_value.yfilter)) leaf_name_data.push_back(relative_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value-type")
+    {
+        value_type = value;
+        value_type.value_namespace = name_space;
+        value_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "absolute-value")
+    {
+        absolute_value = value;
+        absolute_value.value_namespace = name_space;
+        absolute_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "relative-value")
+    {
+        relative_value = value;
+        relative_value.value_namespace = name_space;
+        relative_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value-type")
+    {
+        value_type.yfilter = yfilter;
+    }
+    if(value_path == "absolute-value")
+    {
+        absolute_value.yfilter = yfilter;
+    }
+    if(value_path == "relative-value")
+    {
+        relative_value.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value-type" || name == "absolute-value" || name == "relative-value")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::SrteInterfaces()
+{
+
+    yang_name = "srte-interfaces"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::~SrteInterfaces()
+{
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::has_data() const
+{
+    for (std::size_t index=0; index<srte_interface.size(); index++)
+    {
+        if(srte_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<srte_interface.size(); index++)
+    {
+        if(srte_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::SrteInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::SrteInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srte-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srte-interface")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface>();
+        c->parent = this;
+        srte_interface.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : srte_interface)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srte-interface")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::SrteInterface::SrteInterface()
+    :
+    srte_interface_name{YType::str, "srte-interface-name"},
+    enable{YType::empty, "enable"}
+    	,
+    interface_affinities(std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities>())
+{
+    interface_affinities->parent = this;
+
+    yang_name = "srte-interface"; yang_parent_name = "srte-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::SrteInterface::~SrteInterface()
+{
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::has_data() const
+{
+    return srte_interface_name.is_set
+	|| enable.is_set
+	|| (interface_affinities !=  nullptr && interface_affinities->has_data());
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(srte_interface_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (interface_affinities !=  nullptr && interface_affinities->has_operation());
+}
+
+std::string Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/srte-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srte-interface" <<"[srte-interface-name='" <<srte_interface_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (srte_interface_name.is_set || is_set(srte_interface_name.yfilter)) leaf_name_data.push_back(srte_interface_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-affinities")
+    {
+        if(interface_affinities == nullptr)
+        {
+            interface_affinities = std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities>();
+        }
+        return interface_affinities;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(interface_affinities != nullptr)
+    {
+        children["interface-affinities"] = interface_affinities;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "srte-interface-name")
+    {
+        srte_interface_name = value;
+        srte_interface_name.value_namespace = name_space;
+        srte_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srte-interface-name")
+    {
+        srte_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-affinities" || name == "srte-interface-name" || name == "enable")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinities()
+{
+
+    yang_name = "interface-affinities"; yang_parent_name = "srte-interface"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::~InterfaceAffinities()
+{
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::has_data() const
+{
+    for (std::size_t index=0; index<interface_affinity.size(); index++)
+    {
+        if(interface_affinity[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::has_operation() const
+{
+    for (std::size_t index=0; index<interface_affinity.size(); index++)
+    {
+        if(interface_affinity[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-affinities";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-affinity")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity>();
+        c->parent = this;
+        interface_affinity.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : interface_affinity)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-affinity")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::InterfaceAffinity()
+    :
+    color{YType::str, "color"}
+{
+
+    yang_name = "interface-affinity"; yang_parent_name = "interface-affinities"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::~InterfaceAffinity()
+{
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::has_data() const
+{
+    return color.is_set;
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color.yfilter);
+}
+
+std::string Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-affinity" <<"[color='" <<color <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Pcc::Pcc()
+    :
+    dead_timer_interval{YType::uint32, "dead-timer-interval"},
+    report_all{YType::empty, "report-all"},
+    keepalive_timer_interval{YType::uint32, "keepalive-timer-interval"},
+    source_address{YType::str, "source-address"},
+    enable{YType::empty, "enable"},
+    delegation_timeout{YType::uint32, "delegation-timeout"}
+    	,
+    pce_peers(std::make_shared<Sr::TrafficEngineering::Pcc::PcePeers>())
+	,pce_addresses(std::make_shared<Sr::TrafficEngineering::Pcc::PceAddresses>())
+{
+    pce_peers->parent = this;
+    pce_addresses->parent = this;
+
+    yang_name = "pcc"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Pcc::~Pcc()
+{
+}
+
+bool Sr::TrafficEngineering::Pcc::has_data() const
+{
+    return dead_timer_interval.is_set
+	|| report_all.is_set
+	|| keepalive_timer_interval.is_set
+	|| source_address.is_set
+	|| enable.is_set
+	|| delegation_timeout.is_set
+	|| (pce_peers !=  nullptr && pce_peers->has_data())
+	|| (pce_addresses !=  nullptr && pce_addresses->has_data());
+}
+
+bool Sr::TrafficEngineering::Pcc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dead_timer_interval.yfilter)
+	|| ydk::is_set(report_all.yfilter)
+	|| ydk::is_set(keepalive_timer_interval.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(delegation_timeout.yfilter)
+	|| (pce_peers !=  nullptr && pce_peers->has_operation())
+	|| (pce_addresses !=  nullptr && pce_addresses->has_operation());
+}
+
+std::string Sr::TrafficEngineering::Pcc::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Pcc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pcc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dead_timer_interval.is_set || is_set(dead_timer_interval.yfilter)) leaf_name_data.push_back(dead_timer_interval.get_name_leafdata());
+    if (report_all.is_set || is_set(report_all.yfilter)) leaf_name_data.push_back(report_all.get_name_leafdata());
+    if (keepalive_timer_interval.is_set || is_set(keepalive_timer_interval.yfilter)) leaf_name_data.push_back(keepalive_timer_interval.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (delegation_timeout.is_set || is_set(delegation_timeout.yfilter)) leaf_name_data.push_back(delegation_timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pce-peers")
+    {
+        if(pce_peers == nullptr)
+        {
+            pce_peers = std::make_shared<Sr::TrafficEngineering::Pcc::PcePeers>();
+        }
+        return pce_peers;
+    }
+
+    if(child_yang_name == "pce-addresses")
+    {
+        if(pce_addresses == nullptr)
+        {
+            pce_addresses = std::make_shared<Sr::TrafficEngineering::Pcc::PceAddresses>();
+        }
+        return pce_addresses;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(pce_peers != nullptr)
+    {
+        children["pce-peers"] = pce_peers;
+    }
+
+    if(pce_addresses != nullptr)
+    {
+        children["pce-addresses"] = pce_addresses;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Pcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dead-timer-interval")
+    {
+        dead_timer_interval = value;
+        dead_timer_interval.value_namespace = name_space;
+        dead_timer_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "report-all")
+    {
+        report_all = value;
+        report_all.value_namespace = name_space;
+        report_all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "keepalive-timer-interval")
+    {
+        keepalive_timer_interval = value;
+        keepalive_timer_interval.value_namespace = name_space;
+        keepalive_timer_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delegation-timeout")
+    {
+        delegation_timeout = value;
+        delegation_timeout.value_namespace = name_space;
+        delegation_timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Pcc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dead-timer-interval")
+    {
+        dead_timer_interval.yfilter = yfilter;
+    }
+    if(value_path == "report-all")
+    {
+        report_all.yfilter = yfilter;
+    }
+    if(value_path == "keepalive-timer-interval")
+    {
+        keepalive_timer_interval.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "delegation-timeout")
+    {
+        delegation_timeout.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Pcc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pce-peers" || name == "pce-addresses" || name == "dead-timer-interval" || name == "report-all" || name == "keepalive-timer-interval" || name == "source-address" || name == "enable" || name == "delegation-timeout")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Pcc::PcePeers::PcePeers()
+{
+
+    yang_name = "pce-peers"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Pcc::PcePeers::~PcePeers()
+{
+}
+
+bool Sr::TrafficEngineering::Pcc::PcePeers::has_data() const
+{
+    for (std::size_t index=0; index<pce_peer.size(); index++)
+    {
+        if(pce_peer[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Pcc::PcePeers::has_operation() const
+{
+    for (std::size_t index=0; index<pce_peer.size(); index++)
+    {
+        if(pce_peer[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Pcc::PcePeers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/pcc/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Pcc::PcePeers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pce-peers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PcePeers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PcePeers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pce-peer")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Pcc::PcePeers::PcePeer>();
+        c->parent = this;
+        pce_peer.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PcePeers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : pce_peer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Pcc::PcePeers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Pcc::PcePeers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Pcc::PcePeers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pce-peer")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::PcePeer()
+    :
+    pce_address{YType::str, "pce-address"},
+    enable{YType::empty, "enable"},
+    precedence{YType::uint32, "precedence"}
+{
+
+    yang_name = "pce-peer"; yang_parent_name = "pce-peers"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::~PcePeer()
+{
+}
+
+bool Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::has_data() const
+{
+    return pce_address.is_set
+	|| enable.is_set
+	|| precedence.is_set;
+}
+
+bool Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pce_address.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(precedence.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/pcc/pce-peers/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pce-peer" <<"[pce-address='" <<pce_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pce_address.is_set || is_set(pce_address.yfilter)) leaf_name_data.push_back(pce_address.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pce-address")
+    {
+        pce_address = value;
+        pce_address.value_namespace = name_space;
+        pce_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "precedence")
+    {
+        precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pce-address")
+    {
+        pce_address.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pce-address" || name == "enable" || name == "precedence")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Pcc::PceAddresses::PceAddresses()
+{
+
+    yang_name = "pce-addresses"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Pcc::PceAddresses::~PceAddresses()
+{
+}
+
+bool Sr::TrafficEngineering::Pcc::PceAddresses::has_data() const
+{
+    for (std::size_t index=0; index<pce_address.size(); index++)
+    {
+        if(pce_address[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::Pcc::PceAddresses::has_operation() const
+{
+    for (std::size_t index=0; index<pce_address.size(); index++)
+    {
+        if(pce_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::Pcc::PceAddresses::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/pcc/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Pcc::PceAddresses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pce-addresses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PceAddresses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PceAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pce-address")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress>();
+        c->parent = this;
+        pce_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PceAddresses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : pce_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::Pcc::PceAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::Pcc::PceAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::Pcc::PceAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pce-address")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::PceAddress()
+    :
+    pce_address{YType::str, "pce-address"},
+    precedence{YType::uint32, "precedence"}
+{
+
+    yang_name = "pce-address"; yang_parent_name = "pce-addresses"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::~PceAddress()
+{
+}
+
+bool Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::has_data() const
+{
+    return pce_address.is_set
+	|| precedence.is_set;
+}
+
+bool Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pce_address.yfilter)
+	|| ydk::is_set(precedence.yfilter);
+}
+
+std::string Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/pcc/pce-addresses/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pce-address" <<"[pce-address='" <<pce_address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pce_address.is_set || is_set(pce_address.yfilter)) leaf_name_data.push_back(pce_address.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pce-address")
+    {
+        pce_address = value;
+        pce_address.value_namespace = name_space;
+        pce_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "precedence")
+    {
+        precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pce-address")
+    {
+        pce_address.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pce-address" || name == "precedence")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::AffinityMaps::AffinityMaps()
+{
+
+    yang_name = "affinity-maps"; yang_parent_name = "traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::AffinityMaps::~AffinityMaps()
+{
+}
+
+bool Sr::TrafficEngineering::AffinityMaps::has_data() const
+{
+    for (std::size_t index=0; index<affinity_map.size(); index++)
+    {
+        if(affinity_map[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sr::TrafficEngineering::AffinityMaps::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_map.size(); index++)
+    {
+        if(affinity_map[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sr::TrafficEngineering::AffinityMaps::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::AffinityMaps::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-maps";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::AffinityMaps::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::AffinityMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-map")
+    {
+        auto c = std::make_shared<Sr::TrafficEngineering::AffinityMaps::AffinityMap>();
+        c->parent = this;
+        affinity_map.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::AffinityMaps::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : affinity_map)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sr::TrafficEngineering::AffinityMaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sr::TrafficEngineering::AffinityMaps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::TrafficEngineering::AffinityMaps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-map")
+        return true;
+    return false;
+}
+
+Sr::TrafficEngineering::AffinityMaps::AffinityMap::AffinityMap()
+    :
+    color{YType::str, "color"},
+    bit_position{YType::uint32, "bit-position"}
+{
+
+    yang_name = "affinity-map"; yang_parent_name = "affinity-maps"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Sr::TrafficEngineering::AffinityMaps::AffinityMap::~AffinityMap()
+{
+}
+
+bool Sr::TrafficEngineering::AffinityMaps::AffinityMap::has_data() const
+{
+    return color.is_set
+	|| bit_position.is_set;
+}
+
+bool Sr::TrafficEngineering::AffinityMaps::AffinityMap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color.yfilter)
+	|| ydk::is_set(bit_position.yfilter);
+}
+
+std::string Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-segment-routing-ms-cfg:sr/Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering/affinity-maps/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-map" <<"[color='" <<color <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+    if (bit_position.is_set || is_set(bit_position.yfilter)) leaf_name_data.push_back(bit_position.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sr::TrafficEngineering::AffinityMaps::AffinityMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bit-position")
+    {
+        bit_position = value;
+        bit_position.value_namespace = name_space;
+        bit_position.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::TrafficEngineering::AffinityMaps::AffinityMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+    if(value_path == "bit-position")
+    {
+        bit_position.yfilter = yfilter;
+    }
+}
+
+bool Sr::TrafficEngineering::AffinityMaps::AffinityMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color" || name == "bit-position")
+        return true;
+    return false;
+}
+
 const Enum::YLeaf SrmsMiFlag::disable {0, "disable"};
 const Enum::YLeaf SrmsMiFlag::enable {1, "enable"};
+
+const Enum::YLeaf SrmsAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf SrmsAddressFamily::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf SidTypeList::absolute {1, "absolute"};
+const Enum::YLeaf SidTypeList::index_ {2, "index"};
 
 
 }

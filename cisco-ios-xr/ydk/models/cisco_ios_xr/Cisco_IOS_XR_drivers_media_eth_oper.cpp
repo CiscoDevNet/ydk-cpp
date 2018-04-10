@@ -4033,8 +4033,10 @@ EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::BerMonitori
     supported{YType::int32, "supported"}
     	,
     settings(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings>())
+	,state(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State>())
 {
     settings->parent = this;
+    state->parent = this;
 
     yang_name = "ber-monitoring"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -4046,14 +4048,16 @@ EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::~BerMonitor
 bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::has_data() const
 {
     return supported.is_set
-	|| (settings !=  nullptr && settings->has_data());
+	|| (settings !=  nullptr && settings->has_data())
+	|| (state !=  nullptr && state->has_data());
 }
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(supported.yfilter)
-	|| (settings !=  nullptr && settings->has_operation());
+	|| (settings !=  nullptr && settings->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::get_segment_path() const
@@ -4084,6 +4088,15 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Be
         return settings;
     }
 
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State>();
+        }
+        return state;
+    }
+
     return nullptr;
 }
 
@@ -4094,6 +4107,11 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::In
     if(settings != nullptr)
     {
         children["settings"] = settings;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
     }
 
     return children;
@@ -4119,7 +4137,7 @@ void EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::set_fi
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "settings" || name == "supported")
+    if(name == "settings" || name == "state" || name == "supported")
         return true;
     return false;
 }
@@ -4253,6 +4271,97 @@ void EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settin
 bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "signal-degrade-threshold" || name == "signal-degrade-alarm" || name == "signal-fail-threshold" || name == "signal-fail-alarm" || name == "signal-remote-fault")
+        return true;
+    return false;
+}
+
+EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::State()
+    :
+    sd_current_ber{YType::uint32, "sd-current-ber"},
+    sf_current_ber{YType::uint32, "sf-current-ber"}
+{
+
+    yang_name = "state"; yang_parent_name = "ber-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::~State()
+{
+}
+
+bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::has_data() const
+{
+    return sd_current_ber.is_set
+	|| sf_current_ber.is_set;
+}
+
+bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sd_current_ber.yfilter)
+	|| ydk::is_set(sf_current_ber.yfilter);
+}
+
+std::string EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sd_current_ber.is_set || is_set(sd_current_ber.yfilter)) leaf_name_data.push_back(sd_current_ber.get_name_leafdata());
+    if (sf_current_ber.is_set || is_set(sf_current_ber.yfilter)) leaf_name_data.push_back(sf_current_ber.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sd-current-ber")
+    {
+        sd_current_ber = value;
+        sd_current_ber.value_namespace = name_space;
+        sd_current_ber.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sf-current-ber")
+    {
+        sf_current_ber = value;
+        sf_current_ber.value_namespace = name_space;
+        sf_current_ber.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sd-current-ber")
+    {
+        sd_current_ber.yfilter = yfilter;
+    }
+    if(value_path == "sf-current-ber")
+    {
+        sf_current_ber.yfilter = yfilter;
+    }
+}
+
+bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sd-current-ber" || name == "sf-current-ber")
         return true;
     return false;
 }
@@ -5659,6 +5768,7 @@ const Enum::YLeaf EtherLinkState::incompatible_config {24, "incompatible-config"
 const Enum::YLeaf EtherLinkState::system_error {25, "system-error"};
 const Enum::YLeaf EtherLinkState::wan_framing_error {26, "wan-framing-error"};
 const Enum::YLeaf EtherLinkState::otn_framing_error {27, "otn-framing-error"};
+const Enum::YLeaf EtherLinkState::shutdown {28, "shutdown"};
 
 const Enum::YLeaf EthernetFec::not_configured {0, "not-configured"};
 const Enum::YLeaf EthernetFec::standard {1, "standard"};
@@ -6031,7 +6141,14 @@ const Enum::YLeaf EthernetMedia::ethernet_200gbase_cr4 {346, "ethernet-200gbase-
 const Enum::YLeaf EthernetMedia::ethernet_400gbase_fr4 {347, "ethernet-400gbase-fr4"};
 const Enum::YLeaf EthernetMedia::ethernet_400gbase_dr4 {348, "ethernet-400gbase-dr4"};
 const Enum::YLeaf EthernetMedia::ethernet_400gbase_cr4 {349, "ethernet-400gbase-cr4"};
-const Enum::YLeaf EthernetMedia::ethernet_base_max {350, "ethernet-base-max"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu1m {350, "ethernet-10gbase-cu1m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu3m {351, "ethernet-10gbase-cu3m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu5m {352, "ethernet-10gbase-cu5m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu7m {353, "ethernet-10gbase-acu7m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu10m {354, "ethernet-10gbase-acu10m"};
+const Enum::YLeaf EthernetMedia::ethernet_40gbase_aoc {355, "ethernet-40gbase-aoc"};
+const Enum::YLeaf EthernetMedia::ethernet_4x10g_base_lr {356, "ethernet-4x10g-base-lr"};
+const Enum::YLeaf EthernetMedia::ethernet_base_max {357, "ethernet-base-max"};
 
 const Enum::YLeaf EthernetPortEnable::disabled {0, "disabled"};
 const Enum::YLeaf EthernetPortEnable::rx_enabled {1, "rx-enabled"};

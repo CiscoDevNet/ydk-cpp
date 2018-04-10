@@ -36,7 +36,6 @@ namespace ydk{
 static void walk_children(std::shared_ptr<Entity> entity, path::DataNode & rpc_input, std::string path);
 static void create_from_entity_path(std::shared_ptr<Entity> entity, path::DataNode & rpc_input, const std::string & path);
 static void create_from_children(std::map<string, std::shared_ptr<Entity>> & children, path::DataNode & rpc_input);
-shared_ptr<Entity> get_top_entity_from_filter(Entity & filter);
 
 ExecutorService::ExecutorService()
 {
@@ -50,12 +49,12 @@ ExecutorService::~ExecutorService()
 shared_ptr<Entity> ExecutorService::execute_rpc(ServiceProvider& provider,
     Entity & rpc_entity, std::shared_ptr<Entity> top_entity)
 {
-    // Get the yfilter - RPC Name
-    auto const & yfilter = rpc_entity.get_segment_path();
+    // Get the operation - RPC Name
+    auto const & operation = rpc_entity.get_segment_path();
 
     // Create RPC instance
     path::RootSchemaNode & root_schema = provider.get_session().get_root_schema();
-    shared_ptr<path::Rpc> rpc = root_schema.create_rpc(yfilter);
+    shared_ptr<path::Rpc> rpc = root_schema.create_rpc(operation);
     path::DataNode & rpc_input = rpc->get_input_node();
 
     // Handle input
@@ -137,14 +136,6 @@ static void create_from_children(std::map<string, std::shared_ptr<Entity>> & chi
             rpc_input.create_datanode(child.first);
         }
     }
-}
-
-shared_ptr<Entity> get_top_entity_from_filter(Entity & filter)
-{
-    if(filter.parent == nullptr)
-        return filter.clone_ptr();
-
-    return get_top_entity_from_filter(*(filter.parent));
 }
 
 }

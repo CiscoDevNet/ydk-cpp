@@ -253,6 +253,8 @@ class OpticsThreshold : public ydk::Enum
         static const ydk::Enum::YLeaf thresh_pn_min;
         static const ydk::Enum::YLeaf thresh_rx_sig_pow_min;
         static const ydk::Enum::YLeaf thresh_low_sig_freq_off_min;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_min;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_tilt_min;
         static const ydk::Enum::YLeaf thresh_opt_max;
         static const ydk::Enum::YLeaf thresh_opr_max;
         static const ydk::Enum::YLeaf thresh_lbc_max;
@@ -266,6 +268,8 @@ class OpticsThreshold : public ydk::Enum
         static const ydk::Enum::YLeaf thresh_pn_max;
         static const ydk::Enum::YLeaf thresh_rx_sig_pow_max;
         static const ydk::Enum::YLeaf thresh_low_sig_freq_off_max;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_max;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_tilt_max;
 
 };
 
@@ -305,6 +309,8 @@ class OpticsReport : public ydk::Enum
         static const ydk::Enum::YLeaf report_pn_min;
         static const ydk::Enum::YLeaf report_rx_sig_pow_min;
         static const ydk::Enum::YLeaf report_low_sig_freq_off_min;
+        static const ydk::Enum::YLeaf report_ampli_gain_min;
+        static const ydk::Enum::YLeaf report_ampli_gain_tilt_min;
         static const ydk::Enum::YLeaf report_opt_max;
         static const ydk::Enum::YLeaf report_opr_max;
         static const ydk::Enum::YLeaf report_lbc_max;
@@ -318,6 +324,8 @@ class OpticsReport : public ydk::Enum
         static const ydk::Enum::YLeaf report_pn_max;
         static const ydk::Enum::YLeaf report_rx_sig_pow_max;
         static const ydk::Enum::YLeaf report_low_sig_freq_off_max;
+        static const ydk::Enum::YLeaf report_ampli_gain_max;
+        static const ydk::Enum::YLeaf report_ampli_gain_tilt_max;
 
 };
 

@@ -1017,6 +1017,11 @@ class Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         ydk::YLeaf grace_period; //type: uint32
         ydk::YLeaf grace_reason; //type: Ospfv3GracefulRestartReason
         class LsaHeader; //type: Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader

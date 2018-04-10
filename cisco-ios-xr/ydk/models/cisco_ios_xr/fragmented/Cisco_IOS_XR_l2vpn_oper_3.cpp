@@ -18962,6 +18962,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::has_leaf_o
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::MacSummary()
     :
+    mac_counts_invalid{YType::boolean, "mac-counts-invalid"},
     local_mac_count{YType::uint32, "local-mac-count"},
     remote_mac_count{YType::uint32, "remote-mac-count"},
     static_mac_count{YType::uint32, "static-mac-count"},
@@ -18980,7 +18981,8 @@ L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::~MacSummary()
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::has_data() const
 {
-    return local_mac_count.is_set
+    return mac_counts_invalid.is_set
+	|| local_mac_count.is_set
 	|| remote_mac_count.is_set
 	|| static_mac_count.is_set
 	|| routed_mac_count.is_set
@@ -18992,6 +18994,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::has_data() const
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(mac_counts_invalid.yfilter)
 	|| ydk::is_set(local_mac_count.yfilter)
 	|| ydk::is_set(remote_mac_count.yfilter)
 	|| ydk::is_set(static_mac_count.yfilter)
@@ -19012,6 +19015,7 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (mac_counts_invalid.is_set || is_set(mac_counts_invalid.yfilter)) leaf_name_data.push_back(mac_counts_invalid.get_name_leafdata());
     if (local_mac_count.is_set || is_set(local_mac_count.yfilter)) leaf_name_data.push_back(local_mac_count.get_name_leafdata());
     if (remote_mac_count.is_set || is_set(remote_mac_count.yfilter)) leaf_name_data.push_back(remote_mac_count.get_name_leafdata());
     if (static_mac_count.is_set || is_set(static_mac_count.yfilter)) leaf_name_data.push_back(static_mac_count.get_name_leafdata());
@@ -19038,6 +19042,12 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
 
 void L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "mac-counts-invalid")
+    {
+        mac_counts_invalid = value;
+        mac_counts_invalid.value_namespace = name_space;
+        mac_counts_invalid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "local-mac-count")
     {
         local_mac_count = value;
@@ -19084,6 +19094,10 @@ void L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::set_value(const std
 
 void L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "mac-counts-invalid")
+    {
+        mac_counts_invalid.yfilter = yfilter;
+    }
     if(value_path == "local-mac-count")
     {
         local_mac_count.yfilter = yfilter;
@@ -19116,7 +19130,7 @@ void L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::set_filter(const st
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-mac-count" || name == "remote-mac-count" || name == "static-mac-count" || name == "routed-mac-count" || name == "mac-count" || name == "sbmac-count" || name == "bmac-count")
+    if(name == "mac-counts-invalid" || name == "local-mac-count" || name == "remote-mac-count" || name == "static-mac-count" || name == "routed-mac-count" || name == "mac-count" || name == "sbmac-count" || name == "bmac-count")
         return true;
     return false;
 }

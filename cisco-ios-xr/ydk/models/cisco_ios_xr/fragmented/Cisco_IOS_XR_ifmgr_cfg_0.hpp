@@ -133,7 +133,7 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         class NvSatelliteFabricNetwork; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork
         class Lldp; //type: InterfaceConfigurations::InterfaceConfiguration::Lldp
         class SpanMonitorSessions; //type: InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions
-        class CiscoIOSXRFreqsyncCfgFrequencySynchronization; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization
+        class FrequencySynchronization; //type: InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization
         class ServicePolicies; //type: InterfaceConfigurations::InterfaceConfiguration::ServicePolicies
         class Afs; //type: InterfaceConfigurations::InterfaceConfiguration::Afs
         class Statistics; //type: InterfaceConfigurations::InterfaceConfiguration::Statistics
@@ -150,7 +150,6 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         class TunnelTeAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes
         class TransportProfileTunnel; //type: InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel
         class MteTunnelAttributes; //type: InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes
-        class CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization; //type: InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization
         class Portmode; //type: InterfaceConfigurations::InterfaceConfiguration::Portmode
         class Pbr; //type: InterfaceConfigurations::InterfaceConfiguration::Pbr
         class PerformanceManagement; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement
@@ -204,7 +203,7 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork> nv_satellite_fabric_network;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Lldp> lldp; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions> span_monitor_sessions;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization> cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization> frequency_synchronization;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::ServicePolicies> service_policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Afs> afs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Statistics> statistics;
@@ -221,7 +220,6 @@ class InterfaceConfigurations::InterfaceConfiguration : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes> tunnel_te_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel> transport_profile_tunnel;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes> mte_tunnel_attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization> cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Portmode> portmode;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Pbr> pbr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement> performance_management;
@@ -2639,14 +2637,14 @@ class InterfaceConfigurations::InterfaceConfiguration::Lacp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf system_priority; //type: uint32
-        ydk::YLeaf period; //type: one of enumeration, uint32
+        ydk::YLeaf period; //type: one of uint32, enumeration
         ydk::YLeaf collector_max_delay; //type: uint32
         ydk::YLeaf lacp_nonrevertive; //type: empty
         ydk::YLeaf mode; //type: BundleMode
         ydk::YLeaf fast_switchover; //type: empty
         ydk::YLeaf suppress_flaps; //type: uint32
         ydk::YLeaf system_mac; //type: string
-        ydk::YLeaf period_short; //type: one of enumeration, uint32
+        ydk::YLeaf period_short; //type: one of uint32, enumeration
         ydk::YLeaf churn_logging; //type: ChurnLogging
         class CiscoExtensions; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp::CiscoExtensions
         class Timeout; //type: InterfaceConfigurations::InterfaceConfiguration::Lacp::Timeout

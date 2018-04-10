@@ -248,6 +248,7 @@ class Pce::Logging : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf no_path; //type: empty
+        ydk::YLeaf pcerr; //type: empty
         ydk::YLeaf fallback; //type: empty
 
 }; // Pce::Logging
@@ -434,6 +435,7 @@ class Pce::DisjointPath : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        ydk::YLeaf enable; //type: empty
         class Groups; //type: Pce::DisjointPath::Groups
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::DisjointPath::Groups> groups;
@@ -486,8 +488,59 @@ class Pce::DisjointPath::Groups::Group : public ydk::Entity
         ydk::YLeaf dp_type; //type: PceDisjointPath
         ydk::YLeaf sub_id; //type: uint32
         ydk::YLeaf strict; //type: empty
+        ydk::YLeaf enable; //type: empty
+        class GroupLspRecords; //type: Pce::DisjointPath::Groups::Group::GroupLspRecords
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::DisjointPath::Groups::Group::GroupLspRecords> group_lsp_records;
+        
 }; // Pce::DisjointPath::Groups::Group
+
+
+class Pce::DisjointPath::Groups::Group::GroupLspRecords : public ydk::Entity
+{
+    public:
+        GroupLspRecords();
+        ~GroupLspRecords();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class GroupLspRecord; //type: Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord> > group_lsp_record;
+        
+}; // Pce::DisjointPath::Groups::Group::GroupLspRecords
+
+
+class Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord : public ydk::Entity
+{
+    public:
+        GroupLspRecord();
+        ~GroupLspRecord();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf lsp_id; //type: uint32
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf lsp_name; //type: string
+        ydk::YLeaf disj_path; //type: int32
+
+}; // Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord
 
 
 class Pce::ExplicitPaths : public ydk::Entity
@@ -593,6 +646,7 @@ class PceDisjointPath : public ydk::Enum
         static const ydk::Enum::YLeaf link;
         static const ydk::Enum::YLeaf node;
         static const ydk::Enum::YLeaf srlg;
+        static const ydk::Enum::YLeaf srlg_node;
 
 };
 

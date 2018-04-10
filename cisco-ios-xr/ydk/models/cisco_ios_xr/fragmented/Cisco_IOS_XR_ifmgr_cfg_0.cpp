@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_0.hpp"
-#include "Cisco_IOS_XR_ifmgr_cfg_1.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_4.hpp"
+#include "Cisco_IOS_XR_ifmgr_cfg_1.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_2.hpp"
 
 using namespace ydk;
@@ -286,7 +286,7 @@ InterfaceConfigurations::InterfaceConfiguration::InterfaceConfiguration()
 	,nv_satellite_fabric_network(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork>())
 	,lldp(nullptr) // presence node
 	,span_monitor_sessions(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions>())
-	,cisco_ios_xr_freqsync_cfg_frequency_synchronization(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization>())
+	,frequency_synchronization(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization>())
 	,service_policies(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::ServicePolicies>())
 	,afs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Afs>())
 	,statistics(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Statistics>())
@@ -303,7 +303,6 @@ InterfaceConfigurations::InterfaceConfiguration::InterfaceConfiguration()
 	,tunnel_te_attributes(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes>())
 	,transport_profile_tunnel(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel>())
 	,mte_tunnel_attributes(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes>())
-	,cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>())
 	,portmode(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Portmode>())
 	,pbr(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr>())
 	,performance_management(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement>())
@@ -356,7 +355,7 @@ InterfaceConfigurations::InterfaceConfiguration::InterfaceConfiguration()
     nv_satellite_fabric_link->parent = this;
     nv_satellite_fabric_network->parent = this;
     span_monitor_sessions->parent = this;
-    cisco_ios_xr_freqsync_cfg_frequency_synchronization->parent = this;
+    frequency_synchronization->parent = this;
     service_policies->parent = this;
     afs->parent = this;
     statistics->parent = this;
@@ -373,7 +372,6 @@ InterfaceConfigurations::InterfaceConfiguration::InterfaceConfiguration()
     tunnel_te_attributes->parent = this;
     transport_profile_tunnel->parent = this;
     mte_tunnel_attributes->parent = this;
-    cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->parent = this;
     portmode->parent = this;
     pbr->parent = this;
     performance_management->parent = this;
@@ -452,7 +450,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::has_data() const
 	|| (nv_satellite_fabric_network !=  nullptr && nv_satellite_fabric_network->has_data())
 	|| (lldp !=  nullptr && lldp->has_data())
 	|| (span_monitor_sessions !=  nullptr && span_monitor_sessions->has_data())
-	|| (cisco_ios_xr_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_freqsync_cfg_frequency_synchronization->has_data())
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data())
 	|| (service_policies !=  nullptr && service_policies->has_data())
 	|| (afs !=  nullptr && afs->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -469,7 +467,6 @@ bool InterfaceConfigurations::InterfaceConfiguration::has_data() const
 	|| (tunnel_te_attributes !=  nullptr && tunnel_te_attributes->has_data())
 	|| (transport_profile_tunnel !=  nullptr && transport_profile_tunnel->has_data())
 	|| (mte_tunnel_attributes !=  nullptr && mte_tunnel_attributes->has_data())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_data())
 	|| (portmode !=  nullptr && portmode->has_data())
 	|| (pbr !=  nullptr && pbr->has_data())
 	|| (performance_management !=  nullptr && performance_management->has_data())
@@ -543,7 +540,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::has_operation() const
 	|| (nv_satellite_fabric_network !=  nullptr && nv_satellite_fabric_network->has_operation())
 	|| (lldp !=  nullptr && lldp->has_operation())
 	|| (span_monitor_sessions !=  nullptr && span_monitor_sessions->has_operation())
-	|| (cisco_ios_xr_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_freqsync_cfg_frequency_synchronization->has_operation())
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation())
 	|| (service_policies !=  nullptr && service_policies->has_operation())
 	|| (afs !=  nullptr && afs->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation())
@@ -560,7 +557,6 @@ bool InterfaceConfigurations::InterfaceConfiguration::has_operation() const
 	|| (tunnel_te_attributes !=  nullptr && tunnel_te_attributes->has_operation())
 	|| (transport_profile_tunnel !=  nullptr && transport_profile_tunnel->has_operation())
 	|| (mte_tunnel_attributes !=  nullptr && mte_tunnel_attributes->has_operation())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_operation())
 	|| (portmode !=  nullptr && portmode->has_operation())
 	|| (pbr !=  nullptr && pbr->has_operation())
 	|| (performance_management !=  nullptr && performance_management->has_operation())
@@ -946,11 +942,11 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
 
     if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization")
     {
-        if(cisco_ios_xr_freqsync_cfg_frequency_synchronization == nullptr)
+        if(frequency_synchronization == nullptr)
         {
-            cisco_ios_xr_freqsync_cfg_frequency_synchronization = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization>();
+            frequency_synchronization = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization>();
         }
-        return cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        return frequency_synchronization;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-iedge4710-cfg:service-policies")
@@ -1095,15 +1091,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
             mte_tunnel_attributes = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes>();
         }
         return mte_tunnel_attributes;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization")
-    {
-        if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ == nullptr)
-        {
-            cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>();
-        }
-        return cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ncs5500-coherent-portmode-cfg:portmode")
@@ -1437,9 +1424,9 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
         children["Cisco-IOS-XR-Ethernet-SPAN-cfg:span-monitor-sessions"] = span_monitor_sessions;
     }
 
-    if(cisco_ios_xr_freqsync_cfg_frequency_synchronization != nullptr)
+    if(frequency_synchronization != nullptr)
     {
-        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = frequency_synchronization;
     }
 
     if(service_policies != nullptr)
@@ -1520,11 +1507,6 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     if(mte_tunnel_attributes != nullptr)
     {
         children["Cisco-IOS-XR-mpls-te-cfg:mte-tunnel-attributes"] = mte_tunnel_attributes;
-    }
-
-    if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ != nullptr)
-    {
-        children["Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
     }
 
     if(portmode != nullptr)
@@ -1780,7 +1762,7 @@ void InterfaceConfigurations::InterfaceConfiguration::set_filter(const std::stri
 
 bool InterfaceConfigurations::InterfaceConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dampening" || name == "mtus" || name == "encapsulation" || name == "aaa-table" || name == "ethernet-control" || name == "ptp" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "bvi" || name == "l2-transport" || name == "atm" || name == "bfd" || name == "bundle" || name == "lacp" || name == "bundle-member" || name == "mlacp" || name == "cdp" || name == "optics" || name == "otu" || name == "macsec" || name == "dot1x-interface" || name == "loopbacks" || name == "ethernet" || name == "dwdm" || name == "vlan-sub-configuration" || name == "ethernet-service" || name == "ethernet-bng" || name == "mac-accounting" || name == "ethernet-features" || name == "carrier-delay" || name == "vlan-trunk-configuration" || name == "nv-satellite-access" || name == "nv-satellite-fabric-link" || name == "nv-satellite-fabric-network" || name == "lldp" || name == "span-monitor-sessions" || name == "frequency-synchronization" || name == "service-policies" || name == "afs" || name == "statistics" || name == "ipv6-packet-filter" || name == "es-packet-filter" || name == "ipv4-packet-filter" || name == "dagrs" || name == "ipv4arp" || name == "ipv4-network" || name == "ipv4-network-forwarding" || name == "ipv6-network" || name == "ipv6-neighbor" || name == "mpls" || name == "tunnel-te-attributes" || name == "transport-profile-tunnel" || name == "mte-tunnel-attributes" || name == "frequency-synchronization" || name == "portmode" || name == "pbr" || name == "performance-management" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ssrp-session" || name == "qos" || name == "subscriber" || name == "pppoe" || name == "net-flow" || name == "tunnel-ip" || name == "nve" || name == "wanphy" || name == "active" || name == "interface-name" || name == "shutdown" || name == "interface-virtual" || name == "secondary-admin-state" || name == "interface-mode-non-physical" || name == "bandwidth" || name == "link-status" || name == "description" || name == "laser-squelch" || name == "perf-mon-disable" || name == "maintenance-embargo" || name == "vrf" || name == "track-name" || name == "fast-shutdown" || name == "mac-addr")
+    if(name == "dampening" || name == "mtus" || name == "encapsulation" || name == "aaa-table" || name == "ethernet-control" || name == "ptp" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "bvi" || name == "l2-transport" || name == "atm" || name == "bfd" || name == "bundle" || name == "lacp" || name == "bundle-member" || name == "mlacp" || name == "cdp" || name == "optics" || name == "otu" || name == "macsec" || name == "dot1x-interface" || name == "loopbacks" || name == "ethernet" || name == "dwdm" || name == "vlan-sub-configuration" || name == "ethernet-service" || name == "ethernet-bng" || name == "mac-accounting" || name == "ethernet-features" || name == "carrier-delay" || name == "vlan-trunk-configuration" || name == "nv-satellite-access" || name == "nv-satellite-fabric-link" || name == "nv-satellite-fabric-network" || name == "lldp" || name == "span-monitor-sessions" || name == "frequency-synchronization" || name == "service-policies" || name == "afs" || name == "statistics" || name == "ipv6-packet-filter" || name == "es-packet-filter" || name == "ipv4-packet-filter" || name == "dagrs" || name == "ipv4arp" || name == "ipv4-network" || name == "ipv4-network-forwarding" || name == "ipv6-network" || name == "ipv6-neighbor" || name == "mpls" || name == "tunnel-te-attributes" || name == "transport-profile-tunnel" || name == "mte-tunnel-attributes" || name == "portmode" || name == "pbr" || name == "performance-management" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ppp" || name == "ssrp-session" || name == "qos" || name == "subscriber" || name == "pppoe" || name == "net-flow" || name == "tunnel-ip" || name == "nve" || name == "wanphy" || name == "active" || name == "interface-name" || name == "shutdown" || name == "interface-virtual" || name == "secondary-admin-state" || name == "interface-mode-non-physical" || name == "bandwidth" || name == "link-status" || name == "description" || name == "laser-squelch" || name == "perf-mon-disable" || name == "maintenance-embargo" || name == "vrf" || name == "track-name" || name == "fast-shutdown" || name == "mac-addr")
         return true;
     return false;
 }

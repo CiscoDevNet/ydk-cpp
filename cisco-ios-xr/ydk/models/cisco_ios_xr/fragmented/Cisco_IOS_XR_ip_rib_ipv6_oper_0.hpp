@@ -821,6 +821,14 @@ class Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRo
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -1258,6 +1266,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -1464,6 +1480,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -1669,6 +1693,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -1874,6 +1906,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -2156,6 +2196,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -2486,6 +2534,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -2748,6 +2804,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -3034,6 +3098,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -3319,6 +3391,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -3605,6 +3685,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -3891,6 +3979,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -4176,6 +4272,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 
@@ -4461,6 +4565,14 @@ class Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTa
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk
 

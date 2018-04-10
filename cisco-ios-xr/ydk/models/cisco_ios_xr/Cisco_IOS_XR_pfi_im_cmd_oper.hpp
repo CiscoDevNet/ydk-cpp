@@ -3413,6 +3413,12 @@ class ImAttrMedia : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_media_40gbase_aoc;
         static const ydk::Enum::YLeaf im_attr_media_40gbase_acu;
         static const ydk::Enum::YLeaf im_attr_media_100gbase_acu;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_cu1m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_cu3m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_cu5m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_acu7m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_acu10m;
+        static const ydk::Enum::YLeaf im_attr_media_4x10g_base_lr;
 
 };
 

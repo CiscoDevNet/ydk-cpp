@@ -8612,6 +8612,7 @@ bool Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::PerArea
 
 Isis::Instances::Instance::Protocol::Protocol()
     :
+    vrf_context{YType::str, "vrf-context"},
     nsap_system_id{YType::str, "nsap-system-id"},
     valid_nsap_system_id{YType::boolean, "valid-nsap-system-id"},
     instance_id{YType::uint16, "instance-id"},
@@ -8658,7 +8659,8 @@ bool Isis::Instances::Instance::Protocol::has_data() const
         if(per_topo_data[index]->has_data())
             return true;
     }
-    return nsap_system_id.is_set
+    return vrf_context.is_set
+	|| nsap_system_id.is_set
 	|| valid_nsap_system_id.is_set
 	|| instance_id.is_set
 	|| running_levels.is_set
@@ -8698,6 +8700,7 @@ bool Isis::Instances::Instance::Protocol::has_operation() const
             return true;
     }
     return is_set(yfilter)
+	|| ydk::is_set(vrf_context.yfilter)
 	|| ydk::is_set(nsap_system_id.yfilter)
 	|| ydk::is_set(valid_nsap_system_id.yfilter)
 	|| ydk::is_set(instance_id.yfilter)
@@ -8731,6 +8734,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Protoc
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (vrf_context.is_set || is_set(vrf_context.yfilter)) leaf_name_data.push_back(vrf_context.get_name_leafdata());
     if (nsap_system_id.is_set || is_set(nsap_system_id.yfilter)) leaf_name_data.push_back(nsap_system_id.get_name_leafdata());
     if (valid_nsap_system_id.is_set || is_set(valid_nsap_system_id.yfilter)) leaf_name_data.push_back(valid_nsap_system_id.get_name_leafdata());
     if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
@@ -8821,6 +8825,12 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Protoc
 
 void Isis::Instances::Instance::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "vrf-context")
+    {
+        vrf_context = value;
+        vrf_context.value_namespace = name_space;
+        vrf_context.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nsap-system-id")
     {
         nsap_system_id = value;
@@ -8945,6 +8955,10 @@ void Isis::Instances::Instance::Protocol::set_value(const std::string & value_pa
 
 void Isis::Instances::Instance::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "vrf-context")
+    {
+        vrf_context.yfilter = yfilter;
+    }
     if(value_path == "nsap-system-id")
     {
         nsap_system_id.yfilter = yfilter;
@@ -9029,7 +9043,7 @@ void Isis::Instances::Instance::Protocol::set_filter(const std::string & value_p
 
 bool Isis::Instances::Instance::Protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "manual-area-address" || name == "active-area-address" || name == "per-topo-data" || name == "nsap-system-id" || name == "valid-nsap-system-id" || name == "instance-id" || name == "running-levels" || name == "configured-nsf-flavor" || name == "last-restart-nsf-flavor" || name == "last-restart-status" || name == "te-connection" || name == "remaining-time-for-next-nsf-restart" || name == "adj-form-count" || name == "adj-full-count" || name == "adj-stagger-enabled" || name == "adj-stagger-init" || name == "adj-stagger-max" || name == "srgb-allocated" || name == "srgb-start" || name == "srgb-end" || name == "srlb-allocated" || name == "srlb-start" || name == "srlb-end")
+    if(name == "manual-area-address" || name == "active-area-address" || name == "per-topo-data" || name == "vrf-context" || name == "nsap-system-id" || name == "valid-nsap-system-id" || name == "instance-id" || name == "running-levels" || name == "configured-nsf-flavor" || name == "last-restart-nsf-flavor" || name == "last-restart-status" || name == "te-connection" || name == "remaining-time-for-next-nsf-restart" || name == "adj-form-count" || name == "adj-full-count" || name == "adj-stagger-enabled" || name == "adj-stagger-init" || name == "adj-stagger-max" || name == "srgb-allocated" || name == "srgb-start" || name == "srgb-end" || name == "srlb-allocated" || name == "srlb-start" || name == "srlb-end")
         return true;
     return false;
 }

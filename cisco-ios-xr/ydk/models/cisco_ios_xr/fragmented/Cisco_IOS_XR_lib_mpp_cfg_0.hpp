@@ -57,9 +57,11 @@ class ControlPlane::ManagementPlaneProtection : public ydk::Entity
 
         class Outband; //type: ControlPlane::ManagementPlaneProtection::Outband
         class Inband; //type: ControlPlane::ManagementPlaneProtection::Inband
+        class Tpa; //type: ControlPlane::ManagementPlaneProtection::Tpa
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Outband> outband;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband> inband;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Tpa> tpa;
         
 }; // ControlPlane::ManagementPlaneProtection
 

@@ -681,9 +681,9 @@ SubscriberFeaturette::~SubscriberFeaturette()
 
 bool SubscriberFeaturette::has_data() const
 {
-    for (std::size_t index=0; index<identity_change.size(); index++)
+    for (std::size_t index=0; index<featurette_name.size(); index++)
     {
-        if(identity_change[index]->has_data())
+        if(featurette_name[index]->has_data())
             return true;
     }
     return false;
@@ -691,9 +691,9 @@ bool SubscriberFeaturette::has_data() const
 
 bool SubscriberFeaturette::has_operation() const
 {
-    for (std::size_t index=0; index<identity_change.size(); index++)
+    for (std::size_t index=0; index<featurette_name.size(); index++)
     {
-        if(identity_change[index]->has_operation())
+        if(featurette_name[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
@@ -717,11 +717,11 @@ std::vector<std::pair<std::string, LeafData> > SubscriberFeaturette::get_name_le
 
 std::shared_ptr<Entity> SubscriberFeaturette::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "identity-change")
+    if(child_yang_name == "featurette-name")
     {
-        auto c = std::make_shared<SubscriberFeaturette::IdentityChange>();
+        auto c = std::make_shared<SubscriberFeaturette::FeaturetteName>();
         c->parent = this;
-        identity_change.push_back(c);
+        featurette_name.push_back(c);
         return c;
     }
 
@@ -733,7 +733,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : identity_change)
+    for (auto const & c : featurette_name)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -779,81 +779,81 @@ std::map<std::pair<std::string, std::string>, std::string> SubscriberFeaturette:
 
 bool SubscriberFeaturette::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "identity-change")
+    if(name == "featurette-name")
         return true;
     return false;
 }
 
-SubscriberFeaturette::IdentityChange::IdentityChange()
+SubscriberFeaturette::FeaturetteName::FeaturetteName()
     :
-    identity_change{YType::str, "identity-change"},
+    featurette{YType::str, "featurette"},
     enable{YType::int32, "enable"}
 {
 
-    yang_name = "identity-change"; yang_parent_name = "subscriber-featurette"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "featurette-name"; yang_parent_name = "subscriber-featurette"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-SubscriberFeaturette::IdentityChange::~IdentityChange()
+SubscriberFeaturette::FeaturetteName::~FeaturetteName()
 {
 }
 
-bool SubscriberFeaturette::IdentityChange::has_data() const
+bool SubscriberFeaturette::FeaturetteName::has_data() const
 {
-    return identity_change.is_set
+    return featurette.is_set
 	|| enable.is_set;
 }
 
-bool SubscriberFeaturette::IdentityChange::has_operation() const
+bool SubscriberFeaturette::FeaturetteName::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(identity_change.yfilter)
+	|| ydk::is_set(featurette.yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string SubscriberFeaturette::IdentityChange::get_absolute_path() const
+std::string SubscriberFeaturette::FeaturetteName::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-iedge4710-cfg:subscriber-featurette/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SubscriberFeaturette::IdentityChange::get_segment_path() const
+std::string SubscriberFeaturette::FeaturetteName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "identity-change" <<"[identity-change='" <<identity_change <<"']";
+    path_buffer << "featurette-name" <<"[featurette='" <<featurette <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SubscriberFeaturette::IdentityChange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SubscriberFeaturette::FeaturetteName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (identity_change.is_set || is_set(identity_change.yfilter)) leaf_name_data.push_back(identity_change.get_name_leafdata());
+    if (featurette.is_set || is_set(featurette.yfilter)) leaf_name_data.push_back(featurette.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> SubscriberFeaturette::IdentityChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SubscriberFeaturette::FeaturetteName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::IdentityChange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::FeaturetteName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SubscriberFeaturette::IdentityChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SubscriberFeaturette::FeaturetteName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "identity-change")
+    if(value_path == "featurette")
     {
-        identity_change = value;
-        identity_change.value_namespace = name_space;
-        identity_change.value_namespace_prefix = name_space_prefix;
+        featurette = value;
+        featurette.value_namespace = name_space;
+        featurette.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
@@ -863,11 +863,11 @@ void SubscriberFeaturette::IdentityChange::set_value(const std::string & value_p
     }
 }
 
-void SubscriberFeaturette::IdentityChange::set_filter(const std::string & value_path, YFilter yfilter)
+void SubscriberFeaturette::FeaturetteName::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "identity-change")
+    if(value_path == "featurette")
     {
-        identity_change.yfilter = yfilter;
+        featurette.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
@@ -875,9 +875,9 @@ void SubscriberFeaturette::IdentityChange::set_filter(const std::string & value_
     }
 }
 
-bool SubscriberFeaturette::IdentityChange::has_leaf_or_child_of_name(const std::string & name) const
+bool SubscriberFeaturette::FeaturetteName::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "identity-change" || name == "enable")
+    if(name == "featurette" || name == "enable")
         return true;
     return false;
 }

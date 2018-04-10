@@ -105,10 +105,10 @@ class TrafficCollector::Statistics : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf history_size; //type: one of enumeration, uint32
+        ydk::YLeaf history_size; //type: one of uint32, enumeration
         ydk::YLeaf collection_interval; //type: CollectIonInterval
         ydk::YLeaf enable_traffic_collector_statistics; //type: empty
-        ydk::YLeaf history_timeout; //type: one of enumeration, uint32
+        ydk::YLeaf history_timeout; //type: one of uint32, enumeration
 
 }; // TrafficCollector::Statistics
 

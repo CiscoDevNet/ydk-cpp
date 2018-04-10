@@ -342,8 +342,8 @@ bool L2Rib::ProducersDetails::has_leaf_or_child_of_name(const std::string & name
 
 L2Rib::ProducersDetails::ProducersDetail::ProducersDetail()
     :
-    object_id{YType::int32, "object-id"},
-    product_id{YType::int32, "product-id"},
+    object_id{YType::uint32, "object-id"},
+    product_id{YType::uint32, "product-id"},
     last_update_timestamp{YType::uint64, "last-update-timestamp"}
     	,
     producer(std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Producer>())
@@ -1840,8 +1840,8 @@ bool L2Rib::Producers::has_leaf_or_child_of_name(const std::string & name) const
 
 L2Rib::Producers::Producer::Producer()
     :
-    object_id{YType::int32, "object-id"},
-    product_id{YType::int32, "product-id"},
+    object_id{YType::uint32, "object-id"},
+    product_id{YType::uint32, "product-id"},
     client_id{YType::uint32, "client-id"},
     object_type{YType::enumeration, "object-type"},
     producer_id{YType::enumeration, "producer-id"},
@@ -2133,7 +2133,7 @@ bool L2Rib::Clients::has_leaf_or_child_of_name(const std::string & name) const
 
 L2Rib::Clients::Client::Client()
     :
-    client_id{YType::int32, "client-id"},
+    client_id{YType::uint32, "client-id"},
     client_id_xr{YType::uint32, "client-id-xr"},
     process_id{YType::uint32, "process-id"},
     node_id{YType::str, "node-id"},
@@ -2384,7 +2384,7 @@ bool L2Rib::EvisXr::has_leaf_or_child_of_name(const std::string & name) const
 
 L2Rib::EvisXr::Evi::Evi()
     :
-    evi{YType::int32, "evi"},
+    evi{YType::uint32, "evi"},
     l2r_vni{YType::uint32, "l2r-vni"},
     l2r_encap_type{YType::uint16, "l2r-encap-type"},
     l2r_nve_iod{YType::uint32, "l2r-nve-iod"},
@@ -2787,7 +2787,7 @@ bool L2Rib::ClientsDetails::has_leaf_or_child_of_name(const std::string & name) 
 
 L2Rib::ClientsDetails::ClientsDetail::ClientsDetail()
     :
-    client_id{YType::int32, "client-id"},
+    client_id{YType::uint32, "client-id"},
     producer_count{YType::uint8, "producer-count"},
     last_update_timestamp{YType::uint64, "last-update-timestamp"}
     	,
@@ -3857,12 +3857,12 @@ bool L2Rib::EviChildTables::MacipDetails::has_leaf_or_child_of_name(const std::s
 
 L2Rib::EviChildTables::MacipDetails::MacipDetail::MacipDetail()
     :
-    evi{YType::int32, "evi"},
-    tag_id{YType::int32, "tag-id"},
+    evi{YType::uint32, "evi"},
+    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
     ip_addr{YType::str, "ip-addr"},
-    admin_dist{YType::int32, "admin-dist"},
-    prod_id{YType::int32, "prod-id"},
+    admin_dist{YType::uint32, "admin-dist"},
+    prod_id{YType::uint32, "prod-id"},
     sequence_number{YType::uint32, "sequence-number"},
     flags{YType::uint32, "flags"},
     soo{YType::uint32, "soo"},
@@ -4698,8 +4698,7 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
 L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::RtTlv()
     :
     tlv_type{YType::uint16, "tlv-type"},
-    tlv_len{YType::uint16, "tlv-len"},
-    tlv_val{YType::uint8, "tlv-val"}
+    tlv_len{YType::uint16, "tlv-len"}
 {
 
     yang_name = "rt-tlv"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false;
@@ -4711,9 +4710,9 @@ L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::~RtTlv()
 
 bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_data() const
 {
-    for (auto const & leaf : tlv_val.getYLeafs())
+    for (std::size_t index=0; index<tlv_val.size(); index++)
     {
-        if(leaf.is_set)
+        if(tlv_val[index]->has_data())
             return true;
     }
     return tlv_type.is_set
@@ -4722,15 +4721,14 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_data() const
 
 bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_operation() const
 {
-    for (auto const & leaf : tlv_val.getYLeafs())
+    for (std::size_t index=0; index<tlv_val.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(tlv_val[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(tlv_type.yfilter)
-	|| ydk::is_set(tlv_len.yfilter)
-	|| ydk::is_set(tlv_val.yfilter);
+	|| ydk::is_set(tlv_len.yfilter);
 }
 
 std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_absolute_path() const
@@ -4754,14 +4752,20 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
     if (tlv_type.is_set || is_set(tlv_type.yfilter)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
     if (tlv_len.is_set || is_set(tlv_len.yfilter)) leaf_name_data.push_back(tlv_len.get_name_leafdata());
 
-    auto tlv_val_name_datas = tlv_val.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), tlv_val_name_datas.begin(), tlv_val_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "tlv-val")
+    {
+        auto c = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal>();
+        c->parent = this;
+        tlv_val.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -4769,6 +4773,15 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : tlv_val)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -4786,10 +4799,6 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_value(const st
         tlv_len.value_namespace = name_space;
         tlv_len.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tlv-val")
-    {
-        tlv_val.append(value);
-    }
 }
 
 void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4802,15 +4811,95 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_filter(const s
     {
         tlv_len.yfilter = yfilter;
     }
-    if(value_path == "tlv-val")
-    {
-        tlv_val.yfilter = yfilter;
-    }
 }
 
 bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tlv-type" || name == "tlv-len" || name == "tlv-val")
+    if(name == "tlv-val" || name == "tlv-type" || name == "tlv-len")
+        return true;
+    return false;
+}
+
+L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::TlvVal()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "tlv-val"; yang_parent_name = "rt-tlv"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::~TlvVal()
+{
+}
+
+bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_data() const
+{
+    return entry.is_set;
+}
+
+bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/rt-tlv/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tlv-val";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -4818,8 +4907,7 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_leaf_or_child_
 L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::NhTlv()
     :
     tlv_type{YType::uint16, "tlv-type"},
-    tlv_len{YType::uint16, "tlv-len"},
-    tlv_val{YType::uint8, "tlv-val"}
+    tlv_len{YType::uint16, "tlv-len"}
 {
 
     yang_name = "nh-tlv"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false;
@@ -4831,9 +4919,9 @@ L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::~NhTlv()
 
 bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_data() const
 {
-    for (auto const & leaf : tlv_val.getYLeafs())
+    for (std::size_t index=0; index<tlv_val.size(); index++)
     {
-        if(leaf.is_set)
+        if(tlv_val[index]->has_data())
             return true;
     }
     return tlv_type.is_set
@@ -4842,15 +4930,14 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_data() const
 
 bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_operation() const
 {
-    for (auto const & leaf : tlv_val.getYLeafs())
+    for (std::size_t index=0; index<tlv_val.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(tlv_val[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(tlv_type.yfilter)
-	|| ydk::is_set(tlv_len.yfilter)
-	|| ydk::is_set(tlv_val.yfilter);
+	|| ydk::is_set(tlv_len.yfilter);
 }
 
 std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_absolute_path() const
@@ -4874,14 +4961,20 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
     if (tlv_type.is_set || is_set(tlv_type.yfilter)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
     if (tlv_len.is_set || is_set(tlv_len.yfilter)) leaf_name_data.push_back(tlv_len.get_name_leafdata());
 
-    auto tlv_val_name_datas = tlv_val.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), tlv_val_name_datas.begin(), tlv_val_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "tlv-val")
+    {
+        auto c = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal>();
+        c->parent = this;
+        tlv_val.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -4889,6 +4982,15 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : tlv_val)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -4906,10 +5008,6 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_value(const st
         tlv_len.value_namespace = name_space;
         tlv_len.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tlv-val")
-    {
-        tlv_val.append(value);
-    }
 }
 
 void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4922,15 +5020,95 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_filter(const s
     {
         tlv_len.yfilter = yfilter;
     }
-    if(value_path == "tlv-val")
-    {
-        tlv_val.yfilter = yfilter;
-    }
 }
 
 bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tlv-type" || name == "tlv-len" || name == "tlv-val")
+    if(name == "tlv-val" || name == "tlv-type" || name == "tlv-len")
+        return true;
+    return false;
+}
+
+L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::TlvVal()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "tlv-val"; yang_parent_name = "nh-tlv"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::~TlvVal()
+{
+}
+
+bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_data() const
+{
+    return entry.is_set;
+}
+
+bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/nh-tlv/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tlv-val";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -5034,12 +5212,12 @@ bool L2Rib::EviChildTables::MacIps::has_leaf_or_child_of_name(const std::string 
 
 L2Rib::EviChildTables::MacIps::MacIp::MacIp()
     :
-    evi{YType::int32, "evi"},
-    tag_id{YType::int32, "tag-id"},
+    evi{YType::uint32, "evi"},
+    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
     ip_addr{YType::str, "ip-addr"},
-    admin_dist{YType::int32, "admin-dist"},
-    prod_id{YType::int32, "prod-id"},
+    admin_dist{YType::uint32, "admin-dist"},
+    prod_id{YType::uint32, "prod-id"},
     mac_address{YType::str, "mac-address"},
     ip_address{YType::str, "ip-address"},
     admin_distance{YType::uint8, "admin-distance"},
@@ -5790,11 +5968,11 @@ bool L2Rib::EviChildTables::Macs::has_leaf_or_child_of_name(const std::string & 
 
 L2Rib::EviChildTables::Macs::Mac::Mac()
     :
-    evi{YType::int32, "evi"},
-    tag_id{YType::int32, "tag-id"},
+    evi{YType::uint32, "evi"},
+    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
-    admin_dist{YType::int32, "admin-dist"},
-    prod_id{YType::int32, "prod-id"},
+    admin_dist{YType::uint32, "admin-dist"},
+    prod_id{YType::uint32, "prod-id"},
     mac_address{YType::str, "mac-address"},
     admin_distance{YType::uint8, "admin-distance"},
     producer_id{YType::uint8, "producer-id"},
@@ -9983,11 +10161,11 @@ bool L2Rib::EviChildTables::MacDetails::has_leaf_or_child_of_name(const std::str
 
 L2Rib::EviChildTables::MacDetails::MacDetail::MacDetail()
     :
-    evi{YType::int32, "evi"},
-    tag_id{YType::int32, "tag-id"},
+    evi{YType::uint32, "evi"},
+    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
-    admin_dist{YType::int32, "admin-dist"},
-    prod_id{YType::int32, "prod-id"},
+    admin_dist{YType::uint32, "admin-dist"},
+    prod_id{YType::uint32, "prod-id"},
     sequence_number{YType::uint32, "sequence-number"},
     flags{YType::uint32, "flags"},
     baseflags{YType::uint32, "baseflags"},
@@ -14285,8 +14463,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::RtTlv()
     :
     tlv_type{YType::uint16, "tlv-type"},
-    tlv_len{YType::uint16, "tlv-len"},
-    tlv_val{YType::uint8, "tlv-val"}
+    tlv_len{YType::uint16, "tlv-len"}
 {
 
     yang_name = "rt-tlv"; yang_parent_name = "mac-detail"; is_top_level_class = false; has_list_ancestor = false;
@@ -14298,9 +14475,9 @@ L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::~RtTlv()
 
 bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_data() const
 {
-    for (auto const & leaf : tlv_val.getYLeafs())
+    for (std::size_t index=0; index<tlv_val.size(); index++)
     {
-        if(leaf.is_set)
+        if(tlv_val[index]->has_data())
             return true;
     }
     return tlv_type.is_set
@@ -14309,15 +14486,14 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_data() const
 
 bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_operation() const
 {
-    for (auto const & leaf : tlv_val.getYLeafs())
+    for (std::size_t index=0; index<tlv_val.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(tlv_val[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
 	|| ydk::is_set(tlv_type.yfilter)
-	|| ydk::is_set(tlv_len.yfilter)
-	|| ydk::is_set(tlv_val.yfilter);
+	|| ydk::is_set(tlv_len.yfilter);
 }
 
 std::string L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_absolute_path() const
@@ -14341,14 +14517,20 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
     if (tlv_type.is_set || is_set(tlv_type.yfilter)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
     if (tlv_len.is_set || is_set(tlv_len.yfilter)) leaf_name_data.push_back(tlv_len.get_name_leafdata());
 
-    auto tlv_val_name_datas = tlv_val.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), tlv_val_name_datas.begin(), tlv_val_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "tlv-val")
+    {
+        auto c = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal>();
+        c->parent = this;
+        tlv_val.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -14356,6 +14538,15 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : tlv_val)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -14373,10 +14564,6 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_value(const std::s
         tlv_len.value_namespace = name_space;
         tlv_len.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tlv-val")
-    {
-        tlv_val.append(value);
-    }
 }
 
 void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14389,15 +14576,95 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_filter(const std::
     {
         tlv_len.yfilter = yfilter;
     }
-    if(value_path == "tlv-val")
-    {
-        tlv_val.yfilter = yfilter;
-    }
 }
 
 bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tlv-type" || name == "tlv-len" || name == "tlv-val")
+    if(name == "tlv-val" || name == "tlv-type" || name == "tlv-len")
+        return true;
+    return false;
+}
+
+L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::TlvVal()
+    :
+    entry{YType::uint8, "entry"}
+{
+
+    yang_name = "tlv-val"; yang_parent_name = "rt-tlv"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::~TlvVal()
+{
+}
+
+bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_data() const
+{
+    return entry.is_set;
+}
+
+bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/rt-tlv/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tlv-val";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -14501,7 +14768,7 @@ bool L2Rib::Evis::has_leaf_or_child_of_name(const std::string & name) const
 
 L2Rib::Evis::Evi::Evi()
     :
-    evi{YType::int32, "evi"},
+    evi{YType::uint32, "evi"},
     topology_id{YType::uint32, "topology-id"},
     topology_name{YType::str, "topology-name"},
     topology_type{YType::uint32, "topology-type"}

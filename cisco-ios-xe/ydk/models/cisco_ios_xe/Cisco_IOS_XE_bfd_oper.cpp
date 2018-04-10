@@ -1193,6 +1193,7 @@ bool BfdState::Sessions::Session::BfdMhopNbrs::has_leaf_or_child_of_name(const s
 BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::BfdMhopNbr()
     :
     ip{YType::str, "ip"},
+    src_ip{YType::str, "src-ip"},
     ld{YType::uint32, "ld"},
     rd{YType::uint32, "rd"},
     remote_state{YType::enumeration, "remote-state"},
@@ -1209,6 +1210,7 @@ BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::~BfdMhopNbr()
 bool BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::has_data() const
 {
     return ip.is_set
+	|| src_ip.is_set
 	|| ld.is_set
 	|| rd.is_set
 	|| remote_state.is_set
@@ -1219,6 +1221,7 @@ bool BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(src_ip.yfilter)
 	|| ydk::is_set(ld.yfilter)
 	|| ydk::is_set(rd.yfilter)
 	|| ydk::is_set(remote_state.yfilter)
@@ -1228,7 +1231,7 @@ bool BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::has_operation() const
 std::string BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-mhop-nbr" <<"[ip='" <<ip <<"']";
+    path_buffer << "bfd-mhop-nbr" <<"[ip='" <<ip <<"']" <<"[src-ip='" <<src_ip <<"']";
     return path_buffer.str();
 }
 
@@ -1237,6 +1240,7 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdM
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (src_ip.is_set || is_set(src_ip.yfilter)) leaf_name_data.push_back(src_ip.get_name_leafdata());
     if (ld.is_set || is_set(ld.yfilter)) leaf_name_data.push_back(ld.get_name_leafdata());
     if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
     if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
@@ -1265,6 +1269,12 @@ void BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::set_value(const std::
         ip = value;
         ip.value_namespace = name_space;
         ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src-ip")
+    {
+        src_ip = value;
+        src_ip.value_namespace = name_space;
+        src_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ld")
     {
@@ -1298,6 +1308,10 @@ void BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::set_filter(const std:
     {
         ip.yfilter = yfilter;
     }
+    if(value_path == "src-ip")
+    {
+        src_ip.yfilter = yfilter;
+    }
     if(value_path == "ld")
     {
         ld.yfilter = yfilter;
@@ -1318,7 +1332,7 @@ void BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::set_filter(const std:
 
 bool BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
+    if(name == "ip" || name == "src-ip" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
         return true;
     return false;
 }
@@ -1417,6 +1431,7 @@ BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::BfdMhopVrfNbr()
     :
     ip{YType::str, "ip"},
     vrf{YType::str, "vrf"},
+    src_ip{YType::str, "src-ip"},
     ld{YType::uint32, "ld"},
     rd{YType::uint32, "rd"},
     remote_state{YType::enumeration, "remote-state"},
@@ -1434,6 +1449,7 @@ bool BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::has_data() cons
 {
     return ip.is_set
 	|| vrf.is_set
+	|| src_ip.is_set
 	|| ld.is_set
 	|| rd.is_set
 	|| remote_state.is_set
@@ -1445,6 +1461,7 @@ bool BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::has_operation()
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter)
 	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(src_ip.yfilter)
 	|| ydk::is_set(ld.yfilter)
 	|| ydk::is_set(rd.yfilter)
 	|| ydk::is_set(remote_state.yfilter)
@@ -1454,7 +1471,7 @@ bool BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::has_operation()
 std::string BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-mhop-vrf-nbr" <<"[ip='" <<ip <<"']" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "bfd-mhop-vrf-nbr" <<"[ip='" <<ip <<"']" <<"[vrf='" <<vrf <<"']" <<"[src-ip='" <<src_ip <<"']";
     return path_buffer.str();
 }
 
@@ -1464,6 +1481,7 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdM
 
     if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
     if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (src_ip.is_set || is_set(src_ip.yfilter)) leaf_name_data.push_back(src_ip.get_name_leafdata());
     if (ld.is_set || is_set(ld.yfilter)) leaf_name_data.push_back(ld.get_name_leafdata());
     if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
     if (remote_state.is_set || is_set(remote_state.yfilter)) leaf_name_data.push_back(remote_state.get_name_leafdata());
@@ -1498,6 +1516,12 @@ void BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::set_value(const
         vrf = value;
         vrf.value_namespace = name_space;
         vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "src-ip")
+    {
+        src_ip = value;
+        src_ip.value_namespace = name_space;
+        src_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ld")
     {
@@ -1535,6 +1559,10 @@ void BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::set_filter(cons
     {
         vrf.yfilter = yfilter;
     }
+    if(value_path == "src-ip")
+    {
+        src_ip.yfilter = yfilter;
+    }
     if(value_path == "ld")
     {
         ld.yfilter = yfilter;
@@ -1555,7 +1583,7 @@ void BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::set_filter(cons
 
 bool BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip" || name == "vrf" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
+    if(name == "ip" || name == "vrf" || name == "src-ip" || name == "ld" || name == "rd" || name == "remote-state" || name == "state")
         return true;
     return false;
 }
@@ -1567,11 +1595,11 @@ const Enum::YLeaf BfdOperSessionType::mpls_tp {3, "mpls-tp"};
 const Enum::YLeaf BfdOperSessionType::ipv4_multihop {4, "ipv4-multihop"};
 const Enum::YLeaf BfdOperSessionType::ipv6_multihop {5, "ipv6-multihop"};
 
-const Enum::YLeaf BfdRemoteStateType::up {0, "up"};
-const Enum::YLeaf BfdRemoteStateType::down {1, "down"};
-const Enum::YLeaf BfdRemoteStateType::init {2, "init"};
-const Enum::YLeaf BfdRemoteStateType::admindown {3, "admindown"};
-const Enum::YLeaf BfdRemoteStateType::invalid {4, "invalid"};
+const Enum::YLeaf BfdRemoteStateType::remote_up {0, "remote-up"};
+const Enum::YLeaf BfdRemoteStateType::remote_down {1, "remote-down"};
+const Enum::YLeaf BfdRemoteStateType::remote_init {2, "remote-init"};
+const Enum::YLeaf BfdRemoteStateType::remote_admindown {3, "remote-admindown"};
+const Enum::YLeaf BfdRemoteStateType::remote_invalid {4, "remote-invalid"};
 
 const Enum::YLeaf BfdStateType::admindown {0, "admindown"};
 const Enum::YLeaf BfdStateType::down {1, "down"};

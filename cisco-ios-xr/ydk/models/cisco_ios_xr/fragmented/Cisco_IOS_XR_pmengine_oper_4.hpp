@@ -1624,6 +1624,8 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         class Pn; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn
         class RxSigPow; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow
         class LowSigFreqOff; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff
+        class AmpliGain; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain
+        class AmpliGainTilt; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc> lbc;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc> lbc_pc;
@@ -1639,6 +1641,8 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn> pn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow> rx_sig_pow;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff> low_sig_freq_off;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain> ampli_gain;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt> ampli_gain_tilt;
         
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic
 
@@ -1664,8 +1668,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc
@@ -1692,8 +1698,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc
@@ -1720,8 +1728,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt
@@ -1748,8 +1758,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr
@@ -1776,8 +1788,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd
@@ -1804,8 +1818,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd
@@ -1832,8 +1848,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd
@@ -1860,8 +1878,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr
@@ -1888,8 +1908,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength
@@ -1916,8 +1938,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl
@@ -1944,8 +1968,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr
@@ -1972,8 +1998,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn
@@ -2000,8 +2028,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow
@@ -2028,11 +2058,73 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff
+
+
+class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain : public ydk::Entity
+{
+    public:
+        AmpliGain();
+        ~AmpliGain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGain
+
+
+class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt : public ydk::Entity
+{
+    public:
+        AmpliGainTilt();
+        ~AmpliGainTilt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::AmpliGainTilt
 
 
 class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs : public ydk::Entity
@@ -2347,6 +2439,8 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         class Pn; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn
         class RxSigPow; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow
         class LowSigFreqOff; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff
+        class AmpliGain; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain
+        class AmpliGainTilt; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc> lbc;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc> lbc_pc;
@@ -2362,6 +2456,8 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn> pn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow> rx_sig_pow;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff> low_sig_freq_off;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain> ampli_gain;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt> ampli_gain_tilt;
         
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic
 
@@ -2387,8 +2483,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc
@@ -2415,8 +2513,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc
@@ -2443,8 +2543,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt
@@ -2471,8 +2573,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr
@@ -2499,8 +2603,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd
@@ -2527,8 +2633,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd
@@ -2555,8 +2663,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd
@@ -2583,8 +2693,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr
@@ -2611,8 +2723,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength
@@ -2639,8 +2753,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl
@@ -2667,8 +2783,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr
@@ -2695,8 +2813,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn
@@ -2723,8 +2843,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow
@@ -2751,11 +2873,73 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff
+
+
+class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain : public ydk::Entity
+{
+    public:
+        AmpliGain();
+        ~AmpliGain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGain
+
+
+class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt : public ydk::Entity
+{
+    public:
+        AmpliGainTilt();
+        ~AmpliGainTilt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::AmpliGainTilt
 
 
 class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs : public ydk::Entity
@@ -3295,6 +3479,8 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         class Pn; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn
         class RxSigPow; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow
         class LowSigFreqOff; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff
+        class AmpliGain; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain
+        class AmpliGainTilt; //type: PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc> lbc;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc> lbc_pc;
@@ -3310,6 +3496,8 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn> pn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow> rx_sig_pow;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff> low_sig_freq_off;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain> ampli_gain;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt> ampli_gain_tilt;
         
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic
 
@@ -3335,8 +3523,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc
@@ -3363,8 +3553,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc
@@ -3391,8 +3583,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt
@@ -3419,8 +3613,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr
@@ -3447,8 +3643,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd
@@ -3475,8 +3673,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd
@@ -3503,8 +3703,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd
@@ -3531,8 +3733,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr
@@ -3559,8 +3763,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength
@@ -3587,8 +3793,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl
@@ -3615,8 +3823,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr
@@ -3643,8 +3853,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn
@@ -3671,8 +3883,10 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow
@@ -3699,11 +3913,73 @@ class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opt
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff
+
+
+class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain : public ydk::Entity
+{
+    public:
+        AmpliGain();
+        ~AmpliGain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGain
+
+
+class PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt : public ydk::Entity
+{
+    public:
+        AmpliGainTilt();
+        ~AmpliGainTilt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::AmpliGainTilt
 
 
 class PerformanceManagement::Sts : public ydk::Entity
@@ -3911,145 +4187,6 @@ class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::St
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs> path_ua_ss;
         
 }; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path
-
-
-class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs : public ydk::Entity
-{
-    public:
-        PathESs();
-        ~PathESs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs
-
-
-class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs : public ydk::Entity
-{
-    public:
-        PathSeSs();
-        ~PathSeSs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs
-
-
-class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs : public ydk::Entity
-{
-    public:
-        PathCVs();
-        ~PathCVs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs
-
-
-class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs : public ydk::Entity
-{
-    public:
-        PathUaSs();
-        ~PathUaSs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs
-
-
-class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath : public ydk::Entity
-{
-    public:
-        FePath();
-        ~FePath();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf far_end_path_e_ss; //type: uint32
-        ydk::YLeaf far_end_path_se_ss; //type: uint32
-        ydk::YLeaf far_end_path_c_vs; //type: uint32
-        ydk::YLeaf far_end_path_ua_ss; //type: uint32
-
-}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath
-
-
-class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24 : public ydk::Entity
-{
-    public:
-        StsHour24();
-        ~StsHour24();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class StsHour24Paths; //type: PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths> sts_hour24_paths;
-        
-}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24
 
 
 }

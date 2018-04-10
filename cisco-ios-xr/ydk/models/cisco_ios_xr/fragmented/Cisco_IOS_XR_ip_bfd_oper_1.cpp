@@ -1433,7 +1433,7 @@ bool Bfd::SessionMibs::has_leaf_or_child_of_name(const std::string & name) const
 
 Bfd::SessionMibs::SessionMib::SessionMib()
     :
-    discriminator{YType::int32, "discriminator"},
+    discriminator{YType::uint32, "discriminator"},
     local_discriminator{YType::uint32, "local-discriminator"},
     remote_discriminator{YType::uint32, "remote-discriminator"},
     sessionversion{YType::uint32, "sessionversion"},

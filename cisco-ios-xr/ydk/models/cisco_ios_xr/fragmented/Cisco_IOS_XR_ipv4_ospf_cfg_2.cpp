@@ -3237,7 +3237,8 @@ Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribut
     bgp_preserve_med{YType::boolean, "bgp-preserve-med"},
     bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     ospf_redist_lsa_type{YType::enumeration, "ospf-redist-lsa-type"},
-    ospfnssa_only{YType::boolean, "ospfnssa-only"}
+    ospfnssa_only{YType::boolean, "ospfnssa-only"},
+    ospf_use_rib_metric{YType::boolean, "ospf-use-rib-metric"}
 {
 
     yang_name = "connected-or-static-or-dagr-or-subscriber-or-mobile-or-rip"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -3262,7 +3263,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| bgp_preserve_med.is_set
 	|| bgp_preserve_default_info.is_set
 	|| ospf_redist_lsa_type.is_set
-	|| ospfnssa_only.is_set;
+	|| ospfnssa_only.is_set
+	|| ospf_use_rib_metric.is_set;
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip::has_operation() const
@@ -3281,7 +3283,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| ydk::is_set(bgp_preserve_med.yfilter)
 	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(ospf_redist_lsa_type.yfilter)
-	|| ydk::is_set(ospfnssa_only.yfilter);
+	|| ydk::is_set(ospfnssa_only.yfilter)
+	|| ydk::is_set(ospf_use_rib_metric.yfilter);
 }
 
 std::string Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip::get_segment_path() const
@@ -3309,6 +3312,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (ospf_redist_lsa_type.is_set || is_set(ospf_redist_lsa_type.yfilter)) leaf_name_data.push_back(ospf_redist_lsa_type.get_name_leafdata());
     if (ospfnssa_only.is_set || is_set(ospfnssa_only.yfilter)) leaf_name_data.push_back(ospfnssa_only.get_name_leafdata());
+    if (ospf_use_rib_metric.is_set || is_set(ospf_use_rib_metric.yfilter)) leaf_name_data.push_back(ospf_use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3412,6 +3416,12 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
         ospfnssa_only.value_namespace = name_space;
         ospfnssa_only.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric = value;
+        ospf_use_rib_metric.value_namespace = name_space;
+        ospf_use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3472,11 +3482,15 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
     {
         ospfnssa_only.yfilter = yfilter;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only")
+    if(name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only" || name == "ospf-use-rib-metric")
         return true;
     return false;
 }
@@ -3497,7 +3511,8 @@ Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribut
     bgp_preserve_med{YType::boolean, "bgp-preserve-med"},
     bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     ospf_redist_lsa_type{YType::enumeration, "ospf-redist-lsa-type"},
-    ospfnssa_only{YType::boolean, "ospfnssa-only"}
+    ospfnssa_only{YType::boolean, "ospfnssa-only"},
+    ospf_use_rib_metric{YType::boolean, "ospf-use-rib-metric"}
 {
 
     yang_name = "application-or-isis-or-ospf"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -3523,7 +3538,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| bgp_preserve_med.is_set
 	|| bgp_preserve_default_info.is_set
 	|| ospf_redist_lsa_type.is_set
-	|| ospfnssa_only.is_set;
+	|| ospfnssa_only.is_set
+	|| ospf_use_rib_metric.is_set;
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf::has_operation() const
@@ -3543,7 +3559,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| ydk::is_set(bgp_preserve_med.yfilter)
 	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(ospf_redist_lsa_type.yfilter)
-	|| ydk::is_set(ospfnssa_only.yfilter);
+	|| ydk::is_set(ospfnssa_only.yfilter)
+	|| ydk::is_set(ospf_use_rib_metric.yfilter);
 }
 
 std::string Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf::get_segment_path() const
@@ -3572,6 +3589,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (ospf_redist_lsa_type.is_set || is_set(ospf_redist_lsa_type.yfilter)) leaf_name_data.push_back(ospf_redist_lsa_type.get_name_leafdata());
     if (ospfnssa_only.is_set || is_set(ospfnssa_only.yfilter)) leaf_name_data.push_back(ospfnssa_only.get_name_leafdata());
+    if (ospf_use_rib_metric.is_set || is_set(ospf_use_rib_metric.yfilter)) leaf_name_data.push_back(ospf_use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3681,6 +3699,12 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
         ospfnssa_only.value_namespace = name_space;
         ospfnssa_only.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric = value;
+        ospf_use_rib_metric.value_namespace = name_space;
+        ospf_use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3745,11 +3769,15 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
     {
         ospfnssa_only.yfilter = yfilter;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instance-name" || name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only")
+    if(name == "instance-name" || name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only" || name == "ospf-use-rib-metric")
         return true;
     return false;
 }
@@ -3772,7 +3800,8 @@ Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribut
     bgp_preserve_med{YType::boolean, "bgp-preserve-med"},
     bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     ospf_redist_lsa_type{YType::enumeration, "ospf-redist-lsa-type"},
-    ospfnssa_only{YType::boolean, "ospfnssa-only"}
+    ospfnssa_only{YType::boolean, "ospfnssa-only"},
+    ospf_use_rib_metric{YType::boolean, "ospf-use-rib-metric"}
 {
 
     yang_name = "bgp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -3800,7 +3829,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| bgp_preserve_med.is_set
 	|| bgp_preserve_default_info.is_set
 	|| ospf_redist_lsa_type.is_set
-	|| ospfnssa_only.is_set;
+	|| ospfnssa_only.is_set
+	|| ospf_use_rib_metric.is_set;
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Bgp::has_operation() const
@@ -3822,7 +3852,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| ydk::is_set(bgp_preserve_med.yfilter)
 	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(ospf_redist_lsa_type.yfilter)
-	|| ydk::is_set(ospfnssa_only.yfilter);
+	|| ydk::is_set(ospfnssa_only.yfilter)
+	|| ydk::is_set(ospf_use_rib_metric.yfilter);
 }
 
 std::string Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Bgp::get_segment_path() const
@@ -3853,6 +3884,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (ospf_redist_lsa_type.is_set || is_set(ospf_redist_lsa_type.yfilter)) leaf_name_data.push_back(ospf_redist_lsa_type.get_name_leafdata());
     if (ospfnssa_only.is_set || is_set(ospfnssa_only.yfilter)) leaf_name_data.push_back(ospfnssa_only.get_name_leafdata());
+    if (ospf_use_rib_metric.is_set || is_set(ospf_use_rib_metric.yfilter)) leaf_name_data.push_back(ospf_use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3974,6 +4006,12 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
         ospfnssa_only.value_namespace = name_space;
         ospfnssa_only.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric = value;
+        ospf_use_rib_metric.value_namespace = name_space;
+        ospf_use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4046,11 +4084,15 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
     {
         ospfnssa_only.yfilter = yfilter;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instance-name" || name == "as-xx" || name == "as-yy" || name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only")
+    if(name == "instance-name" || name == "as-xx" || name == "as-yy" || name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only" || name == "ospf-use-rib-metric")
         return true;
     return false;
 }
@@ -4072,7 +4114,8 @@ Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribut
     bgp_preserve_med{YType::boolean, "bgp-preserve-med"},
     bgp_preserve_default_info{YType::boolean, "bgp-preserve-default-info"},
     ospf_redist_lsa_type{YType::enumeration, "ospf-redist-lsa-type"},
-    ospfnssa_only{YType::boolean, "ospfnssa-only"}
+    ospfnssa_only{YType::boolean, "ospfnssa-only"},
+    ospf_use_rib_metric{YType::boolean, "ospf-use-rib-metric"}
 {
 
     yang_name = "eigrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -4099,7 +4142,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| bgp_preserve_med.is_set
 	|| bgp_preserve_default_info.is_set
 	|| ospf_redist_lsa_type.is_set
-	|| ospfnssa_only.is_set;
+	|| ospfnssa_only.is_set
+	|| ospf_use_rib_metric.is_set;
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Eigrp::has_operation() const
@@ -4120,7 +4164,8 @@ bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
 	|| ydk::is_set(bgp_preserve_med.yfilter)
 	|| ydk::is_set(bgp_preserve_default_info.yfilter)
 	|| ydk::is_set(ospf_redist_lsa_type.yfilter)
-	|| ydk::is_set(ospfnssa_only.yfilter);
+	|| ydk::is_set(ospfnssa_only.yfilter)
+	|| ydk::is_set(ospf_use_rib_metric.yfilter);
 }
 
 std::string Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Eigrp::get_segment_path() const
@@ -4150,6 +4195,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Default
     if (bgp_preserve_default_info.is_set || is_set(bgp_preserve_default_info.yfilter)) leaf_name_data.push_back(bgp_preserve_default_info.get_name_leafdata());
     if (ospf_redist_lsa_type.is_set || is_set(ospf_redist_lsa_type.yfilter)) leaf_name_data.push_back(ospf_redist_lsa_type.get_name_leafdata());
     if (ospfnssa_only.is_set || is_set(ospfnssa_only.yfilter)) leaf_name_data.push_back(ospfnssa_only.get_name_leafdata());
+    if (ospf_use_rib_metric.is_set || is_set(ospf_use_rib_metric.yfilter)) leaf_name_data.push_back(ospf_use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4265,6 +4311,12 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
         ospfnssa_only.value_namespace = name_space;
         ospfnssa_only.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric = value;
+        ospf_use_rib_metric.value_namespace = name_space;
+        ospf_use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4333,11 +4385,15 @@ void Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redist
     {
         ospfnssa_only.yfilter = yfilter;
     }
+    if(value_path == "ospf-use-rib-metric")
+    {
+        ospf_use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "instance-name" || name == "as-xx" || name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only")
+    if(name == "instance-name" || name == "as-xx" || name == "classful" || name == "default-redistributed-route-metric" || name == "tag" || name == "metric-type" || name == "eigrp-route-type" || name == "isis-levels" || name == "ospf-internal" || name == "ospf-external" || name == "ospf-nssa-level" || name == "route-policy-name" || name == "bgp-preserve-med" || name == "bgp-preserve-default-info" || name == "ospf-redist-lsa-type" || name == "ospfnssa-only" || name == "ospf-use-rib-metric")
         return true;
     return false;
 }

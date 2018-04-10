@@ -9171,6 +9171,895 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInt
     return false;
 }
 
+ControlPlane::ManagementPlaneProtection::Tpa::Tpa()
+    :
+    vrfs(std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs>())
+{
+    vrfs->parent = this;
+
+    yang_name = "tpa"; yang_parent_name = "management-plane-protection"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::~Tpa()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::has_data() const
+{
+    return (vrfs !=  nullptr && vrfs->has_data());
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::has_operation() const
+{
+    return is_set(yfilter)
+	|| (vrfs !=  nullptr && vrfs->has_operation());
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-mpp-cfg:control-plane/management-plane-protection/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tpa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrfs")
+    {
+        if(vrfs == nullptr)
+        {
+            vrfs = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs>();
+        }
+        return vrfs;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(vrfs != nullptr)
+    {
+        children["vrfs"] = vrfs;
+    }
+
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrfs")
+        return true;
+    return false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrfs()
+{
+
+    yang_name = "vrfs"; yang_parent_name = "tpa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::~Vrfs()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::has_data() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
+    {
+        if(vrf[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::has_operation() const
+{
+    for (std::size_t index=0; index<vrf.size(); index++)
+    {
+        if(vrf[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-mpp-cfg:control-plane/management-plane-protection/tpa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrfs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf")
+    {
+        auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf>();
+        c->parent = this;
+        vrf.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : vrf)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::Vrf()
+    :
+    vrf_name{YType::str, "vrf-name"}
+    	,
+    address_family(std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily>())
+{
+    address_family->parent = this;
+
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::~Vrf()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::has_data() const
+{
+    return vrf_name.is_set
+	|| (address_family !=  nullptr && address_family->has_data());
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| (address_family !=  nullptr && address_family->has_operation());
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lib-mpp-cfg:control-plane/management-plane-protection/tpa/vrfs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "address-family")
+    {
+        if(address_family == nullptr)
+        {
+            address_family = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily>();
+        }
+        return address_family;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(address_family != nullptr)
+    {
+        children["address-family"] = address_family;
+    }
+
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::AddressFamily()
+    :
+    ipv4_table(std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table>())
+	,ipv6_table(std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table>())
+{
+    ipv4_table->parent = this;
+    ipv6_table->parent = this;
+
+    yang_name = "address-family"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::~AddressFamily()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::has_data() const
+{
+    return (ipv4_table !=  nullptr && ipv4_table->has_data())
+	|| (ipv6_table !=  nullptr && ipv6_table->has_data());
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ipv4_table !=  nullptr && ipv4_table->has_operation())
+	|| (ipv6_table !=  nullptr && ipv6_table->has_operation());
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-family";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4-table")
+    {
+        if(ipv4_table == nullptr)
+        {
+            ipv4_table = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table>();
+        }
+        return ipv4_table;
+    }
+
+    if(child_yang_name == "ipv6-table")
+    {
+        if(ipv6_table == nullptr)
+        {
+            ipv6_table = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table>();
+        }
+        return ipv6_table;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ipv4_table != nullptr)
+    {
+        children["ipv4-table"] = ipv4_table;
+    }
+
+    if(ipv6_table != nullptr)
+    {
+        children["ipv6-table"] = ipv6_table;
+    }
+
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-table" || name == "ipv6-table")
+        return true;
+    return false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::Ipv4Table()
+{
+
+    yang_name = "ipv4-table"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::~Ipv4Table()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::has_data() const
+{
+    for (std::size_t index=0; index<tpa_allow.size(); index++)
+    {
+        if(tpa_allow[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::has_operation() const
+{
+    for (std::size_t index=0; index<tpa_allow.size(); index++)
+    {
+        if(tpa_allow[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tpa-allow")
+    {
+        auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow>();
+        c->parent = this;
+        tpa_allow.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : tpa_allow)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tpa-allow")
+        return true;
+    return false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::TpaAllow()
+    :
+    local_port{YType::uint16, "local-port"},
+    protocol{YType::uint32, "protocol"},
+    interface_name{YType::str, "interface-name"},
+    remote_address{YType::str, "remote-address"},
+    remote_address_prefix{YType::uint32, "remote-address-prefix"},
+    local_address{YType::str, "local-address"},
+    local_address_prefix{YType::uint32, "local-address-prefix"}
+{
+
+    yang_name = "tpa-allow"; yang_parent_name = "ipv4-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::~TpaAllow()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::has_data() const
+{
+    return local_port.is_set
+	|| protocol.is_set
+	|| interface_name.is_set
+	|| remote_address.is_set
+	|| remote_address_prefix.is_set
+	|| local_address.is_set
+	|| local_address_prefix.is_set;
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(local_port.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(remote_address_prefix.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(local_address_prefix.yfilter);
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tpa-allow" <<"[local-port='" <<local_port <<"']" <<"[protocol='" <<protocol <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (local_port.is_set || is_set(local_port.yfilter)) leaf_name_data.push_back(local_port.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (remote_address_prefix.is_set || is_set(remote_address_prefix.yfilter)) leaf_name_data.push_back(remote_address_prefix.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (local_address_prefix.is_set || is_set(local_address_prefix.yfilter)) leaf_name_data.push_back(local_address_prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "local-port")
+    {
+        local_port = value;
+        local_port.value_namespace = name_space;
+        local_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-address-prefix")
+    {
+        remote_address_prefix = value;
+        remote_address_prefix.value_namespace = name_space;
+        remote_address_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-address")
+    {
+        local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-address-prefix")
+    {
+        local_address_prefix = value;
+        local_address_prefix.value_namespace = name_space;
+        local_address_prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-port")
+    {
+        local_port.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-address-prefix")
+    {
+        remote_address_prefix.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "local-address-prefix")
+    {
+        local_address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-port" || name == "protocol" || name == "interface-name" || name == "remote-address" || name == "remote-address-prefix" || name == "local-address" || name == "local-address-prefix")
+        return true;
+    return false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::Ipv6Table()
+{
+
+    yang_name = "ipv6-table"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::~Ipv6Table()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::has_data() const
+{
+    for (std::size_t index=0; index<tpa_allow.size(); index++)
+    {
+        if(tpa_allow[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::has_operation() const
+{
+    for (std::size_t index=0; index<tpa_allow.size(); index++)
+    {
+        if(tpa_allow[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-table";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tpa-allow")
+    {
+        auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow>();
+        c->parent = this;
+        tpa_allow.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : tpa_allow)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tpa-allow")
+        return true;
+    return false;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::TpaAllow()
+    :
+    local_port{YType::uint16, "local-port"},
+    protocol{YType::uint32, "protocol"},
+    interface_name{YType::str, "interface-name"},
+    remote_address{YType::str, "remote-address"},
+    remote_address_prefix{YType::uint32, "remote-address-prefix"},
+    local_address{YType::str, "local-address"},
+    local_address_prefix{YType::uint32, "local-address-prefix"}
+{
+
+    yang_name = "tpa-allow"; yang_parent_name = "ipv6-table"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::~TpaAllow()
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::has_data() const
+{
+    return local_port.is_set
+	|| protocol.is_set
+	|| interface_name.is_set
+	|| remote_address.is_set
+	|| remote_address_prefix.is_set
+	|| local_address.is_set
+	|| local_address_prefix.is_set;
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(local_port.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(remote_address_prefix.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(local_address_prefix.yfilter);
+}
+
+std::string ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tpa-allow" <<"[local-port='" <<local_port <<"']" <<"[protocol='" <<protocol <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (local_port.is_set || is_set(local_port.yfilter)) leaf_name_data.push_back(local_port.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (remote_address_prefix.is_set || is_set(remote_address_prefix.yfilter)) leaf_name_data.push_back(remote_address_prefix.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (local_address_prefix.is_set || is_set(local_address_prefix.yfilter)) leaf_name_data.push_back(local_address_prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "local-port")
+    {
+        local_port = value;
+        local_port.value_namespace = name_space;
+        local_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-address-prefix")
+    {
+        remote_address_prefix = value;
+        remote_address_prefix.value_namespace = name_space;
+        remote_address_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-address")
+    {
+        local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-address-prefix")
+    {
+        local_address_prefix = value;
+        local_address_prefix.value_namespace = name_space;
+        local_address_prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-port")
+    {
+        local_port.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-address-prefix")
+    {
+        remote_address_prefix.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "local-address-prefix")
+    {
+        local_address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-port" || name == "protocol" || name == "interface-name" || name == "remote-address" || name == "remote-address-prefix" || name == "local-address" || name == "local-address-prefix")
+        return true;
+    return false;
+}
+
 
 }
 }

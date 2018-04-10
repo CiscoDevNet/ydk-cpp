@@ -2426,11 +2426,11 @@ class L2Vpnv2::Standby::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::Mvrp
 }; // L2Vpnv2::Standby::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpBridgePort::VlanRange
 
 
-class L2Vpnv2::Standby::GenericInterfaces : public ydk::Entity
+class L2Vpnv2::Standby::GenericInterfaceLists : public ydk::Entity
 {
     public:
-        GenericInterfaces();
-        ~GenericInterfaces();
+        GenericInterfaceLists();
+        ~GenericInterfaceLists();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2443,18 +2443,18 @@ class L2Vpnv2::Standby::GenericInterfaces : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GenericInterface; //type: L2Vpnv2::Standby::GenericInterfaces::GenericInterface
+        class GenericInterfaceList; //type: L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::GenericInterfaces::GenericInterface> > generic_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList> > generic_interface_list;
         
-}; // L2Vpnv2::Standby::GenericInterfaces
+}; // L2Vpnv2::Standby::GenericInterfaceLists
 
 
-class L2Vpnv2::Standby::GenericInterfaces::GenericInterface : public ydk::Entity
+class L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList : public ydk::Entity
 {
     public:
-        GenericInterface();
-        ~GenericInterface();
+        GenericInterfaceList();
+        ~GenericInterfaceList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2472,14 +2472,14 @@ class L2Vpnv2::Standby::GenericInterfaces::GenericInterface : public ydk::Entity
         ydk::YLeaf interface_list_id; //type: uint32
         ydk::YLeaf number_of_interfaces; //type: uint32
         ydk::YLeaf items; //type: uint32
-        class Interface; //type: L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface
+        class Interface; //type: L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface> > interface;
         
-}; // L2Vpnv2::Standby::GenericInterfaces::GenericInterface
+}; // L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList
 
 
-class L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface : public ydk::Entity
+class L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2500,7 +2500,7 @@ class L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface : public 
         ydk::YLeaf not_supported_replications; //type: uint32
         ydk::YLeaf is_fib_downloaded; //type: boolean
 
-}; // L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface
+}; // L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface
 
 
 class L2Vpnv2::Standby::MstpVlans : public ydk::Entity

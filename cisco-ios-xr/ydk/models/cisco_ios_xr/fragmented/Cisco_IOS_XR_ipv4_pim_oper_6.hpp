@@ -2776,7 +2776,6 @@ class Ipv6Pim::Standby::Vrfs::Vrf::TrafficCounters : public ydk::Entity
         ydk::YLeaf output_jp; //type: uint32
         ydk::YLeaf input_data_register; //type: uint32
         ydk::YLeaf input_null_register; //type: uint32
-        ydk::YLeaf output_data_register; //type: uint32
         ydk::YLeaf output_null_register; //type: uint32
         ydk::YLeaf input_register_stop; //type: uint32
         ydk::YLeaf output_register_stop; //type: uint32

@@ -108,29 +108,17 @@ class RoutingPolicy::Sets : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class PrependEtagSets; //type: RoutingPolicy::Sets::PrependEtagSets
         class PrefixSets; //type: RoutingPolicy::Sets::PrefixSets
         class LargeCommunitySets; //type: RoutingPolicy::Sets::LargeCommunitySets
-        class PrependLargeCommunitySets; //type: RoutingPolicy::Sets::PrependLargeCommunitySets
-        class AppendEtagSets; //type: RoutingPolicy::Sets::AppendEtagSets
-        class RemoveEtagSets; //type: RoutingPolicy::Sets::RemoveEtagSets
-        class RemoveLargeCommunitySets; //type: RoutingPolicy::Sets::RemoveLargeCommunitySets
         class MacSets; //type: RoutingPolicy::Sets::MacSets
         class ExtendedCommunityOpaqueSets; //type: RoutingPolicy::Sets::ExtendedCommunityOpaqueSets
-        class PrependMacSets; //type: RoutingPolicy::Sets::PrependMacSets
         class OspfAreaSets; //type: RoutingPolicy::Sets::OspfAreaSets
-        class AppendMacSets; //type: RoutingPolicy::Sets::AppendMacSets
         class ExtendedCommunityCostSets; //type: RoutingPolicy::Sets::ExtendedCommunityCostSets
-        class RemoveMacSets; //type: RoutingPolicy::Sets::RemoveMacSets
         class ExtendedCommunitySooSets; //type: RoutingPolicy::Sets::ExtendedCommunitySooSets
         class EsiSets; //type: RoutingPolicy::Sets::EsiSets
-        class PrependEsiSets; //type: RoutingPolicy::Sets::PrependEsiSets
-        class AppendEsiSets; //type: RoutingPolicy::Sets::AppendEsiSets
-        class RemoveEsiSets; //type: RoutingPolicy::Sets::RemoveEsiSets
         class ExtendedCommunitySegNhSets; //type: RoutingPolicy::Sets::ExtendedCommunitySegNhSets
         class RdSets; //type: RoutingPolicy::Sets::RdSets
         class PolicyGlobalSetTable; //type: RoutingPolicy::Sets::PolicyGlobalSetTable
-        class AppendLargeCommunitySets; //type: RoutingPolicy::Sets::AppendLargeCommunitySets
         class ExtendedCommunityBandwidthSets; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidthSets
         class CommunitySets; //type: RoutingPolicy::Sets::CommunitySets
         class AsPathSets; //type: RoutingPolicy::Sets::AsPathSets
@@ -138,29 +126,17 @@ class RoutingPolicy::Sets : public ydk::Entity
         class EtagSets; //type: RoutingPolicy::Sets::EtagSets
         class ExtendedCommunityRtSets; //type: RoutingPolicy::Sets::ExtendedCommunityRtSets
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependEtagSets> prepend_etag_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrefixSets> prefix_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::LargeCommunitySets> large_community_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependLargeCommunitySets> prepend_large_community_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendEtagSets> append_etag_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveEtagSets> remove_etag_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveLargeCommunitySets> remove_large_community_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::MacSets> mac_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityOpaqueSets> extended_community_opaque_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependMacSets> prepend_mac_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::OspfAreaSets> ospf_area_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendMacSets> append_mac_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityCostSets> extended_community_cost_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveMacSets> remove_mac_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunitySooSets> extended_community_soo_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::EsiSets> esi_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependEsiSets> prepend_esi_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendEsiSets> append_esi_sets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveEsiSets> remove_esi_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunitySegNhSets> extended_community_seg_nh_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RdSets> rd_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PolicyGlobalSetTable> policy_global_set_table;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendLargeCommunitySets> append_large_community_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityBandwidthSets> extended_community_bandwidth_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::CommunitySets> community_sets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AsPathSets> as_path_sets;
@@ -169,53 +145,6 @@ class RoutingPolicy::Sets : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityRtSets> extended_community_rt_sets;
         
 }; // RoutingPolicy::Sets
-
-
-class RoutingPolicy::Sets::PrependEtagSets : public ydk::Entity
-{
-    public:
-        PrependEtagSets();
-        ~PrependEtagSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class PrependEtagSet; //type: RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet> > prepend_etag_set;
-        
-}; // RoutingPolicy::Sets::PrependEtagSets
-
-
-class RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet : public ydk::Entity
-{
-    public:
-        PrependEtagSet();
-        ~PrependEtagSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf etag_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet
 
 
 class RoutingPolicy::Sets::PrefixSets : public ydk::Entity
@@ -312,194 +241,6 @@ class RoutingPolicy::Sets::LargeCommunitySets::LargeCommunitySet : public ydk::E
 }; // RoutingPolicy::Sets::LargeCommunitySets::LargeCommunitySet
 
 
-class RoutingPolicy::Sets::PrependLargeCommunitySets : public ydk::Entity
-{
-    public:
-        PrependLargeCommunitySets();
-        ~PrependLargeCommunitySets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class PrependLargeCommunitySet; //type: RoutingPolicy::Sets::PrependLargeCommunitySets::PrependLargeCommunitySet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependLargeCommunitySets::PrependLargeCommunitySet> > prepend_large_community_set;
-        
-}; // RoutingPolicy::Sets::PrependLargeCommunitySets
-
-
-class RoutingPolicy::Sets::PrependLargeCommunitySets::PrependLargeCommunitySet : public ydk::Entity
-{
-    public:
-        PrependLargeCommunitySet();
-        ~PrependLargeCommunitySet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf large_community_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::PrependLargeCommunitySets::PrependLargeCommunitySet
-
-
-class RoutingPolicy::Sets::AppendEtagSets : public ydk::Entity
-{
-    public:
-        AppendEtagSets();
-        ~AppendEtagSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AppendEtagSet; //type: RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet> > append_etag_set;
-        
-}; // RoutingPolicy::Sets::AppendEtagSets
-
-
-class RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet : public ydk::Entity
-{
-    public:
-        AppendEtagSet();
-        ~AppendEtagSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf etag_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet
-
-
-class RoutingPolicy::Sets::RemoveEtagSets : public ydk::Entity
-{
-    public:
-        RemoveEtagSets();
-        ~RemoveEtagSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RemoveEtagSet; //type: RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet> > remove_etag_set;
-        
-}; // RoutingPolicy::Sets::RemoveEtagSets
-
-
-class RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet : public ydk::Entity
-{
-    public:
-        RemoveEtagSet();
-        ~RemoveEtagSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf etag_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet
-
-
-class RoutingPolicy::Sets::RemoveLargeCommunitySets : public ydk::Entity
-{
-    public:
-        RemoveLargeCommunitySets();
-        ~RemoveLargeCommunitySets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RemoveLargeCommunitySet; //type: RoutingPolicy::Sets::RemoveLargeCommunitySets::RemoveLargeCommunitySet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveLargeCommunitySets::RemoveLargeCommunitySet> > remove_large_community_set;
-        
-}; // RoutingPolicy::Sets::RemoveLargeCommunitySets
-
-
-class RoutingPolicy::Sets::RemoveLargeCommunitySets::RemoveLargeCommunitySet : public ydk::Entity
-{
-    public:
-        RemoveLargeCommunitySet();
-        ~RemoveLargeCommunitySet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf large_community_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::RemoveLargeCommunitySets::RemoveLargeCommunitySet
-
-
 class RoutingPolicy::Sets::MacSets : public ydk::Entity
 {
     public:
@@ -594,53 +335,6 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueS
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet
 
 
-class RoutingPolicy::Sets::PrependMacSets : public ydk::Entity
-{
-    public:
-        PrependMacSets();
-        ~PrependMacSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class PrependMacSet; //type: RoutingPolicy::Sets::PrependMacSets::PrependMacSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependMacSets::PrependMacSet> > prepend_mac_set;
-        
-}; // RoutingPolicy::Sets::PrependMacSets
-
-
-class RoutingPolicy::Sets::PrependMacSets::PrependMacSet : public ydk::Entity
-{
-    public:
-        PrependMacSet();
-        ~PrependMacSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf mac_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::PrependMacSets::PrependMacSet
-
-
 class RoutingPolicy::Sets::OspfAreaSets : public ydk::Entity
 {
     public:
@@ -688,53 +382,6 @@ class RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet : public ydk::Entity
 }; // RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet
 
 
-class RoutingPolicy::Sets::AppendMacSets : public ydk::Entity
-{
-    public:
-        AppendMacSets();
-        ~AppendMacSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AppendMacSet; //type: RoutingPolicy::Sets::AppendMacSets::AppendMacSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendMacSets::AppendMacSet> > append_mac_set;
-        
-}; // RoutingPolicy::Sets::AppendMacSets
-
-
-class RoutingPolicy::Sets::AppendMacSets::AppendMacSet : public ydk::Entity
-{
-    public:
-        AppendMacSet();
-        ~AppendMacSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf mac_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::AppendMacSets::AppendMacSet
-
-
 class RoutingPolicy::Sets::ExtendedCommunityCostSets : public ydk::Entity
 {
     public:
@@ -780,53 +427,6 @@ class RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet :
         ydk::YLeaf rpl_extended_community_cost_set; //type: string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet
-
-
-class RoutingPolicy::Sets::RemoveMacSets : public ydk::Entity
-{
-    public:
-        RemoveMacSets();
-        ~RemoveMacSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RemoveMacSet; //type: RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet> > remove_mac_set;
-        
-}; // RoutingPolicy::Sets::RemoveMacSets
-
-
-class RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet : public ydk::Entity
-{
-    public:
-        RemoveMacSet();
-        ~RemoveMacSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf mac_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet
 
 
 class RoutingPolicy::Sets::ExtendedCommunitySooSets : public ydk::Entity
@@ -921,147 +521,6 @@ class RoutingPolicy::Sets::EsiSets::EsiSet : public ydk::Entity
         ydk::YLeaf esi_set_as_text; //type: string
 
 }; // RoutingPolicy::Sets::EsiSets::EsiSet
-
-
-class RoutingPolicy::Sets::PrependEsiSets : public ydk::Entity
-{
-    public:
-        PrependEsiSets();
-        ~PrependEsiSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class PrependEsiSet; //type: RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet> > prepend_esi_set;
-        
-}; // RoutingPolicy::Sets::PrependEsiSets
-
-
-class RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet : public ydk::Entity
-{
-    public:
-        PrependEsiSet();
-        ~PrependEsiSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf esi_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet
-
-
-class RoutingPolicy::Sets::AppendEsiSets : public ydk::Entity
-{
-    public:
-        AppendEsiSets();
-        ~AppendEsiSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AppendEsiSet; //type: RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet> > append_esi_set;
-        
-}; // RoutingPolicy::Sets::AppendEsiSets
-
-
-class RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet : public ydk::Entity
-{
-    public:
-        AppendEsiSet();
-        ~AppendEsiSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf esi_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet
-
-
-class RoutingPolicy::Sets::RemoveEsiSets : public ydk::Entity
-{
-    public:
-        RemoveEsiSets();
-        ~RemoveEsiSets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RemoveEsiSet; //type: RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet> > remove_esi_set;
-        
-}; // RoutingPolicy::Sets::RemoveEsiSets
-
-
-class RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet : public ydk::Entity
-{
-    public:
-        RemoveEsiSet();
-        ~RemoveEsiSet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf esi_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet
 
 
 class RoutingPolicy::Sets::ExtendedCommunitySegNhSets : public ydk::Entity
@@ -1178,53 +637,6 @@ class RoutingPolicy::Sets::PolicyGlobalSetTable : public ydk::Entity
         ydk::YLeaf policy_global_set; //type: string
 
 }; // RoutingPolicy::Sets::PolicyGlobalSetTable
-
-
-class RoutingPolicy::Sets::AppendLargeCommunitySets : public ydk::Entity
-{
-    public:
-        AppendLargeCommunitySets();
-        ~AppendLargeCommunitySets();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AppendLargeCommunitySet; //type: RoutingPolicy::Sets::AppendLargeCommunitySets::AppendLargeCommunitySet
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AppendLargeCommunitySets::AppendLargeCommunitySet> > append_large_community_set;
-        
-}; // RoutingPolicy::Sets::AppendLargeCommunitySets
-
-
-class RoutingPolicy::Sets::AppendLargeCommunitySets::AppendLargeCommunitySet : public ydk::Entity
-{
-    public:
-        AppendLargeCommunitySet();
-        ~AppendLargeCommunitySet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf set_name; //type: string
-        ydk::YLeaf large_community_set_as_text; //type: string
-
-}; // RoutingPolicy::Sets::AppendLargeCommunitySets::AppendLargeCommunitySet
 
 
 class RoutingPolicy::Sets::ExtendedCommunityBandwidthSets : public ydk::Entity

@@ -554,7 +554,8 @@ Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::HwResourcesData()
     resource{YType::enumeration, "resource"},
     resource_id{YType::uint32, "resource-id"},
     name{YType::str, "name"},
-    num_npus{YType::uint32, "num-npus"}
+    num_npus{YType::uint32, "num-npus"},
+    cmd_invalid{YType::boolean, "cmd-invalid"}
 {
 
     yang_name = "hw-resources-data"; yang_parent_name = "hw-resources-datas"; is_top_level_class = false; has_list_ancestor = true;
@@ -574,7 +575,8 @@ bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::has_data() cons
     return resource.is_set
 	|| resource_id.is_set
 	|| name.is_set
-	|| num_npus.is_set;
+	|| num_npus.is_set
+	|| cmd_invalid.is_set;
 }
 
 bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::has_operation() const
@@ -588,7 +590,8 @@ bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::has_operation()
 	|| ydk::is_set(resource.yfilter)
 	|| ydk::is_set(resource_id.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(num_npus.yfilter);
+	|| ydk::is_set(num_npus.yfilter)
+	|| ydk::is_set(cmd_invalid.yfilter);
 }
 
 std::string Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::get_segment_path() const
@@ -606,6 +609,7 @@ std::vector<std::pair<std::string, LeafData> > Dpa::Stats::Nodes::Node::HwResour
     if (resource_id.is_set || is_set(resource_id.yfilter)) leaf_name_data.push_back(resource_id.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (num_npus.is_set || is_set(num_npus.yfilter)) leaf_name_data.push_back(num_npus.get_name_leafdata());
+    if (cmd_invalid.is_set || is_set(cmd_invalid.yfilter)) leaf_name_data.push_back(cmd_invalid.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -666,6 +670,12 @@ void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::set_value(const
         num_npus.value_namespace = name_space;
         num_npus.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cmd-invalid")
+    {
+        cmd_invalid = value;
+        cmd_invalid.value_namespace = name_space;
+        cmd_invalid.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::set_filter(const std::string & value_path, YFilter yfilter)
@@ -686,11 +696,15 @@ void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::set_filter(cons
     {
         num_npus.yfilter = yfilter;
     }
+    if(value_path == "cmd-invalid")
+    {
+        cmd_invalid.yfilter = yfilter;
+    }
 }
 
 bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "npu-hwr" || name == "resource" || name == "resource-id" || name == "name" || name == "num-npus")
+    if(name == "npu-hwr" || name == "resource" || name == "resource-id" || name == "name" || name == "num-npus" || name == "cmd-invalid")
         return true;
     return false;
 }
@@ -5078,6 +5092,7 @@ const Enum::YLeaf Resource::ext_tcam_ipv6_short {4, "ext-tcam-ipv6-short"};
 const Enum::YLeaf Resource::ext_tcam_ipv6_long {5, "ext-tcam-ipv6-long"};
 const Enum::YLeaf Resource::fec {6, "fec"};
 const Enum::YLeaf Resource::ecmpfec {7, "ecmpfec"};
+const Enum::YLeaf Resource::ext_tcam_ipv6 {8, "ext-tcam-ipv6"};
 
 
 }

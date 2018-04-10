@@ -16,6 +16,7 @@ Lldp::Lldp()
     holdtime{YType::uint32, "holdtime"},
     extended_show_width{YType::boolean, "extended-show-width"},
     enable_subintf{YType::boolean, "enable-subintf"},
+    enable_mgmtintf{YType::boolean, "enable-mgmtintf"},
     timer{YType::uint32, "timer"},
     reinit{YType::uint32, "reinit"},
     enable{YType::boolean, "enable"}
@@ -35,6 +36,7 @@ bool Lldp::has_data() const
     return holdtime.is_set
 	|| extended_show_width.is_set
 	|| enable_subintf.is_set
+	|| enable_mgmtintf.is_set
 	|| timer.is_set
 	|| reinit.is_set
 	|| enable.is_set
@@ -47,6 +49,7 @@ bool Lldp::has_operation() const
 	|| ydk::is_set(holdtime.yfilter)
 	|| ydk::is_set(extended_show_width.yfilter)
 	|| ydk::is_set(enable_subintf.yfilter)
+	|| ydk::is_set(enable_mgmtintf.yfilter)
 	|| ydk::is_set(timer.yfilter)
 	|| ydk::is_set(reinit.yfilter)
 	|| ydk::is_set(enable.yfilter)
@@ -67,6 +70,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::get_name_leaf_data() const
     if (holdtime.is_set || is_set(holdtime.yfilter)) leaf_name_data.push_back(holdtime.get_name_leafdata());
     if (extended_show_width.is_set || is_set(extended_show_width.yfilter)) leaf_name_data.push_back(extended_show_width.get_name_leafdata());
     if (enable_subintf.is_set || is_set(enable_subintf.yfilter)) leaf_name_data.push_back(enable_subintf.get_name_leafdata());
+    if (enable_mgmtintf.is_set || is_set(enable_mgmtintf.yfilter)) leaf_name_data.push_back(enable_mgmtintf.get_name_leafdata());
     if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
     if (reinit.is_set || is_set(reinit.yfilter)) leaf_name_data.push_back(reinit.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
@@ -121,6 +125,12 @@ void Lldp::set_value(const std::string & value_path, const std::string & value, 
         enable_subintf.value_namespace = name_space;
         enable_subintf.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable-mgmtintf")
+    {
+        enable_mgmtintf = value;
+        enable_mgmtintf.value_namespace = name_space;
+        enable_mgmtintf.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "timer")
     {
         timer = value;
@@ -154,6 +164,10 @@ void Lldp::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "enable-subintf")
     {
         enable_subintf.yfilter = yfilter;
+    }
+    if(value_path == "enable-mgmtintf")
+    {
+        enable_mgmtintf.yfilter = yfilter;
     }
     if(value_path == "timer")
     {
@@ -196,7 +210,7 @@ std::map<std::pair<std::string, std::string>, std::string> Lldp::get_namespace_i
 
 bool Lldp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tlv-select" || name == "holdtime" || name == "extended-show-width" || name == "enable-subintf" || name == "timer" || name == "reinit" || name == "enable")
+    if(name == "tlv-select" || name == "holdtime" || name == "extended-show-width" || name == "enable-subintf" || name == "enable-mgmtintf" || name == "timer" || name == "reinit" || name == "enable")
         return true;
     return false;
 }

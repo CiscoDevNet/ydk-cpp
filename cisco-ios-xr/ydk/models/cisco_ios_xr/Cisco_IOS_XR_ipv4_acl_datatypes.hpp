@@ -235,6 +235,9 @@ class Ipv4AclFragFlags : public ydk::Enum
         static const ydk::Enum::YLeaf is_fragment;
         static const ydk::Enum::YLeaf first_fragment;
         static const ydk::Enum::YLeaf last_fragment;
+        static const ydk::Enum::YLeaf dont_fragment_is_fragment;
+        static const ydk::Enum::YLeaf dont_fragment_first_fragment;
+        static const ydk::Enum::YLeaf dont_fragment_last_fragment;
 
 };
 

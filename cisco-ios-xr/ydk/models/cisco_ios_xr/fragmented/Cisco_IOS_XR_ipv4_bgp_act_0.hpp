@@ -697,7 +697,7 @@ class ClearBgpAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoftInPrefixFilter::Input
 
@@ -747,7 +747,7 @@ class ClearBgpAfiSafiAsSoftIn::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoftIn::Input
 
@@ -797,7 +797,7 @@ class ClearBgpAfiSafiAsSoftOut::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoftOut::Input
 
@@ -847,7 +847,7 @@ class ClearBgpAfiSafiAsSoft::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoft::Input
 
@@ -2290,7 +2290,7 @@ class ClearBgpAsGraceful::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAsGraceful::Input
 
@@ -2339,7 +2339,7 @@ class ClearBgpAs::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAs::Input
 

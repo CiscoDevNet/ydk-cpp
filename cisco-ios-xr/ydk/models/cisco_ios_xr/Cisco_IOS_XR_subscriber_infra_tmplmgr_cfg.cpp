@@ -1011,9 +1011,10 @@ bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Acl::h
 
 DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Ipv4PacketFilter()
     :
-    outbound(nullptr) // presence node
+    outbound(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound>())
 	,inbound(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound>())
 {
+    outbound->parent = this;
     inbound->parent = this;
 
     yang_name = "ipv4-packet-filter"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
@@ -1348,9 +1349,10 @@ bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::has_leaf_or_child_of
 DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Ipv6PacketFilter()
     :
     inbound(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound>())
-	,outbound(nullptr) // presence node
+	,outbound(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound>())
 {
     inbound->parent = this;
+    outbound->parent = this;
 
     yang_name = "ipv6-packet-filter"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -7238,9 +7240,10 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMoni
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Ipv4PacketFilter()
     :
-    outbound(nullptr) // presence node
+    outbound(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound>())
 	,inbound(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound>())
 {
+    outbound->parent = this;
     inbound->parent = this;
 
     yang_name = "ipv4-packet-filter"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true;
@@ -7575,9 +7578,10 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::ha
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Ipv6PacketFilter()
     :
     inbound(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound>())
-	,outbound(nullptr) // presence node
+	,outbound(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound>())
 {
     inbound->parent = this;
+    outbound->parent = this;
 
     yang_name = "ipv6-packet-filter"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -11754,9 +11758,10 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Ipv4PacketFilter()
     :
-    outbound(nullptr) // presence node
+    outbound(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound>())
 	,inbound(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound>())
 {
+    outbound->parent = this;
     inbound->parent = this;
 
     yang_name = "ipv4-packet-filter"; yang_parent_name = "subscriber-service"; is_top_level_class = false; has_list_ancestor = true;
@@ -12091,9 +12096,10 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::I
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Ipv6PacketFilter()
     :
     inbound(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound>())
-	,outbound(nullptr) // presence node
+	,outbound(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound>())
 {
     inbound->parent = this;
+    outbound->parent = this;
 
     yang_name = "ipv6-packet-filter"; yang_parent_name = "subscriber-service"; is_top_level_class = false; has_list_ancestor = true;
 }

@@ -139,7 +139,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -196,7 +204,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -247,7 +263,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -297,6 +321,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -566,6 +598,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -714,11 +794,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -2073,7 +2185,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -2130,7 +2250,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -2181,7 +2309,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -2231,6 +2367,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2500,6 +2644,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2648,11 +2840,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -4001,7 +4225,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -4058,7 +4290,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -4109,7 +4349,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -4159,6 +4407,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4428,6 +4684,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4576,11 +4880,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::L2Vpn::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -5830,7 +6166,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -5887,7 +6231,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -5938,7 +6290,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -5988,6 +6348,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6257,6 +6625,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6405,11 +6821,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -7764,7 +8212,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -7821,7 +8277,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -7872,7 +8336,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -7922,6 +8394,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8191,6 +8671,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8339,11 +8867,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -9305,7 +9865,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -9362,7 +9930,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -9413,7 +9989,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -9463,6 +10047,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9732,6 +10324,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9880,11 +10520,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Routes::Route::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -10818,7 +11490,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -10875,7 +11555,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -10926,7 +11614,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -10976,6 +11672,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11245,6 +11949,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11393,11 +12145,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -12345,7 +13129,15 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -12402,7 +13194,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -12453,7 +13253,15 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -12503,6 +13311,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12772,6 +13588,54 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12920,11 +13784,43 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -17243,7 +18139,15 @@ Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRou
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -17300,7 +18204,15 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -17351,7 +18263,15 @@ bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -17401,6 +18321,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::RibTableIds::RibTab
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -17670,6 +18598,54 @@ void Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -17818,11 +18794,43 @@ void Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::I
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -19757,7 +20765,15 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -19814,7 +20830,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -19865,7 +20889,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -19915,6 +20947,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::Vrfs::Vrf::Afs::Af:
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -20184,6 +21224,54 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -20332,11 +21420,43 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -21270,7 +22390,15 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -21327,7 +22455,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -21378,7 +22514,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -21428,6 +22572,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::Vrfs::Vrf::Afs::Af:
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -21697,6 +22849,54 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -21845,11 +23045,43 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -22769,7 +24001,15 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -22826,7 +24066,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -22877,7 +24125,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -22927,6 +24183,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::Vrfs::Vrf::Afs::Af:
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -23196,6 +24460,54 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -23344,11 +24656,43 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -24268,7 +25612,15 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -24325,7 +25677,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -24376,7 +25736,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -24426,6 +25794,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::Vrfs::Vrf::Afs::Af:
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -24695,6 +26071,54 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -24843,11 +26267,43 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -26164,7 +27620,15 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -26221,7 +27685,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -26272,7 +27744,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -26322,6 +27802,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::Vrfs::Vrf::Afs::Af:
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -26591,6 +28079,54 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -26739,11 +28275,43 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -28353,7 +29921,15 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -28410,7 +29986,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -28461,7 +30045,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -28511,6 +30103,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::Vrfs::Vrf::Afs::Af:
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -28780,6 +30380,54 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -28928,11 +30576,43 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }
@@ -30182,7 +31862,15 @@ Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     num_labels{YType::uint8, "num-labels"},
     binding_label{YType::uint32, "binding-label"},
     nhid_feid{YType::uint64, "nhid-feid"},
-    mpls_feid{YType::uint64, "mpls-feid"}
+    mpls_feid{YType::uint64, "mpls-feid"},
+    has_vxlan_network_id{YType::boolean, "has-vxlan-network-id"},
+    vxlan_network_id{YType::uint32, "vxlan-network-id"},
+    has_xcid{YType::boolean, "has-xcid"},
+    xcid{YType::uint32, "xcid"},
+    has_span_diag_interface{YType::boolean, "has-span-diag-interface"},
+    span_diag_interface{YType::str, "span-diag-interface"},
+    has_subscriber_parent_interface{YType::boolean, "has-subscriber-parent-interface"},
+    subscriber_parent_interface{YType::str, "subscriber-parent-interface"}
 {
 
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
@@ -30239,7 +31927,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| num_labels.is_set
 	|| binding_label.is_set
 	|| nhid_feid.is_set
-	|| mpls_feid.is_set;
+	|| mpls_feid.is_set
+	|| has_vxlan_network_id.is_set
+	|| vxlan_network_id.is_set
+	|| has_xcid.is_set
+	|| xcid.is_set
+	|| has_span_diag_interface.is_set
+	|| span_diag_interface.is_set
+	|| has_subscriber_parent_interface.is_set
+	|| subscriber_parent_interface.is_set;
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
@@ -30290,7 +31986,15 @@ bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(nhid_feid.yfilter)
-	|| ydk::is_set(mpls_feid.yfilter);
+	|| ydk::is_set(mpls_feid.yfilter)
+	|| ydk::is_set(has_vxlan_network_id.yfilter)
+	|| ydk::is_set(vxlan_network_id.yfilter)
+	|| ydk::is_set(has_xcid.yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(has_span_diag_interface.yfilter)
+	|| ydk::is_set(span_diag_interface.yfilter)
+	|| ydk::is_set(has_subscriber_parent_interface.yfilter)
+	|| ydk::is_set(subscriber_parent_interface.yfilter);
 }
 
 std::string Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
@@ -30340,6 +32044,14 @@ std::vector<std::pair<std::string, LeafData> > Ipv6RibStdby::Vrfs::Vrf::Afs::Af:
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (nhid_feid.is_set || is_set(nhid_feid.yfilter)) leaf_name_data.push_back(nhid_feid.get_name_leafdata());
     if (mpls_feid.is_set || is_set(mpls_feid.yfilter)) leaf_name_data.push_back(mpls_feid.get_name_leafdata());
+    if (has_vxlan_network_id.is_set || is_set(has_vxlan_network_id.yfilter)) leaf_name_data.push_back(has_vxlan_network_id.get_name_leafdata());
+    if (vxlan_network_id.is_set || is_set(vxlan_network_id.yfilter)) leaf_name_data.push_back(vxlan_network_id.get_name_leafdata());
+    if (has_xcid.is_set || is_set(has_xcid.yfilter)) leaf_name_data.push_back(has_xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (has_span_diag_interface.is_set || is_set(has_span_diag_interface.yfilter)) leaf_name_data.push_back(has_span_diag_interface.get_name_leafdata());
+    if (span_diag_interface.is_set || is_set(span_diag_interface.yfilter)) leaf_name_data.push_back(span_diag_interface.get_name_leafdata());
+    if (has_subscriber_parent_interface.is_set || is_set(has_subscriber_parent_interface.yfilter)) leaf_name_data.push_back(has_subscriber_parent_interface.get_name_leafdata());
+    if (subscriber_parent_interface.is_set || is_set(subscriber_parent_interface.yfilter)) leaf_name_data.push_back(subscriber_parent_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -30609,6 +32321,54 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
         mpls_feid.value_namespace = name_space;
         mpls_feid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id = value;
+        has_vxlan_network_id.value_namespace = name_space;
+        has_vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id = value;
+        vxlan_network_id.value_namespace = name_space;
+        vxlan_network_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid = value;
+        has_xcid.value_namespace = name_space;
+        has_xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xcid")
+    {
+        xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface = value;
+        has_span_diag_interface.value_namespace = name_space;
+        has_span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface = value;
+        span_diag_interface.value_namespace = name_space;
+        span_diag_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface = value;
+        has_subscriber_parent_interface.value_namespace = name_space;
+        has_subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface = value;
+        subscriber_parent_interface.value_namespace = name_space;
+        subscriber_parent_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
@@ -30757,11 +32517,43 @@ void Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRou
     {
         mpls_feid.yfilter = yfilter;
     }
+    if(value_path == "has-vxlan-network-id")
+    {
+        has_vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-network-id")
+    {
+        vxlan_network_id.yfilter = yfilter;
+    }
+    if(value_path == "has-xcid")
+    {
+        has_xcid.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "has-span-diag-interface")
+    {
+        has_span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "span-diag-interface")
+    {
+        span_diag_interface.yfilter = yfilter;
+    }
+    if(value_path == "has-subscriber-parent-interface")
+    {
+        has_subscriber_parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-parent-interface")
+    {
+        subscriber_parent_interface.yfilter = yfilter;
+    }
 }
 
 bool Ipv6RibStdby::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
+    if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid" || name == "has-vxlan-network-id" || name == "vxlan-network-id" || name == "has-xcid" || name == "xcid" || name == "has-span-diag-interface" || name == "span-diag-interface" || name == "has-subscriber-parent-interface" || name == "subscriber-parent-interface")
         return true;
     return false;
 }

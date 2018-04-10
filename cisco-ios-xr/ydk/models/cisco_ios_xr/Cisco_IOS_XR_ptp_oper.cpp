@@ -19,12 +19,12 @@ Ptp::Ptp()
 	,local_clock(std::make_shared<Ptp::LocalClock>())
 	,interface_packet_counters(std::make_shared<Ptp::InterfacePacketCounters>())
 	,advertised_clock(std::make_shared<Ptp::AdvertisedClock>())
-	,leap_seconds(std::make_shared<Ptp::LeapSeconds>())
 	,interfaces(std::make_shared<Ptp::Interfaces>())
 	,dataset(std::make_shared<Ptp::Dataset>())
 	,global_configuration_error(std::make_shared<Ptp::GlobalConfigurationError>())
 	,grandmaster(std::make_shared<Ptp::Grandmaster>())
 	,interface_unicast_peers(std::make_shared<Ptp::InterfaceUnicastPeers>())
+	,utc_offset_info(std::make_shared<Ptp::UtcOffsetInfo>())
 	,platform(std::make_shared<Ptp::Platform>())
 {
     nodes->parent = this;
@@ -33,12 +33,12 @@ Ptp::Ptp()
     local_clock->parent = this;
     interface_packet_counters->parent = this;
     advertised_clock->parent = this;
-    leap_seconds->parent = this;
     interfaces->parent = this;
     dataset->parent = this;
     global_configuration_error->parent = this;
     grandmaster->parent = this;
     interface_unicast_peers->parent = this;
+    utc_offset_info->parent = this;
     platform->parent = this;
 
     yang_name = "ptp"; yang_parent_name = "Cisco-IOS-XR-ptp-oper"; is_top_level_class = true; has_list_ancestor = false;
@@ -56,12 +56,12 @@ bool Ptp::has_data() const
 	|| (local_clock !=  nullptr && local_clock->has_data())
 	|| (interface_packet_counters !=  nullptr && interface_packet_counters->has_data())
 	|| (advertised_clock !=  nullptr && advertised_clock->has_data())
-	|| (leap_seconds !=  nullptr && leap_seconds->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
 	|| (dataset !=  nullptr && dataset->has_data())
 	|| (global_configuration_error !=  nullptr && global_configuration_error->has_data())
 	|| (grandmaster !=  nullptr && grandmaster->has_data())
 	|| (interface_unicast_peers !=  nullptr && interface_unicast_peers->has_data())
+	|| (utc_offset_info !=  nullptr && utc_offset_info->has_data())
 	|| (platform !=  nullptr && platform->has_data());
 }
 
@@ -74,12 +74,12 @@ bool Ptp::has_operation() const
 	|| (local_clock !=  nullptr && local_clock->has_operation())
 	|| (interface_packet_counters !=  nullptr && interface_packet_counters->has_operation())
 	|| (advertised_clock !=  nullptr && advertised_clock->has_operation())
-	|| (leap_seconds !=  nullptr && leap_seconds->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (dataset !=  nullptr && dataset->has_operation())
 	|| (global_configuration_error !=  nullptr && global_configuration_error->has_operation())
 	|| (grandmaster !=  nullptr && grandmaster->has_operation())
 	|| (interface_unicast_peers !=  nullptr && interface_unicast_peers->has_operation())
+	|| (utc_offset_info !=  nullptr && utc_offset_info->has_operation())
 	|| (platform !=  nullptr && platform->has_operation());
 }
 
@@ -155,15 +155,6 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
         return advertised_clock;
     }
 
-    if(child_yang_name == "leap-seconds")
-    {
-        if(leap_seconds == nullptr)
-        {
-            leap_seconds = std::make_shared<Ptp::LeapSeconds>();
-        }
-        return leap_seconds;
-    }
-
     if(child_yang_name == "interfaces")
     {
         if(interfaces == nullptr)
@@ -207,6 +198,15 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
             interface_unicast_peers = std::make_shared<Ptp::InterfaceUnicastPeers>();
         }
         return interface_unicast_peers;
+    }
+
+    if(child_yang_name == "utc-offset-info")
+    {
+        if(utc_offset_info == nullptr)
+        {
+            utc_offset_info = std::make_shared<Ptp::UtcOffsetInfo>();
+        }
+        return utc_offset_info;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ptp-pd-oper:platform")
@@ -255,11 +255,6 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
         children["advertised-clock"] = advertised_clock;
     }
 
-    if(leap_seconds != nullptr)
-    {
-        children["leap-seconds"] = leap_seconds;
-    }
-
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -283,6 +278,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
     if(interface_unicast_peers != nullptr)
     {
         children["interface-unicast-peers"] = interface_unicast_peers;
+    }
+
+    if(utc_offset_info != nullptr)
+    {
+        children["utc-offset-info"] = utc_offset_info;
     }
 
     if(platform != nullptr)
@@ -328,7 +328,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ptp::get_namespace_id
 
 bool Ptp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nodes" || name == "interface-configuration-errors" || name == "interface-foreign-masters" || name == "local-clock" || name == "interface-packet-counters" || name == "advertised-clock" || name == "leap-seconds" || name == "interfaces" || name == "dataset" || name == "global-configuration-error" || name == "grandmaster" || name == "interface-unicast-peers" || name == "platform")
+    if(name == "nodes" || name == "interface-configuration-errors" || name == "interface-foreign-masters" || name == "local-clock" || name == "interface-packet-counters" || name == "advertised-clock" || name == "interfaces" || name == "dataset" || name == "global-configuration-error" || name == "grandmaster" || name == "interface-unicast-peers" || name == "utc-offset-info" || name == "platform")
         return true;
     return false;
 }
@@ -11316,285 +11316,6 @@ bool Ptp::AdvertisedClock::ClockProperties::Sender::has_leaf_or_child_of_name(co
     return false;
 }
 
-Ptp::LeapSeconds::LeapSeconds()
-    :
-    current_offset{YType::int16, "current-offset"},
-    offset_valid{YType::boolean, "offset-valid"},
-    source_file{YType::str, "source-file"},
-    source_expiry_date{YType::uint32, "source-expiry-date"},
-    polling_frequency{YType::uint32, "polling-frequency"}
-{
-
-    yang_name = "leap-seconds"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Ptp::LeapSeconds::~LeapSeconds()
-{
-}
-
-bool Ptp::LeapSeconds::has_data() const
-{
-    for (std::size_t index=0; index<leap_second.size(); index++)
-    {
-        if(leap_second[index]->has_data())
-            return true;
-    }
-    return current_offset.is_set
-	|| offset_valid.is_set
-	|| source_file.is_set
-	|| source_expiry_date.is_set
-	|| polling_frequency.is_set;
-}
-
-bool Ptp::LeapSeconds::has_operation() const
-{
-    for (std::size_t index=0; index<leap_second.size(); index++)
-    {
-        if(leap_second[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(current_offset.yfilter)
-	|| ydk::is_set(offset_valid.yfilter)
-	|| ydk::is_set(source_file.yfilter)
-	|| ydk::is_set(source_expiry_date.yfilter)
-	|| ydk::is_set(polling_frequency.yfilter);
-}
-
-std::string Ptp::LeapSeconds::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Ptp::LeapSeconds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "leap-seconds";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ptp::LeapSeconds::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (current_offset.is_set || is_set(current_offset.yfilter)) leaf_name_data.push_back(current_offset.get_name_leafdata());
-    if (offset_valid.is_set || is_set(offset_valid.yfilter)) leaf_name_data.push_back(offset_valid.get_name_leafdata());
-    if (source_file.is_set || is_set(source_file.yfilter)) leaf_name_data.push_back(source_file.get_name_leafdata());
-    if (source_expiry_date.is_set || is_set(source_expiry_date.yfilter)) leaf_name_data.push_back(source_expiry_date.get_name_leafdata());
-    if (polling_frequency.is_set || is_set(polling_frequency.yfilter)) leaf_name_data.push_back(polling_frequency.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ptp::LeapSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "leap-second")
-    {
-        auto c = std::make_shared<Ptp::LeapSeconds::LeapSecond>();
-        c->parent = this;
-        leap_second.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ptp::LeapSeconds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : leap_second)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Ptp::LeapSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "current-offset")
-    {
-        current_offset = value;
-        current_offset.value_namespace = name_space;
-        current_offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "offset-valid")
-    {
-        offset_valid = value;
-        offset_valid.value_namespace = name_space;
-        offset_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-file")
-    {
-        source_file = value;
-        source_file.value_namespace = name_space;
-        source_file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-expiry-date")
-    {
-        source_expiry_date = value;
-        source_expiry_date.value_namespace = name_space;
-        source_expiry_date.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "polling-frequency")
-    {
-        polling_frequency = value;
-        polling_frequency.value_namespace = name_space;
-        polling_frequency.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ptp::LeapSeconds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "current-offset")
-    {
-        current_offset.yfilter = yfilter;
-    }
-    if(value_path == "offset-valid")
-    {
-        offset_valid.yfilter = yfilter;
-    }
-    if(value_path == "source-file")
-    {
-        source_file.yfilter = yfilter;
-    }
-    if(value_path == "source-expiry-date")
-    {
-        source_expiry_date.yfilter = yfilter;
-    }
-    if(value_path == "polling-frequency")
-    {
-        polling_frequency.yfilter = yfilter;
-    }
-}
-
-bool Ptp::LeapSeconds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "leap-second" || name == "current-offset" || name == "offset-valid" || name == "source-file" || name == "source-expiry-date" || name == "polling-frequency")
-        return true;
-    return false;
-}
-
-Ptp::LeapSeconds::LeapSecond::LeapSecond()
-    :
-    offset{YType::int16, "offset"},
-    offset_start_date{YType::uint64, "offset-start-date"},
-    offset_applied{YType::boolean, "offset-applied"}
-{
-
-    yang_name = "leap-second"; yang_parent_name = "leap-seconds"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Ptp::LeapSeconds::LeapSecond::~LeapSecond()
-{
-}
-
-bool Ptp::LeapSeconds::LeapSecond::has_data() const
-{
-    return offset.is_set
-	|| offset_start_date.is_set
-	|| offset_applied.is_set;
-}
-
-bool Ptp::LeapSeconds::LeapSecond::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(offset.yfilter)
-	|| ydk::is_set(offset_start_date.yfilter)
-	|| ydk::is_set(offset_applied.yfilter);
-}
-
-std::string Ptp::LeapSeconds::LeapSecond::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/leap-seconds/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Ptp::LeapSeconds::LeapSecond::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "leap-second";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ptp::LeapSeconds::LeapSecond::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
-    if (offset_start_date.is_set || is_set(offset_start_date.yfilter)) leaf_name_data.push_back(offset_start_date.get_name_leafdata());
-    if (offset_applied.is_set || is_set(offset_applied.yfilter)) leaf_name_data.push_back(offset_applied.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ptp::LeapSeconds::LeapSecond::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ptp::LeapSeconds::LeapSecond::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ptp::LeapSeconds::LeapSecond::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "offset")
-    {
-        offset = value;
-        offset.value_namespace = name_space;
-        offset.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "offset-start-date")
-    {
-        offset_start_date = value;
-        offset_start_date.value_namespace = name_space;
-        offset_start_date.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "offset-applied")
-    {
-        offset_applied = value;
-        offset_applied.value_namespace = name_space;
-        offset_applied.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ptp::LeapSeconds::LeapSecond::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "offset")
-    {
-        offset.yfilter = yfilter;
-    }
-    if(value_path == "offset-start-date")
-    {
-        offset_start_date.yfilter = yfilter;
-    }
-    if(value_path == "offset-applied")
-    {
-        offset_applied.yfilter = yfilter;
-    }
-}
-
-bool Ptp::LeapSeconds::LeapSecond::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "offset" || name == "offset-start-date" || name == "offset-applied")
-        return true;
-    return false;
-}
-
 Ptp::Interfaces::Interfaces()
 {
 
@@ -14237,7 +13958,8 @@ Ptp::GlobalConfigurationError::ConfigurationErrors::ConfigurationErrors()
     :
     domain{YType::boolean, "domain"},
     profile_priority1_config{YType::boolean, "profile-priority1-config"},
-    profile_priority2_value{YType::boolean, "profile-priority2-value"}
+    profile_priority2_value{YType::boolean, "profile-priority2-value"},
+    utc_offset_change{YType::boolean, "utc-offset-change"}
 {
 
     yang_name = "configuration-errors"; yang_parent_name = "global-configuration-error"; is_top_level_class = false; has_list_ancestor = false;
@@ -14251,7 +13973,8 @@ bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_data() const
 {
     return domain.is_set
 	|| profile_priority1_config.is_set
-	|| profile_priority2_value.is_set;
+	|| profile_priority2_value.is_set
+	|| utc_offset_change.is_set;
 }
 
 bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_operation() const
@@ -14259,7 +13982,8 @@ bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(domain.yfilter)
 	|| ydk::is_set(profile_priority1_config.yfilter)
-	|| ydk::is_set(profile_priority2_value.yfilter);
+	|| ydk::is_set(profile_priority2_value.yfilter)
+	|| ydk::is_set(utc_offset_change.yfilter);
 }
 
 std::string Ptp::GlobalConfigurationError::ConfigurationErrors::get_absolute_path() const
@@ -14283,6 +14007,7 @@ std::vector<std::pair<std::string, LeafData> > Ptp::GlobalConfigurationError::Co
     if (domain.is_set || is_set(domain.yfilter)) leaf_name_data.push_back(domain.get_name_leafdata());
     if (profile_priority1_config.is_set || is_set(profile_priority1_config.yfilter)) leaf_name_data.push_back(profile_priority1_config.get_name_leafdata());
     if (profile_priority2_value.is_set || is_set(profile_priority2_value.yfilter)) leaf_name_data.push_back(profile_priority2_value.get_name_leafdata());
+    if (utc_offset_change.is_set || is_set(utc_offset_change.yfilter)) leaf_name_data.push_back(utc_offset_change.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14320,6 +14045,12 @@ void Ptp::GlobalConfigurationError::ConfigurationErrors::set_value(const std::st
         profile_priority2_value.value_namespace = name_space;
         profile_priority2_value.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "utc-offset-change")
+    {
+        utc_offset_change = value;
+        utc_offset_change.value_namespace = name_space;
+        utc_offset_change.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::GlobalConfigurationError::ConfigurationErrors::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14336,11 +14067,15 @@ void Ptp::GlobalConfigurationError::ConfigurationErrors::set_filter(const std::s
     {
         profile_priority2_value.yfilter = yfilter;
     }
+    if(value_path == "utc-offset-change")
+    {
+        utc_offset_change.yfilter = yfilter;
+    }
 }
 
 bool Ptp::GlobalConfigurationError::ConfigurationErrors::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "domain" || name == "profile-priority1-config" || name == "profile-priority2-value")
+    if(name == "domain" || name == "profile-priority1-config" || name == "profile-priority2-value" || name == "utc-offset-change")
         return true;
     return false;
 }
@@ -16390,6 +16125,1080 @@ void Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::DelayResponseGrant
 bool Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::DelayResponseGrant::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "log-grant-interval" || name == "grant-duration")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::UtcOffsetInfo()
+    :
+    source_type{YType::uint8, "source-type"},
+    source_file{YType::str, "source-file"},
+    source_expiry_date{YType::uint32, "source-expiry-date"},
+    polling_frequency{YType::uint32, "polling-frequency"}
+    	,
+    current_offset_info(std::make_shared<Ptp::UtcOffsetInfo::CurrentOffsetInfo>())
+	,current_gm_offset_info(std::make_shared<Ptp::UtcOffsetInfo::CurrentGmOffsetInfo>())
+	,configured_offset_info(std::make_shared<Ptp::UtcOffsetInfo::ConfiguredOffsetInfo>())
+	,previous_gm_offset_info(std::make_shared<Ptp::UtcOffsetInfo::PreviousGmOffsetInfo>())
+	,hardware_offset_info(std::make_shared<Ptp::UtcOffsetInfo::HardwareOffsetInfo>())
+	,gm_leap_second(std::make_shared<Ptp::UtcOffsetInfo::GmLeapSecond>())
+{
+    current_offset_info->parent = this;
+    current_gm_offset_info->parent = this;
+    configured_offset_info->parent = this;
+    previous_gm_offset_info->parent = this;
+    hardware_offset_info->parent = this;
+    gm_leap_second->parent = this;
+
+    yang_name = "utc-offset-info"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::~UtcOffsetInfo()
+{
+}
+
+bool Ptp::UtcOffsetInfo::has_data() const
+{
+    for (std::size_t index=0; index<configured_leap_second.size(); index++)
+    {
+        if(configured_leap_second[index]->has_data())
+            return true;
+    }
+    return source_type.is_set
+	|| source_file.is_set
+	|| source_expiry_date.is_set
+	|| polling_frequency.is_set
+	|| (current_offset_info !=  nullptr && current_offset_info->has_data())
+	|| (current_gm_offset_info !=  nullptr && current_gm_offset_info->has_data())
+	|| (configured_offset_info !=  nullptr && configured_offset_info->has_data())
+	|| (previous_gm_offset_info !=  nullptr && previous_gm_offset_info->has_data())
+	|| (hardware_offset_info !=  nullptr && hardware_offset_info->has_data())
+	|| (gm_leap_second !=  nullptr && gm_leap_second->has_data());
+}
+
+bool Ptp::UtcOffsetInfo::has_operation() const
+{
+    for (std::size_t index=0; index<configured_leap_second.size(); index++)
+    {
+        if(configured_leap_second[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(source_type.yfilter)
+	|| ydk::is_set(source_file.yfilter)
+	|| ydk::is_set(source_expiry_date.yfilter)
+	|| ydk::is_set(polling_frequency.yfilter)
+	|| (current_offset_info !=  nullptr && current_offset_info->has_operation())
+	|| (current_gm_offset_info !=  nullptr && current_gm_offset_info->has_operation())
+	|| (configured_offset_info !=  nullptr && configured_offset_info->has_operation())
+	|| (previous_gm_offset_info !=  nullptr && previous_gm_offset_info->has_operation())
+	|| (hardware_offset_info !=  nullptr && hardware_offset_info->has_operation())
+	|| (gm_leap_second !=  nullptr && gm_leap_second->has_operation());
+}
+
+std::string Ptp::UtcOffsetInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "utc-offset-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_type.is_set || is_set(source_type.yfilter)) leaf_name_data.push_back(source_type.get_name_leafdata());
+    if (source_file.is_set || is_set(source_file.yfilter)) leaf_name_data.push_back(source_file.get_name_leafdata());
+    if (source_expiry_date.is_set || is_set(source_expiry_date.yfilter)) leaf_name_data.push_back(source_expiry_date.get_name_leafdata());
+    if (polling_frequency.is_set || is_set(polling_frequency.yfilter)) leaf_name_data.push_back(polling_frequency.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "current-offset-info")
+    {
+        if(current_offset_info == nullptr)
+        {
+            current_offset_info = std::make_shared<Ptp::UtcOffsetInfo::CurrentOffsetInfo>();
+        }
+        return current_offset_info;
+    }
+
+    if(child_yang_name == "current-gm-offset-info")
+    {
+        if(current_gm_offset_info == nullptr)
+        {
+            current_gm_offset_info = std::make_shared<Ptp::UtcOffsetInfo::CurrentGmOffsetInfo>();
+        }
+        return current_gm_offset_info;
+    }
+
+    if(child_yang_name == "configured-offset-info")
+    {
+        if(configured_offset_info == nullptr)
+        {
+            configured_offset_info = std::make_shared<Ptp::UtcOffsetInfo::ConfiguredOffsetInfo>();
+        }
+        return configured_offset_info;
+    }
+
+    if(child_yang_name == "previous-gm-offset-info")
+    {
+        if(previous_gm_offset_info == nullptr)
+        {
+            previous_gm_offset_info = std::make_shared<Ptp::UtcOffsetInfo::PreviousGmOffsetInfo>();
+        }
+        return previous_gm_offset_info;
+    }
+
+    if(child_yang_name == "hardware-offset-info")
+    {
+        if(hardware_offset_info == nullptr)
+        {
+            hardware_offset_info = std::make_shared<Ptp::UtcOffsetInfo::HardwareOffsetInfo>();
+        }
+        return hardware_offset_info;
+    }
+
+    if(child_yang_name == "gm-leap-second")
+    {
+        if(gm_leap_second == nullptr)
+        {
+            gm_leap_second = std::make_shared<Ptp::UtcOffsetInfo::GmLeapSecond>();
+        }
+        return gm_leap_second;
+    }
+
+    if(child_yang_name == "configured-leap-second")
+    {
+        auto c = std::make_shared<Ptp::UtcOffsetInfo::ConfiguredLeapSecond>();
+        c->parent = this;
+        configured_leap_second.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(current_offset_info != nullptr)
+    {
+        children["current-offset-info"] = current_offset_info;
+    }
+
+    if(current_gm_offset_info != nullptr)
+    {
+        children["current-gm-offset-info"] = current_gm_offset_info;
+    }
+
+    if(configured_offset_info != nullptr)
+    {
+        children["configured-offset-info"] = configured_offset_info;
+    }
+
+    if(previous_gm_offset_info != nullptr)
+    {
+        children["previous-gm-offset-info"] = previous_gm_offset_info;
+    }
+
+    if(hardware_offset_info != nullptr)
+    {
+        children["hardware-offset-info"] = hardware_offset_info;
+    }
+
+    if(gm_leap_second != nullptr)
+    {
+        children["gm-leap-second"] = gm_leap_second;
+    }
+
+    count = 0;
+    for (auto const & c : configured_leap_second)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-type")
+    {
+        source_type = value;
+        source_type.value_namespace = name_space;
+        source_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-file")
+    {
+        source_file = value;
+        source_file.value_namespace = name_space;
+        source_file.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-expiry-date")
+    {
+        source_expiry_date = value;
+        source_expiry_date.value_namespace = name_space;
+        source_expiry_date.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "polling-frequency")
+    {
+        polling_frequency = value;
+        polling_frequency.value_namespace = name_space;
+        polling_frequency.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-type")
+    {
+        source_type.yfilter = yfilter;
+    }
+    if(value_path == "source-file")
+    {
+        source_file.yfilter = yfilter;
+    }
+    if(value_path == "source-expiry-date")
+    {
+        source_expiry_date.yfilter = yfilter;
+    }
+    if(value_path == "polling-frequency")
+    {
+        polling_frequency.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "current-offset-info" || name == "current-gm-offset-info" || name == "configured-offset-info" || name == "previous-gm-offset-info" || name == "hardware-offset-info" || name == "gm-leap-second" || name == "configured-leap-second" || name == "source-type" || name == "source-file" || name == "source-expiry-date" || name == "polling-frequency")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::CurrentOffsetInfo::CurrentOffsetInfo()
+    :
+    offset{YType::int16, "offset"},
+    valid{YType::boolean, "valid"},
+    flag{YType::uint8, "flag"}
+{
+
+    yang_name = "current-offset-info"; yang_parent_name = "utc-offset-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::CurrentOffsetInfo::~CurrentOffsetInfo()
+{
+}
+
+bool Ptp::UtcOffsetInfo::CurrentOffsetInfo::has_data() const
+{
+    return offset.is_set
+	|| valid.is_set
+	|| flag.is_set;
+}
+
+bool Ptp::UtcOffsetInfo::CurrentOffsetInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(flag.yfilter);
+}
+
+std::string Ptp::UtcOffsetInfo::CurrentOffsetInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/utc-offset-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::CurrentOffsetInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "current-offset-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::CurrentOffsetInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::CurrentOffsetInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::CurrentOffsetInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::CurrentOffsetInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag")
+    {
+        flag = value;
+        flag.value_namespace = name_space;
+        flag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::CurrentOffsetInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "flag")
+    {
+        flag.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::CurrentOffsetInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "offset" || name == "valid" || name == "flag")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::CurrentGmOffsetInfo()
+    :
+    offset{YType::int16, "offset"},
+    valid{YType::boolean, "valid"},
+    flag{YType::uint8, "flag"}
+{
+
+    yang_name = "current-gm-offset-info"; yang_parent_name = "utc-offset-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::~CurrentGmOffsetInfo()
+{
+}
+
+bool Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::has_data() const
+{
+    return offset.is_set
+	|| valid.is_set
+	|| flag.is_set;
+}
+
+bool Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(flag.yfilter);
+}
+
+std::string Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/utc-offset-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "current-gm-offset-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag")
+    {
+        flag = value;
+        flag.value_namespace = name_space;
+        flag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "flag")
+    {
+        flag.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::CurrentGmOffsetInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "offset" || name == "valid" || name == "flag")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::ConfiguredOffsetInfo()
+    :
+    offset{YType::int16, "offset"},
+    valid{YType::boolean, "valid"},
+    flag{YType::uint8, "flag"}
+{
+
+    yang_name = "configured-offset-info"; yang_parent_name = "utc-offset-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::~ConfiguredOffsetInfo()
+{
+}
+
+bool Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::has_data() const
+{
+    return offset.is_set
+	|| valid.is_set
+	|| flag.is_set;
+}
+
+bool Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(flag.yfilter);
+}
+
+std::string Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/utc-offset-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "configured-offset-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag")
+    {
+        flag = value;
+        flag.value_namespace = name_space;
+        flag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "flag")
+    {
+        flag.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::ConfiguredOffsetInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "offset" || name == "valid" || name == "flag")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::PreviousGmOffsetInfo()
+    :
+    offset{YType::int16, "offset"},
+    valid{YType::boolean, "valid"},
+    flag{YType::uint8, "flag"}
+{
+
+    yang_name = "previous-gm-offset-info"; yang_parent_name = "utc-offset-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::~PreviousGmOffsetInfo()
+{
+}
+
+bool Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::has_data() const
+{
+    return offset.is_set
+	|| valid.is_set
+	|| flag.is_set;
+}
+
+bool Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(flag.yfilter);
+}
+
+std::string Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/utc-offset-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "previous-gm-offset-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag")
+    {
+        flag = value;
+        flag.value_namespace = name_space;
+        flag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "flag")
+    {
+        flag.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::PreviousGmOffsetInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "offset" || name == "valid" || name == "flag")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::HardwareOffsetInfo::HardwareOffsetInfo()
+    :
+    offset{YType::int16, "offset"},
+    valid{YType::boolean, "valid"},
+    flag{YType::uint8, "flag"}
+{
+
+    yang_name = "hardware-offset-info"; yang_parent_name = "utc-offset-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::HardwareOffsetInfo::~HardwareOffsetInfo()
+{
+}
+
+bool Ptp::UtcOffsetInfo::HardwareOffsetInfo::has_data() const
+{
+    return offset.is_set
+	|| valid.is_set
+	|| flag.is_set;
+}
+
+bool Ptp::UtcOffsetInfo::HardwareOffsetInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| ydk::is_set(flag.yfilter);
+}
+
+std::string Ptp::UtcOffsetInfo::HardwareOffsetInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/utc-offset-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::HardwareOffsetInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hardware-offset-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::HardwareOffsetInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::HardwareOffsetInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::HardwareOffsetInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::HardwareOffsetInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag")
+    {
+        flag = value;
+        flag.value_namespace = name_space;
+        flag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::HardwareOffsetInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+    if(value_path == "flag")
+    {
+        flag.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::HardwareOffsetInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "offset" || name == "valid" || name == "flag")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::GmLeapSecond::GmLeapSecond()
+    :
+    offset{YType::int16, "offset"},
+    offset_start_date{YType::uint64, "offset-start-date"},
+    offset_change{YType::int16, "offset-change"},
+    offset_applied{YType::boolean, "offset-applied"}
+{
+
+    yang_name = "gm-leap-second"; yang_parent_name = "utc-offset-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::GmLeapSecond::~GmLeapSecond()
+{
+}
+
+bool Ptp::UtcOffsetInfo::GmLeapSecond::has_data() const
+{
+    return offset.is_set
+	|| offset_start_date.is_set
+	|| offset_change.is_set
+	|| offset_applied.is_set;
+}
+
+bool Ptp::UtcOffsetInfo::GmLeapSecond::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(offset_start_date.yfilter)
+	|| ydk::is_set(offset_change.yfilter)
+	|| ydk::is_set(offset_applied.yfilter);
+}
+
+std::string Ptp::UtcOffsetInfo::GmLeapSecond::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/utc-offset-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::GmLeapSecond::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "gm-leap-second";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::GmLeapSecond::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (offset_start_date.is_set || is_set(offset_start_date.yfilter)) leaf_name_data.push_back(offset_start_date.get_name_leafdata());
+    if (offset_change.is_set || is_set(offset_change.yfilter)) leaf_name_data.push_back(offset_change.get_name_leafdata());
+    if (offset_applied.is_set || is_set(offset_applied.yfilter)) leaf_name_data.push_back(offset_applied.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::GmLeapSecond::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::GmLeapSecond::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::GmLeapSecond::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-start-date")
+    {
+        offset_start_date = value;
+        offset_start_date.value_namespace = name_space;
+        offset_start_date.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-change")
+    {
+        offset_change = value;
+        offset_change.value_namespace = name_space;
+        offset_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-applied")
+    {
+        offset_applied = value;
+        offset_applied.value_namespace = name_space;
+        offset_applied.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::GmLeapSecond::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "offset-start-date")
+    {
+        offset_start_date.yfilter = yfilter;
+    }
+    if(value_path == "offset-change")
+    {
+        offset_change.yfilter = yfilter;
+    }
+    if(value_path == "offset-applied")
+    {
+        offset_applied.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::GmLeapSecond::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "offset" || name == "offset-start-date" || name == "offset-change" || name == "offset-applied")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffsetInfo::ConfiguredLeapSecond::ConfiguredLeapSecond()
+    :
+    offset{YType::int16, "offset"},
+    offset_start_date{YType::uint64, "offset-start-date"},
+    offset_change{YType::int16, "offset-change"},
+    offset_applied{YType::boolean, "offset-applied"}
+{
+
+    yang_name = "configured-leap-second"; yang_parent_name = "utc-offset-info"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffsetInfo::ConfiguredLeapSecond::~ConfiguredLeapSecond()
+{
+}
+
+bool Ptp::UtcOffsetInfo::ConfiguredLeapSecond::has_data() const
+{
+    return offset.is_set
+	|| offset_start_date.is_set
+	|| offset_change.is_set
+	|| offset_applied.is_set;
+}
+
+bool Ptp::UtcOffsetInfo::ConfiguredLeapSecond::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(offset_start_date.yfilter)
+	|| ydk::is_set(offset_change.yfilter)
+	|| ydk::is_set(offset_applied.yfilter);
+}
+
+std::string Ptp::UtcOffsetInfo::ConfiguredLeapSecond::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-oper:ptp/utc-offset-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffsetInfo::ConfiguredLeapSecond::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "configured-leap-second";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffsetInfo::ConfiguredLeapSecond::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (offset_start_date.is_set || is_set(offset_start_date.yfilter)) leaf_name_data.push_back(offset_start_date.get_name_leafdata());
+    if (offset_change.is_set || is_set(offset_change.yfilter)) leaf_name_data.push_back(offset_change.get_name_leafdata());
+    if (offset_applied.is_set || is_set(offset_applied.yfilter)) leaf_name_data.push_back(offset_applied.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffsetInfo::ConfiguredLeapSecond::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffsetInfo::ConfiguredLeapSecond::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffsetInfo::ConfiguredLeapSecond::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-start-date")
+    {
+        offset_start_date = value;
+        offset_start_date.value_namespace = name_space;
+        offset_start_date.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-change")
+    {
+        offset_change = value;
+        offset_change.value_namespace = name_space;
+        offset_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset-applied")
+    {
+        offset_applied = value;
+        offset_applied.value_namespace = name_space;
+        offset_applied.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffsetInfo::ConfiguredLeapSecond::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "offset-start-date")
+    {
+        offset_start_date.yfilter = yfilter;
+    }
+    if(value_path == "offset-change")
+    {
+        offset_change.yfilter = yfilter;
+    }
+    if(value_path == "offset-applied")
+    {
+        offset_applied.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffsetInfo::ConfiguredLeapSecond::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "offset" || name == "offset-start-date" || name == "offset-change" || name == "offset-applied")
         return true;
     return false;
 }

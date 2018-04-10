@@ -160,6 +160,7 @@ class Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData : public ydk::E
         ydk::YLeaf resource_id; //type: uint32
         ydk::YLeaf name; //type: string
         ydk::YLeaf num_npus; //type: uint32
+        ydk::YLeaf cmd_invalid; //type: boolean
         class NpuHwr; //type: Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr
 
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper::Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr> > npu_hwr;
@@ -918,6 +919,7 @@ class Resource : public ydk::Enum
         static const ydk::Enum::YLeaf ext_tcam_ipv6_long;
         static const ydk::Enum::YLeaf fec;
         static const ydk::Enum::YLeaf ecmpfec;
+        static const ydk::Enum::YLeaf ext_tcam_ipv6;
 
 };
 

@@ -1746,18 +1746,18 @@ class GenericInterfaceListV2::Nodes::Node : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_id; //type: string
-        class GenericInterfaces; //type: GenericInterfaceListV2::Nodes::Node::GenericInterfaces
+        class GenericInterfaceLists; //type: GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Nodes::Node::GenericInterfaces> generic_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists> generic_interface_lists;
         
 }; // GenericInterfaceListV2::Nodes::Node
 
 
-class GenericInterfaceListV2::Nodes::Node::GenericInterfaces : public ydk::Entity
+class GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists : public ydk::Entity
 {
     public:
-        GenericInterfaces();
-        ~GenericInterfaces();
+        GenericInterfaceLists();
+        ~GenericInterfaceLists();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1769,18 +1769,18 @@ class GenericInterfaceListV2::Nodes::Node::GenericInterfaces : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class GenericInterface; //type: GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface
+        class GenericInterfaceList; //type: GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface> > generic_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList> > generic_interface_list;
         
-}; // GenericInterfaceListV2::Nodes::Node::GenericInterfaces
+}; // GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists
 
 
-class GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface : public ydk::Entity
+class GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList : public ydk::Entity
 {
     public:
-        GenericInterface();
-        ~GenericInterface();
+        GenericInterfaceList();
+        ~GenericInterfaceList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1798,14 +1798,14 @@ class GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface :
         ydk::YLeaf items; //type: uint32
         ydk::YLeaf is_provisioned; //type: boolean
         ydk::YLeaf is_fib_downloaded; //type: boolean
-        class Interface; //type: GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface::Interface
+        class Interface; //type: GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface> > interface;
         
-}; // GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface
+}; // GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList
 
 
-class GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface::Interface : public ydk::Entity
+class GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1826,7 +1826,7 @@ class GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface::
         ydk::YLeaf not_supported_replications; //type: uint32
         ydk::YLeaf is_fib_downloaded; //type: boolean
 
-}; // GenericInterfaceListV2::Nodes::Node::GenericInterfaces::GenericInterface::Interface
+}; // GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericInterfaceList::Interface
 
 
 class GenericInterfaceListV2::Standby : public ydk::Entity
@@ -1846,18 +1846,18 @@ class GenericInterfaceListV2::Standby : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GenericInterfaces; //type: GenericInterfaceListV2::Standby::GenericInterfaces
+        class GenericInterfaceLists; //type: GenericInterfaceListV2::Standby::GenericInterfaceLists
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Standby::GenericInterfaces> generic_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Standby::GenericInterfaceLists> generic_interface_lists;
         
 }; // GenericInterfaceListV2::Standby
 
 
-class GenericInterfaceListV2::Standby::GenericInterfaces : public ydk::Entity
+class GenericInterfaceListV2::Standby::GenericInterfaceLists : public ydk::Entity
 {
     public:
-        GenericInterfaces();
-        ~GenericInterfaces();
+        GenericInterfaceLists();
+        ~GenericInterfaceLists();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1870,18 +1870,18 @@ class GenericInterfaceListV2::Standby::GenericInterfaces : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GenericInterface; //type: GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface
+        class GenericInterfaceList; //type: GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface> > generic_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList> > generic_interface_list;
         
-}; // GenericInterfaceListV2::Standby::GenericInterfaces
+}; // GenericInterfaceListV2::Standby::GenericInterfaceLists
 
 
-class GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface : public ydk::Entity
+class GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList : public ydk::Entity
 {
     public:
-        GenericInterface();
-        ~GenericInterface();
+        GenericInterfaceList();
+        ~GenericInterfaceList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1900,14 +1900,14 @@ class GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface : pub
         ydk::YLeaf items; //type: uint32
         ydk::YLeaf is_provisioned; //type: boolean
         ydk::YLeaf is_fib_downloaded; //type: boolean
-        class Interface; //type: GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface::Interface
+        class Interface; //type: GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface> > interface;
         
-}; // GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface
+}; // GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList
 
 
-class GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface::Interface : public ydk::Entity
+class GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1928,7 +1928,7 @@ class GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface::Inte
         ydk::YLeaf not_supported_replications; //type: uint32
         ydk::YLeaf is_fib_downloaded; //type: boolean
 
-}; // GenericInterfaceListV2::Standby::GenericInterfaces::GenericInterface::Interface
+}; // GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface
 
 
 class GenericInterfaceListV2::Active : public ydk::Entity
@@ -1948,18 +1948,18 @@ class GenericInterfaceListV2::Active : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GenericInterfaces; //type: GenericInterfaceListV2::Active::GenericInterfaces
+        class GenericInterfaceLists; //type: GenericInterfaceListV2::Active::GenericInterfaceLists
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Active::GenericInterfaces> generic_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Active::GenericInterfaceLists> generic_interface_lists;
         
 }; // GenericInterfaceListV2::Active
 
 
-class GenericInterfaceListV2::Active::GenericInterfaces : public ydk::Entity
+class GenericInterfaceListV2::Active::GenericInterfaceLists : public ydk::Entity
 {
     public:
-        GenericInterfaces();
-        ~GenericInterfaces();
+        GenericInterfaceLists();
+        ~GenericInterfaceLists();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1972,18 +1972,18 @@ class GenericInterfaceListV2::Active::GenericInterfaces : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GenericInterface; //type: GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface
+        class GenericInterfaceList; //type: GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface> > generic_interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList> > generic_interface_list;
         
-}; // GenericInterfaceListV2::Active::GenericInterfaces
+}; // GenericInterfaceListV2::Active::GenericInterfaceLists
 
 
-class GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface : public ydk::Entity
+class GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList : public ydk::Entity
 {
     public:
-        GenericInterface();
-        ~GenericInterface();
+        GenericInterfaceList();
+        ~GenericInterfaceList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2002,14 +2002,14 @@ class GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface : publ
         ydk::YLeaf items; //type: uint32
         ydk::YLeaf is_provisioned; //type: boolean
         ydk::YLeaf is_fib_downloaded; //type: boolean
-        class Interface; //type: GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface::Interface
+        class Interface; //type: GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList::Interface> > interface;
         
-}; // GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface
+}; // GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList
 
 
-class GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface::Interface : public ydk::Entity
+class GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2030,7 +2030,7 @@ class GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface::Inter
         ydk::YLeaf not_supported_replications; //type: uint32
         ydk::YLeaf is_fib_downloaded; //type: boolean
 
-}; // GenericInterfaceListV2::Active::GenericInterfaces::GenericInterface::Interface
+}; // GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterfaceList::Interface
 
 
 }

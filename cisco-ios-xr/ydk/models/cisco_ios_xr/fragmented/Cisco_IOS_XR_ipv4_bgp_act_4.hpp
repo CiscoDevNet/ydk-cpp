@@ -57,7 +57,7 @@ class ClearBgpInstanceVrfAsGraceful::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAsGraceful::Input
 
@@ -108,7 +108,7 @@ class ClearBgpInstanceVrfAs::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAs::Input
 
@@ -724,7 +724,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoftInPrefixFilter::Input
 
@@ -776,7 +776,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoftIn::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoftIn::Input
 
@@ -828,7 +828,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoftOut::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoftOut::Input
 
@@ -880,7 +880,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoft::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoft::Input
 

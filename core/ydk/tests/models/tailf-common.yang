@@ -3,11 +3,11 @@ module tailf-common {
   prefix tailf;
 
   include tailf-meta-extensions {
-    revision-date 2013-11-07;
+    revision-date 2017-03-08;
   }
 
   include tailf-cli-extensions {
-    revision-date 2015-03-19;
+    revision-date 2017-03-08;
   }
 
   organization "Tail-f Systems";
@@ -15,6 +15,80 @@ module tailf-common {
   description
     "This module defines all Tail-f YANG extensions statements
     and common YANG types.";
+
+  revision 2017-03-08 {
+    description
+      "Released as part of ConfD-6.4 / NCS-4.4.
+
+       Added tailf:ned-ignore-compare-config.
+
+       Added tailf:ned-default-handling.
+
+       Corrected the pattern for the tailf:size typedef.
+
+       Updated the description for tailf:meta-data and tailf:meta-value.
+
+       Included latest revision of tailf-cli-extensions and
+       tailf-meta-extensions submodules.";
+  }
+
+  revision 2017-01-26 {
+    description
+      "Released as part of ConfD-6.3 / NCS-4.3.
+
+       Included latest revision of tailf-cli-extensions.";
+  }
+
+  revision 2016-11-24 {
+    description
+      "Released as part of ConfD-6.3 / NCS-4.3.
+
+       Included latest revision of tailf-cli-extensions and
+       tailf-meta-extensions submodules.";
+  }
+
+  revision 2016-11-17 {
+    description
+      "Released as part of ConfD-6.2.2 / NCS-4.2.2.
+
+       Changed tailf:ned-data.";
+  }
+
+  revision 2016-05-27 {
+    description
+      "Released as part of ConfD-6.2.1 / NCS-4.2.1.
+
+       Added tailf:override-auto-dependencies.
+
+       Added tailf:ned-data.
+
+       Allow 'grouping', 'if-feature', and 'typedef' as substatements
+       to tailf:action.";
+  }
+
+  revision 2016-05-04 {
+    description
+      "Released as part of ConfD-6.2 / NSO-4.2
+
+       Added tailf:meta-data.
+       Added tailf:meta-value.
+
+       Added tailf:no-leafref-check.
+
+       Allow tailf:ncs-device-type as substatement to 'module'.
+
+       Allow multiple tailf:display-when statments.
+
+       Updated the description of des3-cbc-encrypted-string and
+       aes-cfb-128-encrypted-string.";
+  }
+
+  revision 2015-11-24 {
+    description
+      "Released as part of ConfD-6.1 / NCS-4.1.
+
+       Allow reference as substatement to tailf:action.";
+  }
 
   revision 2015-05-22 {
     description
@@ -396,7 +470,7 @@ module tailf-common {
   typedef size {
     type string {
       pattern
-        "S(\d+G)?(\d+M)?(\d+K)?(\d+B)?";
+        'S(\d+G)?(\d+M)?(\d+K)?(\d+B)?';
     }
     description
       "A value that represents a number of bytes.  An example could be
@@ -568,20 +642,20 @@ module tailf-common {
 
       The '$0$' prefix signals that this is plain text.  When a plain
       text value is received by the server, the value is DES3/Base64
-      encrypted, and the string '$3$' is prepended.  The resulting
+      encrypted, and the string '$7$' is prepended.  The resulting
       string is stored in the configuration data store.
 
       When a value of this type is read, the encrypted value is always
       returned.  In the example above, the following value could be
       returned:
 
-          <enc>$3$lyPjszaQq4EVqK7OPOxybQ==</enc>
+          <enc>$7$Qxxsn8BVzxphCdflqRwZm6noKKmt0QoSWnRnhcXqocg=</enc>
 
-      If a value starting with '$3$' is received, the server knows
+      If a value starting with '$7$' is received, the server knows
       that the value is already encrypted, and stores it as is in the
       data store.
 
-      A value adhering to this type must have a '$0$' or a '$3$' prefix.
+      A value adhering to this type must have a '$0$' or a '$7$' prefix.
 
       ConfD uses a configurable set of encryption keys to encrypt the
       string.  For details, see 'encryptedStrings' in the
@@ -593,7 +667,7 @@ module tailf-common {
     description
       "The aes-cfb-128-encrypted-string works exactly like
       des3-cbc-encrypted-string but AES/128bits in CFB mode is used to
-      encrypt the string.  The prefix for encrypted values is '$4$'.";
+      encrypt the string.  The prefix for encrypted values is '$8$'.";
   }
 
   typedef ipv4-address-and-prefix-length {
@@ -1027,8 +1101,9 @@ module tailf-common {
       data into the same transaction.
 
       The difference between set- and transaction hooks are that set
-      hooks are invoked immediately when an element is modified, but
-      transaction hooks are invoked at commit time.
+      hooks are invoked immediately when a write operation is requested
+      by a north bound agent, and transaction hooks are invoked at
+      commit time.
 
       The value 'subtree' means that all nodes in the configuration
       below where the hook is defined are affected.
@@ -1094,7 +1169,7 @@ module tailf-common {
     }
     tailf:use-in "tailf:transaction-hook";
     description
-      "By default, the node-specific write callbacks (create_datanode(), set_elem(),
+      "By default, the node-specific write callbacks (create(), set_elem(),
       etc) for a transaction hook are invoked for the invidual data nodes
       that are modified in the transaction. If 'tailf:invocation-mode' is
       set to 'per-transaction', there will instead be a single invocation
@@ -1210,6 +1285,7 @@ module tailf-common {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "identity";
     tailf:use-in "notification";
     tailf:use-in "choice";
@@ -1693,6 +1769,18 @@ module tailf-common {
       the system is impacted if this statement is used.";
   }
 
+  extension override-auto-dependencies {
+    tailf:use-in "must";
+    tailf:use-in "when";
+    description
+      "This optional statement can be used to instruct the compiler to
+       use the provided tailf:dependency statements instead of the
+       dependencies that the compiler calculates from the expression.
+
+       Use with care, and only if you are sure that the provided dependecies
+       are correct.";
+  }
+
   extension priority {
     tailf:use-in "tailf:validate";
     argument value {
@@ -1732,6 +1820,7 @@ module tailf-common {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "identity";
     tailf:use-in "type";
     tailf:use-in "enum";
@@ -1740,6 +1829,7 @@ module tailf-common {
     tailf:use-in "pattern";
     tailf:use-in "range";
     tailf:use-in "refine";
+    tailf:use-in "action";
     tailf:use-in "tailf:action";
     tailf:use-in "tailf:symlink";
     tailf:use-in "tailf:cli-exit-command";
@@ -1777,6 +1867,7 @@ module tailf-common {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "identity";
     tailf:use-in "tailf:action";
     tailf:use-in "tailf:symlink";
@@ -1861,6 +1952,7 @@ module tailf-common {
     tailf:use-in "refine";
     tailf:use-in "tailf:symlink";
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:occurence "*";
 
     description
@@ -1902,6 +1994,7 @@ module tailf-common {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "refine";
+    tailf:occurence "*";
     tailf:substatement "tailf:xpath-root";
     description
       "The argument contains an XPath expression which specifies when
@@ -1970,6 +2063,7 @@ module tailf-common {
       }
     }
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "leaf";
     tailf:use-in "leaf-list";
     tailf:use-in "list";
@@ -2392,6 +2486,7 @@ module tailf-common {
     tailf:use-in "list";
     tailf:use-in "container";
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "identity";
     tailf:use-in "notification";
     tailf:use-in "tailf:action";
@@ -2422,9 +2517,13 @@ module tailf-common {
     tailf:occurence "*";
 
     tailf:substatement "description";
+    tailf:substatement "grouping";
+    tailf:substatement "if-feature";
+    tailf:substatement "reference";
     tailf:substatement "input";
     tailf:substatement "output";
     tailf:substatement "status";
+    tailf:substatement "typedef";
     tailf:substatement "tailf:actionpoint";
     tailf:substatement "tailf:alt-name";
     tailf:substatement "tailf:cli-mount-point";
@@ -2536,6 +2635,7 @@ module tailf-common {
       }
     }
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "tailf:action";
     tailf:use-in "refine";
     tailf:substatement "tailf:opaque";
@@ -2553,6 +2653,7 @@ module tailf-common {
       }
     }
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "tailf:action";
     tailf:substatement "tailf:confirm-default";
     tailf:substatement "tailf:cli-batch-confirm-default";
@@ -2709,6 +2810,15 @@ module tailf-common {
        drop-down box with existing values.";
   }
 
+  extension no-leafref-check {
+    tailf:use-in "type";
+    description
+      "This statement can be used to let 'leafref' type statements
+       reference non-existing leafs. While similar to the
+       'tailf:non-strict-leafref' statement, this does not allow
+       reference from config to non-config.";
+  }
+
   /*
    * RPC and action implementation statements
    */
@@ -2720,6 +2830,7 @@ module tailf-common {
       }
     }
     tailf:use-in "rpc";
+    tailf:use-in "action";
     tailf:use-in "tailf:action";
 
     tailf:substatement "tailf:args";
@@ -3151,6 +3262,13 @@ module tailf-common {
       'tailf:junos-val-as-xml-tag'.";
   }
 
+  extension ned-ignore-compare-config {
+    tailf:use-in "leaf";
+    description
+      "Typically used for ignoring device encrypted leafs
+      in the compare-config output.";
+  }
+
   extension xpath-root {
     argument value {
       tailf:arg-type {
@@ -3162,6 +3280,16 @@ module tailf-common {
     tailf:use-in "path";
     tailf:use-in "tailf:display-when";
     tailf:use-in "tailf:cli-diff-dependency";
+    tailf:use-in "tailf:cli-diff-before";
+    tailf:use-in "tailf:cli-diff-delete-before";
+    tailf:use-in "tailf:cli-diff-set-before";
+    tailf:use-in "tailf:cli-diff-create-before";
+    tailf:use-in "tailf:cli-diff-modify-before";
+    tailf:use-in "tailf:cli-diff-after";
+    tailf:use-in "tailf:cli-diff-delete-after";
+    tailf:use-in "tailf:cli-diff-set-after";
+    tailf:use-in "tailf:cli-diff-create-after";
+    tailf:use-in "tailf:cli-diff-modify-after";
     description
       "Internal extension to 'chroot' XPath expressions";
   }
@@ -3177,6 +3305,7 @@ module tailf-common {
     tailf:use-in "leaf";
     tailf:use-in "leaf-list";
     tailf:use-in "refine";
+    tailf:use-in "module";
     description
       "Internal extension to tell NCS what type of device the data model
       is used for.";
@@ -3214,6 +3343,156 @@ module tailf-common {
     description
       "Internal extension to define a data structure without any semantics
        attached.";
+  }
+
+  extension meta-data {
+    argument value {
+      yin-element true;
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:occurence "*";
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "tailf:symlink";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:meta-value" {
+      tailf:occurence "?";
+    }
+
+    description
+      "Extra meta information attached to the node. The instance data part
+       of this information is accessible using MAAPI. It is also printed
+       in communication with CLI NEDs, but is not visible to normal
+       users of the CLI.
+
+       To CLI NEDs, the output will be printed as comments like this:
+       ! meta-data :: /ncs:devices/device{xyz}/config/xyz:AA :: A_STRING
+
+       The schema information is available to the ConfD C-API through the
+       confd_cs_node struct, and to the JSON-RPC API through get-schema.
+
+       Note: Can't be used on key leafs.";
+  }
+
+  extension meta-value {
+    argument value {
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:use-in "tailf:meta-data";
+    tailf:occurence "?";
+    description
+      "This statement contains a string value for the meta data key.
+
+       The output from the CLI to CLI NEDs will be similar to
+       comments like this:
+       ! meta-data :: /ncs:devices/device{xyz}/config/xyz:AA :: A_KEY :: A_VALUE
+      ";
+  }
+
+  extension ned-data {
+    argument path-expression {
+      yin-element true;
+      tailf:arg-type {
+        type string;
+      }
+    }
+    tailf:occurence "*";
+    tailf:use-in "container";
+    tailf:use-in "list";
+    tailf:use-in "leaf";
+    tailf:use-in "leaf-list";
+    tailf:use-in "refine";
+    tailf:substatement "tailf:transaction" {
+      tailf:occurence "?";
+    }
+    tailf:substatement "tailf:xpath-root" {
+      tailf:occurence "?";
+    }
+    tailf:substatement "tailf:operation" {
+      tailf:occurence "*";
+    }
+    description
+      "Dynamic meta information to be added by the NCS device manager.
+
+       In the cases where NCS can't provide the complete 'to' and
+       'from' transactions to the NED to read from (most notably when
+       using the commit queue) this annotation can be used to tell the
+       NCS device manager to save part of the 'to' and / or 'from'
+       transaction so that the NED will be able to read from these
+       parts as needed.
+
+       The 'path-expression' will be used as an XPath filter to
+       indicate which data will be preserved. Use the 'transaction'
+       substatement to choose which transaction to apply the filter
+       on. The context node of the XPath filter is always the instance
+       data node corresponding to the schema node where the 'ned-data'
+       extension is added.
+
+       Note that the filter will only be applied if the node that
+       has this annotation is in the diffset of the transaction. The
+       'operation' substatement can be used to further limit when the
+       filter should be applied.";
+  }
+
+  extension transaction {
+    argument direction {
+      yin-element true;
+      tailf:arg-type {
+        type enumeration {
+          enum from;
+          enum to;
+          enum both;
+        }
+        default to;
+      }
+    }
+    tailf:occurence "?";
+    description
+      "Which transaction that the result of the XPath filter will be
+       applied to, when set to 'both' it will apply to both the 'to'
+       and the 'from' transaction.";
+  }
+
+  extension operation {
+    argument op {
+      yin-element true;
+      tailf:arg-type {
+        type enumeration {
+          enum value_set;
+          enum created;
+          enum deleted;
+          enum modified;
+          enum moved;
+        }
+      }
+    }
+    tailf:occurence "*";
+    description
+      "Only evaluate the XPath filter when the operation matches.";
+  }
+
+  extension ned-default-handling {
+    argument mode {
+      tailf:arg-type {
+        type enumeration {
+          enum explicit;
+          enum report-all;
+          enum trim;
+        }
+      }
+    }
+    tailf:use-in "leaf";
+    description
+      "This statement can only be used in NEDs for devices that have
+       irregular handling of defaults.  It sets a special default
+       handling mode for the leaf, regardless of the device's native
+       default handling mode.";
   }
 
 }

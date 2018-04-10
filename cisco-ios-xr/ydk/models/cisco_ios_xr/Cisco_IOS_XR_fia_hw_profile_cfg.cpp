@@ -156,11 +156,19 @@ bool HwModuleProfileConfig::has_leaf_or_child_of_name(const std::string & name) 
 HwModuleProfileConfig::Profile::Profile()
     :
     tcam_table(std::make_shared<HwModuleProfileConfig::Profile::TcamTable>())
+	,load_balance(std::make_shared<HwModuleProfileConfig::Profile::LoadBalance>())
 	,stats(std::make_shared<HwModuleProfileConfig::Profile::Stats>())
+	,netflows(std::make_shared<HwModuleProfileConfig::Profile::Netflows>())
+	,profile_acl(std::make_shared<HwModuleProfileConfig::Profile::ProfileAcl>())
+	,profile_tcam(std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam>())
 	,qos(std::make_shared<HwModuleProfileConfig::Profile::Qos>())
 {
     tcam_table->parent = this;
+    load_balance->parent = this;
     stats->parent = this;
+    netflows->parent = this;
+    profile_acl->parent = this;
+    profile_tcam->parent = this;
     qos->parent = this;
 
     yang_name = "profile"; yang_parent_name = "hw-module-profile-config"; is_top_level_class = false; has_list_ancestor = false;
@@ -173,7 +181,11 @@ HwModuleProfileConfig::Profile::~Profile()
 bool HwModuleProfileConfig::Profile::has_data() const
 {
     return (tcam_table !=  nullptr && tcam_table->has_data())
+	|| (load_balance !=  nullptr && load_balance->has_data())
 	|| (stats !=  nullptr && stats->has_data())
+	|| (netflows !=  nullptr && netflows->has_data())
+	|| (profile_acl !=  nullptr && profile_acl->has_data())
+	|| (profile_tcam !=  nullptr && profile_tcam->has_data())
 	|| (qos !=  nullptr && qos->has_data());
 }
 
@@ -181,7 +193,11 @@ bool HwModuleProfileConfig::Profile::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_table !=  nullptr && tcam_table->has_operation())
+	|| (load_balance !=  nullptr && load_balance->has_operation())
 	|| (stats !=  nullptr && stats->has_operation())
+	|| (netflows !=  nullptr && netflows->has_operation())
+	|| (profile_acl !=  nullptr && profile_acl->has_operation())
+	|| (profile_tcam !=  nullptr && profile_tcam->has_operation())
 	|| (qos !=  nullptr && qos->has_operation());
 }
 
@@ -219,6 +235,15 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::get_child_by_name(const 
         return tcam_table;
     }
 
+    if(child_yang_name == "load-balance")
+    {
+        if(load_balance == nullptr)
+        {
+            load_balance = std::make_shared<HwModuleProfileConfig::Profile::LoadBalance>();
+        }
+        return load_balance;
+    }
+
     if(child_yang_name == "stats")
     {
         if(stats == nullptr)
@@ -226,6 +251,33 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::get_child_by_name(const 
             stats = std::make_shared<HwModuleProfileConfig::Profile::Stats>();
         }
         return stats;
+    }
+
+    if(child_yang_name == "netflows")
+    {
+        if(netflows == nullptr)
+        {
+            netflows = std::make_shared<HwModuleProfileConfig::Profile::Netflows>();
+        }
+        return netflows;
+    }
+
+    if(child_yang_name == "profile-acl")
+    {
+        if(profile_acl == nullptr)
+        {
+            profile_acl = std::make_shared<HwModuleProfileConfig::Profile::ProfileAcl>();
+        }
+        return profile_acl;
+    }
+
+    if(child_yang_name == "profile-tcam")
+    {
+        if(profile_tcam == nullptr)
+        {
+            profile_tcam = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam>();
+        }
+        return profile_tcam;
     }
 
     if(child_yang_name == "qos")
@@ -249,9 +301,29 @@ std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::g
         children["tcam-table"] = tcam_table;
     }
 
+    if(load_balance != nullptr)
+    {
+        children["load-balance"] = load_balance;
+    }
+
     if(stats != nullptr)
     {
         children["stats"] = stats;
+    }
+
+    if(netflows != nullptr)
+    {
+        children["netflows"] = netflows;
+    }
+
+    if(profile_acl != nullptr)
+    {
+        children["profile-acl"] = profile_acl;
+    }
+
+    if(profile_tcam != nullptr)
+    {
+        children["profile-tcam"] = profile_tcam;
     }
 
     if(qos != nullptr)
@@ -272,7 +344,7 @@ void HwModuleProfileConfig::Profile::set_filter(const std::string & value_path, 
 
 bool HwModuleProfileConfig::Profile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tcam-table" || name == "stats" || name == "qos")
+    if(name == "tcam-table" || name == "load-balance" || name == "stats" || name == "netflows" || name == "profile-acl" || name == "profile-tcam" || name == "qos")
         return true;
     return false;
 }
@@ -1243,6 +1315,90 @@ bool HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unica
     return false;
 }
 
+HwModuleProfileConfig::Profile::LoadBalance::LoadBalance()
+    :
+    load_balance_profile{YType::int32, "load-balance-profile"}
+{
+
+    yang_name = "load-balance"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::LoadBalance::~LoadBalance()
+{
+}
+
+bool HwModuleProfileConfig::Profile::LoadBalance::has_data() const
+{
+    return load_balance_profile.is_set;
+}
+
+bool HwModuleProfileConfig::Profile::LoadBalance::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(load_balance_profile.yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::LoadBalance::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::LoadBalance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "load-balance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::LoadBalance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (load_balance_profile.is_set || is_set(load_balance_profile.yfilter)) leaf_name_data.push_back(load_balance_profile.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::LoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::LoadBalance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::LoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "load-balance-profile")
+    {
+        load_balance_profile = value;
+        load_balance_profile.value_namespace = name_space;
+        load_balance_profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HwModuleProfileConfig::Profile::LoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "load-balance-profile")
+    {
+        load_balance_profile.yfilter = yfilter;
+    }
+}
+
+bool HwModuleProfileConfig::Profile::LoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-balance-profile")
+        return true;
+    return false;
+}
+
 HwModuleProfileConfig::Profile::Stats::Stats()
     :
     counter_profile{YType::int32, "counter-profile"}
@@ -1323,6 +1479,1006 @@ void HwModuleProfileConfig::Profile::Stats::set_filter(const std::string & value
 bool HwModuleProfileConfig::Profile::Stats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counter-profile")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::Netflows::Netflows()
+{
+
+    yang_name = "netflows"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::Netflows::~Netflows()
+{
+}
+
+bool HwModuleProfileConfig::Profile::Netflows::has_data() const
+{
+    for (std::size_t index=0; index<netflow.size(); index++)
+    {
+        if(netflow[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HwModuleProfileConfig::Profile::Netflows::has_operation() const
+{
+    for (std::size_t index=0; index<netflow.size(); index++)
+    {
+        if(netflow[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::Netflows::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::Netflows::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "netflows";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Netflows::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "netflow")
+    {
+        auto c = std::make_shared<HwModuleProfileConfig::Profile::Netflows::Netflow>();
+        c->parent = this;
+        netflow.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Netflows::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : netflow)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::Netflows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HwModuleProfileConfig::Profile::Netflows::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HwModuleProfileConfig::Profile::Netflows::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "netflow")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::Netflows::Netflow::Netflow()
+    :
+    ipfix315_enable{YType::str, "ipfix315-enable"},
+    location_string{YType::str, "location-string"},
+    location_id{YType::int32, "location-id"},
+    enable_val{YType::int32, "enable-val"}
+{
+
+    yang_name = "netflow"; yang_parent_name = "netflows"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::Netflows::Netflow::~Netflow()
+{
+}
+
+bool HwModuleProfileConfig::Profile::Netflows::Netflow::has_data() const
+{
+    return ipfix315_enable.is_set
+	|| location_string.is_set
+	|| location_id.is_set
+	|| enable_val.is_set;
+}
+
+bool HwModuleProfileConfig::Profile::Netflows::Netflow::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipfix315_enable.yfilter)
+	|| ydk::is_set(location_string.yfilter)
+	|| ydk::is_set(location_id.yfilter)
+	|| ydk::is_set(enable_val.yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::Netflows::Netflow::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/netflows/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::Netflows::Netflow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "netflow" <<"[ipfix315-enable='" <<ipfix315_enable <<"']" <<"[location-string='" <<location_string <<"']" <<"[location-id='" <<location_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Netflows::Netflow::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipfix315_enable.is_set || is_set(ipfix315_enable.yfilter)) leaf_name_data.push_back(ipfix315_enable.get_name_leafdata());
+    if (location_string.is_set || is_set(location_string.yfilter)) leaf_name_data.push_back(location_string.get_name_leafdata());
+    if (location_id.is_set || is_set(location_id.yfilter)) leaf_name_data.push_back(location_id.get_name_leafdata());
+    if (enable_val.is_set || is_set(enable_val.yfilter)) leaf_name_data.push_back(enable_val.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflows::Netflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Netflows::Netflow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::Netflows::Netflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipfix315-enable")
+    {
+        ipfix315_enable = value;
+        ipfix315_enable.value_namespace = name_space;
+        ipfix315_enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location-string")
+    {
+        location_string = value;
+        location_string.value_namespace = name_space;
+        location_string.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location-id")
+    {
+        location_id = value;
+        location_id.value_namespace = name_space;
+        location_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable-val")
+    {
+        enable_val = value;
+        enable_val.value_namespace = name_space;
+        enable_val.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HwModuleProfileConfig::Profile::Netflows::Netflow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipfix315-enable")
+    {
+        ipfix315_enable.yfilter = yfilter;
+    }
+    if(value_path == "location-string")
+    {
+        location_string.yfilter = yfilter;
+    }
+    if(value_path == "location-id")
+    {
+        location_id.yfilter = yfilter;
+    }
+    if(value_path == "enable-val")
+    {
+        enable_val.yfilter = yfilter;
+    }
+}
+
+bool HwModuleProfileConfig::Profile::Netflows::Netflow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipfix315-enable" || name == "location-string" || name == "location-id" || name == "enable-val")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::ProfileAcl::ProfileAcl()
+    :
+    egress{YType::boolean, "egress"}
+{
+
+    yang_name = "profile-acl"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::ProfileAcl::~ProfileAcl()
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileAcl::has_data() const
+{
+    return egress.is_set;
+}
+
+bool HwModuleProfileConfig::Profile::ProfileAcl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(egress.yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileAcl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileAcl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "profile-acl";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::ProfileAcl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (egress.is_set || is_set(egress.yfilter)) leaf_name_data.push_back(egress.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileAcl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::ProfileAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "egress")
+    {
+        egress = value;
+        egress.value_namespace = name_space;
+        egress.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HwModuleProfileConfig::Profile::ProfileAcl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "egress")
+    {
+        egress.yfilter = yfilter;
+    }
+}
+
+bool HwModuleProfileConfig::Profile::ProfileAcl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::ProfileTcam()
+    :
+    key_format(std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat>())
+{
+    key_format->parent = this;
+
+    yang_name = "profile-tcam"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::~ProfileTcam()
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::has_data() const
+{
+    return (key_format !=  nullptr && key_format->has_data());
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::has_operation() const
+{
+    return is_set(yfilter)
+	|| (key_format !=  nullptr && key_format->has_operation());
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "profile-tcam";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::ProfileTcam::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "key-format")
+    {
+        if(key_format == nullptr)
+        {
+            key_format = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat>();
+        }
+        return key_format;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(key_format != nullptr)
+    {
+        children["key-format"] = key_format;
+    }
+
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-format")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormat()
+    :
+    acl_tables(std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables>())
+{
+    acl_tables->parent = this;
+
+    yang_name = "key-format"; yang_parent_name = "profile-tcam"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::~KeyFormat()
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::has_data() const
+{
+    return (acl_tables !=  nullptr && acl_tables->has_data());
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::has_operation() const
+{
+    return is_set(yfilter)
+	|| (acl_tables !=  nullptr && acl_tables->has_operation());
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/profile-tcam/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "key-format";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-tables")
+    {
+        if(acl_tables == nullptr)
+        {
+            acl_tables = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables>();
+        }
+        return acl_tables;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(acl_tables != nullptr)
+    {
+        children["acl-tables"] = acl_tables;
+    }
+
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-tables")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTables()
+{
+
+    yang_name = "acl-tables"; yang_parent_name = "key-format"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::~AclTables()
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::has_data() const
+{
+    for (std::size_t index=0; index<acl_table.size(); index++)
+    {
+        if(acl_table[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::has_operation() const
+{
+    for (std::size_t index=0; index<acl_table.size(); index++)
+    {
+        if(acl_table[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/profile-tcam/key-format/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-tables";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-table")
+    {
+        auto c = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable>();
+        c->parent = this;
+        acl_table.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : acl_table)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-table")
+        return true;
+    return false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::AclTable()
+    :
+    address_family{YType::str, "address-family"},
+    location_string{YType::str, "location-string"},
+    location_id{YType::int32, "location-id"},
+    source_addr{YType::int32, "source-addr"},
+    destination_addr{YType::int32, "destination-addr"},
+    source_port{YType::int32, "source-port"},
+    dest_port{YType::int32, "dest-port"},
+    prot_type{YType::int32, "prot-type"},
+    tcp_flag{YType::int32, "tcp-flag"},
+    pack_len{YType::int32, "pack-len"},
+    frag_bit{YType::int32, "frag-bit"},
+    precedence{YType::int32, "precedence"},
+    port_range{YType::int32, "port-range"},
+    udf1{YType::str, "udf1"},
+    udf2{YType::str, "udf2"},
+    udf3{YType::str, "udf3"},
+    udf4{YType::str, "udf4"},
+    udf5{YType::str, "udf5"},
+    udf6{YType::str, "udf6"},
+    udf7{YType::str, "udf7"},
+    udf8{YType::str, "udf8"},
+    en_capture{YType::int32, "en-capture"},
+    en_ttl{YType::int32, "en-ttl"},
+    en_match{YType::int32, "en-match"},
+    en_share_acl{YType::int32, "en-share-acl"}
+{
+
+    yang_name = "acl-table"; yang_parent_name = "acl-tables"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::~AclTable()
+{
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::has_data() const
+{
+    return address_family.is_set
+	|| location_string.is_set
+	|| location_id.is_set
+	|| source_addr.is_set
+	|| destination_addr.is_set
+	|| source_port.is_set
+	|| dest_port.is_set
+	|| prot_type.is_set
+	|| tcp_flag.is_set
+	|| pack_len.is_set
+	|| frag_bit.is_set
+	|| precedence.is_set
+	|| port_range.is_set
+	|| udf1.is_set
+	|| udf2.is_set
+	|| udf3.is_set
+	|| udf4.is_set
+	|| udf5.is_set
+	|| udf6.is_set
+	|| udf7.is_set
+	|| udf8.is_set
+	|| en_capture.is_set
+	|| en_ttl.is_set
+	|| en_match.is_set
+	|| en_share_acl.is_set;
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(location_string.yfilter)
+	|| ydk::is_set(location_id.yfilter)
+	|| ydk::is_set(source_addr.yfilter)
+	|| ydk::is_set(destination_addr.yfilter)
+	|| ydk::is_set(source_port.yfilter)
+	|| ydk::is_set(dest_port.yfilter)
+	|| ydk::is_set(prot_type.yfilter)
+	|| ydk::is_set(tcp_flag.yfilter)
+	|| ydk::is_set(pack_len.yfilter)
+	|| ydk::is_set(frag_bit.yfilter)
+	|| ydk::is_set(precedence.yfilter)
+	|| ydk::is_set(port_range.yfilter)
+	|| ydk::is_set(udf1.yfilter)
+	|| ydk::is_set(udf2.yfilter)
+	|| ydk::is_set(udf3.yfilter)
+	|| ydk::is_set(udf4.yfilter)
+	|| ydk::is_set(udf5.yfilter)
+	|| ydk::is_set(udf6.yfilter)
+	|| ydk::is_set(udf7.yfilter)
+	|| ydk::is_set(udf8.yfilter)
+	|| ydk::is_set(en_capture.yfilter)
+	|| ydk::is_set(en_ttl.yfilter)
+	|| ydk::is_set(en_match.yfilter)
+	|| ydk::is_set(en_share_acl.yfilter);
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fia-hw-profile-cfg:hw-module-profile-config/profile/profile-tcam/key-format/acl-tables/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl-table" <<"[address-family='" <<address_family <<"']" <<"[location-string='" <<location_string <<"']" <<"[location-id='" <<location_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (location_string.is_set || is_set(location_string.yfilter)) leaf_name_data.push_back(location_string.get_name_leafdata());
+    if (location_id.is_set || is_set(location_id.yfilter)) leaf_name_data.push_back(location_id.get_name_leafdata());
+    if (source_addr.is_set || is_set(source_addr.yfilter)) leaf_name_data.push_back(source_addr.get_name_leafdata());
+    if (destination_addr.is_set || is_set(destination_addr.yfilter)) leaf_name_data.push_back(destination_addr.get_name_leafdata());
+    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
+    if (dest_port.is_set || is_set(dest_port.yfilter)) leaf_name_data.push_back(dest_port.get_name_leafdata());
+    if (prot_type.is_set || is_set(prot_type.yfilter)) leaf_name_data.push_back(prot_type.get_name_leafdata());
+    if (tcp_flag.is_set || is_set(tcp_flag.yfilter)) leaf_name_data.push_back(tcp_flag.get_name_leafdata());
+    if (pack_len.is_set || is_set(pack_len.yfilter)) leaf_name_data.push_back(pack_len.get_name_leafdata());
+    if (frag_bit.is_set || is_set(frag_bit.yfilter)) leaf_name_data.push_back(frag_bit.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
+    if (port_range.is_set || is_set(port_range.yfilter)) leaf_name_data.push_back(port_range.get_name_leafdata());
+    if (udf1.is_set || is_set(udf1.yfilter)) leaf_name_data.push_back(udf1.get_name_leafdata());
+    if (udf2.is_set || is_set(udf2.yfilter)) leaf_name_data.push_back(udf2.get_name_leafdata());
+    if (udf3.is_set || is_set(udf3.yfilter)) leaf_name_data.push_back(udf3.get_name_leafdata());
+    if (udf4.is_set || is_set(udf4.yfilter)) leaf_name_data.push_back(udf4.get_name_leafdata());
+    if (udf5.is_set || is_set(udf5.yfilter)) leaf_name_data.push_back(udf5.get_name_leafdata());
+    if (udf6.is_set || is_set(udf6.yfilter)) leaf_name_data.push_back(udf6.get_name_leafdata());
+    if (udf7.is_set || is_set(udf7.yfilter)) leaf_name_data.push_back(udf7.get_name_leafdata());
+    if (udf8.is_set || is_set(udf8.yfilter)) leaf_name_data.push_back(udf8.get_name_leafdata());
+    if (en_capture.is_set || is_set(en_capture.yfilter)) leaf_name_data.push_back(en_capture.get_name_leafdata());
+    if (en_ttl.is_set || is_set(en_ttl.yfilter)) leaf_name_data.push_back(en_ttl.get_name_leafdata());
+    if (en_match.is_set || is_set(en_match.yfilter)) leaf_name_data.push_back(en_match.get_name_leafdata());
+    if (en_share_acl.is_set || is_set(en_share_acl.yfilter)) leaf_name_data.push_back(en_share_acl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-family")
+    {
+        address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location-string")
+    {
+        location_string = value;
+        location_string.value_namespace = name_space;
+        location_string.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location-id")
+    {
+        location_id = value;
+        location_id.value_namespace = name_space;
+        location_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-addr")
+    {
+        source_addr = value;
+        source_addr.value_namespace = name_space;
+        source_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-addr")
+    {
+        destination_addr = value;
+        destination_addr.value_namespace = name_space;
+        destination_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-port")
+    {
+        source_port = value;
+        source_port.value_namespace = name_space;
+        source_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dest-port")
+    {
+        dest_port = value;
+        dest_port.value_namespace = name_space;
+        dest_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prot-type")
+    {
+        prot_type = value;
+        prot_type.value_namespace = name_space;
+        prot_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tcp-flag")
+    {
+        tcp_flag = value;
+        tcp_flag.value_namespace = name_space;
+        tcp_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pack-len")
+    {
+        pack_len = value;
+        pack_len.value_namespace = name_space;
+        pack_len.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "frag-bit")
+    {
+        frag_bit = value;
+        frag_bit.value_namespace = name_space;
+        frag_bit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "precedence")
+    {
+        precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-range")
+    {
+        port_range = value;
+        port_range.value_namespace = name_space;
+        port_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf1")
+    {
+        udf1 = value;
+        udf1.value_namespace = name_space;
+        udf1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf2")
+    {
+        udf2 = value;
+        udf2.value_namespace = name_space;
+        udf2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf3")
+    {
+        udf3 = value;
+        udf3.value_namespace = name_space;
+        udf3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf4")
+    {
+        udf4 = value;
+        udf4.value_namespace = name_space;
+        udf4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf5")
+    {
+        udf5 = value;
+        udf5.value_namespace = name_space;
+        udf5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf6")
+    {
+        udf6 = value;
+        udf6.value_namespace = name_space;
+        udf6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf7")
+    {
+        udf7 = value;
+        udf7.value_namespace = name_space;
+        udf7.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "udf8")
+    {
+        udf8 = value;
+        udf8.value_namespace = name_space;
+        udf8.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "en-capture")
+    {
+        en_capture = value;
+        en_capture.value_namespace = name_space;
+        en_capture.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "en-ttl")
+    {
+        en_ttl = value;
+        en_ttl.value_namespace = name_space;
+        en_ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "en-match")
+    {
+        en_match = value;
+        en_match.value_namespace = name_space;
+        en_match.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "en-share-acl")
+    {
+        en_share_acl = value;
+        en_share_acl.value_namespace = name_space;
+        en_share_acl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "location-string")
+    {
+        location_string.yfilter = yfilter;
+    }
+    if(value_path == "location-id")
+    {
+        location_id.yfilter = yfilter;
+    }
+    if(value_path == "source-addr")
+    {
+        source_addr.yfilter = yfilter;
+    }
+    if(value_path == "destination-addr")
+    {
+        destination_addr.yfilter = yfilter;
+    }
+    if(value_path == "source-port")
+    {
+        source_port.yfilter = yfilter;
+    }
+    if(value_path == "dest-port")
+    {
+        dest_port.yfilter = yfilter;
+    }
+    if(value_path == "prot-type")
+    {
+        prot_type.yfilter = yfilter;
+    }
+    if(value_path == "tcp-flag")
+    {
+        tcp_flag.yfilter = yfilter;
+    }
+    if(value_path == "pack-len")
+    {
+        pack_len.yfilter = yfilter;
+    }
+    if(value_path == "frag-bit")
+    {
+        frag_bit.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+    if(value_path == "port-range")
+    {
+        port_range.yfilter = yfilter;
+    }
+    if(value_path == "udf1")
+    {
+        udf1.yfilter = yfilter;
+    }
+    if(value_path == "udf2")
+    {
+        udf2.yfilter = yfilter;
+    }
+    if(value_path == "udf3")
+    {
+        udf3.yfilter = yfilter;
+    }
+    if(value_path == "udf4")
+    {
+        udf4.yfilter = yfilter;
+    }
+    if(value_path == "udf5")
+    {
+        udf5.yfilter = yfilter;
+    }
+    if(value_path == "udf6")
+    {
+        udf6.yfilter = yfilter;
+    }
+    if(value_path == "udf7")
+    {
+        udf7.yfilter = yfilter;
+    }
+    if(value_path == "udf8")
+    {
+        udf8.yfilter = yfilter;
+    }
+    if(value_path == "en-capture")
+    {
+        en_capture.yfilter = yfilter;
+    }
+    if(value_path == "en-ttl")
+    {
+        en_ttl.yfilter = yfilter;
+    }
+    if(value_path == "en-match")
+    {
+        en_match.yfilter = yfilter;
+    }
+    if(value_path == "en-share-acl")
+    {
+        en_share_acl.yfilter = yfilter;
+    }
+}
+
+bool HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "location-string" || name == "location-id" || name == "source-addr" || name == "destination-addr" || name == "source-port" || name == "dest-port" || name == "prot-type" || name == "tcp-flag" || name == "pack-len" || name == "frag-bit" || name == "precedence" || name == "port-range" || name == "udf1" || name == "udf2" || name == "udf3" || name == "udf4" || name == "udf5" || name == "udf6" || name == "udf7" || name == "udf8" || name == "en-capture" || name == "en-ttl" || name == "en-match" || name == "en-share-acl")
         return true;
     return false;
 }
@@ -2807,8 +3963,7 @@ bool HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::has_leaf_or_child_
 
 HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::ScaleIpv4NoTcam()
     :
-    host_optimized_ipv4_no_tcam{YType::str, "host-optimized-ipv4-no-tcam"},
-    internet_optimized_ipv4_no_tcam{YType::str, "internet-optimized-ipv4-no-tcam"}
+    optimized_ipv4_no_tcam{YType::str, "optimized-ipv4-no-tcam"}
 {
 
     yang_name = "scale-ipv4-no-tcam"; yang_parent_name = "ipv4-unicast-scale-no-tcam"; is_top_level_class = false; has_list_ancestor = false;
@@ -2820,15 +3975,13 @@ HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::~Scale
 
 bool HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::has_data() const
 {
-    return host_optimized_ipv4_no_tcam.is_set
-	|| internet_optimized_ipv4_no_tcam.is_set;
+    return optimized_ipv4_no_tcam.is_set;
 }
 
 bool HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(host_optimized_ipv4_no_tcam.yfilter)
-	|| ydk::is_set(internet_optimized_ipv4_no_tcam.yfilter);
+	|| ydk::is_set(optimized_ipv4_no_tcam.yfilter);
 }
 
 std::string HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::get_absolute_path() const
@@ -2849,8 +4002,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::FibScale::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (host_optimized_ipv4_no_tcam.is_set || is_set(host_optimized_ipv4_no_tcam.yfilter)) leaf_name_data.push_back(host_optimized_ipv4_no_tcam.get_name_leafdata());
-    if (internet_optimized_ipv4_no_tcam.is_set || is_set(internet_optimized_ipv4_no_tcam.yfilter)) leaf_name_data.push_back(internet_optimized_ipv4_no_tcam.get_name_leafdata());
+    if (optimized_ipv4_no_tcam.is_set || is_set(optimized_ipv4_no_tcam.yfilter)) leaf_name_data.push_back(optimized_ipv4_no_tcam.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2870,35 +4022,25 @@ std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::
 
 void HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "host-optimized-ipv4-no-tcam")
+    if(value_path == "optimized-ipv4-no-tcam")
     {
-        host_optimized_ipv4_no_tcam = value;
-        host_optimized_ipv4_no_tcam.value_namespace = name_space;
-        host_optimized_ipv4_no_tcam.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "internet-optimized-ipv4-no-tcam")
-    {
-        internet_optimized_ipv4_no_tcam = value;
-        internet_optimized_ipv4_no_tcam.value_namespace = name_space;
-        internet_optimized_ipv4_no_tcam.value_namespace_prefix = name_space_prefix;
+        optimized_ipv4_no_tcam = value;
+        optimized_ipv4_no_tcam.value_namespace = name_space;
+        optimized_ipv4_no_tcam.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "host-optimized-ipv4-no-tcam")
+    if(value_path == "optimized-ipv4-no-tcam")
     {
-        host_optimized_ipv4_no_tcam.yfilter = yfilter;
-    }
-    if(value_path == "internet-optimized-ipv4-no-tcam")
-    {
-        internet_optimized_ipv4_no_tcam.yfilter = yfilter;
+        optimized_ipv4_no_tcam.yfilter = yfilter;
     }
 }
 
 bool HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "host-optimized-ipv4-no-tcam" || name == "internet-optimized-ipv4-no-tcam")
+    if(name == "optimized-ipv4-no-tcam")
         return true;
     return false;
 }

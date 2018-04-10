@@ -92,7 +92,7 @@ class Hsrp::Interfaces::Interface : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Bfd> bfd;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Delay> delay;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Delay> delay; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_hsrp_cfg::Hsrp::Interfaces::Interface::Ipv4> ipv4;
         
 }; // Hsrp::Interfaces::Interface

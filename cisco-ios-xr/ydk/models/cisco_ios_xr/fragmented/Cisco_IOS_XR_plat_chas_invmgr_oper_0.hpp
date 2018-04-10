@@ -229,7 +229,7 @@ class Platform::Racks::Rack::Slots::Slot::Vm : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf node_descriptiton; //type: string
+        ydk::YLeaf node_description; //type: string
         ydk::YLeaf red_role; //type: string
         ydk::YLeaf partner_name; //type: string
         ydk::YLeaf software_status; //type: string

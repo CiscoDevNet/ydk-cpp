@@ -1187,11 +1187,78 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList inbound; //type: list of  string
-        ydk::YLeafList outbound; //type: list of  string
-        ydk::YLeafList common; //type: list of  string
+        class Inbound; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound
+        class Outbound; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound
+        class Common; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound> > inbound;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound> > outbound;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common> > common;
+        
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound : public ydk::Entity
+{
+    public:
+        Inbound();
+        ~Inbound();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound : public ydk::Entity
+{
+    public:
+        Outbound();
+        ~Outbound();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common : public ydk::Entity
+{
+    public:
+        Common();
+        ~Common();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common
 
 
 class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress : public ydk::Entity
@@ -1210,9 +1277,32 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList address_array; //type: list of  string
+        class AddressArray; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray> > address_array;
+        
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress
+
+
+class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray : public ydk::Entity
+{
+    public:
+        AddressArray();
+        ~AddressArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray
 
 
 class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf : public ydk::Entity

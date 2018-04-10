@@ -241,12 +241,11 @@ Hsrp::Interfaces::Interface::Interface()
     	,
     ipv6(std::make_shared<Hsrp::Interfaces::Interface::Ipv6>())
 	,bfd(std::make_shared<Hsrp::Interfaces::Interface::Bfd>())
-	,delay(std::make_shared<Hsrp::Interfaces::Interface::Delay>())
+	,delay(nullptr) // presence node
 	,ipv4(std::make_shared<Hsrp::Interfaces::Interface::Ipv4>())
 {
     ipv6->parent = this;
     bfd->parent = this;
-    delay->parent = this;
     ipv4->parent = this;
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;

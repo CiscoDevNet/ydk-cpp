@@ -81,6 +81,16 @@ NullLabelType::~NullLabelType()
 {
 }
 
+PATHSETUPPROTOCOL::PATHSETUPPROTOCOL()
+     : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:PATH_SETUP_PROTOCOL")
+{
+
+}
+
+PATHSETUPPROTOCOL::~PATHSETUPPROTOCOL()
+{
+}
+
 PathSetupRsvp::PathSetupRsvp()
      : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:path-setup-rsvp")
 {

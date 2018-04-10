@@ -1086,6 +1086,7 @@ bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::has_lea
 Pce::Logging::Logging()
     :
     no_path{YType::empty, "no-path"},
+    pcerr{YType::empty, "pcerr"},
     fallback{YType::empty, "fallback"}
 {
 
@@ -1099,6 +1100,7 @@ Pce::Logging::~Logging()
 bool Pce::Logging::has_data() const
 {
     return no_path.is_set
+	|| pcerr.is_set
 	|| fallback.is_set;
 }
 
@@ -1106,6 +1108,7 @@ bool Pce::Logging::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(no_path.yfilter)
+	|| ydk::is_set(pcerr.yfilter)
 	|| ydk::is_set(fallback.yfilter);
 }
 
@@ -1128,6 +1131,7 @@ std::vector<std::pair<std::string, LeafData> > Pce::Logging::get_name_leaf_data(
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (no_path.is_set || is_set(no_path.yfilter)) leaf_name_data.push_back(no_path.get_name_leafdata());
+    if (pcerr.is_set || is_set(pcerr.yfilter)) leaf_name_data.push_back(pcerr.get_name_leafdata());
     if (fallback.is_set || is_set(fallback.yfilter)) leaf_name_data.push_back(fallback.get_name_leafdata());
 
     return leaf_name_data;
@@ -1154,6 +1158,12 @@ void Pce::Logging::set_value(const std::string & value_path, const std::string &
         no_path.value_namespace = name_space;
         no_path.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "pcerr")
+    {
+        pcerr = value;
+        pcerr.value_namespace = name_space;
+        pcerr.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "fallback")
     {
         fallback = value;
@@ -1168,6 +1178,10 @@ void Pce::Logging::set_filter(const std::string & value_path, YFilter yfilter)
     {
         no_path.yfilter = yfilter;
     }
+    if(value_path == "pcerr")
+    {
+        pcerr.yfilter = yfilter;
+    }
     if(value_path == "fallback")
     {
         fallback.yfilter = yfilter;
@@ -1176,7 +1190,7 @@ void Pce::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Pce::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "no-path" || name == "fallback")
+    if(name == "no-path" || name == "pcerr" || name == "fallback")
         return true;
     return false;
 }
@@ -1872,6 +1886,8 @@ bool Pce::Netconf::NetconfSsh::has_leaf_or_child_of_name(const std::string & nam
 
 Pce::DisjointPath::DisjointPath()
     :
+    enable{YType::empty, "enable"}
+    	,
     groups(std::make_shared<Pce::DisjointPath::Groups>())
 {
     groups->parent = this;
@@ -1885,12 +1901,14 @@ Pce::DisjointPath::~DisjointPath()
 
 bool Pce::DisjointPath::has_data() const
 {
-    return (groups !=  nullptr && groups->has_data());
+    return enable.is_set
+	|| (groups !=  nullptr && groups->has_data());
 }
 
 bool Pce::DisjointPath::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (groups !=  nullptr && groups->has_operation());
 }
 
@@ -1912,6 +1930,7 @@ std::vector<std::pair<std::string, LeafData> > Pce::DisjointPath::get_name_leaf_
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1945,15 +1964,25 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::get_children()
 
 void Pce::DisjointPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Pce::DisjointPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
 }
 
 bool Pce::DisjointPath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "groups")
+    if(name == "groups" || name == "enable")
         return true;
     return false;
 }
@@ -2060,8 +2089,12 @@ Pce::DisjointPath::Groups::Group::Group()
     group_id{YType::uint32, "group-id"},
     dp_type{YType::enumeration, "dp-type"},
     sub_id{YType::uint32, "sub-id"},
-    strict{YType::empty, "strict"}
+    strict{YType::empty, "strict"},
+    enable{YType::empty, "enable"}
+    	,
+    group_lsp_records(std::make_shared<Pce::DisjointPath::Groups::Group::GroupLspRecords>())
 {
+    group_lsp_records->parent = this;
 
     yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -2075,7 +2108,9 @@ bool Pce::DisjointPath::Groups::Group::has_data() const
     return group_id.is_set
 	|| dp_type.is_set
 	|| sub_id.is_set
-	|| strict.is_set;
+	|| strict.is_set
+	|| enable.is_set
+	|| (group_lsp_records !=  nullptr && group_lsp_records->has_data());
 }
 
 bool Pce::DisjointPath::Groups::Group::has_operation() const
@@ -2084,7 +2119,9 @@ bool Pce::DisjointPath::Groups::Group::has_operation() const
 	|| ydk::is_set(group_id.yfilter)
 	|| ydk::is_set(dp_type.yfilter)
 	|| ydk::is_set(sub_id.yfilter)
-	|| ydk::is_set(strict.yfilter);
+	|| ydk::is_set(strict.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (group_lsp_records !=  nullptr && group_lsp_records->has_operation());
 }
 
 std::string Pce::DisjointPath::Groups::Group::get_absolute_path() const
@@ -2109,6 +2146,7 @@ std::vector<std::pair<std::string, LeafData> > Pce::DisjointPath::Groups::Group:
     if (dp_type.is_set || is_set(dp_type.yfilter)) leaf_name_data.push_back(dp_type.get_name_leafdata());
     if (sub_id.is_set || is_set(sub_id.yfilter)) leaf_name_data.push_back(sub_id.get_name_leafdata());
     if (strict.is_set || is_set(strict.yfilter)) leaf_name_data.push_back(strict.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2116,6 +2154,15 @@ std::vector<std::pair<std::string, LeafData> > Pce::DisjointPath::Groups::Group:
 
 std::shared_ptr<Entity> Pce::DisjointPath::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "group-lsp-records")
+    {
+        if(group_lsp_records == nullptr)
+        {
+            group_lsp_records = std::make_shared<Pce::DisjointPath::Groups::Group::GroupLspRecords>();
+        }
+        return group_lsp_records;
+    }
+
     return nullptr;
 }
 
@@ -2123,6 +2170,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::Group:
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(group_lsp_records != nullptr)
+    {
+        children["group-lsp-records"] = group_lsp_records;
+    }
+
     return children;
 }
 
@@ -2152,6 +2204,12 @@ void Pce::DisjointPath::Groups::Group::set_value(const std::string & value_path,
         strict.value_namespace = name_space;
         strict.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Pce::DisjointPath::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2172,11 +2230,224 @@ void Pce::DisjointPath::Groups::Group::set_filter(const std::string & value_path
     {
         strict.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
 }
 
 bool Pce::DisjointPath::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "group-id" || name == "dp-type" || name == "sub-id" || name == "strict")
+    if(name == "group-lsp-records" || name == "group-id" || name == "dp-type" || name == "sub-id" || name == "strict" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecords()
+{
+
+    yang_name = "group-lsp-records"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Pce::DisjointPath::Groups::Group::GroupLspRecords::~GroupLspRecords()
+{
+}
+
+bool Pce::DisjointPath::Groups::Group::GroupLspRecords::has_data() const
+{
+    for (std::size_t index=0; index<group_lsp_record.size(); index++)
+    {
+        if(group_lsp_record[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::DisjointPath::Groups::Group::GroupLspRecords::has_operation() const
+{
+    for (std::size_t index=0; index<group_lsp_record.size(); index++)
+    {
+        if(group_lsp_record[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::DisjointPath::Groups::Group::GroupLspRecords::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group-lsp-records";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::DisjointPath::Groups::Group::GroupLspRecords::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::DisjointPath::Groups::Group::GroupLspRecords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "group-lsp-record")
+    {
+        auto c = std::make_shared<Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord>();
+        c->parent = this;
+        group_lsp_record.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::Group::GroupLspRecords::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : group_lsp_record)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::DisjointPath::Groups::Group::GroupLspRecords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::DisjointPath::Groups::Group::GroupLspRecords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::DisjointPath::Groups::Group::GroupLspRecords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-lsp-record")
+        return true;
+    return false;
+}
+
+Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::GroupLspRecord()
+    :
+    lsp_id{YType::uint32, "lsp-id"},
+    ip_addr{YType::str, "ip-addr"},
+    lsp_name{YType::str, "lsp-name"},
+    disj_path{YType::int32, "disj-path"}
+{
+
+    yang_name = "group-lsp-record"; yang_parent_name = "group-lsp-records"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::~GroupLspRecord()
+{
+}
+
+bool Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::has_data() const
+{
+    return lsp_id.is_set
+	|| ip_addr.is_set
+	|| lsp_name.is_set
+	|| disj_path.is_set;
+}
+
+bool Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_id.yfilter)
+	|| ydk::is_set(ip_addr.yfilter)
+	|| ydk::is_set(lsp_name.yfilter)
+	|| ydk::is_set(disj_path.yfilter);
+}
+
+std::string Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group-lsp-record" <<"[lsp-id='" <<lsp_id <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lsp_id.is_set || is_set(lsp_id.yfilter)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
+    if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
+    if (lsp_name.is_set || is_set(lsp_name.yfilter)) leaf_name_data.push_back(lsp_name.get_name_leafdata());
+    if (disj_path.is_set || is_set(disj_path.yfilter)) leaf_name_data.push_back(disj_path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lsp-id")
+    {
+        lsp_id = value;
+        lsp_id.value_namespace = name_space;
+        lsp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr = value;
+        ip_addr.value_namespace = name_space;
+        ip_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lsp-name")
+    {
+        lsp_name = value;
+        lsp_name.value_namespace = name_space;
+        lsp_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disj-path")
+    {
+        disj_path = value;
+        disj_path.value_namespace = name_space;
+        disj_path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-id")
+    {
+        lsp_id.yfilter = yfilter;
+    }
+    if(value_path == "ip-addr")
+    {
+        ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "lsp-name")
+    {
+        lsp_name.yfilter = yfilter;
+    }
+    if(value_path == "disj-path")
+    {
+        disj_path.yfilter = yfilter;
+    }
+}
+
+bool Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-id" || name == "ip-addr" || name == "lsp-name" || name == "disj-path")
         return true;
     return false;
 }
@@ -2621,6 +2892,7 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_leaf_or_child_of_n
 const Enum::YLeaf PceDisjointPath::link {1, "link"};
 const Enum::YLeaf PceDisjointPath::node {2, "node"};
 const Enum::YLeaf PceDisjointPath::srlg {3, "srlg"};
+const Enum::YLeaf PceDisjointPath::srlg_node {4, "srlg-node"};
 
 const Enum::YLeaf PceExplicitPathHop::address {1, "address"};
 const Enum::YLeaf PceExplicitPathHop::sid_node {2, "sid-node"};

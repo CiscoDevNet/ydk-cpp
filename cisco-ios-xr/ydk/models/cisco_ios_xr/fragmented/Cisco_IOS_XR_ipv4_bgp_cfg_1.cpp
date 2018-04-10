@@ -12,6 +12,216 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_cfg {
 
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::AdvertiseLocalV6()
+    :
+    af_name{YType::enumeration, "af-name"},
+    reorg_option{YType::enumeration, "reorg-option"},
+    rt_type{YType::enumeration, "rt-type"}
+{
+
+    yang_name = "advertise-local-v6"; yang_parent_name = "neighbor-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::~AdvertiseLocalV6()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::has_data() const
+{
+    return af_name.is_set
+	|| reorg_option.is_set
+	|| rt_type.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(reorg_option.yfilter)
+	|| ydk::is_set(rt_type.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "advertise-local-v6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (reorg_option.is_set || is_set(reorg_option.yfilter)) leaf_name_data.push_back(reorg_option.get_name_leafdata());
+    if (rt_type.is_set || is_set(rt_type.yfilter)) leaf_name_data.push_back(rt_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reorg-option")
+    {
+        reorg_option = value;
+        reorg_option.value_namespace = name_space;
+        reorg_option.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-type")
+    {
+        rt_type = value;
+        rt_type.value_namespace = name_space;
+        rt_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "reorg-option")
+    {
+        reorg_option.yfilter = yfilter;
+    }
+    if(value_path == "rt-type")
+    {
+        rt_type.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::AdvertiseLocalV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "reorg-option" || name == "rt-type")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::Import()
+    :
+    import_stitching{YType::boolean, "import-stitching"},
+    import_reoriginate{YType::boolean, "import-reoriginate"},
+    import_reoriginate_stitching{YType::boolean, "import-reoriginate-stitching"}
+{
+
+    yang_name = "import"; yang_parent_name = "neighbor-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::~Import()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::has_data() const
+{
+    return import_stitching.is_set
+	|| import_reoriginate.is_set
+	|| import_reoriginate_stitching.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(import_stitching.yfilter)
+	|| ydk::is_set(import_reoriginate.yfilter)
+	|| ydk::is_set(import_reoriginate_stitching.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "import";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (import_stitching.is_set || is_set(import_stitching.yfilter)) leaf_name_data.push_back(import_stitching.get_name_leafdata());
+    if (import_reoriginate.is_set || is_set(import_reoriginate.yfilter)) leaf_name_data.push_back(import_reoriginate.get_name_leafdata());
+    if (import_reoriginate_stitching.is_set || is_set(import_reoriginate_stitching.yfilter)) leaf_name_data.push_back(import_reoriginate_stitching.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "import-stitching")
+    {
+        import_stitching = value;
+        import_stitching.value_namespace = name_space;
+        import_stitching.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "import-reoriginate")
+    {
+        import_reoriginate = value;
+        import_reoriginate.value_namespace = name_space;
+        import_reoriginate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "import-reoriginate-stitching")
+    {
+        import_reoriginate_stitching = value;
+        import_reoriginate_stitching.value_namespace = name_space;
+        import_reoriginate_stitching.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "import-stitching")
+    {
+        import_stitching.yfilter = yfilter;
+    }
+    if(value_path == "import-reoriginate")
+    {
+        import_reoriginate.yfilter = yfilter;
+    }
+    if(value_path == "import-reoriginate-stitching")
+    {
+        import_reoriginate_stitching.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::Import::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "import-stitching" || name == "import-reoriginate" || name == "import-reoriginate-stitching")
+        return true;
+    return false;
+}
+
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::DefaultOriginate::DefaultOriginate()
     :
     enable{YType::boolean, "enable"},
@@ -2871,7 +3081,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbo
     description{YType::str, "description"},
     neighbor_group_add_member{YType::str, "neighbor-group-add-member"},
     ebgp_recv_dmz{YType::boolean, "ebgp-recv-dmz"},
-    neighbor_graceful_restart{YType::boolean, "neighbor-graceful-restart"},
+    neighbor_graceful_restart{YType::enumeration, "neighbor-graceful-restart"},
     enforce_first_as{YType::boolean, "enforce-first-as"},
     idle_watch_time{YType::uint32, "idle-watch-time"},
     session_open_mode{YType::enumeration, "session-open-mode"},
@@ -3819,11 +4029,12 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbo
     default_weight{YType::uint32, "default-weight"},
     af_group{YType::str, "af-group"},
     next_hop_unchanged_multipath{YType::boolean, "next-hop-unchanged-multipath"},
+    optimal_route_reflection_group{YType::str, "optimal-route-reflection-group"},
     accept_own{YType::boolean, "accept-own"},
     route_policy_out{YType::str, "route-policy-out"},
     advertise_permanent_network{YType::empty, "advertise-permanent-network"}
     	,
-    aigp_cost_community(nullptr) // presence node
+    aigp_cost_community(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::NeighborPrefixLength::NeighborAfs::NeighborAf::AigpCostCommunity>())
 	,advertise_def_imp_disable_v6(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::NeighborPrefixLength::NeighborAfs::NeighborAf::AdvertiseDefImpDisableV6>())
 	,advertise_disable(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::NeighborPrefixLength::NeighborAfs::NeighborAf::AdvertiseDisable>())
 	,maximum_prefixes(nullptr) // presence node
@@ -3843,6 +4054,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbo
 	,remove_private_as_entire_as_path(nullptr) // presence node
 	,advertise_vrf_imp_disable_v4(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::NeighborPrefixLength::NeighborAfs::NeighborAf::AdvertiseVrfImpDisableV4>())
 {
+    aigp_cost_community->parent = this;
     advertise_def_imp_disable_v6->parent = this;
     advertise_disable->parent = this;
     advertise_def_imp_disable_v4->parent = this;
@@ -3897,6 +4109,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
 	|| default_weight.is_set
 	|| af_group.is_set
 	|| next_hop_unchanged_multipath.is_set
+	|| optimal_route_reflection_group.is_set
 	|| accept_own.is_set
 	|| route_policy_out.is_set
 	|| advertise_permanent_network.is_set
@@ -3953,6 +4166,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
 	|| ydk::is_set(default_weight.yfilter)
 	|| ydk::is_set(af_group.yfilter)
 	|| ydk::is_set(next_hop_unchanged_multipath.yfilter)
+	|| ydk::is_set(optimal_route_reflection_group.yfilter)
 	|| ydk::is_set(accept_own.yfilter)
 	|| ydk::is_set(route_policy_out.yfilter)
 	|| ydk::is_set(advertise_permanent_network.yfilter)
@@ -4017,6 +4231,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (default_weight.is_set || is_set(default_weight.yfilter)) leaf_name_data.push_back(default_weight.get_name_leafdata());
     if (af_group.is_set || is_set(af_group.yfilter)) leaf_name_data.push_back(af_group.get_name_leafdata());
     if (next_hop_unchanged_multipath.is_set || is_set(next_hop_unchanged_multipath.yfilter)) leaf_name_data.push_back(next_hop_unchanged_multipath.get_name_leafdata());
+    if (optimal_route_reflection_group.is_set || is_set(optimal_route_reflection_group.yfilter)) leaf_name_data.push_back(optimal_route_reflection_group.get_name_leafdata());
     if (accept_own.is_set || is_set(accept_own.yfilter)) leaf_name_data.push_back(accept_own.get_name_leafdata());
     if (route_policy_out.is_set || is_set(route_policy_out.yfilter)) leaf_name_data.push_back(route_policy_out.get_name_leafdata());
     if (advertise_permanent_network.is_set || is_set(advertise_permanent_network.yfilter)) leaf_name_data.push_back(advertise_permanent_network.get_name_leafdata());
@@ -4479,6 +4694,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
         next_hop_unchanged_multipath.value_namespace = name_space;
         next_hop_unchanged_multipath.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "optimal-route-reflection-group")
+    {
+        optimal_route_reflection_group = value;
+        optimal_route_reflection_group.value_namespace = name_space;
+        optimal_route_reflection_group.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "accept-own")
     {
         accept_own = value;
@@ -4617,6 +4838,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
     {
         next_hop_unchanged_multipath.yfilter = yfilter;
     }
+    if(value_path == "optimal-route-reflection-group")
+    {
+        optimal_route_reflection_group.yfilter = yfilter;
+    }
     if(value_path == "accept-own")
     {
         accept_own.yfilter = yfilter;
@@ -4633,7 +4858,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::NeighborPrefixLength::NeighborAfs::NeighborAf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "aigp-cost-community" || name == "advertise-def-imp-disable-v6" || name == "advertise-disable" || name == "maximum-prefixes" || name == "remove-private-as-entire-as-path-inbound" || name == "advertise-def-imp-disable-v4" || name == "advertise-l2vpn-evpn" || name == "advertise-local-l2vpn-evpn" || name == "neighbor-af-long-lived-graceful-restart-stale-time" || name == "advertise-v6" || name == "advertise-local-v6" || name == "import" || name == "default-originate" || name == "soft-reconfiguration" || name == "advertise-vrf-imp-disable-v6" || name == "advertise-v4" || name == "advertise-local-v4" || name == "remove-private-as-entire-as-path" || name == "advertise-vrf-imp-disable-v4" || name == "af-name" || name == "neighbor-af-long-lived-graceful-restart-capable" || name == "l2vpn-signalling" || name == "send-ext-community-ebgp" || name == "accept-route-legacy-rt" || name == "send-community-ebgp" || name == "send-multicast-attr" || name == "next-hop-unchanged" || name == "advertise-local-labeled-route" || name == "rpki-origin-as-validation-disable" || name == "flowspec-validation" || name == "encapsulation-type" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "enforce-multiple-labels" || name == "as-override" || name == "multipath" || name == "send-community-ebgp-graceful-shutdown" || name == "activate" || name == "prefix-orf-policy" || name == "aigp" || name == "aigp-send-med" || name == "allow-as-in" || name == "advertise-orf" || name == "route-reflector-client" || name == "next-hop-self" || name == "route-policy-in" || name == "default-weight" || name == "af-group" || name == "next-hop-unchanged-multipath" || name == "accept-own" || name == "route-policy-out" || name == "advertise-permanent-network")
+    if(name == "aigp-cost-community" || name == "advertise-def-imp-disable-v6" || name == "advertise-disable" || name == "maximum-prefixes" || name == "remove-private-as-entire-as-path-inbound" || name == "advertise-def-imp-disable-v4" || name == "advertise-l2vpn-evpn" || name == "advertise-local-l2vpn-evpn" || name == "neighbor-af-long-lived-graceful-restart-stale-time" || name == "advertise-v6" || name == "advertise-local-v6" || name == "import" || name == "default-originate" || name == "soft-reconfiguration" || name == "advertise-vrf-imp-disable-v6" || name == "advertise-v4" || name == "advertise-local-v4" || name == "remove-private-as-entire-as-path" || name == "advertise-vrf-imp-disable-v4" || name == "af-name" || name == "neighbor-af-long-lived-graceful-restart-capable" || name == "l2vpn-signalling" || name == "send-ext-community-ebgp" || name == "accept-route-legacy-rt" || name == "send-community-ebgp" || name == "send-multicast-attr" || name == "next-hop-unchanged" || name == "advertise-local-labeled-route" || name == "rpki-origin-as-validation-disable" || name == "flowspec-validation" || name == "encapsulation-type" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "enforce-multiple-labels" || name == "as-override" || name == "multipath" || name == "send-community-ebgp-graceful-shutdown" || name == "activate" || name == "prefix-orf-policy" || name == "aigp" || name == "aigp-send-med" || name == "allow-as-in" || name == "advertise-orf" || name == "route-reflector-client" || name == "next-hop-self" || name == "route-policy-in" || name == "default-weight" || name == "af-group" || name == "next-hop-unchanged-multipath" || name == "optimal-route-reflection-group" || name == "accept-own" || name == "route-policy-out" || name == "advertise-permanent-network")
         return true;
     return false;
 }
@@ -8860,7 +9085,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::Ne
     shutdown{YType::boolean, "shutdown"},
     description{YType::str, "description"},
     ebgp_recv_dmz{YType::boolean, "ebgp-recv-dmz"},
-    neighbor_graceful_restart{YType::boolean, "neighbor-graceful-restart"},
+    neighbor_graceful_restart{YType::enumeration, "neighbor-graceful-restart"},
     enforce_first_as{YType::boolean, "enforce-first-as"},
     idle_watch_time{YType::uint32, "idle-watch-time"},
     session_open_mode{YType::enumeration, "session-open-mode"},
@@ -9809,11 +10034,12 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::Ne
     default_weight{YType::uint32, "default-weight"},
     af_group{YType::str, "af-group"},
     next_hop_unchanged_multipath{YType::boolean, "next-hop-unchanged-multipath"},
+    optimal_route_reflection_group{YType::str, "optimal-route-reflection-group"},
     accept_own{YType::boolean, "accept-own"},
     route_policy_out{YType::str, "route-policy-out"},
     advertise_permanent_network{YType::empty, "advertise-permanent-network"}
     	,
-    aigp_cost_community(nullptr) // presence node
+    aigp_cost_community(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AigpCostCommunity>())
 	,advertise_def_imp_disable_v6(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseDefImpDisableV6>())
 	,advertise_disable(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseDisable>())
 	,maximum_prefixes(nullptr) // presence node
@@ -9834,6 +10060,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::Ne
 	,remove_private_as_entire_as_path(nullptr) // presence node
 	,advertise_vrf_imp_disable_v4(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::AdvertiseVrfImpDisableV4>())
 {
+    aigp_cost_community->parent = this;
     advertise_def_imp_disable_v6->parent = this;
     advertise_disable->parent = this;
     advertise_def_imp_disable_v4->parent = this;
@@ -9889,6 +10116,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
 	|| default_weight.is_set
 	|| af_group.is_set
 	|| next_hop_unchanged_multipath.is_set
+	|| optimal_route_reflection_group.is_set
 	|| accept_own.is_set
 	|| route_policy_out.is_set
 	|| advertise_permanent_network.is_set
@@ -9946,6 +10174,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
 	|| ydk::is_set(default_weight.yfilter)
 	|| ydk::is_set(af_group.yfilter)
 	|| ydk::is_set(next_hop_unchanged_multipath.yfilter)
+	|| ydk::is_set(optimal_route_reflection_group.yfilter)
 	|| ydk::is_set(accept_own.yfilter)
 	|| ydk::is_set(route_policy_out.yfilter)
 	|| ydk::is_set(advertise_permanent_network.yfilter)
@@ -10011,6 +10240,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (default_weight.is_set || is_set(default_weight.yfilter)) leaf_name_data.push_back(default_weight.get_name_leafdata());
     if (af_group.is_set || is_set(af_group.yfilter)) leaf_name_data.push_back(af_group.get_name_leafdata());
     if (next_hop_unchanged_multipath.is_set || is_set(next_hop_unchanged_multipath.yfilter)) leaf_name_data.push_back(next_hop_unchanged_multipath.get_name_leafdata());
+    if (optimal_route_reflection_group.is_set || is_set(optimal_route_reflection_group.yfilter)) leaf_name_data.push_back(optimal_route_reflection_group.get_name_leafdata());
     if (accept_own.is_set || is_set(accept_own.yfilter)) leaf_name_data.push_back(accept_own.get_name_leafdata());
     if (route_policy_out.is_set || is_set(route_policy_out.yfilter)) leaf_name_data.push_back(route_policy_out.get_name_leafdata());
     if (advertise_permanent_network.is_set || is_set(advertise_permanent_network.yfilter)) leaf_name_data.push_back(advertise_permanent_network.get_name_leafdata());
@@ -10487,6 +10717,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
         next_hop_unchanged_multipath.value_namespace = name_space;
         next_hop_unchanged_multipath.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "optimal-route-reflection-group")
+    {
+        optimal_route_reflection_group = value;
+        optimal_route_reflection_group.value_namespace = name_space;
+        optimal_route_reflection_group.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "accept-own")
     {
         accept_own = value;
@@ -10625,6 +10861,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
     {
         next_hop_unchanged_multipath.yfilter = yfilter;
     }
+    if(value_path == "optimal-route-reflection-group")
+    {
+        optimal_route_reflection_group.yfilter = yfilter;
+    }
     if(value_path == "accept-own")
     {
         accept_own.yfilter = yfilter;
@@ -10641,7 +10881,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "aigp-cost-community" || name == "advertise-def-imp-disable-v6" || name == "advertise-disable" || name == "maximum-prefixes" || name == "remove-private-as-entire-as-path-inbound" || name == "advertise-def-imp-disable-v4" || name == "advertise-l2vpn-evpn" || name == "advertise-local-l2vpn-evpn" || name == "neighbor-af-long-lived-graceful-restart-stale-time" || name == "site-of-origin" || name == "advertise-v6" || name == "advertise-local-v6" || name == "import" || name == "default-originate" || name == "soft-reconfiguration" || name == "advertise-vrf-imp-disable-v6" || name == "advertise-v4" || name == "advertise-local-v4" || name == "remove-private-as-entire-as-path" || name == "advertise-vrf-imp-disable-v4" || name == "af-name" || name == "neighbor-af-long-lived-graceful-restart-capable" || name == "l2vpn-signalling" || name == "send-ext-community-ebgp" || name == "accept-route-legacy-rt" || name == "send-community-ebgp" || name == "send-multicast-attr" || name == "next-hop-unchanged" || name == "advertise-local-labeled-route" || name == "rpki-origin-as-validation-disable" || name == "flowspec-validation" || name == "encapsulation-type" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "enforce-multiple-labels" || name == "as-override" || name == "multipath" || name == "send-community-ebgp-graceful-shutdown" || name == "activate" || name == "prefix-orf-policy" || name == "aigp" || name == "aigp-send-med" || name == "allow-as-in" || name == "advertise-orf" || name == "route-reflector-client" || name == "next-hop-self" || name == "route-policy-in" || name == "default-weight" || name == "af-group" || name == "next-hop-unchanged-multipath" || name == "accept-own" || name == "route-policy-out" || name == "advertise-permanent-network")
+    if(name == "aigp-cost-community" || name == "advertise-def-imp-disable-v6" || name == "advertise-disable" || name == "maximum-prefixes" || name == "remove-private-as-entire-as-path-inbound" || name == "advertise-def-imp-disable-v4" || name == "advertise-l2vpn-evpn" || name == "advertise-local-l2vpn-evpn" || name == "neighbor-af-long-lived-graceful-restart-stale-time" || name == "site-of-origin" || name == "advertise-v6" || name == "advertise-local-v6" || name == "import" || name == "default-originate" || name == "soft-reconfiguration" || name == "advertise-vrf-imp-disable-v6" || name == "advertise-v4" || name == "advertise-local-v4" || name == "remove-private-as-entire-as-path" || name == "advertise-vrf-imp-disable-v4" || name == "af-name" || name == "neighbor-af-long-lived-graceful-restart-capable" || name == "l2vpn-signalling" || name == "send-ext-community-ebgp" || name == "accept-route-legacy-rt" || name == "send-community-ebgp" || name == "send-multicast-attr" || name == "next-hop-unchanged" || name == "advertise-local-labeled-route" || name == "rpki-origin-as-validation-disable" || name == "flowspec-validation" || name == "encapsulation-type" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "enforce-multiple-labels" || name == "as-override" || name == "multipath" || name == "send-community-ebgp-graceful-shutdown" || name == "activate" || name == "prefix-orf-policy" || name == "aigp" || name == "aigp-send-med" || name == "allow-as-in" || name == "advertise-orf" || name == "route-reflector-client" || name == "next-hop-self" || name == "route-policy-in" || name == "default-weight" || name == "af-group" || name == "next-hop-unchanged-multipath" || name == "optimal-route-reflection-group" || name == "accept-own" || name == "route-policy-out" || name == "advertise-permanent-network")
         return true;
     return false;
 }
@@ -15221,11 +15461,12 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup:
     route_policy_in{YType::str, "route-policy-in"},
     default_weight{YType::uint32, "default-weight"},
     next_hop_unchanged_multipath{YType::boolean, "next-hop-unchanged-multipath"},
+    optimal_route_reflection_group{YType::str, "optimal-route-reflection-group"},
     accept_own{YType::boolean, "accept-own"},
     route_policy_out{YType::str, "route-policy-out"},
     advertise_permanent_network{YType::empty, "advertise-permanent-network"}
     	,
-    aigp_cost_community(nullptr) // presence node
+    aigp_cost_community(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AigpCostCommunity>())
 	,advertise_def_imp_disable_v6(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseDefImpDisableV6>())
 	,advertise_disable(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseDisable>())
 	,maximum_prefixes(nullptr) // presence node
@@ -15246,6 +15487,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup:
 	,remove_private_as_entire_as_path(nullptr) // presence node
 	,advertise_vrf_imp_disable_v4(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::AdvertiseVrfImpDisableV4>())
 {
+    aigp_cost_community->parent = this;
     advertise_def_imp_disable_v6->parent = this;
     advertise_disable->parent = this;
     advertise_def_imp_disable_v4->parent = this;
@@ -15301,6 +15543,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfG
 	|| route_policy_in.is_set
 	|| default_weight.is_set
 	|| next_hop_unchanged_multipath.is_set
+	|| optimal_route_reflection_group.is_set
 	|| accept_own.is_set
 	|| route_policy_out.is_set
 	|| advertise_permanent_network.is_set
@@ -15358,6 +15601,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfG
 	|| ydk::is_set(route_policy_in.yfilter)
 	|| ydk::is_set(default_weight.yfilter)
 	|| ydk::is_set(next_hop_unchanged_multipath.yfilter)
+	|| ydk::is_set(optimal_route_reflection_group.yfilter)
 	|| ydk::is_set(accept_own.yfilter)
 	|| ydk::is_set(route_policy_out.yfilter)
 	|| ydk::is_set(advertise_permanent_network.yfilter)
@@ -15423,6 +15667,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (route_policy_in.is_set || is_set(route_policy_in.yfilter)) leaf_name_data.push_back(route_policy_in.get_name_leafdata());
     if (default_weight.is_set || is_set(default_weight.yfilter)) leaf_name_data.push_back(default_weight.get_name_leafdata());
     if (next_hop_unchanged_multipath.is_set || is_set(next_hop_unchanged_multipath.yfilter)) leaf_name_data.push_back(next_hop_unchanged_multipath.get_name_leafdata());
+    if (optimal_route_reflection_group.is_set || is_set(optimal_route_reflection_group.yfilter)) leaf_name_data.push_back(optimal_route_reflection_group.get_name_leafdata());
     if (accept_own.is_set || is_set(accept_own.yfilter)) leaf_name_data.push_back(accept_own.get_name_leafdata());
     if (route_policy_out.is_set || is_set(route_policy_out.yfilter)) leaf_name_data.push_back(route_policy_out.get_name_leafdata());
     if (advertise_permanent_network.is_set || is_set(advertise_permanent_network.yfilter)) leaf_name_data.push_back(advertise_permanent_network.get_name_leafdata());
@@ -15899,6 +16144,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfG
         next_hop_unchanged_multipath.value_namespace = name_space;
         next_hop_unchanged_multipath.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "optimal-route-reflection-group")
+    {
+        optimal_route_reflection_group = value;
+        optimal_route_reflection_group.value_namespace = name_space;
+        optimal_route_reflection_group.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "accept-own")
     {
         accept_own = value;
@@ -16037,6 +16288,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfG
     {
         next_hop_unchanged_multipath.yfilter = yfilter;
     }
+    if(value_path == "optimal-route-reflection-group")
+    {
+        optimal_route_reflection_group.yfilter = yfilter;
+    }
     if(value_path == "accept-own")
     {
         accept_own.yfilter = yfilter;
@@ -16053,7 +16308,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfG
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "aigp-cost-community" || name == "advertise-def-imp-disable-v6" || name == "advertise-disable" || name == "maximum-prefixes" || name == "remove-private-as-entire-as-path-inbound" || name == "advertise-def-imp-disable-v4" || name == "advertise-l2vpn-evpn" || name == "advertise-local-l2vpn-evpn" || name == "neighbor-af-long-lived-graceful-restart-stale-time" || name == "site-of-origin" || name == "advertise-v6" || name == "advertise-local-v6" || name == "import" || name == "default-originate" || name == "soft-reconfiguration" || name == "advertise-vrf-imp-disable-v6" || name == "advertise-v4" || name == "advertise-local-v4" || name == "remove-private-as-entire-as-path" || name == "advertise-vrf-imp-disable-v4" || name == "af-name" || name == "af-group" || name == "create" || name == "neighbor-af-long-lived-graceful-restart-capable" || name == "l2vpn-signalling" || name == "send-ext-community-ebgp" || name == "accept-route-legacy-rt" || name == "send-community-ebgp" || name == "send-multicast-attr" || name == "next-hop-unchanged" || name == "advertise-local-labeled-route" || name == "rpki-origin-as-validation-disable" || name == "flowspec-validation" || name == "encapsulation-type" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "enforce-multiple-labels" || name == "as-override" || name == "multipath" || name == "send-community-ebgp-graceful-shutdown" || name == "prefix-orf-policy" || name == "aigp" || name == "aigp-send-med" || name == "allow-as-in" || name == "advertise-orf" || name == "route-reflector-client" || name == "next-hop-self" || name == "route-policy-in" || name == "default-weight" || name == "next-hop-unchanged-multipath" || name == "accept-own" || name == "route-policy-out" || name == "advertise-permanent-network")
+    if(name == "aigp-cost-community" || name == "advertise-def-imp-disable-v6" || name == "advertise-disable" || name == "maximum-prefixes" || name == "remove-private-as-entire-as-path-inbound" || name == "advertise-def-imp-disable-v4" || name == "advertise-l2vpn-evpn" || name == "advertise-local-l2vpn-evpn" || name == "neighbor-af-long-lived-graceful-restart-stale-time" || name == "site-of-origin" || name == "advertise-v6" || name == "advertise-local-v6" || name == "import" || name == "default-originate" || name == "soft-reconfiguration" || name == "advertise-vrf-imp-disable-v6" || name == "advertise-v4" || name == "advertise-local-v4" || name == "remove-private-as-entire-as-path" || name == "advertise-vrf-imp-disable-v4" || name == "af-name" || name == "af-group" || name == "create" || name == "neighbor-af-long-lived-graceful-restart-capable" || name == "l2vpn-signalling" || name == "send-ext-community-ebgp" || name == "accept-route-legacy-rt" || name == "send-community-ebgp" || name == "send-multicast-attr" || name == "next-hop-unchanged" || name == "advertise-local-labeled-route" || name == "rpki-origin-as-validation-disable" || name == "flowspec-validation" || name == "encapsulation-type" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "enforce-multiple-labels" || name == "as-override" || name == "multipath" || name == "send-community-ebgp-graceful-shutdown" || name == "prefix-orf-policy" || name == "aigp" || name == "aigp-send-med" || name == "allow-as-in" || name == "advertise-orf" || name == "route-reflector-client" || name == "next-hop-self" || name == "route-policy-in" || name == "default-weight" || name == "next-hop-unchanged-multipath" || name == "optimal-route-reflection-group" || name == "accept-own" || name == "route-policy-out" || name == "advertise-permanent-network")
         return true;
     return false;
 }
@@ -18272,7 +18527,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     shutdown{YType::boolean, "shutdown"},
     description{YType::str, "description"},
     ebgp_recv_dmz{YType::boolean, "ebgp-recv-dmz"},
-    neighbor_graceful_restart{YType::boolean, "neighbor-graceful-restart"},
+    neighbor_graceful_restart{YType::enumeration, "neighbor-graceful-restart"},
     enforce_first_as{YType::boolean, "enforce-first-as"},
     idle_watch_time{YType::uint32, "idle-watch-time"},
     session_open_mode{YType::enumeration, "session-open-mode"},
@@ -19323,188 +19578,6 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "server-id")
-        return true;
-    return false;
-}
-
-Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::EbgpMultihop()
-    :
-    max_hop_count{YType::uint32, "max-hop-count"},
-    mpls_deactivation{YType::boolean, "mpls-deactivation"}
-{
-
-    yang_name = "ebgp-multihop"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::~EbgpMultihop()
-{
-}
-
-bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::has_data() const
-{
-    return max_hop_count.is_set
-	|| mpls_deactivation.is_set;
-}
-
-bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max_hop_count.yfilter)
-	|| ydk::is_set(mpls_deactivation.yfilter);
-}
-
-std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ebgp-multihop";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_hop_count.is_set || is_set(max_hop_count.yfilter)) leaf_name_data.push_back(max_hop_count.get_name_leafdata());
-    if (mpls_deactivation.is_set || is_set(mpls_deactivation.yfilter)) leaf_name_data.push_back(mpls_deactivation.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max-hop-count")
-    {
-        max_hop_count = value;
-        max_hop_count.value_namespace = name_space;
-        max_hop_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mpls-deactivation")
-    {
-        mpls_deactivation = value;
-        mpls_deactivation.value_namespace = name_space;
-        mpls_deactivation.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max-hop-count")
-    {
-        max_hop_count.yfilter = yfilter;
-    }
-    if(value_path == "mpls-deactivation")
-    {
-        mpls_deactivation.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max-hop-count" || name == "mpls-deactivation")
-        return true;
-    return false;
-}
-
-Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::RemoteAs()
-    :
-    as_xx{YType::uint32, "as-xx"},
-    as_yy{YType::uint32, "as-yy"}
-{
-
-    yang_name = "remote-as"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::~RemoteAs()
-{
-}
-
-bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::has_data() const
-{
-    return as_xx.is_set
-	|| as_yy.is_set;
-}
-
-bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(as_xx.yfilter)
-	|| ydk::is_set(as_yy.yfilter);
-}
-
-std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-as";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
-    if (as_yy.is_set || is_set(as_yy.yfilter)) leaf_name_data.push_back(as_yy.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "as-xx")
-    {
-        as_xx = value;
-        as_xx.value_namespace = name_space;
-        as_xx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "as-yy")
-    {
-        as_yy = value;
-        as_yy.value_namespace = name_space;
-        as_yy.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "as-xx")
-    {
-        as_xx.yfilter = yfilter;
-    }
-    if(value_path == "as-yy")
-    {
-        as_yy.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "as-xx" || name == "as-yy")
         return true;
     return false;
 }

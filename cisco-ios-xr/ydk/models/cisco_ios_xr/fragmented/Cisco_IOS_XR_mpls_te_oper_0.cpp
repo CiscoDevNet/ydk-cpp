@@ -5,13 +5,13 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_0.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_32.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_33.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_30.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_2.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_1.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_16.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_33.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_32.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_30.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_31.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_2.hpp"
 
 using namespace ydk;
 
@@ -24167,7 +24167,8 @@ const Enum::YLeaf MplsTeReoptDecisionReason::worse_diversity {37, "worse-diversi
 const Enum::YLeaf MplsTeReoptDecisionReason::bfd_session_type_changed {38, "bfd-session-type-changed"};
 const Enum::YLeaf MplsTeReoptDecisionReason::lsp_drop_mode {39, "lsp-drop-mode"};
 const Enum::YLeaf MplsTeReoptDecisionReason::strict_spf {40, "strict-spf"};
-const Enum::YLeaf MplsTeReoptDecisionReason::not_used {41, "not-used"};
+const Enum::YLeaf MplsTeReoptDecisionReason::intra_area {41, "intra-area"};
+const Enum::YLeaf MplsTeReoptDecisionReason::not_used {42, "not-used"};
 
 const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_not_ready {0, "lsp-wrap-not-ready"};
 const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_active {1, "lsp-wrap-active"};
@@ -24199,6 +24200,7 @@ const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm100g_hz {1, "dwdm100g-hz"};
 const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm50g_hz {2, "dwdm50g-hz"};
 const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm25g_hz {3, "dwdm25g-hz"};
 const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm12g_hz {4, "dwdm12g-hz"};
+const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm6g_hz {5, "dwdm6g-hz"};
 
 const Enum::YLeaf GmplsUniMgmtWdmGrid::not_set {0, "not-set"};
 const Enum::YLeaf GmplsUniMgmtWdmGrid::dwdm {1, "dwdm"};
@@ -24571,36 +24573,38 @@ const Enum::YLeaf TeP2MpS2LDeletionSubcause::restore_not_needed_for_standby {204
 const Enum::YLeaf TeP2MpS2LDeletionSubcause::restore_dp_down {205, "restore-dp-down"};
 const Enum::YLeaf TeP2MpS2LDeletionSubcause::current_not_needed_dp_down {206, "current-not-needed-dp-down"};
 const Enum::YLeaf TeP2MpS2LDeletionSubcause::bad_protct_obj {207, "bad-protct-obj"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_down {208, "optical-link-down"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_lsp_out_of_sync {209, "optical-link-lsp-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_owner_out_of_sync {210, "optical-link-owner-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_interface_handle_out_of_sync {211, "optical-link-interface-handle-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_hop_out_of_sync {212, "optical-link-hop-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_role_out_of_sync {213, "optical-link-role-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_downstream_router_id_out_of_sync {214, "optical-link-downstream-router-id-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_upstream_router_id_out_of_sync {215, "optical-link-upstream-router-id-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_encoding_type_out_of_sync {216, "optical-link-encoding-type-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_switching_type_out_of_sync {217, "optical-link-switching-type-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_gpid_out_of_sync {218, "optical-link-gpid-out-of-sync"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::egress_optical_link_not_found {219, "egress-optical-link-not-found"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::ingress_optical_link_not_found {220, "ingress-optical-link-not-found"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::sync_dest_state {221, "sync-dest-state"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::prot_object_err {222, "prot-object-err"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_s2l_deleted {223, "reverse-s2l-deleted"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::cancel_inprogress_by_slave {224, "cancel-inprogress-by-slave"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::invalid_reverse_ero {225, "invalid-reverse-ero"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_lsp_not_found {226, "reverse-lsp-not-found"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_lsp_not_present {227, "reverse-lsp-not-present"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::associated_vif_down {228, "associated-vif-down"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::vif_sync_processing {229, "vif-sync-processing"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::incoming_interface_lockout {230, "incoming-interface-lockout"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::sr_egress_path_changed {231, "sr-egress-path-changed"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::in_if_fail_imp_null_cfg_ch {232, "in-if-fail-imp-null-cfg-ch"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_lsp_failure {233, "reverse-lsp-failure"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::lsp_wrap_label_error {234, "lsp-wrap-label-error"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::lsp_wrap_rewrite_error {235, "lsp-wrap-rewrite-error"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::transit_lsp_out_of_resources {236, "transit-lsp-out-of-resources"};
-const Enum::YLeaf TeP2MpS2LDeletionSubcause::fsm_sc_must_be_last {237, "fsm-sc-must-be-last"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::head_flexi_cap_change {208, "head-flexi-cap-change"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::tail_flexi_cap_change {209, "tail-flexi-cap-change"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_down {210, "optical-link-down"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_lsp_out_of_sync {211, "optical-link-lsp-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_owner_out_of_sync {212, "optical-link-owner-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_interface_handle_out_of_sync {213, "optical-link-interface-handle-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_hop_out_of_sync {214, "optical-link-hop-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_role_out_of_sync {215, "optical-link-role-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_downstream_router_id_out_of_sync {216, "optical-link-downstream-router-id-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_upstream_router_id_out_of_sync {217, "optical-link-upstream-router-id-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_encoding_type_out_of_sync {218, "optical-link-encoding-type-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_switching_type_out_of_sync {219, "optical-link-switching-type-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::optical_link_gpid_out_of_sync {220, "optical-link-gpid-out-of-sync"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::egress_optical_link_not_found {221, "egress-optical-link-not-found"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::ingress_optical_link_not_found {222, "ingress-optical-link-not-found"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::sync_dest_state {223, "sync-dest-state"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::prot_object_err {224, "prot-object-err"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_s2l_deleted {225, "reverse-s2l-deleted"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::cancel_inprogress_by_slave {226, "cancel-inprogress-by-slave"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::invalid_reverse_ero {227, "invalid-reverse-ero"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_lsp_not_found {228, "reverse-lsp-not-found"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_lsp_not_present {229, "reverse-lsp-not-present"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::associated_vif_down {230, "associated-vif-down"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::vif_sync_processing {231, "vif-sync-processing"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::incoming_interface_lockout {232, "incoming-interface-lockout"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::sr_egress_path_changed {233, "sr-egress-path-changed"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::in_if_fail_imp_null_cfg_ch {234, "in-if-fail-imp-null-cfg-ch"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::reverse_lsp_failure {235, "reverse-lsp-failure"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::lsp_wrap_label_error {236, "lsp-wrap-label-error"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::lsp_wrap_rewrite_error {237, "lsp-wrap-rewrite-error"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::transit_lsp_out_of_resources {238, "transit-lsp-out-of-resources"};
+const Enum::YLeaf TeP2MpS2LDeletionSubcause::fsm_sc_must_be_last {239, "fsm-sc-must-be-last"};
 
 const Enum::YLeaf TeP2MpS2LDeletionCause::no_cause {0, "no-cause"};
 const Enum::YLeaf TeP2MpS2LDeletionCause::hpath_cr_err {1, "hpath-cr-err"};

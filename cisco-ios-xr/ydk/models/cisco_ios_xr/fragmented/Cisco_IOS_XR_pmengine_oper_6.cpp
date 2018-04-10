@@ -12,6 +12,1002 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pmengine_oper {
 
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::has_data() const
+{
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-se-ss";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::has_data() const
+{
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-c-vs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::has_data() const
+{
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-ua-ss";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::has_data() const
+{
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-fc-ls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::Ethernet()
+    :
+    ethernet_ports(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts>())
+{
+    ethernet_ports->parent = this;
+
+    yang_name = "ethernet"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+PerformanceManagement::Ethernet::~Ethernet()
+{
+}
+
+bool PerformanceManagement::Ethernet::has_data() const
+{
+    return (ethernet_ports !=  nullptr && ethernet_ports->has_data());
+}
+
+bool PerformanceManagement::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ethernet_ports !=  nullptr && ethernet_ports->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pmengine-oper:performance-management/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PerformanceManagement::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-ports")
+    {
+        if(ethernet_ports == nullptr)
+        {
+            ethernet_ports = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts>();
+        }
+        return ethernet_ports;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet_ports != nullptr)
+    {
+        children["ethernet-ports"] = ethernet_ports;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-ports")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPorts()
+{
+
+    yang_name = "ethernet-ports"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::~EthernetPorts()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::has_data() const
+{
+    for (std::size_t index=0; index<ethernet_port.size(); index++)
+    {
+        if(ethernet_port[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::has_operation() const
+{
+    for (std::size_t index=0; index<ethernet_port.size(); index++)
+    {
+        if(ethernet_port[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pmengine-oper:performance-management/ethernet/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-ports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-port")
+    {
+        auto c = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort>();
+        c->parent = this;
+        ethernet_port.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : ethernet_port)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-port")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetPort()
+    :
+    name{YType::str, "name"}
+    	,
+    ethernet_current(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent>())
+{
+    ethernet_current->parent = this;
+
+    yang_name = "ethernet-port"; yang_parent_name = "ethernet-ports"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::~EthernetPort()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::has_data() const
+{
+    return name.is_set
+	|| (ethernet_current !=  nullptr && ethernet_current->has_data());
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (ethernet_current !=  nullptr && ethernet_current->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pmengine-oper:performance-management/ethernet/ethernet-ports/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-port" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-current")
+    {
+        if(ethernet_current == nullptr)
+        {
+            ethernet_current = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent>();
+        }
+        return ethernet_current;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet_current != nullptr)
+    {
+        children["ethernet-current"] = ethernet_current;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-current" || name == "name")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetCurrent()
+    :
+    ethernet_second30(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30>())
+	,ethernet_hour24(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24>())
+	,minute15(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15>())
+{
+    ethernet_second30->parent = this;
+    ethernet_hour24->parent = this;
+    minute15->parent = this;
+
+    yang_name = "ethernet-current"; yang_parent_name = "ethernet-port"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::~EthernetCurrent()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::has_data() const
+{
+    return (ethernet_second30 !=  nullptr && ethernet_second30->has_data())
+	|| (ethernet_hour24 !=  nullptr && ethernet_hour24->has_data())
+	|| (minute15 !=  nullptr && minute15->has_data());
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ethernet_second30 !=  nullptr && ethernet_second30->has_operation())
+	|| (ethernet_hour24 !=  nullptr && ethernet_hour24->has_operation())
+	|| (minute15 !=  nullptr && minute15->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-current";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-second30")
+    {
+        if(ethernet_second30 == nullptr)
+        {
+            ethernet_second30 = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30>();
+        }
+        return ethernet_second30;
+    }
+
+    if(child_yang_name == "ethernet-hour24")
+    {
+        if(ethernet_hour24 == nullptr)
+        {
+            ethernet_hour24 = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24>();
+        }
+        return ethernet_hour24;
+    }
+
+    if(child_yang_name == "minute15")
+    {
+        if(minute15 == nullptr)
+        {
+            minute15 = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15>();
+        }
+        return minute15;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet_second30 != nullptr)
+    {
+        children["ethernet-second30"] = ethernet_second30;
+    }
+
+    if(ethernet_hour24 != nullptr)
+    {
+        children["ethernet-hour24"] = ethernet_hour24;
+    }
+
+    if(minute15 != nullptr)
+    {
+        children["minute15"] = minute15;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-second30" || name == "ethernet-hour24" || name == "minute15")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::EthernetSecond30()
+    :
+    second30_ethers(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers>())
+{
+    second30_ethers->parent = this;
+
+    yang_name = "ethernet-second30"; yang_parent_name = "ethernet-current"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::~EthernetSecond30()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::has_data() const
+{
+    return (second30_ethers !=  nullptr && second30_ethers->has_data());
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::has_operation() const
+{
+    return is_set(yfilter)
+	|| (second30_ethers !=  nullptr && second30_ethers->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-second30";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ethers")
+    {
+        if(second30_ethers == nullptr)
+        {
+            second30_ethers = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers>();
+        }
+        return second30_ethers;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(second30_ethers != nullptr)
+    {
+        children["second30-ethers"] = second30_ethers;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ethers")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ethers()
+{
+
+    yang_name = "second30-ethers"; yang_parent_name = "ethernet-second30"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::~Second30Ethers()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::has_data() const
+{
+    for (std::size_t index=0; index<second30_ether.size(); index++)
+    {
+        if(second30_ether[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::has_operation() const
+{
+    for (std::size_t index=0; index<second30_ether.size(); index++)
+    {
+        if(second30_ether[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "second30-ethers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ether")
+    {
+        auto c = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether>();
+        c->parent = this;
+        second30_ether.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : second30_ether)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether")
+        return true;
+    return false;
+}
+
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether::Second30Ether()
     :
     slot_number{YType::int32, "slot-number"},
@@ -19441,1196 +20437,6 @@ void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 }
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts512To1023Octets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::InPkts1024To1518Octets()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "in-pkts1024-to1518-octets"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::~InPkts1024To1518Octets()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "in-pkts1024-to1518-octets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::InPkts1024To1518Octets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::Outpkt64Octet()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "outpkt64octet"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::~Outpkt64Octet()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "outpkt64octet";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::Outpkt64Octet::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::OutPkts65127Octets()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "out-pkts65127-octets"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::~OutPkts65127Octets()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "out-pkts65127-octets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts65127Octets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::OutPkts128255Octets()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "out-pkts128255-octets"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::~OutPkts128255Octets()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "out-pkts128255-octets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts128255Octets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::OutPkts256511Octets()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "out-pkts256511-octets"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::~OutPkts256511Octets()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "out-pkts256511-octets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts256511Octets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::OutPkts5121023Octets()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "out-pkts5121023-octets"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::~OutPkts5121023Octets()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "out-pkts5121023-octets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts5121023Octets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::OutPkts10241518Octets()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "out-pkts10241518-octets"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::~OutPkts10241518Octets()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "out-pkts10241518-octets";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::OutPkts10241518Octets::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::RxUtil()
-    :
-    data{YType::str, "data"},
-    threshold{YType::str, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "rx-util"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::~RxUtil()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-util";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::RxUtil::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::TxUtil()
-    :
-    data{YType::str, "data"},
-    threshold{YType::str, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "tx-util"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::~TxUtil()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-util";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUtil::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::TxUndersizedPkt()
-    :
-    data{YType::uint64, "data"},
-    threshold{YType::uint64, "threshold"},
-    tca_report{YType::boolean, "tca-report"},
-    valid{YType::boolean, "valid"}
-{
-
-    yang_name = "tx-undersized-pkt"; yang_parent_name = "ethernet-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::~TxUndersizedPkt()
-{
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set
-	|| valid.is_set;
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter)
-	|| ydk::is_set(valid.yfilter);
-}
-
-std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-undersized-pkt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24::EthernetHour24EtherS::EthernetHour24Ether::TxUndersizedPkt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;

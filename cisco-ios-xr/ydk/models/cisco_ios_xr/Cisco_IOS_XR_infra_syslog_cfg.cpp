@@ -4670,11 +4670,9 @@ Syslog::Files::File::File()
     file_name{YType::str, "file-name"}
     	,
     file_specification(std::make_shared<Syslog::Files::File::FileSpecification>())
-	,file_log_attributes(std::make_shared<Syslog::Files::File::FileLogAttributes>())
 	,file_log_discriminator(std::make_shared<Syslog::Files::File::FileLogDiscriminator>())
 {
     file_specification->parent = this;
-    file_log_attributes->parent = this;
     file_log_discriminator->parent = this;
 
     yang_name = "file"; yang_parent_name = "files"; is_top_level_class = false; has_list_ancestor = false;
@@ -4688,7 +4686,6 @@ bool Syslog::Files::File::has_data() const
 {
     return file_name.is_set
 	|| (file_specification !=  nullptr && file_specification->has_data())
-	|| (file_log_attributes !=  nullptr && file_log_attributes->has_data())
 	|| (file_log_discriminator !=  nullptr && file_log_discriminator->has_data());
 }
 
@@ -4697,7 +4694,6 @@ bool Syslog::Files::File::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(file_name.yfilter)
 	|| (file_specification !=  nullptr && file_specification->has_operation())
-	|| (file_log_attributes !=  nullptr && file_log_attributes->has_operation())
 	|| (file_log_discriminator !=  nullptr && file_log_discriminator->has_operation());
 }
 
@@ -4736,15 +4732,6 @@ std::shared_ptr<Entity> Syslog::Files::File::get_child_by_name(const std::string
         return file_specification;
     }
 
-    if(child_yang_name == "file-log-attributes")
-    {
-        if(file_log_attributes == nullptr)
-        {
-            file_log_attributes = std::make_shared<Syslog::Files::File::FileLogAttributes>();
-        }
-        return file_log_attributes;
-    }
-
     if(child_yang_name == "file-log-discriminator")
     {
         if(file_log_discriminator == nullptr)
@@ -4764,11 +4751,6 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::get_children
     if(file_specification != nullptr)
     {
         children["file-specification"] = file_specification;
-    }
-
-    if(file_log_attributes != nullptr)
-    {
-        children["file-log-attributes"] = file_log_attributes;
     }
 
     if(file_log_discriminator != nullptr)
@@ -4799,7 +4781,7 @@ void Syslog::Files::File::set_filter(const std::string & value_path, YFilter yfi
 
 bool Syslog::Files::File::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "file-specification" || name == "file-log-attributes" || name == "file-log-discriminator" || name == "file-name")
+    if(name == "file-specification" || name == "file-log-discriminator" || name == "file-name")
         return true;
     return false;
 }
@@ -4905,97 +4887,6 @@ void Syslog::Files::File::FileSpecification::set_filter(const std::string & valu
 bool Syslog::Files::File::FileSpecification::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path" || name == "max-file-size" || name == "severity")
-        return true;
-    return false;
-}
-
-Syslog::Files::File::FileLogAttributes::FileLogAttributes()
-    :
-    max_file_size{YType::int32, "max-file-size"},
-    severity{YType::int32, "severity"}
-{
-
-    yang_name = "file-log-attributes"; yang_parent_name = "file"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Syslog::Files::File::FileLogAttributes::~FileLogAttributes()
-{
-}
-
-bool Syslog::Files::File::FileLogAttributes::has_data() const
-{
-    return max_file_size.is_set
-	|| severity.is_set;
-}
-
-bool Syslog::Files::File::FileLogAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max_file_size.yfilter)
-	|| ydk::is_set(severity.yfilter);
-}
-
-std::string Syslog::Files::File::FileLogAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "file-log-attributes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Syslog::Files::File::FileLogAttributes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_file_size.is_set || is_set(max_file_size.yfilter)) leaf_name_data.push_back(max_file_size.get_name_leafdata());
-    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Syslog::Files::File::FileLogAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::FileLogAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Syslog::Files::File::FileLogAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max-file-size")
-    {
-        max_file_size = value;
-        max_file_size.value_namespace = name_space;
-        max_file_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity")
-    {
-        severity = value;
-        severity.value_namespace = name_space;
-        severity.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::Files::File::FileLogAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max-file-size")
-    {
-        max_file_size.yfilter = yfilter;
-    }
-    if(value_path == "severity")
-    {
-        severity.yfilter = yfilter;
-    }
-}
-
-bool Syslog::Files::File::FileLogAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max-file-size" || name == "severity")
         return true;
     return false;
 }

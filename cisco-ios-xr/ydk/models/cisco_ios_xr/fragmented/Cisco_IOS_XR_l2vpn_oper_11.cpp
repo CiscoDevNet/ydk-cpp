@@ -11601,51 +11601,51 @@ bool L2Vpnv2::Standby::Mvrp::MvrpMainPorts::MvrpMainPort::MvrpBridgePorts::MvrpB
     return false;
 }
 
-L2Vpnv2::Standby::GenericInterfaces::GenericInterfaces()
+L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceLists()
 {
 
-    yang_name = "generic-interfaces"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-interface-lists"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-L2Vpnv2::Standby::GenericInterfaces::~GenericInterfaces()
+L2Vpnv2::Standby::GenericInterfaceLists::~GenericInterfaceLists()
 {
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::has_data() const
+bool L2Vpnv2::Standby::GenericInterfaceLists::has_data() const
 {
-    for (std::size_t index=0; index<generic_interface.size(); index++)
+    for (std::size_t index=0; index<generic_interface_list.size(); index++)
     {
-        if(generic_interface[index]->has_data())
+        if(generic_interface_list[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::has_operation() const
+bool L2Vpnv2::Standby::GenericInterfaceLists::has_operation() const
 {
-    for (std::size_t index=0; index<generic_interface.size(); index++)
+    for (std::size_t index=0; index<generic_interface_list.size(); index++)
     {
-        if(generic_interface[index]->has_operation())
+        if(generic_interface_list[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string L2Vpnv2::Standby::GenericInterfaces::get_absolute_path() const
+std::string L2Vpnv2::Standby::GenericInterfaceLists::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpnv2::Standby::GenericInterfaces::get_segment_path() const
+std::string L2Vpnv2::Standby::GenericInterfaceLists::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-interfaces";
+    path_buffer << "generic-interface-lists";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfaceLists::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11654,25 +11654,25 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfac
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Standby::GenericInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Standby::GenericInterfaceLists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "generic-interface")
+    if(child_yang_name == "generic-interface-list")
     {
-        auto c = std::make_shared<L2Vpnv2::Standby::GenericInterfaces::GenericInterface>();
+        auto c = std::make_shared<L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList>();
         c->parent = this;
-        generic_interface.push_back(c);
+        generic_interface_list.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfaceLists::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : generic_interface)
+    for (auto const & c : generic_interface_list)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11683,22 +11683,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfac
     return children;
 }
 
-void L2Vpnv2::Standby::GenericInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Standby::GenericInterfaceLists::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Vpnv2::Standby::GenericInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Standby::GenericInterfaceLists::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Standby::GenericInterfaceLists::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "generic-interface")
+    if(name == "generic-interface-list")
         return true;
     return false;
 }
 
-L2Vpnv2::Standby::GenericInterfaces::GenericInterface::GenericInterface()
+L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::GenericInterfaceList()
     :
     interface_list_name{YType::str, "interface-list-name"},
     interface_list_name_xr{YType::str, "interface-list-name-xr"},
@@ -11707,14 +11707,14 @@ L2Vpnv2::Standby::GenericInterfaces::GenericInterface::GenericInterface()
     items{YType::uint32, "items"}
 {
 
-    yang_name = "generic-interface"; yang_parent_name = "generic-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-interface-list"; yang_parent_name = "generic-interface-lists"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-L2Vpnv2::Standby::GenericInterfaces::GenericInterface::~GenericInterface()
+L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::~GenericInterfaceList()
 {
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::has_data() const
+bool L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::has_data() const
 {
     for (std::size_t index=0; index<interface.size(); index++)
     {
@@ -11728,7 +11728,7 @@ bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::has_data() const
 	|| items.is_set;
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::has_operation() const
+bool L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::has_operation() const
 {
     for (std::size_t index=0; index<interface.size(); index++)
     {
@@ -11743,21 +11743,21 @@ bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::has_operation() cons
 	|| ydk::is_set(items.yfilter);
 }
 
-std::string L2Vpnv2::Standby::GenericInterfaces::GenericInterface::get_absolute_path() const
+std::string L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/generic-interfaces/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/generic-interface-lists/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Vpnv2::Standby::GenericInterfaces::GenericInterface::get_segment_path() const
+std::string L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-interface" <<"[interface-list-name='" <<interface_list_name <<"']";
+    path_buffer << "generic-interface-list" <<"[interface-list-name='" <<interface_list_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfaces::GenericInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11771,11 +11771,11 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfac
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Standby::GenericInterfaces::GenericInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface>();
+        auto c = std::make_shared<L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface>();
         c->parent = this;
         interface.push_back(c);
         return c;
@@ -11784,7 +11784,7 @@ std::shared_ptr<Entity> L2Vpnv2::Standby::GenericInterfaces::GenericInterface::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfaces::GenericInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11800,7 +11800,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfac
     return children;
 }
 
-void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-name")
     {
@@ -11834,7 +11834,7 @@ void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::set_value(const std:
     }
 }
 
-void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-list-name")
     {
@@ -11858,14 +11858,14 @@ void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::set_filter(const std
     }
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "interface-list-name" || name == "interface-list-name-xr" || name == "interface-list-id" || name == "number-of-interfaces" || name == "items")
         return true;
     return false;
 }
 
-L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::Interface()
+L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
     pending_replications{YType::uint32, "pending-replications"},
@@ -11873,14 +11873,14 @@ L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::Interface()
     is_fib_downloaded{YType::boolean, "is-fib-downloaded"}
 {
 
-    yang_name = "interface"; yang_parent_name = "generic-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "generic-interface-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::~Interface()
+L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::~Interface()
 {
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::has_data() const
+bool L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::has_data() const
 {
     return interface_name.is_set
 	|| pending_replications.is_set
@@ -11888,7 +11888,7 @@ bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::has_data(
 	|| is_fib_downloaded.is_set;
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::has_operation() const
+bool L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
@@ -11897,14 +11897,14 @@ bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::has_opera
 	|| ydk::is_set(is_fib_downloaded.yfilter);
 }
 
-std::string L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::get_segment_path() const
+std::string L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11917,19 +11917,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Standby::GenericInterfac
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -11957,7 +11957,7 @@ void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::set_value
     }
 }
 
-void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -11977,7 +11977,7 @@ void L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::set_filte
     }
 }
 
-bool L2Vpnv2::Standby::GenericInterfaces::GenericInterface::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Standby::GenericInterfaceLists::GenericInterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "pending-replications" || name == "not-supported-replications" || name == "is-fib-downloaded")
         return true;

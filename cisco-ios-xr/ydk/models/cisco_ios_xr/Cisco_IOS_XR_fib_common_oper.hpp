@@ -11060,6 +11060,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Misc : public ydk::Entity
         ydk::YLeaf mi_prefer_aib_routes_over_rib_oper; //type: boolean
         ydk::YLeaf mi_prefer_aib_routes_over_rib_cfg; //type: boolean
         ydk::YLeaf mi_xpl_ldi_enabled; //type: boolean
+        ydk::YLeaf mi_frr_follow_bgp_pic; //type: boolean
         class MiIssuState; //type: Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState
         class MiPlatCapabilities; //type: Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities
         class MiIdbExtCleanupFailedCount; //type: Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbExtCleanupFailedCount

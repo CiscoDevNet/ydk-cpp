@@ -15,17 +15,21 @@ Ptp::Ptp()
     :
     time_of_day_priority{YType::uint32, "time-of-day-priority"},
     frequency_priority{YType::uint32, "frequency-priority"},
+    startup_clock_class{YType::uint32, "startup-clock-class"},
     enable{YType::empty, "enable"},
     min_clock_class{YType::uint32, "min-clock-class"},
-    uncalibrated_clock_class{YType::uint32, "uncalibrated-clock-class"}
+    uncalibrated_clock_class{YType::uint32, "uncalibrated-clock-class"},
+    freerun_clock_class{YType::uint32, "freerun-clock-class"}
     	,
     clock_(std::make_shared<Ptp::Clock>())
 	,profiles(std::make_shared<Ptp::Profiles>())
+	,utc_offset(std::make_shared<Ptp::UtcOffset>())
 	,logging(std::make_shared<Ptp::Logging>())
 	,transparent_clock(std::make_shared<Ptp::TransparentClock>())
 {
     clock_->parent = this;
     profiles->parent = this;
+    utc_offset->parent = this;
     logging->parent = this;
     transparent_clock->parent = this;
 
@@ -40,11 +44,14 @@ bool Ptp::has_data() const
 {
     return time_of_day_priority.is_set
 	|| frequency_priority.is_set
+	|| startup_clock_class.is_set
 	|| enable.is_set
 	|| min_clock_class.is_set
 	|| uncalibrated_clock_class.is_set
+	|| freerun_clock_class.is_set
 	|| (clock_ !=  nullptr && clock_->has_data())
 	|| (profiles !=  nullptr && profiles->has_data())
+	|| (utc_offset !=  nullptr && utc_offset->has_data())
 	|| (logging !=  nullptr && logging->has_data())
 	|| (transparent_clock !=  nullptr && transparent_clock->has_data());
 }
@@ -54,11 +61,14 @@ bool Ptp::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(time_of_day_priority.yfilter)
 	|| ydk::is_set(frequency_priority.yfilter)
+	|| ydk::is_set(startup_clock_class.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(min_clock_class.yfilter)
 	|| ydk::is_set(uncalibrated_clock_class.yfilter)
+	|| ydk::is_set(freerun_clock_class.yfilter)
 	|| (clock_ !=  nullptr && clock_->has_operation())
 	|| (profiles !=  nullptr && profiles->has_operation())
+	|| (utc_offset !=  nullptr && utc_offset->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
 	|| (transparent_clock !=  nullptr && transparent_clock->has_operation());
 }
@@ -76,9 +86,11 @@ std::vector<std::pair<std::string, LeafData> > Ptp::get_name_leaf_data() const
 
     if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
     if (frequency_priority.is_set || is_set(frequency_priority.yfilter)) leaf_name_data.push_back(frequency_priority.get_name_leafdata());
+    if (startup_clock_class.is_set || is_set(startup_clock_class.yfilter)) leaf_name_data.push_back(startup_clock_class.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (min_clock_class.is_set || is_set(min_clock_class.yfilter)) leaf_name_data.push_back(min_clock_class.get_name_leafdata());
     if (uncalibrated_clock_class.is_set || is_set(uncalibrated_clock_class.yfilter)) leaf_name_data.push_back(uncalibrated_clock_class.get_name_leafdata());
+    if (freerun_clock_class.is_set || is_set(freerun_clock_class.yfilter)) leaf_name_data.push_back(freerun_clock_class.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -102,6 +114,15 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
             profiles = std::make_shared<Ptp::Profiles>();
         }
         return profiles;
+    }
+
+    if(child_yang_name == "utc-offset")
+    {
+        if(utc_offset == nullptr)
+        {
+            utc_offset = std::make_shared<Ptp::UtcOffset>();
+        }
+        return utc_offset;
     }
 
     if(child_yang_name == "logging")
@@ -139,6 +160,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
         children["profiles"] = profiles;
     }
 
+    if(utc_offset != nullptr)
+    {
+        children["utc-offset"] = utc_offset;
+    }
+
     if(logging != nullptr)
     {
         children["logging"] = logging;
@@ -166,6 +192,12 @@ void Ptp::set_value(const std::string & value_path, const std::string & value, c
         frequency_priority.value_namespace = name_space;
         frequency_priority.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "startup-clock-class")
+    {
+        startup_clock_class = value;
+        startup_clock_class.value_namespace = name_space;
+        startup_clock_class.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "enable")
     {
         enable = value;
@@ -184,6 +216,12 @@ void Ptp::set_value(const std::string & value_path, const std::string & value, c
         uncalibrated_clock_class.value_namespace = name_space;
         uncalibrated_clock_class.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "freerun-clock-class")
+    {
+        freerun_clock_class = value;
+        freerun_clock_class.value_namespace = name_space;
+        freerun_clock_class.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ptp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -196,6 +234,10 @@ void Ptp::set_filter(const std::string & value_path, YFilter yfilter)
     {
         frequency_priority.yfilter = yfilter;
     }
+    if(value_path == "startup-clock-class")
+    {
+        startup_clock_class.yfilter = yfilter;
+    }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
@@ -207,6 +249,10 @@ void Ptp::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "uncalibrated-clock-class")
     {
         uncalibrated_clock_class.yfilter = yfilter;
+    }
+    if(value_path == "freerun-clock-class")
+    {
+        freerun_clock_class.yfilter = yfilter;
     }
 }
 
@@ -237,7 +283,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ptp::get_namespace_id
 
 bool Ptp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock" || name == "profiles" || name == "logging" || name == "transparent-clock" || name == "time-of-day-priority" || name == "frequency-priority" || name == "enable" || name == "min-clock-class" || name == "uncalibrated-clock-class")
+    if(name == "clock" || name == "profiles" || name == "utc-offset" || name == "logging" || name == "transparent-clock" || name == "time-of-day-priority" || name == "frequency-priority" || name == "startup-clock-class" || name == "enable" || name == "min-clock-class" || name == "uncalibrated-clock-class" || name == "freerun-clock-class")
         return true;
     return false;
 }
@@ -2857,6 +2903,419 @@ void Ptp::Profiles::Profile::SourceIpv6Address::set_filter(const std::string & v
 bool Ptp::Profiles::Profile::SourceIpv6Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable" || name == "source-ipv6")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffset::UtcOffset()
+    :
+    base_offset{YType::uint32, "base-offset"}
+    	,
+    leap_second_file(nullptr) // presence node
+	,scheduled_offsets(std::make_shared<Ptp::UtcOffset::ScheduledOffsets>())
+{
+    scheduled_offsets->parent = this;
+
+    yang_name = "utc-offset"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffset::~UtcOffset()
+{
+}
+
+bool Ptp::UtcOffset::has_data() const
+{
+    return base_offset.is_set
+	|| (leap_second_file !=  nullptr && leap_second_file->has_data())
+	|| (scheduled_offsets !=  nullptr && scheduled_offsets->has_data());
+}
+
+bool Ptp::UtcOffset::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(base_offset.yfilter)
+	|| (leap_second_file !=  nullptr && leap_second_file->has_operation())
+	|| (scheduled_offsets !=  nullptr && scheduled_offsets->has_operation());
+}
+
+std::string Ptp::UtcOffset::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "utc-offset";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (base_offset.is_set || is_set(base_offset.yfilter)) leaf_name_data.push_back(base_offset.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "leap-second-file")
+    {
+        if(leap_second_file == nullptr)
+        {
+            leap_second_file = std::make_shared<Ptp::UtcOffset::LeapSecondFile>();
+        }
+        return leap_second_file;
+    }
+
+    if(child_yang_name == "scheduled-offsets")
+    {
+        if(scheduled_offsets == nullptr)
+        {
+            scheduled_offsets = std::make_shared<Ptp::UtcOffset::ScheduledOffsets>();
+        }
+        return scheduled_offsets;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(leap_second_file != nullptr)
+    {
+        children["leap-second-file"] = leap_second_file;
+    }
+
+    if(scheduled_offsets != nullptr)
+    {
+        children["scheduled-offsets"] = scheduled_offsets;
+    }
+
+    return children;
+}
+
+void Ptp::UtcOffset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "base-offset")
+    {
+        base_offset = value;
+        base_offset.value_namespace = name_space;
+        base_offset.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "base-offset")
+    {
+        base_offset.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "leap-second-file" || name == "scheduled-offsets" || name == "base-offset")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffset::LeapSecondFile::LeapSecondFile()
+    :
+    source_url{YType::str, "source-url"},
+    polling_frequency{YType::uint32, "polling-frequency"}
+{
+
+    yang_name = "leap-second-file"; yang_parent_name = "utc-offset"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffset::LeapSecondFile::~LeapSecondFile()
+{
+}
+
+bool Ptp::UtcOffset::LeapSecondFile::has_data() const
+{
+    return source_url.is_set
+	|| polling_frequency.is_set;
+}
+
+bool Ptp::UtcOffset::LeapSecondFile::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_url.yfilter)
+	|| ydk::is_set(polling_frequency.yfilter);
+}
+
+std::string Ptp::UtcOffset::LeapSecondFile::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/utc-offset/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffset::LeapSecondFile::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "leap-second-file";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffset::LeapSecondFile::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_url.is_set || is_set(source_url.yfilter)) leaf_name_data.push_back(source_url.get_name_leafdata());
+    if (polling_frequency.is_set || is_set(polling_frequency.yfilter)) leaf_name_data.push_back(polling_frequency.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffset::LeapSecondFile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffset::LeapSecondFile::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffset::LeapSecondFile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-url")
+    {
+        source_url = value;
+        source_url.value_namespace = name_space;
+        source_url.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "polling-frequency")
+    {
+        polling_frequency = value;
+        polling_frequency.value_namespace = name_space;
+        polling_frequency.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffset::LeapSecondFile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-url")
+    {
+        source_url.yfilter = yfilter;
+    }
+    if(value_path == "polling-frequency")
+    {
+        polling_frequency.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffset::LeapSecondFile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-url" || name == "polling-frequency")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffset::ScheduledOffsets::ScheduledOffsets()
+{
+
+    yang_name = "scheduled-offsets"; yang_parent_name = "utc-offset"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffset::ScheduledOffsets::~ScheduledOffsets()
+{
+}
+
+bool Ptp::UtcOffset::ScheduledOffsets::has_data() const
+{
+    for (std::size_t index=0; index<scheduled_offset.size(); index++)
+    {
+        if(scheduled_offset[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ptp::UtcOffset::ScheduledOffsets::has_operation() const
+{
+    for (std::size_t index=0; index<scheduled_offset.size(); index++)
+    {
+        if(scheduled_offset[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ptp::UtcOffset::ScheduledOffsets::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/utc-offset/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffset::ScheduledOffsets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "scheduled-offsets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffset::ScheduledOffsets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffset::ScheduledOffsets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "scheduled-offset")
+    {
+        auto c = std::make_shared<Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset>();
+        c->parent = this;
+        scheduled_offset.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffset::ScheduledOffsets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : scheduled_offset)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ptp::UtcOffset::ScheduledOffsets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ptp::UtcOffset::ScheduledOffsets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ptp::UtcOffset::ScheduledOffsets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "scheduled-offset")
+        return true;
+    return false;
+}
+
+Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::ScheduledOffset()
+    :
+    date{YType::str, "date"},
+    offset{YType::uint32, "offset"}
+{
+
+    yang_name = "scheduled-offset"; yang_parent_name = "scheduled-offsets"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::~ScheduledOffset()
+{
+}
+
+bool Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::has_data() const
+{
+    return date.is_set
+	|| offset.is_set;
+}
+
+bool Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(date.yfilter)
+	|| ydk::is_set(offset.yfilter);
+}
+
+std::string Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/utc-offset/scheduled-offsets/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "scheduled-offset" <<"[date='" <<date <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (date.is_set || is_set(date.yfilter)) leaf_name_data.push_back(date.get_name_leafdata());
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "date")
+    {
+        date = value;
+        date.value_namespace = name_space;
+        date.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "date")
+    {
+        date.yfilter = yfilter;
+    }
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+}
+
+bool Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "date" || name == "offset")
         return true;
     return false;
 }

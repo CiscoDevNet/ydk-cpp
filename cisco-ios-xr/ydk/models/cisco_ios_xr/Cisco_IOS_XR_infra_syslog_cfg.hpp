@@ -1048,11 +1048,9 @@ class Syslog::Files::File : public ydk::Entity
 
         ydk::YLeaf file_name; //type: string
         class FileSpecification; //type: Syslog::Files::File::FileSpecification
-        class FileLogAttributes; //type: Syslog::Files::File::FileLogAttributes
         class FileLogDiscriminator; //type: Syslog::Files::File::FileLogDiscriminator
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File::FileSpecification> file_specification;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File::FileLogAttributes> file_log_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_syslog_cfg::Syslog::Files::File::FileLogDiscriminator> file_log_discriminator;
         
 }; // Syslog::Files::File
@@ -1079,28 +1077,6 @@ class Syslog::Files::File::FileSpecification : public ydk::Entity
         ydk::YLeaf severity; //type: int32
 
 }; // Syslog::Files::File::FileSpecification
-
-
-class Syslog::Files::File::FileLogAttributes : public ydk::Entity
-{
-    public:
-        FileLogAttributes();
-        ~FileLogAttributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf max_file_size; //type: int32
-        ydk::YLeaf severity; //type: int32
-
-}; // Syslog::Files::File::FileLogAttributes
 
 
 class Syslog::Files::File::FileLogDiscriminator : public ydk::Entity
@@ -1175,8 +1151,8 @@ class Syslog::Ipv4::Dscp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: LoggingDscp
-        ydk::YLeaf unused; //type: one of enumeration, uint32
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf unused; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of uint32, enumeration
 
 }; // Syslog::Ipv4::Dscp
 
@@ -1199,8 +1175,8 @@ class Syslog::Ipv4::Tos : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: LoggingTos
-        ydk::YLeaf precedence; //type: one of enumeration, uint32
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf precedence; //type: one of uint32, enumeration
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Syslog::Ipv4::Tos
 
@@ -1223,8 +1199,8 @@ class Syslog::Ipv4::Precedence : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: LoggingPrecedence
-        ydk::YLeaf value_; //type: one of enumeration, uint32
-        ydk::YLeaf unused; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf unused; //type: one of uint32, enumeration
 
 }; // Syslog::Ipv4::Precedence
 
@@ -1303,8 +1279,8 @@ class Syslog::Ipv6::Dscp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: LoggingDscp
-        ydk::YLeaf unused; //type: one of enumeration, uint32
-        ydk::YLeaf value_; //type: one of enumeration, uint32
+        ydk::YLeaf unused; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of uint32, enumeration
 
 }; // Syslog::Ipv6::Dscp
 
@@ -1327,8 +1303,8 @@ class Syslog::Ipv6::TrafficClass : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: LoggingTos
-        ydk::YLeaf precedence; //type: one of enumeration, uint32
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf precedence; //type: one of uint32, enumeration
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Syslog::Ipv6::TrafficClass
 
@@ -1351,8 +1327,8 @@ class Syslog::Ipv6::Precedence : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: LoggingPrecedence
-        ydk::YLeaf value_; //type: one of enumeration, uint32
-        ydk::YLeaf unused; //type: one of enumeration, uint32
+        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf unused; //type: one of uint32, enumeration
 
 }; // Syslog::Ipv6::Precedence
 

@@ -86,6 +86,7 @@ class Isis::Instances::Instance : public ydk::Entity
         ydk::YLeaf ignore_lsp_errors; //type: boolean
         ydk::YLeaf is_type; //type: IsisConfigurableLevels
         ydk::YLeaf tracing_mode; //type: IsisTracingMode
+        ydk::YLeaf vrf_context; //type: string
         ydk::YLeaf instance_id; //type: uint32
         ydk::YLeaf dynamic_host_name; //type: boolean
         ydk::YLeaf nsr; //type: empty
@@ -1724,7 +1725,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
-        ydk::YLeaf metric; //type: one of enumeration, uint32
+        ydk::YLeaf metric; //type: one of uint32, enumeration
         class Metric_;
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric
@@ -3111,7 +3112,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
-        ydk::YLeaf metric; //type: one of enumeration, uint32
+        ydk::YLeaf metric; //type: one of uint32, enumeration
         class Metric_;
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric
@@ -3384,7 +3385,6 @@ class Isis::Instances::Instance::LinkGroups::LinkGroup : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_group_name; //type: string
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf metric_offset; //type: uint32
         ydk::YLeaf revert_members; //type: uint32
         ydk::YLeaf minimum_members; //type: uint32
@@ -3666,7 +3666,7 @@ class Isis::Instances::Instance::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf circuit_type; //type: IsisConfigurableLevels
         ydk::YLeaf point_to_point; //type: empty
         ydk::YLeaf state; //type: IsisInterfaceState
-        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
+        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
         ydk::YLeaf link_down_fast_detect; //type: empty
         class LspRetransmitThrottleIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
         class LspRetransmitIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals
@@ -3754,6 +3754,7 @@ class IsisApplyWeight : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ecmp_only;
         static const ydk::Enum::YLeaf ucmp_only;
+        static const ydk::Enum::YLeaf ecmp_only_bandwidth;
 
 };
 
@@ -3786,6 +3787,8 @@ class IsisMetric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf rib_internal;
+        static const ydk::Enum::YLeaf rib_external;
 
 };
 

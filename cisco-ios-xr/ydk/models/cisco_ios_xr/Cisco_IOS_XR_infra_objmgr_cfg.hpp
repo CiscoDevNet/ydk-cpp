@@ -158,7 +158,7 @@ class ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf operator_type; //type: PortOperator
-        ydk::YLeaf port; //type: one of enumeration, uint32
+        ydk::YLeaf port; //type: one of uint32, enumeration
 
 }; // ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator
 
@@ -246,8 +246,8 @@ class ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf start_port; //type: one of enumeration, uint32
-        ydk::YLeaf end_port; //type: one of enumeration, uint32
+        ydk::YLeaf start_port; //type: one of uint32, enumeration
+        ydk::YLeaf end_port; //type: one of uint32, enumeration
 
 }; // ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange
 

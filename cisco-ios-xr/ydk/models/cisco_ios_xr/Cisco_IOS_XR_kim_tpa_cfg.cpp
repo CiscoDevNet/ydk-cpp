@@ -669,10 +669,7 @@ Tpa::VrfNames::VrfName::AddressFamily::Ipv6::Ipv6()
     :
     default_route{YType::str, "default-route"},
     update_source{YType::str, "update-source"}
-    	,
-    lpts_allow_entries(std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries>())
 {
-    lpts_allow_entries->parent = this;
 
     yang_name = "ipv6"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -684,16 +681,14 @@ Tpa::VrfNames::VrfName::AddressFamily::Ipv6::~Ipv6()
 bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::has_data() const
 {
     return default_route.is_set
-	|| update_source.is_set
-	|| (lpts_allow_entries !=  nullptr && lpts_allow_entries->has_data());
+	|| update_source.is_set;
 }
 
 bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_route.yfilter)
-	|| ydk::is_set(update_source.yfilter)
-	|| (lpts_allow_entries !=  nullptr && lpts_allow_entries->has_operation());
+	|| ydk::is_set(update_source.yfilter);
 }
 
 std::string Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_segment_path() const
@@ -716,15 +711,6 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "lpts-allow-entries")
-    {
-        if(lpts_allow_entries == nullptr)
-        {
-            lpts_allow_entries = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries>();
-        }
-        return lpts_allow_entries;
-    }
-
     return nullptr;
 }
 
@@ -732,11 +718,6 @@ std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFa
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(lpts_allow_entries != nullptr)
-    {
-        children["lpts-allow-entries"] = lpts_allow_entries;
-    }
-
     return children;
 }
 
@@ -770,328 +751,7 @@ void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::set_filter(const std::string &
 
 bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lpts-allow-entries" || name == "default-route" || name == "update-source")
-        return true;
-    return false;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntries()
-{
-
-    yang_name = "lpts-allow-entries"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::~LptsAllowEntries()
-{
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::has_data() const
-{
-    for (std::size_t index=0; index<lpts_allow_entry.size(); index++)
-    {
-        if(lpts_allow_entry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::has_operation() const
-{
-    for (std::size_t index=0; index<lpts_allow_entry.size(); index++)
-    {
-        if(lpts_allow_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lpts-allow-entries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lpts-allow-entry")
-    {
-        auto c = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry>();
-        c->parent = this;
-        lpts_allow_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : lpts_allow_entry)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lpts-allow-entry")
-        return true;
-    return false;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::LptsAllowEntry()
-    :
-    interface_name{YType::str, "interface-name"},
-    remote_addr{YType::str, "remote-addr"},
-    local_addr{YType::str, "local-addr"},
-    remote_port{YType::int32, "remote-port"},
-    local_port{YType::int32, "local-port"},
-    protocol{YType::int32, "protocol"},
-    interface_name_xr{YType::str, "interface-name-xr"},
-    remote_addr_xr{YType::str, "remote-addr-xr"},
-    local_addr_xr{YType::str, "local-addr-xr"},
-    remote_port_xr{YType::int32, "remote-port-xr"},
-    local_port_xr{YType::int32, "local-port-xr"},
-    protocol_xr{YType::int32, "protocol-xr"}
-{
-
-    yang_name = "lpts-allow-entry"; yang_parent_name = "lpts-allow-entries"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::~LptsAllowEntry()
-{
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::has_data() const
-{
-    return interface_name.is_set
-	|| remote_addr.is_set
-	|| local_addr.is_set
-	|| remote_port.is_set
-	|| local_port.is_set
-	|| protocol.is_set
-	|| interface_name_xr.is_set
-	|| remote_addr_xr.is_set
-	|| local_addr_xr.is_set
-	|| remote_port_xr.is_set
-	|| local_port_xr.is_set
-	|| protocol_xr.is_set;
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(remote_addr.yfilter)
-	|| ydk::is_set(local_addr.yfilter)
-	|| ydk::is_set(remote_port.yfilter)
-	|| ydk::is_set(local_port.yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| ydk::is_set(interface_name_xr.yfilter)
-	|| ydk::is_set(remote_addr_xr.yfilter)
-	|| ydk::is_set(local_addr_xr.yfilter)
-	|| ydk::is_set(remote_port_xr.yfilter)
-	|| ydk::is_set(local_port_xr.yfilter)
-	|| ydk::is_set(protocol_xr.yfilter);
-}
-
-std::string Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lpts-allow-entry" <<"[interface-name='" <<interface_name <<"']" <<"[remote-addr='" <<remote_addr <<"']" <<"[local-addr='" <<local_addr <<"']" <<"[remote-port='" <<remote_port <<"']" <<"[local-port='" <<local_port <<"']" <<"[protocol='" <<protocol <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (remote_addr.is_set || is_set(remote_addr.yfilter)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
-    if (local_addr.is_set || is_set(local_addr.yfilter)) leaf_name_data.push_back(local_addr.get_name_leafdata());
-    if (remote_port.is_set || is_set(remote_port.yfilter)) leaf_name_data.push_back(remote_port.get_name_leafdata());
-    if (local_port.is_set || is_set(local_port.yfilter)) leaf_name_data.push_back(local_port.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (remote_addr_xr.is_set || is_set(remote_addr_xr.yfilter)) leaf_name_data.push_back(remote_addr_xr.get_name_leafdata());
-    if (local_addr_xr.is_set || is_set(local_addr_xr.yfilter)) leaf_name_data.push_back(local_addr_xr.get_name_leafdata());
-    if (remote_port_xr.is_set || is_set(remote_port_xr.yfilter)) leaf_name_data.push_back(remote_port_xr.get_name_leafdata());
-    if (local_port_xr.is_set || is_set(local_port_xr.yfilter)) leaf_name_data.push_back(local_port_xr.get_name_leafdata());
-    if (protocol_xr.is_set || is_set(protocol_xr.yfilter)) leaf_name_data.push_back(protocol_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-addr")
-    {
-        remote_addr = value;
-        remote_addr.value_namespace = name_space;
-        remote_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-addr")
-    {
-        local_addr = value;
-        local_addr.value_namespace = name_space;
-        local_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-port")
-    {
-        remote_port = value;
-        remote_port.value_namespace = name_space;
-        remote_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-port")
-    {
-        local_port = value;
-        local_port.value_namespace = name_space;
-        local_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr = value;
-        interface_name_xr.value_namespace = name_space;
-        interface_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-addr-xr")
-    {
-        remote_addr_xr = value;
-        remote_addr_xr.value_namespace = name_space;
-        remote_addr_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-addr-xr")
-    {
-        local_addr_xr = value;
-        local_addr_xr.value_namespace = name_space;
-        local_addr_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-port-xr")
-    {
-        remote_port_xr = value;
-        remote_port_xr.value_namespace = name_space;
-        remote_port_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-port-xr")
-    {
-        local_port_xr = value;
-        local_port_xr.value_namespace = name_space;
-        local_port_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol-xr")
-    {
-        protocol_xr = value;
-        protocol_xr.value_namespace = name_space;
-        protocol_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "remote-addr")
-    {
-        remote_addr.yfilter = yfilter;
-    }
-    if(value_path == "local-addr")
-    {
-        local_addr.yfilter = yfilter;
-    }
-    if(value_path == "remote-port")
-    {
-        remote_port.yfilter = yfilter;
-    }
-    if(value_path == "local-port")
-    {
-        local_port.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "remote-addr-xr")
-    {
-        remote_addr_xr.yfilter = yfilter;
-    }
-    if(value_path == "local-addr-xr")
-    {
-        local_addr_xr.yfilter = yfilter;
-    }
-    if(value_path == "remote-port-xr")
-    {
-        remote_port_xr.yfilter = yfilter;
-    }
-    if(value_path == "local-port-xr")
-    {
-        local_port_xr.yfilter = yfilter;
-    }
-    if(value_path == "protocol-xr")
-    {
-        protocol_xr.yfilter = yfilter;
-    }
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "remote-addr" || name == "local-addr" || name == "remote-port" || name == "local-port" || name == "protocol" || name == "interface-name-xr" || name == "remote-addr-xr" || name == "local-addr-xr" || name == "remote-port-xr" || name == "local-port-xr" || name == "protocol-xr")
+    if(name == "default-route" || name == "update-source")
         return true;
     return false;
 }
@@ -1100,10 +760,7 @@ Tpa::VrfNames::VrfName::AddressFamily::Ipv4::Ipv4()
     :
     default_route{YType::str, "default-route"},
     update_source{YType::str, "update-source"}
-    	,
-    lpts_allow_entries(std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries>())
 {
-    lpts_allow_entries->parent = this;
 
     yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -1115,16 +772,14 @@ Tpa::VrfNames::VrfName::AddressFamily::Ipv4::~Ipv4()
 bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::has_data() const
 {
     return default_route.is_set
-	|| update_source.is_set
-	|| (lpts_allow_entries !=  nullptr && lpts_allow_entries->has_data());
+	|| update_source.is_set;
 }
 
 bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_route.yfilter)
-	|| ydk::is_set(update_source.yfilter)
-	|| (lpts_allow_entries !=  nullptr && lpts_allow_entries->has_operation());
+	|| ydk::is_set(update_source.yfilter);
 }
 
 std::string Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_segment_path() const
@@ -1147,15 +802,6 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "lpts-allow-entries")
-    {
-        if(lpts_allow_entries == nullptr)
-        {
-            lpts_allow_entries = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries>();
-        }
-        return lpts_allow_entries;
-    }
-
     return nullptr;
 }
 
@@ -1163,11 +809,6 @@ std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFa
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(lpts_allow_entries != nullptr)
-    {
-        children["lpts-allow-entries"] = lpts_allow_entries;
-    }
-
     return children;
 }
 
@@ -1201,328 +842,7 @@ void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::set_filter(const std::string &
 
 bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lpts-allow-entries" || name == "default-route" || name == "update-source")
-        return true;
-    return false;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntries()
-{
-
-    yang_name = "lpts-allow-entries"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::~LptsAllowEntries()
-{
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::has_data() const
-{
-    for (std::size_t index=0; index<lpts_allow_entry.size(); index++)
-    {
-        if(lpts_allow_entry[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::has_operation() const
-{
-    for (std::size_t index=0; index<lpts_allow_entry.size(); index++)
-    {
-        if(lpts_allow_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lpts-allow-entries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lpts-allow-entry")
-    {
-        auto c = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry>();
-        c->parent = this;
-        lpts_allow_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : lpts_allow_entry)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lpts-allow-entry")
-        return true;
-    return false;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::LptsAllowEntry()
-    :
-    interface_name{YType::str, "interface-name"},
-    remote_addr{YType::str, "remote-addr"},
-    local_addr{YType::str, "local-addr"},
-    remote_port{YType::int32, "remote-port"},
-    local_port{YType::int32, "local-port"},
-    protocol{YType::int32, "protocol"},
-    interface_name_xr{YType::str, "interface-name-xr"},
-    remote_addr_xr{YType::str, "remote-addr-xr"},
-    local_addr_xr{YType::str, "local-addr-xr"},
-    remote_port_xr{YType::int32, "remote-port-xr"},
-    local_port_xr{YType::int32, "local-port-xr"},
-    protocol_xr{YType::int32, "protocol-xr"}
-{
-
-    yang_name = "lpts-allow-entry"; yang_parent_name = "lpts-allow-entries"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::~LptsAllowEntry()
-{
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::has_data() const
-{
-    return interface_name.is_set
-	|| remote_addr.is_set
-	|| local_addr.is_set
-	|| remote_port.is_set
-	|| local_port.is_set
-	|| protocol.is_set
-	|| interface_name_xr.is_set
-	|| remote_addr_xr.is_set
-	|| local_addr_xr.is_set
-	|| remote_port_xr.is_set
-	|| local_port_xr.is_set
-	|| protocol_xr.is_set;
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(remote_addr.yfilter)
-	|| ydk::is_set(local_addr.yfilter)
-	|| ydk::is_set(remote_port.yfilter)
-	|| ydk::is_set(local_port.yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| ydk::is_set(interface_name_xr.yfilter)
-	|| ydk::is_set(remote_addr_xr.yfilter)
-	|| ydk::is_set(local_addr_xr.yfilter)
-	|| ydk::is_set(remote_port_xr.yfilter)
-	|| ydk::is_set(local_port_xr.yfilter)
-	|| ydk::is_set(protocol_xr.yfilter);
-}
-
-std::string Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lpts-allow-entry" <<"[interface-name='" <<interface_name <<"']" <<"[remote-addr='" <<remote_addr <<"']" <<"[local-addr='" <<local_addr <<"']" <<"[remote-port='" <<remote_port <<"']" <<"[local-port='" <<local_port <<"']" <<"[protocol='" <<protocol <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (remote_addr.is_set || is_set(remote_addr.yfilter)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
-    if (local_addr.is_set || is_set(local_addr.yfilter)) leaf_name_data.push_back(local_addr.get_name_leafdata());
-    if (remote_port.is_set || is_set(remote_port.yfilter)) leaf_name_data.push_back(remote_port.get_name_leafdata());
-    if (local_port.is_set || is_set(local_port.yfilter)) leaf_name_data.push_back(local_port.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (remote_addr_xr.is_set || is_set(remote_addr_xr.yfilter)) leaf_name_data.push_back(remote_addr_xr.get_name_leafdata());
-    if (local_addr_xr.is_set || is_set(local_addr_xr.yfilter)) leaf_name_data.push_back(local_addr_xr.get_name_leafdata());
-    if (remote_port_xr.is_set || is_set(remote_port_xr.yfilter)) leaf_name_data.push_back(remote_port_xr.get_name_leafdata());
-    if (local_port_xr.is_set || is_set(local_port_xr.yfilter)) leaf_name_data.push_back(local_port_xr.get_name_leafdata());
-    if (protocol_xr.is_set || is_set(protocol_xr.yfilter)) leaf_name_data.push_back(protocol_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-addr")
-    {
-        remote_addr = value;
-        remote_addr.value_namespace = name_space;
-        remote_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-addr")
-    {
-        local_addr = value;
-        local_addr.value_namespace = name_space;
-        local_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-port")
-    {
-        remote_port = value;
-        remote_port.value_namespace = name_space;
-        remote_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-port")
-    {
-        local_port = value;
-        local_port.value_namespace = name_space;
-        local_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr = value;
-        interface_name_xr.value_namespace = name_space;
-        interface_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-addr-xr")
-    {
-        remote_addr_xr = value;
-        remote_addr_xr.value_namespace = name_space;
-        remote_addr_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-addr-xr")
-    {
-        local_addr_xr = value;
-        local_addr_xr.value_namespace = name_space;
-        local_addr_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-port-xr")
-    {
-        remote_port_xr = value;
-        remote_port_xr.value_namespace = name_space;
-        remote_port_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-port-xr")
-    {
-        local_port_xr = value;
-        local_port_xr.value_namespace = name_space;
-        local_port_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol-xr")
-    {
-        protocol_xr = value;
-        protocol_xr.value_namespace = name_space;
-        protocol_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "remote-addr")
-    {
-        remote_addr.yfilter = yfilter;
-    }
-    if(value_path == "local-addr")
-    {
-        local_addr.yfilter = yfilter;
-    }
-    if(value_path == "remote-port")
-    {
-        remote_port.yfilter = yfilter;
-    }
-    if(value_path == "local-port")
-    {
-        local_port.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "remote-addr-xr")
-    {
-        remote_addr_xr.yfilter = yfilter;
-    }
-    if(value_path == "local-addr-xr")
-    {
-        local_addr_xr.yfilter = yfilter;
-    }
-    if(value_path == "remote-port-xr")
-    {
-        remote_port_xr.yfilter = yfilter;
-    }
-    if(value_path == "local-port-xr")
-    {
-        local_port_xr.yfilter = yfilter;
-    }
-    if(value_path == "protocol-xr")
-    {
-        protocol_xr.yfilter = yfilter;
-    }
-}
-
-bool Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "remote-addr" || name == "local-addr" || name == "remote-port" || name == "local-port" || name == "protocol" || name == "interface-name-xr" || name == "remote-addr-xr" || name == "local-addr-xr" || name == "remote-port-xr" || name == "local-port-xr" || name == "protocol-xr")
+    if(name == "default-route" || name == "update-source")
         return true;
     return false;
 }

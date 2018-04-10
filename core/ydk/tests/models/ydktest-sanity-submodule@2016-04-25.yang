@@ -1,5 +1,5 @@
 submodule ydktest-sanity-submodule {
-   belongs-to ydktest-sanity {
+  belongs-to ydktest-sanity {
     prefix ydkut;
   }
 
@@ -11,6 +11,9 @@ submodule ydktest-sanity-submodule {
 
   //import Cisco-IOS-XR-types { prefix "xr"; }
 
+  import ietf-yang-types {
+    prefix yang;
+  }
 
   organization "Cisco Systems, Inc.";
 
@@ -25,13 +28,13 @@ submodule ydktest-sanity-submodule {
 
      E-mail: cs-yang@cisco.com";
 
-  description 
+  description
     "This module contains a collection of YANG definitions
      for sanity package.
 
      This module contains LIST definitions
      for the following management objects:
-    
+
 
      Copyright (c) 2013-2014 by Cisco Systems, Inc.
      All rights reserved.";
@@ -41,6 +44,21 @@ submodule ydktest-sanity-submodule {
       "Initial revision.";
   }
 
+  // Features
+  feature ipv4-non-contiguous-netmasks {
+    description
+      "Indicates support for configuring non-contiguous
+       subnet masks.";
+  }
+  feature ipv6-privacy-autoconf {
+    description
+      "Indicates support for Privacy Extensions for Stateless Address
+       Autoconfiguration in IPv6.";
+    reference
+      "RFC 4941: Privacy Extensions for Stateless Address
+                 Autoconfiguration in IPv6";
+  }
+  
   grouping one-sub-level {
     description "testing for couple of leaves";
     container one-aug {
@@ -56,8 +74,112 @@ submodule ydktest-sanity-submodule {
       }
     }
   }
-   
+
   container sub-test {
       uses one-sub-level;
   }
+  
+  grouping interface-common-grouping {
+    // interface * / description
+    leaf description {
+      description
+        "Interface specific description";
+      type string {
+        length "0..240";
+      }
+    }
+
+    // interface * / mtu
+    leaf mtu {
+      description
+        "Set the interface Maximum Transmission Unit (MTU)";
+      type uint16 {
+        range "64..18000";
+      }
+    }
+    
+    // interface * / ipv4
+    container ipv4 {
+      list address {
+        key "ip";
+        description
+          "The list of configured IPv4 addresses on the interface.";
+        leaf ip {
+          type yang:dotted-quad;
+          description
+            "The IPv4 address on the interface.";
+        }
+        choice subnet {
+          mandatory true;
+          description
+            "The subnet can be specified as a prefix-length, or,
+             if the server supports non-contiguous netmasks, as
+             a netmask.";
+          leaf prefix-length {
+            type uint8 {
+              range "0..32";
+            }
+            description
+              "The length of the subnet prefix.";
+          }
+          leaf netmask {
+            if-feature ipv4-non-contiguous-netmasks;
+            type yang:dotted-quad;
+            description
+              "The subnet specified as a netmask.";
+          }
+        }
+      }
+    }
+  }
+
+  grouping config-interface-grouping {
+    container interface { 
+      description
+        "Configure Interfaces";
+ 
+      // interface GigabitEthernet
+      list Gigabitethernet {
+        description
+          "GigabitEthernet IEEE 802.3z";
+        key "name";
+        leaf name {
+          type string;
+        }
+        leaf media-type {
+          description
+            "Media type";
+          type enumeration {
+            enum "auto-select";
+            enum "rj45";
+            enum "sfp";
+          }
+        }
+        uses interface-common-grouping;
+      }
+
+      // interface Loopback
+      list Loopback {
+        description
+          "Loopback interface";
+        key "name";
+        leaf name {
+          type uint32;
+        }
+        uses interface-common-grouping;
+      }
+
+      // interface Tunnel #
+      list Tunnel {
+        description
+          "Tunnel interface";
+        key "name";
+        leaf name {
+          type uint32;
+        }
+        uses interface-common-grouping;
+      }
+    }
+  }
+
 }

@@ -697,7 +697,7 @@ class ClearBgpAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoftInPrefixFilter::Input
 
@@ -747,7 +747,7 @@ class ClearBgpAfiSafiAsSoftIn::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoftIn::Input
 
@@ -797,7 +797,7 @@ class ClearBgpAfiSafiAsSoftOut::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoftOut::Input
 
@@ -847,7 +847,7 @@ class ClearBgpAfiSafiAsSoft::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAfiSafiAsSoft::Input
 
@@ -2290,7 +2290,7 @@ class ClearBgpAsGraceful::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAsGraceful::Input
 
@@ -2339,7 +2339,7 @@ class ClearBgpAs::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpAs::Input
 
@@ -5985,7 +5985,7 @@ class ClearBgpInstanceAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceAfiSafiAsSoftInPrefixFilter::Input
 
@@ -6036,7 +6036,7 @@ class ClearBgpInstanceAfiSafiAsSoftIn::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceAfiSafiAsSoftIn::Input
 
@@ -6087,7 +6087,7 @@ class ClearBgpInstanceAfiSafiAsSoftOut::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceAfiSafiAsSoftOut::Input
 
@@ -6138,7 +6138,7 @@ class ClearBgpInstanceAfiSafiAsSoft::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceAfiSafiAsSoft::Input
 
@@ -7610,7 +7610,7 @@ class ClearBgpInstanceAsGraceful::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceAsGraceful::Input
 
@@ -7660,7 +7660,7 @@ class ClearBgpInstanceAs::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceAs::Input
 
@@ -15308,7 +15308,7 @@ class ClearBgpInstanceVrfAsGraceful::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAsGraceful::Input
 
@@ -15359,7 +15359,7 @@ class ClearBgpInstanceVrfAs::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAs::Input
 
@@ -15975,7 +15975,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoftInPrefixFilter::Input
 
@@ -16027,7 +16027,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoftIn::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoftIn::Input
 
@@ -16079,7 +16079,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoftOut::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoftOut::Input
 
@@ -16131,7 +16131,7 @@ class ClearBgpInstanceVrfAfiSafiAsSoft::Input : public ydk::Entity
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpInstanceVrfAfiSafiAsSoft::Input
 
@@ -22872,7 +22872,7 @@ class ClearBgpVrfAsGraceful::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpVrfAsGraceful::Input
 
@@ -22922,7 +22922,7 @@ class ClearBgpVrfAs::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpVrfAs::Input
 
@@ -23526,7 +23526,7 @@ class ClearBgpVrfAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpVrfAfiSafiAsSoftInPrefixFilter::Input
 
@@ -23577,7 +23577,7 @@ class ClearBgpVrfAfiSafiAsSoftIn::Input : public ydk::Entity
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpVrfAfiSafiAsSoftIn::Input
 
@@ -23628,7 +23628,7 @@ class ClearBgpVrfAfiSafiAsSoftOut::Input : public ydk::Entity
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpVrfAfiSafiAsSoftOut::Input
 
@@ -23679,7 +23679,7 @@ class ClearBgpVrfAfiSafiAsSoft::Input : public ydk::Entity
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpVrfAfiSafiAsSoft::Input
 

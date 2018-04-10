@@ -276,12 +276,12 @@ NetFlow::FlowExporterMaps::FlowExporterMap::FlowExporterMap()
     packet_length{YType::uint32, "packet-length"}
     	,
     udp(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Udp>())
-	,versions(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions>())
 	,destination(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>())
+	,version(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version>())
 {
     udp->parent = this;
-    versions->parent = this;
     destination->parent = this;
+    version->parent = this;
 
     yang_name = "flow-exporter-map"; yang_parent_name = "flow-exporter-maps"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -297,8 +297,8 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::has_data() const
 	|| dscp.is_set
 	|| packet_length.is_set
 	|| (udp !=  nullptr && udp->has_data())
-	|| (versions !=  nullptr && versions->has_data())
-	|| (destination !=  nullptr && destination->has_data());
+	|| (destination !=  nullptr && destination->has_data())
+	|| (version !=  nullptr && version->has_data());
 }
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::has_operation() const
@@ -309,8 +309,8 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::has_operation() const
 	|| ydk::is_set(dscp.yfilter)
 	|| ydk::is_set(packet_length.yfilter)
 	|| (udp !=  nullptr && udp->has_operation())
-	|| (versions !=  nullptr && versions->has_operation())
-	|| (destination !=  nullptr && destination->has_operation());
+	|| (destination !=  nullptr && destination->has_operation())
+	|| (version !=  nullptr && version->has_operation());
 }
 
 std::string NetFlow::FlowExporterMaps::FlowExporterMap::get_absolute_path() const
@@ -351,15 +351,6 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::get_child_by
         return udp;
     }
 
-    if(child_yang_name == "versions")
-    {
-        if(versions == nullptr)
-        {
-            versions = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions>();
-        }
-        return versions;
-    }
-
     if(child_yang_name == "destination")
     {
         if(destination == nullptr)
@@ -367,6 +358,15 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::get_child_by
             destination = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>();
         }
         return destination;
+    }
+
+    if(child_yang_name == "version")
+    {
+        if(version == nullptr)
+        {
+            version = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version>();
+        }
+        return version;
     }
 
     return nullptr;
@@ -381,14 +381,14 @@ std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowEx
         children["udp"] = udp;
     }
 
-    if(versions != nullptr)
-    {
-        children["versions"] = versions;
-    }
-
     if(destination != nullptr)
     {
         children["destination"] = destination;
+    }
+
+    if(version != nullptr)
+    {
+        children["version"] = version;
     }
 
     return children;
@@ -444,7 +444,7 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::set_filter(const std::string & 
 
 bool NetFlow::FlowExporterMaps::FlowExporterMap::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "udp" || name == "versions" || name == "destination" || name == "exporter-map-name" || name == "source-interface" || name == "dscp" || name == "packet-length")
+    if(name == "udp" || name == "destination" || name == "version" || name == "exporter-map-name" || name == "source-interface" || name == "dscp" || name == "packet-length")
         return true;
     return false;
 }
@@ -522,339 +522,6 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::Udp::set_filter(const std::stri
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Udp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "destination-port")
-        return true;
-    return false;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Versions()
-{
-
-    yang_name = "versions"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Versions::~Versions()
-{
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::has_data() const
-{
-    for (std::size_t index=0; index<version.size(); index++)
-    {
-        if(version[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::has_operation() const
-{
-    for (std::size_t index=0; index<version.size(); index++)
-    {
-        if(version[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NetFlow::FlowExporterMaps::FlowExporterMap::Versions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "versions";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowExporterMap::Versions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "version")
-    {
-        auto c = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version>();
-        c->parent = this;
-        version.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : version)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "version")
-        return true;
-    return false;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Version()
-    :
-    version_number{YType::uint32, "version-number"},
-    options_template_timeout{YType::uint32, "options-template-timeout"},
-    common_template_timeout{YType::uint32, "common-template-timeout"},
-    data_template_timeout{YType::uint32, "data-template-timeout"}
-    	,
-    options(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options>())
-{
-    options->parent = this;
-
-    yang_name = "version"; yang_parent_name = "versions"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::~Version()
-{
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::has_data() const
-{
-    return version_number.is_set
-	|| options_template_timeout.is_set
-	|| common_template_timeout.is_set
-	|| data_template_timeout.is_set
-	|| (options !=  nullptr && options->has_data());
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(version_number.yfilter)
-	|| ydk::is_set(options_template_timeout.yfilter)
-	|| ydk::is_set(common_template_timeout.yfilter)
-	|| ydk::is_set(data_template_timeout.yfilter)
-	|| (options !=  nullptr && options->has_operation());
-}
-
-std::string NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "version" <<"[version-number='" <<version_number <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (version_number.is_set || is_set(version_number.yfilter)) leaf_name_data.push_back(version_number.get_name_leafdata());
-    if (options_template_timeout.is_set || is_set(options_template_timeout.yfilter)) leaf_name_data.push_back(options_template_timeout.get_name_leafdata());
-    if (common_template_timeout.is_set || is_set(common_template_timeout.yfilter)) leaf_name_data.push_back(common_template_timeout.get_name_leafdata());
-    if (data_template_timeout.is_set || is_set(data_template_timeout.yfilter)) leaf_name_data.push_back(data_template_timeout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "options")
-    {
-        if(options == nullptr)
-        {
-            options = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options>();
-        }
-        return options;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(options != nullptr)
-    {
-        children["options"] = options;
-    }
-
-    return children;
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "version-number")
-    {
-        version_number = value;
-        version_number.value_namespace = name_space;
-        version_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "options-template-timeout")
-    {
-        options_template_timeout = value;
-        options_template_timeout.value_namespace = name_space;
-        options_template_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "common-template-timeout")
-    {
-        common_template_timeout = value;
-        common_template_timeout.value_namespace = name_space;
-        common_template_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "data-template-timeout")
-    {
-        data_template_timeout = value;
-        data_template_timeout.value_namespace = name_space;
-        data_template_timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "version-number")
-    {
-        version_number.yfilter = yfilter;
-    }
-    if(value_path == "options-template-timeout")
-    {
-        options_template_timeout.yfilter = yfilter;
-    }
-    if(value_path == "common-template-timeout")
-    {
-        common_template_timeout.yfilter = yfilter;
-    }
-    if(value_path == "data-template-timeout")
-    {
-        data_template_timeout.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "options" || name == "version-number" || name == "options-template-timeout" || name == "common-template-timeout" || name == "data-template-timeout")
-        return true;
-    return false;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::Options()
-    :
-    interface_table_export_timeout{YType::uint32, "interface-table-export-timeout"},
-    sampler_table_export_timeout{YType::uint32, "sampler-table-export-timeout"},
-    vrf_table_export_timeout{YType::uint32, "vrf-table-export-timeout"}
-{
-
-    yang_name = "options"; yang_parent_name = "version"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::~Options()
-{
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::has_data() const
-{
-    return interface_table_export_timeout.is_set
-	|| sampler_table_export_timeout.is_set
-	|| vrf_table_export_timeout.is_set;
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_table_export_timeout.yfilter)
-	|| ydk::is_set(sampler_table_export_timeout.yfilter)
-	|| ydk::is_set(vrf_table_export_timeout.yfilter);
-}
-
-std::string NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "options";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_table_export_timeout.is_set || is_set(interface_table_export_timeout.yfilter)) leaf_name_data.push_back(interface_table_export_timeout.get_name_leafdata());
-    if (sampler_table_export_timeout.is_set || is_set(sampler_table_export_timeout.yfilter)) leaf_name_data.push_back(sampler_table_export_timeout.get_name_leafdata());
-    if (vrf_table_export_timeout.is_set || is_set(vrf_table_export_timeout.yfilter)) leaf_name_data.push_back(vrf_table_export_timeout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-table-export-timeout")
-    {
-        interface_table_export_timeout = value;
-        interface_table_export_timeout.value_namespace = name_space;
-        interface_table_export_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sampler-table-export-timeout")
-    {
-        sampler_table_export_timeout = value;
-        sampler_table_export_timeout.value_namespace = name_space;
-        sampler_table_export_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-table-export-timeout")
-    {
-        vrf_table_export_timeout = value;
-        vrf_table_export_timeout.value_namespace = name_space;
-        vrf_table_export_timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-table-export-timeout")
-    {
-        interface_table_export_timeout.yfilter = yfilter;
-    }
-    if(value_path == "sampler-table-export-timeout")
-    {
-        sampler_table_export_timeout.yfilter = yfilter;
-    }
-    if(value_path == "vrf-table-export-timeout")
-    {
-        vrf_table_export_timeout.yfilter = yfilter;
-    }
-}
-
-bool NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-table-export-timeout" || name == "sampler-table-export-timeout" || name == "vrf-table-export-timeout")
         return true;
     return false;
 }
@@ -960,6 +627,249 @@ void NetFlow::FlowExporterMaps::FlowExporterMap::Destination::set_filter(const s
 bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-address" || name == "ipv6-address" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+NetFlow::FlowExporterMaps::FlowExporterMap::Version::Version()
+    :
+    version_type{YType::uint32, "version-type"},
+    options_template_timeout{YType::uint32, "options-template-timeout"},
+    common_template_timeout{YType::uint32, "common-template-timeout"},
+    data_template_timeout{YType::uint32, "data-template-timeout"}
+    	,
+    options(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options>())
+{
+    options->parent = this;
+
+    yang_name = "version"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowExporterMaps::FlowExporterMap::Version::~Version()
+{
+}
+
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::has_data() const
+{
+    return version_type.is_set
+	|| options_template_timeout.is_set
+	|| common_template_timeout.is_set
+	|| data_template_timeout.is_set
+	|| (options !=  nullptr && options->has_data());
+}
+
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(version_type.yfilter)
+	|| ydk::is_set(options_template_timeout.yfilter)
+	|| ydk::is_set(common_template_timeout.yfilter)
+	|| ydk::is_set(data_template_timeout.yfilter)
+	|| (options !=  nullptr && options->has_operation());
+}
+
+std::string NetFlow::FlowExporterMaps::FlowExporterMap::Version::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "version";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowExporterMap::Version::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (version_type.is_set || is_set(version_type.yfilter)) leaf_name_data.push_back(version_type.get_name_leafdata());
+    if (options_template_timeout.is_set || is_set(options_template_timeout.yfilter)) leaf_name_data.push_back(options_template_timeout.get_name_leafdata());
+    if (common_template_timeout.is_set || is_set(common_template_timeout.yfilter)) leaf_name_data.push_back(common_template_timeout.get_name_leafdata());
+    if (data_template_timeout.is_set || is_set(data_template_timeout.yfilter)) leaf_name_data.push_back(data_template_timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "options")
+    {
+        if(options == nullptr)
+        {
+            options = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options>();
+        }
+        return options;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Version::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(options != nullptr)
+    {
+        children["options"] = options;
+    }
+
+    return children;
+}
+
+void NetFlow::FlowExporterMaps::FlowExporterMap::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "version-type")
+    {
+        version_type = value;
+        version_type.value_namespace = name_space;
+        version_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "options-template-timeout")
+    {
+        options_template_timeout = value;
+        options_template_timeout.value_namespace = name_space;
+        options_template_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "common-template-timeout")
+    {
+        common_template_timeout = value;
+        common_template_timeout.value_namespace = name_space;
+        common_template_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "data-template-timeout")
+    {
+        data_template_timeout = value;
+        data_template_timeout.value_namespace = name_space;
+        data_template_timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowExporterMaps::FlowExporterMap::Version::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "version-type")
+    {
+        version_type.yfilter = yfilter;
+    }
+    if(value_path == "options-template-timeout")
+    {
+        options_template_timeout.yfilter = yfilter;
+    }
+    if(value_path == "common-template-timeout")
+    {
+        common_template_timeout.yfilter = yfilter;
+    }
+    if(value_path == "data-template-timeout")
+    {
+        data_template_timeout.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "options" || name == "version-type" || name == "options-template-timeout" || name == "common-template-timeout" || name == "data-template-timeout")
+        return true;
+    return false;
+}
+
+NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::Options()
+    :
+    interface_table_export_timeout{YType::uint32, "interface-table-export-timeout"},
+    sampler_table_export_timeout{YType::uint32, "sampler-table-export-timeout"},
+    vrf_table_export_timeout{YType::uint32, "vrf-table-export-timeout"}
+{
+
+    yang_name = "options"; yang_parent_name = "version"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::~Options()
+{
+}
+
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::has_data() const
+{
+    return interface_table_export_timeout.is_set
+	|| sampler_table_export_timeout.is_set
+	|| vrf_table_export_timeout.is_set;
+}
+
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_table_export_timeout.yfilter)
+	|| ydk::is_set(sampler_table_export_timeout.yfilter)
+	|| ydk::is_set(vrf_table_export_timeout.yfilter);
+}
+
+std::string NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "options";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_table_export_timeout.is_set || is_set(interface_table_export_timeout.yfilter)) leaf_name_data.push_back(interface_table_export_timeout.get_name_leafdata());
+    if (sampler_table_export_timeout.is_set || is_set(sampler_table_export_timeout.yfilter)) leaf_name_data.push_back(sampler_table_export_timeout.get_name_leafdata());
+    if (vrf_table_export_timeout.is_set || is_set(vrf_table_export_timeout.yfilter)) leaf_name_data.push_back(vrf_table_export_timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-table-export-timeout")
+    {
+        interface_table_export_timeout = value;
+        interface_table_export_timeout.value_namespace = name_space;
+        interface_table_export_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sampler-table-export-timeout")
+    {
+        sampler_table_export_timeout = value;
+        sampler_table_export_timeout.value_namespace = name_space;
+        sampler_table_export_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-table-export-timeout")
+    {
+        vrf_table_export_timeout = value;
+        vrf_table_export_timeout.value_namespace = name_space;
+        vrf_table_export_timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-table-export-timeout")
+    {
+        interface_table_export_timeout.yfilter = yfilter;
+    }
+    if(value_path == "sampler-table-export-timeout")
+    {
+        sampler_table_export_timeout.yfilter = yfilter;
+    }
+    if(value_path == "vrf-table-export-timeout")
+    {
+        vrf_table_export_timeout.yfilter = yfilter;
+    }
+}
+
+bool NetFlow::FlowExporterMaps::FlowExporterMap::Version::Options::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-table-export-timeout" || name == "sampler-table-export-timeout" || name == "vrf-table-export-timeout")
         return true;
     return false;
 }

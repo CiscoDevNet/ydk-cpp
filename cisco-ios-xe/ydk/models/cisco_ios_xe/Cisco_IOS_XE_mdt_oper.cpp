@@ -489,7 +489,8 @@ MdtOperData::MdtSubscriptions::Base::Base()
     no_synch_on_start{YType::boolean, "no-synch-on-start"},
     no_filter{YType::uint32, "no-filter"},
     xpath{YType::str, "xpath"},
-    tdl_uri{YType::str, "tdl-uri"}
+    tdl_uri{YType::str, "tdl-uri"},
+    transform_name{YType::str, "transform-name"}
 {
 
     yang_name = "base"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true;
@@ -510,7 +511,8 @@ bool MdtOperData::MdtSubscriptions::Base::has_data() const
 	|| no_synch_on_start.is_set
 	|| no_filter.is_set
 	|| xpath.is_set
-	|| tdl_uri.is_set;
+	|| tdl_uri.is_set
+	|| transform_name.is_set;
 }
 
 bool MdtOperData::MdtSubscriptions::Base::has_operation() const
@@ -525,7 +527,8 @@ bool MdtOperData::MdtSubscriptions::Base::has_operation() const
 	|| ydk::is_set(no_synch_on_start.yfilter)
 	|| ydk::is_set(no_filter.yfilter)
 	|| ydk::is_set(xpath.yfilter)
-	|| ydk::is_set(tdl_uri.yfilter);
+	|| ydk::is_set(tdl_uri.yfilter)
+	|| ydk::is_set(transform_name.yfilter);
 }
 
 std::string MdtOperData::MdtSubscriptions::Base::get_segment_path() const
@@ -549,6 +552,7 @@ std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtSubscriptions::Ba
     if (no_filter.is_set || is_set(no_filter.yfilter)) leaf_name_data.push_back(no_filter.get_name_leafdata());
     if (xpath.is_set || is_set(xpath.yfilter)) leaf_name_data.push_back(xpath.get_name_leafdata());
     if (tdl_uri.is_set || is_set(tdl_uri.yfilter)) leaf_name_data.push_back(tdl_uri.get_name_leafdata());
+    if (transform_name.is_set || is_set(transform_name.yfilter)) leaf_name_data.push_back(transform_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -628,6 +632,12 @@ void MdtOperData::MdtSubscriptions::Base::set_value(const std::string & value_pa
         tdl_uri.value_namespace = name_space;
         tdl_uri.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "transform-name")
+    {
+        transform_name = value;
+        transform_name.value_namespace = name_space;
+        transform_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MdtOperData::MdtSubscriptions::Base::set_filter(const std::string & value_path, YFilter yfilter)
@@ -672,11 +682,15 @@ void MdtOperData::MdtSubscriptions::Base::set_filter(const std::string & value_p
     {
         tdl_uri.yfilter = yfilter;
     }
+    if(value_path == "transform-name")
+    {
+        transform_name.yfilter = yfilter;
+    }
 }
 
 bool MdtOperData::MdtSubscriptions::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "stream" || name == "encoding" || name == "source-vrf" || name == "source-address" || name == "no-trigger" || name == "period" || name == "no-synch-on-start" || name == "no-filter" || name == "xpath" || name == "tdl-uri")
+    if(name == "stream" || name == "encoding" || name == "source-vrf" || name == "source-address" || name == "no-trigger" || name == "period" || name == "no-synch-on-start" || name == "no-filter" || name == "xpath" || name == "tdl-uri" || name == "transform-name")
         return true;
     return false;
 }
@@ -687,7 +701,8 @@ MdtOperData::MdtSubscriptions::MdtReceivers::MdtReceivers()
     port{YType::uint16, "port"},
     protocol{YType::str, "protocol"},
     state{YType::enumeration, "state"},
-    comments{YType::str, "comments"}
+    comments{YType::str, "comments"},
+    security_profile{YType::str, "security-profile"}
 {
 
     yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true;
@@ -703,7 +718,8 @@ bool MdtOperData::MdtSubscriptions::MdtReceivers::has_data() const
 	|| port.is_set
 	|| protocol.is_set
 	|| state.is_set
-	|| comments.is_set;
+	|| comments.is_set
+	|| security_profile.is_set;
 }
 
 bool MdtOperData::MdtSubscriptions::MdtReceivers::has_operation() const
@@ -713,7 +729,8 @@ bool MdtOperData::MdtSubscriptions::MdtReceivers::has_operation() const
 	|| ydk::is_set(port.yfilter)
 	|| ydk::is_set(protocol.yfilter)
 	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(comments.yfilter);
+	|| ydk::is_set(comments.yfilter)
+	|| ydk::is_set(security_profile.yfilter);
 }
 
 std::string MdtOperData::MdtSubscriptions::MdtReceivers::get_segment_path() const
@@ -732,6 +749,7 @@ std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtSubscriptions::Md
     if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (comments.is_set || is_set(comments.yfilter)) leaf_name_data.push_back(comments.get_name_leafdata());
+    if (security_profile.is_set || is_set(security_profile.yfilter)) leaf_name_data.push_back(security_profile.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -781,6 +799,12 @@ void MdtOperData::MdtSubscriptions::MdtReceivers::set_value(const std::string & 
         comments.value_namespace = name_space;
         comments.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "security-profile")
+    {
+        security_profile = value;
+        security_profile.value_namespace = name_space;
+        security_profile.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MdtOperData::MdtSubscriptions::MdtReceivers::set_filter(const std::string & value_path, YFilter yfilter)
@@ -805,11 +829,15 @@ void MdtOperData::MdtSubscriptions::MdtReceivers::set_filter(const std::string &
     {
         comments.yfilter = yfilter;
     }
+    if(value_path == "security-profile")
+    {
+        security_profile.yfilter = yfilter;
+    }
 }
 
 bool MdtOperData::MdtSubscriptions::MdtReceivers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address" || name == "port" || name == "protocol" || name == "state" || name == "comments")
+    if(name == "address" || name == "port" || name == "protocol" || name == "state" || name == "comments" || name == "security-profile")
         return true;
     return false;
 }
@@ -822,7 +850,8 @@ MdtOperData::MdtConnections::MdtConnections()
     source_address{YType::str, "source-address"},
     transport{YType::str, "transport"},
     peer_id{YType::str, "peer-id"},
-    state{YType::enumeration, "state"}
+    state{YType::enumeration, "state"},
+    security_profile{YType::str, "security-profile"}
 {
 
     yang_name = "mdt-connections"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false;
@@ -845,7 +874,8 @@ bool MdtOperData::MdtConnections::has_data() const
 	|| source_address.is_set
 	|| transport.is_set
 	|| peer_id.is_set
-	|| state.is_set;
+	|| state.is_set
+	|| security_profile.is_set;
 }
 
 bool MdtOperData::MdtConnections::has_operation() const
@@ -862,7 +892,8 @@ bool MdtOperData::MdtConnections::has_operation() const
 	|| ydk::is_set(source_address.yfilter)
 	|| ydk::is_set(transport.yfilter)
 	|| ydk::is_set(peer_id.yfilter)
-	|| ydk::is_set(state.yfilter);
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(security_profile.yfilter);
 }
 
 std::string MdtOperData::MdtConnections::get_absolute_path() const
@@ -890,6 +921,7 @@ std::vector<std::pair<std::string, LeafData> > MdtOperData::MdtConnections::get_
     if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
     if (peer_id.is_set || is_set(peer_id.yfilter)) leaf_name_data.push_back(peer_id.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (security_profile.is_set || is_set(security_profile.yfilter)) leaf_name_data.push_back(security_profile.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -968,6 +1000,12 @@ void MdtOperData::MdtConnections::set_value(const std::string & value_path, cons
         state.value_namespace = name_space;
         state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "security-profile")
+    {
+        security_profile = value;
+        security_profile.value_namespace = name_space;
+        security_profile.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MdtOperData::MdtConnections::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1000,11 +1038,15 @@ void MdtOperData::MdtConnections::set_filter(const std::string & value_path, YFi
     {
         state.yfilter = yfilter;
     }
+    if(value_path == "security-profile")
+    {
+        security_profile.yfilter = yfilter;
+    }
 }
 
 bool MdtOperData::MdtConnections::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mdt-sub-con-stats" || name == "address" || name == "port" || name == "source-vrf" || name == "source-address" || name == "transport" || name == "peer-id" || name == "state")
+    if(name == "mdt-sub-con-stats" || name == "address" || name == "port" || name == "source-vrf" || name == "source-address" || name == "transport" || name == "peer-id" || name == "state" || name == "security-profile")
         return true;
     return false;
 }

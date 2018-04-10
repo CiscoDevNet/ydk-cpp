@@ -13,7 +13,7 @@ namespace Cisco_IOS_XR_ip_ntp_cfg {
 
 Ntp::Ntp()
     :
-    max_associations{YType::int32, "max-associations"},
+    max_associations{YType::uint32, "max-associations"},
     master{YType::uint32, "master"},
     broadcast_delay{YType::uint32, "broadcast-delay"},
     log_internal_sync{YType::empty, "log-internal-sync"},
@@ -23,6 +23,7 @@ Ntp::Ntp()
 	,dscp_ipv4(nullptr) // presence node
 	,dscp_ipv6(nullptr) // presence node
 	,sources(std::make_shared<Ntp::Sources>())
+	,drift(std::make_shared<Ntp::Drift>())
 	,authentication(std::make_shared<Ntp::Authentication>())
 	,passive(std::make_shared<Ntp::Passive>())
 	,interface_tables(std::make_shared<Ntp::InterfaceTables>())
@@ -30,6 +31,7 @@ Ntp::Ntp()
 {
     peer_vrfs->parent = this;
     sources->parent = this;
+    drift->parent = this;
     authentication->parent = this;
     passive->parent = this;
     interface_tables->parent = this;
@@ -53,6 +55,7 @@ bool Ntp::has_data() const
 	|| (dscp_ipv4 !=  nullptr && dscp_ipv4->has_data())
 	|| (dscp_ipv6 !=  nullptr && dscp_ipv6->has_data())
 	|| (sources !=  nullptr && sources->has_data())
+	|| (drift !=  nullptr && drift->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (passive !=  nullptr && passive->has_data())
 	|| (interface_tables !=  nullptr && interface_tables->has_data())
@@ -71,6 +74,7 @@ bool Ntp::has_operation() const
 	|| (dscp_ipv4 !=  nullptr && dscp_ipv4->has_operation())
 	|| (dscp_ipv6 !=  nullptr && dscp_ipv6->has_operation())
 	|| (sources !=  nullptr && sources->has_operation())
+	|| (drift !=  nullptr && drift->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (passive !=  nullptr && passive->has_operation())
 	|| (interface_tables !=  nullptr && interface_tables->has_operation())
@@ -136,6 +140,15 @@ std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_na
         return sources;
     }
 
+    if(child_yang_name == "drift")
+    {
+        if(drift == nullptr)
+        {
+            drift = std::make_shared<Ntp::Drift>();
+        }
+        return drift;
+    }
+
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
@@ -197,6 +210,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::get_children() const
     if(sources != nullptr)
     {
         children["sources"] = sources;
+    }
+
+    if(drift != nullptr)
+    {
+        children["drift"] = drift;
     }
 
     if(authentication != nullptr)
@@ -307,7 +325,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ntp::get_namespace_id
 
 bool Ntp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer-vrfs" || name == "dscp-ipv4" || name == "dscp-ipv6" || name == "sources" || name == "authentication" || name == "passive" || name == "interface-tables" || name == "access-group-tables" || name == "max-associations" || name == "master" || name == "broadcast-delay" || name == "log-internal-sync" || name == "update-calendar")
+    if(name == "peer-vrfs" || name == "dscp-ipv4" || name == "dscp-ipv6" || name == "sources" || name == "drift" || name == "authentication" || name == "passive" || name == "interface-tables" || name == "access-group-tables" || name == "max-associations" || name == "master" || name == "broadcast-delay" || name == "log-internal-sync" || name == "update-calendar")
         return true;
     return false;
 }
@@ -1697,6 +1715,207 @@ void Ntp::Sources::Source::set_filter(const std::string & value_path, YFilter yf
 bool Ntp::Sources::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "source-interface")
+        return true;
+    return false;
+}
+
+Ntp::Drift::Drift()
+    :
+    aging_time{YType::uint32, "aging-time"}
+    	,
+    file(std::make_shared<Ntp::Drift::File>())
+{
+    file->parent = this;
+
+    yang_name = "drift"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Drift::~Drift()
+{
+}
+
+bool Ntp::Drift::has_data() const
+{
+    return aging_time.is_set
+	|| (file !=  nullptr && file->has_data());
+}
+
+bool Ntp::Drift::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(aging_time.yfilter)
+	|| (file !=  nullptr && file->has_operation());
+}
+
+std::string Ntp::Drift::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Drift::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "drift";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Drift::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aging_time.is_set || is_set(aging_time.yfilter)) leaf_name_data.push_back(aging_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Drift::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "file")
+    {
+        if(file == nullptr)
+        {
+            file = std::make_shared<Ntp::Drift::File>();
+        }
+        return file;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Drift::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(file != nullptr)
+    {
+        children["file"] = file;
+    }
+
+    return children;
+}
+
+void Ntp::Drift::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aging-time")
+    {
+        aging_time = value;
+        aging_time.value_namespace = name_space;
+        aging_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::Drift::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aging-time")
+    {
+        aging_time.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Drift::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "file" || name == "aging-time")
+        return true;
+    return false;
+}
+
+Ntp::Drift::File::File()
+    :
+    location{YType::str, "location"},
+    filename{YType::str, "filename"}
+{
+
+    yang_name = "file"; yang_parent_name = "drift"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ntp::Drift::File::~File()
+{
+}
+
+bool Ntp::Drift::File::has_data() const
+{
+    return location.is_set
+	|| filename.is_set;
+}
+
+bool Ntp::Drift::File::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(filename.yfilter);
+}
+
+std::string Ntp::Drift::File::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp/drift/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ntp::Drift::File::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "file";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ntp::Drift::File::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (filename.is_set || is_set(filename.yfilter)) leaf_name_data.push_back(filename.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ntp::Drift::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ntp::Drift::File::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ntp::Drift::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "filename")
+    {
+        filename = value;
+        filename.value_namespace = name_space;
+        filename.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::Drift::File::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "filename")
+    {
+        filename.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Drift::File::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location" || name == "filename")
         return true;
     return false;
 }

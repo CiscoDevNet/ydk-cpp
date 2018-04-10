@@ -16,13 +16,13 @@ FrequencySynchronization::FrequencySynchronization()
     global_nodes(std::make_shared<FrequencySynchronization::GlobalNodes>())
 	,global_interfaces(std::make_shared<FrequencySynchronization::GlobalInterfaces>())
 	,summary(std::make_shared<FrequencySynchronization::Summary>())
-	,interfaces(std::make_shared<FrequencySynchronization::Interfaces>())
+	,interface_datas(std::make_shared<FrequencySynchronization::InterfaceDatas>())
 	,nodes(std::make_shared<FrequencySynchronization::Nodes>())
 {
     global_nodes->parent = this;
     global_interfaces->parent = this;
     summary->parent = this;
-    interfaces->parent = this;
+    interface_datas->parent = this;
     nodes->parent = this;
 
     yang_name = "frequency-synchronization"; yang_parent_name = "Cisco-IOS-XR-freqsync-oper"; is_top_level_class = true; has_list_ancestor = false;
@@ -37,7 +37,7 @@ bool FrequencySynchronization::has_data() const
     return (global_nodes !=  nullptr && global_nodes->has_data())
 	|| (global_interfaces !=  nullptr && global_interfaces->has_data())
 	|| (summary !=  nullptr && summary->has_data())
-	|| (interfaces !=  nullptr && interfaces->has_data())
+	|| (interface_datas !=  nullptr && interface_datas->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -47,7 +47,7 @@ bool FrequencySynchronization::has_operation() const
 	|| (global_nodes !=  nullptr && global_nodes->has_operation())
 	|| (global_interfaces !=  nullptr && global_interfaces->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
-	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (interface_datas !=  nullptr && interface_datas->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -96,13 +96,13 @@ std::shared_ptr<Entity> FrequencySynchronization::get_child_by_name(const std::s
         return summary;
     }
 
-    if(child_yang_name == "interfaces")
+    if(child_yang_name == "interface-datas")
     {
-        if(interfaces == nullptr)
+        if(interface_datas == nullptr)
         {
-            interfaces = std::make_shared<FrequencySynchronization::Interfaces>();
+            interface_datas = std::make_shared<FrequencySynchronization::InterfaceDatas>();
         }
-        return interfaces;
+        return interface_datas;
     }
 
     if(child_yang_name == "nodes")
@@ -136,9 +136,9 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::get_chi
         children["summary"] = summary;
     }
 
-    if(interfaces != nullptr)
+    if(interface_datas != nullptr)
     {
-        children["interfaces"] = interfaces;
+        children["interface-datas"] = interface_datas;
     }
 
     if(nodes != nullptr)
@@ -184,7 +184,7 @@ std::map<std::pair<std::string, std::string>, std::string> FrequencySynchronizat
 
 bool FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "global-nodes" || name == "global-interfaces" || name == "summary" || name == "interfaces" || name == "nodes")
+    if(name == "global-nodes" || name == "global-interfaces" || name == "summary" || name == "interface-datas" || name == "nodes")
         return true;
     return false;
 }
@@ -5940,51 +5940,51 @@ bool FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::has_l
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interfaces()
+FrequencySynchronization::InterfaceDatas::InterfaceDatas()
 {
 
-    yang_name = "interfaces"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-datas"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-FrequencySynchronization::Interfaces::~Interfaces()
+FrequencySynchronization::InterfaceDatas::~InterfaceDatas()
 {
 }
 
-bool FrequencySynchronization::Interfaces::has_data() const
+bool FrequencySynchronization::InterfaceDatas::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface_data.size(); index++)
     {
-        if(interface[index]->has_data())
+        if(interface_data[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool FrequencySynchronization::Interfaces::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface_data.size(); index++)
     {
-        if(interface[index]->has_operation())
+        if(interface_data[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::get_absolute_path() const
+std::string FrequencySynchronization::InterfaceDatas::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-freqsync-oper:frequency-synchronization/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string FrequencySynchronization::Interfaces::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interfaces";
+    path_buffer << "interface-datas";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5993,25 +5993,25 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "interface")
+    if(child_yang_name == "interface-data")
     {
-        auto c = std::make_shared<FrequencySynchronization::Interfaces::Interface>();
+        auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData>();
         c->parent = this;
-        interface.push_back(c);
+        interface_data.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto const & c : interface_data)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6022,22 +6022,22 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     return children;
 }
 
-void FrequencySynchronization::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void FrequencySynchronization::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool FrequencySynchronization::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface")
+    if(name == "interface-data")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::Interface()
+FrequencySynchronization::InterfaceDatas::InterfaceData::InterfaceData()
     :
     interface_name{YType::str, "interface-name"},
     name{YType::str, "name"},
@@ -6051,21 +6051,17 @@ FrequencySynchronization::Interfaces::Interface::Interface()
     damping_time{YType::uint32, "damping-time"},
     wait_to_restore_time{YType::uint16, "wait-to-restore-time"},
     supports_frequency{YType::boolean, "supports-frequency"},
-    supports_time_of_day{YType::boolean, "supports-time-of-day"},
-    spa_selection_point{YType::uint8, "spa-selection-point"},
-    spa_selection_points_description{YType::str, "spa-selection-points-description"},
-    node_selection_point{YType::uint8, "node-selection-point"},
-    node_selection_points_description{YType::str, "node-selection-points-description"}
+    supports_time_of_day{YType::boolean, "supports-time-of-day"}
     	,
-    source(std::make_shared<FrequencySynchronization::Interfaces::Interface::Source>())
-	,selected_source(std::make_shared<FrequencySynchronization::Interfaces::Interface::SelectedSource>())
-	,quality_level_received(std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelReceived>())
-	,quality_level_damped(std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelDamped>())
-	,quality_level_effective_input(std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput>())
-	,quality_level_effective_output(std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput>())
-	,quality_level_selected_source(std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource>())
-	,ethernet_peer_information(std::make_shared<FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation>())
-	,esmc_statistics(std::make_shared<FrequencySynchronization::Interfaces::Interface::EsmcStatistics>())
+    source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source>())
+	,selected_source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource>())
+	,quality_level_received(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived>())
+	,quality_level_damped(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped>())
+	,quality_level_effective_input(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput>())
+	,quality_level_effective_output(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput>())
+	,quality_level_selected_source(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource>())
+	,ethernet_peer_information(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation>())
+	,esmc_statistics(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics>())
 {
     source->parent = this;
     selected_source->parent = this;
@@ -6077,33 +6073,23 @@ FrequencySynchronization::Interfaces::Interface::Interface()
     ethernet_peer_information->parent = this;
     esmc_statistics->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-data"; yang_parent_name = "interface-datas"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-FrequencySynchronization::Interfaces::Interface::~Interface()
+FrequencySynchronization::InterfaceDatas::InterfaceData::~InterfaceData()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::has_data() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
     {
-        if(leaf.is_set)
+        if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
     {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
+        if(node_selection_point[index]->has_data())
             return true;
     }
     return interface_name.is_set
@@ -6130,26 +6116,16 @@ bool FrequencySynchronization::Interfaces::Interface::has_data() const
 	|| (esmc_statistics !=  nullptr && esmc_statistics->has_data());
 }
 
-bool FrequencySynchronization::Interfaces::Interface::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::has_operation() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
     {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
+        if(node_selection_point[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -6166,10 +6142,6 @@ bool FrequencySynchronization::Interfaces::Interface::has_operation() const
 	|| ydk::is_set(wait_to_restore_time.yfilter)
 	|| ydk::is_set(supports_frequency.yfilter)
 	|| ydk::is_set(supports_time_of_day.yfilter)
-	|| ydk::is_set(spa_selection_point.yfilter)
-	|| ydk::is_set(spa_selection_points_description.yfilter)
-	|| ydk::is_set(node_selection_point.yfilter)
-	|| ydk::is_set(node_selection_points_description.yfilter)
 	|| (source !=  nullptr && source->has_operation())
 	|| (selected_source !=  nullptr && selected_source->has_operation())
 	|| (quality_level_received !=  nullptr && quality_level_received->has_operation())
@@ -6181,21 +6153,21 @@ bool FrequencySynchronization::Interfaces::Interface::has_operation() const
 	|| (esmc_statistics !=  nullptr && esmc_statistics->has_operation());
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::get_absolute_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-freqsync-oper:frequency-synchronization/interfaces/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-freqsync-oper:frequency-synchronization/interface-datas/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-data" <<"[interface-name='" <<interface_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6213,25 +6185,17 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
     if (supports_frequency.is_set || is_set(supports_frequency.yfilter)) leaf_name_data.push_back(supports_frequency.get_name_leafdata());
     if (supports_time_of_day.is_set || is_set(supports_time_of_day.yfilter)) leaf_name_data.push_back(supports_time_of_day.get_name_leafdata());
 
-    auto spa_selection_point_name_datas = spa_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_point_name_datas.begin(), spa_selection_point_name_datas.end());
-    auto spa_selection_points_description_name_datas = spa_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_points_description_name_datas.begin(), spa_selection_points_description_name_datas.end());
-    auto node_selection_point_name_datas = node_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_point_name_datas.begin(), node_selection_point_name_datas.end());
-    auto node_selection_points_description_name_datas = node_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_points_description_name_datas.begin(), node_selection_points_description_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<FrequencySynchronization::Interfaces::Interface::Source>();
+            source = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source>();
         }
         return source;
     }
@@ -6240,7 +6204,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(selected_source == nullptr)
         {
-            selected_source = std::make_shared<FrequencySynchronization::Interfaces::Interface::SelectedSource>();
+            selected_source = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource>();
         }
         return selected_source;
     }
@@ -6249,7 +6213,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(quality_level_received == nullptr)
         {
-            quality_level_received = std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelReceived>();
+            quality_level_received = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived>();
         }
         return quality_level_received;
     }
@@ -6258,7 +6222,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(quality_level_damped == nullptr)
         {
-            quality_level_damped = std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelDamped>();
+            quality_level_damped = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped>();
         }
         return quality_level_damped;
     }
@@ -6267,7 +6231,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(quality_level_effective_input == nullptr)
         {
-            quality_level_effective_input = std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput>();
+            quality_level_effective_input = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput>();
         }
         return quality_level_effective_input;
     }
@@ -6276,7 +6240,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(quality_level_effective_output == nullptr)
         {
-            quality_level_effective_output = std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput>();
+            quality_level_effective_output = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput>();
         }
         return quality_level_effective_output;
     }
@@ -6285,7 +6249,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(quality_level_selected_source == nullptr)
         {
-            quality_level_selected_source = std::make_shared<FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource>();
+            quality_level_selected_source = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource>();
         }
         return quality_level_selected_source;
     }
@@ -6294,7 +6258,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(ethernet_peer_information == nullptr)
         {
-            ethernet_peer_information = std::make_shared<FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation>();
+            ethernet_peer_information = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation>();
         }
         return ethernet_peer_information;
     }
@@ -6303,15 +6267,31 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::get_chi
     {
         if(esmc_statistics == nullptr)
         {
-            esmc_statistics = std::make_shared<FrequencySynchronization::Interfaces::Interface::EsmcStatistics>();
+            esmc_statistics = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics>();
         }
         return esmc_statistics;
+    }
+
+    if(child_yang_name == "spa-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint>();
+        c->parent = this;
+        spa_selection_point.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "node-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint>();
+        c->parent = this;
+        node_selection_point.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6360,10 +6340,28 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
         children["esmc-statistics"] = esmc_statistics;
     }
 
+    count = 0;
+    for (auto const & c : spa_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : node_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -6443,25 +6441,9 @@ void FrequencySynchronization::Interfaces::Interface::set_value(const std::strin
         supports_time_of_day.value_namespace = name_space;
         supports_time_of_day.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.append(value);
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.append(value);
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.append(value);
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.append(value);
-    }
 }
 
-void FrequencySynchronization::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -6515,32 +6497,16 @@ void FrequencySynchronization::Interfaces::Interface::set_filter(const std::stri
     {
         supports_time_of_day.yfilter = yfilter;
     }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.yfilter = yfilter;
-    }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source" || name == "selected-source" || name == "quality-level-received" || name == "quality-level-damped" || name == "quality-level-effective-input" || name == "quality-level-effective-output" || name == "quality-level-selected-source" || name == "ethernet-peer-information" || name == "esmc-statistics" || name == "interface-name" || name == "name" || name == "state" || name == "ssm-enabled" || name == "squelched" || name == "selection-input" || name == "priority" || name == "time-of-day-priority" || name == "damping-state" || name == "damping-time" || name == "wait-to-restore-time" || name == "supports-frequency" || name == "supports-time-of-day" || name == "spa-selection-point" || name == "spa-selection-points-description" || name == "node-selection-point" || name == "node-selection-points-description")
+    if(name == "source" || name == "selected-source" || name == "quality-level-received" || name == "quality-level-damped" || name == "quality-level-effective-input" || name == "quality-level-effective-output" || name == "quality-level-selected-source" || name == "ethernet-peer-information" || name == "esmc-statistics" || name == "spa-selection-point" || name == "node-selection-point" || name == "interface-name" || name == "name" || name == "state" || name == "ssm-enabled" || name == "squelched" || name == "selection-input" || name == "priority" || name == "time-of-day-priority" || name == "damping-state" || name == "damping-time" || name == "wait-to-restore-time" || name == "supports-frequency" || name == "supports-time-of-day")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::Source::Source()
+FrequencySynchronization::InterfaceDatas::InterfaceData::Source::Source()
     :
     source_class{YType::enumeration, "source-class"},
     ethernet_interface{YType::str, "ethernet-interface"},
@@ -6550,18 +6516,18 @@ FrequencySynchronization::Interfaces::Interface::Source::Source()
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
     	,
-    clock_id(std::make_shared<FrequencySynchronization::Interfaces::Interface::Source::ClockId>())
+    clock_id(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId>())
 {
     clock_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::Source::~Source()
+FrequencySynchronization::InterfaceDatas::InterfaceData::Source::~Source()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::Source::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_data() const
 {
     return source_class.is_set
 	|| ethernet_interface.is_set
@@ -6573,7 +6539,7 @@ bool FrequencySynchronization::Interfaces::Interface::Source::has_data() const
 	|| (clock_id !=  nullptr && clock_id->has_data());
 }
 
-bool FrequencySynchronization::Interfaces::Interface::Source::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_class.yfilter)
@@ -6586,14 +6552,14 @@ bool FrequencySynchronization::Interfaces::Interface::Source::has_operation() co
 	|| (clock_id !=  nullptr && clock_id->has_operation());
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::Source::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6609,13 +6575,13 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
         if(clock_id == nullptr)
         {
-            clock_id = std::make_shared<FrequencySynchronization::Interfaces::Interface::Source::ClockId>();
+            clock_id = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId>();
         }
         return clock_id;
     }
@@ -6623,7 +6589,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::Source:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6635,7 +6601,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-class")
     {
@@ -6681,7 +6647,7 @@ void FrequencySynchronization::Interfaces::Interface::Source::set_value(const st
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-class")
     {
@@ -6713,14 +6679,14 @@ void FrequencySynchronization::Interfaces::Interface::Source::set_filter(const s
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::Source::ClockId::ClockId()
+FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::ClockId()
     :
     node{YType::str, "node"},
     port{YType::uint32, "port"}
@@ -6729,31 +6695,31 @@ FrequencySynchronization::Interfaces::Interface::Source::ClockId::ClockId()
     yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::Source::ClockId::~ClockId()
+FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::~ClockId()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::Source::ClockId::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::has_data() const
 {
     return node.is_set
 	|| port.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::Source::ClockId::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
 	|| ydk::is_set(port.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::Source::ClockId::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::Source::ClockId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6764,19 +6730,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node")
     {
@@ -6792,7 +6758,7 @@ void FrequencySynchronization::Interfaces::Interface::Source::ClockId::set_value
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::Source::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "node")
     {
@@ -6804,14 +6770,14 @@ void FrequencySynchronization::Interfaces::Interface::Source::ClockId::set_filte
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "node" || name == "port")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::SelectedSource::SelectedSource()
+FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::SelectedSource()
     :
     source_class{YType::enumeration, "source-class"},
     ethernet_interface{YType::str, "ethernet-interface"},
@@ -6821,18 +6787,18 @@ FrequencySynchronization::Interfaces::Interface::SelectedSource::SelectedSource(
     satellite_access_interface{YType::str, "satellite-access-interface"},
     ntp_node{YType::str, "ntp-node"}
     	,
-    clock_id(std::make_shared<FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId>())
+    clock_id(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId>())
 {
     clock_id->parent = this;
 
-    yang_name = "selected-source"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selected-source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::SelectedSource::~SelectedSource()
+FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::~SelectedSource()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::SelectedSource::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::has_data() const
 {
     return source_class.is_set
 	|| ethernet_interface.is_set
@@ -6844,7 +6810,7 @@ bool FrequencySynchronization::Interfaces::Interface::SelectedSource::has_data()
 	|| (clock_id !=  nullptr && clock_id->has_data());
 }
 
-bool FrequencySynchronization::Interfaces::Interface::SelectedSource::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_class.yfilter)
@@ -6857,14 +6823,14 @@ bool FrequencySynchronization::Interfaces::Interface::SelectedSource::has_operat
 	|| (clock_id !=  nullptr && clock_id->has_operation());
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::SelectedSource::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "selected-source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::SelectedSource::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6880,13 +6846,13 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
         if(clock_id == nullptr)
         {
-            clock_id = std::make_shared<FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId>();
+            clock_id = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId>();
         }
         return clock_id;
     }
@@ -6894,7 +6860,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::Selecte
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::SelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6906,7 +6872,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-class")
     {
@@ -6952,7 +6918,7 @@ void FrequencySynchronization::Interfaces::Interface::SelectedSource::set_value(
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::SelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-class")
     {
@@ -6984,14 +6950,14 @@ void FrequencySynchronization::Interfaces::Interface::SelectedSource::set_filter
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::ClockId()
+FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::ClockId()
     :
     node{YType::str, "node"},
     port{YType::uint32, "port"}
@@ -7000,31 +6966,31 @@ FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::ClockI
     yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::~ClockId()
+FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::~ClockId()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::has_data() const
 {
     return node.is_set
 	|| port.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
 	|| ydk::is_set(port.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7035,19 +7001,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node")
     {
@@ -7063,7 +7029,7 @@ void FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::s
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "node")
     {
@@ -7075,14 +7041,14 @@ void FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::s
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "node" || name == "port")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::QualityLevelReceived()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::QualityLevelReceived()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     option1_value{YType::enumeration, "option1-value"},
@@ -7090,14 +7056,14 @@ FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::QualityLe
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-received"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-received"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::~QualityLevelReceived()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::~QualityLevelReceived()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::has_data() const
 {
     return quality_level_option.is_set
 	|| option1_value.is_set
@@ -7105,7 +7071,7 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::has_
 	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -7114,14 +7080,14 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::has_
 	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "quality-level-received";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7134,19 +7100,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -7174,7 +7140,7 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::set_
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -7194,14 +7160,14 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::set_
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelReceived::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::QualityLevelDamped()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::QualityLevelDamped()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     option1_value{YType::enumeration, "option1-value"},
@@ -7209,14 +7175,14 @@ FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::QualityLeve
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-damped"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-damped"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::~QualityLevelDamped()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::~QualityLevelDamped()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::has_data() const
 {
     return quality_level_option.is_set
 	|| option1_value.is_set
@@ -7224,7 +7190,7 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::has_da
 	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -7233,14 +7199,14 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::has_op
 	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "quality-level-damped";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7253,19 +7219,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -7293,7 +7259,7 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::set_va
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -7313,14 +7279,14 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::set_fi
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelDamped::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     option1_value{YType::enumeration, "option1-value"},
@@ -7328,14 +7294,14 @@ FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::Qua
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-input"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::has_data() const
 {
     return quality_level_option.is_set
 	|| option1_value.is_set
@@ -7343,7 +7309,7 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput
 	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -7352,14 +7318,14 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput
 	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "quality-level-effective-input";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7372,19 +7338,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -7412,7 +7378,7 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -7432,14 +7398,14 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::QualityLevelEffectiveOutput()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::QualityLevelEffectiveOutput()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     option1_value{YType::enumeration, "option1-value"},
@@ -7447,14 +7413,14 @@ FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::Qu
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-output"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-output"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::~QualityLevelEffectiveOutput()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::~QualityLevelEffectiveOutput()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::has_data() const
 {
     return quality_level_option.is_set
 	|| option1_value.is_set
@@ -7462,7 +7428,7 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutpu
 	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -7471,14 +7437,14 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutpu
 	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "quality-level-effective-output";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7491,19 +7457,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -7531,7 +7497,7 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutpu
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -7551,14 +7517,14 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutpu
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::QualityLevelSelectedSource()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::QualityLevelSelectedSource()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     option1_value{YType::enumeration, "option1-value"},
@@ -7566,14 +7532,14 @@ FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::Qua
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-selected-source"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-selected-source"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::~QualityLevelSelectedSource()
+FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::~QualityLevelSelectedSource()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::has_data() const
 {
     return quality_level_option.is_set
 	|| option1_value.is_set
@@ -7581,7 +7547,7 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource
 	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -7590,14 +7556,14 @@ bool FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource
 	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "quality-level-selected-source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7610,19 +7576,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -7650,7 +7616,7 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -7670,33 +7636,33 @@ void FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::EthernetPeerInformation()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::EthernetPeerInformation()
     :
     peer_state{YType::enumeration, "peer-state"},
     peer_up_count{YType::uint16, "peer-up-count"},
     peer_timeout_count{YType::uint16, "peer-timeout-count"}
     	,
-    peer_state_time(std::make_shared<FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime>())
-	,last_ssm(std::make_shared<FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm>())
+    peer_state_time(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime>())
+	,last_ssm(std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm>())
 {
     peer_state_time->parent = this;
     last_ssm->parent = this;
 
-    yang_name = "ethernet-peer-information"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet-peer-information"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::~EthernetPeerInformation()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::~EthernetPeerInformation()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::has_data() const
 {
     return peer_state.is_set
 	|| peer_up_count.is_set
@@ -7705,7 +7671,7 @@ bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::h
 	|| (last_ssm !=  nullptr && last_ssm->has_data());
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(peer_state.yfilter)
@@ -7715,14 +7681,14 @@ bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::h
 	|| (last_ssm !=  nullptr && last_ssm->has_operation());
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-peer-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7734,13 +7700,13 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-state-time")
     {
         if(peer_state_time == nullptr)
         {
-            peer_state_time = std::make_shared<FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime>();
+            peer_state_time = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime>();
         }
         return peer_state_time;
     }
@@ -7749,7 +7715,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::Etherne
     {
         if(last_ssm == nullptr)
         {
-            last_ssm = std::make_shared<FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm>();
+            last_ssm = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm>();
         }
         return last_ssm;
     }
@@ -7757,7 +7723,7 @@ std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::Etherne
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7774,7 +7740,7 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfa
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-state")
     {
@@ -7796,7 +7762,7 @@ void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::s
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "peer-state")
     {
@@ -7812,14 +7778,14 @@ void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::s
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peer-state-time" || name == "last-ssm" || name == "peer-state" || name == "peer-up-count" || name == "peer-timeout-count")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::PeerStateTime()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::PeerStateTime()
     :
     seconds{YType::uint32, "seconds"},
     nanoseconds{YType::uint32, "nanoseconds"}
@@ -7828,31 +7794,31 @@ FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerSt
     yang_name = "peer-state-time"; yang_parent_name = "ethernet-peer-information"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::~PeerStateTime()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::~PeerStateTime()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::has_data() const
 {
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(seconds.yfilter)
 	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-state-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7863,19 +7829,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "seconds")
     {
@@ -7891,7 +7857,7 @@ void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::P
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "seconds")
     {
@@ -7903,14 +7869,14 @@ void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::P
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::LastSsm()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::LastSsm()
     :
     seconds{YType::uint32, "seconds"},
     nanoseconds{YType::uint32, "nanoseconds"}
@@ -7919,31 +7885,31 @@ FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSs
     yang_name = "last-ssm"; yang_parent_name = "ethernet-peer-information"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::~LastSsm()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::~LastSsm()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::has_data() const
 {
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(seconds.yfilter)
 	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "last-ssm";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7954,19 +7920,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "seconds")
     {
@@ -7982,7 +7948,7 @@ void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::L
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "seconds")
     {
@@ -7994,14 +7960,14 @@ void FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::L
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-FrequencySynchronization::Interfaces::Interface::EsmcStatistics::EsmcStatistics()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::EsmcStatistics()
     :
     esmc_events_sent{YType::uint16, "esmc-events-sent"},
     esmc_events_received{YType::uint16, "esmc-events-received"},
@@ -8013,14 +7979,14 @@ FrequencySynchronization::Interfaces::Interface::EsmcStatistics::EsmcStatistics(
     esmc_received_error{YType::uint16, "esmc-received-error"}
 {
 
-    yang_name = "esmc-statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esmc-statistics"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Interfaces::Interface::EsmcStatistics::~EsmcStatistics()
+FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::~EsmcStatistics()
 {
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EsmcStatistics::has_data() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::has_data() const
 {
     return esmc_events_sent.is_set
 	|| esmc_events_received.is_set
@@ -8032,7 +7998,7 @@ bool FrequencySynchronization::Interfaces::Interface::EsmcStatistics::has_data()
 	|| esmc_received_error.is_set;
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EsmcStatistics::has_operation() const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(esmc_events_sent.yfilter)
@@ -8045,14 +8011,14 @@ bool FrequencySynchronization::Interfaces::Interface::EsmcStatistics::has_operat
 	|| ydk::is_set(esmc_received_error.yfilter);
 }
 
-std::string FrequencySynchronization::Interfaces::Interface::EsmcStatistics::get_segment_path() const
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esmc-statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfaces::Interface::EsmcStatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8069,19 +8035,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Interfaces::Interface::EsmcStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Interfaces::Interface::EsmcStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Interfaces::Interface::EsmcStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "esmc-events-sent")
     {
@@ -8133,7 +8099,7 @@ void FrequencySynchronization::Interfaces::Interface::EsmcStatistics::set_value(
     }
 }
 
-void FrequencySynchronization::Interfaces::Interface::EsmcStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "esmc-events-sent")
     {
@@ -8169,9 +8135,191 @@ void FrequencySynchronization::Interfaces::Interface::EsmcStatistics::set_filter
     }
 }
 
-bool FrequencySynchronization::Interfaces::Interface::EsmcStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "esmc-events-sent" || name == "esmc-events-received" || name == "esmc-infos-sent" || name == "esmc-infos-received" || name == "esmc-dn-us-sent" || name == "esmc-dn-us-received" || name == "esmc-malformed-received" || name == "esmc-received-error")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::SpaSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
+{
+
+    yang_name = "spa-selection-point"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::~SpaSelectionPoint()
+{
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::has_data() const
+{
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spa-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::NodeSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
+{
+
+    yang_name = "node-selection-point"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::~NodeSelectionPoint()
+{
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::has_data() const
+{
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
         return true;
     return false;
 }
@@ -8277,20 +8425,20 @@ FrequencySynchronization::Nodes::Node::Node()
     :
     node{YType::str, "node"}
     	,
-    ntp(std::make_shared<FrequencySynchronization::Nodes::Node::Ntp>())
-	,clocks(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks>())
+    ntp_data(std::make_shared<FrequencySynchronization::Nodes::Node::NtpData>())
+	,selection_point_datas(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas>())
 	,configuration_errors(std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors>())
-	,ptp(std::make_shared<FrequencySynchronization::Nodes::Node::Ptp>())
+	,ptp_data(std::make_shared<FrequencySynchronization::Nodes::Node::PtpData>())
 	,ssm_summary(std::make_shared<FrequencySynchronization::Nodes::Node::SsmSummary>())
-	,selection_points(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints>())
+	,clock_datas(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas>())
 	,selection_point_inputs(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs>())
 {
-    ntp->parent = this;
-    clocks->parent = this;
+    ntp_data->parent = this;
+    selection_point_datas->parent = this;
     configuration_errors->parent = this;
-    ptp->parent = this;
+    ptp_data->parent = this;
     ssm_summary->parent = this;
-    selection_points->parent = this;
+    clock_datas->parent = this;
     selection_point_inputs->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
@@ -8303,12 +8451,12 @@ FrequencySynchronization::Nodes::Node::~Node()
 bool FrequencySynchronization::Nodes::Node::has_data() const
 {
     return node.is_set
-	|| (ntp !=  nullptr && ntp->has_data())
-	|| (clocks !=  nullptr && clocks->has_data())
+	|| (ntp_data !=  nullptr && ntp_data->has_data())
+	|| (selection_point_datas !=  nullptr && selection_point_datas->has_data())
 	|| (configuration_errors !=  nullptr && configuration_errors->has_data())
-	|| (ptp !=  nullptr && ptp->has_data())
+	|| (ptp_data !=  nullptr && ptp_data->has_data())
 	|| (ssm_summary !=  nullptr && ssm_summary->has_data())
-	|| (selection_points !=  nullptr && selection_points->has_data())
+	|| (clock_datas !=  nullptr && clock_datas->has_data())
 	|| (selection_point_inputs !=  nullptr && selection_point_inputs->has_data());
 }
 
@@ -8316,12 +8464,12 @@ bool FrequencySynchronization::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node.yfilter)
-	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (clocks !=  nullptr && clocks->has_operation())
+	|| (ntp_data !=  nullptr && ntp_data->has_operation())
+	|| (selection_point_datas !=  nullptr && selection_point_datas->has_operation())
 	|| (configuration_errors !=  nullptr && configuration_errors->has_operation())
-	|| (ptp !=  nullptr && ptp->has_operation())
+	|| (ptp_data !=  nullptr && ptp_data->has_operation())
 	|| (ssm_summary !=  nullptr && ssm_summary->has_operation())
-	|| (selection_points !=  nullptr && selection_points->has_operation())
+	|| (clock_datas !=  nullptr && clock_datas->has_operation())
 	|| (selection_point_inputs !=  nullptr && selection_point_inputs->has_operation());
 }
 
@@ -8351,22 +8499,22 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ntp")
+    if(child_yang_name == "ntp-data")
     {
-        if(ntp == nullptr)
+        if(ntp_data == nullptr)
         {
-            ntp = std::make_shared<FrequencySynchronization::Nodes::Node::Ntp>();
+            ntp_data = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData>();
         }
-        return ntp;
+        return ntp_data;
     }
 
-    if(child_yang_name == "clocks")
+    if(child_yang_name == "selection-point-datas")
     {
-        if(clocks == nullptr)
+        if(selection_point_datas == nullptr)
         {
-            clocks = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks>();
+            selection_point_datas = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas>();
         }
-        return clocks;
+        return selection_point_datas;
     }
 
     if(child_yang_name == "configuration-errors")
@@ -8378,13 +8526,13 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::get_child_by_name
         return configuration_errors;
     }
 
-    if(child_yang_name == "ptp")
+    if(child_yang_name == "ptp-data")
     {
-        if(ptp == nullptr)
+        if(ptp_data == nullptr)
         {
-            ptp = std::make_shared<FrequencySynchronization::Nodes::Node::Ptp>();
+            ptp_data = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData>();
         }
-        return ptp;
+        return ptp_data;
     }
 
     if(child_yang_name == "ssm-summary")
@@ -8396,13 +8544,13 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::get_child_by_name
         return ssm_summary;
     }
 
-    if(child_yang_name == "selection-points")
+    if(child_yang_name == "clock-datas")
     {
-        if(selection_points == nullptr)
+        if(clock_datas == nullptr)
         {
-            selection_points = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints>();
+            clock_datas = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas>();
         }
-        return selection_points;
+        return clock_datas;
     }
 
     if(child_yang_name == "selection-point-inputs")
@@ -8421,14 +8569,14 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(ntp != nullptr)
+    if(ntp_data != nullptr)
     {
-        children["ntp"] = ntp;
+        children["ntp-data"] = ntp_data;
     }
 
-    if(clocks != nullptr)
+    if(selection_point_datas != nullptr)
     {
-        children["clocks"] = clocks;
+        children["selection-point-datas"] = selection_point_datas;
     }
 
     if(configuration_errors != nullptr)
@@ -8436,9 +8584,9 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
         children["configuration-errors"] = configuration_errors;
     }
 
-    if(ptp != nullptr)
+    if(ptp_data != nullptr)
     {
-        children["ptp"] = ptp;
+        children["ptp-data"] = ptp_data;
     }
 
     if(ssm_summary != nullptr)
@@ -8446,9 +8594,9 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
         children["ssm-summary"] = ssm_summary;
     }
 
-    if(selection_points != nullptr)
+    if(clock_datas != nullptr)
     {
-        children["selection-points"] = selection_points;
+        children["clock-datas"] = clock_datas;
     }
 
     if(selection_point_inputs != nullptr)
@@ -8479,54 +8627,40 @@ void FrequencySynchronization::Nodes::Node::set_filter(const std::string & value
 
 bool FrequencySynchronization::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ntp" || name == "clocks" || name == "configuration-errors" || name == "ptp" || name == "ssm-summary" || name == "selection-points" || name == "selection-point-inputs" || name == "node")
+    if(name == "ntp-data" || name == "selection-point-datas" || name == "configuration-errors" || name == "ptp-data" || name == "ssm-summary" || name == "clock-datas" || name == "selection-point-inputs" || name == "node")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Ntp::Ntp()
+FrequencySynchronization::Nodes::Node::NtpData::NtpData()
     :
     state{YType::enumeration, "state"},
     supports_frequency{YType::boolean, "supports-frequency"},
     supports_time_of_day{YType::boolean, "supports-time-of-day"},
     frequency_priority{YType::uint8, "frequency-priority"},
-    time_of_day_priority{YType::uint8, "time-of-day-priority"},
-    spa_selection_point{YType::uint8, "spa-selection-point"},
-    spa_selection_points_description{YType::str, "spa-selection-points-description"},
-    node_selection_point{YType::uint8, "node-selection-point"},
-    node_selection_points_description{YType::str, "node-selection-points-description"}
+    time_of_day_priority{YType::uint8, "time-of-day-priority"}
     	,
-    quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput>())
+    quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput>())
 {
     quality_level_effective_input->parent = this;
 
-    yang_name = "ntp"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ntp-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Ntp::~Ntp()
+FrequencySynchronization::Nodes::Node::NtpData::~NtpData()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Ntp::has_data() const
+bool FrequencySynchronization::Nodes::Node::NtpData::has_data() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
     {
-        if(leaf.is_set)
+        if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
     {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
+        if(node_selection_point[index]->has_data())
             return true;
     }
     return state.is_set
@@ -8537,26 +8671,16 @@ bool FrequencySynchronization::Nodes::Node::Ntp::has_data() const
 	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_data());
 }
 
-bool FrequencySynchronization::Nodes::Node::Ntp::has_operation() const
+bool FrequencySynchronization::Nodes::Node::NtpData::has_operation() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
     {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
+        if(node_selection_point[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -8565,21 +8689,17 @@ bool FrequencySynchronization::Nodes::Node::Ntp::has_operation() const
 	|| ydk::is_set(supports_time_of_day.yfilter)
 	|| ydk::is_set(frequency_priority.yfilter)
 	|| ydk::is_set(time_of_day_priority.yfilter)
-	|| ydk::is_set(spa_selection_point.yfilter)
-	|| ydk::is_set(spa_selection_points_description.yfilter)
-	|| ydk::is_set(node_selection_point.yfilter)
-	|| ydk::is_set(node_selection_points_description.yfilter)
 	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_operation());
 }
 
-std::string FrequencySynchronization::Nodes::Node::Ntp::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::NtpData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ntp";
+    path_buffer << "ntp-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Ntp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::NtpData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8589,33 +8709,41 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     if (frequency_priority.is_set || is_set(frequency_priority.yfilter)) leaf_name_data.push_back(frequency_priority.get_name_leafdata());
     if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
 
-    auto spa_selection_point_name_datas = spa_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_point_name_datas.begin(), spa_selection_point_name_datas.end());
-    auto spa_selection_points_description_name_datas = spa_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_points_description_name_datas.begin(), spa_selection_points_description_name_datas.end());
-    auto node_selection_point_name_datas = node_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_point_name_datas.begin(), node_selection_point_name_datas.end());
-    auto node_selection_points_description_name_datas = node_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_points_description_name_datas.begin(), node_selection_points_description_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "quality-level-effective-input")
     {
         if(quality_level_effective_input == nullptr)
         {
-            quality_level_effective_input = std::make_shared<FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput>();
+            quality_level_effective_input = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput>();
         }
         return quality_level_effective_input;
+    }
+
+    if(child_yang_name == "spa-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint>();
+        c->parent = this;
+        spa_selection_point.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "node-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint>();
+        c->parent = this;
+        node_selection_point.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Ntp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8624,10 +8752,28 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
         children["quality-level-effective-input"] = quality_level_effective_input;
     }
 
+    count = 0;
+    for (auto const & c : spa_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : node_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::NtpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "state")
     {
@@ -8659,25 +8805,9 @@ void FrequencySynchronization::Nodes::Node::Ntp::set_value(const std::string & v
         time_of_day_priority.value_namespace = name_space;
         time_of_day_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.append(value);
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.append(value);
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.append(value);
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.append(value);
-    }
 }
 
-void FrequencySynchronization::Nodes::Node::Ntp::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::NtpData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "state")
     {
@@ -8699,32 +8829,16 @@ void FrequencySynchronization::Nodes::Node::Ntp::set_filter(const std::string & 
     {
         time_of_day_priority.yfilter = yfilter;
     }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.yfilter = yfilter;
-    }
 }
 
-bool FrequencySynchronization::Nodes::Node::Ntp::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::NtpData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "quality-level-effective-input" || name == "state" || name == "supports-frequency" || name == "supports-time-of-day" || name == "frequency-priority" || name == "time-of-day-priority" || name == "spa-selection-point" || name == "spa-selection-points-description" || name == "node-selection-point" || name == "node-selection-points-description")
+    if(name == "quality-level-effective-input" || name == "spa-selection-point" || name == "node-selection-point" || name == "state" || name == "supports-frequency" || name == "supports-time-of-day" || name == "frequency-priority" || name == "time-of-day-priority")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
+FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     option1_value{YType::enumeration, "option1-value"},
@@ -8732,14 +8846,14 @@ FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::QualityL
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-input"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
+FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::has_data() const
+bool FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::has_data() const
 {
     return quality_level_option.is_set
 	|| option1_value.is_set
@@ -8747,7 +8861,7 @@ bool FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::has
 	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::has_operation() const
+bool FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -8756,14 +8870,14 @@ bool FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::has
 	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "quality-level-effective-input";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8776,19 +8890,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -8816,7 +8930,7 @@ void FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::set
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -8836,51 +8950,233 @@ void FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::set
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clocks()
+FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::SpaSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "clocks"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-selection-point"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::~Clocks()
+FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::~SpaSelectionPoint()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::has_data() const
+bool FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::has_data() const
 {
-    for (std::size_t index=0; index<clock_.size(); index++)
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spa-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
     {
-        if(clock_[index]->has_data())
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::NodeSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
+{
+
+    yang_name = "node-selection-point"; yang_parent_name = "ntp-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::~NodeSelectionPoint()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::has_data() const
+{
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointDatas()
+{
+
+    yang_name = "selection-point-datas"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::~SelectionPointDatas()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::has_data() const
+{
+    for (std::size_t index=0; index<selection_point_data.size(); index++)
+    {
+        if(selection_point_data[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::has_operation() const
 {
-    for (std::size_t index=0; index<clock_.size(); index++)
+    for (std::size_t index=0; index<selection_point_data.size(); index++)
     {
-        if(clock_[index]->has_operation())
+        if(selection_point_data[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clocks";
+    path_buffer << "selection-point-datas";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8889,25 +9185,25 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "clock")
+    if(child_yang_name == "selection-point-data")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock>();
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData>();
         c->parent = this;
-        clock_.push_back(c);
+        selection_point_data.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_)
+    for (auto const & c : selection_point_data)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8918,357 +9214,161 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock")
+    if(name == "selection-point-data")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::Clock()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::SelectionPointData()
     :
-    clock_type{YType::enumeration, "clock-type"},
-    port{YType::int32, "port"},
-    state{YType::enumeration, "state"},
-    down_reason{YType::str, "down-reason"},
+    selection_point{YType::int32, "selection-point"},
+    selection_point_type{YType::uint8, "selection-point-type"},
     description{YType::str, "description"},
-    priority{YType::uint8, "priority"},
-    time_of_day_priority{YType::uint8, "time-of-day-priority"},
-    ssm_support{YType::boolean, "ssm-support"},
-    ssm_enabled{YType::boolean, "ssm-enabled"},
-    loopback{YType::boolean, "loopback"},
-    selection_input{YType::boolean, "selection-input"},
-    squelched{YType::boolean, "squelched"},
-    damping_state{YType::enumeration, "damping-state"},
-    damping_time{YType::uint32, "damping-time"},
-    input_disabled{YType::boolean, "input-disabled"},
-    output_disabled{YType::boolean, "output-disabled"},
-    wait_to_restore_time{YType::uint16, "wait-to-restore-time"},
-    clock_type_xr{YType::enumeration, "clock-type-xr"},
-    supports_frequency{YType::boolean, "supports-frequency"},
-    supports_time_of_day{YType::boolean, "supports-time-of-day"},
-    spa_selection_point{YType::uint8, "spa-selection-point"},
-    spa_selection_points_description{YType::str, "spa-selection-points-description"},
-    node_selection_point{YType::uint8, "node-selection-point"},
-    node_selection_points_description{YType::str, "node-selection-points-description"}
+    inputs{YType::uint32, "inputs"},
+    inputs_selected{YType::uint32, "inputs-selected"},
+    time_of_day_selection{YType::boolean, "time-of-day-selection"}
     	,
-    source(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::Source>())
-	,selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource>())
-	,quality_level_received(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived>())
-	,quality_level_damped(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped>())
-	,quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput>())
-	,quality_level_effective_output(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput>())
-	,quality_level_selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource>())
+    output(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output>())
+	,last_programmed(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed>())
+	,last_selection(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection>())
 {
-    source->parent = this;
-    selected_source->parent = this;
-    quality_level_received->parent = this;
-    quality_level_damped->parent = this;
-    quality_level_effective_input->parent = this;
-    quality_level_effective_output->parent = this;
-    quality_level_selected_source->parent = this;
+    output->parent = this;
+    last_programmed->parent = this;
+    last_selection->parent = this;
 
-    yang_name = "clock"; yang_parent_name = "clocks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selection-point-data"; yang_parent_name = "selection-point-datas"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::~Clock()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::~SelectionPointData()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::has_data() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return clock_type.is_set
-	|| port.is_set
-	|| state.is_set
-	|| down_reason.is_set
+    return selection_point.is_set
+	|| selection_point_type.is_set
 	|| description.is_set
-	|| priority.is_set
-	|| time_of_day_priority.is_set
-	|| ssm_support.is_set
-	|| ssm_enabled.is_set
-	|| loopback.is_set
-	|| selection_input.is_set
-	|| squelched.is_set
-	|| damping_state.is_set
-	|| damping_time.is_set
-	|| input_disabled.is_set
-	|| output_disabled.is_set
-	|| wait_to_restore_time.is_set
-	|| clock_type_xr.is_set
-	|| supports_frequency.is_set
-	|| supports_time_of_day.is_set
-	|| (source !=  nullptr && source->has_data())
-	|| (selected_source !=  nullptr && selected_source->has_data())
-	|| (quality_level_received !=  nullptr && quality_level_received->has_data())
-	|| (quality_level_damped !=  nullptr && quality_level_damped->has_data())
-	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_data())
-	|| (quality_level_effective_output !=  nullptr && quality_level_effective_output->has_data())
-	|| (quality_level_selected_source !=  nullptr && quality_level_selected_source->has_data());
+	|| inputs.is_set
+	|| inputs_selected.is_set
+	|| time_of_day_selection.is_set
+	|| (output !=  nullptr && output->has_data())
+	|| (last_programmed !=  nullptr && last_programmed->has_data())
+	|| (last_selection !=  nullptr && last_selection->has_data());
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::has_operation() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(clock_type.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(down_reason.yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_type.yfilter)
 	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(time_of_day_priority.yfilter)
-	|| ydk::is_set(ssm_support.yfilter)
-	|| ydk::is_set(ssm_enabled.yfilter)
-	|| ydk::is_set(loopback.yfilter)
-	|| ydk::is_set(selection_input.yfilter)
-	|| ydk::is_set(squelched.yfilter)
-	|| ydk::is_set(damping_state.yfilter)
-	|| ydk::is_set(damping_time.yfilter)
-	|| ydk::is_set(input_disabled.yfilter)
-	|| ydk::is_set(output_disabled.yfilter)
-	|| ydk::is_set(wait_to_restore_time.yfilter)
-	|| ydk::is_set(clock_type_xr.yfilter)
-	|| ydk::is_set(supports_frequency.yfilter)
-	|| ydk::is_set(supports_time_of_day.yfilter)
-	|| ydk::is_set(spa_selection_point.yfilter)
-	|| ydk::is_set(spa_selection_points_description.yfilter)
-	|| ydk::is_set(node_selection_point.yfilter)
-	|| ydk::is_set(node_selection_points_description.yfilter)
-	|| (source !=  nullptr && source->has_operation())
-	|| (selected_source !=  nullptr && selected_source->has_operation())
-	|| (quality_level_received !=  nullptr && quality_level_received->has_operation())
-	|| (quality_level_damped !=  nullptr && quality_level_damped->has_operation())
-	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_operation())
-	|| (quality_level_effective_output !=  nullptr && quality_level_effective_output->has_operation())
-	|| (quality_level_selected_source !=  nullptr && quality_level_selected_source->has_operation());
+	|| ydk::is_set(inputs.yfilter)
+	|| ydk::is_set(inputs_selected.yfilter)
+	|| ydk::is_set(time_of_day_selection.yfilter)
+	|| (output !=  nullptr && output->has_operation())
+	|| (last_programmed !=  nullptr && last_programmed->has_operation())
+	|| (last_selection !=  nullptr && last_selection->has_operation());
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clock" <<"[clock-type='" <<clock_type <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "selection-point-data" <<"[selection-point='" <<selection_point <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (clock_type.is_set || is_set(clock_type.yfilter)) leaf_name_data.push_back(clock_type.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (down_reason.is_set || is_set(down_reason.yfilter)) leaf_name_data.push_back(down_reason.get_name_leafdata());
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_type.is_set || is_set(selection_point_type.yfilter)) leaf_name_data.push_back(selection_point_type.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
-    if (ssm_support.is_set || is_set(ssm_support.yfilter)) leaf_name_data.push_back(ssm_support.get_name_leafdata());
-    if (ssm_enabled.is_set || is_set(ssm_enabled.yfilter)) leaf_name_data.push_back(ssm_enabled.get_name_leafdata());
-    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
-    if (selection_input.is_set || is_set(selection_input.yfilter)) leaf_name_data.push_back(selection_input.get_name_leafdata());
-    if (squelched.is_set || is_set(squelched.yfilter)) leaf_name_data.push_back(squelched.get_name_leafdata());
-    if (damping_state.is_set || is_set(damping_state.yfilter)) leaf_name_data.push_back(damping_state.get_name_leafdata());
-    if (damping_time.is_set || is_set(damping_time.yfilter)) leaf_name_data.push_back(damping_time.get_name_leafdata());
-    if (input_disabled.is_set || is_set(input_disabled.yfilter)) leaf_name_data.push_back(input_disabled.get_name_leafdata());
-    if (output_disabled.is_set || is_set(output_disabled.yfilter)) leaf_name_data.push_back(output_disabled.get_name_leafdata());
-    if (wait_to_restore_time.is_set || is_set(wait_to_restore_time.yfilter)) leaf_name_data.push_back(wait_to_restore_time.get_name_leafdata());
-    if (clock_type_xr.is_set || is_set(clock_type_xr.yfilter)) leaf_name_data.push_back(clock_type_xr.get_name_leafdata());
-    if (supports_frequency.is_set || is_set(supports_frequency.yfilter)) leaf_name_data.push_back(supports_frequency.get_name_leafdata());
-    if (supports_time_of_day.is_set || is_set(supports_time_of_day.yfilter)) leaf_name_data.push_back(supports_time_of_day.get_name_leafdata());
+    if (inputs.is_set || is_set(inputs.yfilter)) leaf_name_data.push_back(inputs.get_name_leafdata());
+    if (inputs_selected.is_set || is_set(inputs_selected.yfilter)) leaf_name_data.push_back(inputs_selected.get_name_leafdata());
+    if (time_of_day_selection.is_set || is_set(time_of_day_selection.yfilter)) leaf_name_data.push_back(time_of_day_selection.get_name_leafdata());
 
-    auto spa_selection_point_name_datas = spa_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_point_name_datas.begin(), spa_selection_point_name_datas.end());
-    auto spa_selection_points_description_name_datas = spa_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_points_description_name_datas.begin(), spa_selection_points_description_name_datas.end());
-    auto node_selection_point_name_datas = node_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_point_name_datas.begin(), node_selection_point_name_datas.end());
-    auto node_selection_points_description_name_datas = node_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_points_description_name_datas.begin(), node_selection_points_description_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "source")
+    if(child_yang_name == "output")
     {
-        if(source == nullptr)
+        if(output == nullptr)
         {
-            source = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::Source>();
+            output = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output>();
         }
-        return source;
+        return output;
     }
 
-    if(child_yang_name == "selected-source")
+    if(child_yang_name == "last-programmed")
     {
-        if(selected_source == nullptr)
+        if(last_programmed == nullptr)
         {
-            selected_source = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource>();
+            last_programmed = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed>();
         }
-        return selected_source;
+        return last_programmed;
     }
 
-    if(child_yang_name == "quality-level-received")
+    if(child_yang_name == "last-selection")
     {
-        if(quality_level_received == nullptr)
+        if(last_selection == nullptr)
         {
-            quality_level_received = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived>();
+            last_selection = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection>();
         }
-        return quality_level_received;
-    }
-
-    if(child_yang_name == "quality-level-damped")
-    {
-        if(quality_level_damped == nullptr)
-        {
-            quality_level_damped = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped>();
-        }
-        return quality_level_damped;
-    }
-
-    if(child_yang_name == "quality-level-effective-input")
-    {
-        if(quality_level_effective_input == nullptr)
-        {
-            quality_level_effective_input = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput>();
-        }
-        return quality_level_effective_input;
-    }
-
-    if(child_yang_name == "quality-level-effective-output")
-    {
-        if(quality_level_effective_output == nullptr)
-        {
-            quality_level_effective_output = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput>();
-        }
-        return quality_level_effective_output;
-    }
-
-    if(child_yang_name == "quality-level-selected-source")
-    {
-        if(quality_level_selected_source == nullptr)
-        {
-            quality_level_selected_source = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource>();
-        }
-        return quality_level_selected_source;
+        return last_selection;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(source != nullptr)
+    if(output != nullptr)
     {
-        children["source"] = source;
+        children["output"] = output;
     }
 
-    if(selected_source != nullptr)
+    if(last_programmed != nullptr)
     {
-        children["selected-source"] = selected_source;
+        children["last-programmed"] = last_programmed;
     }
 
-    if(quality_level_received != nullptr)
+    if(last_selection != nullptr)
     {
-        children["quality-level-received"] = quality_level_received;
-    }
-
-    if(quality_level_damped != nullptr)
-    {
-        children["quality-level-damped"] = quality_level_damped;
-    }
-
-    if(quality_level_effective_input != nullptr)
-    {
-        children["quality-level-effective-input"] = quality_level_effective_input;
-    }
-
-    if(quality_level_effective_output != nullptr)
-    {
-        children["quality-level-effective-output"] = quality_level_effective_output;
-    }
-
-    if(quality_level_selected_source != nullptr)
-    {
-        children["quality-level-selected-source"] = quality_level_selected_source;
+        children["last-selection"] = last_selection;
     }
 
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "clock-type")
+    if(value_path == "selection-point")
     {
-        clock_type = value;
-        clock_type.value_namespace = name_space;
-        clock_type.value_namespace_prefix = name_space_prefix;
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "selection-point-type")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "down-reason")
-    {
-        down_reason = value;
-        down_reason.value_namespace = name_space;
-        down_reason.value_namespace_prefix = name_space_prefix;
+        selection_point_type = value;
+        selection_point_type.value_namespace = name_space;
+        selection_point_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
@@ -9276,1354 +9376,816 @@ void FrequencySynchronization::Nodes::Node::Clocks::Clock::set_value(const std::
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "priority")
+    if(value_path == "inputs")
     {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
+        inputs = value;
+        inputs.value_namespace = name_space;
+        inputs.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "time-of-day-priority")
+    if(value_path == "inputs-selected")
     {
-        time_of_day_priority = value;
-        time_of_day_priority.value_namespace = name_space;
-        time_of_day_priority.value_namespace_prefix = name_space_prefix;
+        inputs_selected = value;
+        inputs_selected.value_namespace = name_space;
+        inputs_selected.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ssm-support")
+    if(value_path == "time-of-day-selection")
     {
-        ssm_support = value;
-        ssm_support.value_namespace = name_space;
-        ssm_support.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ssm-enabled")
-    {
-        ssm_enabled = value;
-        ssm_enabled.value_namespace = name_space;
-        ssm_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "loopback")
-    {
-        loopback = value;
-        loopback.value_namespace = name_space;
-        loopback.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "selection-input")
-    {
-        selection_input = value;
-        selection_input.value_namespace = name_space;
-        selection_input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "squelched")
-    {
-        squelched = value;
-        squelched.value_namespace = name_space;
-        squelched.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "damping-state")
-    {
-        damping_state = value;
-        damping_state.value_namespace = name_space;
-        damping_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "damping-time")
-    {
-        damping_time = value;
-        damping_time.value_namespace = name_space;
-        damping_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input-disabled")
-    {
-        input_disabled = value;
-        input_disabled.value_namespace = name_space;
-        input_disabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output-disabled")
-    {
-        output_disabled = value;
-        output_disabled.value_namespace = name_space;
-        output_disabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wait-to-restore-time")
-    {
-        wait_to_restore_time = value;
-        wait_to_restore_time.value_namespace = name_space;
-        wait_to_restore_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "clock-type-xr")
-    {
-        clock_type_xr = value;
-        clock_type_xr.value_namespace = name_space;
-        clock_type_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "supports-frequency")
-    {
-        supports_frequency = value;
-        supports_frequency.value_namespace = name_space;
-        supports_frequency.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "supports-time-of-day")
-    {
-        supports_time_of_day = value;
-        supports_time_of_day.value_namespace = name_space;
-        supports_time_of_day.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.append(value);
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.append(value);
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.append(value);
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.append(value);
+        time_of_day_selection = value;
+        time_of_day_selection.value_namespace = name_space;
+        time_of_day_selection.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "clock-type")
+    if(value_path == "selection-point")
     {
-        clock_type.yfilter = yfilter;
+        selection_point.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "selection-point-type")
     {
-        port.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "down-reason")
-    {
-        down_reason.yfilter = yfilter;
+        selection_point_type.yfilter = yfilter;
     }
     if(value_path == "description")
     {
         description.yfilter = yfilter;
     }
-    if(value_path == "priority")
+    if(value_path == "inputs")
     {
-        priority.yfilter = yfilter;
+        inputs.yfilter = yfilter;
     }
-    if(value_path == "time-of-day-priority")
+    if(value_path == "inputs-selected")
     {
-        time_of_day_priority.yfilter = yfilter;
+        inputs_selected.yfilter = yfilter;
     }
-    if(value_path == "ssm-support")
+    if(value_path == "time-of-day-selection")
     {
-        ssm_support.yfilter = yfilter;
-    }
-    if(value_path == "ssm-enabled")
-    {
-        ssm_enabled.yfilter = yfilter;
-    }
-    if(value_path == "loopback")
-    {
-        loopback.yfilter = yfilter;
-    }
-    if(value_path == "selection-input")
-    {
-        selection_input.yfilter = yfilter;
-    }
-    if(value_path == "squelched")
-    {
-        squelched.yfilter = yfilter;
-    }
-    if(value_path == "damping-state")
-    {
-        damping_state.yfilter = yfilter;
-    }
-    if(value_path == "damping-time")
-    {
-        damping_time.yfilter = yfilter;
-    }
-    if(value_path == "input-disabled")
-    {
-        input_disabled.yfilter = yfilter;
-    }
-    if(value_path == "output-disabled")
-    {
-        output_disabled.yfilter = yfilter;
-    }
-    if(value_path == "wait-to-restore-time")
-    {
-        wait_to_restore_time.yfilter = yfilter;
-    }
-    if(value_path == "clock-type-xr")
-    {
-        clock_type_xr.yfilter = yfilter;
-    }
-    if(value_path == "supports-frequency")
-    {
-        supports_frequency.yfilter = yfilter;
-    }
-    if(value_path == "supports-time-of-day")
-    {
-        supports_time_of_day.yfilter = yfilter;
-    }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.yfilter = yfilter;
+        time_of_day_selection.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source" || name == "selected-source" || name == "quality-level-received" || name == "quality-level-damped" || name == "quality-level-effective-input" || name == "quality-level-effective-output" || name == "quality-level-selected-source" || name == "clock-type" || name == "port" || name == "state" || name == "down-reason" || name == "description" || name == "priority" || name == "time-of-day-priority" || name == "ssm-support" || name == "ssm-enabled" || name == "loopback" || name == "selection-input" || name == "squelched" || name == "damping-state" || name == "damping-time" || name == "input-disabled" || name == "output-disabled" || name == "wait-to-restore-time" || name == "clock-type-xr" || name == "supports-frequency" || name == "supports-time-of-day" || name == "spa-selection-point" || name == "spa-selection-points-description" || name == "node-selection-point" || name == "node-selection-points-description")
+    if(name == "output" || name == "last-programmed" || name == "last-selection" || name == "selection-point" || name == "selection-point-type" || name == "description" || name == "inputs" || name == "inputs-selected" || name == "time-of-day-selection")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::Source()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::Output()
     :
-    source_class{YType::enumeration, "source-class"},
-    ethernet_interface{YType::str, "ethernet-interface"},
-    sonet_interface{YType::str, "sonet-interface"},
-    node{YType::str, "node"},
-    ptp_node{YType::str, "ptp-node"},
-    satellite_access_interface{YType::str, "satellite-access-interface"},
-    ntp_node{YType::str, "ntp-node"}
-    	,
-    clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId>())
+    local_clock_ouput{YType::boolean, "local-clock-ouput"},
+    local_line_output{YType::boolean, "local-line-output"},
+    local_time_of_day_output{YType::boolean, "local-time-of-day-output"}
 {
-    clock_id->parent = this;
 
-    yang_name = "source"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::~Source()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::~Output()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::has_data() const
 {
-    return source_class.is_set
-	|| ethernet_interface.is_set
-	|| sonet_interface.is_set
-	|| node.is_set
-	|| ptp_node.is_set
-	|| satellite_access_interface.is_set
-	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    {
+        if(spa_selection_point[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    {
+        if(node_selection_point[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<chassis_selection_point.size(); index++)
+    {
+        if(chassis_selection_point[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<router_selection_point.size(); index++)
+    {
+        if(router_selection_point[index]->has_data())
+            return true;
+    }
+    return local_clock_ouput.is_set
+	|| local_line_output.is_set
+	|| local_time_of_day_output.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::has_operation() const
 {
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    {
+        if(spa_selection_point[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    {
+        if(node_selection_point[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<chassis_selection_point.size(); index++)
+    {
+        if(chassis_selection_point[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<router_selection_point.size(); index++)
+    {
+        if(router_selection_point[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(source_class.yfilter)
-	|| ydk::is_set(ethernet_interface.yfilter)
-	|| ydk::is_set(sonet_interface.yfilter)
-	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(ptp_node.yfilter)
-	|| ydk::is_set(satellite_access_interface.yfilter)
-	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| ydk::is_set(local_clock_ouput.yfilter)
+	|| ydk::is_set(local_line_output.yfilter)
+	|| ydk::is_set(local_time_of_day_output.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source";
+    path_buffer << "output";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_class.is_set || is_set(source_class.yfilter)) leaf_name_data.push_back(source_class.get_name_leafdata());
-    if (ethernet_interface.is_set || is_set(ethernet_interface.yfilter)) leaf_name_data.push_back(ethernet_interface.get_name_leafdata());
-    if (sonet_interface.is_set || is_set(sonet_interface.yfilter)) leaf_name_data.push_back(sonet_interface.get_name_leafdata());
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (ptp_node.is_set || is_set(ptp_node.yfilter)) leaf_name_data.push_back(ptp_node.get_name_leafdata());
-    if (satellite_access_interface.is_set || is_set(satellite_access_interface.yfilter)) leaf_name_data.push_back(satellite_access_interface.get_name_leafdata());
-    if (ntp_node.is_set || is_set(ntp_node.yfilter)) leaf_name_data.push_back(ntp_node.get_name_leafdata());
+    if (local_clock_ouput.is_set || is_set(local_clock_ouput.yfilter)) leaf_name_data.push_back(local_clock_ouput.get_name_leafdata());
+    if (local_line_output.is_set || is_set(local_line_output.yfilter)) leaf_name_data.push_back(local_line_output.get_name_leafdata());
+    if (local_time_of_day_output.is_set || is_set(local_time_of_day_output.yfilter)) leaf_name_data.push_back(local_time_of_day_output.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "clock-id")
+    if(child_yang_name == "spa-selection-point")
     {
-        if(clock_id == nullptr)
-        {
-            clock_id = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId>();
-        }
-        return clock_id;
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint>();
+        c->parent = this;
+        spa_selection_point.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "node-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint>();
+        c->parent = this;
+        node_selection_point.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "chassis-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint>();
+        c->parent = this;
+        chassis_selection_point.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "router-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint>();
+        c->parent = this;
+        router_selection_point.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(clock_id != nullptr)
+    count = 0;
+    for (auto const & c : spa_selection_point)
     {
-        children["clock-id"] = clock_id;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : node_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : chassis_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : router_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "source-class")
+    if(value_path == "local-clock-ouput")
     {
-        source_class = value;
-        source_class.value_namespace = name_space;
-        source_class.value_namespace_prefix = name_space_prefix;
+        local_clock_ouput = value;
+        local_clock_ouput.value_namespace = name_space;
+        local_clock_ouput.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ethernet-interface")
+    if(value_path == "local-line-output")
     {
-        ethernet_interface = value;
-        ethernet_interface.value_namespace = name_space;
-        ethernet_interface.value_namespace_prefix = name_space_prefix;
+        local_line_output = value;
+        local_line_output.value_namespace = name_space;
+        local_line_output.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sonet-interface")
+    if(value_path == "local-time-of-day-output")
     {
-        sonet_interface = value;
-        sonet_interface.value_namespace = name_space;
-        sonet_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node")
-    {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ptp-node")
-    {
-        ptp_node = value;
-        ptp_node.value_namespace = name_space;
-        ptp_node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "satellite-access-interface")
-    {
-        satellite_access_interface = value;
-        satellite_access_interface.value_namespace = name_space;
-        satellite_access_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ntp-node")
-    {
-        ntp_node = value;
-        ntp_node.value_namespace = name_space;
-        ntp_node.value_namespace_prefix = name_space_prefix;
+        local_time_of_day_output = value;
+        local_time_of_day_output.value_namespace = name_space;
+        local_time_of_day_output.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "source-class")
+    if(value_path == "local-clock-ouput")
     {
-        source_class.yfilter = yfilter;
+        local_clock_ouput.yfilter = yfilter;
     }
-    if(value_path == "ethernet-interface")
+    if(value_path == "local-line-output")
     {
-        ethernet_interface.yfilter = yfilter;
+        local_line_output.yfilter = yfilter;
     }
-    if(value_path == "sonet-interface")
+    if(value_path == "local-time-of-day-output")
     {
-        sonet_interface.yfilter = yfilter;
-    }
-    if(value_path == "node")
-    {
-        node.yfilter = yfilter;
-    }
-    if(value_path == "ptp-node")
-    {
-        ptp_node.yfilter = yfilter;
-    }
-    if(value_path == "satellite-access-interface")
-    {
-        satellite_access_interface.yfilter = yfilter;
-    }
-    if(value_path == "ntp-node")
-    {
-        ntp_node.yfilter = yfilter;
+        local_time_of_day_output.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+    if(name == "spa-selection-point" || name == "node-selection-point" || name == "chassis-selection-point" || name == "router-selection-point" || name == "local-clock-ouput" || name == "local-line-output" || name == "local-time-of-day-output")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::ClockId()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::SpaSelectionPoint()
     :
-    node{YType::str, "node"},
-    port{YType::uint32, "port"}
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spa-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::~ClockId()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::~SpaSelectionPoint()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::has_data() const
 {
-    return node.is_set
-	|| port.is_set;
+    return selection_point.is_set
+	|| selection_point_description.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clock-id";
+    path_buffer << "spa-selection-point";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "node")
+    if(value_path == "selection-point")
     {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "selection-point-description")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "node")
+    if(value_path == "selection-point")
     {
-        node.yfilter = yfilter;
+        selection_point.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "selection-point-description")
     {
-        port.yfilter = yfilter;
+        selection_point_description.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "selection-point" || name == "selection-point-description")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::SelectedSource()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::NodeSelectionPoint()
     :
-    source_class{YType::enumeration, "source-class"},
-    ethernet_interface{YType::str, "ethernet-interface"},
-    sonet_interface{YType::str, "sonet-interface"},
-    node{YType::str, "node"},
-    ptp_node{YType::str, "ptp-node"},
-    satellite_access_interface{YType::str, "satellite-access-interface"},
-    ntp_node{YType::str, "ntp-node"}
-    	,
-    clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId>())
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
 {
-    clock_id->parent = this;
 
-    yang_name = "selected-source"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::~SelectedSource()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::~NodeSelectionPoint()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::has_data() const
 {
-    return source_class.is_set
-	|| ethernet_interface.is_set
-	|| sonet_interface.is_set
-	|| node.is_set
-	|| ptp_node.is_set
-	|| satellite_access_interface.is_set
-	|| ntp_node.is_set
-	|| (clock_id !=  nullptr && clock_id->has_data());
+    return selection_point.is_set
+	|| selection_point_description.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(source_class.yfilter)
-	|| ydk::is_set(ethernet_interface.yfilter)
-	|| ydk::is_set(sonet_interface.yfilter)
-	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(ptp_node.yfilter)
-	|| ydk::is_set(satellite_access_interface.yfilter)
-	|| ydk::is_set(ntp_node.yfilter)
-	|| (clock_id !=  nullptr && clock_id->has_operation());
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "selected-source";
+    path_buffer << "node-selection-point";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_class.is_set || is_set(source_class.yfilter)) leaf_name_data.push_back(source_class.get_name_leafdata());
-    if (ethernet_interface.is_set || is_set(ethernet_interface.yfilter)) leaf_name_data.push_back(ethernet_interface.get_name_leafdata());
-    if (sonet_interface.is_set || is_set(sonet_interface.yfilter)) leaf_name_data.push_back(sonet_interface.get_name_leafdata());
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (ptp_node.is_set || is_set(ptp_node.yfilter)) leaf_name_data.push_back(ptp_node.get_name_leafdata());
-    if (satellite_access_interface.is_set || is_set(satellite_access_interface.yfilter)) leaf_name_data.push_back(satellite_access_interface.get_name_leafdata());
-    if (ntp_node.is_set || is_set(ntp_node.yfilter)) leaf_name_data.push_back(ntp_node.get_name_leafdata());
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "clock-id")
-    {
-        if(clock_id == nullptr)
-        {
-            clock_id = std::make_shared<FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId>();
-        }
-        return clock_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(clock_id != nullptr)
-    {
-        children["clock-id"] = clock_id;
-    }
-
-    return children;
-}
-
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source-class")
-    {
-        source_class = value;
-        source_class.value_namespace = name_space;
-        source_class.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ethernet-interface")
-    {
-        ethernet_interface = value;
-        ethernet_interface.value_namespace = name_space;
-        ethernet_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sonet-interface")
-    {
-        sonet_interface = value;
-        sonet_interface.value_namespace = name_space;
-        sonet_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node")
-    {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ptp-node")
-    {
-        ptp_node = value;
-        ptp_node.value_namespace = name_space;
-        ptp_node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "satellite-access-interface")
-    {
-        satellite_access_interface = value;
-        satellite_access_interface.value_namespace = name_space;
-        satellite_access_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ntp-node")
-    {
-        ntp_node = value;
-        ntp_node.value_namespace = name_space;
-        ntp_node.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source-class")
-    {
-        source_class.yfilter = yfilter;
-    }
-    if(value_path == "ethernet-interface")
-    {
-        ethernet_interface.yfilter = yfilter;
-    }
-    if(value_path == "sonet-interface")
-    {
-        sonet_interface.yfilter = yfilter;
-    }
-    if(value_path == "node")
-    {
-        node.yfilter = yfilter;
-    }
-    if(value_path == "ptp-node")
-    {
-        ptp_node.yfilter = yfilter;
-    }
-    if(value_path == "satellite-access-interface")
-    {
-        satellite_access_interface.yfilter = yfilter;
-    }
-    if(value_path == "ntp-node")
-    {
-        ntp_node.yfilter = yfilter;
-    }
-}
-
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
-        return true;
-    return false;
-}
-
-FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::ClockId()
-    :
-    node{YType::str, "node"},
-    port{YType::uint32, "port"}
-{
-
-    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::~ClockId()
-{
-}
-
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::has_data() const
-{
-    return node.is_set
-	|| port.is_set;
-}
-
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "clock-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "node")
+    if(value_path == "selection-point")
     {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
+    if(value_path == "selection-point-description")
     {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "node")
+    if(value_path == "selection-point")
     {
-        node.yfilter = yfilter;
+        selection_point.yfilter = yfilter;
     }
-    if(value_path == "port")
+    if(value_path == "selection-point-description")
     {
-        port.yfilter = yfilter;
+        selection_point_description.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node" || name == "port")
+    if(name == "selection-point" || name == "selection-point-description")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::QualityLevelReceived()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::ChassisSelectionPoint()
     :
-    quality_level_option{YType::enumeration, "quality-level-option"},
-    option1_value{YType::enumeration, "option1-value"},
-    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
-    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "quality-level-received"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::~QualityLevelReceived()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::~ChassisSelectionPoint()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::has_data() const
 {
-    return quality_level_option.is_set
-	|| option1_value.is_set
-	|| option2_generation1_value.is_set
-	|| option2_generation2_value.is_set;
+    return selection_point.is_set
+	|| selection_point_description.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(quality_level_option.yfilter)
-	|| ydk::is_set(option1_value.yfilter)
-	|| ydk::is_set(option2_generation1_value.yfilter)
-	|| ydk::is_set(option2_generation2_value.yfilter);
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "quality-level-received";
+    path_buffer << "chassis-selection-point";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
-    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
-    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
-    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "selection-point")
     {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "option1-value")
+    if(value_path == "selection-point-description")
     {
-        option1_value = value;
-        option1_value.value_namespace = name_space;
-        option1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value = value;
-        option2_generation1_value.value_namespace = name_space;
-        option2_generation1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value = value;
-        option2_generation2_value.value_namespace = name_space;
-        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "selection-point")
     {
-        quality_level_option.yfilter = yfilter;
+        selection_point.yfilter = yfilter;
     }
-    if(value_path == "option1-value")
+    if(value_path == "selection-point-description")
     {
-        option1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value.yfilter = yfilter;
+        selection_point_description.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+    if(name == "selection-point" || name == "selection-point-description")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::QualityLevelDamped()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::RouterSelectionPoint()
     :
-    quality_level_option{YType::enumeration, "quality-level-option"},
-    option1_value{YType::enumeration, "option1-value"},
-    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
-    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
 {
 
-    yang_name = "quality-level-damped"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-selection-point"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::~QualityLevelDamped()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::~RouterSelectionPoint()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::has_data() const
 {
-    return quality_level_option.is_set
-	|| option1_value.is_set
-	|| option2_generation1_value.is_set
-	|| option2_generation2_value.is_set;
+    return selection_point.is_set
+	|| selection_point_description.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(quality_level_option.yfilter)
-	|| ydk::is_set(option1_value.yfilter)
-	|| ydk::is_set(option2_generation1_value.yfilter)
-	|| ydk::is_set(option2_generation2_value.yfilter);
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "quality-level-damped";
+    path_buffer << "router-selection-point";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
-    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
-    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
-    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "selection-point")
     {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "option1-value")
+    if(value_path == "selection-point-description")
     {
-        option1_value = value;
-        option1_value.value_namespace = name_space;
-        option1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value = value;
-        option2_generation1_value.value_namespace = name_space;
-        option2_generation1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value = value;
-        option2_generation2_value.value_namespace = name_space;
-        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "selection-point")
     {
-        quality_level_option.yfilter = yfilter;
+        selection_point.yfilter = yfilter;
     }
-    if(value_path == "option1-value")
+    if(value_path == "selection-point-description")
     {
-        option1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value.yfilter = yfilter;
+        selection_point_description.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+    if(name == "selection-point" || name == "selection-point-description")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::LastProgrammed()
     :
-    quality_level_option{YType::enumeration, "quality-level-option"},
-    option1_value{YType::enumeration, "option1-value"},
-    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
-    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+    seconds{YType::uint32, "seconds"},
+    nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-programmed"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::~LastProgrammed()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::has_data() const
 {
-    return quality_level_option.is_set
-	|| option1_value.is_set
-	|| option2_generation1_value.is_set
-	|| option2_generation2_value.is_set;
+    return seconds.is_set
+	|| nanoseconds.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(quality_level_option.yfilter)
-	|| ydk::is_set(option1_value.yfilter)
-	|| ydk::is_set(option2_generation1_value.yfilter)
-	|| ydk::is_set(option2_generation2_value.yfilter);
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "quality-level-effective-input";
+    path_buffer << "last-programmed";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
-    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
-    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
-    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "seconds")
     {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "option1-value")
+    if(value_path == "nanoseconds")
     {
-        option1_value = value;
-        option1_value.value_namespace = name_space;
-        option1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value = value;
-        option2_generation1_value.value_namespace = name_space;
-        option2_generation1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value = value;
-        option2_generation2_value.value_namespace = name_space;
-        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "seconds")
     {
-        quality_level_option.yfilter = yfilter;
+        seconds.yfilter = yfilter;
     }
-    if(value_path == "option1-value")
+    if(value_path == "nanoseconds")
     {
-        option1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value.yfilter = yfilter;
+        nanoseconds.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+    if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::QualityLevelEffectiveOutput()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::LastSelection()
     :
-    quality_level_option{YType::enumeration, "quality-level-option"},
-    option1_value{YType::enumeration, "option1-value"},
-    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
-    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+    seconds{YType::uint32, "seconds"},
+    nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "quality-level-effective-output"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-selection"; yang_parent_name = "selection-point-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::~QualityLevelEffectiveOutput()
+FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::~LastSelection()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::has_data() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::has_data() const
 {
-    return quality_level_option.is_set
-	|| option1_value.is_set
-	|| option2_generation1_value.is_set
-	|| option2_generation2_value.is_set;
+    return seconds.is_set
+	|| nanoseconds.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::has_operation() const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(quality_level_option.yfilter)
-	|| ydk::is_set(option1_value.yfilter)
-	|| ydk::is_set(option2_generation1_value.yfilter)
-	|| ydk::is_set(option2_generation2_value.yfilter);
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "quality-level-effective-output";
+    path_buffer << "last-selection";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
-    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
-    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
-    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "seconds")
     {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "option1-value")
+    if(value_path == "nanoseconds")
     {
-        option1_value = value;
-        option1_value.value_namespace = name_space;
-        option1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value = value;
-        option2_generation1_value.value_namespace = name_space;
-        option2_generation1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value = value;
-        option2_generation2_value.value_namespace = name_space;
-        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "quality-level-option")
+    if(value_path == "seconds")
     {
-        quality_level_option.yfilter = yfilter;
+        seconds.yfilter = yfilter;
     }
-    if(value_path == "option1-value")
+    if(value_path == "nanoseconds")
     {
-        option1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value.yfilter = yfilter;
+        nanoseconds.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
-        return true;
-    return false;
-}
-
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::QualityLevelSelectedSource()
-    :
-    quality_level_option{YType::enumeration, "quality-level-option"},
-    option1_value{YType::enumeration, "option1-value"},
-    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
-    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
-{
-
-    yang_name = "quality-level-selected-source"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::~QualityLevelSelectedSource()
-{
-}
-
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::has_data() const
-{
-    return quality_level_option.is_set
-	|| option1_value.is_set
-	|| option2_generation1_value.is_set
-	|| option2_generation2_value.is_set;
-}
-
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(quality_level_option.yfilter)
-	|| ydk::is_set(option1_value.yfilter)
-	|| ydk::is_set(option2_generation1_value.yfilter)
-	|| ydk::is_set(option2_generation2_value.yfilter);
-}
-
-std::string FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "quality-level-selected-source";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
-    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
-    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
-    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option1-value")
-    {
-        option1_value = value;
-        option1_value.value_namespace = name_space;
-        option1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value = value;
-        option2_generation1_value.value_namespace = name_space;
-        option2_generation1_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value = value;
-        option2_generation2_value.value_namespace = name_space;
-        option2_generation2_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option.yfilter = yfilter;
-    }
-    if(value_path == "option1-value")
-    {
-        option1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation1-value")
-    {
-        option2_generation1_value.yfilter = yfilter;
-    }
-    if(value_path == "option2-generation2-value")
-    {
-        option2_generation2_value.yfilter = yfilter;
-    }
-}
-
-bool FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+    if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
@@ -12005,49 +11567,35 @@ bool FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Ou
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Ptp::Ptp()
+FrequencySynchronization::Nodes::Node::PtpData::PtpData()
     :
     state{YType::enumeration, "state"},
     supports_frequency{YType::boolean, "supports-frequency"},
     supports_time_of_day{YType::boolean, "supports-time-of-day"},
     frequency_priority{YType::uint8, "frequency-priority"},
-    time_of_day_priority{YType::uint8, "time-of-day-priority"},
-    spa_selection_point{YType::uint8, "spa-selection-point"},
-    spa_selection_points_description{YType::str, "spa-selection-points-description"},
-    node_selection_point{YType::uint8, "node-selection-point"},
-    node_selection_points_description{YType::str, "node-selection-points-description"}
+    time_of_day_priority{YType::uint8, "time-of-day-priority"}
     	,
-    quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput>())
+    quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput>())
 {
     quality_level_effective_input->parent = this;
 
-    yang_name = "ptp"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ptp-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Ptp::~Ptp()
+FrequencySynchronization::Nodes::Node::PtpData::~PtpData()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Ptp::has_data() const
+bool FrequencySynchronization::Nodes::Node::PtpData::has_data() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
     {
-        if(leaf.is_set)
+        if(spa_selection_point[index]->has_data())
             return true;
     }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
     {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
+        if(node_selection_point[index]->has_data())
             return true;
     }
     return state.is_set
@@ -12058,26 +11606,16 @@ bool FrequencySynchronization::Nodes::Node::Ptp::has_data() const
 	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_data());
 }
 
-bool FrequencySynchronization::Nodes::Node::Ptp::has_operation() const
+bool FrequencySynchronization::Nodes::Node::PtpData::has_operation() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(spa_selection_point[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
     {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
+        if(node_selection_point[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -12086,21 +11624,17 @@ bool FrequencySynchronization::Nodes::Node::Ptp::has_operation() const
 	|| ydk::is_set(supports_time_of_day.yfilter)
 	|| ydk::is_set(frequency_priority.yfilter)
 	|| ydk::is_set(time_of_day_priority.yfilter)
-	|| ydk::is_set(spa_selection_point.yfilter)
-	|| ydk::is_set(spa_selection_points_description.yfilter)
-	|| ydk::is_set(node_selection_point.yfilter)
-	|| ydk::is_set(node_selection_points_description.yfilter)
 	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_operation());
 }
 
-std::string FrequencySynchronization::Nodes::Node::Ptp::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::PtpData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ptp";
+    path_buffer << "ptp-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Ptp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::PtpData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12110,33 +11644,41 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
     if (frequency_priority.is_set || is_set(frequency_priority.yfilter)) leaf_name_data.push_back(frequency_priority.get_name_leafdata());
     if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
 
-    auto spa_selection_point_name_datas = spa_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_point_name_datas.begin(), spa_selection_point_name_datas.end());
-    auto spa_selection_points_description_name_datas = spa_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_points_description_name_datas.begin(), spa_selection_points_description_name_datas.end());
-    auto node_selection_point_name_datas = node_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_point_name_datas.begin(), node_selection_point_name_datas.end());
-    auto node_selection_points_description_name_datas = node_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_points_description_name_datas.begin(), node_selection_points_description_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Ptp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "quality-level-effective-input")
     {
         if(quality_level_effective_input == nullptr)
         {
-            quality_level_effective_input = std::make_shared<FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput>();
+            quality_level_effective_input = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput>();
         }
         return quality_level_effective_input;
+    }
+
+    if(child_yang_name == "spa-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint>();
+        c->parent = this;
+        spa_selection_point.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "node-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint>();
+        c->parent = this;
+        node_selection_point.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Ptp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12145,10 +11687,28 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
         children["quality-level-effective-input"] = quality_level_effective_input;
     }
 
+    count = 0;
+    for (auto const & c : spa_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : node_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Ptp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::PtpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "state")
     {
@@ -12180,25 +11740,9 @@ void FrequencySynchronization::Nodes::Node::Ptp::set_value(const std::string & v
         time_of_day_priority.value_namespace = name_space;
         time_of_day_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.append(value);
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.append(value);
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.append(value);
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.append(value);
-    }
 }
 
-void FrequencySynchronization::Nodes::Node::Ptp::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::PtpData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "state")
     {
@@ -12220,32 +11764,16 @@ void FrequencySynchronization::Nodes::Node::Ptp::set_filter(const std::string & 
     {
         time_of_day_priority.yfilter = yfilter;
     }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.yfilter = yfilter;
-    }
 }
 
-bool FrequencySynchronization::Nodes::Node::Ptp::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::PtpData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "quality-level-effective-input" || name == "state" || name == "supports-frequency" || name == "supports-time-of-day" || name == "frequency-priority" || name == "time-of-day-priority" || name == "spa-selection-point" || name == "spa-selection-points-description" || name == "node-selection-point" || name == "node-selection-points-description")
+    if(name == "quality-level-effective-input" || name == "spa-selection-point" || name == "node-selection-point" || name == "state" || name == "supports-frequency" || name == "supports-time-of-day" || name == "frequency-priority" || name == "time-of-day-priority")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
+FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     option1_value{YType::enumeration, "option1-value"},
@@ -12253,14 +11781,14 @@ FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::QualityL
     option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "quality-level-effective-input"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-effective-input"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
+FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::has_data() const
+bool FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::has_data() const
 {
     return quality_level_option.is_set
 	|| option1_value.is_set
@@ -12268,7 +11796,7 @@ bool FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::has
 	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::has_operation() const
+bool FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -12277,14 +11805,14 @@ bool FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::has
 	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "quality-level-effective-input";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12297,19 +11825,19 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -12337,7 +11865,7 @@ void FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::set
     }
 }
 
-void FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -12357,9 +11885,191 @@ void FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::set
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::SpaSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
+{
+
+    yang_name = "spa-selection-point"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::~SpaSelectionPoint()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::has_data() const
+{
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spa-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::NodeSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
+{
+
+    yang_name = "node-selection-point"; yang_parent_name = "ptp-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::~NodeSelectionPoint()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::has_data() const
+{
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
         return true;
     return false;
 }
@@ -12595,44 +12305,44 @@ bool FrequencySynchronization::Nodes::Node::SsmSummary::has_leaf_or_child_of_nam
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoints()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockDatas()
 {
 
-    yang_name = "selection-points"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-datas"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::~SelectionPoints()
+FrequencySynchronization::Nodes::Node::ClockDatas::~ClockDatas()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::has_data() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::has_data() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    for (std::size_t index=0; index<clock_data.size(); index++)
     {
-        if(selection_point[index]->has_data())
+        if(clock_data[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::has_operation() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::has_operation() const
 {
-    for (std::size_t index=0; index<selection_point.size(); index++)
+    for (std::size_t index=0; index<clock_data.size(); index++)
     {
-        if(selection_point[index]->has_operation())
+        if(clock_data[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::SelectionPoints::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "selection-points";
+    path_buffer << "clock-datas";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPoints::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12641,25 +12351,25 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPoints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "selection-point")
+    if(child_yang_name == "clock-data")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint>();
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData>();
         c->parent = this;
-        selection_point.push_back(c);
+        clock_data.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPoints::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : selection_point)
+    for (auto const & c : clock_data)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12670,161 +12380,355 @@ std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::ClockDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::ClockDatas::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "selection-point")
+    if(name == "clock-data")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::SelectionPoint()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::ClockData()
     :
-    selection_point{YType::int32, "selection-point"},
-    selection_point_type{YType::uint8, "selection-point-type"},
+    clock_type{YType::enumeration, "clock-type"},
+    port{YType::int32, "port"},
+    state{YType::enumeration, "state"},
+    down_reason{YType::str, "down-reason"},
     description{YType::str, "description"},
-    inputs{YType::uint32, "inputs"},
-    inputs_selected{YType::uint32, "inputs-selected"},
-    time_of_day_selection{YType::boolean, "time-of-day-selection"}
+    priority{YType::uint8, "priority"},
+    time_of_day_priority{YType::uint8, "time-of-day-priority"},
+    ssm_support{YType::boolean, "ssm-support"},
+    ssm_enabled{YType::boolean, "ssm-enabled"},
+    loopback{YType::boolean, "loopback"},
+    selection_input{YType::boolean, "selection-input"},
+    squelched{YType::boolean, "squelched"},
+    damping_state{YType::enumeration, "damping-state"},
+    damping_time{YType::uint32, "damping-time"},
+    input_disabled{YType::boolean, "input-disabled"},
+    output_disabled{YType::boolean, "output-disabled"},
+    wait_to_restore_time{YType::uint16, "wait-to-restore-time"},
+    clock_type_xr{YType::enumeration, "clock-type-xr"},
+    supports_frequency{YType::boolean, "supports-frequency"},
+    supports_time_of_day{YType::boolean, "supports-time-of-day"}
     	,
-    output(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output>())
-	,last_programmed(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed>())
-	,last_selection(std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection>())
+    source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source>())
+	,selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource>())
+	,quality_level_received(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived>())
+	,quality_level_damped(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped>())
+	,quality_level_effective_input(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput>())
+	,quality_level_effective_output(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput>())
+	,quality_level_selected_source(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource>())
 {
-    output->parent = this;
-    last_programmed->parent = this;
-    last_selection->parent = this;
+    source->parent = this;
+    selected_source->parent = this;
+    quality_level_received->parent = this;
+    quality_level_damped->parent = this;
+    quality_level_effective_input->parent = this;
+    quality_level_effective_output->parent = this;
+    quality_level_selected_source->parent = this;
 
-    yang_name = "selection-point"; yang_parent_name = "selection-points"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-data"; yang_parent_name = "clock-datas"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::~SelectionPoint()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::~ClockData()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::has_data() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_data() const
 {
-    return selection_point.is_set
-	|| selection_point_type.is_set
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    {
+        if(spa_selection_point[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    {
+        if(node_selection_point[index]->has_data())
+            return true;
+    }
+    return clock_type.is_set
+	|| port.is_set
+	|| state.is_set
+	|| down_reason.is_set
 	|| description.is_set
-	|| inputs.is_set
-	|| inputs_selected.is_set
-	|| time_of_day_selection.is_set
-	|| (output !=  nullptr && output->has_data())
-	|| (last_programmed !=  nullptr && last_programmed->has_data())
-	|| (last_selection !=  nullptr && last_selection->has_data());
+	|| priority.is_set
+	|| time_of_day_priority.is_set
+	|| ssm_support.is_set
+	|| ssm_enabled.is_set
+	|| loopback.is_set
+	|| selection_input.is_set
+	|| squelched.is_set
+	|| damping_state.is_set
+	|| damping_time.is_set
+	|| input_disabled.is_set
+	|| output_disabled.is_set
+	|| wait_to_restore_time.is_set
+	|| clock_type_xr.is_set
+	|| supports_frequency.is_set
+	|| supports_time_of_day.is_set
+	|| (source !=  nullptr && source->has_data())
+	|| (selected_source !=  nullptr && selected_source->has_data())
+	|| (quality_level_received !=  nullptr && quality_level_received->has_data())
+	|| (quality_level_damped !=  nullptr && quality_level_damped->has_data())
+	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_data())
+	|| (quality_level_effective_output !=  nullptr && quality_level_effective_output->has_data())
+	|| (quality_level_selected_source !=  nullptr && quality_level_selected_source->has_data());
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::has_operation() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_operation() const
 {
+    for (std::size_t index=0; index<spa_selection_point.size(); index++)
+    {
+        if(spa_selection_point[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<node_selection_point.size(); index++)
+    {
+        if(node_selection_point[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| ydk::is_set(selection_point.yfilter)
-	|| ydk::is_set(selection_point_type.yfilter)
+	|| ydk::is_set(clock_type.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(down_reason.yfilter)
 	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(inputs.yfilter)
-	|| ydk::is_set(inputs_selected.yfilter)
-	|| ydk::is_set(time_of_day_selection.yfilter)
-	|| (output !=  nullptr && output->has_operation())
-	|| (last_programmed !=  nullptr && last_programmed->has_operation())
-	|| (last_selection !=  nullptr && last_selection->has_operation());
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(time_of_day_priority.yfilter)
+	|| ydk::is_set(ssm_support.yfilter)
+	|| ydk::is_set(ssm_enabled.yfilter)
+	|| ydk::is_set(loopback.yfilter)
+	|| ydk::is_set(selection_input.yfilter)
+	|| ydk::is_set(squelched.yfilter)
+	|| ydk::is_set(damping_state.yfilter)
+	|| ydk::is_set(damping_time.yfilter)
+	|| ydk::is_set(input_disabled.yfilter)
+	|| ydk::is_set(output_disabled.yfilter)
+	|| ydk::is_set(wait_to_restore_time.yfilter)
+	|| ydk::is_set(clock_type_xr.yfilter)
+	|| ydk::is_set(supports_frequency.yfilter)
+	|| ydk::is_set(supports_time_of_day.yfilter)
+	|| (source !=  nullptr && source->has_operation())
+	|| (selected_source !=  nullptr && selected_source->has_operation())
+	|| (quality_level_received !=  nullptr && quality_level_received->has_operation())
+	|| (quality_level_damped !=  nullptr && quality_level_damped->has_operation())
+	|| (quality_level_effective_input !=  nullptr && quality_level_effective_input->has_operation())
+	|| (quality_level_effective_output !=  nullptr && quality_level_effective_output->has_operation())
+	|| (quality_level_selected_source !=  nullptr && quality_level_selected_source->has_operation());
 }
 
-std::string FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "selection-point" <<"[selection-point='" <<selection_point <<"']";
+    path_buffer << "clock-data" <<"[clock-type='" <<clock_type <<"']" <<"[port='" <<port <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
-    if (selection_point_type.is_set || is_set(selection_point_type.yfilter)) leaf_name_data.push_back(selection_point_type.get_name_leafdata());
+    if (clock_type.is_set || is_set(clock_type.yfilter)) leaf_name_data.push_back(clock_type.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (down_reason.is_set || is_set(down_reason.yfilter)) leaf_name_data.push_back(down_reason.get_name_leafdata());
     if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (inputs.is_set || is_set(inputs.yfilter)) leaf_name_data.push_back(inputs.get_name_leafdata());
-    if (inputs_selected.is_set || is_set(inputs_selected.yfilter)) leaf_name_data.push_back(inputs_selected.get_name_leafdata());
-    if (time_of_day_selection.is_set || is_set(time_of_day_selection.yfilter)) leaf_name_data.push_back(time_of_day_selection.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
+    if (ssm_support.is_set || is_set(ssm_support.yfilter)) leaf_name_data.push_back(ssm_support.get_name_leafdata());
+    if (ssm_enabled.is_set || is_set(ssm_enabled.yfilter)) leaf_name_data.push_back(ssm_enabled.get_name_leafdata());
+    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
+    if (selection_input.is_set || is_set(selection_input.yfilter)) leaf_name_data.push_back(selection_input.get_name_leafdata());
+    if (squelched.is_set || is_set(squelched.yfilter)) leaf_name_data.push_back(squelched.get_name_leafdata());
+    if (damping_state.is_set || is_set(damping_state.yfilter)) leaf_name_data.push_back(damping_state.get_name_leafdata());
+    if (damping_time.is_set || is_set(damping_time.yfilter)) leaf_name_data.push_back(damping_time.get_name_leafdata());
+    if (input_disabled.is_set || is_set(input_disabled.yfilter)) leaf_name_data.push_back(input_disabled.get_name_leafdata());
+    if (output_disabled.is_set || is_set(output_disabled.yfilter)) leaf_name_data.push_back(output_disabled.get_name_leafdata());
+    if (wait_to_restore_time.is_set || is_set(wait_to_restore_time.yfilter)) leaf_name_data.push_back(wait_to_restore_time.get_name_leafdata());
+    if (clock_type_xr.is_set || is_set(clock_type_xr.yfilter)) leaf_name_data.push_back(clock_type_xr.get_name_leafdata());
+    if (supports_frequency.is_set || is_set(supports_frequency.yfilter)) leaf_name_data.push_back(supports_frequency.get_name_leafdata());
+    if (supports_time_of_day.is_set || is_set(supports_time_of_day.yfilter)) leaf_name_data.push_back(supports_time_of_day.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "output")
+    if(child_yang_name == "source")
     {
-        if(output == nullptr)
+        if(source == nullptr)
         {
-            output = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output>();
+            source = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source>();
         }
-        return output;
+        return source;
     }
 
-    if(child_yang_name == "last-programmed")
+    if(child_yang_name == "selected-source")
     {
-        if(last_programmed == nullptr)
+        if(selected_source == nullptr)
         {
-            last_programmed = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed>();
+            selected_source = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource>();
         }
-        return last_programmed;
+        return selected_source;
     }
 
-    if(child_yang_name == "last-selection")
+    if(child_yang_name == "quality-level-received")
     {
-        if(last_selection == nullptr)
+        if(quality_level_received == nullptr)
         {
-            last_selection = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection>();
+            quality_level_received = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived>();
         }
-        return last_selection;
+        return quality_level_received;
+    }
+
+    if(child_yang_name == "quality-level-damped")
+    {
+        if(quality_level_damped == nullptr)
+        {
+            quality_level_damped = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped>();
+        }
+        return quality_level_damped;
+    }
+
+    if(child_yang_name == "quality-level-effective-input")
+    {
+        if(quality_level_effective_input == nullptr)
+        {
+            quality_level_effective_input = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput>();
+        }
+        return quality_level_effective_input;
+    }
+
+    if(child_yang_name == "quality-level-effective-output")
+    {
+        if(quality_level_effective_output == nullptr)
+        {
+            quality_level_effective_output = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput>();
+        }
+        return quality_level_effective_output;
+    }
+
+    if(child_yang_name == "quality-level-selected-source")
+    {
+        if(quality_level_selected_source == nullptr)
+        {
+            quality_level_selected_source = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource>();
+        }
+        return quality_level_selected_source;
+    }
+
+    if(child_yang_name == "spa-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint>();
+        c->parent = this;
+        spa_selection_point.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "node-selection-point")
+    {
+        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint>();
+        c->parent = this;
+        node_selection_point.push_back(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(output != nullptr)
+    if(source != nullptr)
     {
-        children["output"] = output;
+        children["source"] = source;
     }
 
-    if(last_programmed != nullptr)
+    if(selected_source != nullptr)
     {
-        children["last-programmed"] = last_programmed;
+        children["selected-source"] = selected_source;
     }
 
-    if(last_selection != nullptr)
+    if(quality_level_received != nullptr)
     {
-        children["last-selection"] = last_selection;
+        children["quality-level-received"] = quality_level_received;
+    }
+
+    if(quality_level_damped != nullptr)
+    {
+        children["quality-level-damped"] = quality_level_damped;
+    }
+
+    if(quality_level_effective_input != nullptr)
+    {
+        children["quality-level-effective-input"] = quality_level_effective_input;
+    }
+
+    if(quality_level_effective_output != nullptr)
+    {
+        children["quality-level-effective-output"] = quality_level_effective_output;
+    }
+
+    if(quality_level_selected_source != nullptr)
+    {
+        children["quality-level-selected-source"] = quality_level_selected_source;
+    }
+
+    count = 0;
+    for (auto const & c : spa_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : node_selection_point)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "selection-point")
+    if(value_path == "clock-type")
     {
-        selection_point = value;
-        selection_point.value_namespace = name_space;
-        selection_point.value_namespace_prefix = name_space_prefix;
+        clock_type = value;
+        clock_type.value_namespace = name_space;
+        clock_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "selection-point-type")
+    if(value_path == "port")
     {
-        selection_point_type = value;
-        selection_point_type.value_namespace = name_space;
-        selection_point_type.value_namespace_prefix = name_space_prefix;
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down-reason")
+    {
+        down_reason = value;
+        down_reason.value_namespace = name_space;
+        down_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
@@ -12832,520 +12736,1504 @@ void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::set
         description.value_namespace = name_space;
         description.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "inputs")
+    if(value_path == "priority")
     {
-        inputs = value;
-        inputs.value_namespace = name_space;
-        inputs.value_namespace_prefix = name_space_prefix;
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "inputs-selected")
+    if(value_path == "time-of-day-priority")
     {
-        inputs_selected = value;
-        inputs_selected.value_namespace = name_space;
-        inputs_selected.value_namespace_prefix = name_space_prefix;
+        time_of_day_priority = value;
+        time_of_day_priority.value_namespace = name_space;
+        time_of_day_priority.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "time-of-day-selection")
+    if(value_path == "ssm-support")
     {
-        time_of_day_selection = value;
-        time_of_day_selection.value_namespace = name_space;
-        time_of_day_selection.value_namespace_prefix = name_space_prefix;
+        ssm_support = value;
+        ssm_support.value_namespace = name_space;
+        ssm_support.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ssm-enabled")
+    {
+        ssm_enabled = value;
+        ssm_enabled.value_namespace = name_space;
+        ssm_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loopback")
+    {
+        loopback = value;
+        loopback.value_namespace = name_space;
+        loopback.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-input")
+    {
+        selection_input = value;
+        selection_input.value_namespace = name_space;
+        selection_input.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "squelched")
+    {
+        squelched = value;
+        squelched.value_namespace = name_space;
+        squelched.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "damping-state")
+    {
+        damping_state = value;
+        damping_state.value_namespace = name_space;
+        damping_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "damping-time")
+    {
+        damping_time = value;
+        damping_time.value_namespace = name_space;
+        damping_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-disabled")
+    {
+        input_disabled = value;
+        input_disabled.value_namespace = name_space;
+        input_disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-disabled")
+    {
+        output_disabled = value;
+        output_disabled.value_namespace = name_space;
+        output_disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "wait-to-restore-time")
+    {
+        wait_to_restore_time = value;
+        wait_to_restore_time.value_namespace = name_space;
+        wait_to_restore_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clock-type-xr")
+    {
+        clock_type_xr = value;
+        clock_type_xr.value_namespace = name_space;
+        clock_type_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "supports-frequency")
+    {
+        supports_frequency = value;
+        supports_frequency.value_namespace = name_space;
+        supports_frequency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "supports-time-of-day")
+    {
+        supports_time_of_day = value;
+        supports_time_of_day.value_namespace = name_space;
+        supports_time_of_day.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "selection-point")
+    if(value_path == "clock-type")
     {
-        selection_point.yfilter = yfilter;
+        clock_type.yfilter = yfilter;
     }
-    if(value_path == "selection-point-type")
+    if(value_path == "port")
     {
-        selection_point_type.yfilter = yfilter;
+        port.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "down-reason")
+    {
+        down_reason.yfilter = yfilter;
     }
     if(value_path == "description")
     {
         description.yfilter = yfilter;
     }
-    if(value_path == "inputs")
+    if(value_path == "priority")
     {
-        inputs.yfilter = yfilter;
+        priority.yfilter = yfilter;
     }
-    if(value_path == "inputs-selected")
+    if(value_path == "time-of-day-priority")
     {
-        inputs_selected.yfilter = yfilter;
+        time_of_day_priority.yfilter = yfilter;
     }
-    if(value_path == "time-of-day-selection")
+    if(value_path == "ssm-support")
     {
-        time_of_day_selection.yfilter = yfilter;
+        ssm_support.yfilter = yfilter;
+    }
+    if(value_path == "ssm-enabled")
+    {
+        ssm_enabled.yfilter = yfilter;
+    }
+    if(value_path == "loopback")
+    {
+        loopback.yfilter = yfilter;
+    }
+    if(value_path == "selection-input")
+    {
+        selection_input.yfilter = yfilter;
+    }
+    if(value_path == "squelched")
+    {
+        squelched.yfilter = yfilter;
+    }
+    if(value_path == "damping-state")
+    {
+        damping_state.yfilter = yfilter;
+    }
+    if(value_path == "damping-time")
+    {
+        damping_time.yfilter = yfilter;
+    }
+    if(value_path == "input-disabled")
+    {
+        input_disabled.yfilter = yfilter;
+    }
+    if(value_path == "output-disabled")
+    {
+        output_disabled.yfilter = yfilter;
+    }
+    if(value_path == "wait-to-restore-time")
+    {
+        wait_to_restore_time.yfilter = yfilter;
+    }
+    if(value_path == "clock-type-xr")
+    {
+        clock_type_xr.yfilter = yfilter;
+    }
+    if(value_path == "supports-frequency")
+    {
+        supports_frequency.yfilter = yfilter;
+    }
+    if(value_path == "supports-time-of-day")
+    {
+        supports_time_of_day.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "output" || name == "last-programmed" || name == "last-selection" || name == "selection-point" || name == "selection-point-type" || name == "description" || name == "inputs" || name == "inputs-selected" || name == "time-of-day-selection")
+    if(name == "source" || name == "selected-source" || name == "quality-level-received" || name == "quality-level-damped" || name == "quality-level-effective-input" || name == "quality-level-effective-output" || name == "quality-level-selected-source" || name == "spa-selection-point" || name == "node-selection-point" || name == "clock-type" || name == "port" || name == "state" || name == "down-reason" || name == "description" || name == "priority" || name == "time-of-day-priority" || name == "ssm-support" || name == "ssm-enabled" || name == "loopback" || name == "selection-input" || name == "squelched" || name == "damping-state" || name == "damping-time" || name == "input-disabled" || name == "output-disabled" || name == "wait-to-restore-time" || name == "clock-type-xr" || name == "supports-frequency" || name == "supports-time-of-day")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::Output()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::Source()
     :
-    local_clock_ouput{YType::boolean, "local-clock-ouput"},
-    local_line_output{YType::boolean, "local-line-output"},
-    local_time_of_day_output{YType::boolean, "local-time-of-day-output"},
-    spa_selection_point{YType::uint8, "spa-selection-point"},
-    spa_selection_points_description{YType::str, "spa-selection-points-description"},
-    node_selection_point{YType::uint8, "node-selection-point"},
-    node_selection_points_description{YType::str, "node-selection-points-description"},
-    chassis_selection_point{YType::uint8, "chassis-selection-point"},
-    chassis_selection_points_description{YType::str, "chassis-selection-points-description"},
-    router_selection_point{YType::uint8, "router-selection-point"},
-    router_selection_points_description{YType::str, "router-selection-points-description"}
+    source_class{YType::enumeration, "source-class"},
+    ethernet_interface{YType::str, "ethernet-interface"},
+    sonet_interface{YType::str, "sonet-interface"},
+    node{YType::str, "node"},
+    ptp_node{YType::str, "ptp-node"},
+    satellite_access_interface{YType::str, "satellite-access-interface"},
+    ntp_node{YType::str, "ntp-node"}
+    	,
+    clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId>())
 {
+    clock_id->parent = this;
 
-    yang_name = "output"; yang_parent_name = "selection-point"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::~Output()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::~Source()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::has_data() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_data() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : chassis_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : chassis_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : router_selection_point.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : router_selection_points_description.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return local_clock_ouput.is_set
-	|| local_line_output.is_set
-	|| local_time_of_day_output.is_set;
+    return source_class.is_set
+	|| ethernet_interface.is_set
+	|| sonet_interface.is_set
+	|| node.is_set
+	|| ptp_node.is_set
+	|| satellite_access_interface.is_set
+	|| ntp_node.is_set
+	|| (clock_id !=  nullptr && clock_id->has_data());
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::has_operation() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_operation() const
 {
-    for (auto const & leaf : spa_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : spa_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : node_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : chassis_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : chassis_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : router_selection_point.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : router_selection_points_description.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(local_clock_ouput.yfilter)
-	|| ydk::is_set(local_line_output.yfilter)
-	|| ydk::is_set(local_time_of_day_output.yfilter)
-	|| ydk::is_set(spa_selection_point.yfilter)
-	|| ydk::is_set(spa_selection_points_description.yfilter)
-	|| ydk::is_set(node_selection_point.yfilter)
-	|| ydk::is_set(node_selection_points_description.yfilter)
-	|| ydk::is_set(chassis_selection_point.yfilter)
-	|| ydk::is_set(chassis_selection_points_description.yfilter)
-	|| ydk::is_set(router_selection_point.yfilter)
-	|| ydk::is_set(router_selection_points_description.yfilter);
+	|| ydk::is_set(source_class.yfilter)
+	|| ydk::is_set(ethernet_interface.yfilter)
+	|| ydk::is_set(sonet_interface.yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(ptp_node.yfilter)
+	|| ydk::is_set(satellite_access_interface.yfilter)
+	|| ydk::is_set(ntp_node.yfilter)
+	|| (clock_id !=  nullptr && clock_id->has_operation());
 }
 
-std::string FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output";
+    path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_clock_ouput.is_set || is_set(local_clock_ouput.yfilter)) leaf_name_data.push_back(local_clock_ouput.get_name_leafdata());
-    if (local_line_output.is_set || is_set(local_line_output.yfilter)) leaf_name_data.push_back(local_line_output.get_name_leafdata());
-    if (local_time_of_day_output.is_set || is_set(local_time_of_day_output.yfilter)) leaf_name_data.push_back(local_time_of_day_output.get_name_leafdata());
+    if (source_class.is_set || is_set(source_class.yfilter)) leaf_name_data.push_back(source_class.get_name_leafdata());
+    if (ethernet_interface.is_set || is_set(ethernet_interface.yfilter)) leaf_name_data.push_back(ethernet_interface.get_name_leafdata());
+    if (sonet_interface.is_set || is_set(sonet_interface.yfilter)) leaf_name_data.push_back(sonet_interface.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (ptp_node.is_set || is_set(ptp_node.yfilter)) leaf_name_data.push_back(ptp_node.get_name_leafdata());
+    if (satellite_access_interface.is_set || is_set(satellite_access_interface.yfilter)) leaf_name_data.push_back(satellite_access_interface.get_name_leafdata());
+    if (ntp_node.is_set || is_set(ntp_node.yfilter)) leaf_name_data.push_back(ntp_node.get_name_leafdata());
 
-    auto spa_selection_point_name_datas = spa_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_point_name_datas.begin(), spa_selection_point_name_datas.end());
-    auto spa_selection_points_description_name_datas = spa_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), spa_selection_points_description_name_datas.begin(), spa_selection_points_description_name_datas.end());
-    auto node_selection_point_name_datas = node_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_point_name_datas.begin(), node_selection_point_name_datas.end());
-    auto node_selection_points_description_name_datas = node_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), node_selection_points_description_name_datas.begin(), node_selection_points_description_name_datas.end());
-    auto chassis_selection_point_name_datas = chassis_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), chassis_selection_point_name_datas.begin(), chassis_selection_point_name_datas.end());
-    auto chassis_selection_points_description_name_datas = chassis_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), chassis_selection_points_description_name_datas.begin(), chassis_selection_points_description_name_datas.end());
-    auto router_selection_point_name_datas = router_selection_point.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), router_selection_point_name_datas.begin(), router_selection_point_name_datas.end());
-    auto router_selection_points_description_name_datas = router_selection_points_description.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), router_selection_points_description_name_datas.begin(), router_selection_points_description_name_datas.end());
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "clock-id")
+    {
+        if(clock_id == nullptr)
+        {
+            clock_id = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId>();
+        }
+        return clock_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(clock_id != nullptr)
+    {
+        children["clock-id"] = clock_id;
+    }
+
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-class")
+    {
+        source_class = value;
+        source_class.value_namespace = name_space;
+        source_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-interface")
+    {
+        ethernet_interface = value;
+        ethernet_interface.value_namespace = name_space;
+        ethernet_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sonet-interface")
+    {
+        sonet_interface = value;
+        sonet_interface.value_namespace = name_space;
+        sonet_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ptp-node")
+    {
+        ptp_node = value;
+        ptp_node.value_namespace = name_space;
+        ptp_node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "satellite-access-interface")
+    {
+        satellite_access_interface = value;
+        satellite_access_interface.value_namespace = name_space;
+        satellite_access_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ntp-node")
+    {
+        ntp_node = value;
+        ntp_node.value_namespace = name_space;
+        ntp_node.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-class")
+    {
+        source_class.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-interface")
+    {
+        ethernet_interface.yfilter = yfilter;
+    }
+    if(value_path == "sonet-interface")
+    {
+        sonet_interface.yfilter = yfilter;
+    }
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "ptp-node")
+    {
+        ptp_node.yfilter = yfilter;
+    }
+    if(value_path == "satellite-access-interface")
+    {
+        satellite_access_interface.yfilter = yfilter;
+    }
+    if(value_path == "ntp-node")
+    {
+        ntp_node.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::ClockId()
+    :
+    node{YType::str, "node"},
+    port{YType::uint32, "port"}
+{
+
+    yang_name = "clock-id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::~ClockId()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::has_data() const
+{
+    return node.is_set
+	|| port.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clock-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "local-clock-ouput")
+    if(value_path == "node")
     {
-        local_clock_ouput = value;
-        local_clock_ouput.value_namespace = name_space;
-        local_clock_ouput.value_namespace_prefix = name_space_prefix;
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "local-line-output")
+    if(value_path == "port")
     {
-        local_line_output = value;
-        local_line_output.value_namespace = name_space;
-        local_line_output.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-time-of-day-output")
-    {
-        local_time_of_day_output = value;
-        local_time_of_day_output.value_namespace = name_space;
-        local_time_of_day_output.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.append(value);
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.append(value);
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.append(value);
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.append(value);
-    }
-    if(value_path == "chassis-selection-point")
-    {
-        chassis_selection_point.append(value);
-    }
-    if(value_path == "chassis-selection-points-description")
-    {
-        chassis_selection_points_description.append(value);
-    }
-    if(value_path == "router-selection-point")
-    {
-        router_selection_point.append(value);
-    }
-    if(value_path == "router-selection-points-description")
-    {
-        router_selection_points_description.append(value);
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "local-clock-ouput")
+    if(value_path == "node")
     {
-        local_clock_ouput.yfilter = yfilter;
+        node.yfilter = yfilter;
     }
-    if(value_path == "local-line-output")
+    if(value_path == "port")
     {
-        local_line_output.yfilter = yfilter;
-    }
-    if(value_path == "local-time-of-day-output")
-    {
-        local_time_of_day_output.yfilter = yfilter;
-    }
-    if(value_path == "spa-selection-point")
-    {
-        spa_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "spa-selection-points-description")
-    {
-        spa_selection_points_description.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-point")
-    {
-        node_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "node-selection-points-description")
-    {
-        node_selection_points_description.yfilter = yfilter;
-    }
-    if(value_path == "chassis-selection-point")
-    {
-        chassis_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "chassis-selection-points-description")
-    {
-        chassis_selection_points_description.yfilter = yfilter;
-    }
-    if(value_path == "router-selection-point")
-    {
-        router_selection_point.yfilter = yfilter;
-    }
-    if(value_path == "router-selection-points-description")
-    {
-        router_selection_points_description.yfilter = yfilter;
+        port.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-clock-ouput" || name == "local-line-output" || name == "local-time-of-day-output" || name == "spa-selection-point" || name == "spa-selection-points-description" || name == "node-selection-point" || name == "node-selection-points-description" || name == "chassis-selection-point" || name == "chassis-selection-points-description" || name == "router-selection-point" || name == "router-selection-points-description")
+    if(name == "node" || name == "port")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::LastProgrammed()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::SelectedSource()
     :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
+    source_class{YType::enumeration, "source-class"},
+    ethernet_interface{YType::str, "ethernet-interface"},
+    sonet_interface{YType::str, "sonet-interface"},
+    node{YType::str, "node"},
+    ptp_node{YType::str, "ptp-node"},
+    satellite_access_interface{YType::str, "satellite-access-interface"},
+    ntp_node{YType::str, "ntp-node"}
+    	,
+    clock_id(std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId>())
 {
+    clock_id->parent = this;
 
-    yang_name = "last-programmed"; yang_parent_name = "selection-point"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "selected-source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::~LastProgrammed()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::~SelectedSource()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::has_data() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::has_data() const
 {
-    return seconds.is_set
-	|| nanoseconds.is_set;
+    return source_class.is_set
+	|| ethernet_interface.is_set
+	|| sonet_interface.is_set
+	|| node.is_set
+	|| ptp_node.is_set
+	|| satellite_access_interface.is_set
+	|| ntp_node.is_set
+	|| (clock_id !=  nullptr && clock_id->has_data());
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::has_operation() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
+	|| ydk::is_set(source_class.yfilter)
+	|| ydk::is_set(ethernet_interface.yfilter)
+	|| ydk::is_set(sonet_interface.yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(ptp_node.yfilter)
+	|| ydk::is_set(satellite_access_interface.yfilter)
+	|| ydk::is_set(ntp_node.yfilter)
+	|| (clock_id !=  nullptr && clock_id->has_operation());
 }
 
-std::string FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "last-programmed";
+    path_buffer << "selected-source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (source_class.is_set || is_set(source_class.yfilter)) leaf_name_data.push_back(source_class.get_name_leafdata());
+    if (ethernet_interface.is_set || is_set(ethernet_interface.yfilter)) leaf_name_data.push_back(ethernet_interface.get_name_leafdata());
+    if (sonet_interface.is_set || is_set(sonet_interface.yfilter)) leaf_name_data.push_back(sonet_interface.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (ptp_node.is_set || is_set(ptp_node.yfilter)) leaf_name_data.push_back(ptp_node.get_name_leafdata());
+    if (satellite_access_interface.is_set || is_set(satellite_access_interface.yfilter)) leaf_name_data.push_back(satellite_access_interface.get_name_leafdata());
+    if (ntp_node.is_set || is_set(ntp_node.yfilter)) leaf_name_data.push_back(ntp_node.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "clock-id")
+    {
+        if(clock_id == nullptr)
+        {
+            clock_id = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId>();
+        }
+        return clock_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(clock_id != nullptr)
+    {
+        children["clock-id"] = clock_id;
+    }
+
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-class")
+    {
+        source_class = value;
+        source_class.value_namespace = name_space;
+        source_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-interface")
+    {
+        ethernet_interface = value;
+        ethernet_interface.value_namespace = name_space;
+        ethernet_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sonet-interface")
+    {
+        sonet_interface = value;
+        sonet_interface.value_namespace = name_space;
+        sonet_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ptp-node")
+    {
+        ptp_node = value;
+        ptp_node.value_namespace = name_space;
+        ptp_node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "satellite-access-interface")
+    {
+        satellite_access_interface = value;
+        satellite_access_interface.value_namespace = name_space;
+        satellite_access_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ntp-node")
+    {
+        ntp_node = value;
+        ntp_node.value_namespace = name_space;
+        ntp_node.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-class")
+    {
+        source_class.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-interface")
+    {
+        ethernet_interface.yfilter = yfilter;
+    }
+    if(value_path == "sonet-interface")
+    {
+        sonet_interface.yfilter = yfilter;
+    }
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "ptp-node")
+    {
+        ptp_node.yfilter = yfilter;
+    }
+    if(value_path == "satellite-access-interface")
+    {
+        satellite_access_interface.yfilter = yfilter;
+    }
+    if(value_path == "ntp-node")
+    {
+        ntp_node.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock-id" || name == "source-class" || name == "ethernet-interface" || name == "sonet-interface" || name == "node" || name == "ptp-node" || name == "satellite-access-interface" || name == "ntp-node")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::ClockId()
+    :
+    node{YType::str, "node"},
+    port{YType::uint32, "port"}
+{
+
+    yang_name = "clock-id"; yang_parent_name = "selected-source"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::~ClockId()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::has_data() const
+{
+    return node.is_set
+	|| port.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "clock-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "seconds")
+    if(value_path == "node")
     {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nanoseconds")
+    if(value_path == "port")
     {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "seconds")
+    if(value_path == "node")
     {
-        seconds.yfilter = yfilter;
+        node.yfilter = yfilter;
     }
-    if(value_path == "nanoseconds")
+    if(value_path == "port")
     {
-        nanoseconds.yfilter = yfilter;
+        port.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seconds" || name == "nanoseconds")
+    if(name == "node" || name == "port")
         return true;
     return false;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::LastSelection()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::QualityLevelReceived()
     :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
+    quality_level_option{YType::enumeration, "quality-level-option"},
+    option1_value{YType::enumeration, "option1-value"},
+    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
+    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
 {
 
-    yang_name = "last-selection"; yang_parent_name = "selection-point"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "quality-level-received"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::~LastSelection()
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::~QualityLevelReceived()
 {
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::has_data() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::has_data() const
 {
-    return seconds.is_set
-	|| nanoseconds.is_set;
+    return quality_level_option.is_set
+	|| option1_value.is_set
+	|| option2_generation1_value.is_set
+	|| option2_generation2_value.is_set;
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::has_operation() const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
+	|| ydk::is_set(quality_level_option.yfilter)
+	|| ydk::is_set(option1_value.yfilter)
+	|| ydk::is_set(option2_generation1_value.yfilter)
+	|| ydk::is_set(option2_generation2_value.yfilter);
 }
 
-std::string FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::get_segment_path() const
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "last-selection";
+    path_buffer << "quality-level-received";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
+    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
+    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "seconds")
+    if(value_path == "quality-level-option")
     {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nanoseconds")
+    if(value_path == "option1-value")
     {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
+        option1_value = value;
+        option1_value.value_namespace = name_space;
+        option1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value = value;
+        option2_generation1_value.value_namespace = name_space;
+        option2_generation1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value = value;
+        option2_generation2_value.value_namespace = name_space;
+        option2_generation2_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::set_filter(const std::string & value_path, YFilter yfilter)
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "seconds")
+    if(value_path == "quality-level-option")
     {
-        seconds.yfilter = yfilter;
+        quality_level_option.yfilter = yfilter;
     }
-    if(value_path == "nanoseconds")
+    if(value_path == "option1-value")
     {
-        nanoseconds.yfilter = yfilter;
+        option1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value.yfilter = yfilter;
     }
 }
 
-bool FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection::has_leaf_or_child_of_name(const std::string & name) const
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "seconds" || name == "nanoseconds")
+    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::QualityLevelDamped()
+    :
+    quality_level_option{YType::enumeration, "quality-level-option"},
+    option1_value{YType::enumeration, "option1-value"},
+    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
+    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+{
+
+    yang_name = "quality-level-damped"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::~QualityLevelDamped()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::has_data() const
+{
+    return quality_level_option.is_set
+	|| option1_value.is_set
+	|| option2_generation1_value.is_set
+	|| option2_generation2_value.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(quality_level_option.yfilter)
+	|| ydk::is_set(option1_value.yfilter)
+	|| ydk::is_set(option2_generation1_value.yfilter)
+	|| ydk::is_set(option2_generation2_value.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "quality-level-damped";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
+    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
+    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value = value;
+        option1_value.value_namespace = name_space;
+        option1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value = value;
+        option2_generation1_value.value_namespace = name_space;
+        option2_generation1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value = value;
+        option2_generation2_value.value_namespace = name_space;
+        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option.yfilter = yfilter;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::QualityLevelEffectiveInput()
+    :
+    quality_level_option{YType::enumeration, "quality-level-option"},
+    option1_value{YType::enumeration, "option1-value"},
+    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
+    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+{
+
+    yang_name = "quality-level-effective-input"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::~QualityLevelEffectiveInput()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::has_data() const
+{
+    return quality_level_option.is_set
+	|| option1_value.is_set
+	|| option2_generation1_value.is_set
+	|| option2_generation2_value.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(quality_level_option.yfilter)
+	|| ydk::is_set(option1_value.yfilter)
+	|| ydk::is_set(option2_generation1_value.yfilter)
+	|| ydk::is_set(option2_generation2_value.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "quality-level-effective-input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
+    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
+    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value = value;
+        option1_value.value_namespace = name_space;
+        option1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value = value;
+        option2_generation1_value.value_namespace = name_space;
+        option2_generation1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value = value;
+        option2_generation2_value.value_namespace = name_space;
+        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option.yfilter = yfilter;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::QualityLevelEffectiveOutput()
+    :
+    quality_level_option{YType::enumeration, "quality-level-option"},
+    option1_value{YType::enumeration, "option1-value"},
+    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
+    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+{
+
+    yang_name = "quality-level-effective-output"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::~QualityLevelEffectiveOutput()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::has_data() const
+{
+    return quality_level_option.is_set
+	|| option1_value.is_set
+	|| option2_generation1_value.is_set
+	|| option2_generation2_value.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(quality_level_option.yfilter)
+	|| ydk::is_set(option1_value.yfilter)
+	|| ydk::is_set(option2_generation1_value.yfilter)
+	|| ydk::is_set(option2_generation2_value.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "quality-level-effective-output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
+    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
+    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value = value;
+        option1_value.value_namespace = name_space;
+        option1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value = value;
+        option2_generation1_value.value_namespace = name_space;
+        option2_generation1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value = value;
+        option2_generation2_value.value_namespace = name_space;
+        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option.yfilter = yfilter;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::QualityLevelSelectedSource()
+    :
+    quality_level_option{YType::enumeration, "quality-level-option"},
+    option1_value{YType::enumeration, "option1-value"},
+    option2_generation1_value{YType::enumeration, "option2-generation1-value"},
+    option2_generation2_value{YType::enumeration, "option2-generation2-value"}
+{
+
+    yang_name = "quality-level-selected-source"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::~QualityLevelSelectedSource()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::has_data() const
+{
+    return quality_level_option.is_set
+	|| option1_value.is_set
+	|| option2_generation1_value.is_set
+	|| option2_generation2_value.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(quality_level_option.yfilter)
+	|| ydk::is_set(option1_value.yfilter)
+	|| ydk::is_set(option2_generation1_value.yfilter)
+	|| ydk::is_set(option2_generation2_value.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "quality-level-selected-source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
+    if (option1_value.is_set || is_set(option1_value.yfilter)) leaf_name_data.push_back(option1_value.get_name_leafdata());
+    if (option2_generation1_value.is_set || is_set(option2_generation1_value.yfilter)) leaf_name_data.push_back(option2_generation1_value.get_name_leafdata());
+    if (option2_generation2_value.is_set || is_set(option2_generation2_value.yfilter)) leaf_name_data.push_back(option2_generation2_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option = value;
+        quality_level_option.value_namespace = name_space;
+        quality_level_option.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value = value;
+        option1_value.value_namespace = name_space;
+        option1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value = value;
+        option2_generation1_value.value_namespace = name_space;
+        option2_generation1_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value = value;
+        option2_generation2_value.value_namespace = name_space;
+        option2_generation2_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "quality-level-option")
+    {
+        quality_level_option.yfilter = yfilter;
+    }
+    if(value_path == "option1-value")
+    {
+        option1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation1-value")
+    {
+        option2_generation1_value.yfilter = yfilter;
+    }
+    if(value_path == "option2-generation2-value")
+    {
+        option2_generation2_value.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "quality-level-option" || name == "option1-value" || name == "option2-generation1-value" || name == "option2-generation2-value")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::SpaSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
+{
+
+    yang_name = "spa-selection-point"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::~SpaSelectionPoint()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::has_data() const
+{
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "spa-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
+        return true;
+    return false;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::NodeSelectionPoint()
+    :
+    selection_point{YType::uint8, "selection-point"},
+    selection_point_description{YType::str, "selection-point-description"}
+{
+
+    yang_name = "node-selection-point"; yang_parent_name = "clock-data"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::~NodeSelectionPoint()
+{
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::has_data() const
+{
+    return selection_point.is_set
+	|| selection_point_description.is_set;
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(selection_point.yfilter)
+	|| ydk::is_set(selection_point_description.yfilter);
+}
+
+std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node-selection-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (selection_point.is_set || is_set(selection_point.yfilter)) leaf_name_data.push_back(selection_point.get_name_leafdata());
+    if (selection_point_description.is_set || is_set(selection_point_description.yfilter)) leaf_name_data.push_back(selection_point_description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point = value;
+        selection_point.value_namespace = name_space;
+        selection_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description = value;
+        selection_point_description.value_namespace = name_space;
+        selection_point_description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "selection-point")
+    {
+        selection_point.yfilter = yfilter;
+    }
+    if(value_path == "selection-point-description")
+    {
+        selection_point_description.yfilter = yfilter;
+    }
+}
+
+bool FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "selection-point" || name == "selection-point-description")
         return true;
     return false;
 }
@@ -14893,7 +15781,9 @@ const Enum::YLeaf FsyncSource::satellite_access {6, "satellite-access"};
 const Enum::YLeaf FsyncSource::ntp {7, "ntp"};
 
 const Enum::YLeaf FsyncBagStreamState::stream_invalid {0, "stream-invalid"};
+const Enum::YLeaf FsyncBagStreamState::stream_unqualified {1, "stream-unqualified"};
 const Enum::YLeaf FsyncBagStreamState::stream_available {2, "stream-available"};
+const Enum::YLeaf FsyncBagStreamState::stream_available_acquiring {3, "stream-available-acquiring"};
 const Enum::YLeaf FsyncBagStreamState::stream_locked {4, "stream-locked"};
 const Enum::YLeaf FsyncBagStreamState::stream_holdover {5, "stream-holdover"};
 const Enum::YLeaf FsyncBagStreamState::stream_freerun {6, "stream-freerun"};
@@ -14914,6 +15804,7 @@ const Enum::YLeaf FsyncBagClockIntfClass::clock_class_dti {5, "clock-class-dti"}
 const Enum::YLeaf FsyncBagClockIntfClass::clock_class_gps {6, "clock-class-gps"};
 const Enum::YLeaf FsyncBagClockIntfClass::clock_class_chassis_sync {7, "clock-class-chassis-sync"};
 const Enum::YLeaf FsyncBagClockIntfClass::clock_class_bitsj1 {8, "clock-class-bitsj1"};
+const Enum::YLeaf FsyncBagClockIntfClass::clock_class_unknown {255, "clock-class-unknown"};
 
 const Enum::YLeaf FsyncBagSourceState::source_state_unknown {0, "source-state-unknown"};
 const Enum::YLeaf FsyncBagSourceState::source_state_up {1, "source-state-up"};

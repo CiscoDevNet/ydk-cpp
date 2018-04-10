@@ -654,8 +654,10 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring : publ
 
         ydk::YLeaf supported; //type: int32
         class Settings; //type: EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings
+        class State; //type: EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings> settings;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State> state;
         
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring
 
@@ -683,6 +685,28 @@ class EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Setti
         ydk::YLeaf signal_remote_fault; //type: int32
 
 }; // EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings
+
+
+class EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sd_current_ber; //type: uint32
+        ydk::YLeaf sf_current_ber; //type: uint32
+
+}; // EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State
 
 
 class EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring : public ydk::Entity
@@ -1124,6 +1148,7 @@ class EtherLinkState : public ydk::Enum
         static const ydk::Enum::YLeaf system_error;
         static const ydk::Enum::YLeaf wan_framing_error;
         static const ydk::Enum::YLeaf otn_framing_error;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 
@@ -1521,6 +1546,13 @@ class EthernetMedia : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet_400gbase_fr4;
         static const ydk::Enum::YLeaf ethernet_400gbase_dr4;
         static const ydk::Enum::YLeaf ethernet_400gbase_cr4;
+        static const ydk::Enum::YLeaf ethernet_10gbase_cu1m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_cu3m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_cu5m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_acu7m;
+        static const ydk::Enum::YLeaf ethernet_10gbase_acu10m;
+        static const ydk::Enum::YLeaf ethernet_40gbase_aoc;
+        static const ydk::Enum::YLeaf ethernet_4x10g_base_lr;
         static const ydk::Enum::YLeaf ethernet_base_max;
 
 };

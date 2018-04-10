@@ -60,6 +60,7 @@ class VirtualServices::VirtualService : public ydk::Entity
         class Utilization; //type: VirtualServices::VirtualService::Utilization
         class NetworkUtils; //type: VirtualServices::VirtualService::NetworkUtils
         class StorageUtils; //type: VirtualServices::VirtualService::StorageUtils
+        class Processes; //type: VirtualServices::VirtualService::Processes
         class AttachedDevices; //type: VirtualServices::VirtualService::AttachedDevices
         class NetworkInterfaces; //type: VirtualServices::VirtualService::NetworkInterfaces
         class GuestRoutes; //type: VirtualServices::VirtualService::GuestRoutes
@@ -68,6 +69,7 @@ class VirtualServices::VirtualService : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Utilization> utilization;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils> network_utils;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils> storage_utils;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Processes> processes;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices> attached_devices;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces> network_interfaces;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes> guest_routes;
@@ -155,6 +157,7 @@ class VirtualServices::VirtualService::Details::PackageInformation::Application 
         ydk::YLeaf name; //type: string
         ydk::YLeaf installed_version; //type: string
         ydk::YLeaf description; //type: string
+        ydk::YLeaf type; //type: string
 
 }; // VirtualServices::VirtualService::Details::PackageInformation::Application
 
@@ -475,6 +478,54 @@ class VirtualServices::VirtualService::StorageUtils::StorageUtil : public ydk::E
 }; // VirtualServices::VirtualService::StorageUtils::StorageUtil
 
 
+class VirtualServices::VirtualService::Processes : public ydk::Entity
+{
+    public:
+        Processes();
+        ~Processes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Process; //type: VirtualServices::VirtualService::Processes::Process
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Processes::Process> > process;
+        
+}; // VirtualServices::VirtualService::Processes
+
+
+class VirtualServices::VirtualService::Processes::Process : public ydk::Entity
+{
+    public:
+        Process();
+        ~Process();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf status; //type: string
+        ydk::YLeaf pid; //type: string
+        ydk::YLeaf uptime; //type: string
+        ydk::YLeaf memory; //type: string
+
+}; // VirtualServices::VirtualService::Processes::Process
+
+
 class VirtualServices::VirtualService::AttachedDevices : public ydk::Entity
 {
     public:
@@ -562,6 +613,7 @@ class VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface : pub
 
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf attached_interface; //type: string
+        ydk::YLeaf ipv4_address; //type: string
 
 }; // VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface
 

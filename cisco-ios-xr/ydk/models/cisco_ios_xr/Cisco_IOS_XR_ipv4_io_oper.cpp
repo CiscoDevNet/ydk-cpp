@@ -6151,10 +6151,6 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::has_leaf_or_chi
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::MultiAcl()
-    :
-    inbound{YType::str, "inbound"},
-    outbound{YType::str, "outbound"},
-    common{YType::str, "common"}
 {
 
     yang_name = "multi-acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
@@ -6166,19 +6162,19 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::~MultiAcl()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_data() const
 {
-    for (auto const & leaf : inbound.getYLeafs())
+    for (std::size_t index=0; index<inbound.size(); index++)
     {
-        if(leaf.is_set)
+        if(inbound[index]->has_data())
             return true;
     }
-    for (auto const & leaf : outbound.getYLeafs())
+    for (std::size_t index=0; index<outbound.size(); index++)
     {
-        if(leaf.is_set)
+        if(outbound[index]->has_data())
             return true;
     }
-    for (auto const & leaf : common.getYLeafs())
+    for (std::size_t index=0; index<common.size(); index++)
     {
-        if(leaf.is_set)
+        if(common[index]->has_data())
             return true;
     }
     return false;
@@ -6186,25 +6182,22 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_data()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_operation() const
 {
-    for (auto const & leaf : inbound.getYLeafs())
+    for (std::size_t index=0; index<inbound.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(inbound[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : outbound.getYLeafs())
+    for (std::size_t index=0; index<outbound.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(outbound[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : common.getYLeafs())
+    for (std::size_t index=0; index<common.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(common[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(inbound.yfilter)
-	|| ydk::is_set(outbound.yfilter)
-	|| ydk::is_set(common.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_segment_path() const
@@ -6219,18 +6212,36 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interfac
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto inbound_name_datas = inbound.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), inbound_name_datas.begin(), inbound_name_datas.end());
-    auto outbound_name_datas = outbound.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), outbound_name_datas.begin(), outbound_name_datas.end());
-    auto common_name_datas = common.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), common_name_datas.begin(), common_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inbound")
+    {
+        auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound>();
+        c->parent = this;
+        inbound.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "outbound")
+    {
+        auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound>();
+        c->parent = this;
+        outbound.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "common")
+    {
+        auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common>();
+        c->parent = this;
+        common.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -6238,39 +6249,42 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : inbound)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : outbound)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : common)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "inbound")
-    {
-        inbound.append(value);
-    }
-    if(value_path == "outbound")
-    {
-        outbound.append(value);
-    }
-    if(value_path == "common")
-    {
-        common.append(value);
-    }
 }
 
 void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "inbound")
-    {
-        inbound.yfilter = yfilter;
-    }
-    if(value_path == "outbound")
-    {
-        outbound.yfilter = yfilter;
-    }
-    if(value_path == "common")
-    {
-        common.yfilter = yfilter;
-    }
 }
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_leaf_or_child_of_name(const std::string & name) const
@@ -6280,9 +6294,238 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_leaf_o
     return false;
 }
 
-Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::HelperAddress()
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::Inbound()
     :
-    address_array{YType::str, "address-array"}
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "inbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::~Inbound()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inbound";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::Outbound()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "outbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::~Outbound()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "outbound";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::Common()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "common"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::~Common()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "common";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::HelperAddress()
 {
 
     yang_name = "helper-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
@@ -6294,9 +6537,9 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::~HelperAdd
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_data() const
 {
-    for (auto const & leaf : address_array.getYLeafs())
+    for (std::size_t index=0; index<address_array.size(); index++)
     {
-        if(leaf.is_set)
+        if(address_array[index]->has_data())
             return true;
     }
     return false;
@@ -6304,13 +6547,12 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_d
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_operation() const
 {
-    for (auto const & leaf : address_array.getYLeafs())
+    for (std::size_t index=0; index<address_array.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(address_array[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(address_array.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_segment_path() const
@@ -6325,14 +6567,20 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interfac
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto address_array_name_datas = address_array.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), address_array_name_datas.begin(), address_array_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "address-array")
+    {
+        auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray>();
+        c->parent = this;
+        address_array.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -6340,28 +6588,106 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : address_array)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address-array")
-    {
-        address_array.append(value);
-    }
 }
 
 void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address-array")
-    {
-        address_array.yfilter = yfilter;
-    }
 }
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-array")
+        return true;
+    return false;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::AddressArray()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "address-array"; yang_parent_name = "helper-address"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::~AddressArray()
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::has_data() const
+{
+    return entry.is_set;
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "address-array";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }

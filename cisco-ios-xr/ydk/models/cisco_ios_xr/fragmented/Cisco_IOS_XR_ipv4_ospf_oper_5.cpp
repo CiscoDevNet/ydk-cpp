@@ -5,12 +5,310 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_5.hpp"
-#include "Cisco_IOS_XR_ipv4_ospf_oper_6.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_oper {
+
+Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborSummary()
+    :
+    neighbor_id{YType::str, "neighbor-id"},
+    neighbor_address_xr{YType::str, "neighbor-address-xr"},
+    neighbor_interface_name{YType::str, "neighbor-interface-name"},
+    neighbor_dr_priority{YType::uint8, "neighbor-dr-priority"},
+    neighbor_state{YType::enumeration, "neighbor-state"},
+    dr_bdr_state{YType::enumeration, "dr-bdr-state"},
+    neighbor_dead_timer{YType::uint32, "neighbor-dead-timer"},
+    neighbor_up_time{YType::uint32, "neighbor-up-time"},
+    neighbor_madj_interface{YType::boolean, "neighbor-madj-interface"}
+    	,
+    neighbor_bfd_information(std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation>())
+{
+    neighbor_bfd_information->parent = this;
+
+    yang_name = "neighbor-summary"; yang_parent_name = "neighbor-detail"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::~NeighborSummary()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::has_data() const
+{
+    return neighbor_id.is_set
+	|| neighbor_address_xr.is_set
+	|| neighbor_interface_name.is_set
+	|| neighbor_dr_priority.is_set
+	|| neighbor_state.is_set
+	|| dr_bdr_state.is_set
+	|| neighbor_dead_timer.is_set
+	|| neighbor_up_time.is_set
+	|| neighbor_madj_interface.is_set
+	|| (neighbor_bfd_information !=  nullptr && neighbor_bfd_information->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_id.yfilter)
+	|| ydk::is_set(neighbor_address_xr.yfilter)
+	|| ydk::is_set(neighbor_interface_name.yfilter)
+	|| ydk::is_set(neighbor_dr_priority.yfilter)
+	|| ydk::is_set(neighbor_state.yfilter)
+	|| ydk::is_set(dr_bdr_state.yfilter)
+	|| ydk::is_set(neighbor_dead_timer.yfilter)
+	|| ydk::is_set(neighbor_up_time.yfilter)
+	|| ydk::is_set(neighbor_madj_interface.yfilter)
+	|| (neighbor_bfd_information !=  nullptr && neighbor_bfd_information->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (neighbor_id.is_set || is_set(neighbor_id.yfilter)) leaf_name_data.push_back(neighbor_id.get_name_leafdata());
+    if (neighbor_address_xr.is_set || is_set(neighbor_address_xr.yfilter)) leaf_name_data.push_back(neighbor_address_xr.get_name_leafdata());
+    if (neighbor_interface_name.is_set || is_set(neighbor_interface_name.yfilter)) leaf_name_data.push_back(neighbor_interface_name.get_name_leafdata());
+    if (neighbor_dr_priority.is_set || is_set(neighbor_dr_priority.yfilter)) leaf_name_data.push_back(neighbor_dr_priority.get_name_leafdata());
+    if (neighbor_state.is_set || is_set(neighbor_state.yfilter)) leaf_name_data.push_back(neighbor_state.get_name_leafdata());
+    if (dr_bdr_state.is_set || is_set(dr_bdr_state.yfilter)) leaf_name_data.push_back(dr_bdr_state.get_name_leafdata());
+    if (neighbor_dead_timer.is_set || is_set(neighbor_dead_timer.yfilter)) leaf_name_data.push_back(neighbor_dead_timer.get_name_leafdata());
+    if (neighbor_up_time.is_set || is_set(neighbor_up_time.yfilter)) leaf_name_data.push_back(neighbor_up_time.get_name_leafdata());
+    if (neighbor_madj_interface.is_set || is_set(neighbor_madj_interface.yfilter)) leaf_name_data.push_back(neighbor_madj_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "neighbor-bfd-information")
+    {
+        if(neighbor_bfd_information == nullptr)
+        {
+            neighbor_bfd_information = std::make_shared<Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation>();
+        }
+        return neighbor_bfd_information;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(neighbor_bfd_information != nullptr)
+    {
+        children["neighbor-bfd-information"] = neighbor_bfd_information;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "neighbor-id")
+    {
+        neighbor_id = value;
+        neighbor_id.value_namespace = name_space;
+        neighbor_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-address-xr")
+    {
+        neighbor_address_xr = value;
+        neighbor_address_xr.value_namespace = name_space;
+        neighbor_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-interface-name")
+    {
+        neighbor_interface_name = value;
+        neighbor_interface_name.value_namespace = name_space;
+        neighbor_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-dr-priority")
+    {
+        neighbor_dr_priority = value;
+        neighbor_dr_priority.value_namespace = name_space;
+        neighbor_dr_priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-state")
+    {
+        neighbor_state = value;
+        neighbor_state.value_namespace = name_space;
+        neighbor_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dr-bdr-state")
+    {
+        dr_bdr_state = value;
+        dr_bdr_state.value_namespace = name_space;
+        dr_bdr_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-dead-timer")
+    {
+        neighbor_dead_timer = value;
+        neighbor_dead_timer.value_namespace = name_space;
+        neighbor_dead_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-up-time")
+    {
+        neighbor_up_time = value;
+        neighbor_up_time.value_namespace = name_space;
+        neighbor_up_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-madj-interface")
+    {
+        neighbor_madj_interface = value;
+        neighbor_madj_interface.value_namespace = name_space;
+        neighbor_madj_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-id")
+    {
+        neighbor_id.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address-xr")
+    {
+        neighbor_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-interface-name")
+    {
+        neighbor_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-dr-priority")
+    {
+        neighbor_dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-state")
+    {
+        neighbor_state.yfilter = yfilter;
+    }
+    if(value_path == "dr-bdr-state")
+    {
+        dr_bdr_state.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-dead-timer")
+    {
+        neighbor_dead_timer.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-up-time")
+    {
+        neighbor_up_time.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-madj-interface")
+    {
+        neighbor_madj_interface.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-bfd-information" || name == "neighbor-id" || name == "neighbor-address-xr" || name == "neighbor-interface-name" || name == "neighbor-dr-priority" || name == "neighbor-state" || name == "dr-bdr-state" || name == "neighbor-dead-timer" || name == "neighbor-up-time" || name == "neighbor-madj-interface")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::NeighborBfdInformation()
+    :
+    bfd_intf_enable_mode{YType::uint32, "bfd-intf-enable-mode"},
+    bfd_status_flag{YType::uint8, "bfd-status-flag"}
+{
+
+    yang_name = "neighbor-bfd-information"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::~NeighborBfdInformation()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::has_data() const
+{
+    return bfd_intf_enable_mode.is_set
+	|| bfd_status_flag.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bfd_intf_enable_mode.yfilter)
+	|| ydk::is_set(bfd_status_flag.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor-bfd-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bfd_intf_enable_mode.is_set || is_set(bfd_intf_enable_mode.yfilter)) leaf_name_data.push_back(bfd_intf_enable_mode.get_name_leafdata());
+    if (bfd_status_flag.is_set || is_set(bfd_status_flag.yfilter)) leaf_name_data.push_back(bfd_status_flag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bfd-intf-enable-mode")
+    {
+        bfd_intf_enable_mode = value;
+        bfd_intf_enable_mode.value_namespace = name_space;
+        bfd_intf_enable_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-status-flag")
+    {
+        bfd_status_flag = value;
+        bfd_status_flag.value_namespace = name_space;
+        bfd_status_flag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bfd-intf-enable-mode")
+    {
+        bfd_intf_enable_mode.yfilter = yfilter;
+    }
+    if(value_path == "bfd-status-flag")
+    {
+        bfd_status_flag.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-intf-enable-mode" || name == "bfd-status-flag")
+        return true;
+    return false;
+}
 
 Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborBfdInformation::NeighborBfdInformation()
     :
@@ -23371,249 +23669,6 @@ void Ospf::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRo
 bool Ospf::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "border-router-route-type" || name == "border-router-route-metric" || name == "border-router-next-hop" || name == "border-router-next-hop-interface-name" || name == "border-router-type" || name == "border-router-area-id" || name == "spf-version")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessInformation()
-    :
-    protocol_areas(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas>())
-	,protocol_summary(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolSummary>())
-	,redistributions(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::Redistributions>())
-	,process_areas(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessAreas>())
-	,process_summary(std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary>())
-{
-    protocol_areas->parent = this;
-    protocol_summary->parent = this;
-    redistributions->parent = this;
-    process_areas->parent = this;
-    process_summary->parent = this;
-
-    yang_name = "process-information"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::DefaultVrf::ProcessInformation::~ProcessInformation()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::has_data() const
-{
-    return (protocol_areas !=  nullptr && protocol_areas->has_data())
-	|| (protocol_summary !=  nullptr && protocol_summary->has_data())
-	|| (redistributions !=  nullptr && redistributions->has_data())
-	|| (process_areas !=  nullptr && process_areas->has_data())
-	|| (process_summary !=  nullptr && process_summary->has_data());
-}
-
-bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::has_operation() const
-{
-    return is_set(yfilter)
-	|| (protocol_areas !=  nullptr && protocol_areas->has_operation())
-	|| (protocol_summary !=  nullptr && protocol_summary->has_operation())
-	|| (redistributions !=  nullptr && redistributions->has_operation())
-	|| (process_areas !=  nullptr && process_areas->has_operation())
-	|| (process_summary !=  nullptr && process_summary->has_operation());
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "process-information";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "protocol-areas")
-    {
-        if(protocol_areas == nullptr)
-        {
-            protocol_areas = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas>();
-        }
-        return protocol_areas;
-    }
-
-    if(child_yang_name == "protocol-summary")
-    {
-        if(protocol_summary == nullptr)
-        {
-            protocol_summary = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolSummary>();
-        }
-        return protocol_summary;
-    }
-
-    if(child_yang_name == "redistributions")
-    {
-        if(redistributions == nullptr)
-        {
-            redistributions = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::Redistributions>();
-        }
-        return redistributions;
-    }
-
-    if(child_yang_name == "process-areas")
-    {
-        if(process_areas == nullptr)
-        {
-            process_areas = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessAreas>();
-        }
-        return process_areas;
-    }
-
-    if(child_yang_name == "process-summary")
-    {
-        if(process_summary == nullptr)
-        {
-            process_summary = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary>();
-        }
-        return process_summary;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::ProcessInformation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(protocol_areas != nullptr)
-    {
-        children["protocol-areas"] = protocol_areas;
-    }
-
-    if(protocol_summary != nullptr)
-    {
-        children["protocol-summary"] = protocol_summary;
-    }
-
-    if(redistributions != nullptr)
-    {
-        children["redistributions"] = redistributions;
-    }
-
-    if(process_areas != nullptr)
-    {
-        children["process-areas"] = process_areas;
-    }
-
-    if(process_summary != nullptr)
-    {
-        children["process-summary"] = process_summary;
-    }
-
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::ProcessInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ospf::Processes::Process::DefaultVrf::ProcessInformation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol-areas" || name == "protocol-summary" || name == "redistributions" || name == "process-areas" || name == "process-summary")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::ProtocolAreas()
-{
-
-    yang_name = "protocol-areas"; yang_parent_name = "process-information"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::~ProtocolAreas()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::has_data() const
-{
-    for (std::size_t index=0; index<protocol_area.size(); index++)
-    {
-        if(protocol_area[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::has_operation() const
-{
-    for (std::size_t index=0; index<protocol_area.size(); index++)
-    {
-        if(protocol_area[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protocol-areas";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "protocol-area")
-    {
-        auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::ProtocolArea>();
-        c->parent = this;
-        protocol_area.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : protocol_area)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol-area")
         return true;
     return false;
 }

@@ -134,6 +134,8 @@ class NetFlow::Statistics::Statistic::Producer::Statistics_ : public ydk::Entity
         ydk::YLeaf ipv6_egress_flows; //type: uint64
         ydk::YLeaf mpls_ingress_flows; //type: uint64
         ydk::YLeaf mpls_egress_flows; //type: uint64
+        ydk::YLeaf ipfix315_ingress_flows; //type: uint64
+        ydk::YLeaf ipfix315_egress_flows; //type: uint64
         ydk::YLeaf drops_no_space; //type: uint64
         ydk::YLeaf drops_others; //type: uint64
         ydk::YLeaf unknown_ingress_flows; //type: uint64

@@ -34,6 +34,7 @@ class Lldp : public ydk::Entity
         ydk::YLeaf holdtime; //type: uint32
         ydk::YLeaf extended_show_width; //type: boolean
         ydk::YLeaf enable_subintf; //type: boolean
+        ydk::YLeaf enable_mgmtintf; //type: boolean
         ydk::YLeaf timer; //type: uint32
         ydk::YLeaf reinit; //type: uint32
         ydk::YLeaf enable; //type: boolean

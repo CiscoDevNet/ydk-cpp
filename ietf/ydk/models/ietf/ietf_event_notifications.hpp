@@ -591,7 +591,7 @@ class SubscriptionConfig::Subscription::Receivers::Receiver : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of string, union
+        ydk::YLeaf address; //type: one of union, string
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf protocol; //type: Transport
 
@@ -712,7 +712,7 @@ class Subscriptions::Subscription::Receivers::Receiver : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of string, union
+        ydk::YLeaf address; //type: one of union, string
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf protocol; //type: Transport
 

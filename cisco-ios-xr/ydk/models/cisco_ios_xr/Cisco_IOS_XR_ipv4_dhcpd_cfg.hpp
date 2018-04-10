@@ -602,9 +602,9 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf server_allow_move; //type: empty
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf subnet_mask; //type: string
         ydk::YLeaf pool; //type: string
-        ydk::YLeaf infinite_lease; //type: empty
         ydk::YLeaf domain_name; //type: string
         ydk::YLeaf secure_arp; //type: empty
         ydk::YLeaf boot_filename; //type: string
@@ -1044,7 +1044,6 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class : public
         ydk::YLeaf subnet_mask; //type: string
         ydk::YLeaf pool; //type: string
         ydk::YLeaf enable; //type: empty
-        ydk::YLeaf infinite_lease; //type: empty
         ydk::YLeaf domain_name; //type: string
         ydk::YLeaf boot_filename; //type: string
         ydk::YLeaf next_server; //type: string
@@ -1653,6 +1652,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy : public ydk::Entity
         class Classes; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes
         class AuthUsername; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername
         class RelayInformation; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation
+        class DhcpToAaa; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa
         class Vrfs; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs
         class Sessions; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions
         class LimitLease; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease
@@ -1664,6 +1664,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes> classes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername> auth_username; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation> relay_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa> dhcp_to_aaa;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs> vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions> sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease> limit_lease; // presence node
@@ -1935,6 +1936,74 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation : publi
         ydk::YLeaf authenticate; //type: Ipv4dhcpdRelayInfoOptionAuthenticate
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa : public ydk::Entity
+{
+    public:
+        DhcpToAaa();
+        ~DhcpToAaa();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Option; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option> option;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option : public ydk::Entity
+{
+    public:
+        Option();
+        ~Option();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class List; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List> list;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List : public ydk::Entity
+{
+    public:
+        List();
+        ~List();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf option_all; //type: int32
+        ydk::YLeafList option; //type: list of  uint32
+
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List
 
 
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs : public ydk::Entity
@@ -2866,6 +2935,7 @@ class ProxyAction : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf allow;
         static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf relay;
 
 };
 

@@ -4900,12 +4900,14 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Ipv6()
 	,unnumbered(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered>())
 	,config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config>())
 	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State>())
+	,autoconf(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf>())
 {
     addresses->parent = this;
     neighbors->parent = this;
     unnumbered->parent = this;
     config->parent = this;
     state->parent = this;
+    autoconf->parent = this;
 
     yang_name = "ipv6"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -4920,7 +4922,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_data() const
 	|| (neighbors !=  nullptr && neighbors->has_data())
 	|| (unnumbered !=  nullptr && unnumbered->has_data())
 	|| (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
+	|| (state !=  nullptr && state->has_data())
+	|| (autoconf !=  nullptr && autoconf->has_data());
 }
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_operation() const
@@ -4930,7 +4933,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_operation() c
 	|| (neighbors !=  nullptr && neighbors->has_operation())
 	|| (unnumbered !=  nullptr && unnumbered->has_operation())
 	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
+	|| (state !=  nullptr && state->has_operation())
+	|| (autoconf !=  nullptr && autoconf->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_segment_path() const
@@ -4996,6 +5000,15 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
         return state;
     }
 
+    if(child_yang_name == "openconfig-if-ip-ext:autoconf")
+    {
+        if(autoconf == nullptr)
+        {
+            autoconf = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf>();
+        }
+        return autoconf;
+    }
+
     return nullptr;
 }
 
@@ -5028,6 +5041,11 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
         children["state"] = state;
     }
 
+    if(autoconf != nullptr)
+    {
+        children["openconfig-if-ip-ext:autoconf"] = autoconf;
+    }
+
     return children;
 }
 
@@ -5041,7 +5059,7 @@ void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::set_filter(const 
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addresses" || name == "neighbors" || name == "unnumbered" || name == "config" || name == "state")
+    if(name == "addresses" || name == "neighbors" || name == "unnumbered" || name == "config" || name == "state" || name == "autoconf")
         return true;
     return false;
 }
@@ -7547,6 +7565,343 @@ void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::set_filter
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enabled" || name == "mtu" || name == "dup-addr-detect-transmits")
+        return true;
+    return false;
+}
+
+Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Autoconf()
+    :
+    config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config>())
+	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State>())
+{
+    config->parent = this;
+    state->parent = this;
+
+    yang_name = "autoconf"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::~Autoconf()
+{
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig-if-ip-ext:autoconf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::Config()
+    :
+    create_global_addresses{YType::boolean, "create-global-addresses"},
+    create_temporary_addresses{YType::boolean, "create-temporary-addresses"},
+    temporary_valid_lifetime{YType::uint32, "temporary-valid-lifetime"},
+    temporary_preferred_lifetime{YType::uint32, "temporary-preferred-lifetime"}
+{
+
+    yang_name = "config"; yang_parent_name = "autoconf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::~Config()
+{
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::has_data() const
+{
+    return create_global_addresses.is_set
+	|| create_temporary_addresses.is_set
+	|| temporary_valid_lifetime.is_set
+	|| temporary_preferred_lifetime.is_set;
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(create_global_addresses.yfilter)
+	|| ydk::is_set(create_temporary_addresses.yfilter)
+	|| ydk::is_set(temporary_valid_lifetime.yfilter)
+	|| ydk::is_set(temporary_preferred_lifetime.yfilter);
+}
+
+std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (create_global_addresses.is_set || is_set(create_global_addresses.yfilter)) leaf_name_data.push_back(create_global_addresses.get_name_leafdata());
+    if (create_temporary_addresses.is_set || is_set(create_temporary_addresses.yfilter)) leaf_name_data.push_back(create_temporary_addresses.get_name_leafdata());
+    if (temporary_valid_lifetime.is_set || is_set(temporary_valid_lifetime.yfilter)) leaf_name_data.push_back(temporary_valid_lifetime.get_name_leafdata());
+    if (temporary_preferred_lifetime.is_set || is_set(temporary_preferred_lifetime.yfilter)) leaf_name_data.push_back(temporary_preferred_lifetime.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "create-global-addresses")
+    {
+        create_global_addresses = value;
+        create_global_addresses.value_namespace = name_space;
+        create_global_addresses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "create-temporary-addresses")
+    {
+        create_temporary_addresses = value;
+        create_temporary_addresses.value_namespace = name_space;
+        create_temporary_addresses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temporary-valid-lifetime")
+    {
+        temporary_valid_lifetime = value;
+        temporary_valid_lifetime.value_namespace = name_space;
+        temporary_valid_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temporary-preferred-lifetime")
+    {
+        temporary_preferred_lifetime = value;
+        temporary_preferred_lifetime.value_namespace = name_space;
+        temporary_preferred_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "create-global-addresses")
+    {
+        create_global_addresses.yfilter = yfilter;
+    }
+    if(value_path == "create-temporary-addresses")
+    {
+        create_temporary_addresses.yfilter = yfilter;
+    }
+    if(value_path == "temporary-valid-lifetime")
+    {
+        temporary_valid_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "temporary-preferred-lifetime")
+    {
+        temporary_preferred_lifetime.yfilter = yfilter;
+    }
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "create-global-addresses" || name == "create-temporary-addresses" || name == "temporary-valid-lifetime" || name == "temporary-preferred-lifetime")
+        return true;
+    return false;
+}
+
+Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::State()
+    :
+    create_global_addresses{YType::boolean, "create-global-addresses"},
+    create_temporary_addresses{YType::boolean, "create-temporary-addresses"},
+    temporary_valid_lifetime{YType::uint32, "temporary-valid-lifetime"},
+    temporary_preferred_lifetime{YType::uint32, "temporary-preferred-lifetime"}
+{
+
+    yang_name = "state"; yang_parent_name = "autoconf"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::~State()
+{
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::has_data() const
+{
+    return create_global_addresses.is_set
+	|| create_temporary_addresses.is_set
+	|| temporary_valid_lifetime.is_set
+	|| temporary_preferred_lifetime.is_set;
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(create_global_addresses.yfilter)
+	|| ydk::is_set(create_temporary_addresses.yfilter)
+	|| ydk::is_set(temporary_valid_lifetime.yfilter)
+	|| ydk::is_set(temporary_preferred_lifetime.yfilter);
+}
+
+std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (create_global_addresses.is_set || is_set(create_global_addresses.yfilter)) leaf_name_data.push_back(create_global_addresses.get_name_leafdata());
+    if (create_temporary_addresses.is_set || is_set(create_temporary_addresses.yfilter)) leaf_name_data.push_back(create_temporary_addresses.get_name_leafdata());
+    if (temporary_valid_lifetime.is_set || is_set(temporary_valid_lifetime.yfilter)) leaf_name_data.push_back(temporary_valid_lifetime.get_name_leafdata());
+    if (temporary_preferred_lifetime.is_set || is_set(temporary_preferred_lifetime.yfilter)) leaf_name_data.push_back(temporary_preferred_lifetime.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "create-global-addresses")
+    {
+        create_global_addresses = value;
+        create_global_addresses.value_namespace = name_space;
+        create_global_addresses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "create-temporary-addresses")
+    {
+        create_temporary_addresses = value;
+        create_temporary_addresses.value_namespace = name_space;
+        create_temporary_addresses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temporary-valid-lifetime")
+    {
+        temporary_valid_lifetime = value;
+        temporary_valid_lifetime.value_namespace = name_space;
+        temporary_valid_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "temporary-preferred-lifetime")
+    {
+        temporary_preferred_lifetime = value;
+        temporary_preferred_lifetime.value_namespace = name_space;
+        temporary_preferred_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "create-global-addresses")
+    {
+        create_global_addresses.yfilter = yfilter;
+    }
+    if(value_path == "create-temporary-addresses")
+    {
+        create_temporary_addresses.yfilter = yfilter;
+    }
+    if(value_path == "temporary-valid-lifetime")
+    {
+        temporary_valid_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "temporary-preferred-lifetime")
+    {
+        temporary_preferred_lifetime.yfilter = yfilter;
+    }
+}
+
+bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "create-global-addresses" || name == "create-temporary-addresses" || name == "temporary-valid-lifetime" || name == "temporary-preferred-lifetime")
         return true;
     return false;
 }

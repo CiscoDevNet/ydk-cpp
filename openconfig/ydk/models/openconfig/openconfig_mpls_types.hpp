@@ -73,6 +73,15 @@ class NullLabelType : public virtual ydk::Identity
 
 }; // NullLabelType
 
+class PATHSETUPPROTOCOL : public virtual ydk::Identity
+{
+    public:
+        PATHSETUPPROTOCOL();
+        ~PATHSETUPPROTOCOL();
+
+
+}; // PATHSETUPPROTOCOL
+
 class PathSetupRsvp : public openconfig::openconfig_mpls_types::PathSetupProtocol, virtual ydk::Identity
 {
     public:

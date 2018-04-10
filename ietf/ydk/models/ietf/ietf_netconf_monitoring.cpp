@@ -31,6 +31,326 @@ SchemaFormat::~SchemaFormat()
 {
 }
 
+GetSchema::GetSchema()
+    :
+    input(std::make_shared<GetSchema::Input>())
+	,output(std::make_shared<GetSchema::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
+}
+
+GetSchema::~GetSchema()
+{
+}
+
+bool GetSchema::has_data() const
+{
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool GetSchema::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string GetSchema::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:get-schema";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSchema::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<GetSchema::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<GetSchema::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void GetSchema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GetSchema::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> GetSchema::clone_ptr() const
+{
+    return std::make_shared<GetSchema>();
+}
+
+std::string GetSchema::get_bundle_yang_models_location() const
+{
+    return ydk_ietf_models_path;
+}
+
+std::string GetSchema::get_bundle_name() const
+{
+    return "ietf";
+}
+
+augment_capabilities_function GetSchema::get_augment_capabilities_function() const
+{
+    return ietf_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> GetSchema::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool GetSchema::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+GetSchema::Input::Input()
+    :
+    identifier{YType::str, "identifier"},
+    version{YType::str, "version"},
+    format{YType::identityref, "format"}
+{
+
+    yang_name = "input"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+GetSchema::Input::~Input()
+{
+}
+
+bool GetSchema::Input::has_data() const
+{
+    return identifier.is_set
+	|| version.is_set
+	|| format.is_set;
+}
+
+bool GetSchema::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(format.yfilter);
+}
+
+std::string GetSchema::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSchema::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSchema::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSchema::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GetSchema::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "identifier")
+    {
+        identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "format")
+    {
+        format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GetSchema::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+}
+
+bool GetSchema::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identifier" || name == "version" || name == "format")
+        return true;
+    return false;
+}
+
+GetSchema::Output::Output()
+    :
+    data{YType::str, "data"}
+{
+
+    yang_name = "output"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+GetSchema::Output::~Output()
+{
+}
+
+bool GetSchema::Output::has_data() const
+{
+    return data.is_set;
+}
+
+bool GetSchema::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter);
+}
+
+std::string GetSchema::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSchema::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSchema::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSchema::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GetSchema::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GetSchema::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+}
+
+bool GetSchema::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data")
+        return true;
+    return false;
+}
+
 NetconfState::NetconfState()
     :
     capabilities(std::make_shared<NetconfState::Capabilities>())
@@ -1565,326 +1885,6 @@ void NetconfState::Statistics::set_filter(const std::string & value_path, YFilte
 bool NetconfState::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "netconf-start-time" || name == "in-bad-hellos" || name == "in-sessions" || name == "dropped-sessions" || name == "in-rpcs" || name == "in-bad-rpcs" || name == "out-rpc-errors" || name == "out-notifications")
-        return true;
-    return false;
-}
-
-GetSchema::GetSchema()
-    :
-    input(std::make_shared<GetSchema::Input>())
-	,output(std::make_shared<GetSchema::Output>())
-{
-    input->parent = this;
-    output->parent = this;
-
-    yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring"; is_top_level_class = true; has_list_ancestor = false;
-}
-
-GetSchema::~GetSchema()
-{
-}
-
-bool GetSchema::has_data() const
-{
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
-}
-
-bool GetSchema::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
-}
-
-std::string GetSchema::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-netconf-monitoring:get-schema";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > GetSchema::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<GetSchema::Input>();
-        }
-        return input;
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output == nullptr)
-        {
-            output = std::make_shared<GetSchema::Output>();
-        }
-        return output;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(input != nullptr)
-    {
-        children["input"] = input;
-    }
-
-    if(output != nullptr)
-    {
-        children["output"] = output;
-    }
-
-    return children;
-}
-
-void GetSchema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void GetSchema::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> GetSchema::clone_ptr() const
-{
-    return std::make_shared<GetSchema>();
-}
-
-std::string GetSchema::get_bundle_yang_models_location() const
-{
-    return ydk_ietf_models_path;
-}
-
-std::string GetSchema::get_bundle_name() const
-{
-    return "ietf";
-}
-
-augment_capabilities_function GetSchema::get_augment_capabilities_function() const
-{
-    return ietf_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> GetSchema::get_namespace_identity_lookup() const
-{
-    return ietf_namespace_identity_lookup;
-}
-
-bool GetSchema::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-GetSchema::Input::Input()
-    :
-    identifier{YType::str, "identifier"},
-    version{YType::str, "version"},
-    format{YType::identityref, "format"}
-{
-
-    yang_name = "input"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-GetSchema::Input::~Input()
-{
-}
-
-bool GetSchema::Input::has_data() const
-{
-    return identifier.is_set
-	|| version.is_set
-	|| format.is_set;
-}
-
-bool GetSchema::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(identifier.yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(format.yfilter);
-}
-
-std::string GetSchema::Input::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string GetSchema::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > GetSchema::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> GetSchema::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void GetSchema::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "identifier")
-    {
-        identifier = value;
-        identifier.value_namespace = name_space;
-        identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "format")
-    {
-        format = value;
-        format.value_namespace = name_space;
-        format.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void GetSchema::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "identifier")
-    {
-        identifier.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-    if(value_path == "format")
-    {
-        format.yfilter = yfilter;
-    }
-}
-
-bool GetSchema::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "identifier" || name == "version" || name == "format")
-        return true;
-    return false;
-}
-
-GetSchema::Output::Output()
-    :
-    data{YType::str, "data"}
-{
-
-    yang_name = "output"; yang_parent_name = "get-schema"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-GetSchema::Output::~Output()
-{
-}
-
-bool GetSchema::Output::has_data() const
-{
-    return data.is_set;
-}
-
-bool GetSchema::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter);
-}
-
-std::string GetSchema::Output::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-netconf-monitoring:get-schema/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string GetSchema::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > GetSchema::Output::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> GetSchema::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::Output::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void GetSchema::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void GetSchema::Output::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-}
-
-bool GetSchema::Output::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data")
         return true;
     return false;
 }

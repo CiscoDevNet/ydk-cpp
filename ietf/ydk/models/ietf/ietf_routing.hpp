@@ -236,7 +236,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
         class Interfaces; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces
         class AreaScopeLsas; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas
 
@@ -320,7 +320,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf multi_area_id; //type: one of string, uint32
+        ydk::YLeaf multi_area_id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea
@@ -584,7 +584,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lsa_id; //type: one of string, uint32
+        ydk::YLeaf lsa_id; //type: one of uint32, string
         ydk::YLeaf adv_router; //type: string
         ydk::YLeaf decoded_completed; //type: boolean
         ydk::YLeaf raw_data; //type: string
@@ -725,7 +725,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_id; //type: string
-        ydk::YLeaf link_data; //type: one of string, uint32
+        ydk::YLeaf link_data; //type: one of uint32, string
         ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology
 
@@ -1424,7 +1424,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lsa_id; //type: one of string, uint32
+        ydk::YLeaf lsa_id; //type: one of uint32, string
         ydk::YLeaf adv_router; //type: string
         ydk::YLeaf decoded_completed; //type: boolean
         ydk::YLeaf raw_data; //type: string
@@ -1565,7 +1565,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_id; //type: string
-        ydk::YLeaf link_data; //type: one of string, uint32
+        ydk::YLeaf link_data; //type: one of uint32, string
         ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology
 
@@ -2242,7 +2242,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf lsa_id; //type: one of string, uint32
+        ydk::YLeaf lsa_id; //type: one of uint32, string
         ydk::YLeaf adv_router; //type: string
         ydk::YLeaf decoded_completed; //type: boolean
         ydk::YLeaf raw_data; //type: string
@@ -2383,7 +2383,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf link_id; //type: string
-        ydk::YLeaf link_data; //type: one of string, uint32
+        ydk::YLeaf link_data; //type: one of uint32, string
         ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology
 
@@ -3061,7 +3061,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
@@ -3983,7 +3983,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
         ydk::YLeaf area_type; //type: AreaType
         ydk::YLeaf summary; //type: boolean
         ydk::YLeaf default_cost; //type: uint32
@@ -4361,7 +4361,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf multi_area_id; //type: one of string, uint32
+        ydk::YLeaf multi_area_id; //type: one of uint32, string
         ydk::YLeaf cost; //type: uint16
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea
@@ -4624,7 +4624,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_id; //type: one of uint32, string
         ydk::YLeaf area_type; //type: AreaType
         ydk::YLeaf summary; //type: boolean
         ydk::YLeaf default_cost; //type: uint32

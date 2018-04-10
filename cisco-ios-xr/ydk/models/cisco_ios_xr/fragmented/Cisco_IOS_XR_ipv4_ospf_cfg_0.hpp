@@ -1390,6 +1390,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redist
         ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf ospf_redist_lsa_type; //type: OspfRedistLsa
         ydk::YLeaf ospfnssa_only; //type: boolean
+        ydk::YLeaf ospf_use_rib_metric; //type: boolean
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip
 
@@ -1425,6 +1426,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redist
         ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf ospf_redist_lsa_type; //type: OspfRedistLsa
         ydk::YLeaf ospfnssa_only; //type: boolean
+        ydk::YLeaf ospf_use_rib_metric; //type: boolean
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf
 
@@ -1462,6 +1464,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redist
         ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf ospf_redist_lsa_type; //type: OspfRedistLsa
         ydk::YLeaf ospfnssa_only; //type: boolean
+        ydk::YLeaf ospf_use_rib_metric; //type: boolean
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Bgp
 
@@ -1498,6 +1501,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redist
         ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf ospf_redist_lsa_type; //type: OspfRedistLsa
         ydk::YLeaf ospfnssa_only; //type: boolean
+        ydk::YLeaf ospf_use_rib_metric; //type: boolean
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Eigrp
 

@@ -1422,7 +1422,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Nexthop()
     :
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
-    afi{YType::uint32, "afi"}
+    afi{YType::enumeration, "afi"}
     	,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address>())
 {
@@ -1817,7 +1817,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Nexthop()
     :
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
-    afi{YType::uint32, "afi"}
+    afi{YType::enumeration, "afi"}
     	,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address>())
 {
@@ -2997,7 +2997,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Nexthop()
     :
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
-    afi{YType::uint32, "afi"}
+    afi{YType::enumeration, "afi"}
     	,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address>())
 {
@@ -3392,7 +3392,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Nexthop
     :
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
-    afi{YType::uint32, "afi"}
+    afi{YType::enumeration, "afi"}
     	,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address>())
 {
@@ -3619,6 +3619,7 @@ bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Ad
 
 MplsStatic::Summary::Summary()
     :
+    lsp_count{YType::uint32, "lsp-count"},
     label_count{YType::uint32, "label-count"},
     label_error_count{YType::uint32, "label-error-count"},
     label_discrepancy_count{YType::uint32, "label-discrepancy-count"},
@@ -3627,8 +3628,8 @@ MplsStatic::Summary::Summary()
     interface_count{YType::uint32, "interface-count"},
     interface_foward_reference_count{YType::uint32, "interface-foward-reference-count"},
     mpls_enabled_interface_count{YType::uint32, "mpls-enabled-interface-count"},
-    ipv4_route_count{YType::uint32, "ipv4-route-count"},
-    ipv6_route_count{YType::uint32, "ipv6-route-count"},
+    ipv4_res_nh_count{YType::uint32, "ipv4-res-nh-count"},
+    ipv6_res_nh_count{YType::uint32, "ipv6-res-nh-count"},
     lsd_connected{YType::boolean, "lsd-connected"},
     im_connected{YType::boolean, "im-connected"},
     rsi_connected{YType::boolean, "rsi-connected"},
@@ -3645,7 +3646,8 @@ MplsStatic::Summary::~Summary()
 
 bool MplsStatic::Summary::has_data() const
 {
-    return label_count.is_set
+    return lsp_count.is_set
+	|| label_count.is_set
 	|| label_error_count.is_set
 	|| label_discrepancy_count.is_set
 	|| vrf_count.is_set
@@ -3653,8 +3655,8 @@ bool MplsStatic::Summary::has_data() const
 	|| interface_count.is_set
 	|| interface_foward_reference_count.is_set
 	|| mpls_enabled_interface_count.is_set
-	|| ipv4_route_count.is_set
-	|| ipv6_route_count.is_set
+	|| ipv4_res_nh_count.is_set
+	|| ipv6_res_nh_count.is_set
 	|| lsd_connected.is_set
 	|| im_connected.is_set
 	|| rsi_connected.is_set
@@ -3665,6 +3667,7 @@ bool MplsStatic::Summary::has_data() const
 bool MplsStatic::Summary::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(lsp_count.yfilter)
 	|| ydk::is_set(label_count.yfilter)
 	|| ydk::is_set(label_error_count.yfilter)
 	|| ydk::is_set(label_discrepancy_count.yfilter)
@@ -3673,8 +3676,8 @@ bool MplsStatic::Summary::has_operation() const
 	|| ydk::is_set(interface_count.yfilter)
 	|| ydk::is_set(interface_foward_reference_count.yfilter)
 	|| ydk::is_set(mpls_enabled_interface_count.yfilter)
-	|| ydk::is_set(ipv4_route_count.yfilter)
-	|| ydk::is_set(ipv6_route_count.yfilter)
+	|| ydk::is_set(ipv4_res_nh_count.yfilter)
+	|| ydk::is_set(ipv6_res_nh_count.yfilter)
 	|| ydk::is_set(lsd_connected.yfilter)
 	|| ydk::is_set(im_connected.yfilter)
 	|| ydk::is_set(rsi_connected.yfilter)
@@ -3700,6 +3703,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Summary::get_name_lea
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (lsp_count.is_set || is_set(lsp_count.yfilter)) leaf_name_data.push_back(lsp_count.get_name_leafdata());
     if (label_count.is_set || is_set(label_count.yfilter)) leaf_name_data.push_back(label_count.get_name_leafdata());
     if (label_error_count.is_set || is_set(label_error_count.yfilter)) leaf_name_data.push_back(label_error_count.get_name_leafdata());
     if (label_discrepancy_count.is_set || is_set(label_discrepancy_count.yfilter)) leaf_name_data.push_back(label_discrepancy_count.get_name_leafdata());
@@ -3708,8 +3712,8 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Summary::get_name_lea
     if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
     if (interface_foward_reference_count.is_set || is_set(interface_foward_reference_count.yfilter)) leaf_name_data.push_back(interface_foward_reference_count.get_name_leafdata());
     if (mpls_enabled_interface_count.is_set || is_set(mpls_enabled_interface_count.yfilter)) leaf_name_data.push_back(mpls_enabled_interface_count.get_name_leafdata());
-    if (ipv4_route_count.is_set || is_set(ipv4_route_count.yfilter)) leaf_name_data.push_back(ipv4_route_count.get_name_leafdata());
-    if (ipv6_route_count.is_set || is_set(ipv6_route_count.yfilter)) leaf_name_data.push_back(ipv6_route_count.get_name_leafdata());
+    if (ipv4_res_nh_count.is_set || is_set(ipv4_res_nh_count.yfilter)) leaf_name_data.push_back(ipv4_res_nh_count.get_name_leafdata());
+    if (ipv6_res_nh_count.is_set || is_set(ipv6_res_nh_count.yfilter)) leaf_name_data.push_back(ipv6_res_nh_count.get_name_leafdata());
     if (lsd_connected.is_set || is_set(lsd_connected.yfilter)) leaf_name_data.push_back(lsd_connected.get_name_leafdata());
     if (im_connected.is_set || is_set(im_connected.yfilter)) leaf_name_data.push_back(im_connected.get_name_leafdata());
     if (rsi_connected.is_set || is_set(rsi_connected.yfilter)) leaf_name_data.push_back(rsi_connected.get_name_leafdata());
@@ -3734,6 +3738,12 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Summary::get_children
 
 void MplsStatic::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "lsp-count")
+    {
+        lsp_count = value;
+        lsp_count.value_namespace = name_space;
+        lsp_count.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "label-count")
     {
         label_count = value;
@@ -3782,17 +3792,17 @@ void MplsStatic::Summary::set_value(const std::string & value_path, const std::s
         mpls_enabled_interface_count.value_namespace = name_space;
         mpls_enabled_interface_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipv4-route-count")
+    if(value_path == "ipv4-res-nh-count")
     {
-        ipv4_route_count = value;
-        ipv4_route_count.value_namespace = name_space;
-        ipv4_route_count.value_namespace_prefix = name_space_prefix;
+        ipv4_res_nh_count = value;
+        ipv4_res_nh_count.value_namespace = name_space;
+        ipv4_res_nh_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ipv6-route-count")
+    if(value_path == "ipv6-res-nh-count")
     {
-        ipv6_route_count = value;
-        ipv6_route_count.value_namespace = name_space;
-        ipv6_route_count.value_namespace_prefix = name_space_prefix;
+        ipv6_res_nh_count = value;
+        ipv6_res_nh_count.value_namespace = name_space;
+        ipv6_res_nh_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsd-connected")
     {
@@ -3828,6 +3838,10 @@ void MplsStatic::Summary::set_value(const std::string & value_path, const std::s
 
 void MplsStatic::Summary::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "lsp-count")
+    {
+        lsp_count.yfilter = yfilter;
+    }
     if(value_path == "label-count")
     {
         label_count.yfilter = yfilter;
@@ -3860,13 +3874,13 @@ void MplsStatic::Summary::set_filter(const std::string & value_path, YFilter yfi
     {
         mpls_enabled_interface_count.yfilter = yfilter;
     }
-    if(value_path == "ipv4-route-count")
+    if(value_path == "ipv4-res-nh-count")
     {
-        ipv4_route_count.yfilter = yfilter;
+        ipv4_res_nh_count.yfilter = yfilter;
     }
-    if(value_path == "ipv6-route-count")
+    if(value_path == "ipv6-res-nh-count")
     {
-        ipv6_route_count.yfilter = yfilter;
+        ipv6_res_nh_count.yfilter = yfilter;
     }
     if(value_path == "lsd-connected")
     {
@@ -3892,7 +3906,7 @@ void MplsStatic::Summary::set_filter(const std::string & value_path, YFilter yfi
 
 bool MplsStatic::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "label-count" || name == "label-error-count" || name == "label-discrepancy-count" || name == "vrf-count" || name == "active-vrf-count" || name == "interface-count" || name == "interface-foward-reference-count" || name == "mpls-enabled-interface-count" || name == "ipv4-route-count" || name == "ipv6-route-count" || name == "lsd-connected" || name == "im-connected" || name == "rsi-connected" || name == "ribv4-connected" || name == "ribv6-connected")
+    if(name == "lsp-count" || name == "label-count" || name == "label-error-count" || name == "label-discrepancy-count" || name == "vrf-count" || name == "active-vrf-count" || name == "interface-count" || name == "interface-foward-reference-count" || name == "mpls-enabled-interface-count" || name == "ipv4-res-nh-count" || name == "ipv6-res-nh-count" || name == "lsd-connected" || name == "im-connected" || name == "rsi-connected" || name == "ribv4-connected" || name == "ribv6-connected")
         return true;
     return false;
 }
@@ -4866,7 +4880,7 @@ MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Nexthop()
     :
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
-    afi{YType::uint32, "afi"}
+    afi{YType::enumeration, "afi"}
     	,
     address(std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address>())
 {
@@ -5261,7 +5275,7 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Nexthop()
     :
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
-    afi{YType::uint32, "afi"}
+    afi{YType::enumeration, "afi"}
     	,
     address(std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address>())
 {
@@ -5493,6 +5507,10 @@ const Enum::YLeaf MgmtMplsStaticPathStatus::resolve_failed {3, "resolve-failed"}
 const Enum::YLeaf MgmtMplsStaticPathStatus::frr_backup {4, "frr-backup"};
 const Enum::YLeaf MgmtMplsStaticPathStatus::backup {5, "backup"};
 
+const Enum::YLeaf MgmtStaticLspAfi::not_applicable {0, "not-applicable"};
+const Enum::YLeaf MgmtStaticLspAfi::ipv4 {1, "ipv4"};
+const Enum::YLeaf MgmtStaticLspAfi::ipv6 {2, "ipv6"};
+
 const Enum::YLeaf MplsStaticPathRole::primary {0, "primary"};
 const Enum::YLeaf MplsStaticPathRole::backup {1, "backup"};
 const Enum::YLeaf MplsStaticPathRole::primary_and_backup {2, "primary-and-backup"};
@@ -5516,7 +5534,8 @@ const Enum::YLeaf MgmtMplsStaticLabelStatus::label_rewrite_failed {8, "label-rew
 const Enum::YLeaf MgmtMplsStaticLabelStatus::rewrite_next_hop_interface_down {9, "rewrite-next-hop-interface-down"};
 const Enum::YLeaf MgmtMplsStaticLabelStatus::label_discrepancy {10, "label-discrepancy"};
 const Enum::YLeaf MgmtMplsStaticLabelStatus::rewrite_discrepancy {11, "rewrite-discrepancy"};
-const Enum::YLeaf MgmtMplsStaticLabelStatus::label_status_unknown {12, "label-status-unknown"};
+const Enum::YLeaf MgmtMplsStaticLabelStatus::rewrite_nexthop_unresolved {12, "rewrite-nexthop-unresolved"};
+const Enum::YLeaf MgmtMplsStaticLabelStatus::label_status_unknown {13, "label-status-unknown"};
 
 const Enum::YLeaf MgmtMplsStaticLabelMode::none {0, "none"};
 const Enum::YLeaf MgmtMplsStaticLabelMode::per_prefix {1, "per-prefix"};

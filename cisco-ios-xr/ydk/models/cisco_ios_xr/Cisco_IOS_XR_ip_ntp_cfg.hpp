@@ -31,7 +31,7 @@ class Ntp : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        ydk::YLeaf max_associations; //type: int32
+        ydk::YLeaf max_associations; //type: uint32
         ydk::YLeaf master; //type: uint32
         ydk::YLeaf broadcast_delay; //type: uint32
         ydk::YLeaf log_internal_sync; //type: empty
@@ -40,6 +40,7 @@ class Ntp : public ydk::Entity
         class DscpIpv4; //type: Ntp::DscpIpv4
         class DscpIpv6; //type: Ntp::DscpIpv6
         class Sources; //type: Ntp::Sources
+        class Drift; //type: Ntp::Drift
         class Authentication; //type: Ntp::Authentication
         class Passive; //type: Ntp::Passive
         class InterfaceTables; //type: Ntp::InterfaceTables
@@ -49,6 +50,7 @@ class Ntp : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::DscpIpv4> dscp_ipv4; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::DscpIpv6> dscp_ipv6; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Sources> sources;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Drift> drift;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Authentication> authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Passive> passive;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables> interface_tables;
@@ -352,6 +354,54 @@ class Ntp::Sources::Source : public ydk::Entity
         ydk::YLeaf source_interface; //type: string
 
 }; // Ntp::Sources::Source
+
+
+class Ntp::Drift : public ydk::Entity
+{
+    public:
+        Drift();
+        ~Drift();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf aging_time; //type: uint32
+        class File; //type: Ntp::Drift::File
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Drift::File> file;
+        
+}; // Ntp::Drift
+
+
+class Ntp::Drift::File : public ydk::Entity
+{
+    public:
+        File();
+        ~File();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf filename; //type: string
+
+}; // Ntp::Drift::File
 
 
 class Ntp::Authentication : public ydk::Entity

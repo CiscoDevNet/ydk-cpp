@@ -3177,7 +3177,8 @@ L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseud
     :
     eviid{YType::uint32, "eviid"},
     remote_acid{YType::uint32, "remote-acid"},
-    source_acid{YType::uint32, "source-acid"}
+    source_acid{YType::uint32, "source-acid"},
+    class_{YType::str, "class"}
 {
 
     yang_name = "pseudowire-evpn"; yang_parent_name = "pseudowire-evpns"; is_top_level_class = false; has_list_ancestor = true;
@@ -3191,7 +3192,8 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
 {
     return eviid.is_set
 	|| remote_acid.is_set
-	|| source_acid.is_set;
+	|| source_acid.is_set
+	|| class_.is_set;
 }
 
 bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireEvpns::PseudowireEvpn::has_operation() const
@@ -3199,7 +3201,8 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
     return is_set(yfilter)
 	|| ydk::is_set(eviid.yfilter)
 	|| ydk::is_set(remote_acid.yfilter)
-	|| ydk::is_set(source_acid.yfilter);
+	|| ydk::is_set(source_acid.yfilter)
+	|| ydk::is_set(class_.yfilter);
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireEvpns::PseudowireEvpn::get_segment_path() const
@@ -3216,6 +3219,7 @@ std::vector<std::pair<std::string, LeafData> > L2Vpn::Database::XconnectGroups::
     if (eviid.is_set || is_set(eviid.yfilter)) leaf_name_data.push_back(eviid.get_name_leafdata());
     if (remote_acid.is_set || is_set(remote_acid.yfilter)) leaf_name_data.push_back(remote_acid.get_name_leafdata());
     if (source_acid.is_set || is_set(source_acid.yfilter)) leaf_name_data.push_back(source_acid.get_name_leafdata());
+    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3253,6 +3257,12 @@ void L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
         source_acid.value_namespace = name_space;
         source_acid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "class")
+    {
+        class_ = value;
+        class_.value_namespace = name_space;
+        class_.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireEvpns::PseudowireEvpn::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3269,11 +3279,15 @@ void L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
     {
         source_acid.yfilter = yfilter;
     }
+    if(value_path == "class")
+    {
+        class_.yfilter = yfilter;
+    }
 }
 
 bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireEvpns::PseudowireEvpn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "eviid" || name == "remote-acid" || name == "source-acid")
+    if(name == "eviid" || name == "remote-acid" || name == "source-acid" || name == "class")
         return true;
     return false;
 }
@@ -17010,6 +17024,8 @@ const Enum::YLeaf L2Encapsulation::ethernet {5, "ethernet"};
 
 const Enum::YLeaf L2vpnLogging::enable {1, "enable"};
 const Enum::YLeaf L2vpnLogging::disable {2, "disable"};
+
+const Enum::YLeaf MacFlushMode::mvrp {1, "mvrp"};
 
 const Enum::YLeaf L2tpCookieSize::zero {0, "zero"};
 const Enum::YLeaf L2tpCookieSize::four {4, "four"};

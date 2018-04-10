@@ -80,12 +80,16 @@ class OpticsOper::OpticsPorts::OpticsPort : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class OpticsDwdmCarrrierChannelMap; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap
+        class OpticsDwdmCarrierChannelMap; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap
+        class OtsSpectrumInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo
+        class OpticsDwdmCarrierChannelMapFlexi; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi
         class OpticsInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo
         class OpticsLanes; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsLanes
         class OpticsDbInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap> optics_dwdm_carrrier_channel_map;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap> optics_dwdm_carrier_channel_map;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo> ots_spectrum_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi> optics_dwdm_carrier_channel_map_flexi;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo> optics_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsLanes> optics_lanes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo> optics_db_info;
@@ -93,11 +97,11 @@ class OpticsOper::OpticsPorts::OpticsPort : public ydk::Entity
 }; // OpticsOper::OpticsPorts::OpticsPort
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap : public ydk::Entity
 {
     public:
-        OpticsDwdmCarrrierChannelMap();
-        ~OpticsDwdmCarrrierChannelMap();
+        OpticsDwdmCarrierChannelMap();
+        ~OpticsDwdmCarrierChannelMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -112,14 +116,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap : public
         ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
         ydk::YLeaf dwdm_carrier_min; //type: uint32
         ydk::YLeaf dwdm_carrier_max; //type: uint32
-        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo
+        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo> > dwdm_carrier_map_info;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo> > dwdm_carrier_map_info;
         
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo : public ydk::Entity
 {
     public:
         DwdmCarrierMapInfo();
@@ -140,7 +144,133 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCar
         ydk::YLeaf frequency; //type: string
         ydk::YLeaf wavelength; //type: string
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo : public ydk::Entity
+{
+    public:
+        OtsSpectrumInfo();
+        ~OtsSpectrumInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SpectrumInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo> spectrum_info;
+        
+}; // OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo : public ydk::Entity
+{
+    public:
+        SpectrumInfo();
+        ~SpectrumInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf total_spectrum_slice_count; //type: uint32
+        ydk::YLeaf spectrum_slice_spacing; //type: uint32
+        ydk::YLeaf first_slice_wavelength; //type: string
+        class SpectrumSlicePowerInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo> > spectrum_slice_power_info;
+        
+}; // OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo : public ydk::Entity
+{
+    public:
+        SpectrumSlicePowerInfo();
+        ~SpectrumSlicePowerInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf slice_num; //type: uint32
+        ydk::YLeaf lower_frequency; //type: uint64
+        ydk::YLeaf upper_frequency; //type: uint64
+        ydk::YLeaf rx_power; //type: int32
+        ydk::YLeaf tx_power; //type: int32
+        ydk::YLeaf rx_psd; //type: string
+        ydk::YLeaf tx_psd; //type: string
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi : public ydk::Entity
+{
+    public:
+        OpticsDwdmCarrierChannelMapFlexi();
+        ~OpticsDwdmCarrierChannelMapFlexi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
+        ydk::YLeaf dwdm_carrier_min; //type: uint32
+        ydk::YLeaf dwdm_carrier_max; //type: uint32
+        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo> > dwdm_carrier_map_info;
+        
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo : public ydk::Entity
+{
+    public:
+        DwdmCarrierMapInfo();
+        ~DwdmCarrierMapInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf itu_chan_num; //type: uint32
+        ydk::YLeaf g694_chan_num; //type: int32
+        ydk::YLeaf frequency; //type: string
+        ydk::YLeaf wavelength; //type: string
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo
 
 
 class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
@@ -207,6 +337,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf display_volt_temp; //type: boolean
         ydk::YLeaf cd_configurable; //type: boolean
         ydk::YLeaf optics_fec; //type: OpticsFec
+        ydk::YLeaf skip_snmp_pm_table; //type: int32
         ydk::YLeaf port_type; //type: OpticsPort
         ydk::YLeaf port_status; //type: OpticsPortStatus
         ydk::YLeaf rx_voa_attenuation; //type: int32
@@ -226,6 +357,8 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf ampli_gain_thr_deg_low_config_val; //type: int32
         ydk::YLeaf ampli_gain_thr_deg_high_config_val; //type: int32
         ydk::YLeaf osri_config_val; //type: boolean
+        ydk::YLeaf tx_config_val; //type: boolean
+        ydk::YLeaf rx_config_val; //type: boolean
         ydk::YLeaf safety_control_mode_config_val; //type: OpticsAmplifierSafetyControlMode
         ydk::YLeaf total_rx_power; //type: int32
         ydk::YLeaf total_tx_power; //type: int32
@@ -248,13 +381,16 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf description; //type: string
         ydk::YLeaf is_optics_type_string_valid; //type: boolean
         ydk::YLeaf optics_type_str; //type: string
+        ydk::YLeaf tx_enable; //type: boolean
+        ydk::YLeaf rx_enable; //type: boolean
+        ydk::YLeaf rx_low_threshold_current; //type: int32
         class NetworkSrlgInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo
         class OpticsAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo
         class OtsAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo
         class TransceiverInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo
         class ExtParamVal; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal
         class ExtParamThresholdVal; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal
-        class SpectrumInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo
+        class ExtendedAlarmAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo
         class LaneData; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo> network_srlg_info;
@@ -263,7 +399,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo> transceiver_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal> ext_param_val;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal> ext_param_threshold_val;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo> spectrum_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo> extended_alarm_alarm_info;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData> > lane_data;
         
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo
@@ -335,6 +471,10 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo : public 
         class HighTxPower; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower
         class LowTxPower; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower
         class HighLbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc
+        class LowTemperature; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature
+        class HighTemperature; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature
+        class LowVoltage; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage
+        class HighVoltage; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage
         class HighRx1Power; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power
         class HighRx2Power; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power
         class HighRx3Power; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power
@@ -380,6 +520,10 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo : public 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower> high_tx_power;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower> low_tx_power;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc> high_lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature> low_temperature;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature> high_temperature;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage> low_voltage;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage> high_voltage;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power> high_rx1_power;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power> high_rx2_power;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power> high_rx3_power;
@@ -531,6 +675,94 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc 
         ydk::YLeaf counter; //type: uint32
 
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature : public ydk::Entity
+{
+    public:
+        LowTemperature();
+        ~LowTemperature();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature : public ydk::Entity
+{
+    public:
+        HighTemperature();
+        ~HighTemperature();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage : public ydk::Entity
+{
+    public:
+        LowVoltage();
+        ~LowVoltage();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage : public ydk::Entity
+{
+    public:
+        HighVoltage();
+        ~HighVoltage();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage
 
 
 class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power : public ydk::Entity
@@ -1862,11 +2094,11 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal : pu
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo : public ydk::Entity
 {
     public:
-        SpectrumInfo();
-        ~SpectrumInfo();
+        ExtendedAlarmAlarmInfo();
+        ~ExtendedAlarmAlarmInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1878,21 +2110,76 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf total_spectrum_slice_count; //type: uint32
-        ydk::YLeaf spectrum_slice_spacing; //type: uint32
-        ydk::YLeaf first_slice_wavelength; //type: string
-        class SpectrumSlicePowerInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo
+        class LoSnr; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr
+        class HiSnr1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1
+        class LoSnr1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1
+        class HiSnr2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2
+        class LoIsi1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1
+        class HiIsi1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1
+        class LoIsi2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2
+        class HiIsi2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2
+        class LoPam1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1
+        class HiPam1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1
+        class LoPam2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2
+        class HiPam2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2
+        class LoTec1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1
+        class HiTec1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1
+        class LoTec2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2
+        class HiTec2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2
+        class LoLaserFreq1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1
+        class HiLaserFreq1; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1
+        class LoLaserFreq2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2
+        class HiLaserFreq2; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2
+        class HiPreFecberCurAcc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc
+        class HiPreFecberMin; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin
+        class HiPreFecberMax; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax
+        class HiPreFecberPriorAcc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc
+        class HiPreFecberCur; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur
+        class HiUncorrectedBerCurAcc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc
+        class HiUncorrectedBerMin; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin
+        class HiUncorrectedBerMax; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax
+        class HiUncorrectedBerPriorAcc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc
+        class HiUncorrectedBerCur; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo> > spectrum_slice_power_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr> lo_snr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1> hi_snr1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1> lo_snr1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2> hi_snr2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1> lo_isi1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1> hi_isi1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2> lo_isi2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2> hi_isi2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1> lo_pam1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1> hi_pam1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2> lo_pam2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2> hi_pam2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1> lo_tec1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1> hi_tec1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2> lo_tec2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2> hi_tec2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1> lo_laser_freq1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1> hi_laser_freq1;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2> lo_laser_freq2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2> hi_laser_freq2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc> hi_pre_fecber_cur_acc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin> hi_pre_fecber_min;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax> hi_pre_fecber_max;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc> hi_pre_fecber_prior_acc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur> hi_pre_fecber_cur;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc> hi_uncorrected_ber_cur_acc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin> hi_uncorrected_ber_min;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax> hi_uncorrected_ber_max;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc> hi_uncorrected_ber_prior_acc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur> hi_uncorrected_ber_cur;
         
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr : public ydk::Entity
 {
     public:
-        SpectrumSlicePowerInfo();
-        ~SpectrumSlicePowerInfo();
+        LoSnr();
+        ~LoSnr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1904,15 +2191,648 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSli
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf slice_num; //type: uint32
-        ydk::YLeaf lower_frequency; //type: uint64
-        ydk::YLeaf upper_frequency; //type: uint64
-        ydk::YLeaf rx_power; //type: string
-        ydk::YLeaf tx_power; //type: string
-        ydk::YLeaf rx_psd; //type: string
-        ydk::YLeaf tx_psd; //type: string
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::SpectrumInfo::SpectrumSlicePowerInfo
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1 : public ydk::Entity
+{
+    public:
+        HiSnr1();
+        ~HiSnr1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1 : public ydk::Entity
+{
+    public:
+        LoSnr1();
+        ~LoSnr1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2 : public ydk::Entity
+{
+    public:
+        HiSnr2();
+        ~HiSnr2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1 : public ydk::Entity
+{
+    public:
+        LoIsi1();
+        ~LoIsi1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1 : public ydk::Entity
+{
+    public:
+        HiIsi1();
+        ~HiIsi1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2 : public ydk::Entity
+{
+    public:
+        LoIsi2();
+        ~LoIsi2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2 : public ydk::Entity
+{
+    public:
+        HiIsi2();
+        ~HiIsi2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1 : public ydk::Entity
+{
+    public:
+        LoPam1();
+        ~LoPam1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1 : public ydk::Entity
+{
+    public:
+        HiPam1();
+        ~HiPam1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2 : public ydk::Entity
+{
+    public:
+        LoPam2();
+        ~LoPam2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2 : public ydk::Entity
+{
+    public:
+        HiPam2();
+        ~HiPam2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1 : public ydk::Entity
+{
+    public:
+        LoTec1();
+        ~LoTec1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1 : public ydk::Entity
+{
+    public:
+        HiTec1();
+        ~HiTec1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2 : public ydk::Entity
+{
+    public:
+        LoTec2();
+        ~LoTec2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2 : public ydk::Entity
+{
+    public:
+        HiTec2();
+        ~HiTec2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1 : public ydk::Entity
+{
+    public:
+        LoLaserFreq1();
+        ~LoLaserFreq1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1 : public ydk::Entity
+{
+    public:
+        HiLaserFreq1();
+        ~HiLaserFreq1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2 : public ydk::Entity
+{
+    public:
+        LoLaserFreq2();
+        ~LoLaserFreq2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2 : public ydk::Entity
+{
+    public:
+        HiLaserFreq2();
+        ~HiLaserFreq2();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc : public ydk::Entity
+{
+    public:
+        HiPreFecberCurAcc();
+        ~HiPreFecberCurAcc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin : public ydk::Entity
+{
+    public:
+        HiPreFecberMin();
+        ~HiPreFecberMin();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax : public ydk::Entity
+{
+    public:
+        HiPreFecberMax();
+        ~HiPreFecberMax();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc : public ydk::Entity
+{
+    public:
+        HiPreFecberPriorAcc();
+        ~HiPreFecberPriorAcc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur : public ydk::Entity
+{
+    public:
+        HiPreFecberCur();
+        ~HiPreFecberCur();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc : public ydk::Entity
+{
+    public:
+        HiUncorrectedBerCurAcc();
+        ~HiUncorrectedBerCurAcc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin : public ydk::Entity
+{
+    public:
+        HiUncorrectedBerMin();
+        ~HiUncorrectedBerMin();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax : public ydk::Entity
+{
+    public:
+        HiUncorrectedBerMax();
+        ~HiUncorrectedBerMax();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc : public ydk::Entity
+{
+    public:
+        HiUncorrectedBerPriorAcc();
+        ~HiUncorrectedBerPriorAcc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur : public ydk::Entity
+{
+    public:
+        HiUncorrectedBerCur();
+        ~HiUncorrectedBerCur();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf counter; //type: uint32
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur
 
 
 class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData : public ydk::Entity
@@ -2478,6 +3398,7 @@ class OpticsFec : public ydk::Enum
         static const ydk::Enum::YLeaf fec_hg15_de;
         static const ydk::Enum::YLeaf fec_hg25_de;
         static const ydk::Enum::YLeaf fec_enabled;
+        static const ydk::Enum::YLeaf fec_not_set;
 
 };
 

@@ -3786,7 +3786,7 @@ class ClearBgpVrfAsGraceful::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
 }; // ClearBgpVrfAsGraceful::Input
 

@@ -2546,9 +2546,9 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option
 Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Server()
     :
     server_allow_move{YType::empty, "server-allow-move"},
+    enable{YType::empty, "enable"},
     subnet_mask{YType::str, "subnet-mask"},
     pool{YType::str, "pool"},
-    infinite_lease{YType::empty, "infinite-lease"},
     domain_name{YType::str, "domain-name"},
     secure_arp{YType::empty, "secure-arp"},
     boot_filename{YType::str, "boot-filename"},
@@ -2596,9 +2596,9 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::~Server()
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_data() const
 {
     return server_allow_move.is_set
+	|| enable.is_set
 	|| subnet_mask.is_set
 	|| pool.is_set
-	|| infinite_lease.is_set
 	|| domain_name.is_set
 	|| secure_arp.is_set
 	|| boot_filename.is_set
@@ -2624,9 +2624,9 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(server_allow_move.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(subnet_mask.yfilter)
 	|| ydk::is_set(pool.yfilter)
-	|| ydk::is_set(infinite_lease.yfilter)
 	|| ydk::is_set(domain_name.yfilter)
 	|| ydk::is_set(secure_arp.yfilter)
 	|| ydk::is_set(boot_filename.yfilter)
@@ -2660,9 +2660,9 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (server_allow_move.is_set || is_set(server_allow_move.yfilter)) leaf_name_data.push_back(server_allow_move.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (subnet_mask.is_set || is_set(subnet_mask.yfilter)) leaf_name_data.push_back(subnet_mask.get_name_leafdata());
     if (pool.is_set || is_set(pool.yfilter)) leaf_name_data.push_back(pool.get_name_leafdata());
-    if (infinite_lease.is_set || is_set(infinite_lease.yfilter)) leaf_name_data.push_back(infinite_lease.get_name_leafdata());
     if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (secure_arp.is_set || is_set(secure_arp.yfilter)) leaf_name_data.push_back(secure_arp.get_name_leafdata());
     if (boot_filename.is_set || is_set(boot_filename.yfilter)) leaf_name_data.push_back(boot_filename.get_name_leafdata());
@@ -2902,6 +2902,12 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::set_value(const std::str
         server_allow_move.value_namespace = name_space;
         server_allow_move.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "subnet-mask")
     {
         subnet_mask = value;
@@ -2913,12 +2919,6 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::set_value(const std::str
         pool = value;
         pool.value_namespace = name_space;
         pool.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "infinite-lease")
-    {
-        infinite_lease = value;
-        infinite_lease.value_namespace = name_space;
-        infinite_lease.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
@@ -2952,6 +2952,10 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::set_filter(const std::st
     {
         server_allow_move.yfilter = yfilter;
     }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
     if(value_path == "subnet-mask")
     {
         subnet_mask.yfilter = yfilter;
@@ -2959,10 +2963,6 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::set_filter(const std::st
     if(value_path == "pool")
     {
         pool.yfilter = yfilter;
-    }
-    if(value_path == "infinite-lease")
-    {
-        infinite_lease.yfilter = yfilter;
     }
     if(value_path == "domain-name")
     {
@@ -2984,7 +2984,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::set_filter(const std::st
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "server-id-check" || name == "lease-limit" || name == "requested-ip-address" || name == "aaa-server" || name == "default-routers" || name == "net-bios-name-servers" || name == "match" || name == "broadcast-flag" || name == "session" || name == "classes" || name == "relay" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "option-codes" || name == "server-allow-move" || name == "subnet-mask" || name == "pool" || name == "infinite-lease" || name == "domain-name" || name == "secure-arp" || name == "boot-filename" || name == "next-server")
+    if(name == "server-id-check" || name == "lease-limit" || name == "requested-ip-address" || name == "aaa-server" || name == "default-routers" || name == "net-bios-name-servers" || name == "match" || name == "broadcast-flag" || name == "session" || name == "classes" || name == "relay" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "option-codes" || name == "server-allow-move" || name == "enable" || name == "subnet-mask" || name == "pool" || name == "domain-name" || name == "secure-arp" || name == "boot-filename" || name == "next-server")
         return true;
     return false;
 }
@@ -4493,7 +4493,6 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Class()
     subnet_mask{YType::str, "subnet-mask"},
     pool{YType::str, "pool"},
     enable{YType::empty, "enable"},
-    infinite_lease{YType::empty, "infinite-lease"},
     domain_name{YType::str, "domain-name"},
     boot_filename{YType::str, "boot-filename"},
     next_server{YType::str, "next-server"}
@@ -4527,7 +4526,6 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_data
 	|| subnet_mask.is_set
 	|| pool.is_set
 	|| enable.is_set
-	|| infinite_lease.is_set
 	|| domain_name.is_set
 	|| boot_filename.is_set
 	|| next_server.is_set
@@ -4547,7 +4545,6 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_oper
 	|| ydk::is_set(subnet_mask.yfilter)
 	|| ydk::is_set(pool.yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(infinite_lease.yfilter)
 	|| ydk::is_set(domain_name.yfilter)
 	|| ydk::is_set(boot_filename.yfilter)
 	|| ydk::is_set(next_server.yfilter)
@@ -4575,7 +4572,6 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
     if (subnet_mask.is_set || is_set(subnet_mask.yfilter)) leaf_name_data.push_back(subnet_mask.get_name_leafdata());
     if (pool.is_set || is_set(pool.yfilter)) leaf_name_data.push_back(pool.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (infinite_lease.is_set || is_set(infinite_lease.yfilter)) leaf_name_data.push_back(infinite_lease.get_name_leafdata());
     if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
     if (boot_filename.is_set || is_set(boot_filename.yfilter)) leaf_name_data.push_back(boot_filename.get_name_leafdata());
     if (next_server.is_set || is_set(next_server.yfilter)) leaf_name_data.push_back(next_server.get_name_leafdata());
@@ -4720,12 +4716,6 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::set_valu
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "infinite-lease")
-    {
-        infinite_lease = value;
-        infinite_lease.value_namespace = name_space;
-        infinite_lease.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "domain-name")
     {
         domain_name = value;
@@ -4764,10 +4754,6 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::set_filt
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "infinite-lease")
-    {
-        infinite_lease.yfilter = yfilter;
-    }
     if(value_path == "domain-name")
     {
         domain_name.yfilter = yfilter;
@@ -4784,7 +4770,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::set_filt
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "default-routers" || name == "net-bios-name-servers" || name == "class-match" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "option-codes" || name == "class-name" || name == "subnet-mask" || name == "pool" || name == "enable" || name == "infinite-lease" || name == "domain-name" || name == "boot-filename" || name == "next-server")
+    if(name == "default-routers" || name == "net-bios-name-servers" || name == "class-match" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "option-codes" || name == "class-name" || name == "subnet-mask" || name == "pool" || name == "enable" || name == "domain-name" || name == "boot-filename" || name == "next-server")
         return true;
     return false;
 }
@@ -7338,6 +7324,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Proxy()
 	,classes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes>())
 	,auth_username(nullptr) // presence node
 	,relay_information(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation>())
+	,dhcp_to_aaa(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa>())
 	,vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs>())
 	,sessions(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions>())
 	,limit_lease(nullptr) // presence node
@@ -7348,6 +7335,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Proxy()
     giaddr->parent = this;
     classes->parent = this;
     relay_information->parent = this;
+    dhcp_to_aaa->parent = this;
     vrfs->parent = this;
     sessions->parent = this;
     lease_proxy->parent = this;
@@ -7371,6 +7359,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::has_data() const
 	|| (classes !=  nullptr && classes->has_data())
 	|| (auth_username !=  nullptr && auth_username->has_data())
 	|| (relay_information !=  nullptr && relay_information->has_data())
+	|| (dhcp_to_aaa !=  nullptr && dhcp_to_aaa->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (sessions !=  nullptr && sessions->has_data())
 	|| (limit_lease !=  nullptr && limit_lease->has_data())
@@ -7390,6 +7379,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::has_operation() const
 	|| (classes !=  nullptr && classes->has_operation())
 	|| (auth_username !=  nullptr && auth_username->has_operation())
 	|| (relay_information !=  nullptr && relay_information->has_operation())
+	|| (dhcp_to_aaa !=  nullptr && dhcp_to_aaa->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation())
 	|| (sessions !=  nullptr && sessions->has_operation())
 	|| (limit_lease !=  nullptr && limit_lease->has_operation())
@@ -7454,6 +7444,15 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::get_ch
             relay_information = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation>();
         }
         return relay_information;
+    }
+
+    if(child_yang_name == "dhcp-to-aaa")
+    {
+        if(dhcp_to_aaa == nullptr)
+        {
+            dhcp_to_aaa = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa>();
+        }
+        return dhcp_to_aaa;
     }
 
     if(child_yang_name == "vrfs")
@@ -7535,6 +7534,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     if(relay_information != nullptr)
     {
         children["relay-information"] = relay_information;
+    }
+
+    if(dhcp_to_aaa != nullptr)
+    {
+        children["dhcp-to-aaa"] = dhcp_to_aaa;
     }
 
     if(vrfs != nullptr)
@@ -7620,7 +7624,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::set_filter(const std::str
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "giaddr" || name == "classes" || name == "auth-username" || name == "relay-information" || name == "vrfs" || name == "sessions" || name == "limit-lease" || name == "lease-proxy" || name == "broadcast-flag" || name == "match" || name == "proxy-allow-move" || name == "secure-arp" || name == "delayed-authen-proxy" || name == "enable")
+    if(name == "giaddr" || name == "classes" || name == "auth-username" || name == "relay-information" || name == "dhcp-to-aaa" || name == "vrfs" || name == "sessions" || name == "limit-lease" || name == "lease-proxy" || name == "broadcast-flag" || name == "match" || name == "proxy-allow-move" || name == "secure-arp" || name == "delayed-authen-proxy" || name == "enable")
         return true;
     return false;
 }
@@ -8792,6 +8796,267 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation::set_fil
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "option" || name == "vpn" || name == "allow-untrusted" || name == "circuit-id" || name == "policy" || name == "vpn-mode" || name == "remote-id-xr" || name == "remote-id-suppress" || name == "check" || name == "remote-id" || name == "authenticate")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::DhcpToAaa()
+    :
+    option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option>())
+{
+    option->parent = this;
+
+    yang_name = "dhcp-to-aaa"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::~DhcpToAaa()
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::has_data() const
+{
+    return (option !=  nullptr && option->has_data());
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::has_operation() const
+{
+    return is_set(yfilter)
+	|| (option !=  nullptr && option->has_operation());
+}
+
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcp-to-aaa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "option")
+    {
+        if(option == nullptr)
+        {
+            option = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option>();
+        }
+        return option;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(option != nullptr)
+    {
+        children["option"] = option;
+    }
+
+    return children;
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::Option()
+    :
+    list(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List>())
+{
+    list->parent = this;
+
+    yang_name = "option"; yang_parent_name = "dhcp-to-aaa"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::~Option()
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::has_data() const
+{
+    return (list !=  nullptr && list->has_data());
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::has_operation() const
+{
+    return is_set(yfilter)
+	|| (list !=  nullptr && list->has_operation());
+}
+
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list")
+    {
+        if(list == nullptr)
+        {
+            list = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List>();
+        }
+        return list;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(list != nullptr)
+    {
+        children["list"] = list;
+    }
+
+    return children;
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::List()
+    :
+    option_all{YType::int32, "option-all"},
+    option{YType::uint32, "option"}
+{
+
+    yang_name = "list"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::~List()
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::has_data() const
+{
+    for (auto const & leaf : option.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return option_all.is_set;
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::has_operation() const
+{
+    for (auto const & leaf : option.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(option_all.yfilter)
+	|| ydk::is_set(option.yfilter);
+}
+
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (option_all.is_set || is_set(option_all.yfilter)) leaf_name_data.push_back(option_all.get_name_leafdata());
+
+    auto option_name_datas = option.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), option_name_datas.begin(), option_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "option-all")
+    {
+        option_all = value;
+        option_all.value_namespace = name_space;
+        option_all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option")
+    {
+        option.append(value);
+    }
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option-all")
+    {
+        option_all.yfilter = yfilter;
+    }
+    if(value_path == "option")
+    {
+        option.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option-all" || name == "option")
         return true;
     return false;
 }
@@ -13033,7 +13298,7 @@ const Enum::YLeaf Matchoption::Y_77 {77, "77"};
 const Enum::YLeaf Matchoption::Y_124 {124, "124"};
 const Enum::YLeaf Matchoption::Y_125 {125, "125"};
 
-const Enum::YLeaf Ipv4dhcpdGiaddrPolicy::giaddr_policy_keep {1, "giaddr-policy-keep"};
+const Enum::YLeaf Ipv4dhcpdGiaddrPolicy::giaddr_policy_keep {0, "giaddr-policy-keep"};
 
 const Enum::YLeaf LeaseLimitValue::per_interface {1, "per-interface"};
 const Enum::YLeaf LeaseLimitValue::per_circuit_id {2, "per-circuit-id"};
@@ -13044,6 +13309,7 @@ const Enum::YLeaf Dhcpv4AuthUsername::auth_username_giaddr {2, "auth-username-gi
 
 const Enum::YLeaf ProxyAction::allow {0, "allow"};
 const Enum::YLeaf ProxyAction::drop {1, "drop"};
+const Enum::YLeaf ProxyAction::relay {2, "relay"};
 
 const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::ignore {0, "ignore"};
 const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::check {1, "check"};

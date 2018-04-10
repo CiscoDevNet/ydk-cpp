@@ -903,7 +903,7 @@ bool Platform::Racks::Rack::Slots::Slot::Instances::Instance::State::has_leaf_or
 
 Platform::Racks::Rack::Slots::Slot::Vm::Vm()
     :
-    node_descriptiton{YType::str, "node-descriptiton"},
+    node_description{YType::str, "node-description"},
     red_role{YType::str, "red-role"},
     partner_name{YType::str, "partner-name"},
     software_status{YType::str, "software-status"},
@@ -919,7 +919,7 @@ Platform::Racks::Rack::Slots::Slot::Vm::~Vm()
 
 bool Platform::Racks::Rack::Slots::Slot::Vm::has_data() const
 {
-    return node_descriptiton.is_set
+    return node_description.is_set
 	|| red_role.is_set
 	|| partner_name.is_set
 	|| software_status.is_set
@@ -929,7 +929,7 @@ bool Platform::Racks::Rack::Slots::Slot::Vm::has_data() const
 bool Platform::Racks::Rack::Slots::Slot::Vm::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(node_descriptiton.yfilter)
+	|| ydk::is_set(node_description.yfilter)
 	|| ydk::is_set(red_role.yfilter)
 	|| ydk::is_set(partner_name.yfilter)
 	|| ydk::is_set(software_status.yfilter)
@@ -947,7 +947,7 @@ std::vector<std::pair<std::string, LeafData> > Platform::Racks::Rack::Slots::Slo
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_descriptiton.is_set || is_set(node_descriptiton.yfilter)) leaf_name_data.push_back(node_descriptiton.get_name_leafdata());
+    if (node_description.is_set || is_set(node_description.yfilter)) leaf_name_data.push_back(node_description.get_name_leafdata());
     if (red_role.is_set || is_set(red_role.yfilter)) leaf_name_data.push_back(red_role.get_name_leafdata());
     if (partner_name.is_set || is_set(partner_name.yfilter)) leaf_name_data.push_back(partner_name.get_name_leafdata());
     if (software_status.is_set || is_set(software_status.yfilter)) leaf_name_data.push_back(software_status.get_name_leafdata());
@@ -971,11 +971,11 @@ std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slo
 
 void Platform::Racks::Rack::Slots::Slot::Vm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "node-descriptiton")
+    if(value_path == "node-description")
     {
-        node_descriptiton = value;
-        node_descriptiton.value_namespace = name_space;
-        node_descriptiton.value_namespace_prefix = name_space_prefix;
+        node_description = value;
+        node_description.value_namespace = name_space;
+        node_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "red-role")
     {
@@ -1005,9 +1005,9 @@ void Platform::Racks::Rack::Slots::Slot::Vm::set_value(const std::string & value
 
 void Platform::Racks::Rack::Slots::Slot::Vm::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "node-descriptiton")
+    if(value_path == "node-description")
     {
-        node_descriptiton.yfilter = yfilter;
+        node_description.yfilter = yfilter;
     }
     if(value_path == "red-role")
     {
@@ -1029,7 +1029,7 @@ void Platform::Racks::Rack::Slots::Slot::Vm::set_filter(const std::string & valu
 
 bool Platform::Racks::Rack::Slots::Slot::Vm::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node-descriptiton" || name == "red-role" || name == "partner-name" || name == "software-status" || name == "node-ip")
+    if(name == "node-description" || name == "red-role" || name == "partner-name" || name == "software-status" || name == "node-ip")
         return true;
     return false;
 }

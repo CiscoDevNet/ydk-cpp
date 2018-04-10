@@ -29,6 +29,8 @@
 #include "../types.hpp"
 #include "../ydk_yang.hpp"
 #include "../logger.hpp"
+#include "../common_utilities.hpp"
+
 
 using namespace std;
 using namespace ydk;
@@ -38,6 +40,11 @@ namespace ydk
 
 namespace path
 {
+static string get_static_model(const std::string& name, const std::string& version);
+
+//////////////////////////////////////////////////////////////////////////////////
+// NetconfModelProvider
+//////////////////////////////////////////////////////////////////////////////////
 
 NetconfModelProvider::NetconfModelProvider(NetconfClient & client) : client(client)
 {
@@ -54,17 +61,10 @@ std::string NetconfModelProvider::get_hostname_port()
 
 string NetconfModelProvider::get_model(const string& name, const string& version, Format format)
 {
-    string model{};
+    string model = get_static_model(name, version);
 
-    if(name == ydk::path::YDK_MODULE_NAME && version == ydk::path::YDK_MODULE_REVISION)
-    {
-       return ydk::path::YDK_MODULE;
-    }
-
-    if(name == ydk::IETF_NETCONF_MODULE_NAME && version == ydk::IETF_NETCONF_MODULE_REVISION)
-    {
-       return ydk::IETF_NETCONF_MODULE;
-    }
+    if(model.size()>0)
+        return model;
 
     //have to craft and send the raw payload since the schema might
     //not be available
@@ -116,10 +116,11 @@ string NetconfModelProvider::get_model(const string& name, const string& version
     data_end -= 1;
     model = reply.substr(data_start, data_end-data_start+1);
 
-    //Remove <!CDATA[ if any
+    YLOG_DEBUG("Removing CDATA tags");
     auto cdata_start = model.find("<![CDATA[");
     if(cdata_start != string::npos)
     {
+        // Remove <!CDATA[ tag
         auto cdata_end = model.find("]]>", cdata_start);
         if(cdata_end != string::npos)
         {
@@ -128,11 +129,49 @@ string NetconfModelProvider::get_model(const string& name, const string& version
             model = model.substr(data_start, data_end - data_start);
         }
     }
+    else {	// Find and remove all XML escape sequences
+    	model = replace_xml_escape_sequences(model);
+    }
 
     return model;
 }
 
+//////////////////////////////////////////////////////////////////////////////////
+// StaticModelProvider
+//////////////////////////////////////////////////////////////////////////////////
+
+StaticModelProvider::StaticModelProvider(NetconfClient & client) : client(client)
+{
+}
+
+StaticModelProvider::~StaticModelProvider()
+{
+}
+
+std::string StaticModelProvider::get_hostname_port()
+{
+    return client.get_hostname_port();
+}
+
+string StaticModelProvider::get_model(const string& name, const string& version, Format format)
+{
+    (void)format;
+    return get_static_model(name, version);
+}
+
+static string get_static_model(const std::string& name, const std::string& version)
+{
+    if(name == ydk::path::YDK_MODULE_NAME && version == ydk::path::YDK_MODULE_REVISION)
+    {
+       return ydk::path::YDK_MODULE;
+    }
+
+    if(name == ydk::IETF_NETCONF_MODULE_NAME && version == ydk::IETF_NETCONF_MODULE_REVISION)
+    {
+       return ydk::IETF_NETCONF_MODULE;
+    }
+    return {};
+}
 } //namespace path
 
 } //namespace ydk
-

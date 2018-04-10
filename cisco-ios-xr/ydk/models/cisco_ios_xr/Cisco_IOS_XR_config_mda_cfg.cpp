@@ -496,8 +496,10 @@ ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::Clock()
     port{YType::int32, "port"}
     	,
     frequency_synchronization(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization>())
+	,sync_controller(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController>())
 {
     frequency_synchronization->parent = this;
+    sync_controller->parent = this;
 
     yang_name = "clock"; yang_parent_name = "clocks"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -510,7 +512,8 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::has_data() const
 {
     return clock_type.is_set
 	|| port.is_set
-	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data());
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data())
+	|| (sync_controller !=  nullptr && sync_controller->has_data());
 }
 
 bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::has_operation() const
@@ -518,7 +521,8 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::has_operation() con
     return is_set(yfilter)
 	|| ydk::is_set(clock_type.yfilter)
 	|| ydk::is_set(port.yfilter)
-	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation());
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation())
+	|| (sync_controller !=  nullptr && sync_controller->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_segment_path() const
@@ -550,6 +554,15 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::
         return frequency_synchronization;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-syncc-controller-cfg:sync-controller")
+    {
+        if(sync_controller == nullptr)
+        {
+            sync_controller = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController>();
+        }
+        return sync_controller;
+    }
+
     return nullptr;
 }
 
@@ -560,6 +573,11 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInt
     if(frequency_synchronization != nullptr)
     {
         children["frequency-synchronization"] = frequency_synchronization;
+    }
+
+    if(sync_controller != nullptr)
+    {
+        children["Cisco-IOS-XR-syncc-controller-cfg:sync-controller"] = sync_controller;
     }
 
     return children;
@@ -595,7 +613,7 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::set_filter(const st
 
 bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frequency-synchronization" || name == "clock-type" || name == "port")
+    if(name == "frequency-synchronization" || name == "sync-controller" || name == "clock-type" || name == "port")
         return true;
     return false;
 }
@@ -1008,6 +1026,396 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchroniz
     return false;
 }
 
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::SyncController()
+    :
+    transport_mode(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode>())
+{
+    transport_mode->parent = this;
+
+    yang_name = "sync-controller"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::~SyncController()
+{
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::has_data() const
+{
+    return (transport_mode !=  nullptr && transport_mode->has_data());
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::has_operation() const
+{
+    return is_set(yfilter)
+	|| (transport_mode !=  nullptr && transport_mode->has_operation());
+}
+
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-syncc-controller-cfg:sync-controller";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "transport-mode")
+    {
+        if(transport_mode == nullptr)
+        {
+            transport_mode = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode>();
+        }
+        return transport_mode;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(transport_mode != nullptr)
+    {
+        children["transport-mode"] = transport_mode;
+    }
+
+    return children;
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-mode")
+        return true;
+    return false;
+}
+
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::TransportMode()
+    :
+    frequency_mode(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode>())
+{
+    frequency_mode->parent = this;
+
+    yang_name = "transport-mode"; yang_parent_name = "sync-controller"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::~TransportMode()
+{
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::has_data() const
+{
+    return (frequency_mode !=  nullptr && frequency_mode->has_data());
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| (frequency_mode !=  nullptr && frequency_mode->has_operation());
+}
+
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transport-mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frequency-mode")
+    {
+        if(frequency_mode == nullptr)
+        {
+            frequency_mode = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode>();
+        }
+        return frequency_mode;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(frequency_mode != nullptr)
+    {
+        children["frequency-mode"] = frequency_mode;
+    }
+
+    return children;
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frequency-mode")
+        return true;
+    return false;
+}
+
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::FrequencyMode()
+    :
+    shutdown{YType::empty, "shutdown"}
+    	,
+    port_mode(nullptr) // presence node
+{
+
+    yang_name = "frequency-mode"; yang_parent_name = "transport-mode"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::~FrequencyMode()
+{
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::has_data() const
+{
+    return shutdown.is_set
+	|| (port_mode !=  nullptr && port_mode->has_data());
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| (port_mode !=  nullptr && port_mode->has_operation());
+}
+
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frequency-mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "port-mode")
+    {
+        if(port_mode == nullptr)
+        {
+            port_mode = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode>();
+        }
+        return port_mode;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(port_mode != nullptr)
+    {
+        children["port-mode"] = port_mode;
+    }
+
+    return children;
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "shutdown")
+    {
+        shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-mode" || name == "shutdown")
+        return true;
+    return false;
+}
+
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::PortMode()
+    :
+    option1{YType::uint32, "option1"},
+    option2{YType::uint32, "option2"},
+    option3{YType::uint32, "option3"},
+    option4{YType::uint32, "option4"},
+    option5{YType::uint32, "option5"}
+{
+
+    yang_name = "port-mode"; yang_parent_name = "frequency-mode"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::~PortMode()
+{
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::has_data() const
+{
+    return option1.is_set
+	|| option2.is_set
+	|| option3.is_set
+	|| option4.is_set
+	|| option5.is_set;
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(option1.yfilter)
+	|| ydk::is_set(option2.yfilter)
+	|| ydk::is_set(option3.yfilter)
+	|| ydk::is_set(option4.yfilter)
+	|| ydk::is_set(option5.yfilter);
+}
+
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (option1.is_set || is_set(option1.yfilter)) leaf_name_data.push_back(option1.get_name_leafdata());
+    if (option2.is_set || is_set(option2.yfilter)) leaf_name_data.push_back(option2.get_name_leafdata());
+    if (option3.is_set || is_set(option3.yfilter)) leaf_name_data.push_back(option3.get_name_leafdata());
+    if (option4.is_set || is_set(option4.yfilter)) leaf_name_data.push_back(option4.get_name_leafdata());
+    if (option5.is_set || is_set(option5.yfilter)) leaf_name_data.push_back(option5.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "option1")
+    {
+        option1 = value;
+        option1.value_namespace = name_space;
+        option1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2")
+    {
+        option2 = value;
+        option2.value_namespace = name_space;
+        option2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option3")
+    {
+        option3 = value;
+        option3.value_namespace = name_space;
+        option3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option4")
+    {
+        option4 = value;
+        option4.value_namespace = name_space;
+        option4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option5")
+    {
+        option5 = value;
+        option5.value_namespace = name_space;
+        option5.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option1")
+    {
+        option1.yfilter = yfilter;
+    }
+    if(value_path == "option2")
+    {
+        option2.yfilter = yfilter;
+    }
+    if(value_path == "option3")
+    {
+        option3.yfilter = yfilter;
+    }
+    if(value_path == "option4")
+    {
+        option4.yfilter = yfilter;
+    }
+    if(value_path == "option5")
+    {
+        option5.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option1" || name == "option2" || name == "option3" || name == "option4" || name == "option5")
+        return true;
+    return false;
+}
+
 ActiveNodes::ActiveNode::Ltrace::Ltrace()
     :
     allocation_params(std::make_shared<ActiveNodes::ActiveNode::Ltrace::AllocationParams>())
@@ -1390,9 +1798,9 @@ ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Ipo
     :
     id1{YType::str, "id1"}
     	,
-    nps(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>())
+    np_flows(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows>())
 {
-    nps->parent = this;
+    np_flows->parent = this;
 
     yang_name = "ipolicer-local-table"; yang_parent_name = "ipolicer-local-tables"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -1404,14 +1812,14 @@ ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::~Ip
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_data() const
 {
     return id1.is_set
-	|| (nps !=  nullptr && nps->has_data());
+	|| (np_flows !=  nullptr && np_flows->has_data());
 }
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id1.yfilter)
-	|| (nps !=  nullptr && nps->has_operation());
+	|| (np_flows !=  nullptr && np_flows->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_segment_path() const
@@ -1433,13 +1841,13 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "nps")
+    if(child_yang_name == "np-flows")
     {
-        if(nps == nullptr)
+        if(np_flows == nullptr)
         {
-            nps = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>();
+            np_flows = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows>();
         }
-        return nps;
+        return np_flows;
     }
 
     return nullptr;
@@ -1449,9 +1857,9 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(nps != nullptr)
+    if(np_flows != nullptr)
     {
-        children["nps"] = nps;
+        children["np-flows"] = np_flows;
     }
 
     return children;
@@ -1477,49 +1885,49 @@ void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nps" || name == "id1")
+    if(name == "np-flows" || name == "id1")
         return true;
     return false;
 }
 
-ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Nps()
+ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlows()
 {
 
-    yang_name = "nps"; yang_parent_name = "ipolicer-local-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-flows"; yang_parent_name = "ipolicer-local-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::~Nps()
+ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::~NpFlows()
 {
 }
 
-bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_data() const
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::has_data() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    for (std::size_t index=0; index<np_flow.size(); index++)
     {
-        if(np[index]->has_data())
+        if(np_flow[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_operation() const
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::has_operation() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    for (std::size_t index=0; index<np_flow.size(); index++)
     {
-        if(np[index]->has_operation())
+        if(np_flow[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_segment_path() const
+std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nps";
+    path_buffer << "np-flows";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1528,25 +1936,25 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "np")
+    if(child_yang_name == "np-flow")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np>();
+        auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow>();
         c->parent = this;
-        np.push_back(c);
+        np_flow.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np)
+    for (auto const & c : np_flow)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1557,108 +1965,108 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_filter(const std::string & value_path, YFilter yfilter)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_leaf_or_child_of_name(const std::string & name) const
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "np")
+    if(name == "np-flow")
         return true;
     return false;
 }
 
-ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::Np()
+ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::NpFlow()
     :
-    id1{YType::int32, "id1"},
-    rate{YType::int32, "rate"}
+    flow_type{YType::enumeration, "flow-type"},
+    np_rate{YType::uint32, "np-rate"}
 {
 
-    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-flow"; yang_parent_name = "np-flows"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::~Np()
+ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::~NpFlow()
 {
 }
 
-bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_data() const
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::has_data() const
 {
-    return id1.is_set
-	|| rate.is_set;
+    return flow_type.is_set
+	|| np_rate.is_set;
 }
 
-bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_operation() const
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(id1.yfilter)
-	|| ydk::is_set(rate.yfilter);
+	|| ydk::is_set(flow_type.yfilter)
+	|| ydk::is_set(np_rate.yfilter);
 }
 
-std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_segment_path() const
+std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "np" <<"[id1='" <<id1 <<"']";
+    path_buffer << "np-flow" <<"[flow-type='" <<flow_type <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
+    if (np_rate.is_set || is_set(np_rate.yfilter)) leaf_name_data.push_back(np_rate.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "id1")
+    if(value_path == "flow-type")
     {
-        id1 = value;
-        id1.value_namespace = name_space;
-        id1.value_namespace_prefix = name_space_prefix;
+        flow_type = value;
+        flow_type.value_namespace = name_space;
+        flow_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rate")
+    if(value_path == "np-rate")
     {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
+        np_rate = value;
+        np_rate.value_namespace = name_space;
+        np_rate.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_filter(const std::string & value_path, YFilter yfilter)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "id1")
+    if(value_path == "flow-type")
     {
-        id1.yfilter = yfilter;
+        flow_type.yfilter = yfilter;
     }
-    if(value_path == "rate")
+    if(value_path == "np-rate")
     {
-        rate.yfilter = yfilter;
+        np_rate.yfilter = yfilter;
     }
 }
 
-bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_leaf_or_child_of_name(const std::string & name) const
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id1" || name == "rate")
+    if(name == "flow-type" || name == "np-rate")
         return true;
     return false;
 }
@@ -2137,7 +2545,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::has_leaf_or_child
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Flow()
     :
     flow_type{YType::enumeration, "flow-type"},
-    rate{YType::int32, "rate"}
+    rate{YType::uint32, "rate"}
     	,
     precedences(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences>())
 {
@@ -2594,8 +3002,10 @@ bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_leaf_or_child_of_nam
 
 ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::CiscoIOSXRWatchdCfgWatchdogNodeThreshold()
     :
-    memory_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold>())
+    disk_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold>())
+	,memory_threshold(std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold>())
 {
+    disk_threshold->parent = this;
     memory_threshold->parent = this;
 
     yang_name = "watchdog-node-threshold"; yang_parent_name = "active-node"; is_top_level_class = false; has_list_ancestor = true;
@@ -2607,12 +3017,14 @@ ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::~CiscoIOSXRWa
 
 bool ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::has_data() const
 {
-    return (memory_threshold !=  nullptr && memory_threshold->has_data());
+    return (disk_threshold !=  nullptr && disk_threshold->has_data())
+	|| (memory_threshold !=  nullptr && memory_threshold->has_data());
 }
 
 bool ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::has_operation() const
 {
     return is_set(yfilter)
+	|| (disk_threshold !=  nullptr && disk_threshold->has_operation())
 	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
@@ -2634,6 +3046,15 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::CiscoIOS
 
 std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "disk-threshold")
+    {
+        if(disk_threshold == nullptr)
+        {
+            disk_threshold = std::make_shared<ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold>();
+        }
+        return disk_threshold;
+    }
+
     if(child_yang_name == "memory-threshold")
     {
         if(memory_threshold == nullptr)
@@ -2650,6 +3071,11 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIOS
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(disk_threshold != nullptr)
+    {
+        children["disk-threshold"] = disk_threshold;
+    }
+
     if(memory_threshold != nullptr)
     {
         children["memory-threshold"] = memory_threshold;
@@ -2668,7 +3094,112 @@ void ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::set_filt
 
 bool ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "memory-threshold")
+    if(name == "disk-threshold" || name == "memory-threshold")
+        return true;
+    return false;
+}
+
+ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::DiskThreshold()
+    :
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
+{
+
+    yang_name = "disk-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::~DiskThreshold()
+{
+}
+
+bool ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::has_data() const
+{
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
+}
+
+bool ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
+}
+
+std::string ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disk-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minor")
+    {
+        minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minor" || name == "severe" || name == "critical")
         return true;
     return false;
 }
@@ -3431,8 +3962,10 @@ PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::Clock()
     port{YType::int32, "port"}
     	,
     frequency_synchronization(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization>())
+	,sync_controller(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController>())
 {
     frequency_synchronization->parent = this;
+    sync_controller->parent = this;
 
     yang_name = "clock"; yang_parent_name = "clocks"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -3445,7 +3978,8 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::has_d
 {
     return clock_type.is_set
 	|| port.is_set
-	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data());
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data())
+	|| (sync_controller !=  nullptr && sync_controller->has_data());
 }
 
 bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::has_operation() const
@@ -3453,7 +3987,8 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::has_o
     return is_set(yfilter)
 	|| ydk::is_set(clock_type.yfilter)
 	|| ydk::is_set(port.yfilter)
-	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation());
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation())
+	|| (sync_controller !=  nullptr && sync_controller->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_segment_path() const
@@ -3485,6 +4020,15 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
         return frequency_synchronization;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-syncc-controller-cfg:sync-controller")
+    {
+        if(sync_controller == nullptr)
+        {
+            sync_controller = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController>();
+        }
+        return sync_controller;
+    }
+
     return nullptr;
 }
 
@@ -3495,6 +4039,11 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     if(frequency_synchronization != nullptr)
     {
         children["frequency-synchronization"] = frequency_synchronization;
+    }
+
+    if(sync_controller != nullptr)
+    {
+        children["Cisco-IOS-XR-syncc-controller-cfg:sync-controller"] = sync_controller;
     }
 
     return children;
@@ -3530,7 +4079,7 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::set_f
 
 bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frequency-synchronization" || name == "clock-type" || name == "port")
+    if(name == "frequency-synchronization" || name == "sync-controller" || name == "clock-type" || name == "port")
         return true;
     return false;
 }
@@ -3943,6 +4492,396 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::Frequ
     return false;
 }
 
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::SyncController()
+    :
+    transport_mode(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode>())
+{
+    transport_mode->parent = this;
+
+    yang_name = "sync-controller"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::~SyncController()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::has_data() const
+{
+    return (transport_mode !=  nullptr && transport_mode->has_data());
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::has_operation() const
+{
+    return is_set(yfilter)
+	|| (transport_mode !=  nullptr && transport_mode->has_operation());
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-syncc-controller-cfg:sync-controller";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "transport-mode")
+    {
+        if(transport_mode == nullptr)
+        {
+            transport_mode = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode>();
+        }
+        return transport_mode;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(transport_mode != nullptr)
+    {
+        children["transport-mode"] = transport_mode;
+    }
+
+    return children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-mode")
+        return true;
+    return false;
+}
+
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::TransportMode()
+    :
+    frequency_mode(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode>())
+{
+    frequency_mode->parent = this;
+
+    yang_name = "transport-mode"; yang_parent_name = "sync-controller"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::~TransportMode()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::has_data() const
+{
+    return (frequency_mode !=  nullptr && frequency_mode->has_data());
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| (frequency_mode !=  nullptr && frequency_mode->has_operation());
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transport-mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frequency-mode")
+    {
+        if(frequency_mode == nullptr)
+        {
+            frequency_mode = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode>();
+        }
+        return frequency_mode;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(frequency_mode != nullptr)
+    {
+        children["frequency-mode"] = frequency_mode;
+    }
+
+    return children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frequency-mode")
+        return true;
+    return false;
+}
+
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::FrequencyMode()
+    :
+    shutdown{YType::empty, "shutdown"}
+    	,
+    port_mode(nullptr) // presence node
+{
+
+    yang_name = "frequency-mode"; yang_parent_name = "transport-mode"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::~FrequencyMode()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::has_data() const
+{
+    return shutdown.is_set
+	|| (port_mode !=  nullptr && port_mode->has_data());
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| (port_mode !=  nullptr && port_mode->has_operation());
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frequency-mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "port-mode")
+    {
+        if(port_mode == nullptr)
+        {
+            port_mode = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode>();
+        }
+        return port_mode;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(port_mode != nullptr)
+    {
+        children["port-mode"] = port_mode;
+    }
+
+    return children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "shutdown")
+    {
+        shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-mode" || name == "shutdown")
+        return true;
+    return false;
+}
+
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::PortMode()
+    :
+    option1{YType::uint32, "option1"},
+    option2{YType::uint32, "option2"},
+    option3{YType::uint32, "option3"},
+    option4{YType::uint32, "option4"},
+    option5{YType::uint32, "option5"}
+{
+
+    yang_name = "port-mode"; yang_parent_name = "frequency-mode"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::~PortMode()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::has_data() const
+{
+    return option1.is_set
+	|| option2.is_set
+	|| option3.is_set
+	|| option4.is_set
+	|| option5.is_set;
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(option1.yfilter)
+	|| ydk::is_set(option2.yfilter)
+	|| ydk::is_set(option3.yfilter)
+	|| ydk::is_set(option4.yfilter)
+	|| ydk::is_set(option5.yfilter);
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (option1.is_set || is_set(option1.yfilter)) leaf_name_data.push_back(option1.get_name_leafdata());
+    if (option2.is_set || is_set(option2.yfilter)) leaf_name_data.push_back(option2.get_name_leafdata());
+    if (option3.is_set || is_set(option3.yfilter)) leaf_name_data.push_back(option3.get_name_leafdata());
+    if (option4.is_set || is_set(option4.yfilter)) leaf_name_data.push_back(option4.get_name_leafdata());
+    if (option5.is_set || is_set(option5.yfilter)) leaf_name_data.push_back(option5.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "option1")
+    {
+        option1 = value;
+        option1.value_namespace = name_space;
+        option1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option2")
+    {
+        option2 = value;
+        option2.value_namespace = name_space;
+        option2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option3")
+    {
+        option3 = value;
+        option3.value_namespace = name_space;
+        option3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option4")
+    {
+        option4 = value;
+        option4.value_namespace = name_space;
+        option4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option5")
+    {
+        option5 = value;
+        option5.value_namespace = name_space;
+        option5.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option1")
+    {
+        option1.yfilter = yfilter;
+    }
+    if(value_path == "option2")
+    {
+        option2.yfilter = yfilter;
+    }
+    if(value_path == "option3")
+    {
+        option3.yfilter = yfilter;
+    }
+    if(value_path == "option4")
+    {
+        option4.yfilter = yfilter;
+    }
+    if(value_path == "option5")
+    {
+        option5.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option1" || name == "option2" || name == "option3" || name == "option4" || name == "option5")
+        return true;
+    return false;
+}
+
 PreconfiguredNodes::PreconfiguredNode::Ltrace::Ltrace()
     :
     allocation_params(std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams>())
@@ -4325,9 +5264,9 @@ PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerL
     :
     id1{YType::str, "id1"}
     	,
-    nps(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>())
+    np_flows(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows>())
 {
-    nps->parent = this;
+    np_flows->parent = this;
 
     yang_name = "ipolicer-local-table"; yang_parent_name = "ipolicer-local-tables"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -4339,14 +5278,14 @@ PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerL
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_data() const
 {
     return id1.is_set
-	|| (nps !=  nullptr && nps->has_data());
+	|| (np_flows !=  nullptr && np_flows->has_data());
 }
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id1.yfilter)
-	|| (nps !=  nullptr && nps->has_operation());
+	|| (np_flows !=  nullptr && np_flows->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_segment_path() const
@@ -4368,13 +5307,13 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "nps")
+    if(child_yang_name == "np-flows")
     {
-        if(nps == nullptr)
+        if(np_flows == nullptr)
         {
-            nps = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps>();
+            np_flows = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows>();
         }
-        return nps;
+        return np_flows;
     }
 
     return nullptr;
@@ -4384,9 +5323,9 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(nps != nullptr)
+    if(np_flows != nullptr)
     {
-        children["nps"] = nps;
+        children["np-flows"] = np_flows;
     }
 
     return children;
@@ -4412,49 +5351,49 @@ void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::Ipol
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nps" || name == "id1")
+    if(name == "np-flows" || name == "id1")
         return true;
     return false;
 }
 
-PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Nps()
+PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlows()
 {
 
-    yang_name = "nps"; yang_parent_name = "ipolicer-local-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-flows"; yang_parent_name = "ipolicer-local-table"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::~Nps()
+PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::~NpFlows()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::has_data() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    for (std::size_t index=0; index<np_flow.size(); index++)
     {
-        if(np[index]->has_data())
+        if(np_flow[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::has_operation() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    for (std::size_t index=0; index<np_flow.size(); index++)
     {
-        if(np[index]->has_operation())
+        if(np_flow[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nps";
+    path_buffer << "np-flows";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4463,25 +5402,25 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "np")
+    if(child_yang_name == "np-flow")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np>();
+        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow>();
         c->parent = this;
-        np.push_back(c);
+        np_flow.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np)
+    for (auto const & c : np_flow)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4492,108 +5431,108 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_filter(const std::string & value_path, YFilter yfilter)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_leaf_or_child_of_name(const std::string & name) const
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "np")
+    if(name == "np-flow")
         return true;
     return false;
 }
 
-PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::Np()
+PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::NpFlow()
     :
-    id1{YType::int32, "id1"},
-    rate{YType::int32, "rate"}
+    flow_type{YType::enumeration, "flow-type"},
+    np_rate{YType::uint32, "np-rate"}
 {
 
-    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-flow"; yang_parent_name = "np-flows"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::~Np()
+PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::~NpFlow()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::has_data() const
 {
-    return id1.is_set
-	|| rate.is_set;
+    return flow_type.is_set
+	|| np_rate.is_set;
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(id1.yfilter)
-	|| ydk::is_set(rate.yfilter);
+	|| ydk::is_set(flow_type.yfilter)
+	|| ydk::is_set(np_rate.yfilter);
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "np" <<"[id1='" <<id1 <<"']";
+    path_buffer << "np-flow" <<"[flow-type='" <<flow_type <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
+    if (np_rate.is_set || is_set(np_rate.yfilter)) leaf_name_data.push_back(np_rate.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "id1")
+    if(value_path == "flow-type")
     {
-        id1 = value;
-        id1.value_namespace = name_space;
-        id1.value_namespace_prefix = name_space_prefix;
+        flow_type = value;
+        flow_type.value_namespace = name_space;
+        flow_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rate")
+    if(value_path == "np-rate")
     {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
+        np_rate = value;
+        np_rate.value_namespace = name_space;
+        np_rate.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_filter(const std::string & value_path, YFilter yfilter)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "id1")
+    if(value_path == "flow-type")
     {
-        id1.yfilter = yfilter;
+        flow_type.yfilter = yfilter;
     }
-    if(value_path == "rate")
+    if(value_path == "np-rate")
     {
-        rate.yfilter = yfilter;
+        np_rate.yfilter = yfilter;
     }
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_leaf_or_child_of_name(const std::string & name) const
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id1" || name == "rate")
+    if(name == "flow-type" || name == "np-rate")
         return true;
     return false;
 }
@@ -5072,7 +6011,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::has
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Flow()
     :
     flow_type{YType::enumeration, "flow-type"},
-    rate{YType::int32, "rate"}
+    rate{YType::uint32, "rate"}
     	,
     precedences(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences>())
 {
@@ -5267,8 +6206,10 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flo
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::CiscoIOSXRWatchdCfgWatchdogNodeThreshold()
     :
-    memory_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold>())
+    disk_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold>())
+	,memory_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold>())
 {
+    disk_threshold->parent = this;
     memory_threshold->parent = this;
 
     yang_name = "watchdog-node-threshold"; yang_parent_name = "preconfigured-node"; is_top_level_class = false; has_list_ancestor = true;
@@ -5280,12 +6221,14 @@ PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold:
 
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::has_data() const
 {
-    return (memory_threshold !=  nullptr && memory_threshold->has_data());
+    return (disk_threshold !=  nullptr && disk_threshold->has_data())
+	|| (memory_threshold !=  nullptr && memory_threshold->has_data());
 }
 
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::has_operation() const
 {
     return is_set(yfilter)
+	|| (disk_threshold !=  nullptr && disk_threshold->has_operation())
 	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
@@ -5307,6 +6250,15 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "disk-threshold")
+    {
+        if(disk_threshold == nullptr)
+        {
+            disk_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold>();
+        }
+        return disk_threshold;
+    }
+
     if(child_yang_name == "memory-threshold")
     {
         if(memory_threshold == nullptr)
@@ -5323,6 +6275,11 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(disk_threshold != nullptr)
+    {
+        children["disk-threshold"] = disk_threshold;
+    }
+
     if(memory_threshold != nullptr)
     {
         children["memory-threshold"] = memory_threshold;
@@ -5341,7 +6298,112 @@ void PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThres
 
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "memory-threshold")
+    if(name == "disk-threshold" || name == "memory-threshold")
+        return true;
+    return false;
+}
+
+PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::DiskThreshold()
+    :
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
+{
+
+    yang_name = "disk-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::~DiskThreshold()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::has_data() const
+{
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disk-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minor")
+    {
+        minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minor" || name == "severe" || name == "critical")
         return true;
     return false;
 }

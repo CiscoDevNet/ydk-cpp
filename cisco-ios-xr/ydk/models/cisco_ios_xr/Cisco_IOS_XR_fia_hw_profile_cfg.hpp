@@ -60,11 +60,19 @@ class HwModuleProfileConfig::Profile : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class TcamTable; //type: HwModuleProfileConfig::Profile::TcamTable
+        class LoadBalance; //type: HwModuleProfileConfig::Profile::LoadBalance
         class Stats; //type: HwModuleProfileConfig::Profile::Stats
+        class Netflows; //type: HwModuleProfileConfig::Profile::Netflows
+        class ProfileAcl; //type: HwModuleProfileConfig::Profile::ProfileAcl
+        class ProfileTcam; //type: HwModuleProfileConfig::Profile::ProfileTcam
         class Qos; //type: HwModuleProfileConfig::Profile::Qos
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::TcamTable> tcam_table;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::LoadBalance> load_balance;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Stats> stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Netflows> netflows;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::ProfileAcl> profile_acl;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::ProfileTcam> profile_tcam;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Qos> qos;
         
 }; // HwModuleProfileConfig::Profile
@@ -312,6 +320,28 @@ class HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unic
 }; // HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength
 
 
+class HwModuleProfileConfig::Profile::LoadBalance : public ydk::Entity
+{
+    public:
+        LoadBalance();
+        ~LoadBalance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf load_balance_profile; //type: int32
+
+}; // HwModuleProfileConfig::Profile::LoadBalance
+
+
 class HwModuleProfileConfig::Profile::Stats : public ydk::Entity
 {
     public:
@@ -332,6 +362,195 @@ class HwModuleProfileConfig::Profile::Stats : public ydk::Entity
         ydk::YLeaf counter_profile; //type: int32
 
 }; // HwModuleProfileConfig::Profile::Stats
+
+
+class HwModuleProfileConfig::Profile::Netflows : public ydk::Entity
+{
+    public:
+        Netflows();
+        ~Netflows();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Netflow; //type: HwModuleProfileConfig::Profile::Netflows::Netflow
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Netflows::Netflow> > netflow;
+        
+}; // HwModuleProfileConfig::Profile::Netflows
+
+
+class HwModuleProfileConfig::Profile::Netflows::Netflow : public ydk::Entity
+{
+    public:
+        Netflow();
+        ~Netflow();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ipfix315_enable; //type: string
+        ydk::YLeaf location_string; //type: string
+        ydk::YLeaf location_id; //type: int32
+        ydk::YLeaf enable_val; //type: int32
+
+}; // HwModuleProfileConfig::Profile::Netflows::Netflow
+
+
+class HwModuleProfileConfig::Profile::ProfileAcl : public ydk::Entity
+{
+    public:
+        ProfileAcl();
+        ~ProfileAcl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf egress; //type: boolean
+
+}; // HwModuleProfileConfig::Profile::ProfileAcl
+
+
+class HwModuleProfileConfig::Profile::ProfileTcam : public ydk::Entity
+{
+    public:
+        ProfileTcam();
+        ~ProfileTcam();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class KeyFormat; //type: HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat> key_format;
+        
+}; // HwModuleProfileConfig::Profile::ProfileTcam
+
+
+class HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat : public ydk::Entity
+{
+    public:
+        KeyFormat();
+        ~KeyFormat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AclTables; //type: HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables> acl_tables;
+        
+}; // HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat
+
+
+class HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables : public ydk::Entity
+{
+    public:
+        AclTables();
+        ~AclTables();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AclTable; //type: HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable> > acl_table;
+        
+}; // HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables
+
+
+class HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable : public ydk::Entity
+{
+    public:
+        AclTable();
+        ~AclTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf address_family; //type: string
+        ydk::YLeaf location_string; //type: string
+        ydk::YLeaf location_id; //type: int32
+        ydk::YLeaf source_addr; //type: int32
+        ydk::YLeaf destination_addr; //type: int32
+        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf dest_port; //type: int32
+        ydk::YLeaf prot_type; //type: int32
+        ydk::YLeaf tcp_flag; //type: int32
+        ydk::YLeaf pack_len; //type: int32
+        ydk::YLeaf frag_bit; //type: int32
+        ydk::YLeaf precedence; //type: int32
+        ydk::YLeaf port_range; //type: int32
+        ydk::YLeaf udf1; //type: string
+        ydk::YLeaf udf2; //type: string
+        ydk::YLeaf udf3; //type: string
+        ydk::YLeaf udf4; //type: string
+        ydk::YLeaf udf5; //type: string
+        ydk::YLeaf udf6; //type: string
+        ydk::YLeaf udf7; //type: string
+        ydk::YLeaf udf8; //type: string
+        ydk::YLeaf en_capture; //type: int32
+        ydk::YLeaf en_ttl; //type: int32
+        ydk::YLeaf en_match; //type: int32
+        ydk::YLeaf en_share_acl; //type: int32
+
+}; // HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::AclTables::AclTable
 
 
 class HwModuleProfileConfig::Profile::Qos : public ydk::Entity
@@ -711,8 +930,7 @@ class HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf host_optimized_ipv4_no_tcam; //type: string
-        ydk::YLeaf internet_optimized_ipv4_no_tcam; //type: string
+        ydk::YLeaf optimized_ipv4_no_tcam; //type: string
 
 }; // HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam
 

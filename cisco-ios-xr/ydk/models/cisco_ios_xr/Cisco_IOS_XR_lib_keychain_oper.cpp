@@ -425,7 +425,7 @@ Keychain::Keies::Key::Key_::KeyId::KeyId()
     :
     key_string{YType::str, "key-string"},
     type{YType::enumeration, "type"},
-    key_id{YType::uint64, "key-id"},
+    key_id{YType::str, "key-id"},
     cryptographic_algorithm{YType::enumeration, "cryptographic-algorithm"}
     	,
     macsec(std::make_shared<Keychain::Keies::Key::Key_::KeyId::Macsec>())

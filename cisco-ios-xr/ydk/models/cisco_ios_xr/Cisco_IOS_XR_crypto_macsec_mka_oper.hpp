@@ -193,7 +193,7 @@ class Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf etype; //type: uint16
+        ydk::YLeaf ether_type; //type: uint16
         ydk::YLeaf priority; //type: uint8
         ydk::YLeaf cfi; //type: uint8
         ydk::YLeaf vlan_id; //type: uint16
@@ -217,7 +217,7 @@ class Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf etype; //type: uint16
+        ydk::YLeaf ether_type; //type: uint16
         ydk::YLeaf priority; //type: uint8
         ydk::YLeaf cfi; //type: uint8
         ydk::YLeaf vlan_id; //type: uint16

@@ -148,7 +148,7 @@ std::vector<std::string> NetconfTCPClient::get_capabilities()
 std::string NetconfTCPClient::get_hostname_port()
 {
     std::ostringstream os;
-    os << hostname << ":" << port;
+    os << hostname << "_" << port;
     return os.str();
 }
 

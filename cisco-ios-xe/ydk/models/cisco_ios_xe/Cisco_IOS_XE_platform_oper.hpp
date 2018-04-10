@@ -162,7 +162,6 @@ class Components::Component::PlatformProperties::PlatformProperty : public ydk::
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf configurable; //type: boolean
-        ydk::YLeaf parent_platform_component_cname_key; //type: string
         class Value; //type: Components::Component::PlatformProperties::PlatformProperty::Value
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::PlatformProperties::PlatformProperty::Value> value_;
@@ -235,7 +234,6 @@ class Components::Component::PlatformSubcomponents::PlatformSubcomponent : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf parent_platform_component_cname_key; //type: string
 
 }; // Components::Component::PlatformSubcomponents::PlatformSubcomponent
 
@@ -253,7 +251,7 @@ class PlatformCompType : public ydk::Enum
         static const ydk::Enum::YLeaf comp_cpu;
         static const ydk::Enum::YLeaf comp_operating_system;
         static const ydk::Enum::YLeaf comp_optical_channel;
-        static const ydk::Enum::YLeaf CONTAINER;
+        static const ydk::Enum::YLeaf comp_container;
 
 };
 

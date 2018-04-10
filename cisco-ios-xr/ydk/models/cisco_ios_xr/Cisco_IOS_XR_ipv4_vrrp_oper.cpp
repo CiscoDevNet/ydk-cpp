@@ -1498,6 +1498,11 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_data() const
         if(ipv6_configured_down_address[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<track_item_info.size(); index++)
+    {
+        if(track_item_info[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<state_change_history.size(); index++)
     {
         if(state_change_history[index]->has_data())
@@ -1596,6 +1601,11 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
     for (std::size_t index=0; index<ipv6_configured_down_address.size(); index++)
     {
         if(ipv6_configured_down_address[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<track_item_info.size(); index++)
+    {
+        if(track_item_info[index]->has_operation())
             return true;
     }
     for (std::size_t index=0; index<state_change_history.size(); index++)
@@ -1821,6 +1831,14 @@ std::shared_ptr<Entity> Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_child_by_
         return c;
     }
 
+    if(child_yang_name == "track-item-info")
+    {
+        auto c = std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo>();
+        c->parent = this;
+        track_item_info.push_back(c);
+        return c;
+    }
+
     if(child_yang_name == "state-change-history")
     {
         auto c = std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory>();
@@ -1857,6 +1875,15 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
 
     count = 0;
     for (auto const & c : ipv6_configured_down_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : track_item_info)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2592,7 +2619,7 @@ void Vrrp::Ipv6::VirtualRouters::VirtualRouter::set_filter(const std::string & v
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "resign-sent-time" || name == "resign-received-time" || name == "ipv6-operational-address" || name == "ipv6-configured-down-address" || name == "state-change-history" || name == "interface-name" || name == "virtual-router-id" || name == "interface-name-xr" || name == "virtual-router-id-xr" || name == "version" || name == "address-family" || name == "session-name" || name == "slaves" || name == "is-slave" || name == "followed-session-name" || name == "secondary-address-count" || name == "operational-address-count" || name == "primary-virtual-ip" || name == "configured-down-address-count" || name == "virtual-linklocal-ipv6-address" || name == "primary-state" || name == "master-ip-address" || name == "master-ipv6-address" || name == "master-priority" || name == "vrrp-state" || name == "authentication-type" || name == "authentication-string" || name == "configured-advertize-time" || name == "oper-advertize-time" || name == "min-delay-time" || name == "reload-delay-time" || name == "delay-timer-flag" || name == "delay-timer-secs" || name == "delay-timer-msecs" || name == "authentication-flag" || name == "force-timer-flag" || name == "preempt-flag" || name == "ip-address-owner-flag" || name == "is-accept-mode" || name == "preempt-delay-time" || name == "configured-priority" || name == "operational-priority" || name == "priority-decrement" || name == "tracked-interface-count" || name == "tracked-interface-up-count" || name == "tracked-item-count" || name == "tracked-item-up-count" || name == "time-in-current-state" || name == "state-change-count" || name == "time-vrouter-up" || name == "master-count" || name == "adverts-received-count" || name == "advert-interval-error-count" || name == "adverts-sent-count" || name == "authentication-fail-count" || name == "ttl-error-count" || name == "priority-zero-received-count" || name == "priority-zero-sent-count" || name == "invalid-packet-count" || name == "address-list-error-count" || name == "invalid-auth-type-count" || name == "auth-type-mismatch-count" || name == "pkt-length-errors-count" || name == "time-stats-discontinuity" || name == "bfd-session-state" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-cfg-remote-ip" || name == "bfd-configured-remote-ipv6-address" || name == "state-from-checkpoint" || name == "interface-ipv4-address" || name == "interface-ipv6-address" || name == "virtual-mac-address" || name == "virtual-mac-address-state" || name == "operational-address" || name == "ipv4-configured-down-address")
+    if(name == "resign-sent-time" || name == "resign-received-time" || name == "ipv6-operational-address" || name == "ipv6-configured-down-address" || name == "track-item-info" || name == "state-change-history" || name == "interface-name" || name == "virtual-router-id" || name == "interface-name-xr" || name == "virtual-router-id-xr" || name == "version" || name == "address-family" || name == "session-name" || name == "slaves" || name == "is-slave" || name == "followed-session-name" || name == "secondary-address-count" || name == "operational-address-count" || name == "primary-virtual-ip" || name == "configured-down-address-count" || name == "virtual-linklocal-ipv6-address" || name == "primary-state" || name == "master-ip-address" || name == "master-ipv6-address" || name == "master-priority" || name == "vrrp-state" || name == "authentication-type" || name == "authentication-string" || name == "configured-advertize-time" || name == "oper-advertize-time" || name == "min-delay-time" || name == "reload-delay-time" || name == "delay-timer-flag" || name == "delay-timer-secs" || name == "delay-timer-msecs" || name == "authentication-flag" || name == "force-timer-flag" || name == "preempt-flag" || name == "ip-address-owner-flag" || name == "is-accept-mode" || name == "preempt-delay-time" || name == "configured-priority" || name == "operational-priority" || name == "priority-decrement" || name == "tracked-interface-count" || name == "tracked-interface-up-count" || name == "tracked-item-count" || name == "tracked-item-up-count" || name == "time-in-current-state" || name == "state-change-count" || name == "time-vrouter-up" || name == "master-count" || name == "adverts-received-count" || name == "advert-interval-error-count" || name == "adverts-sent-count" || name == "authentication-fail-count" || name == "ttl-error-count" || name == "priority-zero-received-count" || name == "priority-zero-sent-count" || name == "invalid-packet-count" || name == "address-list-error-count" || name == "invalid-auth-type-count" || name == "auth-type-mismatch-count" || name == "pkt-length-errors-count" || name == "time-stats-discontinuity" || name == "bfd-session-state" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-cfg-remote-ip" || name == "bfd-configured-remote-ipv6-address" || name == "state-from-checkpoint" || name == "interface-ipv4-address" || name == "interface-ipv6-address" || name == "virtual-mac-address" || name == "virtual-mac-address-state" || name == "operational-address" || name == "ipv4-configured-down-address")
         return true;
     return false;
 }
@@ -2929,6 +2956,153 @@ void Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_f
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::TrackItemInfo()
+    :
+    interface{YType::str, "interface"},
+    virtual_router_id_xr{YType::uint32, "virtual-router-id-xr"},
+    tracked_item_type{YType::uint16, "tracked-item-type"},
+    tracked_item_index{YType::str, "tracked-item-index"},
+    state{YType::uint8, "state"},
+    priority{YType::uint8, "priority"}
+{
+
+    yang_name = "track-item-info"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::~TrackItemInfo()
+{
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::has_data() const
+{
+    return interface.is_set
+	|| virtual_router_id_xr.is_set
+	|| tracked_item_type.is_set
+	|| tracked_item_index.is_set
+	|| state.is_set
+	|| priority.is_set;
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(virtual_router_id_xr.yfilter)
+	|| ydk::is_set(tracked_item_type.yfilter)
+	|| ydk::is_set(tracked_item_index.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(priority.yfilter);
+}
+
+std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-item-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.yfilter)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
+    if (tracked_item_type.is_set || is_set(tracked_item_type.yfilter)) leaf_name_data.push_back(tracked_item_type.get_name_leafdata());
+    if (tracked_item_index.is_set || is_set(tracked_item_index.yfilter)) leaf_name_data.push_back(tracked_item_index.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr = value;
+        virtual_router_id_xr.value_namespace = name_space;
+        virtual_router_id_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tracked-item-type")
+    {
+        tracked_item_type = value;
+        tracked_item_type.value_namespace = name_space;
+        tracked_item_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tracked-item-index")
+    {
+        tracked_item_index = value;
+        tracked_item_index.value_namespace = name_space;
+        tracked_item_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-type")
+    {
+        tracked_item_type.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-index")
+    {
+        tracked_item_index.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "virtual-router-id-xr" || name == "tracked-item-type" || name == "tracked-item-index" || name == "state" || name == "priority")
         return true;
     return false;
 }
@@ -4263,6 +4437,11 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_data() const
         if(ipv6_configured_down_address[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<track_item_info.size(); index++)
+    {
+        if(track_item_info[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<state_change_history.size(); index++)
     {
         if(state_change_history[index]->has_data())
@@ -4361,6 +4540,11 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
     for (std::size_t index=0; index<ipv6_configured_down_address.size(); index++)
     {
         if(ipv6_configured_down_address[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<track_item_info.size(); index++)
+    {
+        if(track_item_info[index]->has_operation())
             return true;
     }
     for (std::size_t index=0; index<state_change_history.size(); index++)
@@ -4586,6 +4770,14 @@ std::shared_ptr<Entity> Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_child_by_
         return c;
     }
 
+    if(child_yang_name == "track-item-info")
+    {
+        auto c = std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo>();
+        c->parent = this;
+        track_item_info.push_back(c);
+        return c;
+    }
+
     if(child_yang_name == "state-change-history")
     {
         auto c = std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory>();
@@ -4622,6 +4814,15 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
 
     count = 0;
     for (auto const & c : ipv6_configured_down_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : track_item_info)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5357,7 +5558,7 @@ void Vrrp::Ipv4::VirtualRouters::VirtualRouter::set_filter(const std::string & v
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "resign-sent-time" || name == "resign-received-time" || name == "ipv6-operational-address" || name == "ipv6-configured-down-address" || name == "state-change-history" || name == "interface-name" || name == "virtual-router-id" || name == "interface-name-xr" || name == "virtual-router-id-xr" || name == "version" || name == "address-family" || name == "session-name" || name == "slaves" || name == "is-slave" || name == "followed-session-name" || name == "secondary-address-count" || name == "operational-address-count" || name == "primary-virtual-ip" || name == "configured-down-address-count" || name == "virtual-linklocal-ipv6-address" || name == "primary-state" || name == "master-ip-address" || name == "master-ipv6-address" || name == "master-priority" || name == "vrrp-state" || name == "authentication-type" || name == "authentication-string" || name == "configured-advertize-time" || name == "oper-advertize-time" || name == "min-delay-time" || name == "reload-delay-time" || name == "delay-timer-flag" || name == "delay-timer-secs" || name == "delay-timer-msecs" || name == "authentication-flag" || name == "force-timer-flag" || name == "preempt-flag" || name == "ip-address-owner-flag" || name == "is-accept-mode" || name == "preempt-delay-time" || name == "configured-priority" || name == "operational-priority" || name == "priority-decrement" || name == "tracked-interface-count" || name == "tracked-interface-up-count" || name == "tracked-item-count" || name == "tracked-item-up-count" || name == "time-in-current-state" || name == "state-change-count" || name == "time-vrouter-up" || name == "master-count" || name == "adverts-received-count" || name == "advert-interval-error-count" || name == "adverts-sent-count" || name == "authentication-fail-count" || name == "ttl-error-count" || name == "priority-zero-received-count" || name == "priority-zero-sent-count" || name == "invalid-packet-count" || name == "address-list-error-count" || name == "invalid-auth-type-count" || name == "auth-type-mismatch-count" || name == "pkt-length-errors-count" || name == "time-stats-discontinuity" || name == "bfd-session-state" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-cfg-remote-ip" || name == "bfd-configured-remote-ipv6-address" || name == "state-from-checkpoint" || name == "interface-ipv4-address" || name == "interface-ipv6-address" || name == "virtual-mac-address" || name == "virtual-mac-address-state" || name == "operational-address" || name == "ipv4-configured-down-address")
+    if(name == "resign-sent-time" || name == "resign-received-time" || name == "ipv6-operational-address" || name == "ipv6-configured-down-address" || name == "track-item-info" || name == "state-change-history" || name == "interface-name" || name == "virtual-router-id" || name == "interface-name-xr" || name == "virtual-router-id-xr" || name == "version" || name == "address-family" || name == "session-name" || name == "slaves" || name == "is-slave" || name == "followed-session-name" || name == "secondary-address-count" || name == "operational-address-count" || name == "primary-virtual-ip" || name == "configured-down-address-count" || name == "virtual-linklocal-ipv6-address" || name == "primary-state" || name == "master-ip-address" || name == "master-ipv6-address" || name == "master-priority" || name == "vrrp-state" || name == "authentication-type" || name == "authentication-string" || name == "configured-advertize-time" || name == "oper-advertize-time" || name == "min-delay-time" || name == "reload-delay-time" || name == "delay-timer-flag" || name == "delay-timer-secs" || name == "delay-timer-msecs" || name == "authentication-flag" || name == "force-timer-flag" || name == "preempt-flag" || name == "ip-address-owner-flag" || name == "is-accept-mode" || name == "preempt-delay-time" || name == "configured-priority" || name == "operational-priority" || name == "priority-decrement" || name == "tracked-interface-count" || name == "tracked-interface-up-count" || name == "tracked-item-count" || name == "tracked-item-up-count" || name == "time-in-current-state" || name == "state-change-count" || name == "time-vrouter-up" || name == "master-count" || name == "adverts-received-count" || name == "advert-interval-error-count" || name == "adverts-sent-count" || name == "authentication-fail-count" || name == "ttl-error-count" || name == "priority-zero-received-count" || name == "priority-zero-sent-count" || name == "invalid-packet-count" || name == "address-list-error-count" || name == "invalid-auth-type-count" || name == "auth-type-mismatch-count" || name == "pkt-length-errors-count" || name == "time-stats-discontinuity" || name == "bfd-session-state" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-cfg-remote-ip" || name == "bfd-configured-remote-ipv6-address" || name == "state-from-checkpoint" || name == "interface-ipv4-address" || name == "interface-ipv6-address" || name == "virtual-mac-address" || name == "virtual-mac-address-state" || name == "operational-address" || name == "ipv4-configured-down-address")
         return true;
     return false;
 }
@@ -5694,6 +5895,153 @@ void Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_f
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::TrackItemInfo()
+    :
+    interface{YType::str, "interface"},
+    virtual_router_id_xr{YType::uint32, "virtual-router-id-xr"},
+    tracked_item_type{YType::uint16, "tracked-item-type"},
+    tracked_item_index{YType::str, "tracked-item-index"},
+    state{YType::uint8, "state"},
+    priority{YType::uint8, "priority"}
+{
+
+    yang_name = "track-item-info"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::~TrackItemInfo()
+{
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::has_data() const
+{
+    return interface.is_set
+	|| virtual_router_id_xr.is_set
+	|| tracked_item_type.is_set
+	|| tracked_item_index.is_set
+	|| state.is_set
+	|| priority.is_set;
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(virtual_router_id_xr.yfilter)
+	|| ydk::is_set(tracked_item_type.yfilter)
+	|| ydk::is_set(tracked_item_index.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(priority.yfilter);
+}
+
+std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "track-item-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.yfilter)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
+    if (tracked_item_type.is_set || is_set(tracked_item_type.yfilter)) leaf_name_data.push_back(tracked_item_type.get_name_leafdata());
+    if (tracked_item_index.is_set || is_set(tracked_item_index.yfilter)) leaf_name_data.push_back(tracked_item_index.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr = value;
+        virtual_router_id_xr.value_namespace = name_space;
+        virtual_router_id_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tracked-item-type")
+    {
+        tracked_item_type = value;
+        tracked_item_type.value_namespace = name_space;
+        tracked_item_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tracked-item-index")
+    {
+        tracked_item_index = value;
+        tracked_item_index.value_namespace = name_space;
+        tracked_item_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-type")
+    {
+        tracked_item_type.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-index")
+    {
+        tracked_item_index.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "virtual-router-id-xr" || name == "tracked-item-type" || name == "tracked-item-index" || name == "state" || name == "priority")
         return true;
     return false;
 }

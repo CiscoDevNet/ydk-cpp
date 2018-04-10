@@ -193,7 +193,7 @@ class Components::Component::Properties::Property::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf value_; //type: one of int64, uint64, boolean, string, decimal64
+        ydk::YLeaf value_; //type: one of string, int64, boolean, decimal64, uint64
 
 }; // Components::Component::Properties::Property::Config
 
@@ -215,7 +215,7 @@ class Components::Component::Properties::Property::State : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf value_; //type: one of int64, uint64, boolean, string, decimal64
+        ydk::YLeaf value_; //type: one of string, int64, boolean, decimal64, uint64
         ydk::YLeaf configurable; //type: boolean
 
 }; // Components::Component::Properties::Property::State

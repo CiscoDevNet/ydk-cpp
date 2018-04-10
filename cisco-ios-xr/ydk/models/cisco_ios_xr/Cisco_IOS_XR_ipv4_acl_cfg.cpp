@@ -450,7 +450,7 @@ Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Acce
     protocol_operator{YType::enumeration, "protocol-operator"},
     protocol{YType::str, "protocol"},
     protocol2{YType::str, "protocol2"},
-    fragment_type{YType::enumeration, "fragment-type"},
+    fragment_type{YType::str, "fragment-type"},
     counter_name{YType::str, "counter-name"},
     igmp_message_type{YType::str, "igmp-message-type"},
     precedence{YType::str, "precedence"},

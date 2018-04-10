@@ -82,10 +82,12 @@ class PlatformQos::Nodes::Node : public ydk::Entity
         ydk::YLeaf node_name; //type: string
         class BundleInterfaces; //type: PlatformQos::Nodes::Node::BundleInterfaces
         class Interfaces; //type: PlatformQos::Nodes::Node::Interfaces
+        class BundleInterfaceSingles; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles
         class RemoteInterfaces; //type: PlatformQos::Nodes::Node::RemoteInterfaces
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces> bundle_interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles> bundle_interface_singles;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::RemoteInterfaces> remote_interfaces;
         
 }; // PlatformQos::Nodes::Node
@@ -133,15 +135,45 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface : public ydk::
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf npu_id; //type: int32
         ydk::YLeaf qos_direction; //type: string
-        class MemberInterfaces; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces
         class PolicyDetails; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDetails
+        class MemberInterfaces; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces
         class Classes; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces> member_interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDetails> policy_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces> member_interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes> classes;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface
+
+
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDetails : public ydk::Entity
+{
+    public:
+        PolicyDetails();
+        ~PolicyDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf npu_id; //type: uint32
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf interface_bandwidth_kbps; //type: uint32
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf total_number_of_classes; //type: uint16
+        ydk::YLeaf voq_base_address; //type: uint32
+        ydk::YLeaf voq_stats_handle; //type: uint64
+        ydk::YLeaf stats_accounting_type; //type: QosPolicyAccountEnum
+        ydk::YLeaf policy_status; //type: DnxQoseaShowPolicyStatus
+        ydk::YLeaf interface_status; //type: DnxQoseaShowIntfStatus
+
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDetails
 
 
 class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces : public ydk::Entity
@@ -792,36 +824,6 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold
-
-
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDetails : public ydk::Entity
-{
-    public:
-        PolicyDetails();
-        ~PolicyDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf npu_id; //type: uint32
-        ydk::YLeaf interface_handle; //type: uint32
-        ydk::YLeaf interface_bandwidth_kbps; //type: uint32
-        ydk::YLeaf policy_name; //type: string
-        ydk::YLeaf total_number_of_classes; //type: uint16
-        ydk::YLeaf voq_base_address; //type: uint32
-        ydk::YLeaf voq_stats_handle; //type: uint64
-        ydk::YLeaf stats_accounting_type; //type: QosPolicyAccountEnum
-        ydk::YLeaf policy_status; //type: DnxQoseaShowPolicyStatus
-        ydk::YLeaf interface_status; //type: DnxQoseaShowIntfStatus
-
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDetails
 
 
 class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes : public ydk::Entity
@@ -2044,6 +2046,1308 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::Con
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMaxThreshold
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles : public ydk::Entity
+{
+    public:
+        BundleInterfaceSingles();
+        ~BundleInterfaceSingles();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BundleInterfaceSingle; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle> > bundle_interface_single;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle : public ydk::Entity
+{
+    public:
+        BundleInterfaceSingle();
+        ~BundleInterfaceSingle();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        class PolicyDetails; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::PolicyDetails
+        class MemberInterfaces; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces
+        class Classes; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::PolicyDetails> policy_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces> member_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes> classes;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::PolicyDetails : public ydk::Entity
+{
+    public:
+        PolicyDetails();
+        ~PolicyDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf npu_id; //type: uint32
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf interface_bandwidth_kbps; //type: uint32
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf total_number_of_classes; //type: uint16
+        ydk::YLeaf voq_base_address; //type: uint32
+        ydk::YLeaf voq_stats_handle; //type: uint64
+        ydk::YLeaf stats_accounting_type; //type: QosPolicyAccountEnum
+        ydk::YLeaf policy_status; //type: DnxQoseaShowPolicyStatus
+        ydk::YLeaf interface_status; //type: DnxQoseaShowIntfStatus
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::PolicyDetails
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces : public ydk::Entity
+{
+    public:
+        MemberInterfaces();
+        ~MemberInterfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MemberInterface; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface> > member_interface;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface : public ydk::Entity
+{
+    public:
+        MemberInterface();
+        ~MemberInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        class PolicyDetails; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::PolicyDetails
+        class Classes; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::PolicyDetails> policy_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes> classes;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::PolicyDetails : public ydk::Entity
+{
+    public:
+        PolicyDetails();
+        ~PolicyDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf npu_id; //type: uint32
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf interface_bandwidth_kbps; //type: uint32
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf total_number_of_classes; //type: uint16
+        ydk::YLeaf voq_base_address; //type: uint32
+        ydk::YLeaf voq_stats_handle; //type: uint64
+        ydk::YLeaf stats_accounting_type; //type: QosPolicyAccountEnum
+        ydk::YLeaf policy_status; //type: DnxQoseaShowPolicyStatus
+        ydk::YLeaf interface_status; //type: DnxQoseaShowIntfStatus
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::PolicyDetails
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes : public ydk::Entity
+{
+    public:
+        Classes();
+        ~Classes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Class; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class> > class_;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class : public ydk::Entity
+{
+    public:
+        Class();
+        ~Class();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level_one_class_name; //type: string
+        ydk::YLeaf level_two_class_name; //type: string
+        ydk::YLeaf class_level; //type: DnxQoseaShowLevel
+        ydk::YLeaf egress_queue_id; //type: int32
+        ydk::YLeaf queue_type; //type: DnxQoseaShowQueue
+        ydk::YLeaf priority_level; //type: DnxQoseaShowHpLevel
+        ydk::YLeaf hardware_max_rate_kbps; //type: uint32
+        ydk::YLeaf hardware_min_rate_kbps; //type: uint32
+        ydk::YLeaf config_excess_bandwidth_percent; //type: uint32
+        ydk::YLeaf config_excess_bandwidth_unit; //type: uint32
+        ydk::YLeaf hardware_excess_bandwidth_weight; //type: uint32
+        ydk::YLeaf network_min_bandwidth_kbps; //type: uint32
+        ydk::YLeaf hardware_queue_limit_bytes; //type: uint64
+        ydk::YLeaf hardware_queue_limit_microseconds; //type: uint64
+        ydk::YLeaf policer_bucket_id; //type: uint32
+        ydk::YLeaf policer_stats_handle; //type: uint64
+        ydk::YLeaf hardware_policer_average_rate_kbps; //type: uint32
+        ydk::YLeaf hardware_policer_peak_rate_kbps; //type: uint32
+        ydk::YLeaf hardware_policer_conform_burst_bytes; //type: uint32
+        ydk::YLeaf hardware_policer_excess_burst_bytes; //type: uint32
+        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate
+        class ConfigMinRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate
+        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit
+        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate
+        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate
+        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst
+        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst
+        class ConformAction; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction
+        class ExceedAction; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction
+        class ViolateAction; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction
+        class IpMark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::IpMark
+        class CommonMark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::CommonMark
+        class MplsMark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::MplsMark
+        class Wred; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate> config_max_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate> config_min_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit> config_queue_limit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate> config_policer_average_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate> config_policer_peak_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst> config_policer_conform_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst> config_policer_excess_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction> violate_action;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::IpMark> > ip_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::CommonMark> > common_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::MplsMark> > mpls_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred> > wred;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate : public ydk::Entity
+{
+    public:
+        ConfigMaxRate();
+        ~ConfigMaxRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate : public ydk::Entity
+{
+    public:
+        ConfigMinRate();
+        ~ConfigMinRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit : public ydk::Entity
+{
+    public:
+        ConfigQueueLimit();
+        ~ConfigQueueLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate : public ydk::Entity
+{
+    public:
+        ConfigPolicerAverageRate();
+        ~ConfigPolicerAverageRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate : public ydk::Entity
+{
+    public:
+        ConfigPolicerPeakRate();
+        ~ConfigPolicerPeakRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst : public ydk::Entity
+{
+    public:
+        ConfigPolicerConformBurst();
+        ~ConfigPolicerConformBurst();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst : public ydk::Entity
+{
+    public:
+        ConfigPolicerExcessBurst();
+        ~ConfigPolicerExcessBurst();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction : public ydk::Entity
+{
+    public:
+        ConformAction();
+        ~ConformAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action_type; //type: DnxQoseaShowAction
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark> > mark;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark : public ydk::Entity
+{
+    public:
+        Mark();
+        ~Mark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction : public ydk::Entity
+{
+    public:
+        ExceedAction();
+        ~ExceedAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action_type; //type: DnxQoseaShowAction
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark> > mark;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark : public ydk::Entity
+{
+    public:
+        Mark();
+        ~Mark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction : public ydk::Entity
+{
+    public:
+        ViolateAction();
+        ~ViolateAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action_type; //type: DnxQoseaShowAction
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark> > mark;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark : public ydk::Entity
+{
+    public:
+        Mark();
+        ~Mark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::IpMark : public ydk::Entity
+{
+    public:
+        IpMark();
+        ~IpMark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::IpMark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::CommonMark : public ydk::Entity
+{
+    public:
+        CommonMark();
+        ~CommonMark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::CommonMark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::MplsMark : public ydk::Entity
+{
+    public:
+        MplsMark();
+        ~MplsMark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::MplsMark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred : public ydk::Entity
+{
+    public:
+        Wred();
+        ~Wred();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wred_match_type; //type: DnxQoseaShowWred
+        ydk::YLeaf hardware_min_threshold_bytes; //type: uint32
+        ydk::YLeaf hardware_max_threshold_bytes; //type: uint32
+        ydk::YLeaf first_segment; //type: uint16
+        ydk::YLeaf segment_size; //type: uint32
+        class WredMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue
+        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold
+        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue> wred_match_value;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold> config_min_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold> config_max_threshold;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue : public ydk::Entity
+{
+    public:
+        WredMatchValue();
+        ~WredMatchValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
+{
+    public:
+        DnxQoseaShowRedMatchValue();
+        ~DnxQoseaShowRedMatchValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf range_start; //type: uint8
+        ydk::YLeaf range_end; //type: uint8
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold : public ydk::Entity
+{
+    public:
+        ConfigMinThreshold();
+        ~ConfigMinThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold : public ydk::Entity
+{
+    public:
+        ConfigMaxThreshold();
+        ~ConfigMaxThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes : public ydk::Entity
+{
+    public:
+        Classes();
+        ~Classes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Class; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class> > class_;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class : public ydk::Entity
+{
+    public:
+        Class();
+        ~Class();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level_one_class_name; //type: string
+        ydk::YLeaf level_two_class_name; //type: string
+        ydk::YLeaf class_level; //type: DnxQoseaShowLevel
+        ydk::YLeaf egress_queue_id; //type: int32
+        ydk::YLeaf queue_type; //type: DnxQoseaShowQueue
+        ydk::YLeaf priority_level; //type: DnxQoseaShowHpLevel
+        ydk::YLeaf hardware_max_rate_kbps; //type: uint32
+        ydk::YLeaf hardware_min_rate_kbps; //type: uint32
+        ydk::YLeaf config_excess_bandwidth_percent; //type: uint32
+        ydk::YLeaf config_excess_bandwidth_unit; //type: uint32
+        ydk::YLeaf hardware_excess_bandwidth_weight; //type: uint32
+        ydk::YLeaf network_min_bandwidth_kbps; //type: uint32
+        ydk::YLeaf hardware_queue_limit_bytes; //type: uint64
+        ydk::YLeaf hardware_queue_limit_microseconds; //type: uint64
+        ydk::YLeaf policer_bucket_id; //type: uint32
+        ydk::YLeaf policer_stats_handle; //type: uint64
+        ydk::YLeaf hardware_policer_average_rate_kbps; //type: uint32
+        ydk::YLeaf hardware_policer_peak_rate_kbps; //type: uint32
+        ydk::YLeaf hardware_policer_conform_burst_bytes; //type: uint32
+        ydk::YLeaf hardware_policer_excess_burst_bytes; //type: uint32
+        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMaxRate
+        class ConfigMinRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMinRate
+        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigQueueLimit
+        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerAverageRate
+        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerPeakRate
+        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerConformBurst
+        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerExcessBurst
+        class ConformAction; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction
+        class ExceedAction; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction
+        class ViolateAction; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction
+        class IpMark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::IpMark
+        class CommonMark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::CommonMark
+        class MplsMark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::MplsMark
+        class Wred; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMaxRate> config_max_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMinRate> config_min_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigQueueLimit> config_queue_limit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerAverageRate> config_policer_average_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerPeakRate> config_policer_peak_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerConformBurst> config_policer_conform_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerExcessBurst> config_policer_excess_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction> violate_action;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::IpMark> > ip_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::CommonMark> > common_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::MplsMark> > mpls_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred> > wred;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMaxRate : public ydk::Entity
+{
+    public:
+        ConfigMaxRate();
+        ~ConfigMaxRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMaxRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMinRate : public ydk::Entity
+{
+    public:
+        ConfigMinRate();
+        ~ConfigMinRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigMinRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigQueueLimit : public ydk::Entity
+{
+    public:
+        ConfigQueueLimit();
+        ~ConfigQueueLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigQueueLimit
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerAverageRate : public ydk::Entity
+{
+    public:
+        ConfigPolicerAverageRate();
+        ~ConfigPolicerAverageRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerAverageRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerPeakRate : public ydk::Entity
+{
+    public:
+        ConfigPolicerPeakRate();
+        ~ConfigPolicerPeakRate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerPeakRate
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerConformBurst : public ydk::Entity
+{
+    public:
+        ConfigPolicerConformBurst();
+        ~ConfigPolicerConformBurst();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerConformBurst
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerExcessBurst : public ydk::Entity
+{
+    public:
+        ConfigPolicerExcessBurst();
+        ~ConfigPolicerExcessBurst();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConfigPolicerExcessBurst
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction : public ydk::Entity
+{
+    public:
+        ConformAction();
+        ~ConformAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action_type; //type: DnxQoseaShowAction
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction::Mark
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction::Mark> > mark;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction::Mark : public ydk::Entity
+{
+    public:
+        Mark();
+        ~Mark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ConformAction::Mark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction : public ydk::Entity
+{
+    public:
+        ExceedAction();
+        ~ExceedAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action_type; //type: DnxQoseaShowAction
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction::Mark
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction::Mark> > mark;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction::Mark : public ydk::Entity
+{
+    public:
+        Mark();
+        ~Mark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ExceedAction::Mark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction : public ydk::Entity
+{
+    public:
+        ViolateAction();
+        ~ViolateAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action_type; //type: DnxQoseaShowAction
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction::Mark
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction::Mark> > mark;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction::Mark : public ydk::Entity
+{
+    public:
+        Mark();
+        ~Mark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::ViolateAction::Mark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::IpMark : public ydk::Entity
+{
+    public:
+        IpMark();
+        ~IpMark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::IpMark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::CommonMark : public ydk::Entity
+{
+    public:
+        CommonMark();
+        ~CommonMark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::CommonMark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::MplsMark : public ydk::Entity
+{
+    public:
+        MplsMark();
+        ~MplsMark();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mark_type; //type: DnxQoseaShowMark
+        ydk::YLeaf mark_value; //type: uint16
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::MplsMark
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred : public ydk::Entity
+{
+    public:
+        Wred();
+        ~Wred();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wred_match_type; //type: DnxQoseaShowWred
+        ydk::YLeaf hardware_min_threshold_bytes; //type: uint32
+        ydk::YLeaf hardware_max_threshold_bytes; //type: uint32
+        ydk::YLeaf first_segment; //type: uint16
+        ydk::YLeaf segment_size; //type: uint32
+        class WredMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue
+        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMinThreshold
+        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMaxThreshold
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue> wred_match_value;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMinThreshold> config_min_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMaxThreshold> config_max_threshold;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue : public ydk::Entity
+{
+    public:
+        WredMatchValue();
+        ~WredMatchValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
+        
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
+{
+    public:
+        DnxQoseaShowRedMatchValue();
+        ~DnxQoseaShowRedMatchValue();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf range_start; //type: uint8
+        ydk::YLeaf range_end; //type: uint8
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMinThreshold : public ydk::Entity
+{
+    public:
+        ConfigMinThreshold();
+        ~ConfigMinThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMinThreshold
+
+
+class PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMaxThreshold : public ydk::Entity
+{
+    public:
+        ConfigMaxThreshold();
+        ~ConfigMaxThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_value; //type: uint32
+        ydk::YLeaf policy_unit; //type: PolicyParamUnit
+
+}; // PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSingle::Classes::Class::Wred::ConfigMaxThreshold
 
 
 class PlatformQos::Nodes::Node::RemoteInterfaces : public ydk::Entity

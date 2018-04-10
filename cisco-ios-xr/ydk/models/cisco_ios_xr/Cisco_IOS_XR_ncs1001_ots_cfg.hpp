@@ -133,7 +133,6 @@ class HardwareModule::Node::Slot::Psm : public ydk::Entity
         ydk::YLeaf path_protection; //type: boolean
         ydk::YLeaf section_protection; //type: boolean
         ydk::YLeaf lockout_from; //type: OtsPsmLockoutFrom
-        ydk::YLeaf manual_switch_to; //type: OtsPsmManualSwitch
 
 }; // HardwareModule::Node::Slot::Psm
 
@@ -152,14 +151,6 @@ class OtsAmplifierGridMode : public ydk::Enum
         static const ydk::Enum::YLeaf Y_100g_hz;
         static const ydk::Enum::YLeaf Y_50g_hz;
         static const ydk::Enum::YLeaf gr_idle_ss;
-
-};
-
-class OtsPsmManualSwitch : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf working;
-        static const ydk::Enum::YLeaf protected_;
 
 };
 

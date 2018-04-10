@@ -35,13 +35,13 @@ class FrequencySynchronization : public ydk::Entity
         class GlobalNodes; //type: FrequencySynchronization::GlobalNodes
         class GlobalInterfaces; //type: FrequencySynchronization::GlobalInterfaces
         class Summary; //type: FrequencySynchronization::Summary
-        class Interfaces; //type: FrequencySynchronization::Interfaces
+        class InterfaceDatas; //type: FrequencySynchronization::InterfaceDatas
         class Nodes; //type: FrequencySynchronization::Nodes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::GlobalNodes> global_nodes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::GlobalInterfaces> global_interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Summary> summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas> interface_datas;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes> nodes;
         
 }; // FrequencySynchronization
@@ -1279,11 +1279,11 @@ class FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId : pub
 }; // FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId
 
 
-class FrequencySynchronization::Interfaces : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas : public ydk::Entity
 {
     public:
-        Interfaces();
-        ~Interfaces();
+        InterfaceDatas();
+        ~InterfaceDatas();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1296,18 +1296,18 @@ class FrequencySynchronization::Interfaces : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Interface; //type: FrequencySynchronization::Interfaces::Interface
+        class InterfaceData; //type: FrequencySynchronization::InterfaceDatas::InterfaceData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface> > interface;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData> > interface_data;
         
-}; // FrequencySynchronization::Interfaces
+}; // FrequencySynchronization::InterfaceDatas
 
 
-class FrequencySynchronization::Interfaces::Interface : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData : public ydk::Entity
 {
     public:
-        Interface();
-        ~Interface();
+        InterfaceData();
+        ~InterfaceData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1333,34 +1333,34 @@ class FrequencySynchronization::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf wait_to_restore_time; //type: uint16
         ydk::YLeaf supports_frequency; //type: boolean
         ydk::YLeaf supports_time_of_day; //type: boolean
-        ydk::YLeafList spa_selection_point; //type: list of  uint8
-        ydk::YLeafList spa_selection_points_description; //type: list of  string
-        ydk::YLeafList node_selection_point; //type: list of  uint8
-        ydk::YLeafList node_selection_points_description; //type: list of  string
-        class Source; //type: FrequencySynchronization::Interfaces::Interface::Source
-        class SelectedSource; //type: FrequencySynchronization::Interfaces::Interface::SelectedSource
-        class QualityLevelReceived; //type: FrequencySynchronization::Interfaces::Interface::QualityLevelReceived
-        class QualityLevelDamped; //type: FrequencySynchronization::Interfaces::Interface::QualityLevelDamped
-        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput
-        class QualityLevelEffectiveOutput; //type: FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput
-        class QualityLevelSelectedSource; //type: FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource
-        class EthernetPeerInformation; //type: FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation
-        class EsmcStatistics; //type: FrequencySynchronization::Interfaces::Interface::EsmcStatistics
+        class Source; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::Source
+        class SelectedSource; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource
+        class QualityLevelReceived; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived
+        class QualityLevelDamped; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped
+        class QualityLevelEffectiveInput; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput
+        class QualityLevelEffectiveOutput; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput
+        class QualityLevelSelectedSource; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource
+        class EthernetPeerInformation; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
+        class EsmcStatistics; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics
+        class SpaSelectionPoint; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint
+        class NodeSelectionPoint; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::Source> source;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::SelectedSource> selected_source;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::QualityLevelReceived> quality_level_received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::QualityLevelDamped> quality_level_damped;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput> quality_level_effective_input;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput> quality_level_effective_output;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource> quality_level_selected_source;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation> ethernet_peer_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::EsmcStatistics> esmc_statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::Source> source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource> selected_source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived> quality_level_received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped> quality_level_damped;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput> quality_level_effective_input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput> quality_level_effective_output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource> quality_level_selected_source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation> ethernet_peer_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics> esmc_statistics;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint> > spa_selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint> > node_selection_point;
         
-}; // FrequencySynchronization::Interfaces::Interface
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData
 
 
-class FrequencySynchronization::Interfaces::Interface::Source : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::Source : public ydk::Entity
 {
     public:
         Source();
@@ -1383,14 +1383,14 @@ class FrequencySynchronization::Interfaces::Interface::Source : public ydk::Enti
         ydk::YLeaf ptp_node; //type: string
         ydk::YLeaf satellite_access_interface; //type: string
         ydk::YLeaf ntp_node; //type: string
-        class ClockId; //type: FrequencySynchronization::Interfaces::Interface::Source::ClockId
+        class ClockId; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::Source::ClockId> clock_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId> clock_id;
         
-}; // FrequencySynchronization::Interfaces::Interface::Source
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::Source
 
 
-class FrequencySynchronization::Interfaces::Interface::Source::ClockId : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId : public ydk::Entity
 {
     public:
         ClockId();
@@ -1409,10 +1409,10 @@ class FrequencySynchronization::Interfaces::Interface::Source::ClockId : public 
         ydk::YLeaf node; //type: string
         ydk::YLeaf port; //type: uint32
 
-}; // FrequencySynchronization::Interfaces::Interface::Source::ClockId
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId
 
 
-class FrequencySynchronization::Interfaces::Interface::SelectedSource : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource : public ydk::Entity
 {
     public:
         SelectedSource();
@@ -1435,14 +1435,14 @@ class FrequencySynchronization::Interfaces::Interface::SelectedSource : public y
         ydk::YLeaf ptp_node; //type: string
         ydk::YLeaf satellite_access_interface; //type: string
         ydk::YLeaf ntp_node; //type: string
-        class ClockId; //type: FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId
+        class ClockId; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId> clock_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId> clock_id;
         
-}; // FrequencySynchronization::Interfaces::Interface::SelectedSource
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource
 
 
-class FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId : public ydk::Entity
 {
     public:
         ClockId();
@@ -1461,10 +1461,10 @@ class FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId :
         ydk::YLeaf node; //type: string
         ydk::YLeaf port; //type: uint32
 
-}; // FrequencySynchronization::Interfaces::Interface::SelectedSource::ClockId
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId
 
 
-class FrequencySynchronization::Interfaces::Interface::QualityLevelReceived : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived : public ydk::Entity
 {
     public:
         QualityLevelReceived();
@@ -1485,10 +1485,10 @@ class FrequencySynchronization::Interfaces::Interface::QualityLevelReceived : pu
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Interfaces::Interface::QualityLevelReceived
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived
 
 
-class FrequencySynchronization::Interfaces::Interface::QualityLevelDamped : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped : public ydk::Entity
 {
     public:
         QualityLevelDamped();
@@ -1509,10 +1509,10 @@ class FrequencySynchronization::Interfaces::Interface::QualityLevelDamped : publ
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Interfaces::Interface::QualityLevelDamped
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped
 
 
-class FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput : public ydk::Entity
 {
     public:
         QualityLevelEffectiveInput();
@@ -1533,10 +1533,10 @@ class FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInpu
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveInput
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput
 
 
-class FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput : public ydk::Entity
 {
     public:
         QualityLevelEffectiveOutput();
@@ -1557,10 +1557,10 @@ class FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutp
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Interfaces::Interface::QualityLevelEffectiveOutput
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput
 
 
-class FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource : public ydk::Entity
 {
     public:
         QualityLevelSelectedSource();
@@ -1581,10 +1581,10 @@ class FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSourc
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Interfaces::Interface::QualityLevelSelectedSource
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource
 
 
-class FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation : public ydk::Entity
 {
     public:
         EthernetPeerInformation();
@@ -1603,16 +1603,16 @@ class FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation :
         ydk::YLeaf peer_state; //type: FsyncBagEsmcPeerState
         ydk::YLeaf peer_up_count; //type: uint16
         ydk::YLeaf peer_timeout_count; //type: uint16
-        class PeerStateTime; //type: FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime
-        class LastSsm; //type: FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm
+        class PeerStateTime; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime
+        class LastSsm; //type: FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime> peer_state_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm> last_ssm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime> peer_state_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm> last_ssm;
         
-}; // FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation
 
 
-class FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime : public ydk::Entity
 {
     public:
         PeerStateTime();
@@ -1631,10 +1631,10 @@ class FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::PeerStateTime
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime
 
 
-class FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm : public ydk::Entity
 {
     public:
         LastSsm();
@@ -1653,10 +1653,10 @@ class FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::
         ydk::YLeaf seconds; //type: uint32
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // FrequencySynchronization::Interfaces::Interface::EthernetPeerInformation::LastSsm
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm
 
 
-class FrequencySynchronization::Interfaces::Interface::EsmcStatistics : public ydk::Entity
+class FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics : public ydk::Entity
 {
     public:
         EsmcStatistics();
@@ -1681,7 +1681,51 @@ class FrequencySynchronization::Interfaces::Interface::EsmcStatistics : public y
         ydk::YLeaf esmc_malformed_received; //type: uint16
         ydk::YLeaf esmc_received_error; //type: uint16
 
-}; // FrequencySynchronization::Interfaces::Interface::EsmcStatistics
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics
+
+
+class FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint : public ydk::Entity
+{
+    public:
+        SpaSelectionPoint();
+        ~SpaSelectionPoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
+
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint
+
+
+class FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint : public ydk::Entity
+{
+    public:
+        NodeSelectionPoint();
+        ~NodeSelectionPoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
+
+}; // FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint
 
 
 class FrequencySynchronization::Nodes : public ydk::Entity
@@ -1726,30 +1770,30 @@ class FrequencySynchronization::Nodes::Node : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node; //type: string
-        class Ntp; //type: FrequencySynchronization::Nodes::Node::Ntp
-        class Clocks; //type: FrequencySynchronization::Nodes::Node::Clocks
+        class NtpData; //type: FrequencySynchronization::Nodes::Node::NtpData
+        class SelectionPointDatas; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas
         class ConfigurationErrors; //type: FrequencySynchronization::Nodes::Node::ConfigurationErrors
-        class Ptp; //type: FrequencySynchronization::Nodes::Node::Ptp
+        class PtpData; //type: FrequencySynchronization::Nodes::Node::PtpData
         class SsmSummary; //type: FrequencySynchronization::Nodes::Node::SsmSummary
-        class SelectionPoints; //type: FrequencySynchronization::Nodes::Node::SelectionPoints
+        class ClockDatas; //type: FrequencySynchronization::Nodes::Node::ClockDatas
         class SelectionPointInputs; //type: FrequencySynchronization::Nodes::Node::SelectionPointInputs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks> clocks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::NtpData> ntp_data;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas> selection_point_datas;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ConfigurationErrors> configuration_errors;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Ptp> ptp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::PtpData> ptp_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SsmSummary> ssm_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPoints> selection_points;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas> clock_datas;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointInputs> selection_point_inputs;
         
 }; // FrequencySynchronization::Nodes::Node
 
 
-class FrequencySynchronization::Nodes::Node::Ntp : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::NtpData : public ydk::Entity
 {
     public:
-        Ntp();
-        ~Ntp();
+        NtpData();
+        ~NtpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1766,18 +1810,18 @@ class FrequencySynchronization::Nodes::Node::Ntp : public ydk::Entity
         ydk::YLeaf supports_time_of_day; //type: boolean
         ydk::YLeaf frequency_priority; //type: uint8
         ydk::YLeaf time_of_day_priority; //type: uint8
-        ydk::YLeafList spa_selection_point; //type: list of  uint8
-        ydk::YLeafList spa_selection_points_description; //type: list of  string
-        ydk::YLeafList node_selection_point; //type: list of  uint8
-        ydk::YLeafList node_selection_points_description; //type: list of  string
-        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput
+        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput
+        class SpaSelectionPoint; //type: FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint
+        class NodeSelectionPoint; //type: FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput> quality_level_effective_input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput> quality_level_effective_input;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint> > spa_selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint> > node_selection_point;
         
-}; // FrequencySynchronization::Nodes::Node::Ntp
+}; // FrequencySynchronization::Nodes::Node::NtpData
 
 
-class FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput : public ydk::Entity
 {
     public:
         QualityLevelEffectiveInput();
@@ -1798,14 +1842,14 @@ class FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput : p
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Nodes::Node::Ntp::QualityLevelEffectiveInput
+}; // FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput
 
 
-class FrequencySynchronization::Nodes::Node::Clocks : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint : public ydk::Entity
 {
     public:
-        Clocks();
-        ~Clocks();
+        SpaSelectionPoint();
+        ~SpaSelectionPoint();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1817,18 +1861,62 @@ class FrequencySynchronization::Nodes::Node::Clocks : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Clock; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock> > clock_;
+}; // FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint
+
+
+class FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint : public ydk::Entity
+{
+    public:
+        NodeSelectionPoint();
+        ~NodeSelectionPoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
+
+}; // FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint
+
+
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas : public ydk::Entity
+{
+    public:
+        SelectionPointDatas();
+        ~SelectionPointDatas();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SelectionPointData; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData> > selection_point_data;
         
-}; // FrequencySynchronization::Nodes::Node::Clocks
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData : public ydk::Entity
 {
     public:
-        Clock();
-        ~Clock();
+        SelectionPointData();
+        ~SelectionPointData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1840,54 +1928,28 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf clock_type; //type: FsyncClock
-        ydk::YLeaf port; //type: int32
-        ydk::YLeaf state; //type: FsyncBagSourceState
-        ydk::YLeaf down_reason; //type: string
+        ydk::YLeaf selection_point; //type: int32
+        ydk::YLeaf selection_point_type; //type: uint8
         ydk::YLeaf description; //type: string
-        ydk::YLeaf priority; //type: uint8
-        ydk::YLeaf time_of_day_priority; //type: uint8
-        ydk::YLeaf ssm_support; //type: boolean
-        ydk::YLeaf ssm_enabled; //type: boolean
-        ydk::YLeaf loopback; //type: boolean
-        ydk::YLeaf selection_input; //type: boolean
-        ydk::YLeaf squelched; //type: boolean
-        ydk::YLeaf damping_state; //type: FsyncBagDampingState
-        ydk::YLeaf damping_time; //type: uint32
-        ydk::YLeaf input_disabled; //type: boolean
-        ydk::YLeaf output_disabled; //type: boolean
-        ydk::YLeaf wait_to_restore_time; //type: uint16
-        ydk::YLeaf clock_type_xr; //type: FsyncBagClockIntfClass
-        ydk::YLeaf supports_frequency; //type: boolean
-        ydk::YLeaf supports_time_of_day; //type: boolean
-        ydk::YLeafList spa_selection_point; //type: list of  uint8
-        ydk::YLeafList spa_selection_points_description; //type: list of  string
-        ydk::YLeafList node_selection_point; //type: list of  uint8
-        ydk::YLeafList node_selection_points_description; //type: list of  string
-        class Source; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::Source
-        class SelectedSource; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource
-        class QualityLevelReceived; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived
-        class QualityLevelDamped; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped
-        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput
-        class QualityLevelEffectiveOutput; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput
-        class QualityLevelSelectedSource; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource
+        ydk::YLeaf inputs; //type: uint32
+        ydk::YLeaf inputs_selected; //type: uint32
+        ydk::YLeaf time_of_day_selection; //type: boolean
+        class Output; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output
+        class LastProgrammed; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed
+        class LastSelection; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::Source> source;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource> selected_source;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived> quality_level_received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped> quality_level_damped;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput> quality_level_effective_input;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput> quality_level_effective_output;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource> quality_level_selected_source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output> output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed> last_programmed;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection> last_selection;
         
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::Source : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output : public ydk::Entity
 {
     public:
-        Source();
-        ~Source();
+        Output();
+        ~Output();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1899,25 +1961,27 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock::Source : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf source_class; //type: FsyncBagSourceClass
-        ydk::YLeaf ethernet_interface; //type: string
-        ydk::YLeaf sonet_interface; //type: string
-        ydk::YLeaf node; //type: string
-        ydk::YLeaf ptp_node; //type: string
-        ydk::YLeaf satellite_access_interface; //type: string
-        ydk::YLeaf ntp_node; //type: string
-        class ClockId; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId
+        ydk::YLeaf local_clock_ouput; //type: boolean
+        ydk::YLeaf local_line_output; //type: boolean
+        ydk::YLeaf local_time_of_day_output; //type: boolean
+        class SpaSelectionPoint; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint
+        class NodeSelectionPoint; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint
+        class ChassisSelectionPoint; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint
+        class RouterSelectionPoint; //type: FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId> clock_id;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint> > spa_selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint> > node_selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint> > chassis_selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint> > router_selection_point;
         
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::Source
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint : public ydk::Entity
 {
     public:
-        ClockId();
-        ~ClockId();
+        SpaSelectionPoint();
+        ~SpaSelectionPoint();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1929,17 +1993,17 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf node; //type: string
-        ydk::YLeaf port; //type: uint32
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint : public ydk::Entity
 {
     public:
-        SelectedSource();
-        ~SelectedSource();
+        NodeSelectionPoint();
+        ~NodeSelectionPoint();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1951,25 +2015,17 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf source_class; //type: FsyncBagSourceClass
-        ydk::YLeaf ethernet_interface; //type: string
-        ydk::YLeaf sonet_interface; //type: string
-        ydk::YLeaf node; //type: string
-        ydk::YLeaf ptp_node; //type: string
-        ydk::YLeaf satellite_access_interface; //type: string
-        ydk::YLeaf ntp_node; //type: string
-        class ClockId; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId> clock_id;
-        
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint : public ydk::Entity
 {
     public:
-        ClockId();
-        ~ClockId();
+        ChassisSelectionPoint();
+        ~ChassisSelectionPoint();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1981,17 +2037,17 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::Cloc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf node; //type: string
-        ydk::YLeaf port; //type: uint32
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint : public ydk::Entity
 {
     public:
-        QualityLevelReceived();
-        ~QualityLevelReceived();
+        RouterSelectionPoint();
+        ~RouterSelectionPoint();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2003,19 +2059,17 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
-        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
-        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
-        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed : public ydk::Entity
 {
     public:
-        QualityLevelDamped();
-        ~QualityLevelDamped();
+        LastProgrammed();
+        ~LastProgrammed();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2027,19 +2081,17 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
-        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
-        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
-        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection : public ydk::Entity
 {
     public:
-        QualityLevelEffectiveInput();
-        ~QualityLevelEffectiveInput();
+        LastSelection();
+        ~LastSelection();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2051,60 +2103,10 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiv
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
-        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
-        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
-        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput
-
-
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput : public ydk::Entity
-{
-    public:
-        QualityLevelEffectiveOutput();
-        ~QualityLevelEffectiveOutput();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
-        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
-        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
-        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
-
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput
-
-
-class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource : public ydk::Entity
-{
-    public:
-        QualityLevelSelectedSource();
-        ~QualityLevelSelectedSource();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
-        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
-        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
-        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
-
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource
+}; // FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection
 
 
 class FrequencySynchronization::Nodes::Node::ConfigurationErrors : public ydk::Entity
@@ -2369,11 +2371,11 @@ class FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::O
 }; // FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl
 
 
-class FrequencySynchronization::Nodes::Node::Ptp : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::PtpData : public ydk::Entity
 {
     public:
-        Ptp();
-        ~Ptp();
+        PtpData();
+        ~PtpData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2390,18 +2392,18 @@ class FrequencySynchronization::Nodes::Node::Ptp : public ydk::Entity
         ydk::YLeaf supports_time_of_day; //type: boolean
         ydk::YLeaf frequency_priority; //type: uint8
         ydk::YLeaf time_of_day_priority; //type: uint8
-        ydk::YLeafList spa_selection_point; //type: list of  uint8
-        ydk::YLeafList spa_selection_points_description; //type: list of  string
-        ydk::YLeafList node_selection_point; //type: list of  uint8
-        ydk::YLeafList node_selection_points_description; //type: list of  string
-        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput
+        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput
+        class SpaSelectionPoint; //type: FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint
+        class NodeSelectionPoint; //type: FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput> quality_level_effective_input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput> quality_level_effective_input;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint> > spa_selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint> > node_selection_point;
         
-}; // FrequencySynchronization::Nodes::Node::Ptp
+}; // FrequencySynchronization::Nodes::Node::PtpData
 
 
-class FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput : public ydk::Entity
 {
     public:
         QualityLevelEffectiveInput();
@@ -2422,7 +2424,51 @@ class FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput : p
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Nodes::Node::Ptp::QualityLevelEffectiveInput
+}; // FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput
+
+
+class FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint : public ydk::Entity
+{
+    public:
+        SpaSelectionPoint();
+        ~SpaSelectionPoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
+
+}; // FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint
+
+
+class FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint : public ydk::Entity
+{
+    public:
+        NodeSelectionPoint();
+        ~NodeSelectionPoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
+
+}; // FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint
 
 
 class FrequencySynchronization::Nodes::Node::SsmSummary : public ydk::Entity
@@ -2457,11 +2503,11 @@ class FrequencySynchronization::Nodes::Node::SsmSummary : public ydk::Entity
 }; // FrequencySynchronization::Nodes::Node::SsmSummary
 
 
-class FrequencySynchronization::Nodes::Node::SelectionPoints : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::ClockDatas : public ydk::Entity
 {
     public:
-        SelectionPoints();
-        ~SelectionPoints();
+        ClockDatas();
+        ~ClockDatas();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2473,18 +2519,18 @@ class FrequencySynchronization::Nodes::Node::SelectionPoints : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SelectionPoint; //type: FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint
+        class ClockData; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint> > selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData> > clock_data;
         
-}; // FrequencySynchronization::Nodes::Node::SelectionPoints
+}; // FrequencySynchronization::Nodes::Node::ClockDatas
 
 
-class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData : public ydk::Entity
 {
     public:
-        SelectionPoint();
-        ~SelectionPoint();
+        ClockData();
+        ~ClockData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2496,28 +2542,54 @@ class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf selection_point; //type: int32
-        ydk::YLeaf selection_point_type; //type: uint8
+        ydk::YLeaf clock_type; //type: FsyncClock
+        ydk::YLeaf port; //type: int32
+        ydk::YLeaf state; //type: FsyncBagSourceState
+        ydk::YLeaf down_reason; //type: string
         ydk::YLeaf description; //type: string
-        ydk::YLeaf inputs; //type: uint32
-        ydk::YLeaf inputs_selected; //type: uint32
-        ydk::YLeaf time_of_day_selection; //type: boolean
-        class Output; //type: FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output
-        class LastProgrammed; //type: FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed
-        class LastSelection; //type: FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf time_of_day_priority; //type: uint8
+        ydk::YLeaf ssm_support; //type: boolean
+        ydk::YLeaf ssm_enabled; //type: boolean
+        ydk::YLeaf loopback; //type: boolean
+        ydk::YLeaf selection_input; //type: boolean
+        ydk::YLeaf squelched; //type: boolean
+        ydk::YLeaf damping_state; //type: FsyncBagDampingState
+        ydk::YLeaf damping_time; //type: uint32
+        ydk::YLeaf input_disabled; //type: boolean
+        ydk::YLeaf output_disabled; //type: boolean
+        ydk::YLeaf wait_to_restore_time; //type: uint16
+        ydk::YLeaf clock_type_xr; //type: FsyncBagClockIntfClass
+        ydk::YLeaf supports_frequency; //type: boolean
+        ydk::YLeaf supports_time_of_day; //type: boolean
+        class Source; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source
+        class SelectedSource; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource
+        class QualityLevelReceived; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived
+        class QualityLevelDamped; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped
+        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput
+        class QualityLevelEffectiveOutput; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput
+        class QualityLevelSelectedSource; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource
+        class SpaSelectionPoint; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint
+        class NodeSelectionPoint; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output> output;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed> last_programmed;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection> last_selection;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source> source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource> selected_source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived> quality_level_received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped> quality_level_damped;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput> quality_level_effective_input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput> quality_level_effective_output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource> quality_level_selected_source;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint> > spa_selection_point;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint> > node_selection_point;
         
-}; // FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData
 
 
-class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source : public ydk::Entity
 {
     public:
-        Output();
-        ~Output();
+        Source();
+        ~Source();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2529,26 +2601,25 @@ class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Ou
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf local_clock_ouput; //type: boolean
-        ydk::YLeaf local_line_output; //type: boolean
-        ydk::YLeaf local_time_of_day_output; //type: boolean
-        ydk::YLeafList spa_selection_point; //type: list of  uint8
-        ydk::YLeafList spa_selection_points_description; //type: list of  string
-        ydk::YLeafList node_selection_point; //type: list of  uint8
-        ydk::YLeafList node_selection_points_description; //type: list of  string
-        ydk::YLeafList chassis_selection_point; //type: list of  uint8
-        ydk::YLeafList chassis_selection_points_description; //type: list of  string
-        ydk::YLeafList router_selection_point; //type: list of  uint8
-        ydk::YLeafList router_selection_points_description; //type: list of  string
+        ydk::YLeaf source_class; //type: FsyncBagSourceClass
+        ydk::YLeaf ethernet_interface; //type: string
+        ydk::YLeaf sonet_interface; //type: string
+        ydk::YLeaf node; //type: string
+        ydk::YLeaf ptp_node; //type: string
+        ydk::YLeaf satellite_access_interface; //type: string
+        ydk::YLeaf ntp_node; //type: string
+        class ClockId; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId
 
-}; // FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::Output
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId> clock_id;
+        
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source
 
 
-class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId : public ydk::Entity
 {
     public:
-        LastProgrammed();
-        ~LastProgrammed();
+        ClockId();
+        ~ClockId();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2560,17 +2631,17 @@ class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::La
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf node; //type: string
+        ydk::YLeaf port; //type: uint32
 
-}; // FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastProgrammed
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId
 
 
-class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource : public ydk::Entity
 {
     public:
-        LastSelection();
-        ~LastSelection();
+        SelectedSource();
+        ~SelectedSource();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2582,10 +2653,204 @@ class FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::La
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf source_class; //type: FsyncBagSourceClass
+        ydk::YLeaf ethernet_interface; //type: string
+        ydk::YLeaf sonet_interface; //type: string
+        ydk::YLeaf node; //type: string
+        ydk::YLeaf ptp_node; //type: string
+        ydk::YLeaf satellite_access_interface; //type: string
+        ydk::YLeaf ntp_node; //type: string
+        class ClockId; //type: FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId
 
-}; // FrequencySynchronization::Nodes::Node::SelectionPoints::SelectionPoint::LastSelection
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId> clock_id;
+        
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId : public ydk::Entity
+{
+    public:
+        ClockId();
+        ~ClockId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf node; //type: string
+        ydk::YLeaf port; //type: uint32
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived : public ydk::Entity
+{
+    public:
+        QualityLevelReceived();
+        ~QualityLevelReceived();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
+        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
+        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
+        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped : public ydk::Entity
+{
+    public:
+        QualityLevelDamped();
+        ~QualityLevelDamped();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
+        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
+        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
+        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput : public ydk::Entity
+{
+    public:
+        QualityLevelEffectiveInput();
+        ~QualityLevelEffectiveInput();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
+        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
+        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
+        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput : public ydk::Entity
+{
+    public:
+        QualityLevelEffectiveOutput();
+        ~QualityLevelEffectiveOutput();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
+        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
+        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
+        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource : public ydk::Entity
+{
+    public:
+        QualityLevelSelectedSource();
+        ~QualityLevelSelectedSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncBagQlOption
+        ydk::YLeaf option1_value; //type: FsyncBagQlO1Value
+        ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
+        ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint : public ydk::Entity
+{
+    public:
+        SpaSelectionPoint();
+        ~SpaSelectionPoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint
+
+
+class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint : public ydk::Entity
+{
+    public:
+        NodeSelectionPoint();
+        ~NodeSelectionPoint();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf selection_point; //type: uint8
+        ydk::YLeaf selection_point_description; //type: string
+
+}; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint
 
 
 class FrequencySynchronization::Nodes::Node::SelectionPointInputs : public ydk::Entity
@@ -2904,7 +3169,9 @@ class FsyncBagStreamState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf stream_invalid;
+        static const ydk::Enum::YLeaf stream_unqualified;
         static const ydk::Enum::YLeaf stream_available;
+        static const ydk::Enum::YLeaf stream_available_acquiring;
         static const ydk::Enum::YLeaf stream_locked;
         static const ydk::Enum::YLeaf stream_holdover;
         static const ydk::Enum::YLeaf stream_freerun;
@@ -2935,6 +3202,7 @@ class FsyncBagClockIntfClass : public ydk::Enum
         static const ydk::Enum::YLeaf clock_class_gps;
         static const ydk::Enum::YLeaf clock_class_chassis_sync;
         static const ydk::Enum::YLeaf clock_class_bitsj1;
+        static const ydk::Enum::YLeaf clock_class_unknown;
 
 };
 

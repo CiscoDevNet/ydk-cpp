@@ -14,10 +14,8 @@ namespace cisco_self_mgmt {
 NetconfYang::NetconfYang()
     :
     cisco_ia(std::make_shared<NetconfYang::CiscoIa>())
-	,cisco_odm(std::make_shared<NetconfYang::CiscoOdm>())
 {
     cisco_ia->parent = this;
-    cisco_odm->parent = this;
 
     yang_name = "netconf-yang"; yang_parent_name = "cisco-self-mgmt"; is_top_level_class = true; has_list_ancestor = false;
 }
@@ -28,15 +26,13 @@ NetconfYang::~NetconfYang()
 
 bool NetconfYang::has_data() const
 {
-    return (cisco_ia !=  nullptr && cisco_ia->has_data())
-	|| (cisco_odm !=  nullptr && cisco_odm->has_data());
+    return (cisco_ia !=  nullptr && cisco_ia->has_data());
 }
 
 bool NetconfYang::has_operation() const
 {
     return is_set(yfilter)
-	|| (cisco_ia !=  nullptr && cisco_ia->has_operation())
-	|| (cisco_odm !=  nullptr && cisco_odm->has_operation());
+	|| (cisco_ia !=  nullptr && cisco_ia->has_operation());
 }
 
 std::string NetconfYang::get_segment_path() const
@@ -66,15 +62,6 @@ std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child
         return cisco_ia;
     }
 
-    if(child_yang_name == "cisco-odm:cisco-odm")
-    {
-        if(cisco_odm == nullptr)
-        {
-            cisco_odm = std::make_shared<NetconfYang::CiscoOdm>();
-        }
-        return cisco_odm;
-    }
-
     return nullptr;
 }
 
@@ -85,11 +72,6 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfYang::get_children() const
     if(cisco_ia != nullptr)
     {
         children["cisco-ia:cisco-ia"] = cisco_ia;
-    }
-
-    if(cisco_odm != nullptr)
-    {
-        children["cisco-odm:cisco-odm"] = cisco_odm;
     }
 
     return children;
@@ -130,7 +112,7 @@ std::map<std::pair<std::string, std::string>, std::string> NetconfYang::get_name
 
 bool NetconfYang::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cisco-ia" || name == "cisco-odm")
+    if(name == "cisco-ia")
         return true;
     return false;
 }
@@ -1679,275 +1661,6 @@ bool NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::has_leaf_or_child_of_name(
         return true;
     return false;
 }
-
-NetconfYang::CiscoOdm::CiscoOdm()
-    :
-    polling_enable{YType::boolean, "polling-enable"},
-    on_demand_default_time{YType::uint32, "on-demand-default-time"},
-    on_demand_enable{YType::boolean, "on-demand-enable"}
-{
-
-    yang_name = "cisco-odm"; yang_parent_name = "netconf-yang"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-NetconfYang::CiscoOdm::~CiscoOdm()
-{
-}
-
-bool NetconfYang::CiscoOdm::has_data() const
-{
-    for (std::size_t index=0; index<actions.size(); index++)
-    {
-        if(actions[index]->has_data())
-            return true;
-    }
-    return polling_enable.is_set
-	|| on_demand_default_time.is_set
-	|| on_demand_enable.is_set;
-}
-
-bool NetconfYang::CiscoOdm::has_operation() const
-{
-    for (std::size_t index=0; index<actions.size(); index++)
-    {
-        if(actions[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(polling_enable.yfilter)
-	|| ydk::is_set(on_demand_default_time.yfilter)
-	|| ydk::is_set(on_demand_enable.yfilter);
-}
-
-std::string NetconfYang::CiscoOdm::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cisco-self-mgmt:netconf-yang/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string NetconfYang::CiscoOdm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cisco-odm:cisco-odm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoOdm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (polling_enable.is_set || is_set(polling_enable.yfilter)) leaf_name_data.push_back(polling_enable.get_name_leafdata());
-    if (on_demand_default_time.is_set || is_set(on_demand_default_time.yfilter)) leaf_name_data.push_back(on_demand_default_time.get_name_leafdata());
-    if (on_demand_enable.is_set || is_set(on_demand_enable.yfilter)) leaf_name_data.push_back(on_demand_enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoOdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "actions")
-    {
-        auto c = std::make_shared<NetconfYang::CiscoOdm::Actions>();
-        c->parent = this;
-        actions.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoOdm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : actions)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void NetconfYang::CiscoOdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "polling-enable")
-    {
-        polling_enable = value;
-        polling_enable.value_namespace = name_space;
-        polling_enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "on-demand-default-time")
-    {
-        on_demand_default_time = value;
-        on_demand_default_time.value_namespace = name_space;
-        on_demand_default_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "on-demand-enable")
-    {
-        on_demand_enable = value;
-        on_demand_enable.value_namespace = name_space;
-        on_demand_enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoOdm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "polling-enable")
-    {
-        polling_enable.yfilter = yfilter;
-    }
-    if(value_path == "on-demand-default-time")
-    {
-        on_demand_default_time.yfilter = yfilter;
-    }
-    if(value_path == "on-demand-enable")
-    {
-        on_demand_enable.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoOdm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "actions" || name == "polling-enable" || name == "on-demand-default-time" || name == "on-demand-enable")
-        return true;
-    return false;
-}
-
-NetconfYang::CiscoOdm::Actions::Actions()
-    :
-    action_name{YType::identityref, "action-name"},
-    polling_interval{YType::uint32, "polling-interval"},
-    mode{YType::enumeration, "mode"},
-    cdb_xpath{YType::str, "cdb-xpath"}
-{
-
-    yang_name = "actions"; yang_parent_name = "cisco-odm"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-NetconfYang::CiscoOdm::Actions::~Actions()
-{
-}
-
-bool NetconfYang::CiscoOdm::Actions::has_data() const
-{
-    return action_name.is_set
-	|| polling_interval.is_set
-	|| mode.is_set
-	|| cdb_xpath.is_set;
-}
-
-bool NetconfYang::CiscoOdm::Actions::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(action_name.yfilter)
-	|| ydk::is_set(polling_interval.yfilter)
-	|| ydk::is_set(mode.yfilter)
-	|| ydk::is_set(cdb_xpath.yfilter);
-}
-
-std::string NetconfYang::CiscoOdm::Actions::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-odm:cisco-odm/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string NetconfYang::CiscoOdm::Actions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "actions" <<"[action-name='" <<action_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoOdm::Actions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (action_name.is_set || is_set(action_name.yfilter)) leaf_name_data.push_back(action_name.get_name_leafdata());
-    if (polling_interval.is_set || is_set(polling_interval.yfilter)) leaf_name_data.push_back(polling_interval.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (cdb_xpath.is_set || is_set(cdb_xpath.yfilter)) leaf_name_data.push_back(cdb_xpath.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NetconfYang::CiscoOdm::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::CiscoOdm::Actions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void NetconfYang::CiscoOdm::Actions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "action-name")
-    {
-        action_name = value;
-        action_name.value_namespace = name_space;
-        action_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "polling-interval")
-    {
-        polling_interval = value;
-        polling_interval.value_namespace = name_space;
-        polling_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cdb-xpath")
-    {
-        cdb_xpath = value;
-        cdb_xpath.value_namespace = name_space;
-        cdb_xpath.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void NetconfYang::CiscoOdm::Actions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "action-name")
-    {
-        action_name.yfilter = yfilter;
-    }
-    if(value_path == "polling-interval")
-    {
-        polling_interval.yfilter = yfilter;
-    }
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-    if(value_path == "cdb-xpath")
-    {
-        cdb_xpath.yfilter = yfilter;
-    }
-}
-
-bool NetconfYang::CiscoOdm::Actions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action-name" || name == "polling-interval" || name == "mode" || name == "cdb-xpath")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf NetconfYang::CiscoOdm::Actions::Mode::poll {0, "poll"};
-const Enum::YLeaf NetconfYang::CiscoOdm::Actions::Mode::on_demand {1, "on-demand"};
-const Enum::YLeaf NetconfYang::CiscoOdm::Actions::Mode::none {2, "none"};
 
 
 }

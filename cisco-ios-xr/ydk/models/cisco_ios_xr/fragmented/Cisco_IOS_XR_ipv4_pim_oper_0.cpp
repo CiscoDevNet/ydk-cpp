@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_pim_oper_0.hpp"
-#include "Cisco_IOS_XR_ipv4_pim_oper_2.hpp"
 #include "Cisco_IOS_XR_ipv4_pim_oper_1.hpp"
+#include "Cisco_IOS_XR_ipv4_pim_oper_2.hpp"
 
 using namespace ydk;
 
@@ -21417,7 +21417,6 @@ Pim::Standby::DefaultContext::TrafficCounters::TrafficCounters()
     output_jp{YType::uint32, "output-jp"},
     input_data_register{YType::uint32, "input-data-register"},
     input_null_register{YType::uint32, "input-null-register"},
-    output_data_register{YType::uint32, "output-data-register"},
     output_null_register{YType::uint32, "output-null-register"},
     input_register_stop{YType::uint32, "input-register-stop"},
     output_register_stop{YType::uint32, "output-register-stop"},
@@ -21498,7 +21497,6 @@ bool Pim::Standby::DefaultContext::TrafficCounters::has_data() const
 	|| output_jp.is_set
 	|| input_data_register.is_set
 	|| input_null_register.is_set
-	|| output_data_register.is_set
 	|| output_null_register.is_set
 	|| input_register_stop.is_set
 	|| output_register_stop.is_set
@@ -21573,7 +21571,6 @@ bool Pim::Standby::DefaultContext::TrafficCounters::has_operation() const
 	|| ydk::is_set(output_jp.yfilter)
 	|| ydk::is_set(input_data_register.yfilter)
 	|| ydk::is_set(input_null_register.yfilter)
-	|| ydk::is_set(output_data_register.yfilter)
 	|| ydk::is_set(output_null_register.yfilter)
 	|| ydk::is_set(input_register_stop.yfilter)
 	|| ydk::is_set(output_register_stop.yfilter)
@@ -21658,7 +21655,6 @@ std::vector<std::pair<std::string, LeafData> > Pim::Standby::DefaultContext::Tra
     if (output_jp.is_set || is_set(output_jp.yfilter)) leaf_name_data.push_back(output_jp.get_name_leafdata());
     if (input_data_register.is_set || is_set(input_data_register.yfilter)) leaf_name_data.push_back(input_data_register.get_name_leafdata());
     if (input_null_register.is_set || is_set(input_null_register.yfilter)) leaf_name_data.push_back(input_null_register.get_name_leafdata());
-    if (output_data_register.is_set || is_set(output_data_register.yfilter)) leaf_name_data.push_back(output_data_register.get_name_leafdata());
     if (output_null_register.is_set || is_set(output_null_register.yfilter)) leaf_name_data.push_back(output_null_register.get_name_leafdata());
     if (input_register_stop.is_set || is_set(input_register_stop.yfilter)) leaf_name_data.push_back(input_register_stop.get_name_leafdata());
     if (output_register_stop.is_set || is_set(output_register_stop.yfilter)) leaf_name_data.push_back(output_register_stop.get_name_leafdata());
@@ -21853,12 +21849,6 @@ void Pim::Standby::DefaultContext::TrafficCounters::set_value(const std::string 
         input_null_register = value;
         input_null_register.value_namespace = name_space;
         input_null_register.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output-data-register")
-    {
-        output_data_register = value;
-        output_data_register.value_namespace = name_space;
-        output_data_register.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-null-register")
     {
@@ -22210,10 +22200,6 @@ void Pim::Standby::DefaultContext::TrafficCounters::set_filter(const std::string
     {
         input_null_register.yfilter = yfilter;
     }
-    if(value_path == "output-data-register")
-    {
-        output_data_register.yfilter = yfilter;
-    }
     if(value_path == "output-null-register")
     {
         output_null_register.yfilter = yfilter;
@@ -22398,7 +22384,7 @@ void Pim::Standby::DefaultContext::TrafficCounters::set_filter(const std::string
 
 bool Pim::Standby::DefaultContext::TrafficCounters::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "packet-queue" || name == "elapsed-time" || name == "inputs" || name == "outputs" || name == "format-error" || name == "pakman-error" || name == "standby-packets-error" || name == "checksum-error" || name == "socket-error" || name == "send-queue-full" || name == "boundary-acl-rx-drop" || name == "boundary-acl-tx-drop" || name == "no-socket-connection" || name == "no-source-address" || name == "input-hello" || name == "output-hello" || name == "input-jp" || name == "output-jp" || name == "input-data-register" || name == "input-null-register" || name == "output-data-register" || name == "output-null-register" || name == "input-register-stop" || name == "output-register-stop" || name == "input-assert" || name == "input-assert-batched" || name == "output-assert" || name == "output-assert-batched" || name == "input-df-election" || name == "output-df-election" || name == "input-bsr-message" || name == "output-bsr-message" || name == "input-candidate-rp-advertisement" || name == "output-candidate-rp-advertisement" || name == "input-ecmp-redirect" || name == "output-ecmp-redirect" || name == "output-loop-error" || name == "mldp-mdt-invalid-lsm-identifier" || name == "input-no-idb-error" || name == "input-no-vrf-error" || name == "input-no-pim-error" || name == "input-pim-version-error" || name == "output-join-group" || name == "output-prune-group" || name == "output-join-prune-bytes" || name == "output-hello-bytes" || name == "non-supported-packets" || name == "invalid-registers" || name == "invalid-join-prunes" || name == "packet-packman-error" || name == "packet-read-socket-error" || name == "packet-queue-last-clear" || name == "packets-standby" || name == "no-mdt-socket-connection" || name == "mdt-send-queue-full" || name == "mdt-socket-error" || name == "mdt-join-tlv-sent" || name == "mdt-join-tlv-received" || name == "mdt-join-bad-type" || name == "mdt-drop-local-source-address" || name == "mdt-drop-null-local-address" || name == "mdt-drop-no-idb" || name == "mdt-drop-no-vrf" || name == "invalid-destination-packets" || name == "mdt-joins-drop-multiple-encapsulation" || name == "truncated-pim-packets")
+    if(name == "packet-queue" || name == "elapsed-time" || name == "inputs" || name == "outputs" || name == "format-error" || name == "pakman-error" || name == "standby-packets-error" || name == "checksum-error" || name == "socket-error" || name == "send-queue-full" || name == "boundary-acl-rx-drop" || name == "boundary-acl-tx-drop" || name == "no-socket-connection" || name == "no-source-address" || name == "input-hello" || name == "output-hello" || name == "input-jp" || name == "output-jp" || name == "input-data-register" || name == "input-null-register" || name == "output-null-register" || name == "input-register-stop" || name == "output-register-stop" || name == "input-assert" || name == "input-assert-batched" || name == "output-assert" || name == "output-assert-batched" || name == "input-df-election" || name == "output-df-election" || name == "input-bsr-message" || name == "output-bsr-message" || name == "input-candidate-rp-advertisement" || name == "output-candidate-rp-advertisement" || name == "input-ecmp-redirect" || name == "output-ecmp-redirect" || name == "output-loop-error" || name == "mldp-mdt-invalid-lsm-identifier" || name == "input-no-idb-error" || name == "input-no-vrf-error" || name == "input-no-pim-error" || name == "input-pim-version-error" || name == "output-join-group" || name == "output-prune-group" || name == "output-join-prune-bytes" || name == "output-hello-bytes" || name == "non-supported-packets" || name == "invalid-registers" || name == "invalid-join-prunes" || name == "packet-packman-error" || name == "packet-read-socket-error" || name == "packet-queue-last-clear" || name == "packets-standby" || name == "no-mdt-socket-connection" || name == "mdt-send-queue-full" || name == "mdt-socket-error" || name == "mdt-join-tlv-sent" || name == "mdt-join-tlv-received" || name == "mdt-join-bad-type" || name == "mdt-drop-local-source-address" || name == "mdt-drop-null-local-address" || name == "mdt-drop-no-idb" || name == "mdt-drop-no-vrf" || name == "invalid-destination-packets" || name == "mdt-joins-drop-multiple-encapsulation" || name == "truncated-pim-packets")
         return true;
     return false;
 }

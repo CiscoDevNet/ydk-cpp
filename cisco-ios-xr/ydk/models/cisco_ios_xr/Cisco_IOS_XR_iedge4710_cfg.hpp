@@ -200,18 +200,18 @@ class SubscriberFeaturette : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class IdentityChange; //type: SubscriberFeaturette::IdentityChange
+        class FeaturetteName; //type: SubscriberFeaturette::FeaturetteName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_cfg::SubscriberFeaturette::IdentityChange> > identity_change;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_cfg::SubscriberFeaturette::FeaturetteName> > featurette_name;
         
 }; // SubscriberFeaturette
 
 
-class SubscriberFeaturette::IdentityChange : public ydk::Entity
+class SubscriberFeaturette::FeaturetteName : public ydk::Entity
 {
     public:
-        IdentityChange();
-        ~IdentityChange();
+        FeaturetteName();
+        ~FeaturetteName();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -224,10 +224,10 @@ class SubscriberFeaturette::IdentityChange : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf identity_change; //type: string
+        ydk::YLeaf featurette; //type: string
         ydk::YLeaf enable; //type: int32
 
-}; // SubscriberFeaturette::IdentityChange
+}; // SubscriberFeaturette::FeaturetteName
 
 class IedgeLicenseManager : public ydk::Entity
 {

@@ -528,6 +528,14 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute:
         ydk::YLeaf binding_label; //type: uint32
         ydk::YLeaf nhid_feid; //type: uint64
         ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeaf has_vxlan_network_id; //type: boolean
+        ydk::YLeaf vxlan_network_id; //type: uint32
+        ydk::YLeaf has_xcid; //type: boolean
+        ydk::YLeaf xcid; //type: uint32
+        ydk::YLeaf has_span_diag_interface; //type: boolean
+        ydk::YLeaf span_diag_interface; //type: string
+        ydk::YLeaf has_subscriber_parent_interface; //type: boolean
+        ydk::YLeaf subscriber_parent_interface; //type: string
         class RemoteBackupAddr; //type: Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::RemoteBackupAddr
         class Labelstk; //type: Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::Labelstk
 

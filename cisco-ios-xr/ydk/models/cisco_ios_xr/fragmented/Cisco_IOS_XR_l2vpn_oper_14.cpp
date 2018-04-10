@@ -3447,6 +3447,9 @@ L2Vpnv2::Active::Xconnects::Xconnect::Segment1::PseudoWire::PseudoWire()
     last_time_status_down{YType::str, "last-time-status-down"},
     time_elapsed_status_down{YType::uint32, "time-elapsed-status-down"},
     shutdown{YType::boolean, "shutdown"},
+    data_path_down{YType::boolean, "data-path-down"},
+    use_tunnel_path{YType::boolean, "use-tunnel-path"},
+    odn_configured{YType::boolean, "odn-configured"},
     pseudo_wire_type_mismatched{YType::boolean, "pseudo-wire-type-mismatched"},
     payload_bytes_mismatched{YType::boolean, "payload-bytes-mismatched"},
     bitrate_mismatched{YType::boolean, "bitrate-mismatched"},
@@ -3556,6 +3559,9 @@ bool L2Vpnv2::Active::Xconnects::Xconnect::Segment1::PseudoWire::has_data() cons
 	|| last_time_status_down.is_set
 	|| time_elapsed_status_down.is_set
 	|| shutdown.is_set
+	|| data_path_down.is_set
+	|| use_tunnel_path.is_set
+	|| odn_configured.is_set
 	|| pseudo_wire_type_mismatched.is_set
 	|| payload_bytes_mismatched.is_set
 	|| bitrate_mismatched.is_set
@@ -3649,6 +3655,9 @@ bool L2Vpnv2::Active::Xconnects::Xconnect::Segment1::PseudoWire::has_operation()
 	|| ydk::is_set(last_time_status_down.yfilter)
 	|| ydk::is_set(time_elapsed_status_down.yfilter)
 	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(data_path_down.yfilter)
+	|| ydk::is_set(use_tunnel_path.yfilter)
+	|| ydk::is_set(odn_configured.yfilter)
 	|| ydk::is_set(pseudo_wire_type_mismatched.yfilter)
 	|| ydk::is_set(payload_bytes_mismatched.yfilter)
 	|| ydk::is_set(bitrate_mismatched.yfilter)
@@ -3757,6 +3766,9 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Active::Xconnects::Xconn
     if (last_time_status_down.is_set || is_set(last_time_status_down.yfilter)) leaf_name_data.push_back(last_time_status_down.get_name_leafdata());
     if (time_elapsed_status_down.is_set || is_set(time_elapsed_status_down.yfilter)) leaf_name_data.push_back(time_elapsed_status_down.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (data_path_down.is_set || is_set(data_path_down.yfilter)) leaf_name_data.push_back(data_path_down.get_name_leafdata());
+    if (use_tunnel_path.is_set || is_set(use_tunnel_path.yfilter)) leaf_name_data.push_back(use_tunnel_path.get_name_leafdata());
+    if (odn_configured.is_set || is_set(odn_configured.yfilter)) leaf_name_data.push_back(odn_configured.get_name_leafdata());
     if (pseudo_wire_type_mismatched.is_set || is_set(pseudo_wire_type_mismatched.yfilter)) leaf_name_data.push_back(pseudo_wire_type_mismatched.get_name_leafdata());
     if (payload_bytes_mismatched.is_set || is_set(payload_bytes_mismatched.yfilter)) leaf_name_data.push_back(payload_bytes_mismatched.get_name_leafdata());
     if (bitrate_mismatched.is_set || is_set(bitrate_mismatched.yfilter)) leaf_name_data.push_back(bitrate_mismatched.get_name_leafdata());
@@ -4125,6 +4137,24 @@ void L2Vpnv2::Active::Xconnects::Xconnect::Segment1::PseudoWire::set_value(const
         shutdown = value;
         shutdown.value_namespace = name_space;
         shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "data-path-down")
+    {
+        data_path_down = value;
+        data_path_down.value_namespace = name_space;
+        data_path_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "use-tunnel-path")
+    {
+        use_tunnel_path = value;
+        use_tunnel_path.value_namespace = name_space;
+        use_tunnel_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "odn-configured")
+    {
+        odn_configured = value;
+        odn_configured.value_namespace = name_space;
+        odn_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-type-mismatched")
     {
@@ -4546,6 +4576,18 @@ void L2Vpnv2::Active::Xconnects::Xconnect::Segment1::PseudoWire::set_filter(cons
     {
         shutdown.yfilter = yfilter;
     }
+    if(value_path == "data-path-down")
+    {
+        data_path_down.yfilter = yfilter;
+    }
+    if(value_path == "use-tunnel-path")
+    {
+        use_tunnel_path.yfilter = yfilter;
+    }
+    if(value_path == "odn-configured")
+    {
+        odn_configured.yfilter = yfilter;
+    }
     if(value_path == "pseudo-wire-type-mismatched")
     {
         pseudo_wire_type_mismatched.yfilter = yfilter;
@@ -4750,7 +4792,7 @@ void L2Vpnv2::Active::Xconnects::Xconnect::Segment1::PseudoWire::set_filter(cons
 
 bool L2Vpnv2::Active::Xconnects::Xconnect::Segment1::PseudoWire::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer-id" || name == "encapsulation-info" || name == "local-interface" || name == "remote-interface" || name == "preferred-path" || name == "local-signalling" || name == "remote-signalling" || name == "statistics" || name == "p2mp-pw" || name == "local-source-address" || name == "ipv6-local-source-address" || name == "pseudo-wire-id" || name == "is-pwr-type" || name == "is-evpn-vpws-type" || name == "xconnect-id" || name == "state" || name == "pseudo-wire-state" || name == "protocol" || name == "pw-class-name" || name == "tag-rewrite" || name == "interworking" || name == "fe-ctype" || name == "evpn-src-acid" || name == "sequencing-type" || name == "resync-enabled" || name == "resync-threshold" || name == "local-control-word" || name == "remote-control-word" || name == "local-pseudo-wire-type" || name == "remote-pseudo-wire-type" || name == "imposed-vlan-id" || name == "time-created" || name == "time-elapsed-creation" || name == "last-time-status-changed" || name == "time-elapsed-status-changed" || name == "last-time-status-down" || name == "time-elapsed-status-down" || name == "shutdown" || name == "pseudo-wire-type-mismatched" || name == "payload-bytes-mismatched" || name == "bitrate-mismatched" || name == "rtp-mismatched" || name == "diff-ts-mismatched" || name == "sig-pkts-mismatched" || name == "cas-mismatched" || name == "payload-type-mismatched" || name == "freq-mismatched" || name == "ssrc-mismatched" || name == "mtu-mismatched" || name == "illegal-control-word" || name == "ad-remote-down" || name == "not-supported-qinq" || name == "local-label-failed" || name == "remote-label-failed" || name == "preferred-path-disable-fallback" || name == "backup-pw" || name == "primary-pw" || name == "backup-active" || name == "backup-force-active" || name == "disable-never" || name == "disable-delay" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "number-ma-cwithdraw-message-sent" || name == "num-ma-cwithdraw-msg-received" || name == "out-of-memory-state" || name == "transport-lsp-down" || name == "mac-limit-oper-down" || name == "pw-status-use" || name == "auto-discovery" || name == "ad-method" || name == "pwlsd-rewrite-failed" || name == "ldp-label-advertise-failed" || name == "is-vfi" || name == "is-multi-segment-pseudowire" || name == "pw-redundancy-one-way" || name == "load-balance" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-flow-label-code17-disabled" || name == "is-flow-label-static" || name == "is-partially-programmed" || name == "pw-redundancy-initial-delay" || name == "bridge-pw-type-mismatch" || name == "required-bw" || name == "admited-bw" || name == "forward-class" || name == "table-policy-name")
+    if(name == "peer-id" || name == "encapsulation-info" || name == "local-interface" || name == "remote-interface" || name == "preferred-path" || name == "local-signalling" || name == "remote-signalling" || name == "statistics" || name == "p2mp-pw" || name == "local-source-address" || name == "ipv6-local-source-address" || name == "pseudo-wire-id" || name == "is-pwr-type" || name == "is-evpn-vpws-type" || name == "xconnect-id" || name == "state" || name == "pseudo-wire-state" || name == "protocol" || name == "pw-class-name" || name == "tag-rewrite" || name == "interworking" || name == "fe-ctype" || name == "evpn-src-acid" || name == "sequencing-type" || name == "resync-enabled" || name == "resync-threshold" || name == "local-control-word" || name == "remote-control-word" || name == "local-pseudo-wire-type" || name == "remote-pseudo-wire-type" || name == "imposed-vlan-id" || name == "time-created" || name == "time-elapsed-creation" || name == "last-time-status-changed" || name == "time-elapsed-status-changed" || name == "last-time-status-down" || name == "time-elapsed-status-down" || name == "shutdown" || name == "data-path-down" || name == "use-tunnel-path" || name == "odn-configured" || name == "pseudo-wire-type-mismatched" || name == "payload-bytes-mismatched" || name == "bitrate-mismatched" || name == "rtp-mismatched" || name == "diff-ts-mismatched" || name == "sig-pkts-mismatched" || name == "cas-mismatched" || name == "payload-type-mismatched" || name == "freq-mismatched" || name == "ssrc-mismatched" || name == "mtu-mismatched" || name == "illegal-control-word" || name == "ad-remote-down" || name == "not-supported-qinq" || name == "local-label-failed" || name == "remote-label-failed" || name == "preferred-path-disable-fallback" || name == "backup-pw" || name == "primary-pw" || name == "backup-active" || name == "backup-force-active" || name == "disable-never" || name == "disable-delay" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "number-ma-cwithdraw-message-sent" || name == "num-ma-cwithdraw-msg-received" || name == "out-of-memory-state" || name == "transport-lsp-down" || name == "mac-limit-oper-down" || name == "pw-status-use" || name == "auto-discovery" || name == "ad-method" || name == "pwlsd-rewrite-failed" || name == "ldp-label-advertise-failed" || name == "is-vfi" || name == "is-multi-segment-pseudowire" || name == "pw-redundancy-one-way" || name == "load-balance" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-flow-label-code17-disabled" || name == "is-flow-label-static" || name == "is-partially-programmed" || name == "pw-redundancy-initial-delay" || name == "bridge-pw-type-mismatch" || name == "required-bw" || name == "admited-bw" || name == "forward-class" || name == "table-policy-name")
         return true;
     return false;
 }

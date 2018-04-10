@@ -15,6 +15,60 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_oper {
 
 
+class Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary : public ydk::Entity
+{
+    public:
+        NeighborSummary();
+        ~NeighborSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_interface_name; //type: string
+        ydk::YLeaf neighbor_dr_priority; //type: uint8
+        ydk::YLeaf neighbor_state; //type: NeighborState
+        ydk::YLeaf dr_bdr_state; //type: DrBdrState
+        ydk::YLeaf neighbor_dead_timer; //type: uint32
+        ydk::YLeaf neighbor_up_time; //type: uint32
+        ydk::YLeaf neighbor_madj_interface; //type: boolean
+        class NeighborBfdInformation; //type: Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation> neighbor_bfd_information;
+        
+}; // Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary
+
+
+class Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation : public ydk::Entity
+{
+    public:
+        NeighborBfdInformation();
+        ~NeighborBfdInformation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf bfd_intf_enable_mode; //type: uint32
+        ydk::YLeaf bfd_status_flag; //type: uint8
+
+}; // Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation
+
+
 class Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborBfdInformation : public ydk::Entity
 {
     public:
@@ -4124,60 +4178,6 @@ class Ospf::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderR
         ydk::YLeaf spf_version; //type: uint64
 
 }; // Ospf::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath
-
-
-class Ospf::Processes::Process::DefaultVrf::ProcessInformation : public ydk::Entity
-{
-    public:
-        ProcessInformation();
-        ~ProcessInformation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ProtocolAreas; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas
-        class ProtocolSummary; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolSummary
-        class Redistributions; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::Redistributions
-        class ProcessAreas; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessAreas
-        class ProcessSummary; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas> protocol_areas;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolSummary> protocol_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::ProcessInformation::Redistributions> redistributions;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessAreas> process_areas;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary> process_summary;
-        
-}; // Ospf::Processes::Process::DefaultVrf::ProcessInformation
-
-
-class Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas : public ydk::Entity
-{
-    public:
-        ProtocolAreas();
-        ~ProtocolAreas();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ProtocolArea; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::ProtocolArea
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas::ProtocolArea> > protocol_area;
-        
-}; // Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProtocolAreas
 
 
 }

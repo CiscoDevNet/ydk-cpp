@@ -59,6 +59,9 @@ class L2Vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::Flexi
         ydk::YLeaf last_time_status_down; //type: string
         ydk::YLeaf time_elapsed_status_down; //type: uint32
         ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf data_path_down; //type: boolean
+        ydk::YLeaf use_tunnel_path; //type: boolean
+        ydk::YLeaf odn_configured; //type: boolean
         ydk::YLeaf pseudo_wire_type_mismatched; //type: boolean
         ydk::YLeaf payload_bytes_mismatched; //type: boolean
         ydk::YLeaf bitrate_mismatched; //type: boolean
@@ -2441,7 +2444,7 @@ class L2Vpnv2::Active : public ydk::Entity
         class PseudowireClasses; //type: L2Vpnv2::Active::PseudowireClasses
         class L2VpnCollaborators; //type: L2Vpnv2::Active::L2VpnCollaborators
         class Mvrp; //type: L2Vpnv2::Active::Mvrp
-        class GenericInterfaces; //type: L2Vpnv2::Active::GenericInterfaces
+        class GenericInterfaceLists; //type: L2Vpnv2::Active::GenericInterfaceLists
         class MstpVlans; //type: L2Vpnv2::Active::MstpVlans
         class L2VpnPbbBsa; //type: L2Vpnv2::Active::L2VpnPbbBsa
         class FlexibleXconnectServices; //type: L2Vpnv2::Active::FlexibleXconnectServices
@@ -2472,7 +2475,7 @@ class L2Vpnv2::Active : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::PseudowireClasses> pseudowire_classes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::L2VpnCollaborators> l2vpn_collaborators;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Mvrp> mvrp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaces> generic_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaceLists> generic_interface_lists;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::MstpVlans> mstp_vlans;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::L2VpnPbbBsa> l2vpn_pbb_bsa;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::FlexibleXconnectServices> flexible_xconnect_services;
@@ -3760,7 +3763,7 @@ class L2Vpnv2::Active::Nsr::XidInfo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf app_type; //type: L2vpnIdMgrApp
+        ydk::YLeaf app_type; //type: L2vpnIdMgrAppBag
         ydk::YLeaf sent_ids; //type: uint32
 
 }; // L2Vpnv2::Active::Nsr::XidInfo

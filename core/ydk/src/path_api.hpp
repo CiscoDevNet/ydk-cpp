@@ -42,6 +42,7 @@ namespace ydk {
 
 class NetconfClient;
 class RestconfClient;
+class CapabilitiesParser;
 
 namespace path {
 
@@ -290,6 +291,8 @@ public:
     //  @throws YInvalidArgumentError if the arguments are invalid.
     ///
     std::string encode(const DataNode & dn, EncodingFormat format, bool pretty);
+
+    std::string encode(std::vector<ydk::path::DataNode*> & data_nodes, ydk::EncodingFormat format, bool pretty);
 
     ///
     /// @brief decode the buffer to return a DataNode
@@ -725,6 +728,8 @@ public:
     ///
    virtual DataNode& create_datanode(const std::string& path);
 
+   virtual DataNode& create_action(const std::string& path) = 0;
+
     ///
     /// @brief create a DataNode corresponding to the path and set its value
     ///
@@ -743,6 +748,18 @@ public:
     /// @throws YPathError In case the path is invalid.
     ///
     virtual DataNode& create_datanode(const std::string& path, const std::string& value) = 0;
+
+    ///
+    /// @brief execute/invoke the action through the given session.
+    ///
+    /// @param[in] session The Session
+    /// @areturn pointer to the DataNode or nullptr if none exists
+    ///
+    virtual std::shared_ptr<DataNode> operator()(const Session& session) = 0;
+
+    virtual bool has_action_node() const = 0;
+
+    virtual std::string get_action_node_path() const = 0;
 
     ///
     /// @brief set the value of this DataNode.
@@ -868,6 +885,8 @@ struct Capability {
     std::vector<std::string> deviations;
 };
 
+std::ostream& operator<< (std::ostream& stream, const Capability& value);
+
 ///
 /// @brief interface for module provider.
 ///
@@ -969,6 +988,7 @@ public:
     ///
     std::vector<ModelProvider*> get_model_providers() const;
 
+    void set_server_capabilities(std::vector<path::Capability> & serv_caps);
 
     std::string path;
  private:
@@ -1003,6 +1023,17 @@ public:
     /// @return The pointer to the DataNode representing the output.
     ///
     virtual std::shared_ptr<DataNode> invoke(Rpc& rpc) const = 0 ;
+
+    ///
+    /// @brief invoke the Action
+    ///
+    /// invokes or executes the action defined inside the given DataNode and Returns a DataNode pointer
+    /// if the action has an output modelled in YANG.
+    ///
+    /// @param[in] pointer to the Rpc node
+    /// @return The pointer to the DataNode representing the output.
+    ///
+    virtual std::shared_ptr<DataNode> invoke(DataNode& rpc) const = 0 ;
 };
 
 class NetconfSession : public Session {
@@ -1044,27 +1075,18 @@ public:
                    bool common_cache = false,
                    int timeout = -1);
 
-    // NetconfSession(
-    //     const std::string& address,
-    //     const std::string& username,
-    //     Repository& repo = "",
-    //     const std::string& private_key_path = "",
-    //     const std::string& public_key_path = "",
-    //     int port = 830,
-    //     bool on_demand = true,
-    //     bool common_cache = false,
-    //     int timeout = -1);
+    ~NetconfSession();
 
-    virtual ~NetconfSession();
-
-    virtual RootSchemaNode& get_root_schema() const;
-    virtual std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
+    RootSchemaNode& get_root_schema() const;
+    std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
+    std::shared_ptr<DataNode> invoke(DataNode& rpc) const;
     std::vector<std::string> get_capabilities() const;
 
 private:
-    std::shared_ptr<DataNode> handle_edit(
+    std::vector<std::string> get_yang_1_1_capabilities() const;
+    std::shared_ptr<DataNode> handle_crud_edit(
         Rpc& rpc, Annotation ann) const;
-    std::shared_ptr<DataNode> handle_read(Rpc& rpc) const;
+    std::shared_ptr<DataNode> handle_crud_read(Rpc& rpc) const;
     std::shared_ptr<DataNode> handle_netconf_operation(Rpc& ydk_rpc) const;
     void initialize_client_with_key(const std::string& address,
                                     const std::string& username,
@@ -1081,8 +1103,8 @@ private:
     void initialize_repo(Repository& repo, bool on_demand);
     std::string execute_payload(const std::string & payload) const;
 private:
-    std::unique_ptr<NetconfClient> client;
-    std::unique_ptr<ModelProvider> model_provider;
+    std::shared_ptr<NetconfClient> client;
+    std::shared_ptr<ModelProvider> model_provider;
     std::shared_ptr<RootSchemaNode> root_schema;
     std::vector<std::string> server_capabilities;
 };
@@ -1090,6 +1112,7 @@ private:
 
 class RestconfSession : public Session {
 public:
+    RestconfSession();
     RestconfSession(Repository & repo,
                     const std::string & address,
                     const std::string & username,
@@ -1106,15 +1129,16 @@ public:
                     const std::string & config_url_root,
                     const std::string & state_url_root);
 
-    virtual ~RestconfSession();
+    ~RestconfSession();
 
-    virtual RootSchemaNode& get_root_schema() const;
-    virtual std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
+    RootSchemaNode& get_root_schema() const;
+    std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
+    std::shared_ptr<DataNode> invoke(DataNode& rpc) const;
 
 private:
     void initialize(Repository & repo);
-    std::shared_ptr<DataNode> handle_edit(Rpc& rpc, const std::string & yfilter) const;
-    std::shared_ptr<DataNode> handle_read(Rpc& rpc) const;
+    std::shared_ptr<DataNode> handle_crud_edit(Rpc& rpc, const std::string & yfilter) const;
+    std::shared_ptr<DataNode> handle_crud_read(Rpc& rpc) const;
 private:
         std::shared_ptr<RestconfClient> client;
         std::shared_ptr<RootSchemaNode> root_schema;
@@ -1129,7 +1153,7 @@ private:
 
 ///
 ///
-/// @brief An instance of the YANG schmea rpc node
+/// @brief An instance of the YANG schema rpc node
 ///
 /// Instances of this class represent a YANG rpc and are modelled as Callables.
 /// The input data node tree is used to populate the input parameters to the rpc

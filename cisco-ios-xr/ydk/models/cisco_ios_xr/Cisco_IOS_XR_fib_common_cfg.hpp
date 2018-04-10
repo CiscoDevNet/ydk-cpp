@@ -32,6 +32,7 @@ class Fib : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf prefer_aib_routes; //type: boolean
+        ydk::YLeaf frr_follow_bgp_pic; //type: boolean
         class PbtsForwardClassFallbacks; //type: Fib::PbtsForwardClassFallbacks
         class Platform; //type: Fib::Platform
 
@@ -82,7 +83,7 @@ class Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf forward_class_number; //type: one of enumeration, uint32
+        ydk::YLeaf forward_class_number; //type: one of uint32, enumeration
         ydk::YLeaf fallback_type; //type: FibPbtsFallback
         ydk::YLeafList fallback_class_number_array; //type: list of  uint32
 

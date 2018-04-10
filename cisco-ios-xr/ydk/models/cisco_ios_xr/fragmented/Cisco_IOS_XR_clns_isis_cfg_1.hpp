@@ -1249,7 +1249,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
-        ydk::YLeaf metric; //type: one of enumeration, uint32
+        ydk::YLeaf metric; //type: one of uint32, enumeration
         class Metric_;
 
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric
@@ -2012,7 +2012,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf level; //type: IsisInternalLevel
-        ydk::YLeaf metric; //type: one of enumeration, uint32
+        ydk::YLeaf metric; //type: one of uint32, enumeration
         class Metric_;
 
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric

@@ -97,6 +97,7 @@ class BgpStateData::Neighbors::Neighbor : public ydk::Entity
         ydk::YLeaf last_read; //type: string
         ydk::YLeaf installed_prefixes; //type: uint32
         ydk::YLeaf session_state; //type: BgpFsmState
+        ydk::YLeaf as; //type: uint32
         ydk::YLeafList negotiated_cap; //type: list of  string
         class NegotiatedKeepaliveTimers; //type: BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers
         class BgpNeighborCounters; //type: BgpStateData::Neighbors::Neighbor::BgpNeighborCounters
@@ -388,6 +389,7 @@ class BgpStateData::AddressFamilies::AddressFamily : public ydk::Entity
         ydk::YLeaf bgp_table_version; //type: uint64
         ydk::YLeaf routing_table_version; //type: uint64
         ydk::YLeaf total_memory; //type: uint64
+        ydk::YLeaf local_as; //type: uint32
         class Prefixes; //type: BgpStateData::AddressFamilies::AddressFamily::Prefixes
         class Path; //type: BgpStateData::AddressFamilies::AddressFamily::Path
         class AsPath; //type: BgpStateData::AddressFamilies::AddressFamily::AsPath
@@ -590,6 +592,7 @@ class BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNei
         ydk::YLeaf state; //type: BgpFsmState
         ydk::YLeaf prefixes_received; //type: uint64
         ydk::YLeaf dynamically_configured; //type: boolean
+        ydk::YLeaf as; //type: uint32
 
 }; // BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary
 

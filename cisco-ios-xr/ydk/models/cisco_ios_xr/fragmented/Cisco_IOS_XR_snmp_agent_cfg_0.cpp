@@ -32,6 +32,7 @@ Snmp::Snmp()
 	,administration(std::make_shared<Snmp::Administration>())
 	,agent(std::make_shared<Snmp::Agent>())
 	,trap(std::make_shared<Snmp::Trap>())
+	,drop_packet(std::make_shared<Snmp::DropPacket>())
 	,ipv6(std::make_shared<Snmp::Ipv6>())
 	,ipv4(std::make_shared<Snmp::Ipv4>())
 	,system(std::make_shared<Snmp::System>())
@@ -55,6 +56,7 @@ Snmp::Snmp()
     administration->parent = this;
     agent->parent = this;
     trap->parent = this;
+    drop_packet->parent = this;
     ipv6->parent = this;
     ipv4->parent = this;
     system->parent = this;
@@ -97,6 +99,7 @@ bool Snmp::has_data() const
 	|| (administration !=  nullptr && administration->has_data())
 	|| (agent !=  nullptr && agent->has_data())
 	|| (trap !=  nullptr && trap->has_data())
+	|| (drop_packet !=  nullptr && drop_packet->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
 	|| (system !=  nullptr && system->has_data())
@@ -135,6 +138,7 @@ bool Snmp::has_operation() const
 	|| (administration !=  nullptr && administration->has_operation())
 	|| (agent !=  nullptr && agent->has_operation())
 	|| (trap !=  nullptr && trap->has_operation())
+	|| (drop_packet !=  nullptr && drop_packet->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation())
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (system !=  nullptr && system->has_operation())
@@ -234,6 +238,15 @@ std::shared_ptr<Entity> Snmp::get_child_by_name(const std::string & child_yang_n
             trap = std::make_shared<Snmp::Trap>();
         }
         return trap;
+    }
+
+    if(child_yang_name == "drop-packet")
+    {
+        if(drop_packet == nullptr)
+        {
+            drop_packet = std::make_shared<Snmp::DropPacket>();
+        }
+        return drop_packet;
     }
 
     if(child_yang_name == "ipv6")
@@ -415,6 +428,11 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::get_children() const
     if(trap != nullptr)
     {
         children["trap"] = trap;
+    }
+
+    if(drop_packet != nullptr)
+    {
+        children["drop-packet"] = drop_packet;
     }
 
     if(ipv6 != nullptr)
@@ -645,7 +663,7 @@ std::map<std::pair<std::string, std::string>, std::string> Snmp::get_namespace_i
 
 bool Snmp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "encrypted-community-maps" || name == "views" || name == "logging" || name == "administration" || name == "agent" || name == "trap" || name == "ipv6" || name == "ipv4" || name == "system" || name == "target" || name == "notification" || name == "correlator" || name == "bulk-stats" || name == "default-community-maps" || name == "overload-control" || name == "timeouts" || name == "users" || name == "vrfs" || name == "groups" || name == "trap-hosts" || name == "contexts" || name == "context-mappings" || name == "inform-retries" || name == "trap-port" || name == "oid-poll-stats" || name == "trap-source" || name == "vrf-authentication-trap-disable" || name == "inform-timeout" || name == "trap-source-ipv6" || name == "packet-size" || name == "throttle-time" || name == "trap-source-ipv4" || name == "inform-pending")
+    if(name == "encrypted-community-maps" || name == "views" || name == "logging" || name == "administration" || name == "agent" || name == "trap" || name == "drop-packet" || name == "ipv6" || name == "ipv4" || name == "system" || name == "target" || name == "notification" || name == "correlator" || name == "bulk-stats" || name == "default-community-maps" || name == "overload-control" || name == "timeouts" || name == "users" || name == "vrfs" || name == "groups" || name == "trap-hosts" || name == "contexts" || name == "context-mappings" || name == "inform-retries" || name == "trap-port" || name == "oid-poll-stats" || name == "trap-source" || name == "vrf-authentication-trap-disable" || name == "inform-timeout" || name == "trap-source-ipv6" || name == "packet-size" || name == "throttle-time" || name == "trap-source-ipv4" || name == "inform-pending")
         return true;
     return false;
 }
@@ -2444,6 +2462,90 @@ bool Snmp::Trap::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+Snmp::DropPacket::DropPacket()
+    :
+    unknown_user{YType::empty, "unknown-user"}
+{
+
+    yang_name = "drop-packet"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Snmp::DropPacket::~DropPacket()
+{
+}
+
+bool Snmp::DropPacket::has_data() const
+{
+    return unknown_user.is_set;
+}
+
+bool Snmp::DropPacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unknown_user.yfilter);
+}
+
+std::string Snmp::DropPacket::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::DropPacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "drop-packet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::DropPacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unknown_user.is_set || is_set(unknown_user.yfilter)) leaf_name_data.push_back(unknown_user.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::DropPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::DropPacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::DropPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unknown-user")
+    {
+        unknown_user = value;
+        unknown_user.value_namespace = name_space;
+        unknown_user.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::DropPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unknown-user")
+    {
+        unknown_user.yfilter = yfilter;
+    }
+}
+
+bool Snmp::DropPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-user")
+        return true;
+    return false;
+}
+
 Snmp::Ipv6::Ipv6()
     :
     tos(std::make_shared<Snmp::Ipv6::Tos>())
@@ -3598,6 +3700,8 @@ bool Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::has_leaf_or
 
 Snmp::Notification::Notification()
     :
+    ipsla{YType::boolean, "Cisco-IOS-XR-man-ipsla-cfg:ipsla"}
+    	,
     snmp(std::make_shared<Snmp::Notification::Snmp_>())
 	,diametermib(std::make_shared<Snmp::Notification::Diametermib>())
 	,vpls(std::make_shared<Snmp::Notification::Vpls>())
@@ -3608,7 +3712,7 @@ Snmp::Notification::Notification()
 	,oam(std::make_shared<Snmp::Notification::Oam>())
 	,fabric_crs(std::make_shared<Snmp::Notification::FabricCrs>())
 	,flash(std::make_shared<Snmp::Notification::Flash>())
-	,cisco_ios_xr_freqsync_cfg_frequency_synchronization(std::make_shared<Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization>())
+	,frequency_synchronization(std::make_shared<Snmp::Notification::FrequencySynchronization>())
 	,entity_redundancy(std::make_shared<Snmp::Notification::EntityRedundancy>())
 	,config_copy(std::make_shared<Snmp::Notification::ConfigCopy>())
 	,selective_vrf_download(std::make_shared<Snmp::Notification::SelectiveVrfDownload>())
@@ -3627,12 +3731,12 @@ Snmp::Notification::Notification()
 	,mpls_te(std::make_shared<Snmp::Notification::MplsTe>())
 	,mpls_frr(std::make_shared<Snmp::Notification::MplsFrr>())
 	,mpls_l3vpn(std::make_shared<Snmp::Notification::MplsL3Vpn>())
-	,cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_(std::make_shared<Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>())
 	,optical(std::make_shared<Snmp::Notification::Optical>())
 	,optical_ots(std::make_shared<Snmp::Notification::OpticalOts>())
 	,otn(std::make_shared<Snmp::Notification::Otn>())
 	,bridge(std::make_shared<Snmp::Notification::Bridge>())
 	,sensor(std::make_shared<Snmp::Notification::Sensor>())
+	,cisco_entity_ext(std::make_shared<Snmp::Notification::CiscoEntityExt>())
 	,entity_(std::make_shared<Snmp::Notification::Entity>())
 	,entity_state(std::make_shared<Snmp::Notification::EntityState>())
 	,fru_control(std::make_shared<Snmp::Notification::FruControl>())
@@ -3651,7 +3755,7 @@ Snmp::Notification::Notification()
     oam->parent = this;
     fabric_crs->parent = this;
     flash->parent = this;
-    cisco_ios_xr_freqsync_cfg_frequency_synchronization->parent = this;
+    frequency_synchronization->parent = this;
     entity_redundancy->parent = this;
     config_copy->parent = this;
     selective_vrf_download->parent = this;
@@ -3670,12 +3774,12 @@ Snmp::Notification::Notification()
     mpls_te->parent = this;
     mpls_frr->parent = this;
     mpls_l3vpn->parent = this;
-    cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->parent = this;
     optical->parent = this;
     optical_ots->parent = this;
     otn->parent = this;
     bridge->parent = this;
     sensor->parent = this;
+    cisco_entity_ext->parent = this;
     entity_->parent = this;
     entity_state->parent = this;
     fru_control->parent = this;
@@ -3693,7 +3797,8 @@ Snmp::Notification::~Notification()
 
 bool Snmp::Notification::has_data() const
 {
-    return (snmp !=  nullptr && snmp->has_data())
+    return ipsla.is_set
+	|| (snmp !=  nullptr && snmp->has_data())
 	|| (diametermib !=  nullptr && diametermib->has_data())
 	|| (vpls !=  nullptr && vpls->has_data())
 	|| (l2vpn !=  nullptr && l2vpn->has_data())
@@ -3703,7 +3808,7 @@ bool Snmp::Notification::has_data() const
 	|| (oam !=  nullptr && oam->has_data())
 	|| (fabric_crs !=  nullptr && fabric_crs->has_data())
 	|| (flash !=  nullptr && flash->has_data())
-	|| (cisco_ios_xr_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_freqsync_cfg_frequency_synchronization->has_data())
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data())
 	|| (entity_redundancy !=  nullptr && entity_redundancy->has_data())
 	|| (config_copy !=  nullptr && config_copy->has_data())
 	|| (selective_vrf_download !=  nullptr && selective_vrf_download->has_data())
@@ -3722,12 +3827,12 @@ bool Snmp::Notification::has_data() const
 	|| (mpls_te !=  nullptr && mpls_te->has_data())
 	|| (mpls_frr !=  nullptr && mpls_frr->has_data())
 	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_data())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_data())
 	|| (optical !=  nullptr && optical->has_data())
 	|| (optical_ots !=  nullptr && optical_ots->has_data())
 	|| (otn !=  nullptr && otn->has_data())
 	|| (bridge !=  nullptr && bridge->has_data())
 	|| (sensor !=  nullptr && sensor->has_data())
+	|| (cisco_entity_ext !=  nullptr && cisco_entity_ext->has_data())
 	|| (entity_ !=  nullptr && entity_->has_data())
 	|| (entity_state !=  nullptr && entity_state->has_data())
 	|| (fru_control !=  nullptr && fru_control->has_data())
@@ -3740,6 +3845,7 @@ bool Snmp::Notification::has_data() const
 bool Snmp::Notification::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(ipsla.yfilter)
 	|| (snmp !=  nullptr && snmp->has_operation())
 	|| (diametermib !=  nullptr && diametermib->has_operation())
 	|| (vpls !=  nullptr && vpls->has_operation())
@@ -3750,7 +3856,7 @@ bool Snmp::Notification::has_operation() const
 	|| (oam !=  nullptr && oam->has_operation())
 	|| (fabric_crs !=  nullptr && fabric_crs->has_operation())
 	|| (flash !=  nullptr && flash->has_operation())
-	|| (cisco_ios_xr_freqsync_cfg_frequency_synchronization !=  nullptr && cisco_ios_xr_freqsync_cfg_frequency_synchronization->has_operation())
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation())
 	|| (entity_redundancy !=  nullptr && entity_redundancy->has_operation())
 	|| (config_copy !=  nullptr && config_copy->has_operation())
 	|| (selective_vrf_download !=  nullptr && selective_vrf_download->has_operation())
@@ -3769,12 +3875,12 @@ bool Snmp::Notification::has_operation() const
 	|| (mpls_te !=  nullptr && mpls_te->has_operation())
 	|| (mpls_frr !=  nullptr && mpls_frr->has_operation())
 	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_operation())
-	|| (cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ !=  nullptr && cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_->has_operation())
 	|| (optical !=  nullptr && optical->has_operation())
 	|| (optical_ots !=  nullptr && optical_ots->has_operation())
 	|| (otn !=  nullptr && otn->has_operation())
 	|| (bridge !=  nullptr && bridge->has_operation())
 	|| (sensor !=  nullptr && sensor->has_operation())
+	|| (cisco_entity_ext !=  nullptr && cisco_entity_ext->has_operation())
 	|| (entity_ !=  nullptr && entity_->has_operation())
 	|| (entity_state !=  nullptr && entity_state->has_operation())
 	|| (fru_control !=  nullptr && fru_control->has_operation())
@@ -3802,6 +3908,7 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Notification::get_name_leaf
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (ipsla.is_set || is_set(ipsla.yfilter)) leaf_name_data.push_back(ipsla.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3901,11 +4008,11 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
 
     if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization")
     {
-        if(cisco_ios_xr_freqsync_cfg_frequency_synchronization == nullptr)
+        if(frequency_synchronization == nullptr)
         {
-            cisco_ios_xr_freqsync_cfg_frequency_synchronization = std::make_shared<Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization>();
+            frequency_synchronization = std::make_shared<Snmp::Notification::FrequencySynchronization>();
         }
-        return cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        return frequency_synchronization;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy")
@@ -4070,15 +4177,6 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return mpls_l3vpn;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization")
-    {
-        if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ == nullptr)
-        {
-            cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ = std::make_shared<Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization>();
-        }
-        return cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-opticalmib-cfg:optical")
     {
         if(optical == nullptr)
@@ -4122,6 +4220,15 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
             sensor = std::make_shared<Snmp::Notification::Sensor>();
         }
         return sensor;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext")
+    {
+        if(cisco_entity_ext == nullptr)
+        {
+            cisco_entity_ext = std::make_shared<Snmp::Notification::CiscoEntityExt>();
+        }
+        return cisco_entity_ext;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-snmp-entitymib-cfg:entity")
@@ -4244,9 +4351,9 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
         children["Cisco-IOS-XR-flashmib-cfg:flash"] = flash;
     }
 
-    if(cisco_ios_xr_freqsync_cfg_frequency_synchronization != nullptr)
+    if(frequency_synchronization != nullptr)
     {
-        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = frequency_synchronization;
     }
 
     if(entity_redundancy != nullptr)
@@ -4339,11 +4446,6 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
         children["Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn"] = mpls_l3vpn;
     }
 
-    if(cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_ != nullptr)
-    {
-        children["Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization"] = cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
-    }
-
     if(optical != nullptr)
     {
         children["Cisco-IOS-XR-opticalmib-cfg:optical"] = optical;
@@ -4367,6 +4469,11 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
     if(sensor != nullptr)
     {
         children["Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor"] = sensor;
+    }
+
+    if(cisco_entity_ext != nullptr)
+    {
+        children["Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext"] = cisco_entity_ext;
     }
 
     if(entity_ != nullptr)
@@ -4409,15 +4516,25 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
 
 void Snmp::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "Cisco-IOS-XR-man-ipsla-cfg:ipsla")
+    {
+        ipsla = value;
+        ipsla.value_namespace = name_space;
+        ipsla.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Snmp::Notification::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "ipsla")
+    {
+        ipsla.yfilter = yfilter;
+    }
 }
 
 bool Snmp::Notification::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "snmp" || name == "diametermib" || name == "vpls" || name == "l2vpn" || name == "isis" || name == "config-man" || name == "cfm" || name == "oam" || name == "fabric-crs" || name == "flash" || name == "frequency-synchronization" || name == "entity-redundancy" || name == "config-copy" || name == "selective-vrf-download" || name == "system" || name == "bfd" || name == "addresspool-mib" || name == "ntp" || name == "rsvp" || name == "bgp" || name == "hsrp" || name == "ospf" || name == "vrrp" || name == "ospfv3" || name == "mpls-ldp" || name == "mpls-te-p2mp" || name == "mpls-te" || name == "mpls-frr" || name == "mpls-l3vpn" || name == "frequency-synchronization" || name == "optical" || name == "optical-ots" || name == "otn" || name == "bridge" || name == "sensor" || name == "entity" || name == "entity-state" || name == "fru-control" || name == "rf" || name == "syslog" || name == "subscriber-mib" || name == "l2tun")
+    if(name == "snmp" || name == "diametermib" || name == "vpls" || name == "l2vpn" || name == "isis" || name == "config-man" || name == "cfm" || name == "oam" || name == "fabric-crs" || name == "flash" || name == "frequency-synchronization" || name == "entity-redundancy" || name == "config-copy" || name == "selective-vrf-download" || name == "system" || name == "bfd" || name == "addresspool-mib" || name == "ntp" || name == "rsvp" || name == "bgp" || name == "hsrp" || name == "ospf" || name == "vrrp" || name == "ospfv3" || name == "mpls-ldp" || name == "mpls-te-p2mp" || name == "mpls-te" || name == "mpls-frr" || name == "mpls-l3vpn" || name == "optical" || name == "optical-ots" || name == "otn" || name == "bridge" || name == "sensor" || name == "cisco-entity-ext" || name == "entity" || name == "entity-state" || name == "fru-control" || name == "rf" || name == "syslog" || name == "subscriber-mib" || name == "l2tun" || name == "ipsla")
         return true;
     return false;
 }
@@ -5766,7 +5883,7 @@ bool Snmp::Notification::Flash::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::CiscoIOSXRFreqsyncCfgFrequencySynchronization()
+Snmp::Notification::FrequencySynchronization::FrequencySynchronization()
     :
     enable{YType::empty, "enable"}
 {
@@ -5774,36 +5891,36 @@ Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::CiscoIOSXRFre
     yang_name = "frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::~CiscoIOSXRFreqsyncCfgFrequencySynchronization()
+Snmp::Notification::FrequencySynchronization::~FrequencySynchronization()
 {
 }
 
-bool Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::has_data() const
+bool Snmp::Notification::FrequencySynchronization::has_data() const
 {
     return enable.is_set;
 }
 
-bool Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::has_operation() const
+bool Snmp::Notification::FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_absolute_path() const
+std::string Snmp::Notification::FrequencySynchronization::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_segment_path() const
+std::string Snmp::Notification::FrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::FrequencySynchronization::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5813,19 +5930,19 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Notification::CiscoIOSXRFre
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::FrequencySynchronization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -5835,7 +5952,7 @@ void Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::set_valu
     }
 }
 
-void Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -5843,7 +5960,7 @@ void Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::set_filt
     }
 }
 
-bool Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
@@ -8883,90 +9000,6 @@ bool Snmp::Notification::MplsL3Vpn::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::~CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization()
-{
-}
-
-bool Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::has_data() const
-{
-    return enable.is_set;
-}
-
-bool Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
 Snmp::Notification::Optical::Optical()
     :
     enable{YType::empty, "enable"}
@@ -9381,6 +9414,90 @@ void Snmp::Notification::Sensor::set_filter(const std::string & value_path, YFil
 }
 
 bool Snmp::Notification::Sensor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::CiscoEntityExt::CiscoEntityExt()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "cisco-entity-ext"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Snmp::Notification::CiscoEntityExt::~CiscoEntityExt()
+{
+}
+
+bool Snmp::Notification::CiscoEntityExt::has_data() const
+{
+    return enable.is_set;
+}
+
+bool Snmp::Notification::CiscoEntityExt::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::CiscoEntityExt::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::CiscoEntityExt::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::CiscoEntityExt::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::CiscoEntityExt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::CiscoEntityExt::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::CiscoEntityExt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::CiscoEntityExt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::CiscoEntityExt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
@@ -10353,11 +10470,15 @@ bool Snmp::Correlator::Rules::has_leaf_or_child_of_name(const std::string & name
 
 Snmp::Correlator::Rules::Rule::Rule()
     :
-    name{YType::str, "name"}
+    name{YType::str, "name"},
+    timeout{YType::uint32, "timeout"}
     	,
-    non_stateful(nullptr) // presence node
+    root_causes(std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses>())
+	,non_root_causes(std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses>())
 	,applied_to(std::make_shared<Snmp::Correlator::Rules::Rule::AppliedTo>())
 {
+    root_causes->parent = this;
+    non_root_causes->parent = this;
     applied_to->parent = this;
 
     yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false;
@@ -10370,7 +10491,9 @@ Snmp::Correlator::Rules::Rule::~Rule()
 bool Snmp::Correlator::Rules::Rule::has_data() const
 {
     return name.is_set
-	|| (non_stateful !=  nullptr && non_stateful->has_data())
+	|| timeout.is_set
+	|| (root_causes !=  nullptr && root_causes->has_data())
+	|| (non_root_causes !=  nullptr && non_root_causes->has_data())
 	|| (applied_to !=  nullptr && applied_to->has_data());
 }
 
@@ -10378,7 +10501,9 @@ bool Snmp::Correlator::Rules::Rule::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| (non_stateful !=  nullptr && non_stateful->has_operation())
+	|| ydk::is_set(timeout.yfilter)
+	|| (root_causes !=  nullptr && root_causes->has_operation())
+	|| (non_root_causes !=  nullptr && non_root_causes->has_operation())
 	|| (applied_to !=  nullptr && applied_to->has_operation());
 }
 
@@ -10401,6 +10526,7 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::ge
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10408,13 +10534,22 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::ge
 
 std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "non-stateful")
+    if(child_yang_name == "root-causes")
     {
-        if(non_stateful == nullptr)
+        if(root_causes == nullptr)
         {
-            non_stateful = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful>();
+            root_causes = std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses>();
         }
-        return non_stateful;
+        return root_causes;
+    }
+
+    if(child_yang_name == "non-root-causes")
+    {
+        if(non_root_causes == nullptr)
+        {
+            non_root_causes = std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses>();
+        }
+        return non_root_causes;
     }
 
     if(child_yang_name == "applied-to")
@@ -10433,9 +10568,14 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::ge
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(non_stateful != nullptr)
+    if(root_causes != nullptr)
     {
-        children["non-stateful"] = non_stateful;
+        children["root-causes"] = root_causes;
+    }
+
+    if(non_root_causes != nullptr)
+    {
+        children["non-root-causes"] = non_root_causes;
     }
 
     if(applied_to != nullptr)
@@ -10454,114 +10594,6 @@ void Snmp::Correlator::Rules::Rule::set_value(const std::string & value_path, co
         name.value_namespace = name_space;
         name.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void Snmp::Correlator::Rules::Rule::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Correlator::Rules::Rule::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "non-stateful" || name == "applied-to" || name == "name")
-        return true;
-    return false;
-}
-
-Snmp::Correlator::Rules::Rule::NonStateful::NonStateful()
-    :
-    timeout{YType::uint32, "timeout"}
-    	,
-    root_causes(std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses>())
-	,non_root_causes(std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses>())
-{
-    root_causes->parent = this;
-    non_root_causes->parent = this;
-
-    yang_name = "non-stateful"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Snmp::Correlator::Rules::Rule::NonStateful::~NonStateful()
-{
-}
-
-bool Snmp::Correlator::Rules::Rule::NonStateful::has_data() const
-{
-    return timeout.is_set
-	|| (root_causes !=  nullptr && root_causes->has_data())
-	|| (non_root_causes !=  nullptr && non_root_causes->has_data());
-}
-
-bool Snmp::Correlator::Rules::Rule::NonStateful::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(timeout.yfilter)
-	|| (root_causes !=  nullptr && root_causes->has_operation())
-	|| (non_root_causes !=  nullptr && non_root_causes->has_operation());
-}
-
-std::string Snmp::Correlator::Rules::Rule::NonStateful::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "non-stateful";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "root-causes")
-    {
-        if(root_causes == nullptr)
-        {
-            root_causes = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses>();
-        }
-        return root_causes;
-    }
-
-    if(child_yang_name == "non-root-causes")
-    {
-        if(non_root_causes == nullptr)
-        {
-            non_root_causes = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses>();
-        }
-        return non_root_causes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(root_causes != nullptr)
-    {
-        children["root-causes"] = root_causes;
-    }
-
-    if(non_root_causes != nullptr)
-    {
-        children["non-root-causes"] = non_root_causes;
-    }
-
-    return children;
-}
-
-void Snmp::Correlator::Rules::Rule::NonStateful::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
     if(value_path == "timeout")
     {
         timeout = value;
@@ -10570,32 +10602,36 @@ void Snmp::Correlator::Rules::Rule::NonStateful::set_value(const std::string & v
     }
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
     if(value_path == "timeout")
     {
         timeout.yfilter = yfilter;
     }
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "root-causes" || name == "non-root-causes" || name == "timeout")
+    if(name == "root-causes" || name == "non-root-causes" || name == "applied-to" || name == "name" || name == "timeout")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCauses()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCauses()
 {
 
-    yang_name = "root-causes"; yang_parent_name = "non-stateful"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "root-causes"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::~RootCauses()
+Snmp::Correlator::Rules::Rule::RootCauses::~RootCauses()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::has_data() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::has_data() const
 {
     for (std::size_t index=0; index<root_cause.size(); index++)
     {
@@ -10605,7 +10641,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::has_data() const
     return false;
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::has_operation() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::has_operation() const
 {
     for (std::size_t index=0; index<root_cause.size(); index++)
     {
@@ -10615,14 +10651,14 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::has_operation() con
     return is_set(yfilter);
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::RootCauses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "root-causes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::RootCauses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10631,11 +10667,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::RootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "root-cause")
     {
-        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause>();
+        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses::RootCause>();
         c->parent = this;
         root_cause.push_back(c);
         return c;
@@ -10644,7 +10680,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::RootCauses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10660,45 +10696,45 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::RootCauses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::RootCauses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::RootCauses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "root-cause")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::RootCause()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::RootCause()
     :
     oid{YType::str, "oid"},
     created{YType::empty, "created"}
     	,
-    var_binds(std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds>())
+    var_binds(std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds>())
 {
     var_binds->parent = this;
 
     yang_name = "root-cause"; yang_parent_name = "root-causes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::~RootCause()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::~RootCause()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::has_data() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::has_data() const
 {
     return oid.is_set
 	|| created.is_set
 	|| (var_binds !=  nullptr && var_binds->has_data());
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::has_operation() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oid.yfilter)
@@ -10706,14 +10742,14 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::has_oper
 	|| (var_binds !=  nullptr && var_binds->has_operation());
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::RootCauses::RootCause::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "root-cause" <<"[oid='" <<oid <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::RootCauses::RootCause::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10724,13 +10760,13 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "var-binds")
     {
         if(var_binds == nullptr)
         {
-            var_binds = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds>();
+            var_binds = std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds>();
         }
         return var_binds;
     }
@@ -10738,7 +10774,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10750,7 +10786,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
@@ -10766,7 +10802,7 @@ void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::set_valu
     }
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oid")
     {
@@ -10778,24 +10814,24 @@ void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::set_filt
     }
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "var-binds" || name == "oid" || name == "created")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBinds()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBinds()
 {
 
     yang_name = "var-binds"; yang_parent_name = "root-cause"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::~VarBinds()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::~VarBinds()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::has_data() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::has_data() const
 {
     for (std::size_t index=0; index<var_bind.size(); index++)
     {
@@ -10805,7 +10841,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
     return false;
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::has_operation() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::has_operation() const
 {
     for (std::size_t index=0; index<var_bind.size(); index++)
     {
@@ -10815,14 +10851,14 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
     return is_set(yfilter);
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "var-binds";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10831,11 +10867,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "var-bind")
     {
-        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind>();
+        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind>();
         c->parent = this;
         var_bind.push_back(c);
         return c;
@@ -10844,7 +10880,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10860,57 +10896,57 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "var-bind")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::VarBind()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::VarBind()
     :
     oid{YType::str, "oid"}
     	,
-    match(std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match>())
+    match(std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match>())
 {
     match->parent = this;
 
     yang_name = "var-bind"; yang_parent_name = "var-binds"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::~VarBind()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::~VarBind()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::has_data() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::has_data() const
 {
     return oid.is_set
 	|| (match !=  nullptr && match->has_data());
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::has_operation() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oid.yfilter)
 	|| (match !=  nullptr && match->has_operation());
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "var-bind" <<"[oid='" <<oid <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10920,13 +10956,13 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "match")
     {
         if(match == nullptr)
         {
-            match = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match>();
+            match = std::make_shared<Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match>();
         }
         return match;
     }
@@ -10934,7 +10970,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10946,7 +10982,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
@@ -10956,7 +10992,7 @@ void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
     }
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oid")
     {
@@ -10964,14 +11000,14 @@ void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
     }
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "match" || name == "oid")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::Match()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::Match()
     :
     value_{YType::str, "value"},
     index_{YType::str, "index"}
@@ -10980,31 +11016,31 @@ Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::Var
     yang_name = "match"; yang_parent_name = "var-bind"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::~Match()
+Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::~Match()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::has_data() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::has_data() const
 {
     return value_.is_set
 	|| index_.is_set;
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::has_operation() const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| ydk::is_set(index_.yfilter);
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "match";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11015,19 +11051,19 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -11043,7 +11079,7 @@ void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
     }
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -11055,24 +11091,24 @@ void Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
     }
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "index")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCauses()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCauses()
 {
 
-    yang_name = "non-root-causes"; yang_parent_name = "non-stateful"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-root-causes"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::~NonRootCauses()
+Snmp::Correlator::Rules::Rule::NonRootCauses::~NonRootCauses()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_data() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::has_data() const
 {
     for (std::size_t index=0; index<non_root_cause.size(); index++)
     {
@@ -11082,7 +11118,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_data() const
     return false;
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_operation() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::has_operation() const
 {
     for (std::size_t index=0; index<non_root_cause.size(); index++)
     {
@@ -11092,14 +11128,14 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_operation() 
     return is_set(yfilter);
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::NonRootCauses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "non-root-causes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonRootCauses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11108,11 +11144,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "non-root-cause")
     {
-        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause>();
+        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause>();
         c->parent = this;
         non_root_cause.push_back(c);
         return c;
@@ -11121,7 +11157,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCause
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonRootCauses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11137,45 +11173,45 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "non-root-cause")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::NonRootCause()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::NonRootCause()
     :
     oid{YType::str, "oid"},
     created{YType::empty, "created"}
     	,
-    var_binds(std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds>())
+    var_binds(std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds>())
 {
     var_binds->parent = this;
 
     yang_name = "non-root-cause"; yang_parent_name = "non-root-causes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::~NonRootCause()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::~NonRootCause()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::has_data() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::has_data() const
 {
     return oid.is_set
 	|| created.is_set
 	|| (var_binds !=  nullptr && var_binds->has_data());
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::has_operation() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oid.yfilter)
@@ -11183,14 +11219,14 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::ha
 	|| (var_binds !=  nullptr && var_binds->has_operation());
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "non-root-cause" <<"[oid='" <<oid <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11201,13 +11237,13 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "var-binds")
     {
         if(var_binds == nullptr)
         {
-            var_binds = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds>();
+            var_binds = std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds>();
         }
         return var_binds;
     }
@@ -11215,7 +11251,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCause
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11227,7 +11263,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
@@ -11243,7 +11279,7 @@ void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::se
     }
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oid")
     {
@@ -11255,24 +11291,24 @@ void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::se
     }
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "var-binds" || name == "oid" || name == "created")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBinds()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBinds()
 {
 
     yang_name = "var-binds"; yang_parent_name = "non-root-cause"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::~VarBinds()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::~VarBinds()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::has_data() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::has_data() const
 {
     for (std::size_t index=0; index<var_bind.size(); index++)
     {
@@ -11282,7 +11318,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::Va
     return false;
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::has_operation() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::has_operation() const
 {
     for (std::size_t index=0; index<var_bind.size(); index++)
     {
@@ -11292,14 +11328,14 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::Va
     return is_set(yfilter);
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "var-binds";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11308,11 +11344,11 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "var-bind")
     {
-        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind>();
+        auto c = std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind>();
         c->parent = this;
         var_bind.push_back(c);
         return c;
@@ -11321,7 +11357,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCause
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11337,57 +11373,57 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "var-bind")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::VarBind()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::VarBind()
     :
     oid{YType::str, "oid"}
     	,
-    match(std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match>())
+    match(std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match>())
 {
     match->parent = this;
 
     yang_name = "var-bind"; yang_parent_name = "var-binds"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::~VarBind()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::~VarBind()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::has_data() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::has_data() const
 {
     return oid.is_set
 	|| (match !=  nullptr && match->has_data());
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::has_operation() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oid.yfilter)
 	|| (match !=  nullptr && match->has_operation());
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "var-bind" <<"[oid='" <<oid <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11397,13 +11433,13 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "match")
     {
         if(match == nullptr)
         {
-            match = std::make_shared<Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match>();
+            match = std::make_shared<Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match>();
         }
         return match;
     }
@@ -11411,7 +11447,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCause
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11423,7 +11459,7 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::No
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
@@ -11433,7 +11469,7 @@ void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::Va
     }
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oid")
     {
@@ -11441,14 +11477,14 @@ void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::Va
     }
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "match" || name == "oid")
         return true;
     return false;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::Match()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::Match()
     :
     value_{YType::str, "value"},
     index_{YType::str, "index"}
@@ -11457,31 +11493,31 @@ Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBind
     yang_name = "match"; yang_parent_name = "var-bind"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::~Match()
+Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::~Match()
 {
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::has_data() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::has_data() const
 {
     return value_.is_set
 	|| index_.is_set;
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::has_operation() const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| ydk::is_set(index_.yfilter);
 }
 
-std::string Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_segment_path() const
+std::string Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "match";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11492,19 +11528,19 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Correlator::Rules::Rule::No
 
 }
 
-std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -11520,7 +11556,7 @@ void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::Va
     }
 }
 
-void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -11532,7 +11568,7 @@ void Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::Va
     }
 }
 
-bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "index")
         return true;

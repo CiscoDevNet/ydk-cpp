@@ -11,6 +11,188 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_cfg {
 
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::EbgpMultihop()
+    :
+    max_hop_count{YType::uint32, "max-hop-count"},
+    mpls_deactivation{YType::boolean, "mpls-deactivation"}
+{
+
+    yang_name = "ebgp-multihop"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::~EbgpMultihop()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::has_data() const
+{
+    return max_hop_count.is_set
+	|| mpls_deactivation.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_hop_count.yfilter)
+	|| ydk::is_set(mpls_deactivation.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ebgp-multihop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_hop_count.is_set || is_set(max_hop_count.yfilter)) leaf_name_data.push_back(max_hop_count.get_name_leafdata());
+    if (mpls_deactivation.is_set || is_set(mpls_deactivation.yfilter)) leaf_name_data.push_back(mpls_deactivation.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-hop-count")
+    {
+        max_hop_count = value;
+        max_hop_count.value_namespace = name_space;
+        max_hop_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-deactivation")
+    {
+        mpls_deactivation = value;
+        mpls_deactivation.value_namespace = name_space;
+        mpls_deactivation.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-hop-count")
+    {
+        max_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "mpls-deactivation")
+    {
+        mpls_deactivation.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-hop-count" || name == "mpls-deactivation")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::RemoteAs()
+    :
+    as_xx{YType::uint32, "as-xx"},
+    as_yy{YType::uint32, "as-yy"}
+{
+
+    yang_name = "remote-as"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::~RemoteAs()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::has_data() const
+{
+    return as_xx.is_set
+	|| as_yy.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as_yy.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-as";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as_yy.is_set || is_set(as_yy.yfilter)) leaf_name_data.push_back(as_yy.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-yy")
+    {
+        as_yy = value;
+        as_yy.value_namespace = name_space;
+        as_yy.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as-yy")
+    {
+        as_yy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-xx" || name == "as-yy")
+        return true;
+    return false;
+}
+
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAs::LocalAs()
     :
     as_xx{YType::uint32, "as-xx"},
@@ -1760,12 +1942,14 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Global()
     igp_redist_internal{YType::empty, "igp-redist-internal"},
     multi_path_as_path_ignore_onwards{YType::empty, "multi-path-as-path-ignore-onwards"},
     disable_fast_external_fallover{YType::empty, "disable-fast-external-fallover"},
+    unsafe_ebgp_policy{YType::empty, "unsafe-ebgp-policy"},
     default_metric{YType::uint32, "default-metric"},
     default_info_originate{YType::empty, "default-info-originate"},
     best_path_confederation_paths{YType::empty, "best-path-confederation-paths"},
     best_path_as_multipath_relax{YType::empty, "best-path-as-multipath-relax"},
     disable_auto_soft_reset{YType::empty, "disable-auto-soft-reset"},
     disable_msg_log{YType::empty, "disable-msg-log"},
+    next_hop_mpls_fwd_ibgp{YType::empty, "next-hop-mpls-fwd-ibgp"},
     disable_neighbor_logging{YType::empty, "disable-neighbor-logging"},
     best_path_med_always{YType::empty, "best-path-med-always"},
     best_path_router_id{YType::empty, "best-path-router-id"},
@@ -1852,12 +2036,14 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_data() const
 	|| igp_redist_internal.is_set
 	|| multi_path_as_path_ignore_onwards.is_set
 	|| disable_fast_external_fallover.is_set
+	|| unsafe_ebgp_policy.is_set
 	|| default_metric.is_set
 	|| default_info_originate.is_set
 	|| best_path_confederation_paths.is_set
 	|| best_path_as_multipath_relax.is_set
 	|| disable_auto_soft_reset.is_set
 	|| disable_msg_log.is_set
+	|| next_hop_mpls_fwd_ibgp.is_set
 	|| disable_neighbor_logging.is_set
 	|| best_path_med_always.is_set
 	|| best_path_router_id.is_set
@@ -1919,12 +2105,14 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_operation() 
 	|| ydk::is_set(igp_redist_internal.yfilter)
 	|| ydk::is_set(multi_path_as_path_ignore_onwards.yfilter)
 	|| ydk::is_set(disable_fast_external_fallover.yfilter)
+	|| ydk::is_set(unsafe_ebgp_policy.yfilter)
 	|| ydk::is_set(default_metric.yfilter)
 	|| ydk::is_set(default_info_originate.yfilter)
 	|| ydk::is_set(best_path_confederation_paths.yfilter)
 	|| ydk::is_set(best_path_as_multipath_relax.yfilter)
 	|| ydk::is_set(disable_auto_soft_reset.yfilter)
 	|| ydk::is_set(disable_msg_log.yfilter)
+	|| ydk::is_set(next_hop_mpls_fwd_ibgp.yfilter)
 	|| ydk::is_set(disable_neighbor_logging.yfilter)
 	|| ydk::is_set(best_path_med_always.yfilter)
 	|| ydk::is_set(best_path_router_id.yfilter)
@@ -1994,12 +2182,14 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (igp_redist_internal.is_set || is_set(igp_redist_internal.yfilter)) leaf_name_data.push_back(igp_redist_internal.get_name_leafdata());
     if (multi_path_as_path_ignore_onwards.is_set || is_set(multi_path_as_path_ignore_onwards.yfilter)) leaf_name_data.push_back(multi_path_as_path_ignore_onwards.get_name_leafdata());
     if (disable_fast_external_fallover.is_set || is_set(disable_fast_external_fallover.yfilter)) leaf_name_data.push_back(disable_fast_external_fallover.get_name_leafdata());
+    if (unsafe_ebgp_policy.is_set || is_set(unsafe_ebgp_policy.yfilter)) leaf_name_data.push_back(unsafe_ebgp_policy.get_name_leafdata());
     if (default_metric.is_set || is_set(default_metric.yfilter)) leaf_name_data.push_back(default_metric.get_name_leafdata());
     if (default_info_originate.is_set || is_set(default_info_originate.yfilter)) leaf_name_data.push_back(default_info_originate.get_name_leafdata());
     if (best_path_confederation_paths.is_set || is_set(best_path_confederation_paths.yfilter)) leaf_name_data.push_back(best_path_confederation_paths.get_name_leafdata());
     if (best_path_as_multipath_relax.is_set || is_set(best_path_as_multipath_relax.yfilter)) leaf_name_data.push_back(best_path_as_multipath_relax.get_name_leafdata());
     if (disable_auto_soft_reset.is_set || is_set(disable_auto_soft_reset.yfilter)) leaf_name_data.push_back(disable_auto_soft_reset.get_name_leafdata());
     if (disable_msg_log.is_set || is_set(disable_msg_log.yfilter)) leaf_name_data.push_back(disable_msg_log.get_name_leafdata());
+    if (next_hop_mpls_fwd_ibgp.is_set || is_set(next_hop_mpls_fwd_ibgp.yfilter)) leaf_name_data.push_back(next_hop_mpls_fwd_ibgp.get_name_leafdata());
     if (disable_neighbor_logging.is_set || is_set(disable_neighbor_logging.yfilter)) leaf_name_data.push_back(disable_neighbor_logging.get_name_leafdata());
     if (best_path_med_always.is_set || is_set(best_path_med_always.yfilter)) leaf_name_data.push_back(best_path_med_always.get_name_leafdata());
     if (best_path_router_id.is_set || is_set(best_path_router_id.yfilter)) leaf_name_data.push_back(best_path_router_id.get_name_leafdata());
@@ -2474,6 +2664,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_value(const 
         disable_fast_external_fallover.value_namespace = name_space;
         disable_fast_external_fallover.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "unsafe-ebgp-policy")
+    {
+        unsafe_ebgp_policy = value;
+        unsafe_ebgp_policy.value_namespace = name_space;
+        unsafe_ebgp_policy.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "default-metric")
     {
         default_metric = value;
@@ -2509,6 +2705,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_value(const 
         disable_msg_log = value;
         disable_msg_log.value_namespace = name_space;
         disable_msg_log.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-mpls-fwd-ibgp")
+    {
+        next_hop_mpls_fwd_ibgp = value;
+        next_hop_mpls_fwd_ibgp.value_namespace = name_space;
+        next_hop_mpls_fwd_ibgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-neighbor-logging")
     {
@@ -2676,6 +2878,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_filter(const
     {
         disable_fast_external_fallover.yfilter = yfilter;
     }
+    if(value_path == "unsafe-ebgp-policy")
+    {
+        unsafe_ebgp_policy.yfilter = yfilter;
+    }
     if(value_path == "default-metric")
     {
         default_metric.yfilter = yfilter;
@@ -2699,6 +2905,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_filter(const
     if(value_path == "disable-msg-log")
     {
         disable_msg_log.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-mpls-fwd-ibgp")
+    {
+        next_hop_mpls_fwd_ibgp.yfilter = yfilter;
     }
     if(value_path == "disable-neighbor-logging")
     {
@@ -2724,7 +2934,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_filter(const
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cluster-id" || name == "write-limit" || name == "update-delay" || name == "as-league" || name == "rpki-servers" || name == "as-list-groups" || name == "limits" || name == "confederation-domain" || name == "confederation-peer-ases" || name == "attribute-filter-groups" || name == "global-graceful-maintenance-activate" || name == "global-afs" || name == "rpki-static-routes" || name == "mpls-activated-interfaces" || name == "global-timers" || name == "bfd" || name == "send-socket-buffer-sizes" || name == "receive-socket-buffer-sizes" || name == "graceful-restart" || name == "update-out-logging" || name == "install-diversion" || name == "next-hop-trigger-delay" || name == "nsr" || name == "neighbor-logging-detail" || name == "mvpn" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "global-scan-time" || name == "rpki-bestpath-use-origin-as-validity" || name == "rpki-origin-as-validation-time" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "graceful-restart-purge-time" || name == "enforce-ibgp-out-policy" || name == "update-limit-process" || name == "graceful-restart-time" || name == "update-error-handling-basic-ibgp-disable" || name == "read-only" || name == "graceful-restart-stalepath-time" || name == "update-error-handling-extended-ebgp" || name == "update-error-handling-basic-ebgp-disable" || name == "graceful-reset" || name == "igp-loop-check" || name == "update-error-handling-extended-ibgp" || name == "router-id" || name == "disable-enforce-first-as" || name == "best-path-cost-community" || name == "best-path-aigp-ignore" || name == "best-path-as-path-length" || name == "igp-redist-internal" || name == "multi-path-as-path-ignore-onwards" || name == "disable-fast-external-fallover" || name == "default-metric" || name == "default-info-originate" || name == "best-path-confederation-paths" || name == "best-path-as-multipath-relax" || name == "disable-auto-soft-reset" || name == "disable-msg-log" || name == "disable-neighbor-logging" || name == "best-path-med-always" || name == "best-path-router-id" || name == "best-path-med-missing" || name == "local-preference")
+    if(name == "cluster-id" || name == "write-limit" || name == "update-delay" || name == "as-league" || name == "rpki-servers" || name == "as-list-groups" || name == "limits" || name == "confederation-domain" || name == "confederation-peer-ases" || name == "attribute-filter-groups" || name == "global-graceful-maintenance-activate" || name == "global-afs" || name == "rpki-static-routes" || name == "mpls-activated-interfaces" || name == "global-timers" || name == "bfd" || name == "send-socket-buffer-sizes" || name == "receive-socket-buffer-sizes" || name == "graceful-restart" || name == "update-out-logging" || name == "install-diversion" || name == "next-hop-trigger-delay" || name == "nsr" || name == "neighbor-logging-detail" || name == "mvpn" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "global-scan-time" || name == "rpki-bestpath-use-origin-as-validity" || name == "rpki-origin-as-validation-time" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "graceful-restart-purge-time" || name == "enforce-ibgp-out-policy" || name == "update-limit-process" || name == "graceful-restart-time" || name == "update-error-handling-basic-ibgp-disable" || name == "read-only" || name == "graceful-restart-stalepath-time" || name == "update-error-handling-extended-ebgp" || name == "update-error-handling-basic-ebgp-disable" || name == "graceful-reset" || name == "igp-loop-check" || name == "update-error-handling-extended-ibgp" || name == "router-id" || name == "disable-enforce-first-as" || name == "best-path-cost-community" || name == "best-path-aigp-ignore" || name == "best-path-as-path-length" || name == "igp-redist-internal" || name == "multi-path-as-path-ignore-onwards" || name == "disable-fast-external-fallover" || name == "unsafe-ebgp-policy" || name == "default-metric" || name == "default-info-originate" || name == "best-path-confederation-paths" || name == "best-path-as-multipath-relax" || name == "disable-auto-soft-reset" || name == "disable-msg-log" || name == "next-hop-mpls-fwd-ibgp" || name == "disable-neighbor-logging" || name == "best-path-med-always" || name == "best-path-router-id" || name == "best-path-med-missing" || name == "local-preference")
         return true;
     return false;
 }
@@ -3389,10 +3599,10 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServ
     enable{YType::empty, "enable"},
     shutdown{YType::empty, "shutdown"},
     password{YType::str, "password"},
-    response_time{YType::int32, "response-time"},
+    response_time{YType::uint32, "response-time"},
     username{YType::str, "username"},
-    refresh_time{YType::int32, "refresh-time"},
-    purge_time{YType::int32, "purge-time"}
+    refresh_time{YType::uint32, "refresh-time"},
+    purge_time{YType::uint32, "purge-time"}
     	,
     transport(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::Transport>())
 {
@@ -4980,6 +5190,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     rnh_install_format{YType::enumeration, "rnh-install-format"},
     inter_as_install{YType::empty, "inter-as-install"},
     segmented_mcast{YType::empty, "segmented-mcast"},
+    implicit_import{YType::empty, "implicit-import"},
     disable_default_martian_check{YType::empty, "disable-default-martian-check"},
     next_hop_critical_trigger_delay{YType::uint32, "next-hop-critical-trigger-delay"},
     next_hop_non_critical_trigger_delay{YType::uint32, "next-hop-non-critical-trigger-delay"},
@@ -5022,6 +5233,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 	,ibgp(nullptr) // presence node
 	,import_delay(nullptr) // presence node
 	,aggregate_addresses(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses>())
+	,optimal_route_reflector_groups(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups>())
 	,dampening(nullptr) // presence node
 	,rip_routes(nullptr) // presence node
 	,lisp_routes(nullptr) // presence node
@@ -5043,6 +5255,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     disable_cluster_client_to_client_rrs->parent = this;
     retain_rt->parent = this;
     aggregate_addresses->parent = this;
+    optimal_route_reflector_groups->parent = this;
     distance->parent = this;
     application_routes->parent = this;
     label_mode->parent = this;
@@ -5065,6 +5278,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| rnh_install_format.is_set
 	|| inter_as_install.is_set
 	|| segmented_mcast.is_set
+	|| implicit_import.is_set
 	|| disable_default_martian_check.is_set
 	|| next_hop_critical_trigger_delay.is_set
 	|| next_hop_non_critical_trigger_delay.is_set
@@ -5106,6 +5320,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| (ibgp !=  nullptr && ibgp->has_data())
 	|| (import_delay !=  nullptr && import_delay->has_data())
 	|| (aggregate_addresses !=  nullptr && aggregate_addresses->has_data())
+	|| (optimal_route_reflector_groups !=  nullptr && optimal_route_reflector_groups->has_data())
 	|| (dampening !=  nullptr && dampening->has_data())
 	|| (rip_routes !=  nullptr && rip_routes->has_data())
 	|| (lisp_routes !=  nullptr && lisp_routes->has_data())
@@ -5130,6 +5345,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| ydk::is_set(rnh_install_format.yfilter)
 	|| ydk::is_set(inter_as_install.yfilter)
 	|| ydk::is_set(segmented_mcast.yfilter)
+	|| ydk::is_set(implicit_import.yfilter)
 	|| ydk::is_set(disable_default_martian_check.yfilter)
 	|| ydk::is_set(next_hop_critical_trigger_delay.yfilter)
 	|| ydk::is_set(next_hop_non_critical_trigger_delay.yfilter)
@@ -5171,6 +5387,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| (ibgp !=  nullptr && ibgp->has_operation())
 	|| (import_delay !=  nullptr && import_delay->has_operation())
 	|| (aggregate_addresses !=  nullptr && aggregate_addresses->has_operation())
+	|| (optimal_route_reflector_groups !=  nullptr && optimal_route_reflector_groups->has_operation())
 	|| (dampening !=  nullptr && dampening->has_operation())
 	|| (rip_routes !=  nullptr && rip_routes->has_operation())
 	|| (lisp_routes !=  nullptr && lisp_routes->has_operation())
@@ -5203,6 +5420,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (rnh_install_format.is_set || is_set(rnh_install_format.yfilter)) leaf_name_data.push_back(rnh_install_format.get_name_leafdata());
     if (inter_as_install.is_set || is_set(inter_as_install.yfilter)) leaf_name_data.push_back(inter_as_install.get_name_leafdata());
     if (segmented_mcast.is_set || is_set(segmented_mcast.yfilter)) leaf_name_data.push_back(segmented_mcast.get_name_leafdata());
+    if (implicit_import.is_set || is_set(implicit_import.yfilter)) leaf_name_data.push_back(implicit_import.get_name_leafdata());
     if (disable_default_martian_check.is_set || is_set(disable_default_martian_check.yfilter)) leaf_name_data.push_back(disable_default_martian_check.get_name_leafdata());
     if (next_hop_critical_trigger_delay.is_set || is_set(next_hop_critical_trigger_delay.yfilter)) leaf_name_data.push_back(next_hop_critical_trigger_delay.get_name_leafdata());
     if (next_hop_non_critical_trigger_delay.is_set || is_set(next_hop_non_critical_trigger_delay.yfilter)) leaf_name_data.push_back(next_hop_non_critical_trigger_delay.get_name_leafdata());
@@ -5337,6 +5555,15 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
             aggregate_addresses = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses>();
         }
         return aggregate_addresses;
+    }
+
+    if(child_yang_name == "optimal-route-reflector-groups")
+    {
+        if(optimal_route_reflector_groups == nullptr)
+        {
+            optimal_route_reflector_groups = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups>();
+        }
+        return optimal_route_reflector_groups;
     }
 
     if(child_yang_name == "dampening")
@@ -5536,6 +5763,11 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
         children["aggregate-addresses"] = aggregate_addresses;
     }
 
+    if(optimal_route_reflector_groups != nullptr)
+    {
+        children["optimal-route-reflector-groups"] = optimal_route_reflector_groups;
+    }
+
     if(dampening != nullptr)
     {
         children["dampening"] = dampening;
@@ -5639,6 +5871,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         segmented_mcast = value;
         segmented_mcast.value_namespace = name_space;
         segmented_mcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "implicit-import")
+    {
+        implicit_import = value;
+        implicit_import.value_namespace = name_space;
+        implicit_import.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-default-martian-check")
     {
@@ -5840,6 +6078,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         segmented_mcast.yfilter = yfilter;
     }
+    if(value_path == "implicit-import")
+    {
+        implicit_import.yfilter = yfilter;
+    }
     if(value_path == "disable-default-martian-check")
     {
         disable_default_martian_check.yfilter = yfilter;
@@ -5964,7 +6206,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "isis-routes" || name == "domain-distinguisher" || name == "vrf-all" || name == "disable-cluster-client-to-client-rrs" || name == "label-delay" || name == "ebgp" || name == "eibgp" || name == "retain-rt" || name == "ibgp" || name == "import-delay" || name == "aggregate-addresses" || name == "dampening" || name == "rip-routes" || name == "lisp-routes" || name == "static-routes" || name == "distance" || name == "application-routes" || name == "label-mode" || name == "eigrp-routes" || name == "sourced-networks" || name == "connected-routes" || name == "allocate-label" || name == "additional-paths-selection" || name == "ospf-routes" || name == "mobile-routes" || name == "subscriber-routes" || name == "af-name" || name == "rnh-install-format" || name == "inter-as-install" || name == "segmented-mcast" || name == "disable-default-martian-check" || name == "next-hop-critical-trigger-delay" || name == "next-hop-non-critical-trigger-delay" || name == "label-security-rpf" || name == "use-igpsr-label" || name == "label-retain" || name == "scan-time" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "update-limit-sub-group-ebgp" || name == "update-limit-address-family" || name == "rpki-bestpath-use-origin-as-validity" || name == "update-limit-sub-group-ibgp" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "disable-client-to-client-rr" || name == "next-hop-route-policy" || name == "global-table-mcast" || name == "wait-rib-install" || name == "dynamic-med-interval" || name == "enable" || name == "table-policy" || name == "attribute-download" || name == "best-external" || name == "additional-paths-receive" || name == "permanent-network" || name == "next-hop-resolution-prefix-length-minimum" || name == "reset-weight-on-import" || name == "additional-paths-send" || name == "advertise-local-labeled-route-safi-unicast" || name == "disable-as-path-loop-check")
+    if(name == "isis-routes" || name == "domain-distinguisher" || name == "vrf-all" || name == "disable-cluster-client-to-client-rrs" || name == "label-delay" || name == "ebgp" || name == "eibgp" || name == "retain-rt" || name == "ibgp" || name == "import-delay" || name == "aggregate-addresses" || name == "optimal-route-reflector-groups" || name == "dampening" || name == "rip-routes" || name == "lisp-routes" || name == "static-routes" || name == "distance" || name == "application-routes" || name == "label-mode" || name == "eigrp-routes" || name == "sourced-networks" || name == "connected-routes" || name == "allocate-label" || name == "additional-paths-selection" || name == "ospf-routes" || name == "mobile-routes" || name == "subscriber-routes" || name == "af-name" || name == "rnh-install-format" || name == "inter-as-install" || name == "segmented-mcast" || name == "implicit-import" || name == "disable-default-martian-check" || name == "next-hop-critical-trigger-delay" || name == "next-hop-non-critical-trigger-delay" || name == "label-security-rpf" || name == "use-igpsr-label" || name == "label-retain" || name == "scan-time" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "update-limit-sub-group-ebgp" || name == "update-limit-address-family" || name == "rpki-bestpath-use-origin-as-validity" || name == "update-limit-sub-group-ibgp" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "disable-client-to-client-rr" || name == "next-hop-route-policy" || name == "global-table-mcast" || name == "wait-rib-install" || name == "dynamic-med-interval" || name == "enable" || name == "table-policy" || name == "attribute-download" || name == "best-external" || name == "additional-paths-receive" || name == "permanent-network" || name == "next-hop-resolution-prefix-length-minimum" || name == "reset-weight-on-import" || name == "additional-paths-send" || name == "advertise-local-labeled-route-safi-unicast" || name == "disable-as-path-loop-check")
         return true;
     return false;
 }
@@ -7736,6 +7978,215 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::AggregateAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aggregate-addr" || name == "aggregate-prefix" || name == "generate-set-info" || name == "generate-confederation-set-info" || name == "summary-only" || name == "route-policy-name")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroups()
+{
+
+    yang_name = "optimal-route-reflector-groups"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::~OptimalRouteReflectorGroups()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::has_data() const
+{
+    for (std::size_t index=0; index<optimal_route_reflector_group.size(); index++)
+    {
+        if(optimal_route_reflector_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::has_operation() const
+{
+    for (std::size_t index=0; index<optimal_route_reflector_group.size(); index++)
+    {
+        if(optimal_route_reflector_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optimal-route-reflector-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "optimal-route-reflector-group")
+    {
+        auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup>();
+        c->parent = this;
+        optimal_route_reflector_group.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : optimal_route_reflector_group)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optimal-route-reflector-group")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::OptimalRouteReflectorGroup()
+    :
+    group_name{YType::str, "group-name"},
+    primary_root_address{YType::str, "primary-root-address"},
+    secondary_root_address{YType::str, "secondary-root-address"},
+    tertiary_root_address{YType::str, "tertiary-root-address"}
+{
+
+    yang_name = "optimal-route-reflector-group"; yang_parent_name = "optimal-route-reflector-groups"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::~OptimalRouteReflectorGroup()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::has_data() const
+{
+    return group_name.is_set
+	|| primary_root_address.is_set
+	|| secondary_root_address.is_set
+	|| tertiary_root_address.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(primary_root_address.yfilter)
+	|| ydk::is_set(secondary_root_address.yfilter)
+	|| ydk::is_set(tertiary_root_address.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optimal-route-reflector-group" <<"[group-name='" <<group_name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (primary_root_address.is_set || is_set(primary_root_address.yfilter)) leaf_name_data.push_back(primary_root_address.get_name_leafdata());
+    if (secondary_root_address.is_set || is_set(secondary_root_address.yfilter)) leaf_name_data.push_back(secondary_root_address.get_name_leafdata());
+    if (tertiary_root_address.is_set || is_set(tertiary_root_address.yfilter)) leaf_name_data.push_back(tertiary_root_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group-name")
+    {
+        group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-root-address")
+    {
+        primary_root_address = value;
+        primary_root_address.value_namespace = name_space;
+        primary_root_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secondary-root-address")
+    {
+        secondary_root_address = value;
+        secondary_root_address.value_namespace = name_space;
+        secondary_root_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tertiary-root-address")
+    {
+        tertiary_root_address = value;
+        tertiary_root_address.value_namespace = name_space;
+        tertiary_root_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-root-address")
+    {
+        primary_root_address.yfilter = yfilter;
+    }
+    if(value_path == "secondary-root-address")
+    {
+        secondary_root_address.yfilter = yfilter;
+    }
+    if(value_path == "tertiary-root-address")
+    {
+        tertiary_root_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-name" || name == "primary-root-address" || name == "secondary-root-address" || name == "tertiary-root-address")
         return true;
     return false;
 }
@@ -9798,7 +10249,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::Rpk
     addrress{YType::str, "addrress"},
     minimum{YType::int32, "minimum"},
     maximum{YType::int32, "maximum"},
-    as{YType::int32, "as"}
+    as{YType::uint32, "as"}
 {
 
     yang_name = "rpki-static-route"; yang_parent_name = "rpki-static-routes"; is_top_level_class = false; has_list_ancestor = true;

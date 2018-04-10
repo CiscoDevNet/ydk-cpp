@@ -281,7 +281,8 @@ BgpStateData::Neighbors::Neighbor::Neighbor()
     last_read{YType::str, "last-read"},
     installed_prefixes{YType::uint32, "installed-prefixes"},
     session_state{YType::enumeration, "session-state"},
-    negotiated_cap{YType::str, "negotiated-cap"}
+    negotiated_cap{YType::str, "negotiated-cap"},
+    as{YType::uint32, "as"}
     	,
     negotiated_keepalive_timers(std::make_shared<BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers>())
 	,bgp_neighbor_counters(std::make_shared<BgpStateData::Neighbors::Neighbor::BgpNeighborCounters>())
@@ -320,6 +321,7 @@ bool BgpStateData::Neighbors::Neighbor::has_data() const
 	|| last_read.is_set
 	|| installed_prefixes.is_set
 	|| session_state.is_set
+	|| as.is_set
 	|| (negotiated_keepalive_timers !=  nullptr && negotiated_keepalive_timers->has_data())
 	|| (bgp_neighbor_counters !=  nullptr && bgp_neighbor_counters->has_data())
 	|| (connection !=  nullptr && connection->has_data())
@@ -347,6 +349,7 @@ bool BgpStateData::Neighbors::Neighbor::has_operation() const
 	|| ydk::is_set(installed_prefixes.yfilter)
 	|| ydk::is_set(session_state.yfilter)
 	|| ydk::is_set(negotiated_cap.yfilter)
+	|| ydk::is_set(as.yfilter)
 	|| (negotiated_keepalive_timers !=  nullptr && negotiated_keepalive_timers->has_operation())
 	|| (bgp_neighbor_counters !=  nullptr && bgp_neighbor_counters->has_operation())
 	|| (connection !=  nullptr && connection->has_operation())
@@ -383,6 +386,7 @@ std::vector<std::pair<std::string, LeafData> > BgpStateData::Neighbors::Neighbor
     if (last_read.is_set || is_set(last_read.yfilter)) leaf_name_data.push_back(last_read.get_name_leafdata());
     if (installed_prefixes.is_set || is_set(installed_prefixes.yfilter)) leaf_name_data.push_back(installed_prefixes.get_name_leafdata());
     if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
 
     auto negotiated_cap_name_datas = negotiated_cap.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), negotiated_cap_name_datas.begin(), negotiated_cap_name_datas.end());
@@ -544,6 +548,12 @@ void BgpStateData::Neighbors::Neighbor::set_value(const std::string & value_path
     {
         negotiated_cap.append(value);
     }
+    if(value_path == "as")
+    {
+        as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BgpStateData::Neighbors::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
@@ -596,11 +606,15 @@ void BgpStateData::Neighbors::Neighbor::set_filter(const std::string & value_pat
     {
         negotiated_cap.yfilter = yfilter;
     }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
 }
 
 bool BgpStateData::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "negotiated-keepalive-timers" || name == "bgp-neighbor-counters" || name == "connection" || name == "transport" || name == "prefix-activity" || name == "afi-safi" || name == "vrf-name" || name == "neighbor-id" || name == "description" || name == "bgp-version" || name == "link" || name == "up-time" || name == "last-write" || name == "last-read" || name == "installed-prefixes" || name == "session-state" || name == "negotiated-cap")
+    if(name == "negotiated-keepalive-timers" || name == "bgp-neighbor-counters" || name == "connection" || name == "transport" || name == "prefix-activity" || name == "afi-safi" || name == "vrf-name" || name == "neighbor-id" || name == "description" || name == "bgp-version" || name == "link" || name == "up-time" || name == "last-write" || name == "last-read" || name == "installed-prefixes" || name == "session-state" || name == "negotiated-cap" || name == "as")
         return true;
     return false;
 }
@@ -1881,7 +1895,8 @@ BgpStateData::AddressFamilies::AddressFamily::AddressFamily()
     router_id{YType::str, "router-id"},
     bgp_table_version{YType::uint64, "bgp-table-version"},
     routing_table_version{YType::uint64, "routing-table-version"},
-    total_memory{YType::uint64, "total-memory"}
+    total_memory{YType::uint64, "total-memory"},
+    local_as{YType::uint32, "local-as"}
     	,
     prefixes(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::Prefixes>())
 	,path(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::Path>())
@@ -1914,6 +1929,7 @@ bool BgpStateData::AddressFamilies::AddressFamily::has_data() const
 	|| bgp_table_version.is_set
 	|| routing_table_version.is_set
 	|| total_memory.is_set
+	|| local_as.is_set
 	|| (prefixes !=  nullptr && prefixes->has_data())
 	|| (path !=  nullptr && path->has_data())
 	|| (as_path !=  nullptr && as_path->has_data())
@@ -1932,6 +1948,7 @@ bool BgpStateData::AddressFamilies::AddressFamily::has_operation() const
 	|| ydk::is_set(bgp_table_version.yfilter)
 	|| ydk::is_set(routing_table_version.yfilter)
 	|| ydk::is_set(total_memory.yfilter)
+	|| ydk::is_set(local_as.yfilter)
 	|| (prefixes !=  nullptr && prefixes->has_operation())
 	|| (path !=  nullptr && path->has_operation())
 	|| (as_path !=  nullptr && as_path->has_operation())
@@ -1965,6 +1982,7 @@ std::vector<std::pair<std::string, LeafData> > BgpStateData::AddressFamilies::Ad
     if (bgp_table_version.is_set || is_set(bgp_table_version.yfilter)) leaf_name_data.push_back(bgp_table_version.get_name_leafdata());
     if (routing_table_version.is_set || is_set(routing_table_version.yfilter)) leaf_name_data.push_back(routing_table_version.get_name_leafdata());
     if (total_memory.is_set || is_set(total_memory.yfilter)) leaf_name_data.push_back(total_memory.get_name_leafdata());
+    if (local_as.is_set || is_set(local_as.yfilter)) leaf_name_data.push_back(local_as.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2118,6 +2136,12 @@ void BgpStateData::AddressFamilies::AddressFamily::set_value(const std::string &
         total_memory.value_namespace = name_space;
         total_memory.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "local-as")
+    {
+        local_as = value;
+        local_as.value_namespace = name_space;
+        local_as.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BgpStateData::AddressFamilies::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2146,11 +2170,15 @@ void BgpStateData::AddressFamilies::AddressFamily::set_filter(const std::string 
     {
         total_memory.yfilter = yfilter;
     }
+    if(value_path == "local-as")
+    {
+        local_as.yfilter = yfilter;
+    }
 }
 
 bool BgpStateData::AddressFamilies::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefixes" || name == "path" || name == "as-path" || name == "route-map" || name == "filter-list" || name == "activities" || name == "bgp-neighbor-summaries" || name == "afi-safi" || name == "vrf-name" || name == "router-id" || name == "bgp-table-version" || name == "routing-table-version" || name == "total-memory")
+    if(name == "prefixes" || name == "path" || name == "as-path" || name == "route-map" || name == "filter-list" || name == "activities" || name == "bgp-neighbor-summaries" || name == "afi-safi" || name == "vrf-name" || name == "router-id" || name == "bgp-table-version" || name == "routing-table-version" || name == "total-memory" || name == "local-as")
         return true;
     return false;
 }
@@ -2817,7 +2845,8 @@ BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborS
     up_time{YType::str, "up-time"},
     state{YType::enumeration, "state"},
     prefixes_received{YType::uint64, "prefixes-received"},
-    dynamically_configured{YType::boolean, "dynamically-configured"}
+    dynamically_configured{YType::boolean, "dynamically-configured"},
+    as{YType::uint32, "as"}
 {
 
     yang_name = "bgp-neighbor-summary"; yang_parent_name = "bgp-neighbor-summaries"; is_top_level_class = false; has_list_ancestor = true;
@@ -2839,7 +2868,8 @@ bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeig
 	|| up_time.is_set
 	|| state.is_set
 	|| prefixes_received.is_set
-	|| dynamically_configured.is_set;
+	|| dynamically_configured.is_set
+	|| as.is_set;
 }
 
 bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::has_operation() const
@@ -2855,7 +2885,8 @@ bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeig
 	|| ydk::is_set(up_time.yfilter)
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(prefixes_received.yfilter)
-	|| ydk::is_set(dynamically_configured.yfilter);
+	|| ydk::is_set(dynamically_configured.yfilter)
+	|| ydk::is_set(as.yfilter);
 }
 
 std::string BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::get_segment_path() const
@@ -2880,6 +2911,7 @@ std::vector<std::pair<std::string, LeafData> > BgpStateData::AddressFamilies::Ad
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (prefixes_received.is_set || is_set(prefixes_received.yfilter)) leaf_name_data.push_back(prefixes_received.get_name_leafdata());
     if (dynamically_configured.is_set || is_set(dynamically_configured.yfilter)) leaf_name_data.push_back(dynamically_configured.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2965,6 +2997,12 @@ void BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeig
         dynamically_configured.value_namespace = name_space;
         dynamically_configured.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "as")
+    {
+        as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3013,11 +3051,15 @@ void BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeig
     {
         dynamically_configured.yfilter = yfilter;
     }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
 }
 
 bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id" || name == "bgp-version" || name == "messages-received" || name == "messages-sent" || name == "table-version" || name == "input-queue" || name == "output-queue" || name == "up-time" || name == "state" || name == "prefixes-received" || name == "dynamically-configured")
+    if(name == "id" || name == "bgp-version" || name == "messages-received" || name == "messages-sent" || name == "table-version" || name == "input-queue" || name == "output-queue" || name == "up-time" || name == "state" || name == "prefixes-received" || name == "dynamically-configured" || name == "as")
         return true;
     return false;
 }

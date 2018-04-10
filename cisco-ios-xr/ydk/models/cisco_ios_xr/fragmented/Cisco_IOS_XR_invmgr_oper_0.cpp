@@ -5,10 +5,10 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_invmgr_oper_0.hpp"
-#include "Cisco_IOS_XR_invmgr_oper_2.hpp"
-#include "Cisco_IOS_XR_invmgr_oper_1.hpp"
 #include "Cisco_IOS_XR_invmgr_oper_4.hpp"
+#include "Cisco_IOS_XR_invmgr_oper_1.hpp"
 #include "Cisco_IOS_XR_invmgr_oper_7.hpp"
+#include "Cisco_IOS_XR_invmgr_oper_2.hpp"
 
 using namespace ydk;
 
@@ -240,11 +240,11 @@ Inventory::Entities::Entity::Entity()
     :
     name{YType::str, "name"}
     	,
-    subentities(std::make_shared<Inventory::Entities::Entity::Subentities>())
-	,attributes(std::make_shared<Inventory::Entities::Entity::Attributes>())
+    attributes(std::make_shared<Inventory::Entities::Entity::Attributes>())
+	,subentities(std::make_shared<Inventory::Entities::Entity::Subentities>())
 {
-    subentities->parent = this;
     attributes->parent = this;
+    subentities->parent = this;
 
     yang_name = "entity"; yang_parent_name = "entities"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -256,16 +256,16 @@ Inventory::Entities::Entity::~Entity()
 bool Inventory::Entities::Entity::has_data() const
 {
     return name.is_set
-	|| (subentities !=  nullptr && subentities->has_data())
-	|| (attributes !=  nullptr && attributes->has_data());
+	|| (attributes !=  nullptr && attributes->has_data())
+	|| (subentities !=  nullptr && subentities->has_data());
 }
 
 bool Inventory::Entities::Entity::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| (subentities !=  nullptr && subentities->has_operation())
-	|| (attributes !=  nullptr && attributes->has_operation());
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (subentities !=  nullptr && subentities->has_operation());
 }
 
 std::string Inventory::Entities::Entity::get_absolute_path() const
@@ -294,15 +294,6 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Entities::Entity::get_
 
 std::shared_ptr<Entity> Inventory::Entities::Entity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "subentities")
-    {
-        if(subentities == nullptr)
-        {
-            subentities = std::make_shared<Inventory::Entities::Entity::Subentities>();
-        }
-        return subentities;
-    }
-
     if(child_yang_name == "attributes")
     {
         if(attributes == nullptr)
@@ -312,6 +303,15 @@ std::shared_ptr<Entity> Inventory::Entities::Entity::get_child_by_name(const std
         return attributes;
     }
 
+    if(child_yang_name == "subentities")
+    {
+        if(subentities == nullptr)
+        {
+            subentities = std::make_shared<Inventory::Entities::Entity::Subentities>();
+        }
+        return subentities;
+    }
+
     return nullptr;
 }
 
@@ -319,14 +319,14 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity::get_
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(subentities != nullptr)
-    {
-        children["subentities"] = subentities;
-    }
-
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
+    }
+
+    if(subentities != nullptr)
+    {
+        children["subentities"] = subentities;
     }
 
     return children;
@@ -352,188 +352,7 @@ void Inventory::Entities::Entity::set_filter(const std::string & value_path, YFi
 
 bool Inventory::Entities::Entity::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "subentities" || name == "attributes" || name == "name")
-        return true;
-    return false;
-}
-
-Inventory::Entities::Entity::Subentities::Subentities()
-{
-
-    yang_name = "subentities"; yang_parent_name = "entity"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Inventory::Entities::Entity::Subentities::~Subentities()
-{
-}
-
-bool Inventory::Entities::Entity::Subentities::has_data() const
-{
-    for (std::size_t index=0; index<subentity.size(); index++)
-    {
-        if(subentity[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Inventory::Entities::Entity::Subentities::has_operation() const
-{
-    for (std::size_t index=0; index<subentity.size(); index++)
-    {
-        if(subentity[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Inventory::Entities::Entity::Subentities::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "subentities";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Inventory::Entities::Entity::Subentities::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Inventory::Entities::Entity::Subentities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "subentity")
-    {
-        auto c = std::make_shared<Inventory::Entities::Entity::Subentities::Subentity>();
-        c->parent = this;
-        subentity.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity::Subentities::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : subentity)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Inventory::Entities::Entity::Subentities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Inventory::Entities::Entity::Subentities::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Inventory::Entities::Entity::Subentities::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "subentity")
-        return true;
-    return false;
-}
-
-Inventory::Entities::Entity::Subentities::Subentity::Subentity()
-    :
-    name{YType::str, "name"},
-    name_xr{YType::str, "name-xr"}
-{
-
-    yang_name = "subentity"; yang_parent_name = "subentities"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Inventory::Entities::Entity::Subentities::Subentity::~Subentity()
-{
-}
-
-bool Inventory::Entities::Entity::Subentities::Subentity::has_data() const
-{
-    return name.is_set
-	|| name_xr.is_set;
-}
-
-bool Inventory::Entities::Entity::Subentities::Subentity::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(name_xr.yfilter);
-}
-
-std::string Inventory::Entities::Entity::Subentities::Subentity::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "subentity" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Inventory::Entities::Entity::Subentities::Subentity::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Inventory::Entities::Entity::Subentities::Subentity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity::Subentities::Subentity::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Inventory::Entities::Entity::Subentities::Subentity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr = value;
-        name_xr.value_namespace = name_space;
-        name_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Inventory::Entities::Entity::Subentities::Subentity::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "name-xr")
-    {
-        name_xr.yfilter = yfilter;
-    }
-}
-
-bool Inventory::Entities::Entity::Subentities::Subentity::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "name-xr")
+    if(name == "attributes" || name == "subentities" || name == "name")
         return true;
     return false;
 }
@@ -1221,6 +1040,187 @@ void Inventory::Entities::Entity::Attributes::InvAssetBag::set_filter(const std:
 bool Inventory::Entities::Entity::Attributes::InvAssetBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "part-number" || name == "manufacturer-assembly-number" || name == "manufacturer-assembly-revision" || name == "manufacturer-firmware-identifier" || name == "manufacturer-software-identifier" || name == "manufacturer-common-language-equipment-identifier" || name == "original-equipment-manufacturer-string")
+        return true;
+    return false;
+}
+
+Inventory::Entities::Entity::Subentities::Subentities()
+{
+
+    yang_name = "subentities"; yang_parent_name = "entity"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Inventory::Entities::Entity::Subentities::~Subentities()
+{
+}
+
+bool Inventory::Entities::Entity::Subentities::has_data() const
+{
+    for (std::size_t index=0; index<subentity.size(); index++)
+    {
+        if(subentity[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Inventory::Entities::Entity::Subentities::has_operation() const
+{
+    for (std::size_t index=0; index<subentity.size(); index++)
+    {
+        if(subentity[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Inventory::Entities::Entity::Subentities::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subentities";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Inventory::Entities::Entity::Subentities::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Inventory::Entities::Entity::Subentities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "subentity")
+    {
+        auto c = std::make_shared<Inventory::Entities::Entity::Subentities::Subentity>();
+        c->parent = this;
+        subentity.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity::Subentities::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : subentity)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Inventory::Entities::Entity::Subentities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Inventory::Entities::Entity::Subentities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Inventory::Entities::Entity::Subentities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subentity")
+        return true;
+    return false;
+}
+
+Inventory::Entities::Entity::Subentities::Subentity::Subentity()
+    :
+    name{YType::str, "name"},
+    name_xr{YType::str, "name-xr"}
+{
+
+    yang_name = "subentity"; yang_parent_name = "subentities"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Inventory::Entities::Entity::Subentities::Subentity::~Subentity()
+{
+}
+
+bool Inventory::Entities::Entity::Subentities::Subentity::has_data() const
+{
+    return name.is_set
+	|| name_xr.is_set;
+}
+
+bool Inventory::Entities::Entity::Subentities::Subentity::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(name_xr.yfilter);
+}
+
+std::string Inventory::Entities::Entity::Subentities::Subentity::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subentity" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Inventory::Entities::Entity::Subentities::Subentity::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Inventory::Entities::Entity::Subentities::Subentity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Entities::Entity::Subentities::Subentity::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Inventory::Entities::Entity::Subentities::Subentity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr = value;
+        name_xr.value_namespace = name_space;
+        name_xr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Inventory::Entities::Entity::Subentities::Subentity::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr.yfilter = yfilter;
+    }
+}
+
+bool Inventory::Entities::Entity::Subentities::Subentity::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "name-xr")
         return true;
     return false;
 }
@@ -3911,27 +3911,27 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Attributes()
     :
-    module_done{YType::int32, "module-done"},
+    module_done{YType::uint32, "module-done"},
     vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::int32, "vm-done"},
+    vm_done{YType::uint32, "vm-done"},
     node_id{YType::uint32, "node-id"}
     	,
-    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo>())
+    inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag>())
+	,env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo>())
 	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo>())
 	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml>())
 	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag>())
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold>())
 	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo>())
-	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag>())
 	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo>())
 {
+    inv_basic_bag->parent = this;
     env_sensor_info->parent = this;
     pwg_info->parent = this;
     env_sensor_info_xml->parent = this;
     inv_asset_bag->parent = this;
     threshold->parent = this;
     fru_info->parent = this;
-    inv_basic_bag->parent = this;
     inv_eeprom_info->parent = this;
 
     yang_name = "attributes"; yang_parent_name = "tsi11"; is_top_level_class = false; has_list_ancestor = true;
@@ -3947,13 +3947,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| vm_node_id.is_set
 	|| vm_done.is_set
 	|| node_id.is_set
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_data())
 	|| (threshold !=  nullptr && threshold->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_data());
 }
 
@@ -3964,13 +3964,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| ydk::is_set(vm_node_id.yfilter)
 	|| ydk::is_set(vm_done.yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_operation())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_operation())
 	|| (threshold !=  nullptr && threshold->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_operation());
 }
 
@@ -3996,6 +3996,15 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::S
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inv-basic-bag")
+    {
+        if(inv_basic_bag == nullptr)
+        {
+            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag>();
+        }
+        return inv_basic_bag;
+    }
+
     if(child_yang_name == "env-sensor-info")
     {
         if(env_sensor_info == nullptr)
@@ -4050,15 +4059,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S
         return fru_info;
     }
 
-    if(child_yang_name == "inv-basic-bag")
-    {
-        if(inv_basic_bag == nullptr)
-        {
-            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag>();
-        }
-        return inv_basic_bag;
-    }
-
     if(child_yang_name == "inv-eeprom-info")
     {
         if(inv_eeprom_info == nullptr)
@@ -4075,6 +4075,11 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(inv_basic_bag != nullptr)
+    {
+        children["inv-basic-bag"] = inv_basic_bag;
+    }
+
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -4103,11 +4108,6 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
     if(fru_info != nullptr)
     {
         children["fru-info"] = fru_info;
-    }
-
-    if(inv_basic_bag != nullptr)
-    {
-        children["inv-basic-bag"] = inv_basic_bag;
     }
 
     if(inv_eeprom_info != nullptr)
@@ -4168,7 +4168,434 @@ void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-basic-bag" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+        return true;
+    return false;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::InvBasicBag()
+    :
+    description{YType::str, "description"},
+    vendor_type{YType::str, "vendor-type"},
+    name{YType::str, "name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    chip_hardware_revision{YType::str, "chip-hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    manufacturer_name{YType::str, "manufacturer-name"},
+    model_name{YType::str, "model-name"},
+    asset_id_str{YType::str, "asset-id-str"},
+    asset_identification{YType::int32, "asset-identification"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
+    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
+    composite_class_code{YType::int32, "composite-class-code"},
+    memory_size{YType::int32, "memory-size"},
+    environmental_monitor_path{YType::str, "environmental-monitor-path"},
+    alias{YType::str, "alias"},
+    group_flag{YType::boolean, "group-flag"},
+    new_deviation_number{YType::int32, "new-deviation-number"},
+    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
+    unrecognized_fru{YType::boolean, "unrecognized-fru"},
+    redundancystate{YType::int32, "redundancystate"},
+    ceport{YType::boolean, "ceport"},
+    xr_scoped{YType::boolean, "xr-scoped"},
+    unique_id{YType::int32, "unique-id"}
+{
+
+    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::~InvBasicBag()
+{
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::has_data() const
+{
+    return description.is_set
+	|| vendor_type.is_set
+	|| name.is_set
+	|| hardware_revision.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| chip_hardware_revision.is_set
+	|| serial_number.is_set
+	|| manufacturer_name.is_set
+	|| model_name.is_set
+	|| asset_id_str.is_set
+	|| asset_identification.is_set
+	|| is_field_replaceable_unit.is_set
+	|| manufacturer_asset_tags.is_set
+	|| composite_class_code.is_set
+	|| memory_size.is_set
+	|| environmental_monitor_path.is_set
+	|| alias.is_set
+	|| group_flag.is_set
+	|| new_deviation_number.is_set
+	|| physical_layer_interface_module_type.is_set
+	|| unrecognized_fru.is_set
+	|| redundancystate.is_set
+	|| ceport.is_set
+	|| xr_scoped.is_set
+	|| unique_id.is_set;
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(chip_hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(manufacturer_name.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(asset_id_str.yfilter)
+	|| ydk::is_set(asset_identification.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(manufacturer_asset_tags.yfilter)
+	|| ydk::is_set(composite_class_code.yfilter)
+	|| ydk::is_set(memory_size.yfilter)
+	|| ydk::is_set(environmental_monitor_path.yfilter)
+	|| ydk::is_set(alias.yfilter)
+	|| ydk::is_set(group_flag.yfilter)
+	|| ydk::is_set(new_deviation_number.yfilter)
+	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
+	|| ydk::is_set(unrecognized_fru.yfilter)
+	|| ydk::is_set(redundancystate.yfilter)
+	|| ydk::is_set(ceport.yfilter)
+	|| ydk::is_set(xr_scoped.yfilter)
+	|| ydk::is_set(unique_id.yfilter);
+}
+
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inv-basic-bag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
+    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
+    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
+    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
+    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
+    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
+    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
+    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
+    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
+    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
+    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
+    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
+    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision = value;
+        chip_hardware_revision.value_namespace = name_space;
+        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name = value;
+        manufacturer_name.value_namespace = name_space;
+        manufacturer_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str = value;
+        asset_id_str.value_namespace = name_space;
+        asset_id_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification = value;
+        asset_identification.value_namespace = name_space;
+        asset_identification.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags = value;
+        manufacturer_asset_tags.value_namespace = name_space;
+        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code = value;
+        composite_class_code.value_namespace = name_space;
+        composite_class_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size = value;
+        memory_size.value_namespace = name_space;
+        memory_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path = value;
+        environmental_monitor_path.value_namespace = name_space;
+        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alias")
+    {
+        alias = value;
+        alias.value_namespace = name_space;
+        alias.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag = value;
+        group_flag.value_namespace = name_space;
+        group_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number = value;
+        new_deviation_number.value_namespace = name_space;
+        new_deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type = value;
+        physical_layer_interface_module_type.value_namespace = name_space;
+        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru = value;
+        unrecognized_fru.value_namespace = name_space;
+        unrecognized_fru.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate = value;
+        redundancystate.value_namespace = name_space;
+        redundancystate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceport")
+    {
+        ceport = value;
+        ceport.value_namespace = name_space;
+        ceport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped = value;
+        xr_scoped.value_namespace = name_space;
+        xr_scoped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str.yfilter = yfilter;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags.yfilter = yfilter;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code.yfilter = yfilter;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size.yfilter = yfilter;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path.yfilter = yfilter;
+    }
+    if(value_path == "alias")
+    {
+        alias.yfilter = yfilter;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag.yfilter = yfilter;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type.yfilter = yfilter;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru.yfilter = yfilter;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate.yfilter = yfilter;
+    }
+    if(value_path == "ceport")
+    {
+        ceport.yfilter = yfilter;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
@@ -6894,433 +7321,6 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
     return false;
 }
 
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::InvBasicBag()
-    :
-    description{YType::str, "description"},
-    vendor_type{YType::str, "vendor-type"},
-    name{YType::str, "name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    chip_hardware_revision{YType::str, "chip-hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    manufacturer_name{YType::str, "manufacturer-name"},
-    model_name{YType::str, "model-name"},
-    asset_id_str{YType::str, "asset-id-str"},
-    asset_identification{YType::int32, "asset-identification"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
-    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
-    composite_class_code{YType::int32, "composite-class-code"},
-    memory_size{YType::int32, "memory-size"},
-    environmental_monitor_path{YType::str, "environmental-monitor-path"},
-    alias{YType::str, "alias"},
-    group_flag{YType::boolean, "group-flag"},
-    new_deviation_number{YType::int32, "new-deviation-number"},
-    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
-    unrecognized_fru{YType::boolean, "unrecognized-fru"},
-    redundancystate{YType::int32, "redundancystate"},
-    ceport{YType::boolean, "ceport"},
-    xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
-{
-
-    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::~InvBasicBag()
-{
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::has_data() const
-{
-    return description.is_set
-	|| vendor_type.is_set
-	|| name.is_set
-	|| hardware_revision.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| chip_hardware_revision.is_set
-	|| serial_number.is_set
-	|| manufacturer_name.is_set
-	|| model_name.is_set
-	|| asset_id_str.is_set
-	|| asset_identification.is_set
-	|| is_field_replaceable_unit.is_set
-	|| manufacturer_asset_tags.is_set
-	|| composite_class_code.is_set
-	|| memory_size.is_set
-	|| environmental_monitor_path.is_set
-	|| alias.is_set
-	|| group_flag.is_set
-	|| new_deviation_number.is_set
-	|| physical_layer_interface_module_type.is_set
-	|| unrecognized_fru.is_set
-	|| redundancystate.is_set
-	|| ceport.is_set
-	|| xr_scoped.is_set
-	|| unique_id.is_set;
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(chip_hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(manufacturer_name.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(asset_id_str.yfilter)
-	|| ydk::is_set(asset_identification.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter)
-	|| ydk::is_set(manufacturer_asset_tags.yfilter)
-	|| ydk::is_set(composite_class_code.yfilter)
-	|| ydk::is_set(memory_size.yfilter)
-	|| ydk::is_set(environmental_monitor_path.yfilter)
-	|| ydk::is_set(alias.yfilter)
-	|| ydk::is_set(group_flag.yfilter)
-	|| ydk::is_set(new_deviation_number.yfilter)
-	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
-	|| ydk::is_set(unrecognized_fru.yfilter)
-	|| ydk::is_set(redundancystate.yfilter)
-	|| ydk::is_set(ceport.yfilter)
-	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
-}
-
-std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inv-basic-bag";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
-    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
-    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
-    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
-    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
-    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
-    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
-    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
-    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
-    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
-    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
-    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
-    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
-    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision = value;
-        chip_hardware_revision.value_namespace = name_space;
-        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name = value;
-        manufacturer_name.value_namespace = name_space;
-        manufacturer_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str = value;
-        asset_id_str.value_namespace = name_space;
-        asset_id_str.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification = value;
-        asset_identification.value_namespace = name_space;
-        asset_identification.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags = value;
-        manufacturer_asset_tags.value_namespace = name_space;
-        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code = value;
-        composite_class_code.value_namespace = name_space;
-        composite_class_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size = value;
-        memory_size.value_namespace = name_space;
-        memory_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path = value;
-        environmental_monitor_path.value_namespace = name_space;
-        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alias")
-    {
-        alias = value;
-        alias.value_namespace = name_space;
-        alias.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag = value;
-        group_flag.value_namespace = name_space;
-        group_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number = value;
-        new_deviation_number.value_namespace = name_space;
-        new_deviation_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type = value;
-        physical_layer_interface_module_type.value_namespace = name_space;
-        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru = value;
-        unrecognized_fru.value_namespace = name_space;
-        unrecognized_fru.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate = value;
-        redundancystate.value_namespace = name_space;
-        redundancystate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceport")
-    {
-        ceport = value;
-        ceport.value_namespace = name_space;
-        ceport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped = value;
-        xr_scoped.value_namespace = name_space;
-        xr_scoped.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id = value;
-        unique_id.value_namespace = name_space;
-        unique_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str.yfilter = yfilter;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags.yfilter = yfilter;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code.yfilter = yfilter;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size.yfilter = yfilter;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path.yfilter = yfilter;
-    }
-    if(value_path == "alias")
-    {
-        alias.yfilter = yfilter;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag.yfilter = yfilter;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number.yfilter = yfilter;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type.yfilter = yfilter;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru.yfilter = yfilter;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate.yfilter = yfilter;
-    }
-    if(value_path == "ceport")
-    {
-        ceport.yfilter = yfilter;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped.yfilter = yfilter;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id.yfilter = yfilter;
-    }
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
-        return true;
-    return false;
-}
-
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::InvEepromInfo()
     :
     inv_card_type{YType::uint8, "inv-card-type"},
@@ -8446,27 +8446,27 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Attributes()
     :
-    module_done{YType::int32, "module-done"},
+    module_done{YType::uint32, "module-done"},
     vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::int32, "vm-done"},
+    vm_done{YType::uint32, "vm-done"},
     node_id{YType::uint32, "node-id"}
     	,
-    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo>())
+    inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag>())
+	,env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo>())
 	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo>())
 	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml>())
 	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag>())
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold>())
 	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo>())
-	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag>())
 	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo>())
 {
+    inv_basic_bag->parent = this;
     env_sensor_info->parent = this;
     pwg_info->parent = this;
     env_sensor_info_xml->parent = this;
     inv_asset_bag->parent = this;
     threshold->parent = this;
     fru_info->parent = this;
-    inv_basic_bag->parent = this;
     inv_eeprom_info->parent = this;
 
     yang_name = "attributes"; yang_parent_name = "tsi10"; is_top_level_class = false; has_list_ancestor = true;
@@ -8482,13 +8482,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| vm_node_id.is_set
 	|| vm_done.is_set
 	|| node_id.is_set
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_data())
 	|| (threshold !=  nullptr && threshold->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_data());
 }
 
@@ -8499,13 +8499,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| ydk::is_set(vm_node_id.yfilter)
 	|| ydk::is_set(vm_done.yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_operation())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_operation())
 	|| (threshold !=  nullptr && threshold->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_operation());
 }
 
@@ -8531,6 +8531,15 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::S
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inv-basic-bag")
+    {
+        if(inv_basic_bag == nullptr)
+        {
+            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag>();
+        }
+        return inv_basic_bag;
+    }
+
     if(child_yang_name == "env-sensor-info")
     {
         if(env_sensor_info == nullptr)
@@ -8585,15 +8594,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S
         return fru_info;
     }
 
-    if(child_yang_name == "inv-basic-bag")
-    {
-        if(inv_basic_bag == nullptr)
-        {
-            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag>();
-        }
-        return inv_basic_bag;
-    }
-
     if(child_yang_name == "inv-eeprom-info")
     {
         if(inv_eeprom_info == nullptr)
@@ -8610,6 +8610,11 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(inv_basic_bag != nullptr)
+    {
+        children["inv-basic-bag"] = inv_basic_bag;
+    }
+
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -8638,11 +8643,6 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
     if(fru_info != nullptr)
     {
         children["fru-info"] = fru_info;
-    }
-
-    if(inv_basic_bag != nullptr)
-    {
-        children["inv-basic-bag"] = inv_basic_bag;
     }
 
     if(inv_eeprom_info != nullptr)
@@ -8703,7 +8703,434 @@ void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-basic-bag" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+        return true;
+    return false;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::InvBasicBag()
+    :
+    description{YType::str, "description"},
+    vendor_type{YType::str, "vendor-type"},
+    name{YType::str, "name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    chip_hardware_revision{YType::str, "chip-hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    manufacturer_name{YType::str, "manufacturer-name"},
+    model_name{YType::str, "model-name"},
+    asset_id_str{YType::str, "asset-id-str"},
+    asset_identification{YType::int32, "asset-identification"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
+    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
+    composite_class_code{YType::int32, "composite-class-code"},
+    memory_size{YType::int32, "memory-size"},
+    environmental_monitor_path{YType::str, "environmental-monitor-path"},
+    alias{YType::str, "alias"},
+    group_flag{YType::boolean, "group-flag"},
+    new_deviation_number{YType::int32, "new-deviation-number"},
+    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
+    unrecognized_fru{YType::boolean, "unrecognized-fru"},
+    redundancystate{YType::int32, "redundancystate"},
+    ceport{YType::boolean, "ceport"},
+    xr_scoped{YType::boolean, "xr-scoped"},
+    unique_id{YType::int32, "unique-id"}
+{
+
+    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::~InvBasicBag()
+{
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::has_data() const
+{
+    return description.is_set
+	|| vendor_type.is_set
+	|| name.is_set
+	|| hardware_revision.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| chip_hardware_revision.is_set
+	|| serial_number.is_set
+	|| manufacturer_name.is_set
+	|| model_name.is_set
+	|| asset_id_str.is_set
+	|| asset_identification.is_set
+	|| is_field_replaceable_unit.is_set
+	|| manufacturer_asset_tags.is_set
+	|| composite_class_code.is_set
+	|| memory_size.is_set
+	|| environmental_monitor_path.is_set
+	|| alias.is_set
+	|| group_flag.is_set
+	|| new_deviation_number.is_set
+	|| physical_layer_interface_module_type.is_set
+	|| unrecognized_fru.is_set
+	|| redundancystate.is_set
+	|| ceport.is_set
+	|| xr_scoped.is_set
+	|| unique_id.is_set;
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(chip_hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(manufacturer_name.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(asset_id_str.yfilter)
+	|| ydk::is_set(asset_identification.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(manufacturer_asset_tags.yfilter)
+	|| ydk::is_set(composite_class_code.yfilter)
+	|| ydk::is_set(memory_size.yfilter)
+	|| ydk::is_set(environmental_monitor_path.yfilter)
+	|| ydk::is_set(alias.yfilter)
+	|| ydk::is_set(group_flag.yfilter)
+	|| ydk::is_set(new_deviation_number.yfilter)
+	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
+	|| ydk::is_set(unrecognized_fru.yfilter)
+	|| ydk::is_set(redundancystate.yfilter)
+	|| ydk::is_set(ceport.yfilter)
+	|| ydk::is_set(xr_scoped.yfilter)
+	|| ydk::is_set(unique_id.yfilter);
+}
+
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inv-basic-bag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
+    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
+    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
+    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
+    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
+    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
+    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
+    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
+    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
+    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
+    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
+    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
+    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision = value;
+        chip_hardware_revision.value_namespace = name_space;
+        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name = value;
+        manufacturer_name.value_namespace = name_space;
+        manufacturer_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str = value;
+        asset_id_str.value_namespace = name_space;
+        asset_id_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification = value;
+        asset_identification.value_namespace = name_space;
+        asset_identification.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags = value;
+        manufacturer_asset_tags.value_namespace = name_space;
+        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code = value;
+        composite_class_code.value_namespace = name_space;
+        composite_class_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size = value;
+        memory_size.value_namespace = name_space;
+        memory_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path = value;
+        environmental_monitor_path.value_namespace = name_space;
+        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alias")
+    {
+        alias = value;
+        alias.value_namespace = name_space;
+        alias.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag = value;
+        group_flag.value_namespace = name_space;
+        group_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number = value;
+        new_deviation_number.value_namespace = name_space;
+        new_deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type = value;
+        physical_layer_interface_module_type.value_namespace = name_space;
+        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru = value;
+        unrecognized_fru.value_namespace = name_space;
+        unrecognized_fru.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate = value;
+        redundancystate.value_namespace = name_space;
+        redundancystate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceport")
+    {
+        ceport = value;
+        ceport.value_namespace = name_space;
+        ceport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped = value;
+        xr_scoped.value_namespace = name_space;
+        xr_scoped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str.yfilter = yfilter;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags.yfilter = yfilter;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code.yfilter = yfilter;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size.yfilter = yfilter;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path.yfilter = yfilter;
+    }
+    if(value_path == "alias")
+    {
+        alias.yfilter = yfilter;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag.yfilter = yfilter;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type.yfilter = yfilter;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru.yfilter = yfilter;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate.yfilter = yfilter;
+    }
+    if(value_path == "ceport")
+    {
+        ceport.yfilter = yfilter;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
@@ -11429,433 +11856,6 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
     return false;
 }
 
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::InvBasicBag()
-    :
-    description{YType::str, "description"},
-    vendor_type{YType::str, "vendor-type"},
-    name{YType::str, "name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    chip_hardware_revision{YType::str, "chip-hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    manufacturer_name{YType::str, "manufacturer-name"},
-    model_name{YType::str, "model-name"},
-    asset_id_str{YType::str, "asset-id-str"},
-    asset_identification{YType::int32, "asset-identification"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
-    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
-    composite_class_code{YType::int32, "composite-class-code"},
-    memory_size{YType::int32, "memory-size"},
-    environmental_monitor_path{YType::str, "environmental-monitor-path"},
-    alias{YType::str, "alias"},
-    group_flag{YType::boolean, "group-flag"},
-    new_deviation_number{YType::int32, "new-deviation-number"},
-    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
-    unrecognized_fru{YType::boolean, "unrecognized-fru"},
-    redundancystate{YType::int32, "redundancystate"},
-    ceport{YType::boolean, "ceport"},
-    xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
-{
-
-    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::~InvBasicBag()
-{
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::has_data() const
-{
-    return description.is_set
-	|| vendor_type.is_set
-	|| name.is_set
-	|| hardware_revision.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| chip_hardware_revision.is_set
-	|| serial_number.is_set
-	|| manufacturer_name.is_set
-	|| model_name.is_set
-	|| asset_id_str.is_set
-	|| asset_identification.is_set
-	|| is_field_replaceable_unit.is_set
-	|| manufacturer_asset_tags.is_set
-	|| composite_class_code.is_set
-	|| memory_size.is_set
-	|| environmental_monitor_path.is_set
-	|| alias.is_set
-	|| group_flag.is_set
-	|| new_deviation_number.is_set
-	|| physical_layer_interface_module_type.is_set
-	|| unrecognized_fru.is_set
-	|| redundancystate.is_set
-	|| ceport.is_set
-	|| xr_scoped.is_set
-	|| unique_id.is_set;
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(chip_hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(manufacturer_name.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(asset_id_str.yfilter)
-	|| ydk::is_set(asset_identification.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter)
-	|| ydk::is_set(manufacturer_asset_tags.yfilter)
-	|| ydk::is_set(composite_class_code.yfilter)
-	|| ydk::is_set(memory_size.yfilter)
-	|| ydk::is_set(environmental_monitor_path.yfilter)
-	|| ydk::is_set(alias.yfilter)
-	|| ydk::is_set(group_flag.yfilter)
-	|| ydk::is_set(new_deviation_number.yfilter)
-	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
-	|| ydk::is_set(unrecognized_fru.yfilter)
-	|| ydk::is_set(redundancystate.yfilter)
-	|| ydk::is_set(ceport.yfilter)
-	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
-}
-
-std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inv-basic-bag";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
-    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
-    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
-    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
-    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
-    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
-    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
-    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
-    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
-    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
-    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
-    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
-    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
-    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision = value;
-        chip_hardware_revision.value_namespace = name_space;
-        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name = value;
-        manufacturer_name.value_namespace = name_space;
-        manufacturer_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str = value;
-        asset_id_str.value_namespace = name_space;
-        asset_id_str.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification = value;
-        asset_identification.value_namespace = name_space;
-        asset_identification.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags = value;
-        manufacturer_asset_tags.value_namespace = name_space;
-        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code = value;
-        composite_class_code.value_namespace = name_space;
-        composite_class_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size = value;
-        memory_size.value_namespace = name_space;
-        memory_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path = value;
-        environmental_monitor_path.value_namespace = name_space;
-        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alias")
-    {
-        alias = value;
-        alias.value_namespace = name_space;
-        alias.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag = value;
-        group_flag.value_namespace = name_space;
-        group_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number = value;
-        new_deviation_number.value_namespace = name_space;
-        new_deviation_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type = value;
-        physical_layer_interface_module_type.value_namespace = name_space;
-        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru = value;
-        unrecognized_fru.value_namespace = name_space;
-        unrecognized_fru.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate = value;
-        redundancystate.value_namespace = name_space;
-        redundancystate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceport")
-    {
-        ceport = value;
-        ceport.value_namespace = name_space;
-        ceport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped = value;
-        xr_scoped.value_namespace = name_space;
-        xr_scoped.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id = value;
-        unique_id.value_namespace = name_space;
-        unique_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str.yfilter = yfilter;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags.yfilter = yfilter;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code.yfilter = yfilter;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size.yfilter = yfilter;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path.yfilter = yfilter;
-    }
-    if(value_path == "alias")
-    {
-        alias.yfilter = yfilter;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag.yfilter = yfilter;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number.yfilter = yfilter;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type.yfilter = yfilter;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru.yfilter = yfilter;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate.yfilter = yfilter;
-    }
-    if(value_path == "ceport")
-    {
-        ceport.yfilter = yfilter;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped.yfilter = yfilter;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id.yfilter = yfilter;
-    }
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
-        return true;
-    return false;
-}
-
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::InvEepromInfo()
     :
     inv_card_type{YType::uint8, "inv-card-type"},
@@ -12981,27 +12981,27 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Attributes()
     :
-    module_done{YType::int32, "module-done"},
+    module_done{YType::uint32, "module-done"},
     vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::int32, "vm-done"},
+    vm_done{YType::uint32, "vm-done"},
     node_id{YType::uint32, "node-id"}
     	,
-    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo>())
+    inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag>())
+	,env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo>())
 	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo>())
 	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml>())
 	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag>())
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold>())
 	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::FruInfo>())
-	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag>())
 	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo>())
 {
+    inv_basic_bag->parent = this;
     env_sensor_info->parent = this;
     pwg_info->parent = this;
     env_sensor_info_xml->parent = this;
     inv_asset_bag->parent = this;
     threshold->parent = this;
     fru_info->parent = this;
-    inv_basic_bag->parent = this;
     inv_eeprom_info->parent = this;
 
     yang_name = "attributes"; yang_parent_name = "tsi9"; is_top_level_class = false; has_list_ancestor = true;
@@ -13017,13 +13017,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| vm_node_id.is_set
 	|| vm_done.is_set
 	|| node_id.is_set
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_data())
 	|| (threshold !=  nullptr && threshold->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_data());
 }
 
@@ -13034,13 +13034,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| ydk::is_set(vm_node_id.yfilter)
 	|| ydk::is_set(vm_done.yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_operation())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_operation())
 	|| (threshold !=  nullptr && threshold->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_operation());
 }
 
@@ -13066,6 +13066,15 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::S
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inv-basic-bag")
+    {
+        if(inv_basic_bag == nullptr)
+        {
+            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag>();
+        }
+        return inv_basic_bag;
+    }
+
     if(child_yang_name == "env-sensor-info")
     {
         if(env_sensor_info == nullptr)
@@ -13120,15 +13129,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S
         return fru_info;
     }
 
-    if(child_yang_name == "inv-basic-bag")
-    {
-        if(inv_basic_bag == nullptr)
-        {
-            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag>();
-        }
-        return inv_basic_bag;
-    }
-
     if(child_yang_name == "inv-eeprom-info")
     {
         if(inv_eeprom_info == nullptr)
@@ -13145,6 +13145,11 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(inv_basic_bag != nullptr)
+    {
+        children["inv-basic-bag"] = inv_basic_bag;
+    }
+
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -13173,11 +13178,6 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
     if(fru_info != nullptr)
     {
         children["fru-info"] = fru_info;
-    }
-
-    if(inv_basic_bag != nullptr)
-    {
-        children["inv-basic-bag"] = inv_basic_bag;
     }
 
     if(inv_eeprom_info != nullptr)
@@ -13238,7 +13238,434 @@ void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-basic-bag" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+        return true;
+    return false;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::InvBasicBag()
+    :
+    description{YType::str, "description"},
+    vendor_type{YType::str, "vendor-type"},
+    name{YType::str, "name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    chip_hardware_revision{YType::str, "chip-hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    manufacturer_name{YType::str, "manufacturer-name"},
+    model_name{YType::str, "model-name"},
+    asset_id_str{YType::str, "asset-id-str"},
+    asset_identification{YType::int32, "asset-identification"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
+    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
+    composite_class_code{YType::int32, "composite-class-code"},
+    memory_size{YType::int32, "memory-size"},
+    environmental_monitor_path{YType::str, "environmental-monitor-path"},
+    alias{YType::str, "alias"},
+    group_flag{YType::boolean, "group-flag"},
+    new_deviation_number{YType::int32, "new-deviation-number"},
+    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
+    unrecognized_fru{YType::boolean, "unrecognized-fru"},
+    redundancystate{YType::int32, "redundancystate"},
+    ceport{YType::boolean, "ceport"},
+    xr_scoped{YType::boolean, "xr-scoped"},
+    unique_id{YType::int32, "unique-id"}
+{
+
+    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::~InvBasicBag()
+{
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::has_data() const
+{
+    return description.is_set
+	|| vendor_type.is_set
+	|| name.is_set
+	|| hardware_revision.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| chip_hardware_revision.is_set
+	|| serial_number.is_set
+	|| manufacturer_name.is_set
+	|| model_name.is_set
+	|| asset_id_str.is_set
+	|| asset_identification.is_set
+	|| is_field_replaceable_unit.is_set
+	|| manufacturer_asset_tags.is_set
+	|| composite_class_code.is_set
+	|| memory_size.is_set
+	|| environmental_monitor_path.is_set
+	|| alias.is_set
+	|| group_flag.is_set
+	|| new_deviation_number.is_set
+	|| physical_layer_interface_module_type.is_set
+	|| unrecognized_fru.is_set
+	|| redundancystate.is_set
+	|| ceport.is_set
+	|| xr_scoped.is_set
+	|| unique_id.is_set;
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(chip_hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(manufacturer_name.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(asset_id_str.yfilter)
+	|| ydk::is_set(asset_identification.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(manufacturer_asset_tags.yfilter)
+	|| ydk::is_set(composite_class_code.yfilter)
+	|| ydk::is_set(memory_size.yfilter)
+	|| ydk::is_set(environmental_monitor_path.yfilter)
+	|| ydk::is_set(alias.yfilter)
+	|| ydk::is_set(group_flag.yfilter)
+	|| ydk::is_set(new_deviation_number.yfilter)
+	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
+	|| ydk::is_set(unrecognized_fru.yfilter)
+	|| ydk::is_set(redundancystate.yfilter)
+	|| ydk::is_set(ceport.yfilter)
+	|| ydk::is_set(xr_scoped.yfilter)
+	|| ydk::is_set(unique_id.yfilter);
+}
+
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inv-basic-bag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
+    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
+    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
+    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
+    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
+    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
+    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
+    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
+    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
+    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
+    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
+    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
+    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision = value;
+        chip_hardware_revision.value_namespace = name_space;
+        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name = value;
+        manufacturer_name.value_namespace = name_space;
+        manufacturer_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str = value;
+        asset_id_str.value_namespace = name_space;
+        asset_id_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification = value;
+        asset_identification.value_namespace = name_space;
+        asset_identification.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags = value;
+        manufacturer_asset_tags.value_namespace = name_space;
+        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code = value;
+        composite_class_code.value_namespace = name_space;
+        composite_class_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size = value;
+        memory_size.value_namespace = name_space;
+        memory_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path = value;
+        environmental_monitor_path.value_namespace = name_space;
+        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alias")
+    {
+        alias = value;
+        alias.value_namespace = name_space;
+        alias.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag = value;
+        group_flag.value_namespace = name_space;
+        group_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number = value;
+        new_deviation_number.value_namespace = name_space;
+        new_deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type = value;
+        physical_layer_interface_module_type.value_namespace = name_space;
+        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru = value;
+        unrecognized_fru.value_namespace = name_space;
+        unrecognized_fru.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate = value;
+        redundancystate.value_namespace = name_space;
+        redundancystate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceport")
+    {
+        ceport = value;
+        ceport.value_namespace = name_space;
+        ceport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped = value;
+        xr_scoped.value_namespace = name_space;
+        xr_scoped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str.yfilter = yfilter;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags.yfilter = yfilter;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code.yfilter = yfilter;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size.yfilter = yfilter;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path.yfilter = yfilter;
+    }
+    if(value_path == "alias")
+    {
+        alias.yfilter = yfilter;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag.yfilter = yfilter;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type.yfilter = yfilter;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru.yfilter = yfilter;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate.yfilter = yfilter;
+    }
+    if(value_path == "ceport")
+    {
+        ceport.yfilter = yfilter;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
@@ -15964,433 +16391,6 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
     return false;
 }
 
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::InvBasicBag()
-    :
-    description{YType::str, "description"},
-    vendor_type{YType::str, "vendor-type"},
-    name{YType::str, "name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    chip_hardware_revision{YType::str, "chip-hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    manufacturer_name{YType::str, "manufacturer-name"},
-    model_name{YType::str, "model-name"},
-    asset_id_str{YType::str, "asset-id-str"},
-    asset_identification{YType::int32, "asset-identification"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
-    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
-    composite_class_code{YType::int32, "composite-class-code"},
-    memory_size{YType::int32, "memory-size"},
-    environmental_monitor_path{YType::str, "environmental-monitor-path"},
-    alias{YType::str, "alias"},
-    group_flag{YType::boolean, "group-flag"},
-    new_deviation_number{YType::int32, "new-deviation-number"},
-    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
-    unrecognized_fru{YType::boolean, "unrecognized-fru"},
-    redundancystate{YType::int32, "redundancystate"},
-    ceport{YType::boolean, "ceport"},
-    xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
-{
-
-    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::~InvBasicBag()
-{
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::has_data() const
-{
-    return description.is_set
-	|| vendor_type.is_set
-	|| name.is_set
-	|| hardware_revision.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| chip_hardware_revision.is_set
-	|| serial_number.is_set
-	|| manufacturer_name.is_set
-	|| model_name.is_set
-	|| asset_id_str.is_set
-	|| asset_identification.is_set
-	|| is_field_replaceable_unit.is_set
-	|| manufacturer_asset_tags.is_set
-	|| composite_class_code.is_set
-	|| memory_size.is_set
-	|| environmental_monitor_path.is_set
-	|| alias.is_set
-	|| group_flag.is_set
-	|| new_deviation_number.is_set
-	|| physical_layer_interface_module_type.is_set
-	|| unrecognized_fru.is_set
-	|| redundancystate.is_set
-	|| ceport.is_set
-	|| xr_scoped.is_set
-	|| unique_id.is_set;
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(chip_hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(manufacturer_name.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(asset_id_str.yfilter)
-	|| ydk::is_set(asset_identification.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter)
-	|| ydk::is_set(manufacturer_asset_tags.yfilter)
-	|| ydk::is_set(composite_class_code.yfilter)
-	|| ydk::is_set(memory_size.yfilter)
-	|| ydk::is_set(environmental_monitor_path.yfilter)
-	|| ydk::is_set(alias.yfilter)
-	|| ydk::is_set(group_flag.yfilter)
-	|| ydk::is_set(new_deviation_number.yfilter)
-	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
-	|| ydk::is_set(unrecognized_fru.yfilter)
-	|| ydk::is_set(redundancystate.yfilter)
-	|| ydk::is_set(ceport.yfilter)
-	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
-}
-
-std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inv-basic-bag";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
-    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
-    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
-    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
-    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
-    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
-    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
-    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
-    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
-    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
-    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
-    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
-    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
-    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision = value;
-        chip_hardware_revision.value_namespace = name_space;
-        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name = value;
-        manufacturer_name.value_namespace = name_space;
-        manufacturer_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str = value;
-        asset_id_str.value_namespace = name_space;
-        asset_id_str.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification = value;
-        asset_identification.value_namespace = name_space;
-        asset_identification.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags = value;
-        manufacturer_asset_tags.value_namespace = name_space;
-        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code = value;
-        composite_class_code.value_namespace = name_space;
-        composite_class_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size = value;
-        memory_size.value_namespace = name_space;
-        memory_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path = value;
-        environmental_monitor_path.value_namespace = name_space;
-        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alias")
-    {
-        alias = value;
-        alias.value_namespace = name_space;
-        alias.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag = value;
-        group_flag.value_namespace = name_space;
-        group_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number = value;
-        new_deviation_number.value_namespace = name_space;
-        new_deviation_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type = value;
-        physical_layer_interface_module_type.value_namespace = name_space;
-        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru = value;
-        unrecognized_fru.value_namespace = name_space;
-        unrecognized_fru.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate = value;
-        redundancystate.value_namespace = name_space;
-        redundancystate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceport")
-    {
-        ceport = value;
-        ceport.value_namespace = name_space;
-        ceport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped = value;
-        xr_scoped.value_namespace = name_space;
-        xr_scoped.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id = value;
-        unique_id.value_namespace = name_space;
-        unique_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str.yfilter = yfilter;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags.yfilter = yfilter;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code.yfilter = yfilter;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size.yfilter = yfilter;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path.yfilter = yfilter;
-    }
-    if(value_path == "alias")
-    {
-        alias.yfilter = yfilter;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag.yfilter = yfilter;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number.yfilter = yfilter;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type.yfilter = yfilter;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru.yfilter = yfilter;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate.yfilter = yfilter;
-    }
-    if(value_path == "ceport")
-    {
-        ceport.yfilter = yfilter;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped.yfilter = yfilter;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id.yfilter = yfilter;
-    }
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
-        return true;
-    return false;
-}
-
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvEepromInfo::InvEepromInfo()
     :
     inv_card_type{YType::uint8, "inv-card-type"},
@@ -17516,27 +17516,27 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Attributes()
     :
-    module_done{YType::int32, "module-done"},
+    module_done{YType::uint32, "module-done"},
     vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::int32, "vm-done"},
+    vm_done{YType::uint32, "vm-done"},
     node_id{YType::uint32, "node-id"}
     	,
-    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo>())
+    inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag>())
+	,env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfo>())
 	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::PwgInfo>())
 	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::EnvSensorInfoXml>())
 	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvAssetBag>())
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::Threshold>())
 	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::FruInfo>())
-	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag>())
 	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo>())
 {
+    inv_basic_bag->parent = this;
     env_sensor_info->parent = this;
     pwg_info->parent = this;
     env_sensor_info_xml->parent = this;
     inv_asset_bag->parent = this;
     threshold->parent = this;
     fru_info->parent = this;
-    inv_basic_bag->parent = this;
     inv_eeprom_info->parent = this;
 
     yang_name = "attributes"; yang_parent_name = "tsi8"; is_top_level_class = false; has_list_ancestor = true;
@@ -17552,13 +17552,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| vm_node_id.is_set
 	|| vm_done.is_set
 	|| node_id.is_set
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_data())
 	|| (threshold !=  nullptr && threshold->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_data());
 }
 
@@ -17569,13 +17569,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| ydk::is_set(vm_node_id.yfilter)
 	|| ydk::is_set(vm_done.yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_operation())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_operation())
 	|| (threshold !=  nullptr && threshold->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_operation());
 }
 
@@ -17601,6 +17601,15 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::S
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inv-basic-bag")
+    {
+        if(inv_basic_bag == nullptr)
+        {
+            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag>();
+        }
+        return inv_basic_bag;
+    }
+
     if(child_yang_name == "env-sensor-info")
     {
         if(env_sensor_info == nullptr)
@@ -17655,15 +17664,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S
         return fru_info;
     }
 
-    if(child_yang_name == "inv-basic-bag")
-    {
-        if(inv_basic_bag == nullptr)
-        {
-            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag>();
-        }
-        return inv_basic_bag;
-    }
-
     if(child_yang_name == "inv-eeprom-info")
     {
         if(inv_eeprom_info == nullptr)
@@ -17680,6 +17680,11 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(inv_basic_bag != nullptr)
+    {
+        children["inv-basic-bag"] = inv_basic_bag;
+    }
+
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -17708,11 +17713,6 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
     if(fru_info != nullptr)
     {
         children["fru-info"] = fru_info;
-    }
-
-    if(inv_basic_bag != nullptr)
-    {
-        children["inv-basic-bag"] = inv_basic_bag;
     }
 
     if(inv_eeprom_info != nullptr)
@@ -17773,7 +17773,434 @@ void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-basic-bag" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+        return true;
+    return false;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::InvBasicBag()
+    :
+    description{YType::str, "description"},
+    vendor_type{YType::str, "vendor-type"},
+    name{YType::str, "name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    chip_hardware_revision{YType::str, "chip-hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    manufacturer_name{YType::str, "manufacturer-name"},
+    model_name{YType::str, "model-name"},
+    asset_id_str{YType::str, "asset-id-str"},
+    asset_identification{YType::int32, "asset-identification"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
+    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
+    composite_class_code{YType::int32, "composite-class-code"},
+    memory_size{YType::int32, "memory-size"},
+    environmental_monitor_path{YType::str, "environmental-monitor-path"},
+    alias{YType::str, "alias"},
+    group_flag{YType::boolean, "group-flag"},
+    new_deviation_number{YType::int32, "new-deviation-number"},
+    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
+    unrecognized_fru{YType::boolean, "unrecognized-fru"},
+    redundancystate{YType::int32, "redundancystate"},
+    ceport{YType::boolean, "ceport"},
+    xr_scoped{YType::boolean, "xr-scoped"},
+    unique_id{YType::int32, "unique-id"}
+{
+
+    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::~InvBasicBag()
+{
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::has_data() const
+{
+    return description.is_set
+	|| vendor_type.is_set
+	|| name.is_set
+	|| hardware_revision.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| chip_hardware_revision.is_set
+	|| serial_number.is_set
+	|| manufacturer_name.is_set
+	|| model_name.is_set
+	|| asset_id_str.is_set
+	|| asset_identification.is_set
+	|| is_field_replaceable_unit.is_set
+	|| manufacturer_asset_tags.is_set
+	|| composite_class_code.is_set
+	|| memory_size.is_set
+	|| environmental_monitor_path.is_set
+	|| alias.is_set
+	|| group_flag.is_set
+	|| new_deviation_number.is_set
+	|| physical_layer_interface_module_type.is_set
+	|| unrecognized_fru.is_set
+	|| redundancystate.is_set
+	|| ceport.is_set
+	|| xr_scoped.is_set
+	|| unique_id.is_set;
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(chip_hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(manufacturer_name.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(asset_id_str.yfilter)
+	|| ydk::is_set(asset_identification.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(manufacturer_asset_tags.yfilter)
+	|| ydk::is_set(composite_class_code.yfilter)
+	|| ydk::is_set(memory_size.yfilter)
+	|| ydk::is_set(environmental_monitor_path.yfilter)
+	|| ydk::is_set(alias.yfilter)
+	|| ydk::is_set(group_flag.yfilter)
+	|| ydk::is_set(new_deviation_number.yfilter)
+	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
+	|| ydk::is_set(unrecognized_fru.yfilter)
+	|| ydk::is_set(redundancystate.yfilter)
+	|| ydk::is_set(ceport.yfilter)
+	|| ydk::is_set(xr_scoped.yfilter)
+	|| ydk::is_set(unique_id.yfilter);
+}
+
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inv-basic-bag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
+    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
+    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
+    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
+    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
+    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
+    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
+    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
+    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
+    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
+    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
+    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
+    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision = value;
+        chip_hardware_revision.value_namespace = name_space;
+        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name = value;
+        manufacturer_name.value_namespace = name_space;
+        manufacturer_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str = value;
+        asset_id_str.value_namespace = name_space;
+        asset_id_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification = value;
+        asset_identification.value_namespace = name_space;
+        asset_identification.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags = value;
+        manufacturer_asset_tags.value_namespace = name_space;
+        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code = value;
+        composite_class_code.value_namespace = name_space;
+        composite_class_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size = value;
+        memory_size.value_namespace = name_space;
+        memory_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path = value;
+        environmental_monitor_path.value_namespace = name_space;
+        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alias")
+    {
+        alias = value;
+        alias.value_namespace = name_space;
+        alias.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag = value;
+        group_flag.value_namespace = name_space;
+        group_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number = value;
+        new_deviation_number.value_namespace = name_space;
+        new_deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type = value;
+        physical_layer_interface_module_type.value_namespace = name_space;
+        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru = value;
+        unrecognized_fru.value_namespace = name_space;
+        unrecognized_fru.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate = value;
+        redundancystate.value_namespace = name_space;
+        redundancystate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceport")
+    {
+        ceport = value;
+        ceport.value_namespace = name_space;
+        ceport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped = value;
+        xr_scoped.value_namespace = name_space;
+        xr_scoped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str.yfilter = yfilter;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags.yfilter = yfilter;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code.yfilter = yfilter;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size.yfilter = yfilter;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path.yfilter = yfilter;
+    }
+    if(value_path == "alias")
+    {
+        alias.yfilter = yfilter;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag.yfilter = yfilter;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type.yfilter = yfilter;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru.yfilter = yfilter;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate.yfilter = yfilter;
+    }
+    if(value_path == "ceport")
+    {
+        ceport.yfilter = yfilter;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
@@ -20499,433 +20926,6 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
     return false;
 }
 
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::InvBasicBag()
-    :
-    description{YType::str, "description"},
-    vendor_type{YType::str, "vendor-type"},
-    name{YType::str, "name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    chip_hardware_revision{YType::str, "chip-hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    manufacturer_name{YType::str, "manufacturer-name"},
-    model_name{YType::str, "model-name"},
-    asset_id_str{YType::str, "asset-id-str"},
-    asset_identification{YType::int32, "asset-identification"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
-    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
-    composite_class_code{YType::int32, "composite-class-code"},
-    memory_size{YType::int32, "memory-size"},
-    environmental_monitor_path{YType::str, "environmental-monitor-path"},
-    alias{YType::str, "alias"},
-    group_flag{YType::boolean, "group-flag"},
-    new_deviation_number{YType::int32, "new-deviation-number"},
-    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
-    unrecognized_fru{YType::boolean, "unrecognized-fru"},
-    redundancystate{YType::int32, "redundancystate"},
-    ceport{YType::boolean, "ceport"},
-    xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
-{
-
-    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::~InvBasicBag()
-{
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::has_data() const
-{
-    return description.is_set
-	|| vendor_type.is_set
-	|| name.is_set
-	|| hardware_revision.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| chip_hardware_revision.is_set
-	|| serial_number.is_set
-	|| manufacturer_name.is_set
-	|| model_name.is_set
-	|| asset_id_str.is_set
-	|| asset_identification.is_set
-	|| is_field_replaceable_unit.is_set
-	|| manufacturer_asset_tags.is_set
-	|| composite_class_code.is_set
-	|| memory_size.is_set
-	|| environmental_monitor_path.is_set
-	|| alias.is_set
-	|| group_flag.is_set
-	|| new_deviation_number.is_set
-	|| physical_layer_interface_module_type.is_set
-	|| unrecognized_fru.is_set
-	|| redundancystate.is_set
-	|| ceport.is_set
-	|| xr_scoped.is_set
-	|| unique_id.is_set;
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(chip_hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(manufacturer_name.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(asset_id_str.yfilter)
-	|| ydk::is_set(asset_identification.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter)
-	|| ydk::is_set(manufacturer_asset_tags.yfilter)
-	|| ydk::is_set(composite_class_code.yfilter)
-	|| ydk::is_set(memory_size.yfilter)
-	|| ydk::is_set(environmental_monitor_path.yfilter)
-	|| ydk::is_set(alias.yfilter)
-	|| ydk::is_set(group_flag.yfilter)
-	|| ydk::is_set(new_deviation_number.yfilter)
-	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
-	|| ydk::is_set(unrecognized_fru.yfilter)
-	|| ydk::is_set(redundancystate.yfilter)
-	|| ydk::is_set(ceport.yfilter)
-	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
-}
-
-std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inv-basic-bag";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
-    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
-    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
-    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
-    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
-    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
-    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
-    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
-    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
-    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
-    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
-    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
-    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
-    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision = value;
-        chip_hardware_revision.value_namespace = name_space;
-        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name = value;
-        manufacturer_name.value_namespace = name_space;
-        manufacturer_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str = value;
-        asset_id_str.value_namespace = name_space;
-        asset_id_str.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification = value;
-        asset_identification.value_namespace = name_space;
-        asset_identification.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags = value;
-        manufacturer_asset_tags.value_namespace = name_space;
-        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code = value;
-        composite_class_code.value_namespace = name_space;
-        composite_class_code.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size = value;
-        memory_size.value_namespace = name_space;
-        memory_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path = value;
-        environmental_monitor_path.value_namespace = name_space;
-        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alias")
-    {
-        alias = value;
-        alias.value_namespace = name_space;
-        alias.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag = value;
-        group_flag.value_namespace = name_space;
-        group_flag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number = value;
-        new_deviation_number.value_namespace = name_space;
-        new_deviation_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type = value;
-        physical_layer_interface_module_type.value_namespace = name_space;
-        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru = value;
-        unrecognized_fru.value_namespace = name_space;
-        unrecognized_fru.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate = value;
-        redundancystate.value_namespace = name_space;
-        redundancystate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ceport")
-    {
-        ceport = value;
-        ceport.value_namespace = name_space;
-        ceport.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped = value;
-        xr_scoped.value_namespace = name_space;
-        xr_scoped.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id = value;
-        unique_id.value_namespace = name_space;
-        unique_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "chip-hardware-revision")
-    {
-        chip_hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-name")
-    {
-        manufacturer_name.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "asset-id-str")
-    {
-        asset_id_str.yfilter = yfilter;
-    }
-    if(value_path == "asset-identification")
-    {
-        asset_identification.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-    if(value_path == "manufacturer-asset-tags")
-    {
-        manufacturer_asset_tags.yfilter = yfilter;
-    }
-    if(value_path == "composite-class-code")
-    {
-        composite_class_code.yfilter = yfilter;
-    }
-    if(value_path == "memory-size")
-    {
-        memory_size.yfilter = yfilter;
-    }
-    if(value_path == "environmental-monitor-path")
-    {
-        environmental_monitor_path.yfilter = yfilter;
-    }
-    if(value_path == "alias")
-    {
-        alias.yfilter = yfilter;
-    }
-    if(value_path == "group-flag")
-    {
-        group_flag.yfilter = yfilter;
-    }
-    if(value_path == "new-deviation-number")
-    {
-        new_deviation_number.yfilter = yfilter;
-    }
-    if(value_path == "physical-layer-interface-module-type")
-    {
-        physical_layer_interface_module_type.yfilter = yfilter;
-    }
-    if(value_path == "unrecognized-fru")
-    {
-        unrecognized_fru.yfilter = yfilter;
-    }
-    if(value_path == "redundancystate")
-    {
-        redundancystate.yfilter = yfilter;
-    }
-    if(value_path == "ceport")
-    {
-        ceport.yfilter = yfilter;
-    }
-    if(value_path == "xr-scoped")
-    {
-        xr_scoped.yfilter = yfilter;
-    }
-    if(value_path == "unique-id")
-    {
-        unique_id.yfilter = yfilter;
-    }
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
-        return true;
-    return false;
-}
-
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Attributes::InvEepromInfo::InvEepromInfo()
     :
     inv_card_type{YType::uint8, "inv-card-type"},
@@ -22051,27 +22051,27 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Attributes()
     :
-    module_done{YType::int32, "module-done"},
+    module_done{YType::uint32, "module-done"},
     vm_node_id{YType::uint32, "vm-node-id"},
-    vm_done{YType::int32, "vm-done"},
+    vm_done{YType::uint32, "vm-done"},
     node_id{YType::uint32, "node-id"}
     	,
-    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo>())
+    inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag>())
+	,env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfo>())
 	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::PwgInfo>())
 	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::EnvSensorInfoXml>())
 	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag>())
 	,threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold>())
 	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::FruInfo>())
-	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag>())
 	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvEepromInfo>())
 {
+    inv_basic_bag->parent = this;
     env_sensor_info->parent = this;
     pwg_info->parent = this;
     env_sensor_info_xml->parent = this;
     inv_asset_bag->parent = this;
     threshold->parent = this;
     fru_info->parent = this;
-    inv_basic_bag->parent = this;
     inv_eeprom_info->parent = this;
 
     yang_name = "attributes"; yang_parent_name = "tsi7"; is_top_level_class = false; has_list_ancestor = true;
@@ -22087,13 +22087,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| vm_node_id.is_set
 	|| vm_done.is_set
 	|| node_id.is_set
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_data())
 	|| (pwg_info !=  nullptr && pwg_info->has_data())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_data())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_data())
 	|| (threshold !=  nullptr && threshold->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_data())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_data());
 }
 
@@ -22104,13 +22104,13 @@ bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 	|| ydk::is_set(vm_node_id.yfilter)
 	|| ydk::is_set(vm_done.yfilter)
 	|| ydk::is_set(node_id.yfilter)
+	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (env_sensor_info !=  nullptr && env_sensor_info->has_operation())
 	|| (pwg_info !=  nullptr && pwg_info->has_operation())
 	|| (env_sensor_info_xml !=  nullptr && env_sensor_info_xml->has_operation())
 	|| (inv_asset_bag !=  nullptr && inv_asset_bag->has_operation())
 	|| (threshold !=  nullptr && threshold->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation())
-	|| (inv_basic_bag !=  nullptr && inv_basic_bag->has_operation())
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_operation());
 }
 
@@ -22136,6 +22136,15 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::S
 
 std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "inv-basic-bag")
+    {
+        if(inv_basic_bag == nullptr)
+        {
+            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag>();
+        }
+        return inv_basic_bag;
+    }
+
     if(child_yang_name == "env-sensor-info")
     {
         if(env_sensor_info == nullptr)
@@ -22190,15 +22199,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S
         return fru_info;
     }
 
-    if(child_yang_name == "inv-basic-bag")
-    {
-        if(inv_basic_bag == nullptr)
-        {
-            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag>();
-        }
-        return inv_basic_bag;
-    }
-
     if(child_yang_name == "inv-eeprom-info")
     {
         if(inv_eeprom_info == nullptr)
@@ -22215,6 +22215,11 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(inv_basic_bag != nullptr)
+    {
+        children["inv-basic-bag"] = inv_basic_bag;
+    }
+
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -22243,11 +22248,6 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::S
     if(fru_info != nullptr)
     {
         children["fru-info"] = fru_info;
-    }
-
-    if(inv_basic_bag != nullptr)
-    {
-        children["inv-basic-bag"] = inv_basic_bag;
     }
 
     if(inv_eeprom_info != nullptr)
@@ -22308,7 +22308,434 @@ void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 
 bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-basic-bag" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+    if(name == "inv-basic-bag" || name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
+        return true;
+    return false;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::InvBasicBag()
+    :
+    description{YType::str, "description"},
+    vendor_type{YType::str, "vendor-type"},
+    name{YType::str, "name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    chip_hardware_revision{YType::str, "chip-hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    manufacturer_name{YType::str, "manufacturer-name"},
+    model_name{YType::str, "model-name"},
+    asset_id_str{YType::str, "asset-id-str"},
+    asset_identification{YType::int32, "asset-identification"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"},
+    manufacturer_asset_tags{YType::int32, "manufacturer-asset-tags"},
+    composite_class_code{YType::int32, "composite-class-code"},
+    memory_size{YType::int32, "memory-size"},
+    environmental_monitor_path{YType::str, "environmental-monitor-path"},
+    alias{YType::str, "alias"},
+    group_flag{YType::boolean, "group-flag"},
+    new_deviation_number{YType::int32, "new-deviation-number"},
+    physical_layer_interface_module_type{YType::int32, "physical-layer-interface-module-type"},
+    unrecognized_fru{YType::boolean, "unrecognized-fru"},
+    redundancystate{YType::int32, "redundancystate"},
+    ceport{YType::boolean, "ceport"},
+    xr_scoped{YType::boolean, "xr-scoped"},
+    unique_id{YType::int32, "unique-id"}
+{
+
+    yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::~InvBasicBag()
+{
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::has_data() const
+{
+    return description.is_set
+	|| vendor_type.is_set
+	|| name.is_set
+	|| hardware_revision.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| chip_hardware_revision.is_set
+	|| serial_number.is_set
+	|| manufacturer_name.is_set
+	|| model_name.is_set
+	|| asset_id_str.is_set
+	|| asset_identification.is_set
+	|| is_field_replaceable_unit.is_set
+	|| manufacturer_asset_tags.is_set
+	|| composite_class_code.is_set
+	|| memory_size.is_set
+	|| environmental_monitor_path.is_set
+	|| alias.is_set
+	|| group_flag.is_set
+	|| new_deviation_number.is_set
+	|| physical_layer_interface_module_type.is_set
+	|| unrecognized_fru.is_set
+	|| redundancystate.is_set
+	|| ceport.is_set
+	|| xr_scoped.is_set
+	|| unique_id.is_set;
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(chip_hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(manufacturer_name.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(asset_id_str.yfilter)
+	|| ydk::is_set(asset_identification.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(manufacturer_asset_tags.yfilter)
+	|| ydk::is_set(composite_class_code.yfilter)
+	|| ydk::is_set(memory_size.yfilter)
+	|| ydk::is_set(environmental_monitor_path.yfilter)
+	|| ydk::is_set(alias.yfilter)
+	|| ydk::is_set(group_flag.yfilter)
+	|| ydk::is_set(new_deviation_number.yfilter)
+	|| ydk::is_set(physical_layer_interface_module_type.yfilter)
+	|| ydk::is_set(unrecognized_fru.yfilter)
+	|| ydk::is_set(redundancystate.yfilter)
+	|| ydk::is_set(ceport.yfilter)
+	|| ydk::is_set(xr_scoped.yfilter)
+	|| ydk::is_set(unique_id.yfilter);
+}
+
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inv-basic-bag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (chip_hardware_revision.is_set || is_set(chip_hardware_revision.yfilter)) leaf_name_data.push_back(chip_hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (manufacturer_name.is_set || is_set(manufacturer_name.yfilter)) leaf_name_data.push_back(manufacturer_name.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (asset_id_str.is_set || is_set(asset_id_str.yfilter)) leaf_name_data.push_back(asset_id_str.get_name_leafdata());
+    if (asset_identification.is_set || is_set(asset_identification.yfilter)) leaf_name_data.push_back(asset_identification.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (manufacturer_asset_tags.is_set || is_set(manufacturer_asset_tags.yfilter)) leaf_name_data.push_back(manufacturer_asset_tags.get_name_leafdata());
+    if (composite_class_code.is_set || is_set(composite_class_code.yfilter)) leaf_name_data.push_back(composite_class_code.get_name_leafdata());
+    if (memory_size.is_set || is_set(memory_size.yfilter)) leaf_name_data.push_back(memory_size.get_name_leafdata());
+    if (environmental_monitor_path.is_set || is_set(environmental_monitor_path.yfilter)) leaf_name_data.push_back(environmental_monitor_path.get_name_leafdata());
+    if (alias.is_set || is_set(alias.yfilter)) leaf_name_data.push_back(alias.get_name_leafdata());
+    if (group_flag.is_set || is_set(group_flag.yfilter)) leaf_name_data.push_back(group_flag.get_name_leafdata());
+    if (new_deviation_number.is_set || is_set(new_deviation_number.yfilter)) leaf_name_data.push_back(new_deviation_number.get_name_leafdata());
+    if (physical_layer_interface_module_type.is_set || is_set(physical_layer_interface_module_type.yfilter)) leaf_name_data.push_back(physical_layer_interface_module_type.get_name_leafdata());
+    if (unrecognized_fru.is_set || is_set(unrecognized_fru.yfilter)) leaf_name_data.push_back(unrecognized_fru.get_name_leafdata());
+    if (redundancystate.is_set || is_set(redundancystate.yfilter)) leaf_name_data.push_back(redundancystate.get_name_leafdata());
+    if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
+    if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision = value;
+        chip_hardware_revision.value_namespace = name_space;
+        chip_hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name = value;
+        manufacturer_name.value_namespace = name_space;
+        manufacturer_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str = value;
+        asset_id_str.value_namespace = name_space;
+        asset_id_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification = value;
+        asset_identification.value_namespace = name_space;
+        asset_identification.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags = value;
+        manufacturer_asset_tags.value_namespace = name_space;
+        manufacturer_asset_tags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code = value;
+        composite_class_code.value_namespace = name_space;
+        composite_class_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size = value;
+        memory_size.value_namespace = name_space;
+        memory_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path = value;
+        environmental_monitor_path.value_namespace = name_space;
+        environmental_monitor_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "alias")
+    {
+        alias = value;
+        alias.value_namespace = name_space;
+        alias.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag = value;
+        group_flag.value_namespace = name_space;
+        group_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number = value;
+        new_deviation_number.value_namespace = name_space;
+        new_deviation_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type = value;
+        physical_layer_interface_module_type.value_namespace = name_space;
+        physical_layer_interface_module_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru = value;
+        unrecognized_fru.value_namespace = name_space;
+        unrecognized_fru.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate = value;
+        redundancystate.value_namespace = name_space;
+        redundancystate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ceport")
+    {
+        ceport = value;
+        ceport.value_namespace = name_space;
+        ceport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped = value;
+        xr_scoped.value_namespace = name_space;
+        xr_scoped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "chip-hardware-revision")
+    {
+        chip_hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-name")
+    {
+        manufacturer_name.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "asset-id-str")
+    {
+        asset_id_str.yfilter = yfilter;
+    }
+    if(value_path == "asset-identification")
+    {
+        asset_identification.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "manufacturer-asset-tags")
+    {
+        manufacturer_asset_tags.yfilter = yfilter;
+    }
+    if(value_path == "composite-class-code")
+    {
+        composite_class_code.yfilter = yfilter;
+    }
+    if(value_path == "memory-size")
+    {
+        memory_size.yfilter = yfilter;
+    }
+    if(value_path == "environmental-monitor-path")
+    {
+        environmental_monitor_path.yfilter = yfilter;
+    }
+    if(value_path == "alias")
+    {
+        alias.yfilter = yfilter;
+    }
+    if(value_path == "group-flag")
+    {
+        group_flag.yfilter = yfilter;
+    }
+    if(value_path == "new-deviation-number")
+    {
+        new_deviation_number.yfilter = yfilter;
+    }
+    if(value_path == "physical-layer-interface-module-type")
+    {
+        physical_layer_interface_module_type.yfilter = yfilter;
+    }
+    if(value_path == "unrecognized-fru")
+    {
+        unrecognized_fru.yfilter = yfilter;
+    }
+    if(value_path == "redundancystate")
+    {
+        redundancystate.yfilter = yfilter;
+    }
+    if(value_path == "ceport")
+    {
+        ceport.yfilter = yfilter;
+    }
+    if(value_path == "xr-scoped")
+    {
+        xr_scoped.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+}
+
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
@@ -23195,177 +23622,6 @@ void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3
 bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::InvAssetBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "part-number" || name == "manufacturer-assembly-number" || name == "manufacturer-assembly-revision" || name == "manufacturer-firmware-identifier" || name == "manufacturer-software-identifier" || name == "manufacturer-common-language-equipment-identifier" || name == "original-equipment-manufacturer-string")
-        return true;
-    return false;
-}
-
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::Threshold()
-    :
-    major_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MajorLo>())
-	,critical_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::CriticalHi>())
-	,minor_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MinorHi>())
-	,major_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MajorHi>())
-	,critical_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::CriticalLo>())
-	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MinorLo>())
-{
-    major_lo->parent = this;
-    critical_hi->parent = this;
-    minor_hi->parent = this;
-    major_hi->parent = this;
-    critical_lo->parent = this;
-    minor_lo->parent = this;
-
-    yang_name = "threshold"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::~Threshold()
-{
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::has_data() const
-{
-    return (major_lo !=  nullptr && major_lo->has_data())
-	|| (critical_hi !=  nullptr && critical_hi->has_data())
-	|| (minor_hi !=  nullptr && minor_hi->has_data())
-	|| (major_hi !=  nullptr && major_hi->has_data())
-	|| (critical_lo !=  nullptr && critical_lo->has_data())
-	|| (minor_lo !=  nullptr && minor_lo->has_data());
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| (major_lo !=  nullptr && major_lo->has_operation())
-	|| (critical_hi !=  nullptr && critical_hi->has_operation())
-	|| (minor_hi !=  nullptr && minor_hi->has_operation())
-	|| (major_hi !=  nullptr && major_hi->has_operation())
-	|| (critical_lo !=  nullptr && critical_lo->has_operation())
-	|| (minor_lo !=  nullptr && minor_lo->has_operation());
-}
-
-std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "major-lo")
-    {
-        if(major_lo == nullptr)
-        {
-            major_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MajorLo>();
-        }
-        return major_lo;
-    }
-
-    if(child_yang_name == "critical-hi")
-    {
-        if(critical_hi == nullptr)
-        {
-            critical_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::CriticalHi>();
-        }
-        return critical_hi;
-    }
-
-    if(child_yang_name == "minor-hi")
-    {
-        if(minor_hi == nullptr)
-        {
-            minor_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MinorHi>();
-        }
-        return minor_hi;
-    }
-
-    if(child_yang_name == "major-hi")
-    {
-        if(major_hi == nullptr)
-        {
-            major_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MajorHi>();
-        }
-        return major_hi;
-    }
-
-    if(child_yang_name == "critical-lo")
-    {
-        if(critical_lo == nullptr)
-        {
-            critical_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::CriticalLo>();
-        }
-        return critical_lo;
-    }
-
-    if(child_yang_name == "minor-lo")
-    {
-        if(minor_lo == nullptr)
-        {
-            minor_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::MinorLo>();
-        }
-        return minor_lo;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(major_lo != nullptr)
-    {
-        children["major-lo"] = major_lo;
-    }
-
-    if(critical_hi != nullptr)
-    {
-        children["critical-hi"] = critical_hi;
-    }
-
-    if(minor_hi != nullptr)
-    {
-        children["minor-hi"] = minor_hi;
-    }
-
-    if(major_hi != nullptr)
-    {
-        children["major-hi"] = major_hi;
-    }
-
-    if(critical_lo != nullptr)
-    {
-        children["critical-lo"] = critical_lo;
-    }
-
-    if(minor_lo != nullptr)
-    {
-        children["minor-lo"] = minor_lo;
-    }
-
-    return children;
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Attributes::Threshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "major-lo" || name == "critical-hi" || name == "minor-hi" || name == "major-hi" || name == "critical-lo" || name == "minor-lo")
         return true;
     return false;
 }

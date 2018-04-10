@@ -5326,6 +5326,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::GraceLsa()
     :
+    interface_name{YType::str, "interface-name"},
+    is_virtual_link{YType::boolean, "is-virtual-link"},
+    virtual_link_id{YType::uint32, "virtual-link-id"},
+    is_sham_link{YType::boolean, "is-sham-link"},
+    sham_link_id{YType::uint32, "sham-link-id"},
     grace_period{YType::uint32, "grace-period"},
     grace_reason{YType::enumeration, "grace-reason"}
     	,
@@ -5344,7 +5349,12 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::Ls
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::has_data() const
 {
-    return grace_period.is_set
+    return interface_name.is_set
+	|| is_virtual_link.is_set
+	|| virtual_link_id.is_set
+	|| is_sham_link.is_set
+	|| sham_link_id.is_set
+	|| grace_period.is_set
 	|| grace_reason.is_set
 	|| (lsa_header !=  nullptr && lsa_header->has_data())
 	|| (lsa_detail !=  nullptr && lsa_detail->has_data());
@@ -5353,6 +5363,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
 	|| ydk::is_set(grace_period.yfilter)
 	|| ydk::is_set(grace_reason.yfilter)
 	|| (lsa_header !=  nullptr && lsa_header->has_operation())
@@ -5370,6 +5385,11 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
     if (grace_period.is_set || is_set(grace_period.yfilter)) leaf_name_data.push_back(grace_period.get_name_leafdata());
     if (grace_reason.is_set || is_set(grace_reason.yfilter)) leaf_name_data.push_back(grace_reason.get_name_leafdata());
 
@@ -5419,6 +5439,36 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "grace-period")
     {
         grace_period = value;
@@ -5435,6 +5485,26 @@ void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
     if(value_path == "grace-period")
     {
         grace_period.yfilter = yfilter;
@@ -5447,7 +5517,7 @@ void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lsa-header" || name == "lsa-detail" || name == "grace-period" || name == "grace-reason")
+    if(name == "lsa-header" || name == "lsa-detail" || name == "interface-name" || name == "is-virtual-link" || name == "virtual-link-id" || name == "is-sham-link" || name == "sham-link-id" || name == "grace-period" || name == "grace-reason")
         return true;
     return false;
 }
@@ -26771,6 +26841,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::GraceLsa()
     :
+    interface_name{YType::str, "interface-name"},
+    is_virtual_link{YType::boolean, "is-virtual-link"},
+    virtual_link_id{YType::uint32, "virtual-link-id"},
+    is_sham_link{YType::boolean, "is-sham-link"},
+    sham_link_id{YType::uint32, "sham-link-id"},
     grace_period{YType::uint32, "grace-period"},
     grace_reason{YType::enumeration, "grace-reason"}
     	,
@@ -26789,7 +26864,12 @@ Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Ls
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::has_data() const
 {
-    return grace_period.is_set
+    return interface_name.is_set
+	|| is_virtual_link.is_set
+	|| virtual_link_id.is_set
+	|| is_sham_link.is_set
+	|| sham_link_id.is_set
+	|| grace_period.is_set
 	|| grace_reason.is_set
 	|| (lsa_header !=  nullptr && lsa_header->has_data())
 	|| (lsa_detail !=  nullptr && lsa_detail->has_data());
@@ -26798,6 +26878,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
 	|| ydk::is_set(grace_period.yfilter)
 	|| ydk::is_set(grace_reason.yfilter)
 	|| (lsa_header !=  nullptr && lsa_header->has_operation())
@@ -26815,6 +26900,11 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
     if (grace_period.is_set || is_set(grace_period.yfilter)) leaf_name_data.push_back(grace_period.get_name_leafdata());
     if (grace_reason.is_set || is_set(grace_reason.yfilter)) leaf_name_data.push_back(grace_reason.get_name_leafdata());
 
@@ -26864,6 +26954,36 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
 
 void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "grace-period")
     {
         grace_period = value;
@@ -26880,6 +27000,26 @@ void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 
 void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
     if(value_path == "grace-period")
     {
         grace_period.yfilter = yfilter;
@@ -26892,7 +27032,7 @@ void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lsa-header" || name == "lsa-detail" || name == "grace-period" || name == "grace-reason")
+    if(name == "lsa-header" || name == "lsa-detail" || name == "interface-name" || name == "is-virtual-link" || name == "virtual-link-id" || name == "is-sham-link" || name == "sham-link-id" || name == "grace-period" || name == "grace-reason")
         return true;
     return false;
 }

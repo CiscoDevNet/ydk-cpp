@@ -156,6 +156,10 @@ module tailf-aaa {
       type string;
       tailf:info "Prompt for configure mode";
     }
+    leaf devtools {
+      type boolean;
+      tailf:info "Enable/disable development tools";
+    }
   }
 
   container aaa {
@@ -243,7 +247,7 @@ module tailf-aaa {
         }
         leaf prompt {
           type string;
-          default "\h# ";
+          default '\h# ';
         }
       }
 

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk VERSION 0.7.0 LANGUAGES C CXX)
+project(ydk VERSION 0.7.1 LANGUAGES C CXX)
 
 
 set(YDK_DESCRIPTION "YANG Development Kit Library. The library for  YDK API.")
@@ -23,7 +23,7 @@ bundle profile and the ydk-gen tool.")
 
 set (CPACK_PACKAGE_CONTACT "ydk-admin@cisco.com")
 set (CPACK_PACKAGE_VENDOR "Cisco")
-set (CPACK_PACKAGE_INSTALL_DIRECTORY "/usr/local")
+set(CPACK_SET_DESTDIR true)
 
 # MAC OS -- not working
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -84,7 +84,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         set (CPACK_RPM_PACKAGE_GROUP "Development/Libraries")
         set (CPACK_RPM_PACKAGE_VENDOR ${CPACK_PACKAGE_VENDOR})
         set (CPACK_RPM_PACKAGE_URL "https://github.com/CiscoDevNet/ydk-cpp")
-        set (CPACK_RPM_PACKAGE_REQUIRES "epel-release, python-pip, python-devel, libxml2-devel, libxslt-devel, libssh-devel, libcurl-devel, libtool, clang, cmake3, pcre-devel")
+        set (CPACK_RPM_PACKAGE_REQUIRES "python-pip, python-devel, libxml2-devel, libxslt-devel, libssh-devel, libcurl-devel, libtool, cmake3, pcre-devel")
 
         # <name>-<version>-<release>.<architecture>.(src).rpm
         # libydk-0.6.0-0.1.alpha.x86_64.rpm  // RPM
@@ -115,8 +115,13 @@ set(HOME_DIRECTORY $ENV{HOME})
 
 set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
-set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0")
 
+if(COVERAGE STREQUAL True)
+    set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0 -fprofile-arcs -ftest-coverage")
+    set(CMAKE_BUILD_TYPE debug)
+else()
+    set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -O0")
+endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL debug)
     option(ENABLE_BUILD_TESTS "Build tests" ON)
@@ -132,6 +137,7 @@ set(libydk_src
     src/codec_provider.cpp
     src/codec_service.cpp
     src/capabilities_parser.cpp
+    src/common_utilities.cpp
     src/crud_service.cpp
     src/entity.cpp
     src/entity_data_node_walker.cpp
@@ -158,6 +164,7 @@ set(libydk_src
     src/value.cpp
     src/value_list.cpp
     src/xml_subtree_codec.cpp
+    src/xml_util.cpp
     src/ydk_operation.cpp
     src/ydk.cpp
     src/ydk_yang.cpp
@@ -191,6 +198,7 @@ set(libydk_install_headers
     src/capabilities_parser.hpp
     src/codec_provider.hpp
     src/codec_service.hpp
+    src/common_utilities.hpp
     src/crud_service.hpp
     src/entity_data_node_walker.hpp
     src/entity_lookup.hpp
@@ -211,6 +219,7 @@ set(libydk_install_headers
     src/service_provider.hpp
     src/types.hpp
     src/xml_subtree_codec.hpp
+    src/xml_util.hpp
     src/validation_service.hpp
     src/ydk.h)
 
@@ -279,13 +288,16 @@ set(netconf_objs
 
 # Set LibYang variables
 set(libyang_location ${CMAKE_CURRENT_BINARY_DIR}/project_libyang/src/project_libyang)
+set(libyang_build_location ${CMAKE_CURRENT_BINARY_DIR}/project_libyang/src/project_libyang-build)
 
 set(libyang_headers
     ${libyang_location}/src/common.h
     ${libyang_location}/src/context.h
     ${libyang_location}/src/dict.h
     ${libyang_location}/src/dict_private.h
-    ${libyang_location}/src/libyang.h
+    ${libyang_location}/src/extensions.h
+    ${libyang_build_location}/src/extensions_config.h
+    ${libyang_build_location}/src/libyang.h
     ${libyang_location}/src/parser.h
     ${libyang_location}/src/parser_yang.h
     ${libyang_location}/src/parser_yang_bis.h
@@ -305,6 +317,7 @@ set(yang_objs
     common.c.o
     context.c.o
     dict.c.o
+    extensions.c.o
     log.c.o
     parser.c.o
     parser_json.c.o
@@ -336,6 +349,7 @@ find_library(xslt_location xslt)
 find_library(pcre_location pcre)
 find_library(pthread_location pthread)
 find_library(dl_location dl)
+find_library(m_location m)
 find_package(LibXml2 REQUIRED)
 find_package(LibSSH REQUIRED)
 
@@ -378,13 +392,16 @@ add_library(libnetconf STATIC IMPORTED)
 set_property(TARGET libnetconf PROPERTY IMPORTED_LOCATION ${libnetconf_archive})
 add_dependencies(libnetconf project_libnetconf)
 
+set(LIBYANG_EXT_PLUGINS_DIR ${LIB_INSTALL_DIR}/libyang)
+message("Set libyang plugin installation directory to: ${LIBYANG_EXT_PLUGINS_DIR}")
+
 # Add LibYang
 set(libyang_include_location include/libyang)
 set(libyang_headers_location ${CMAKE_CURRENT_BINARY_DIR}/project_libyang/headers)
 ExternalProject_Add(project_libyang
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}/project_libyang"
-    URL "https://github.com/manradhaCisco/libyang/archive/master.zip"
-    CMAKE_ARGS -DSTATIC=true -DCMAKE_BUILD_TYPE=Debug
+    URL "https://github.com/ygorelik/libyang/archive/master.zip"
+    CMAKE_ARGS -DSTATIC=true -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_LIBDIR=lib
     INSTALL_DIR "${libyang_location}"
     INSTALL_COMMAND mkdir -p ${libyang_headers_location}/libyang && cp ${libyang_headers} ${libyang_headers_location}/libyang
 )
@@ -437,13 +454,18 @@ target_link_libraries(ydk
     ${pcre_location}
     ${xslt_location}
     ${pthread_location}
-    ${dl_location}
     libnetconf
     libyang
+    ${dl_location}
 )
 
 set_property(TARGET ydk PROPERTY CXX_STANDARD 11)
 set_property(TARGET ydk PROPERTY CXX_STANDARD_REQUIRED ON)
+set(libyang_extension_lib 
+	${libyang_build_location}/src/extensions/libyang_ext_test${CMAKE_SHARED_LIBRARY_SUFFIX}
+	${libyang_build_location}/src/extensions/metadata${CMAKE_SHARED_LIBRARY_SUFFIX}
+	${libyang_build_location}/src/extensions/nacm${CMAKE_SHARED_LIBRARY_SUFFIX}
+)
 
 install(TARGETS ydk DESTINATION ${LIB_INSTALL_DIR})
 install(FILES ${libydk_install_headers} DESTINATION ${INCLUDE_INSTALL_DIR})
@@ -452,6 +474,7 @@ install(FILES ${SPDLOG_DETAILS_HEADERS} DESTINATION ${spdlog_details_include_loc
 install(FILES ${SPDLOG_FMT_HEADERS} DESTINATION ${spdlog_fmt_include_location})
 install(FILES ${SPDLOG_FMT_BUNDLED_HEADERS} DESTINATION ${spdlog_fmt_bundled_include_location})
 install(FILES ${SPDLOG_SINKS_HEADERS} DESTINATION ${spdlog_sinks_include_location})
+install(FILES ${libyang_extension_lib} DESTINATION ${LIBYANG_EXT_PLUGINS_DIR})
 
 # generate doxygen documentation for ydk_core API
 find_package(Doxygen)

@@ -34,16 +34,20 @@ class Ptp : public ydk::Entity
 
         ydk::YLeaf time_of_day_priority; //type: uint32
         ydk::YLeaf frequency_priority; //type: uint32
+        ydk::YLeaf startup_clock_class; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf min_clock_class; //type: uint32
         ydk::YLeaf uncalibrated_clock_class; //type: uint32
+        ydk::YLeaf freerun_clock_class; //type: uint32
         class Clock; //type: Ptp::Clock
         class Profiles; //type: Ptp::Profiles
+        class UtcOffset; //type: Ptp::UtcOffset
         class Logging; //type: Ptp::Logging
         class TransparentClock; //type: Ptp::TransparentClock
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock> clock_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles> profiles;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::UtcOffset> utc_offset;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::TransparentClock> transparent_clock;
         
@@ -581,6 +585,103 @@ class Ptp::Profiles::Profile::SourceIpv6Address : public ydk::Entity
         ydk::YLeaf source_ipv6; //type: string
 
 }; // Ptp::Profiles::Profile::SourceIpv6Address
+
+
+class Ptp::UtcOffset : public ydk::Entity
+{
+    public:
+        UtcOffset();
+        ~UtcOffset();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf base_offset; //type: uint32
+        class LeapSecondFile; //type: Ptp::UtcOffset::LeapSecondFile
+        class ScheduledOffsets; //type: Ptp::UtcOffset::ScheduledOffsets
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::UtcOffset::LeapSecondFile> leap_second_file; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::UtcOffset::ScheduledOffsets> scheduled_offsets;
+        
+}; // Ptp::UtcOffset
+
+
+class Ptp::UtcOffset::LeapSecondFile : public ydk::Entity
+{
+    public:
+        LeapSecondFile();
+        ~LeapSecondFile();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf source_url; //type: string
+        ydk::YLeaf polling_frequency; //type: uint32
+
+}; // Ptp::UtcOffset::LeapSecondFile
+
+
+class Ptp::UtcOffset::ScheduledOffsets : public ydk::Entity
+{
+    public:
+        ScheduledOffsets();
+        ~ScheduledOffsets();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ScheduledOffset; //type: Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset
+
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset> > scheduled_offset;
+        
+}; // Ptp::UtcOffset::ScheduledOffsets
+
+
+class Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset : public ydk::Entity
+{
+    public:
+        ScheduledOffset();
+        ~ScheduledOffset();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf date; //type: string
+        ydk::YLeaf offset; //type: uint32
+
+}; // Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset
 
 
 class Ptp::Logging : public ydk::Entity

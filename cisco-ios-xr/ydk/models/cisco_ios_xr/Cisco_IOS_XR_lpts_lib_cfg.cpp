@@ -736,7 +736,7 @@ bool Lpts::Ipolicer::Flows::has_leaf_or_child_of_name(const std::string & name) 
 Lpts::Ipolicer::Flows::Flow::Flow()
     :
     flow_type{YType::enumeration, "flow-type"},
-    rate{YType::int32, "rate"}
+    rate{YType::uint32, "rate"}
     	,
     precedences(std::make_shared<Lpts::Ipolicer::Flows::Flow::Precedences>())
 {

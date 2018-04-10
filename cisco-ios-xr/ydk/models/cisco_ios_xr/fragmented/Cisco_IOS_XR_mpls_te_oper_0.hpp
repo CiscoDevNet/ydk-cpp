@@ -5005,6 +5005,7 @@ class MplsTeReoptDecisionReason : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_session_type_changed;
         static const ydk::Enum::YLeaf lsp_drop_mode;
         static const ydk::Enum::YLeaf strict_spf;
+        static const ydk::Enum::YLeaf intra_area;
         static const ydk::Enum::YLeaf not_used;
 
 };
@@ -5067,6 +5068,7 @@ class GmplsUniMgmtDwdmCs : public ydk::Enum
         static const ydk::Enum::YLeaf dwdm50g_hz;
         static const ydk::Enum::YLeaf dwdm25g_hz;
         static const ydk::Enum::YLeaf dwdm12g_hz;
+        static const ydk::Enum::YLeaf dwdm6g_hz;
 
 };
 
@@ -5614,6 +5616,8 @@ class TeP2MpS2LDeletionSubcause : public ydk::Enum
         static const ydk::Enum::YLeaf restore_dp_down;
         static const ydk::Enum::YLeaf current_not_needed_dp_down;
         static const ydk::Enum::YLeaf bad_protct_obj;
+        static const ydk::Enum::YLeaf head_flexi_cap_change;
+        static const ydk::Enum::YLeaf tail_flexi_cap_change;
         static const ydk::Enum::YLeaf optical_link_down;
         static const ydk::Enum::YLeaf optical_link_lsp_out_of_sync;
         static const ydk::Enum::YLeaf optical_link_owner_out_of_sync;

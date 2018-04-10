@@ -282,6 +282,7 @@ class BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ip; //type: string
+        ydk::YLeaf src_ip; //type: string
         ydk::YLeaf ld; //type: uint32
         ydk::YLeaf rd; //type: uint32
         ydk::YLeaf remote_state; //type: BfdRemoteStateType
@@ -331,6 +332,7 @@ class BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr : public ydk::E
 
         ydk::YLeaf ip; //type: string
         ydk::YLeaf vrf; //type: string
+        ydk::YLeaf src_ip; //type: string
         ydk::YLeaf ld; //type: uint32
         ydk::YLeaf rd; //type: uint32
         ydk::YLeaf remote_state; //type: BfdRemoteStateType
@@ -353,11 +355,11 @@ class BfdOperSessionType : public ydk::Enum
 class BfdRemoteStateType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf admindown;
-        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf remote_up;
+        static const ydk::Enum::YLeaf remote_down;
+        static const ydk::Enum::YLeaf remote_init;
+        static const ydk::Enum::YLeaf remote_admindown;
+        static const ydk::Enum::YLeaf remote_invalid;
 
 };
 

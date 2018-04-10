@@ -93,8 +93,8 @@ class L2Rib::ProducersDetails::ProducersDetail : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf object_id; //type: int32
-        ydk::YLeaf product_id; //type: int32
+        ydk::YLeaf object_id; //type: uint32
+        ydk::YLeaf product_id; //type: uint32
         ydk::YLeaf last_update_timestamp; //type: uint64
         class Producer; //type: L2Rib::ProducersDetails::ProducersDetail::Producer
         class Statistics; //type: L2Rib::ProducersDetails::ProducersDetail::Statistics
@@ -387,8 +387,8 @@ class L2Rib::Producers::Producer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf object_id; //type: int32
-        ydk::YLeaf product_id; //type: int32
+        ydk::YLeaf object_id; //type: uint32
+        ydk::YLeaf product_id; //type: uint32
         ydk::YLeaf client_id; //type: uint32
         ydk::YLeaf object_type; //type: L2ribBagObj
         ydk::YLeaf producer_id; //type: L2ribBagProducerId
@@ -441,7 +441,7 @@ class L2Rib::Clients::Client : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf client_id; //type: int32
+        ydk::YLeaf client_id; //type: uint32
         ydk::YLeaf client_id_xr; //type: uint32
         ydk::YLeaf process_id; //type: uint32
         ydk::YLeaf node_id; //type: string
@@ -492,7 +492,7 @@ class L2Rib::EvisXr::Evi : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi; //type: uint32
         ydk::YLeaf l2r_vni; //type: uint32
         ydk::YLeaf l2r_encap_type; //type: uint16
         ydk::YLeaf l2r_nve_iod; //type: uint32
@@ -571,7 +571,7 @@ class L2Rib::ClientsDetails::ClientsDetail : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf client_id; //type: int32
+        ydk::YLeaf client_id; //type: uint32
         ydk::YLeaf producer_count; //type: uint8
         ydk::YLeaf last_update_timestamp; //type: uint64
         class Client; //type: L2Rib::ClientsDetails::ClientsDetail::Client
@@ -783,12 +783,12 @@ class L2Rib::EviChildTables::MacipDetails::MacipDetail : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf evi; //type: int32
-        ydk::YLeaf tag_id; //type: int32
+        ydk::YLeaf evi; //type: uint32
+        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
         ydk::YLeaf ip_addr; //type: string
-        ydk::YLeaf admin_dist; //type: int32
-        ydk::YLeaf prod_id; //type: int32
+        ydk::YLeaf admin_dist; //type: uint32
+        ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf flags; //type: uint32
         ydk::YLeaf soo; //type: uint32
@@ -933,9 +933,33 @@ class L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv : public ydk::Enti
 
         ydk::YLeaf tlv_type; //type: uint16
         ydk::YLeaf tlv_len; //type: uint16
-        ydk::YLeafList tlv_val; //type: list of  uint8
+        class TlvVal; //type: L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2rib_oper::L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal> > tlv_val;
+        
 }; // L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv
+
+
+class L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal : public ydk::Entity
+{
+    public:
+        TlvVal();
+        ~TlvVal();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal
 
 
 class L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv : public ydk::Entity
@@ -957,9 +981,33 @@ class L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv : public ydk::Enti
 
         ydk::YLeaf tlv_type; //type: uint16
         ydk::YLeaf tlv_len; //type: uint16
-        ydk::YLeafList tlv_val; //type: list of  uint8
+        class TlvVal; //type: L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2rib_oper::L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal> > tlv_val;
+        
 }; // L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv
+
+
+class L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal : public ydk::Entity
+{
+    public:
+        TlvVal();
+        ~TlvVal();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal
 
 
 class L2Rib::EviChildTables::MacIps : public ydk::Entity
@@ -1003,12 +1051,12 @@ class L2Rib::EviChildTables::MacIps::MacIp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf evi; //type: int32
-        ydk::YLeaf tag_id; //type: int32
+        ydk::YLeaf evi; //type: uint32
+        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
         ydk::YLeaf ip_addr; //type: string
-        ydk::YLeaf admin_dist; //type: int32
-        ydk::YLeaf prod_id; //type: int32
+        ydk::YLeaf admin_dist; //type: uint32
+        ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf ip_address; //type: string
         ydk::YLeaf admin_distance; //type: uint8
@@ -1143,11 +1191,11 @@ class L2Rib::EviChildTables::Macs::Mac : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf evi; //type: int32
-        ydk::YLeaf tag_id; //type: int32
+        ydk::YLeaf evi; //type: uint32
+        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
-        ydk::YLeaf admin_dist; //type: int32
-        ydk::YLeaf prod_id; //type: int32
+        ydk::YLeaf admin_dist; //type: uint32
+        ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf admin_distance; //type: uint8
         ydk::YLeaf producer_id; //type: uint8
@@ -1994,11 +2042,11 @@ class L2Rib::EviChildTables::MacDetails::MacDetail : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf evi; //type: int32
-        ydk::YLeaf tag_id; //type: int32
+        ydk::YLeaf evi; //type: uint32
+        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
-        ydk::YLeaf admin_dist; //type: int32
-        ydk::YLeaf prod_id; //type: int32
+        ydk::YLeaf admin_dist; //type: uint32
+        ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf flags; //type: uint32
         ydk::YLeaf baseflags; //type: uint32
@@ -2856,9 +2904,33 @@ class L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv : public ydk::Entity
 
         ydk::YLeaf tlv_type; //type: uint16
         ydk::YLeaf tlv_len; //type: uint16
-        ydk::YLeafList tlv_val; //type: list of  uint8
+        class TlvVal; //type: L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2rib_oper::L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal> > tlv_val;
+        
 }; // L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv
+
+
+class L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal : public ydk::Entity
+{
+    public:
+        TlvVal();
+        ~TlvVal();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal
 
 
 class L2Rib::Evis : public ydk::Entity
@@ -2902,7 +2974,7 @@ class L2Rib::Evis::Evi : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi; //type: uint32
         ydk::YLeaf topology_id; //type: uint32
         ydk::YLeaf topology_name; //type: string
         ydk::YLeaf topology_type; //type: uint32

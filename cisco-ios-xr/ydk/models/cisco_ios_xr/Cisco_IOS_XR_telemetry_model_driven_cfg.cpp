@@ -13,7 +13,10 @@ namespace Cisco_IOS_XR_telemetry_model_driven_cfg {
 
 TelemetryModelDriven::TelemetryModelDriven()
     :
-    enable{YType::empty, "enable"}
+    enable{YType::empty, "enable"},
+    max_sensor_paths{YType::uint32, "max-sensor-paths"},
+    max_containers_per_path{YType::uint32, "max-containers-per-path"},
+    tcp_send_timeout{YType::uint32, "tcp-send-timeout"}
     	,
     sensor_groups(std::make_shared<TelemetryModelDriven::SensorGroups>())
 	,subscriptions(std::make_shared<TelemetryModelDriven::Subscriptions>())
@@ -33,6 +36,9 @@ TelemetryModelDriven::~TelemetryModelDriven()
 bool TelemetryModelDriven::has_data() const
 {
     return enable.is_set
+	|| max_sensor_paths.is_set
+	|| max_containers_per_path.is_set
+	|| tcp_send_timeout.is_set
 	|| (sensor_groups !=  nullptr && sensor_groups->has_data())
 	|| (subscriptions !=  nullptr && subscriptions->has_data())
 	|| (destination_groups !=  nullptr && destination_groups->has_data());
@@ -42,6 +48,9 @@ bool TelemetryModelDriven::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(max_sensor_paths.yfilter)
+	|| ydk::is_set(max_containers_per_path.yfilter)
+	|| ydk::is_set(tcp_send_timeout.yfilter)
 	|| (sensor_groups !=  nullptr && sensor_groups->has_operation())
 	|| (subscriptions !=  nullptr && subscriptions->has_operation())
 	|| (destination_groups !=  nullptr && destination_groups->has_operation());
@@ -59,6 +68,9 @@ std::vector<std::pair<std::string, LeafData> > TelemetryModelDriven::get_name_le
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (max_sensor_paths.is_set || is_set(max_sensor_paths.yfilter)) leaf_name_data.push_back(max_sensor_paths.get_name_leafdata());
+    if (max_containers_per_path.is_set || is_set(max_containers_per_path.yfilter)) leaf_name_data.push_back(max_containers_per_path.get_name_leafdata());
+    if (tcp_send_timeout.is_set || is_set(tcp_send_timeout.yfilter)) leaf_name_data.push_back(tcp_send_timeout.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -126,6 +138,24 @@ void TelemetryModelDriven::set_value(const std::string & value_path, const std::
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "max-sensor-paths")
+    {
+        max_sensor_paths = value;
+        max_sensor_paths.value_namespace = name_space;
+        max_sensor_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-containers-per-path")
+    {
+        max_containers_per_path = value;
+        max_containers_per_path.value_namespace = name_space;
+        max_containers_per_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tcp-send-timeout")
+    {
+        tcp_send_timeout = value;
+        tcp_send_timeout.value_namespace = name_space;
+        tcp_send_timeout.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TelemetryModelDriven::set_filter(const std::string & value_path, YFilter yfilter)
@@ -133,6 +163,18 @@ void TelemetryModelDriven::set_filter(const std::string & value_path, YFilter yf
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
+    }
+    if(value_path == "max-sensor-paths")
+    {
+        max_sensor_paths.yfilter = yfilter;
+    }
+    if(value_path == "max-containers-per-path")
+    {
+        max_containers_per_path.yfilter = yfilter;
+    }
+    if(value_path == "tcp-send-timeout")
+    {
+        tcp_send_timeout.yfilter = yfilter;
     }
 }
 
@@ -163,7 +205,7 @@ std::map<std::pair<std::string, std::string>, std::string> TelemetryModelDriven:
 
 bool TelemetryModelDriven::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sensor-groups" || name == "subscriptions" || name == "destination-groups" || name == "enable")
+    if(name == "sensor-groups" || name == "subscriptions" || name == "destination-groups" || name == "enable" || name == "max-sensor-paths" || name == "max-containers-per-path" || name == "tcp-send-timeout")
         return true;
     return false;
 }

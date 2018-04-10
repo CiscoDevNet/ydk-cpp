@@ -11,6 +11,206 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ospfv3_cfg {
 
+Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::PerPrefix()
+    :
+    load_sharing_disable{YType::empty, "load-sharing-disable"},
+    priority{YType::enumeration, "priority"}
+    	,
+    tiebreakers(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers>())
+{
+    tiebreakers->parent = this;
+
+    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::~PerPrefix()
+{
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::has_data() const
+{
+    return load_sharing_disable.is_set
+	|| priority.is_set
+	|| (tiebreakers !=  nullptr && tiebreakers->has_data());
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(load_sharing_disable.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| (tiebreakers !=  nullptr && tiebreakers->has_operation());
+}
+
+std::string Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "per-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (load_sharing_disable.is_set || is_set(load_sharing_disable.yfilter)) leaf_name_data.push_back(load_sharing_disable.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tiebreakers")
+    {
+        if(tiebreakers == nullptr)
+        {
+            tiebreakers = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers>();
+        }
+        return tiebreakers;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(tiebreakers != nullptr)
+    {
+        children["tiebreakers"] = tiebreakers;
+    }
+
+    return children;
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "load-sharing-disable")
+    {
+        load_sharing_disable = value;
+        load_sharing_disable.value_namespace = name_space;
+        load_sharing_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "load-sharing-disable")
+    {
+        load_sharing_disable.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tiebreakers" || name == "load-sharing-disable" || name == "priority")
+        return true;
+    return false;
+}
+
+Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreakers()
+{
+
+    yang_name = "tiebreakers"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::~Tiebreakers()
+{
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::has_data() const
+{
+    for (std::size_t index=0; index<tiebreaker.size(); index++)
+    {
+        if(tiebreaker[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::has_operation() const
+{
+    for (std::size_t index=0; index<tiebreaker.size(); index++)
+    {
+        if(tiebreaker[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tiebreakers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tiebreaker")
+    {
+        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker>();
+        c->parent = this;
+        tiebreaker.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : tiebreaker)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tiebreaker")
+        return true;
+    return false;
+}
+
 Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::Tiebreaker()
     :
     tiebreaker_type{YType::enumeration, "tiebreaker-type"},
@@ -797,7 +997,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrS
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
     preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"}
+    preserve_med_info{YType::empty, "preserve-med-info"},
+    use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
     yang_name = "connected-or-static-or-subscriber-or-mobile"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -820,7 +1021,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set;
+	|| preserve_med_info.is_set
+	|| use_rib_metric.is_set;
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::has_operation() const
@@ -837,7 +1039,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter);
+	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::get_segment_path() const
@@ -863,6 +1066,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
     if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -954,6 +1158,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
         preserve_med_info.value_namespace = name_space;
         preserve_med_info.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric = value;
+        use_rib_metric.value_namespace = name_space;
+        use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1006,11 +1216,15 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connect
     {
         preserve_med_info.yfilter = yfilter;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info")
+    if(name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
         return true;
     return false;
 }
@@ -1030,7 +1244,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::Bgp()
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
     preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"}
+    preserve_med_info{YType::empty, "preserve-med-info"},
+    use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
     yang_name = "bgp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -1055,7 +1270,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::ha
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set;
+	|| preserve_med_info.is_set
+	|| use_rib_metric.is_set;
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::has_operation() const
@@ -1074,7 +1290,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::ha
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter);
+	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::get_segment_path() const
@@ -1102,6 +1319,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
     if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1205,6 +1423,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::se
         preserve_med_info.value_namespace = name_space;
         preserve_med_info.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric = value;
+        use_rib_metric.value_namespace = name_space;
+        use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1265,11 +1489,15 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::se
     {
         preserve_med_info.yfilter = yfilter;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "as-xx" || name == "as-yy" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info")
+    if(name == "as-xx" || name == "as-yy" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
         return true;
     return false;
 }
@@ -1288,7 +1516,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsis
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
     preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"}
+    preserve_med_info{YType::empty, "preserve-med-info"},
+    use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
     yang_name = "ospfv3-or-isis-or-application"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -1312,7 +1541,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set;
+	|| preserve_med_info.is_set
+	|| use_rib_metric.is_set;
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::has_operation() const
@@ -1330,7 +1560,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter);
+	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::get_segment_path() const
@@ -1357,6 +1588,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
     if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1454,6 +1686,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
         preserve_med_info.value_namespace = name_space;
         preserve_med_info.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric = value;
+        use_rib_metric.value_namespace = name_space;
+        use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1510,11 +1748,15 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3O
     {
         preserve_med_info.yfilter = yfilter;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "process-name" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info")
+    if(name == "process-name" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
         return true;
     return false;
 }
@@ -1533,7 +1775,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::Eigrp
     isis_route_type{YType::enumeration, "isis-route-type"},
     eigrp_route_type{YType::enumeration, "eigrp-route-type"},
     preserve_med{YType::empty, "preserve-med"},
-    preserve_med_info{YType::empty, "preserve-med-info"}
+    preserve_med_info{YType::empty, "preserve-med-info"},
+    use_rib_metric{YType::boolean, "use-rib-metric"}
 {
 
     yang_name = "eigrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
@@ -1557,7 +1800,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
 	|| isis_route_type.is_set
 	|| eigrp_route_type.is_set
 	|| preserve_med.is_set
-	|| preserve_med_info.is_set;
+	|| preserve_med_info.is_set
+	|| use_rib_metric.is_set;
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::has_operation() const
@@ -1575,7 +1819,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
 	|| ydk::is_set(isis_route_type.yfilter)
 	|| ydk::is_set(eigrp_route_type.yfilter)
 	|| ydk::is_set(preserve_med.yfilter)
-	|| ydk::is_set(preserve_med_info.yfilter);
+	|| ydk::is_set(preserve_med_info.yfilter)
+	|| ydk::is_set(use_rib_metric.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::get_segment_path() const
@@ -1602,6 +1847,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (eigrp_route_type.is_set || is_set(eigrp_route_type.yfilter)) leaf_name_data.push_back(eigrp_route_type.get_name_leafdata());
     if (preserve_med.is_set || is_set(preserve_med.yfilter)) leaf_name_data.push_back(preserve_med.get_name_leafdata());
     if (preserve_med_info.is_set || is_set(preserve_med_info.yfilter)) leaf_name_data.push_back(preserve_med_info.get_name_leafdata());
+    if (use_rib_metric.is_set || is_set(use_rib_metric.yfilter)) leaf_name_data.push_back(use_rib_metric.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1699,6 +1945,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
         preserve_med_info.value_namespace = name_space;
         preserve_med_info.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric = value;
+        use_rib_metric.value_namespace = name_space;
+        use_rib_metric.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1755,11 +2007,15 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::
     {
         preserve_med_info.yfilter = yfilter;
     }
+    if(value_path == "use-rib-metric")
+    {
+        use_rib_metric.yfilter = yfilter;
+    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "as-xx" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info")
+    if(name == "as-xx" || name == "internal-route-type" || name == "default-metric" || name == "metric-type" || name == "tag" || name == "route-policy-name" || name == "external-route-type" || name == "nssa-external-route-type" || name == "redistribute-route" || name == "isis-route-type" || name == "eigrp-route-type" || name == "preserve-med" || name == "preserve-med-info" || name == "use-rib-metric")
         return true;
     return false;
 }
@@ -2095,7 +2351,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::h
 
 Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::DistributeOut()
     :
-    protocol_name{YType::enumeration, "protocol-name"}
+    protocol_name{YType::enumeration, "protocol-name"},
+    all_or_connected_or_static_prefix_list{YType::str, "all-or-connected-or-static-prefix-list"}
 {
 
     yang_name = "distribute-out"; yang_parent_name = "distribute-outs"; is_top_level_class = false; has_list_ancestor = true;
@@ -2107,23 +2364,45 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::Distri
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::has_data() const
 {
-    for (std::size_t index=0; index<as_yy_and_as_xx_and_process_name.size(); index++)
+    for (std::size_t index=0; index<bgp.size(); index++)
     {
-        if(as_yy_and_as_xx_and_process_name[index]->has_data())
+        if(bgp[index]->has_data())
             return true;
     }
-    return protocol_name.is_set;
+    for (std::size_t index=0; index<ospfv3_or_isis.size(); index++)
+    {
+        if(ospfv3_or_isis[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<eigrp.size(); index++)
+    {
+        if(eigrp[index]->has_data())
+            return true;
+    }
+    return protocol_name.is_set
+	|| all_or_connected_or_static_prefix_list.is_set;
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::has_operation() const
 {
-    for (std::size_t index=0; index<as_yy_and_as_xx_and_process_name.size(); index++)
+    for (std::size_t index=0; index<bgp.size(); index++)
     {
-        if(as_yy_and_as_xx_and_process_name[index]->has_operation())
+        if(bgp[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ospfv3_or_isis.size(); index++)
+    {
+        if(ospfv3_or_isis[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<eigrp.size(); index++)
+    {
+        if(eigrp[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(protocol_name.yfilter);
+	|| ydk::is_set(protocol_name.yfilter)
+	|| ydk::is_set(all_or_connected_or_static_prefix_list.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::get_segment_path() const
@@ -2138,6 +2417,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (all_or_connected_or_static_prefix_list.is_set || is_set(all_or_connected_or_static_prefix_list.yfilter)) leaf_name_data.push_back(all_or_connected_or_static_prefix_list.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2145,11 +2425,27 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "as-yy-and-as-xx-and-process-name")
+    if(child_yang_name == "bgp")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName>();
+        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp>();
         c->parent = this;
-        as_yy_and_as_xx_and_process_name.push_back(c);
+        bgp.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "ospfv3-or-isis")
+    {
+        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis>();
+        c->parent = this;
+        ospfv3_or_isis.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "eigrp")
+    {
+        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp>();
+        c->parent = this;
+        eigrp.push_back(c);
         return c;
     }
 
@@ -2161,7 +2457,25 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_yy_and_as_xx_and_process_name)
+    for (auto const & c : bgp)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : ospfv3_or_isis)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : eigrp)
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2180,6 +2494,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::D
         protocol_name.value_namespace = name_space;
         protocol_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "all-or-connected-or-static-prefix-list")
+    {
+        all_or_connected_or_static_prefix_list = value;
+        all_or_connected_or_static_prefix_list.value_namespace = name_space;
+        all_or_connected_or_static_prefix_list.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2188,60 +2508,161 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::D
     {
         protocol_name.yfilter = yfilter;
     }
+    if(value_path == "all-or-connected-or-static-prefix-list")
+    {
+        all_or_connected_or_static_prefix_list.yfilter = yfilter;
+    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "as-yy-and-as-xx-and-process-name" || name == "protocol-name")
+    if(name == "bgp" || name == "ospfv3-or-isis" || name == "eigrp" || name == "protocol-name" || name == "all-or-connected-or-static-prefix-list")
         return true;
     return false;
 }
 
-Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::AsYyAndAsXxAndProcessName()
+Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::Bgp()
     :
-    as_yy{YType::uint32, "as-yy"},
     as_xx{YType::uint32, "as-xx"},
+    as_yy{YType::uint32, "as-yy"},
+    prefix_list{YType::str, "prefix-list"}
+{
+
+    yang_name = "bgp"; yang_parent_name = "distribute-out"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::~Bgp()
+{
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::has_data() const
+{
+    return as_xx.is_set
+	|| as_yy.is_set
+	|| prefix_list.is_set;
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as_yy.yfilter)
+	|| ydk::is_set(prefix_list.yfilter);
+}
+
+std::string Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as_yy.is_set || is_set(as_yy.yfilter)) leaf_name_data.push_back(as_yy.get_name_leafdata());
+    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-yy")
+    {
+        as_yy = value;
+        as_yy.value_namespace = name_space;
+        as_yy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list = value;
+        prefix_list.value_namespace = name_space;
+        prefix_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as-yy")
+    {
+        as_yy.yfilter = yfilter;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-xx" || name == "as-yy" || name == "prefix-list")
+        return true;
+    return false;
+}
+
+Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::Ospfv3OrIsis()
+    :
     process_name{YType::str, "process-name"},
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "as-yy-and-as-xx-and-process-name"; yang_parent_name = "distribute-out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-or-isis"; yang_parent_name = "distribute-out"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::~AsYyAndAsXxAndProcessName()
+Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::~Ospfv3OrIsis()
 {
 }
 
-bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::has_data() const
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::has_data() const
 {
-    return as_yy.is_set
-	|| as_xx.is_set
-	|| process_name.is_set
+    return process_name.is_set
 	|| prefix_list.is_set;
 }
 
-bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::has_operation() const
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(as_yy.yfilter)
-	|| ydk::is_set(as_xx.yfilter)
 	|| ydk::is_set(process_name.yfilter)
 	|| ydk::is_set(prefix_list.yfilter);
 }
 
-std::string Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::get_segment_path() const
+std::string Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-yy-and-as-xx-and-process-name" <<"[as-yy='" <<as_yy <<"']" <<"[as-xx='" <<as_xx <<"']" <<"[process-name='" <<process_name <<"']";
+    path_buffer << "ospfv3-or-isis" <<"[process-name='" <<process_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as_yy.is_set || is_set(as_yy.yfilter)) leaf_name_data.push_back(as_yy.get_name_leafdata());
-    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
     if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
     if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
 
@@ -2249,32 +2670,20 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "as-yy")
-    {
-        as_yy = value;
-        as_yy.value_namespace = name_space;
-        as_yy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "as-xx")
-    {
-        as_xx = value;
-        as_xx.value_namespace = name_space;
-        as_xx.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "process-name")
     {
         process_name = value;
@@ -2289,16 +2698,8 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::D
     }
 }
 
-void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::set_filter(const std::string & value_path, YFilter yfilter)
+void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "as-yy")
-    {
-        as_yy.yfilter = yfilter;
-    }
-    if(value_path == "as-xx")
-    {
-        as_xx.yfilter = yfilter;
-    }
     if(value_path == "process-name")
     {
         process_name.yfilter = yfilter;
@@ -2309,9 +2710,100 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::D
     }
 }
 
-bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::AsYyAndAsXxAndProcessName::has_leaf_or_child_of_name(const std::string & name) const
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "as-yy" || name == "as-xx" || name == "process-name" || name == "prefix-list")
+    if(name == "process-name" || name == "prefix-list")
+        return true;
+    return false;
+}
+
+Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::Eigrp()
+    :
+    as_xx{YType::uint32, "as-xx"},
+    prefix_list{YType::str, "prefix-list"}
+{
+
+    yang_name = "eigrp"; yang_parent_name = "distribute-out"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::~Eigrp()
+{
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::has_data() const
+{
+    return as_xx.is_set
+	|| prefix_list.is_set;
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(prefix_list.yfilter);
+}
+
+std::string Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "eigrp" <<"[as-xx='" <<as_xx <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (prefix_list.is_set || is_set(prefix_list.yfilter)) leaf_name_data.push_back(prefix_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list = value;
+        prefix_list.value_namespace = name_space;
+        prefix_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "prefix-list")
+    {
+        prefix_list.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-xx" || name == "prefix-list")
         return true;
     return false;
 }
@@ -2595,12 +3087,10 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::Rbit()
     :
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
-    external_lsa{YType::uint32, "external-lsa"},
     include_stub{YType::empty, "include-stub"},
     enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
-    on_proc_restart{YType::uint32, "on-proc-restart"},
-    summary_lsa{YType::uint32, "summary-lsa"}
+    on_proc_restart{YType::uint32, "on-proc-restart"}
     	,
     on_startup(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup>())
 {
@@ -2617,12 +3107,10 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::has_data() const
 {
     return on_switchover.is_set
 	|| always.is_set
-	|| external_lsa.is_set
 	|| include_stub.is_set
 	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
-	|| summary_lsa.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
 }
 
@@ -2631,12 +3119,10 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::has_operation() co
     return is_set(yfilter)
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
 	|| ydk::is_set(include_stub.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
 }
 
@@ -2653,12 +3139,10 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
     if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2704,12 +3188,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_value(const st
         always.value_namespace = name_space;
         always.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "include-stub")
     {
         include_stub = value;
@@ -2734,12 +3212,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_value(const st
         on_proc_restart.value_namespace = name_space;
         on_proc_restart.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2751,10 +3223,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_filter(const s
     if(value_path == "always")
     {
         always.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
     }
     if(value_path == "include-stub")
     {
@@ -2772,15 +3240,11 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_filter(const s
     {
         on_proc_restart.yfilter = yfilter;
     }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "external-lsa" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart" || name == "summary-lsa")
+    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }
@@ -2880,12 +3344,9 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::V6Bit()
     :
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
-    external_lsa{YType::uint32, "external-lsa"},
-    include_stub{YType::empty, "include-stub"},
     enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
-    on_proc_restart{YType::uint32, "on-proc-restart"},
-    summary_lsa{YType::uint32, "summary-lsa"}
+    on_proc_restart{YType::uint32, "on-proc-restart"}
     	,
     on_startup(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::OnStartup>())
 {
@@ -2902,12 +3363,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::has_data() const
 {
     return on_switchover.is_set
 	|| always.is_set
-	|| external_lsa.is_set
-	|| include_stub.is_set
 	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
-	|| summary_lsa.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
 }
 
@@ -2916,12 +3374,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::has_operation() c
     return is_set(yfilter)
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
-	|| ydk::is_set(include_stub.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
 }
 
@@ -2938,12 +3393,9 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
-    if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2989,18 +3441,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::set_value(const s
         always.value_namespace = name_space;
         always.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub = value;
-        include_stub.value_namespace = name_space;
-        include_stub.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "enable")
     {
         enable = value;
@@ -3019,12 +3459,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::set_value(const s
         on_proc_restart.value_namespace = name_space;
         on_proc_restart.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3036,14 +3470,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::set_filter(const 
     if(value_path == "always")
     {
         always.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
@@ -3057,15 +3483,11 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::set_filter(const 
     {
         on_proc_restart.yfilter = yfilter;
     }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "external-lsa" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart" || name == "summary-lsa")
+    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }
@@ -3163,14 +3585,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6Bit::OnStartup::has_le
 
 Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::MaxMetric()
     :
+    external_lsa{YType::uint32, "external-lsa"},
+    summary_lsa{YType::uint32, "summary-lsa"},
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
-    external_lsa{YType::uint32, "external-lsa"},
     include_stub{YType::empty, "include-stub"},
     enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
-    on_proc_restart{YType::uint32, "on-proc-restart"},
-    summary_lsa{YType::uint32, "summary-lsa"}
+    on_proc_restart{YType::uint32, "on-proc-restart"}
     	,
     on_startup(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup>())
 {
@@ -3185,28 +3607,28 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::~MaxMetric()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::has_data() const
 {
-    return on_switchover.is_set
+    return external_lsa.is_set
+	|| summary_lsa.is_set
+	|| on_switchover.is_set
 	|| always.is_set
-	|| external_lsa.is_set
 	|| include_stub.is_set
 	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
-	|| summary_lsa.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(external_lsa.yfilter)
+	|| ydk::is_set(summary_lsa.yfilter)
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
 	|| ydk::is_set(include_stub.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
 }
 
@@ -3221,14 +3643,14 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
+    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
     if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3262,6 +3684,18 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "external-lsa")
+    {
+        external_lsa = value;
+        external_lsa.value_namespace = name_space;
+        external_lsa.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "summary-lsa")
+    {
+        summary_lsa = value;
+        summary_lsa.value_namespace = name_space;
+        summary_lsa.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "on-switchover")
     {
         on_switchover = value;
@@ -3273,12 +3707,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_value(con
         always = value;
         always.value_namespace = name_space;
         always.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "include-stub")
     {
@@ -3304,16 +3732,18 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_value(con
         on_proc_restart.value_namespace = name_space;
         on_proc_restart.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "external-lsa")
+    {
+        external_lsa.yfilter = yfilter;
+    }
+    if(value_path == "summary-lsa")
+    {
+        summary_lsa.yfilter = yfilter;
+    }
     if(value_path == "on-switchover")
     {
         on_switchover.yfilter = yfilter;
@@ -3321,10 +3751,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_filter(co
     if(value_path == "always")
     {
         always.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
     }
     if(value_path == "include-stub")
     {
@@ -3342,15 +3768,11 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_filter(co
     {
         on_proc_restart.yfilter = yfilter;
     }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
 }
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "external-lsa" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart" || name == "summary-lsa")
+    if(name == "on-startup" || name == "external-lsa" || name == "summary-lsa" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }

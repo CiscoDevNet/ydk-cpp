@@ -82,29 +82,6 @@ class HwModule::SliceIds::SliceId : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf slice_num; //type: int32
-        class SliceInfo; //type: HwModule::SliceIds::SliceId::SliceInfo
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_oper::HwModule::SliceIds::SliceId::SliceInfo> > slice_info;
-        
-}; // HwModule::SliceIds::SliceId
-
-
-class HwModule::SliceIds::SliceId::SliceInfo : public ydk::Entity
-{
-    public:
-        SliceInfo();
-        ~SliceInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
         ydk::YLeaf slice_id; //type: uint32
         ydk::YLeaf client_rate; //type: ClientDataRate
         ydk::YLeaf trunk_rate; //type: TrunkDataRate
@@ -114,14 +91,14 @@ class HwModule::SliceIds::SliceId::SliceInfo : public ydk::Entity
         ydk::YLeaf need_upg; //type: uint32
         ydk::YLeaf encryption_supported; //type: boolean
         ydk::YLeaf lldp_drop_status; //type: boolean
-        class ClientPort; //type: HwModule::SliceIds::SliceId::SliceInfo::ClientPort
+        class ClientPort; //type: HwModule::SliceIds::SliceId::ClientPort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_oper::HwModule::SliceIds::SliceId::SliceInfo::ClientPort> > client_port;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_oper::HwModule::SliceIds::SliceId::ClientPort> > client_port;
         
-}; // HwModule::SliceIds::SliceId::SliceInfo
+}; // HwModule::SliceIds::SliceId
 
 
-class HwModule::SliceIds::SliceId::SliceInfo::ClientPort : public ydk::Entity
+class HwModule::SliceIds::SliceId::ClientPort : public ydk::Entity
 {
     public:
         ClientPort();
@@ -139,14 +116,14 @@ class HwModule::SliceIds::SliceId::SliceInfo::ClientPort : public ydk::Entity
 
         ydk::YLeaf client_name; //type: string
         ydk::YLeaf if_index; //type: uint32
-        class TrunkPort; //type: HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort
+        class TrunkPort; //type: HwModule::SliceIds::SliceId::ClientPort::TrunkPort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_oper::HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort> > trunk_port;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs1k_mxp_oper::HwModule::SliceIds::SliceId::ClientPort::TrunkPort> > trunk_port;
         
-}; // HwModule::SliceIds::SliceId::SliceInfo::ClientPort
+}; // HwModule::SliceIds::SliceId::ClientPort
 
 
-class HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort : public ydk::Entity
+class HwModule::SliceIds::SliceId::ClientPort::TrunkPort : public ydk::Entity
 {
     public:
         TrunkPort();
@@ -166,7 +143,7 @@ class HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort : public ydk
         ydk::YLeaf if_index; //type: uint32
         ydk::YLeaf percentage; //type: string
 
-}; // HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort
+}; // HwModule::SliceIds::SliceId::ClientPort::TrunkPort
 
 
 class HwModule::SliceAll : public ydk::Entity

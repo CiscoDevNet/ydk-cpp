@@ -3030,7 +3030,7 @@ class MplsTe::Interfaces::Interface::Lcac::Switchings::Switching : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf switching_id; //type: one of enumeration, uint32
+        ydk::YLeaf switching_id; //type: one of uint32, enumeration
         ydk::YLeaf encoding; //type: MplsTeSwitchingEncoding
         ydk::YLeaf capability; //type: MplsTeSwitchingCap
 

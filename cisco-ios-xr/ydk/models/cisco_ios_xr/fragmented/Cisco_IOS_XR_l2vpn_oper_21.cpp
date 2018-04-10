@@ -5,12 +5,12 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_21.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_24.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_25.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_24.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_29.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_28.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_22.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_23.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_28.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_29.hpp"
 
 using namespace ydk;
 
@@ -588,7 +588,7 @@ L2Vpnv2::Nodes::Node::Node()
 	,pseudowire_classes(std::make_shared<L2Vpnv2::Nodes::Node::PseudowireClasses>())
 	,l2vpn_collaborators(std::make_shared<L2Vpnv2::Nodes::Node::L2VpnCollaborators>())
 	,mvrp(std::make_shared<L2Vpnv2::Nodes::Node::Mvrp>())
-	,generic_interfaces(std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaces>())
+	,generic_interface_lists(std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaceLists>())
 	,mstp_vlans(std::make_shared<L2Vpnv2::Nodes::Node::MstpVlans>())
 	,l2vpn_pbb_bsa(std::make_shared<L2Vpnv2::Nodes::Node::L2VpnPbbBsa>())
 	,flexible_xconnect_services(std::make_shared<L2Vpnv2::Nodes::Node::FlexibleXconnectServices>())
@@ -619,7 +619,7 @@ L2Vpnv2::Nodes::Node::Node()
     pseudowire_classes->parent = this;
     l2vpn_collaborators->parent = this;
     mvrp->parent = this;
-    generic_interfaces->parent = this;
+    generic_interface_lists->parent = this;
     mstp_vlans->parent = this;
     l2vpn_pbb_bsa->parent = this;
     flexible_xconnect_services->parent = this;
@@ -660,7 +660,7 @@ bool L2Vpnv2::Nodes::Node::has_data() const
 	|| (pseudowire_classes !=  nullptr && pseudowire_classes->has_data())
 	|| (l2vpn_collaborators !=  nullptr && l2vpn_collaborators->has_data())
 	|| (mvrp !=  nullptr && mvrp->has_data())
-	|| (generic_interfaces !=  nullptr && generic_interfaces->has_data())
+	|| (generic_interface_lists !=  nullptr && generic_interface_lists->has_data())
 	|| (mstp_vlans !=  nullptr && mstp_vlans->has_data())
 	|| (l2vpn_pbb_bsa !=  nullptr && l2vpn_pbb_bsa->has_data())
 	|| (flexible_xconnect_services !=  nullptr && flexible_xconnect_services->has_data())
@@ -696,7 +696,7 @@ bool L2Vpnv2::Nodes::Node::has_operation() const
 	|| (pseudowire_classes !=  nullptr && pseudowire_classes->has_operation())
 	|| (l2vpn_collaborators !=  nullptr && l2vpn_collaborators->has_operation())
 	|| (mvrp !=  nullptr && mvrp->has_operation())
-	|| (generic_interfaces !=  nullptr && generic_interfaces->has_operation())
+	|| (generic_interface_lists !=  nullptr && generic_interface_lists->has_operation())
 	|| (mstp_vlans !=  nullptr && mstp_vlans->has_operation())
 	|| (l2vpn_pbb_bsa !=  nullptr && l2vpn_pbb_bsa->has_operation())
 	|| (flexible_xconnect_services !=  nullptr && flexible_xconnect_services->has_operation())
@@ -954,13 +954,13 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::get_child_by_name(const std::strin
         return mvrp;
     }
 
-    if(child_yang_name == "generic-interfaces")
+    if(child_yang_name == "generic-interface-lists")
     {
-        if(generic_interfaces == nullptr)
+        if(generic_interface_lists == nullptr)
         {
-            generic_interfaces = std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaces>();
+            generic_interface_lists = std::make_shared<L2Vpnv2::Nodes::Node::GenericInterfaceLists>();
         }
-        return generic_interfaces;
+        return generic_interface_lists;
     }
 
     if(child_yang_name == "mstp-vlans")
@@ -1131,9 +1131,9 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::get_childre
         children["mvrp"] = mvrp;
     }
 
-    if(generic_interfaces != nullptr)
+    if(generic_interface_lists != nullptr)
     {
-        children["generic-interfaces"] = generic_interfaces;
+        children["generic-interface-lists"] = generic_interface_lists;
     }
 
     if(mstp_vlans != nullptr)
@@ -1179,7 +1179,7 @@ void L2Vpnv2::Nodes::Node::set_filter(const std::string & value_path, YFilter yf
 
 bool L2Vpnv2::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "discoveries" || name == "flexible-xconnect-service-summary" || name == "main-interfaces" || name == "iccp-sm" || name == "bridge-summary" || name == "nsr" || name == "preferred-paths" || name == "global-settings" || name == "pwr" || name == "xconnect-mp2mp-ce2ces" || name == "xconnects" || name == "xconnect-groups" || name == "xconnect-mp2mps" || name == "indexes" || name == "xconnect-summary" || name == "proc-fsm" || name == "mstp-ports" || name == "generic-interface-list-details" || name == "l2vpn-resource-state" || name == "bridge-domains" || name == "discovery-summary" || name == "g8032" || name == "pseudowire-classes" || name == "l2vpn-collaborators" || name == "mvrp" || name == "generic-interfaces" || name == "mstp-vlans" || name == "l2vpn-pbb-bsa" || name == "flexible-xconnect-services" || name == "xconnect-brief" || name == "node-id")
+    if(name == "discoveries" || name == "flexible-xconnect-service-summary" || name == "main-interfaces" || name == "iccp-sm" || name == "bridge-summary" || name == "nsr" || name == "preferred-paths" || name == "global-settings" || name == "pwr" || name == "xconnect-mp2mp-ce2ces" || name == "xconnects" || name == "xconnect-groups" || name == "xconnect-mp2mps" || name == "indexes" || name == "xconnect-summary" || name == "proc-fsm" || name == "mstp-ports" || name == "generic-interface-list-details" || name == "l2vpn-resource-state" || name == "bridge-domains" || name == "discovery-summary" || name == "g8032" || name == "pseudowire-classes" || name == "l2vpn-collaborators" || name == "mvrp" || name == "generic-interface-lists" || name == "mstp-vlans" || name == "l2vpn-pbb-bsa" || name == "flexible-xconnect-services" || name == "xconnect-brief" || name == "node-id")
         return true;
     return false;
 }
@@ -15815,6 +15815,9 @@ L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Backup::PseudoWire::PseudoWire()
     last_time_status_down{YType::str, "last-time-status-down"},
     time_elapsed_status_down{YType::uint32, "time-elapsed-status-down"},
     shutdown{YType::boolean, "shutdown"},
+    data_path_down{YType::boolean, "data-path-down"},
+    use_tunnel_path{YType::boolean, "use-tunnel-path"},
+    odn_configured{YType::boolean, "odn-configured"},
     pseudo_wire_type_mismatched{YType::boolean, "pseudo-wire-type-mismatched"},
     payload_bytes_mismatched{YType::boolean, "payload-bytes-mismatched"},
     bitrate_mismatched{YType::boolean, "bitrate-mismatched"},
@@ -15924,6 +15927,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Backup::PseudoWire::has_data() c
 	|| last_time_status_down.is_set
 	|| time_elapsed_status_down.is_set
 	|| shutdown.is_set
+	|| data_path_down.is_set
+	|| use_tunnel_path.is_set
+	|| odn_configured.is_set
 	|| pseudo_wire_type_mismatched.is_set
 	|| payload_bytes_mismatched.is_set
 	|| bitrate_mismatched.is_set
@@ -16017,6 +16023,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Backup::PseudoWire::has_operatio
 	|| ydk::is_set(last_time_status_down.yfilter)
 	|| ydk::is_set(time_elapsed_status_down.yfilter)
 	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(data_path_down.yfilter)
+	|| ydk::is_set(use_tunnel_path.yfilter)
+	|| ydk::is_set(odn_configured.yfilter)
 	|| ydk::is_set(pseudo_wire_type_mismatched.yfilter)
 	|| ydk::is_set(payload_bytes_mismatched.yfilter)
 	|| ydk::is_set(bitrate_mismatched.yfilter)
@@ -16118,6 +16127,9 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::Xconnects::
     if (last_time_status_down.is_set || is_set(last_time_status_down.yfilter)) leaf_name_data.push_back(last_time_status_down.get_name_leafdata());
     if (time_elapsed_status_down.is_set || is_set(time_elapsed_status_down.yfilter)) leaf_name_data.push_back(time_elapsed_status_down.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (data_path_down.is_set || is_set(data_path_down.yfilter)) leaf_name_data.push_back(data_path_down.get_name_leafdata());
+    if (use_tunnel_path.is_set || is_set(use_tunnel_path.yfilter)) leaf_name_data.push_back(use_tunnel_path.get_name_leafdata());
+    if (odn_configured.is_set || is_set(odn_configured.yfilter)) leaf_name_data.push_back(odn_configured.get_name_leafdata());
     if (pseudo_wire_type_mismatched.is_set || is_set(pseudo_wire_type_mismatched.yfilter)) leaf_name_data.push_back(pseudo_wire_type_mismatched.get_name_leafdata());
     if (payload_bytes_mismatched.is_set || is_set(payload_bytes_mismatched.yfilter)) leaf_name_data.push_back(payload_bytes_mismatched.get_name_leafdata());
     if (bitrate_mismatched.is_set || is_set(bitrate_mismatched.yfilter)) leaf_name_data.push_back(bitrate_mismatched.get_name_leafdata());
@@ -16486,6 +16498,24 @@ void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Backup::PseudoWire::set_value(co
         shutdown = value;
         shutdown.value_namespace = name_space;
         shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "data-path-down")
+    {
+        data_path_down = value;
+        data_path_down.value_namespace = name_space;
+        data_path_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "use-tunnel-path")
+    {
+        use_tunnel_path = value;
+        use_tunnel_path.value_namespace = name_space;
+        use_tunnel_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "odn-configured")
+    {
+        odn_configured = value;
+        odn_configured.value_namespace = name_space;
+        odn_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-type-mismatched")
     {
@@ -16907,6 +16937,18 @@ void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Backup::PseudoWire::set_filter(c
     {
         shutdown.yfilter = yfilter;
     }
+    if(value_path == "data-path-down")
+    {
+        data_path_down.yfilter = yfilter;
+    }
+    if(value_path == "use-tunnel-path")
+    {
+        use_tunnel_path.yfilter = yfilter;
+    }
+    if(value_path == "odn-configured")
+    {
+        odn_configured.yfilter = yfilter;
+    }
     if(value_path == "pseudo-wire-type-mismatched")
     {
         pseudo_wire_type_mismatched.yfilter = yfilter;
@@ -17111,7 +17153,7 @@ void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Backup::PseudoWire::set_filter(c
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Backup::PseudoWire::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer-id" || name == "encapsulation-info" || name == "local-interface" || name == "remote-interface" || name == "preferred-path" || name == "local-signalling" || name == "remote-signalling" || name == "statistics" || name == "p2mp-pw" || name == "local-source-address" || name == "ipv6-local-source-address" || name == "pseudo-wire-id" || name == "is-pwr-type" || name == "is-evpn-vpws-type" || name == "xconnect-id" || name == "state" || name == "pseudo-wire-state" || name == "protocol" || name == "pw-class-name" || name == "tag-rewrite" || name == "interworking" || name == "fe-ctype" || name == "evpn-src-acid" || name == "sequencing-type" || name == "resync-enabled" || name == "resync-threshold" || name == "local-control-word" || name == "remote-control-word" || name == "local-pseudo-wire-type" || name == "remote-pseudo-wire-type" || name == "imposed-vlan-id" || name == "time-created" || name == "time-elapsed-creation" || name == "last-time-status-changed" || name == "time-elapsed-status-changed" || name == "last-time-status-down" || name == "time-elapsed-status-down" || name == "shutdown" || name == "pseudo-wire-type-mismatched" || name == "payload-bytes-mismatched" || name == "bitrate-mismatched" || name == "rtp-mismatched" || name == "diff-ts-mismatched" || name == "sig-pkts-mismatched" || name == "cas-mismatched" || name == "payload-type-mismatched" || name == "freq-mismatched" || name == "ssrc-mismatched" || name == "mtu-mismatched" || name == "illegal-control-word" || name == "ad-remote-down" || name == "not-supported-qinq" || name == "local-label-failed" || name == "remote-label-failed" || name == "preferred-path-disable-fallback" || name == "backup-pw" || name == "primary-pw" || name == "backup-active" || name == "backup-force-active" || name == "disable-never" || name == "disable-delay" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "number-ma-cwithdraw-message-sent" || name == "num-ma-cwithdraw-msg-received" || name == "out-of-memory-state" || name == "transport-lsp-down" || name == "mac-limit-oper-down" || name == "pw-status-use" || name == "auto-discovery" || name == "ad-method" || name == "pwlsd-rewrite-failed" || name == "ldp-label-advertise-failed" || name == "is-vfi" || name == "is-multi-segment-pseudowire" || name == "pw-redundancy-one-way" || name == "load-balance" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-flow-label-code17-disabled" || name == "is-flow-label-static" || name == "is-partially-programmed" || name == "pw-redundancy-initial-delay" || name == "bridge-pw-type-mismatch" || name == "required-bw" || name == "admited-bw" || name == "forward-class" || name == "table-policy-name")
+    if(name == "peer-id" || name == "encapsulation-info" || name == "local-interface" || name == "remote-interface" || name == "preferred-path" || name == "local-signalling" || name == "remote-signalling" || name == "statistics" || name == "p2mp-pw" || name == "local-source-address" || name == "ipv6-local-source-address" || name == "pseudo-wire-id" || name == "is-pwr-type" || name == "is-evpn-vpws-type" || name == "xconnect-id" || name == "state" || name == "pseudo-wire-state" || name == "protocol" || name == "pw-class-name" || name == "tag-rewrite" || name == "interworking" || name == "fe-ctype" || name == "evpn-src-acid" || name == "sequencing-type" || name == "resync-enabled" || name == "resync-threshold" || name == "local-control-word" || name == "remote-control-word" || name == "local-pseudo-wire-type" || name == "remote-pseudo-wire-type" || name == "imposed-vlan-id" || name == "time-created" || name == "time-elapsed-creation" || name == "last-time-status-changed" || name == "time-elapsed-status-changed" || name == "last-time-status-down" || name == "time-elapsed-status-down" || name == "shutdown" || name == "data-path-down" || name == "use-tunnel-path" || name == "odn-configured" || name == "pseudo-wire-type-mismatched" || name == "payload-bytes-mismatched" || name == "bitrate-mismatched" || name == "rtp-mismatched" || name == "diff-ts-mismatched" || name == "sig-pkts-mismatched" || name == "cas-mismatched" || name == "payload-type-mismatched" || name == "freq-mismatched" || name == "ssrc-mismatched" || name == "mtu-mismatched" || name == "illegal-control-word" || name == "ad-remote-down" || name == "not-supported-qinq" || name == "local-label-failed" || name == "remote-label-failed" || name == "preferred-path-disable-fallback" || name == "backup-pw" || name == "primary-pw" || name == "backup-active" || name == "backup-force-active" || name == "disable-never" || name == "disable-delay" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "number-ma-cwithdraw-message-sent" || name == "num-ma-cwithdraw-msg-received" || name == "out-of-memory-state" || name == "transport-lsp-down" || name == "mac-limit-oper-down" || name == "pw-status-use" || name == "auto-discovery" || name == "ad-method" || name == "pwlsd-rewrite-failed" || name == "ldp-label-advertise-failed" || name == "is-vfi" || name == "is-multi-segment-pseudowire" || name == "pw-redundancy-one-way" || name == "load-balance" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-flow-label-code17-disabled" || name == "is-flow-label-static" || name == "is-partially-programmed" || name == "pw-redundancy-initial-delay" || name == "bridge-pw-type-mismatch" || name == "required-bw" || name == "admited-bw" || name == "forward-class" || name == "table-policy-name")
         return true;
     return false;
 }

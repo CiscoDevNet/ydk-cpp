@@ -10599,7 +10599,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanM
     return false;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::CiscoIOSXRFreqsyncCfgFrequencySynchronization()
+InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::FrequencySynchronization()
     :
     ssm_disable{YType::empty, "ssm-disable"},
     time_of_day_priority{YType::uint32, "time-of-day-priority"},
@@ -10608,8 +10608,8 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencyS
     priority{YType::uint32, "priority"},
     wait_to_restore_time{YType::uint32, "wait-to-restore-time"}
     	,
-    input_quality_level(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel>())
-	,output_quality_level(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel>())
+    input_quality_level(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel>())
+	,output_quality_level(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel>())
 {
     input_quality_level->parent = this;
     output_quality_level->parent = this;
@@ -10617,11 +10617,11 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencyS
     yang_name = "frequency-synchronization"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::~CiscoIOSXRFreqsyncCfgFrequencySynchronization()
+InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::~FrequencySynchronization()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::has_data() const
 {
     return ssm_disable.is_set
 	|| time_of_day_priority.is_set
@@ -10633,7 +10633,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
 	|| (output_quality_level !=  nullptr && output_quality_level->has_data());
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ssm_disable.yfilter)
@@ -10646,14 +10646,14 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
 	|| (output_quality_level !=  nullptr && output_quality_level->has_operation());
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10668,13 +10668,13 @@ std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::Interfac
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input-quality-level")
     {
         if(input_quality_level == nullptr)
         {
-            input_quality_level = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel>();
+            input_quality_level = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel>();
         }
         return input_quality_level;
     }
@@ -10683,7 +10683,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIO
     {
         if(output_quality_level == nullptr)
         {
-            output_quality_level = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel>();
+            output_quality_level = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel>();
         }
         return output_quality_level;
     }
@@ -10691,7 +10691,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIO
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10708,7 +10708,7 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ssm-disable")
     {
@@ -10748,7 +10748,7 @@ void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
     }
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
+void InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ssm-disable")
     {
@@ -10776,14 +10776,14 @@ void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
     }
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "input-quality-level" || name == "output-quality-level" || name == "ssm-disable" || name == "time-of-day-priority" || name == "selection-input" || name == "enable" || name == "priority" || name == "wait-to-restore-time")
         return true;
     return false;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::InputQualityLevel()
+InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -10794,11 +10794,11 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencyS
     yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::~InputQualityLevel()
+InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::~InputQualityLevel()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -10806,7 +10806,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
 	|| max_quality_level_value.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -10815,14 +10815,14 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10835,19 +10835,19 @@ std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::Interfac
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -10875,7 +10875,7 @@ void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
     }
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -10895,14 +10895,14 @@ void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
     }
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
     return false;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
+InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -10913,11 +10913,11 @@ InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencyS
     yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
+InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
 {
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::has_data() const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -10925,7 +10925,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
 	|| max_quality_level_value.is_set;
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::has_operation() const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -10934,14 +10934,14 @@ bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_segment_path() const
+std::string InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10954,19 +10954,19 @@ std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::Interfac
 
 }
 
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -10994,7 +10994,7 @@ void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
     }
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -11014,7 +11014,7 @@ void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequ
     }
 }
 
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRFreqsyncCfgFrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
@@ -14396,13 +14396,14 @@ bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag:
 
 InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Addresses()
     :
-    unnumbered{YType::str, "unnumbered"},
-    dhcp{YType::empty, "dhcp"}
+    unnumbered{YType::str, "unnumbered"}
     	,
     secondaries(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries>())
 	,primary(nullptr) // presence node
+	,dhcp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp>())
 {
     secondaries->parent = this;
+    dhcp->parent = this;
 
     yang_name = "addresses"; yang_parent_name = "ipv4-network"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -14414,18 +14415,18 @@ InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::~Addres
 bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::has_data() const
 {
     return unnumbered.is_set
-	|| dhcp.is_set
 	|| (secondaries !=  nullptr && secondaries->has_data())
-	|| (primary !=  nullptr && primary->has_data());
+	|| (primary !=  nullptr && primary->has_data())
+	|| (dhcp !=  nullptr && dhcp->has_data());
 }
 
 bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unnumbered.yfilter)
-	|| ydk::is_set(dhcp.yfilter)
 	|| (secondaries !=  nullptr && secondaries->has_operation())
-	|| (primary !=  nullptr && primary->has_operation());
+	|| (primary !=  nullptr && primary->has_operation())
+	|| (dhcp !=  nullptr && dhcp->has_operation());
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::get_segment_path() const
@@ -14440,7 +14441,6 @@ std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::Interfac
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-    if (dhcp.is_set || is_set(dhcp.yfilter)) leaf_name_data.push_back(dhcp.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14466,6 +14466,15 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Net
         return primary;
     }
 
+    if(child_yang_name == "dhcp")
+    {
+        if(dhcp == nullptr)
+        {
+            dhcp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp>();
+        }
+        return dhcp;
+    }
+
     return nullptr;
 }
 
@@ -14483,6 +14492,11 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
         children["primary"] = primary;
     }
 
+    if(dhcp != nullptr)
+    {
+        children["dhcp"] = dhcp;
+    }
+
     return children;
 }
 
@@ -14494,12 +14508,6 @@ void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::se
         unnumbered.value_namespace = name_space;
         unnumbered.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dhcp")
-    {
-        dhcp = value;
-        dhcp.value_namespace = name_space;
-        dhcp.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
@@ -14508,15 +14516,11 @@ void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::se
     {
         unnumbered.yfilter = yfilter;
     }
-    if(value_path == "dhcp")
-    {
-        dhcp.yfilter = yfilter;
-    }
 }
 
 bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "secondaries" || name == "primary" || name == "unnumbered" || name == "dhcp")
+    if(name == "secondaries" || name == "primary" || name == "dhcp" || name == "unnumbered")
         return true;
     return false;
 }
@@ -14817,6 +14821,125 @@ void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Pr
 bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address" || name == "netmask" || name == "route-tag")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::Dhcp()
+    :
+    enabled{YType::empty, "enabled"},
+    option_code{YType::enumeration, "option-code"},
+    format{YType::int32, "format"},
+    pattern{YType::str, "pattern"}
+{
+
+    yang_name = "dhcp"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::~Dhcp()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::has_data() const
+{
+    return enabled.is_set
+	|| option_code.is_set
+	|| format.is_set
+	|| pattern.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(option_code.yfilter)
+	|| ydk::is_set(format.yfilter)
+	|| ydk::is_set(pattern.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (option_code.is_set || is_set(option_code.yfilter)) leaf_name_data.push_back(option_code.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (pattern.is_set || is_set(pattern.yfilter)) leaf_name_data.push_back(pattern.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "option-code")
+    {
+        option_code = value;
+        option_code.value_namespace = name_space;
+        option_code.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "format")
+    {
+        format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pattern")
+    {
+        pattern = value;
+        pattern.value_namespace = name_space;
+        pattern.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "option-code")
+    {
+        option_code.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+    if(value_path == "pattern")
+    {
+        pattern.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "option-code" || name == "format" || name == "pattern")
         return true;
     return false;
 }
@@ -16576,125 +16699,6 @@ void InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::Re
 bool InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "regular-address")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::RegularAddress()
-    :
-    address{YType::str, "address"},
-    prefix_length{YType::uint32, "prefix-length"},
-    zone{YType::str, "zone"},
-    route_tag{YType::uint32, "route-tag"}
-{
-
-    yang_name = "regular-address"; yang_parent_name = "regular-addresses"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::~RegularAddress()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::has_data() const
-{
-    return address.is_set
-	|| prefix_length.is_set
-	|| zone.is_set
-	|| route_tag.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(zone.yfilter)
-	|| ydk::is_set(route_tag.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "regular-address" <<"[address='" <<address <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (zone.is_set || is_set(zone.yfilter)) leaf_name_data.push_back(zone.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zone")
-    {
-        zone = value;
-        zone.value_namespace = name_space;
-        zone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "route-tag")
-    {
-        route_tag = value;
-        route_tag.value_namespace = name_space;
-        route_tag.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "zone")
-    {
-        zone.yfilter = yfilter;
-    }
-    if(value_path == "route-tag")
-    {
-        route_tag.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address" || name == "prefix-length" || name == "zone" || name == "route-tag")
         return true;
     return false;
 }

@@ -195,6 +195,7 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Hos
         ydk::YLeaf location; //type: string
         ydk::YLeaf is_router; //type: boolean
         ydk::YLeaf serg_flags; //type: uint32
+        ydk::YLeaf vrfid; //type: uint32
         class LastReachedTime; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::LastReachedTime
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::LastReachedTime> last_reached_time;

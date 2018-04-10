@@ -13,6 +13,7 @@ namespace Cisco_IOS_XR_mpls_lsd_cfg {
 
 MplsLsd::MplsLsd()
     :
+    ltrace_multiplier{YType::uint32, "ltrace-multiplier"},
     app_reg_delay_disable{YType::empty, "app-reg-delay-disable"},
     mpls_entropy_label{YType::empty, "mpls-entropy-label"},
     mpls_ip_ttl_propagate_disable{YType::enumeration, "mpls-ip-ttl-propagate-disable"}
@@ -34,7 +35,8 @@ MplsLsd::~MplsLsd()
 
 bool MplsLsd::has_data() const
 {
-    return app_reg_delay_disable.is_set
+    return ltrace_multiplier.is_set
+	|| app_reg_delay_disable.is_set
 	|| mpls_entropy_label.is_set
 	|| mpls_ip_ttl_propagate_disable.is_set
 	|| (ipv6 !=  nullptr && ipv6->has_data())
@@ -45,6 +47,7 @@ bool MplsLsd::has_data() const
 bool MplsLsd::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(ltrace_multiplier.yfilter)
 	|| ydk::is_set(app_reg_delay_disable.yfilter)
 	|| ydk::is_set(mpls_entropy_label.yfilter)
 	|| ydk::is_set(mpls_ip_ttl_propagate_disable.yfilter)
@@ -64,6 +67,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLsd::get_name_leaf_data() con
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (ltrace_multiplier.is_set || is_set(ltrace_multiplier.yfilter)) leaf_name_data.push_back(ltrace_multiplier.get_name_leafdata());
     if (app_reg_delay_disable.is_set || is_set(app_reg_delay_disable.yfilter)) leaf_name_data.push_back(app_reg_delay_disable.get_name_leafdata());
     if (mpls_entropy_label.is_set || is_set(mpls_entropy_label.yfilter)) leaf_name_data.push_back(mpls_entropy_label.get_name_leafdata());
     if (mpls_ip_ttl_propagate_disable.is_set || is_set(mpls_ip_ttl_propagate_disable.yfilter)) leaf_name_data.push_back(mpls_ip_ttl_propagate_disable.get_name_leafdata());
@@ -128,6 +132,12 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::get_children() const
 
 void MplsLsd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "ltrace-multiplier")
+    {
+        ltrace_multiplier = value;
+        ltrace_multiplier.value_namespace = name_space;
+        ltrace_multiplier.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "app-reg-delay-disable")
     {
         app_reg_delay_disable = value;
@@ -150,6 +160,10 @@ void MplsLsd::set_value(const std::string & value_path, const std::string & valu
 
 void MplsLsd::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "ltrace-multiplier")
+    {
+        ltrace_multiplier.yfilter = yfilter;
+    }
     if(value_path == "app-reg-delay-disable")
     {
         app_reg_delay_disable.yfilter = yfilter;
@@ -191,7 +205,7 @@ std::map<std::pair<std::string, std::string>, std::string> MplsLsd::get_namespac
 
 bool MplsLsd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6" || name == "ipv4" || name == "label-databases" || name == "app-reg-delay-disable" || name == "mpls-entropy-label" || name == "mpls-ip-ttl-propagate-disable")
+    if(name == "ipv6" || name == "ipv4" || name == "label-databases" || name == "ltrace-multiplier" || name == "app-reg-delay-disable" || name == "mpls-entropy-label" || name == "mpls-ip-ttl-propagate-disable")
         return true;
     return false;
 }

@@ -258,12 +258,14 @@ Evpn::Nodes::Node::Node()
     evis(std::make_shared<Evpn::Nodes::Node::Evis>())
 	,summary(std::make_shared<Evpn::Nodes::Node::Summary>())
 	,evi_detail(std::make_shared<Evpn::Nodes::Node::EviDetail>())
+	,internal_labels(std::make_shared<Evpn::Nodes::Node::InternalLabels>())
 	,ethernet_segments(std::make_shared<Evpn::Nodes::Node::EthernetSegments>())
 	,ac_ids(std::make_shared<Evpn::Nodes::Node::AcIds>())
 {
     evis->parent = this;
     summary->parent = this;
     evi_detail->parent = this;
+    internal_labels->parent = this;
     ethernet_segments->parent = this;
     ac_ids->parent = this;
 
@@ -280,6 +282,7 @@ bool Evpn::Nodes::Node::has_data() const
 	|| (evis !=  nullptr && evis->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (evi_detail !=  nullptr && evi_detail->has_data())
+	|| (internal_labels !=  nullptr && internal_labels->has_data())
 	|| (ethernet_segments !=  nullptr && ethernet_segments->has_data())
 	|| (ac_ids !=  nullptr && ac_ids->has_data());
 }
@@ -291,6 +294,7 @@ bool Evpn::Nodes::Node::has_operation() const
 	|| (evis !=  nullptr && evis->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (evi_detail !=  nullptr && evi_detail->has_operation())
+	|| (internal_labels !=  nullptr && internal_labels->has_operation())
 	|| (ethernet_segments !=  nullptr && ethernet_segments->has_operation())
 	|| (ac_ids !=  nullptr && ac_ids->has_operation());
 }
@@ -348,6 +352,15 @@ std::shared_ptr<Entity> Evpn::Nodes::Node::get_child_by_name(const std::string &
         return evi_detail;
     }
 
+    if(child_yang_name == "internal-labels")
+    {
+        if(internal_labels == nullptr)
+        {
+            internal_labels = std::make_shared<Evpn::Nodes::Node::InternalLabels>();
+        }
+        return internal_labels;
+    }
+
     if(child_yang_name == "ethernet-segments")
     {
         if(ethernet_segments == nullptr)
@@ -388,6 +401,11 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::get_children()
         children["evi-detail"] = evi_detail;
     }
 
+    if(internal_labels != nullptr)
+    {
+        children["internal-labels"] = internal_labels;
+    }
+
     if(ethernet_segments != nullptr)
     {
         children["ethernet-segments"] = ethernet_segments;
@@ -421,7 +439,7 @@ void Evpn::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilt
 
 bool Evpn::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evis" || name == "summary" || name == "evi-detail" || name == "ethernet-segments" || name == "ac-ids" || name == "node-id")
+    if(name == "evis" || name == "summary" || name == "evi-detail" || name == "internal-labels" || name == "ethernet-segments" || name == "ac-ids" || name == "node-id")
         return true;
     return false;
 }
@@ -658,6 +676,7 @@ Evpn::Nodes::Node::Summary::Summary()
     global_source_mac{YType::str, "global-source-mac"},
     peering_time{YType::uint32, "peering-time"},
     recovery_time{YType::uint32, "recovery-time"},
+    carving_time{YType::uint32, "carving-time"},
     mac_secure_move_count{YType::uint32, "mac-secure-move-count"},
     mac_secure_move_interval{YType::uint32, "mac-secure-move-interval"},
     mac_secure_freeze_time{YType::uint32, "mac-secure-freeze-time"},
@@ -698,6 +717,7 @@ bool Evpn::Nodes::Node::Summary::has_data() const
 	|| global_source_mac.is_set
 	|| peering_time.is_set
 	|| recovery_time.is_set
+	|| carving_time.is_set
 	|| mac_secure_move_count.is_set
 	|| mac_secure_move_interval.is_set
 	|| mac_secure_freeze_time.is_set
@@ -732,6 +752,7 @@ bool Evpn::Nodes::Node::Summary::has_operation() const
 	|| ydk::is_set(global_source_mac.yfilter)
 	|| ydk::is_set(peering_time.yfilter)
 	|| ydk::is_set(recovery_time.yfilter)
+	|| ydk::is_set(carving_time.yfilter)
 	|| ydk::is_set(mac_secure_move_count.yfilter)
 	|| ydk::is_set(mac_secure_move_interval.yfilter)
 	|| ydk::is_set(mac_secure_freeze_time.yfilter)
@@ -774,6 +795,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::Summary::get_n
     if (global_source_mac.is_set || is_set(global_source_mac.yfilter)) leaf_name_data.push_back(global_source_mac.get_name_leafdata());
     if (peering_time.is_set || is_set(peering_time.yfilter)) leaf_name_data.push_back(peering_time.get_name_leafdata());
     if (recovery_time.is_set || is_set(recovery_time.yfilter)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
+    if (carving_time.is_set || is_set(carving_time.yfilter)) leaf_name_data.push_back(carving_time.get_name_leafdata());
     if (mac_secure_move_count.is_set || is_set(mac_secure_move_count.yfilter)) leaf_name_data.push_back(mac_secure_move_count.get_name_leafdata());
     if (mac_secure_move_interval.is_set || is_set(mac_secure_move_interval.yfilter)) leaf_name_data.push_back(mac_secure_move_interval.get_name_leafdata());
     if (mac_secure_freeze_time.is_set || is_set(mac_secure_freeze_time.yfilter)) leaf_name_data.push_back(mac_secure_freeze_time.get_name_leafdata());
@@ -927,6 +949,12 @@ void Evpn::Nodes::Node::Summary::set_value(const std::string & value_path, const
         recovery_time.value_namespace = name_space;
         recovery_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "carving-time")
+    {
+        carving_time = value;
+        carving_time.value_namespace = name_space;
+        carving_time.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mac-secure-move-count")
     {
         mac_secure_move_count = value;
@@ -1063,6 +1091,10 @@ void Evpn::Nodes::Node::Summary::set_filter(const std::string & value_path, YFil
     {
         recovery_time.yfilter = yfilter;
     }
+    if(value_path == "carving-time")
+    {
+        carving_time.yfilter = yfilter;
+    }
     if(value_path == "mac-secure-move-count")
     {
         mac_secure_move_count.yfilter = yfilter;
@@ -1099,7 +1131,7 @@ void Evpn::Nodes::Node::Summary::set_filter(const std::string & value_path, YFil
 
 bool Evpn::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "router-id" || name == "as" || name == "ev-is" || name == "local-mac-routes" || name == "local-ipv4-mac-routes" || name == "local-ipv6-mac-routes" || name == "es-global-mac-routes" || name == "remote-mac-routes" || name == "remote-soo-mac-routes" || name == "remote-ipv4-mac-routes" || name == "remote-ipv6-mac-routes" || name == "local-imcast-routes" || name == "remote-imcast-routes" || name == "labels" || name == "es-entries" || name == "neighbor-entries" || name == "local-ead-routes" || name == "remote-ead-routes" || name == "global-source-mac" || name == "peering-time" || name == "recovery-time" || name == "mac-secure-move-count" || name == "mac-secure-move-interval" || name == "mac-secure-freeze-time" || name == "mac-secure-retry-count" || name == "cost-out" || name == "startup-cost-in-time" || name == "l2rib-throttle" || name == "logging-df-election-enabled")
+    if(name == "router-id" || name == "as" || name == "ev-is" || name == "local-mac-routes" || name == "local-ipv4-mac-routes" || name == "local-ipv6-mac-routes" || name == "es-global-mac-routes" || name == "remote-mac-routes" || name == "remote-soo-mac-routes" || name == "remote-ipv4-mac-routes" || name == "remote-ipv6-mac-routes" || name == "local-imcast-routes" || name == "remote-imcast-routes" || name == "labels" || name == "es-entries" || name == "neighbor-entries" || name == "local-ead-routes" || name == "remote-ead-routes" || name == "global-source-mac" || name == "peering-time" || name == "recovery-time" || name == "carving-time" || name == "mac-secure-move-count" || name == "mac-secure-move-interval" || name == "mac-secure-freeze-time" || name == "mac-secure-retry-count" || name == "cost-out" || name == "startup-cost-in-time" || name == "l2rib-throttle" || name == "logging-df-election-enabled")
         return true;
     return false;
 }
@@ -4329,6 +4361,7 @@ Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAuto
     is_local_ead{YType::boolean, "is-local-ead"},
     encap{YType::uint8, "encap"},
     redundancy_single_active{YType::boolean, "redundancy-single-active"},
+    redundancy_single_flow_active{YType::boolean, "redundancy-single-flow-active"},
     num_paths{YType::uint32, "num-paths"}
 {
 
@@ -4366,6 +4399,7 @@ bool Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Etherne
 	|| is_local_ead.is_set
 	|| encap.is_set
 	|| redundancy_single_active.is_set
+	|| redundancy_single_flow_active.is_set
 	|| num_paths.is_set;
 }
 
@@ -4397,6 +4431,7 @@ bool Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Etherne
 	|| ydk::is_set(is_local_ead.yfilter)
 	|| ydk::is_set(encap.yfilter)
 	|| ydk::is_set(redundancy_single_active.yfilter)
+	|| ydk::is_set(redundancy_single_flow_active.yfilter)
 	|| ydk::is_set(num_paths.yfilter);
 }
 
@@ -4426,6 +4461,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::EviDetail::Evi
     if (is_local_ead.is_set || is_set(is_local_ead.yfilter)) leaf_name_data.push_back(is_local_ead.get_name_leafdata());
     if (encap.is_set || is_set(encap.yfilter)) leaf_name_data.push_back(encap.get_name_leafdata());
     if (redundancy_single_active.is_set || is_set(redundancy_single_active.yfilter)) leaf_name_data.push_back(redundancy_single_active.get_name_leafdata());
+    if (redundancy_single_flow_active.is_set || is_set(redundancy_single_flow_active.yfilter)) leaf_name_data.push_back(redundancy_single_flow_active.get_name_leafdata());
     if (num_paths.is_set || is_set(num_paths.yfilter)) leaf_name_data.push_back(num_paths.get_name_leafdata());
 
     return leaf_name_data;
@@ -4570,6 +4606,12 @@ void Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Etherne
         redundancy_single_active.value_namespace = name_space;
         redundancy_single_active.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active = value;
+        redundancy_single_flow_active.value_namespace = name_space;
+        redundancy_single_flow_active.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "num-paths")
     {
         num_paths = value;
@@ -4640,6 +4682,10 @@ void Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Etherne
     {
         redundancy_single_active.yfilter = yfilter;
     }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active.yfilter = yfilter;
+    }
     if(value_path == "num-paths")
     {
         num_paths.yfilter = yfilter;
@@ -4648,7 +4694,7 @@ void Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Etherne
 
 bool Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ethernet-segment-identifier" || name == "path-buffer" || name == "evi" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "ethernet-tag" || name == "ethernet-vpnid" || name == "type" || name == "ethernet-tag-xr" || name == "local-next-hop" || name == "local-label" || name == "is-local-ead" || name == "encap" || name == "redundancy-single-active" || name == "num-paths")
+    if(name == "ethernet-segment-identifier" || name == "path-buffer" || name == "evi" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "ethernet-tag" || name == "ethernet-vpnid" || name == "type" || name == "ethernet-tag-xr" || name == "local-next-hop" || name == "local-label" || name == "is-local-ead" || name == "encap" || name == "redundancy-single-active" || name == "redundancy-single-flow-active" || name == "num-paths")
         return true;
     return false;
 }
@@ -6881,6 +6927,981 @@ bool Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::has_leaf_
     return false;
 }
 
+Evpn::Nodes::Node::InternalLabels::InternalLabels()
+{
+
+    yang_name = "internal-labels"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Evpn::Nodes::Node::InternalLabels::~InternalLabels()
+{
+}
+
+bool Evpn::Nodes::Node::InternalLabels::has_data() const
+{
+    for (std::size_t index=0; index<internal_label.size(); index++)
+    {
+        if(internal_label[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Evpn::Nodes::Node::InternalLabels::has_operation() const
+{
+    for (std::size_t index=0; index<internal_label.size(); index++)
+    {
+        if(internal_label[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Evpn::Nodes::Node::InternalLabels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "internal-labels";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::InternalLabels::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Nodes::Node::InternalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "internal-label")
+    {
+        auto c = std::make_shared<Evpn::Nodes::Node::InternalLabels::InternalLabel>();
+        c->parent = this;
+        internal_label.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::InternalLabels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : internal_label)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Evpn::Nodes::Node::InternalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Evpn::Nodes::Node::InternalLabels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Evpn::Nodes::Node::InternalLabels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "internal-label")
+        return true;
+    return false;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::InternalLabel()
+    :
+    evi{YType::int32, "evi"},
+    esi1{YType::str, "esi1"},
+    esi2{YType::str, "esi2"},
+    esi3{YType::str, "esi3"},
+    esi4{YType::str, "esi4"},
+    esi5{YType::str, "esi5"},
+    ethernet_tag{YType::int32, "ethernet-tag"},
+    evi_xr{YType::uint32, "evi-xr"},
+    esi{YType::str, "esi"},
+    tag{YType::uint32, "tag"},
+    internal_label{YType::uint32, "internal-label"},
+    encap{YType::uint8, "encap"},
+    mac_num_paths{YType::uint32, "mac-num-paths"},
+    ead_num_paths{YType::uint32, "ead-num-paths"},
+    evi_num_paths{YType::uint32, "evi-num-paths"},
+    sum_num_paths{YType::uint32, "sum-num-paths"},
+    sum_num_active_paths{YType::uint32, "sum-num-active-paths"},
+    resolved{YType::boolean, "resolved"},
+    ecmp_disable{YType::boolean, "ecmp-disable"},
+    redundancy_single_active{YType::boolean, "redundancy-single-active"},
+    redundancy_single_flow_active{YType::boolean, "redundancy-single-flow-active"}
+{
+
+    yang_name = "internal-label"; yang_parent_name = "internal-labels"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::~InternalLabel()
+{
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::has_data() const
+{
+    for (std::size_t index=0; index<mac_path_buffer.size(); index++)
+    {
+        if(mac_path_buffer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<ead_path_buffer.size(); index++)
+    {
+        if(ead_path_buffer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<evi_path_buffer.size(); index++)
+    {
+        if(evi_path_buffer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<summary_path_buffer.size(); index++)
+    {
+        if(summary_path_buffer[index]->has_data())
+            return true;
+    }
+    return evi.is_set
+	|| esi1.is_set
+	|| esi2.is_set
+	|| esi3.is_set
+	|| esi4.is_set
+	|| esi5.is_set
+	|| ethernet_tag.is_set
+	|| evi_xr.is_set
+	|| esi.is_set
+	|| tag.is_set
+	|| internal_label.is_set
+	|| encap.is_set
+	|| mac_num_paths.is_set
+	|| ead_num_paths.is_set
+	|| evi_num_paths.is_set
+	|| sum_num_paths.is_set
+	|| sum_num_active_paths.is_set
+	|| resolved.is_set
+	|| ecmp_disable.is_set
+	|| redundancy_single_active.is_set
+	|| redundancy_single_flow_active.is_set;
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::has_operation() const
+{
+    for (std::size_t index=0; index<mac_path_buffer.size(); index++)
+    {
+        if(mac_path_buffer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ead_path_buffer.size(); index++)
+    {
+        if(ead_path_buffer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<evi_path_buffer.size(); index++)
+    {
+        if(evi_path_buffer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<summary_path_buffer.size(); index++)
+    {
+        if(summary_path_buffer[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(evi.yfilter)
+	|| ydk::is_set(esi1.yfilter)
+	|| ydk::is_set(esi2.yfilter)
+	|| ydk::is_set(esi3.yfilter)
+	|| ydk::is_set(esi4.yfilter)
+	|| ydk::is_set(esi5.yfilter)
+	|| ydk::is_set(ethernet_tag.yfilter)
+	|| ydk::is_set(evi_xr.yfilter)
+	|| ydk::is_set(esi.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(encap.yfilter)
+	|| ydk::is_set(mac_num_paths.yfilter)
+	|| ydk::is_set(ead_num_paths.yfilter)
+	|| ydk::is_set(evi_num_paths.yfilter)
+	|| ydk::is_set(sum_num_paths.yfilter)
+	|| ydk::is_set(sum_num_active_paths.yfilter)
+	|| ydk::is_set(resolved.yfilter)
+	|| ydk::is_set(ecmp_disable.yfilter)
+	|| ydk::is_set(redundancy_single_active.yfilter)
+	|| ydk::is_set(redundancy_single_flow_active.yfilter);
+}
+
+std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "internal-label";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::InternalLabels::InternalLabel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
+    if (esi1.is_set || is_set(esi1.yfilter)) leaf_name_data.push_back(esi1.get_name_leafdata());
+    if (esi2.is_set || is_set(esi2.yfilter)) leaf_name_data.push_back(esi2.get_name_leafdata());
+    if (esi3.is_set || is_set(esi3.yfilter)) leaf_name_data.push_back(esi3.get_name_leafdata());
+    if (esi4.is_set || is_set(esi4.yfilter)) leaf_name_data.push_back(esi4.get_name_leafdata());
+    if (esi5.is_set || is_set(esi5.yfilter)) leaf_name_data.push_back(esi5.get_name_leafdata());
+    if (ethernet_tag.is_set || is_set(ethernet_tag.yfilter)) leaf_name_data.push_back(ethernet_tag.get_name_leafdata());
+    if (evi_xr.is_set || is_set(evi_xr.yfilter)) leaf_name_data.push_back(evi_xr.get_name_leafdata());
+    if (esi.is_set || is_set(esi.yfilter)) leaf_name_data.push_back(esi.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (encap.is_set || is_set(encap.yfilter)) leaf_name_data.push_back(encap.get_name_leafdata());
+    if (mac_num_paths.is_set || is_set(mac_num_paths.yfilter)) leaf_name_data.push_back(mac_num_paths.get_name_leafdata());
+    if (ead_num_paths.is_set || is_set(ead_num_paths.yfilter)) leaf_name_data.push_back(ead_num_paths.get_name_leafdata());
+    if (evi_num_paths.is_set || is_set(evi_num_paths.yfilter)) leaf_name_data.push_back(evi_num_paths.get_name_leafdata());
+    if (sum_num_paths.is_set || is_set(sum_num_paths.yfilter)) leaf_name_data.push_back(sum_num_paths.get_name_leafdata());
+    if (sum_num_active_paths.is_set || is_set(sum_num_active_paths.yfilter)) leaf_name_data.push_back(sum_num_active_paths.get_name_leafdata());
+    if (resolved.is_set || is_set(resolved.yfilter)) leaf_name_data.push_back(resolved.get_name_leafdata());
+    if (ecmp_disable.is_set || is_set(ecmp_disable.yfilter)) leaf_name_data.push_back(ecmp_disable.get_name_leafdata());
+    if (redundancy_single_active.is_set || is_set(redundancy_single_active.yfilter)) leaf_name_data.push_back(redundancy_single_active.get_name_leafdata());
+    if (redundancy_single_flow_active.is_set || is_set(redundancy_single_flow_active.yfilter)) leaf_name_data.push_back(redundancy_single_flow_active.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Nodes::Node::InternalLabels::InternalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer>();
+        c->parent = this;
+        mac_path_buffer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "ead-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer>();
+        c->parent = this;
+        ead_path_buffer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "evi-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer>();
+        c->parent = this;
+        evi_path_buffer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "summary-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer>();
+        c->parent = this;
+        summary_path_buffer.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::InternalLabels::InternalLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : mac_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : ead_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : evi_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : summary_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "evi")
+    {
+        evi = value;
+        evi.value_namespace = name_space;
+        evi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi1")
+    {
+        esi1 = value;
+        esi1.value_namespace = name_space;
+        esi1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi2")
+    {
+        esi2 = value;
+        esi2.value_namespace = name_space;
+        esi2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi3")
+    {
+        esi3 = value;
+        esi3.value_namespace = name_space;
+        esi3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi4")
+    {
+        esi4 = value;
+        esi4.value_namespace = name_space;
+        esi4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi5")
+    {
+        esi5 = value;
+        esi5.value_namespace = name_space;
+        esi5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-tag")
+    {
+        ethernet_tag = value;
+        ethernet_tag.value_namespace = name_space;
+        ethernet_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evi-xr")
+    {
+        evi_xr = value;
+        evi_xr.value_namespace = name_space;
+        evi_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi")
+    {
+        esi = value;
+        esi.value_namespace = name_space;
+        esi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tag")
+    {
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encap")
+    {
+        encap = value;
+        encap.value_namespace = name_space;
+        encap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-num-paths")
+    {
+        mac_num_paths = value;
+        mac_num_paths.value_namespace = name_space;
+        mac_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ead-num-paths")
+    {
+        ead_num_paths = value;
+        ead_num_paths.value_namespace = name_space;
+        ead_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evi-num-paths")
+    {
+        evi_num_paths = value;
+        evi_num_paths.value_namespace = name_space;
+        evi_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sum-num-paths")
+    {
+        sum_num_paths = value;
+        sum_num_paths.value_namespace = name_space;
+        sum_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sum-num-active-paths")
+    {
+        sum_num_active_paths = value;
+        sum_num_active_paths.value_namespace = name_space;
+        sum_num_active_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resolved")
+    {
+        resolved = value;
+        resolved.value_namespace = name_space;
+        resolved.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ecmp-disable")
+    {
+        ecmp_disable = value;
+        ecmp_disable.value_namespace = name_space;
+        ecmp_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-single-active")
+    {
+        redundancy_single_active = value;
+        redundancy_single_active.value_namespace = name_space;
+        redundancy_single_active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active = value;
+        redundancy_single_flow_active.value_namespace = name_space;
+        redundancy_single_flow_active.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "evi")
+    {
+        evi.yfilter = yfilter;
+    }
+    if(value_path == "esi1")
+    {
+        esi1.yfilter = yfilter;
+    }
+    if(value_path == "esi2")
+    {
+        esi2.yfilter = yfilter;
+    }
+    if(value_path == "esi3")
+    {
+        esi3.yfilter = yfilter;
+    }
+    if(value_path == "esi4")
+    {
+        esi4.yfilter = yfilter;
+    }
+    if(value_path == "esi5")
+    {
+        esi5.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-tag")
+    {
+        ethernet_tag.yfilter = yfilter;
+    }
+    if(value_path == "evi-xr")
+    {
+        evi_xr.yfilter = yfilter;
+    }
+    if(value_path == "esi")
+    {
+        esi.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "encap")
+    {
+        encap.yfilter = yfilter;
+    }
+    if(value_path == "mac-num-paths")
+    {
+        mac_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "ead-num-paths")
+    {
+        ead_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "evi-num-paths")
+    {
+        evi_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "sum-num-paths")
+    {
+        sum_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "sum-num-active-paths")
+    {
+        sum_num_active_paths.yfilter = yfilter;
+    }
+    if(value_path == "resolved")
+    {
+        resolved.yfilter = yfilter;
+    }
+    if(value_path == "ecmp-disable")
+    {
+        ecmp_disable.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-single-active")
+    {
+        redundancy_single_active.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-path-buffer" || name == "ead-path-buffer" || name == "evi-path-buffer" || name == "summary-path-buffer" || name == "evi" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "ethernet-tag" || name == "evi-xr" || name == "esi" || name == "tag" || name == "internal-label" || name == "encap" || name == "mac-num-paths" || name == "ead-num-paths" || name == "evi-num-paths" || name == "sum-num-paths" || name == "sum-num-active-paths" || name == "resolved" || name == "ecmp-disable" || name == "redundancy-single-active" || name == "redundancy-single-flow-active")
+        return true;
+    return false;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::MacPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "mac-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::~MacPathBuffer()
+{
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::EadPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "ead-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::~EadPathBuffer()
+{
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ead-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::EviPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "evi-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::~EviPathBuffer()
+{
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evi-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::SummaryPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "summary-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::~SummaryPathBuffer()
+{
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
 Evpn::Nodes::Node::EthernetSegments::EthernetSegments()
 {
 
@@ -6980,6 +8001,9 @@ Evpn::Nodes::Node::EthernetSegments::EthernetSegment::EthernetSegment()
     esi4{YType::str, "esi4"},
     esi5{YType::str, "esi5"},
     esi_type{YType::enumeration, "esi-type"},
+    esi_system_identifier{YType::str, "esi-system-identifier"},
+    esi_port_key{YType::uint32, "esi-port-key"},
+    esi_system_priority{YType::uint32, "esi-system-priority"},
     ethernet_segment_name{YType::str, "ethernet-segment-name"},
     ethernet_segment_state{YType::uint32, "ethernet-segment-state"},
     if_handle{YType::str, "if-handle"},
@@ -7001,6 +8025,8 @@ Evpn::Nodes::Node::EthernetSegments::EthernetSegment::EthernetSegment()
     peering_timer_left{YType::uint32, "peering-timer-left"},
     recovery_timer{YType::uint32, "recovery-timer"},
     recovery_timer_left{YType::uint32, "recovery-timer-left"},
+    carving_timer{YType::uint32, "carving-timer"},
+    carving_timer_left{YType::uint32, "carving-timer-left"},
     service_carving_mode{YType::enumeration, "service-carving-mode"},
     primary_services_input{YType::str, "primary-services-input"},
     secondary_services_input{YType::str, "secondary-services-input"},
@@ -7012,6 +8038,7 @@ Evpn::Nodes::Node::EthernetSegments::EthernetSegment::EthernetSegment()
     mp_protected{YType::boolean, "mp-protected"},
     nve_anycast_vtep{YType::boolean, "nve-anycast-vtep"},
     nve_ingress_replication{YType::boolean, "nve-ingress-replication"},
+    local_split_horizon_group_label_valid{YType::boolean, "local-split-horizon-group-label-valid"},
     local_split_horizon_group_label{YType::uint32, "local-split-horizon-group-label"}
 {
 
@@ -7081,6 +8108,9 @@ bool Evpn::Nodes::Node::EthernetSegments::EthernetSegment::has_data() const
 	|| esi4.is_set
 	|| esi5.is_set
 	|| esi_type.is_set
+	|| esi_system_identifier.is_set
+	|| esi_port_key.is_set
+	|| esi_system_priority.is_set
 	|| ethernet_segment_name.is_set
 	|| ethernet_segment_state.is_set
 	|| if_handle.is_set
@@ -7102,6 +8132,8 @@ bool Evpn::Nodes::Node::EthernetSegments::EthernetSegment::has_data() const
 	|| peering_timer_left.is_set
 	|| recovery_timer.is_set
 	|| recovery_timer_left.is_set
+	|| carving_timer.is_set
+	|| carving_timer_left.is_set
 	|| service_carving_mode.is_set
 	|| primary_services_input.is_set
 	|| secondary_services_input.is_set
@@ -7113,6 +8145,7 @@ bool Evpn::Nodes::Node::EthernetSegments::EthernetSegment::has_data() const
 	|| mp_protected.is_set
 	|| nve_anycast_vtep.is_set
 	|| nve_ingress_replication.is_set
+	|| local_split_horizon_group_label_valid.is_set
 	|| local_split_horizon_group_label.is_set;
 }
 
@@ -7176,6 +8209,9 @@ bool Evpn::Nodes::Node::EthernetSegments::EthernetSegment::has_operation() const
 	|| ydk::is_set(esi4.yfilter)
 	|| ydk::is_set(esi5.yfilter)
 	|| ydk::is_set(esi_type.yfilter)
+	|| ydk::is_set(esi_system_identifier.yfilter)
+	|| ydk::is_set(esi_port_key.yfilter)
+	|| ydk::is_set(esi_system_priority.yfilter)
 	|| ydk::is_set(ethernet_segment_name.yfilter)
 	|| ydk::is_set(ethernet_segment_state.yfilter)
 	|| ydk::is_set(if_handle.yfilter)
@@ -7197,6 +8233,8 @@ bool Evpn::Nodes::Node::EthernetSegments::EthernetSegment::has_operation() const
 	|| ydk::is_set(peering_timer_left.yfilter)
 	|| ydk::is_set(recovery_timer.yfilter)
 	|| ydk::is_set(recovery_timer_left.yfilter)
+	|| ydk::is_set(carving_timer.yfilter)
+	|| ydk::is_set(carving_timer_left.yfilter)
 	|| ydk::is_set(service_carving_mode.yfilter)
 	|| ydk::is_set(primary_services_input.yfilter)
 	|| ydk::is_set(secondary_services_input.yfilter)
@@ -7208,6 +8246,7 @@ bool Evpn::Nodes::Node::EthernetSegments::EthernetSegment::has_operation() const
 	|| ydk::is_set(mp_protected.yfilter)
 	|| ydk::is_set(nve_anycast_vtep.yfilter)
 	|| ydk::is_set(nve_ingress_replication.yfilter)
+	|| ydk::is_set(local_split_horizon_group_label_valid.yfilter)
 	|| ydk::is_set(local_split_horizon_group_label.yfilter);
 }
 
@@ -7229,6 +8268,9 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::EthernetSegmen
     if (esi4.is_set || is_set(esi4.yfilter)) leaf_name_data.push_back(esi4.get_name_leafdata());
     if (esi5.is_set || is_set(esi5.yfilter)) leaf_name_data.push_back(esi5.get_name_leafdata());
     if (esi_type.is_set || is_set(esi_type.yfilter)) leaf_name_data.push_back(esi_type.get_name_leafdata());
+    if (esi_system_identifier.is_set || is_set(esi_system_identifier.yfilter)) leaf_name_data.push_back(esi_system_identifier.get_name_leafdata());
+    if (esi_port_key.is_set || is_set(esi_port_key.yfilter)) leaf_name_data.push_back(esi_port_key.get_name_leafdata());
+    if (esi_system_priority.is_set || is_set(esi_system_priority.yfilter)) leaf_name_data.push_back(esi_system_priority.get_name_leafdata());
     if (ethernet_segment_name.is_set || is_set(ethernet_segment_name.yfilter)) leaf_name_data.push_back(ethernet_segment_name.get_name_leafdata());
     if (ethernet_segment_state.is_set || is_set(ethernet_segment_state.yfilter)) leaf_name_data.push_back(ethernet_segment_state.get_name_leafdata());
     if (if_handle.is_set || is_set(if_handle.yfilter)) leaf_name_data.push_back(if_handle.get_name_leafdata());
@@ -7250,6 +8292,8 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::EthernetSegmen
     if (peering_timer_left.is_set || is_set(peering_timer_left.yfilter)) leaf_name_data.push_back(peering_timer_left.get_name_leafdata());
     if (recovery_timer.is_set || is_set(recovery_timer.yfilter)) leaf_name_data.push_back(recovery_timer.get_name_leafdata());
     if (recovery_timer_left.is_set || is_set(recovery_timer_left.yfilter)) leaf_name_data.push_back(recovery_timer_left.get_name_leafdata());
+    if (carving_timer.is_set || is_set(carving_timer.yfilter)) leaf_name_data.push_back(carving_timer.get_name_leafdata());
+    if (carving_timer_left.is_set || is_set(carving_timer_left.yfilter)) leaf_name_data.push_back(carving_timer_left.get_name_leafdata());
     if (service_carving_mode.is_set || is_set(service_carving_mode.yfilter)) leaf_name_data.push_back(service_carving_mode.get_name_leafdata());
     if (primary_services_input.is_set || is_set(primary_services_input.yfilter)) leaf_name_data.push_back(primary_services_input.get_name_leafdata());
     if (secondary_services_input.is_set || is_set(secondary_services_input.yfilter)) leaf_name_data.push_back(secondary_services_input.get_name_leafdata());
@@ -7261,6 +8305,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::EthernetSegmen
     if (mp_protected.is_set || is_set(mp_protected.yfilter)) leaf_name_data.push_back(mp_protected.get_name_leafdata());
     if (nve_anycast_vtep.is_set || is_set(nve_anycast_vtep.yfilter)) leaf_name_data.push_back(nve_anycast_vtep.get_name_leafdata());
     if (nve_ingress_replication.is_set || is_set(nve_ingress_replication.yfilter)) leaf_name_data.push_back(nve_ingress_replication.get_name_leafdata());
+    if (local_split_horizon_group_label_valid.is_set || is_set(local_split_horizon_group_label_valid.yfilter)) leaf_name_data.push_back(local_split_horizon_group_label_valid.get_name_leafdata());
     if (local_split_horizon_group_label.is_set || is_set(local_split_horizon_group_label.yfilter)) leaf_name_data.push_back(local_split_horizon_group_label.get_name_leafdata());
 
     return leaf_name_data;
@@ -7493,6 +8538,24 @@ void Evpn::Nodes::Node::EthernetSegments::EthernetSegment::set_value(const std::
         esi_type.value_namespace = name_space;
         esi_type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "esi-system-identifier")
+    {
+        esi_system_identifier = value;
+        esi_system_identifier.value_namespace = name_space;
+        esi_system_identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi-port-key")
+    {
+        esi_port_key = value;
+        esi_port_key.value_namespace = name_space;
+        esi_port_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi-system-priority")
+    {
+        esi_system_priority = value;
+        esi_system_priority.value_namespace = name_space;
+        esi_system_priority.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ethernet-segment-name")
     {
         ethernet_segment_name = value;
@@ -7619,6 +8682,18 @@ void Evpn::Nodes::Node::EthernetSegments::EthernetSegment::set_value(const std::
         recovery_timer_left.value_namespace = name_space;
         recovery_timer_left.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "carving-timer")
+    {
+        carving_timer = value;
+        carving_timer.value_namespace = name_space;
+        carving_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "carving-timer-left")
+    {
+        carving_timer_left = value;
+        carving_timer_left.value_namespace = name_space;
+        carving_timer_left.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "service-carving-mode")
     {
         service_carving_mode = value;
@@ -7685,6 +8760,12 @@ void Evpn::Nodes::Node::EthernetSegments::EthernetSegment::set_value(const std::
         nve_ingress_replication.value_namespace = name_space;
         nve_ingress_replication.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "local-split-horizon-group-label-valid")
+    {
+        local_split_horizon_group_label_valid = value;
+        local_split_horizon_group_label_valid.value_namespace = name_space;
+        local_split_horizon_group_label_valid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "local-split-horizon-group-label")
     {
         local_split_horizon_group_label = value;
@@ -7722,6 +8803,18 @@ void Evpn::Nodes::Node::EthernetSegments::EthernetSegment::set_filter(const std:
     if(value_path == "esi-type")
     {
         esi_type.yfilter = yfilter;
+    }
+    if(value_path == "esi-system-identifier")
+    {
+        esi_system_identifier.yfilter = yfilter;
+    }
+    if(value_path == "esi-port-key")
+    {
+        esi_port_key.yfilter = yfilter;
+    }
+    if(value_path == "esi-system-priority")
+    {
+        esi_system_priority.yfilter = yfilter;
     }
     if(value_path == "ethernet-segment-name")
     {
@@ -7807,6 +8900,14 @@ void Evpn::Nodes::Node::EthernetSegments::EthernetSegment::set_filter(const std:
     {
         recovery_timer_left.yfilter = yfilter;
     }
+    if(value_path == "carving-timer")
+    {
+        carving_timer.yfilter = yfilter;
+    }
+    if(value_path == "carving-timer-left")
+    {
+        carving_timer_left.yfilter = yfilter;
+    }
     if(value_path == "service-carving-mode")
     {
         service_carving_mode.yfilter = yfilter;
@@ -7851,6 +8952,10 @@ void Evpn::Nodes::Node::EthernetSegments::EthernetSegment::set_filter(const std:
     {
         nve_ingress_replication.yfilter = yfilter;
     }
+    if(value_path == "local-split-horizon-group-label-valid")
+    {
+        local_split_horizon_group_label_valid.yfilter = yfilter;
+    }
     if(value_path == "local-split-horizon-group-label")
     {
         local_split_horizon_group_label.yfilter = yfilter;
@@ -7859,7 +8964,7 @@ void Evpn::Nodes::Node::EthernetSegments::EthernetSegment::set_filter(const std:
 
 bool Evpn::Nodes::Node::EthernetSegments::EthernetSegment::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ethernet-segment-identifier" || name == "primary-service" || name == "secondary-service" || name == "service-carving-i-sidelected-result" || name == "service-carving-isid-not-elected-result" || name == "service-carving-evi-elected-result" || name == "service-carving-evi-not-elected-result" || name == "next-hop" || name == "service-carving-vpws-permanent-result" || name == "remote-split-horizon-group-label" || name == "interface-name" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "esi-type" || name == "ethernet-segment-name" || name == "ethernet-segment-state" || name == "if-handle" || name == "main-port-role" || name == "main-port-mac" || name == "num-up-p-ws" || name == "route-target" || name == "rt-origin" || name == "es-bgp-gates" || name == "es-l2fib-gates" || name == "mac-flushing-mode-config" || name == "load-balance-mode-config" || name == "load-balance-mode-is-default" || name == "load-balance-mode-oper" || name == "force-single-home" || name == "source-mac-oper" || name == "source-mac-origin" || name == "peering-timer" || name == "peering-timer-left" || name == "recovery-timer" || name == "recovery-timer-left" || name == "service-carving-mode" || name == "primary-services-input" || name == "secondary-services-input" || name == "forwarder-ports" || name == "permanent-forwarder-ports" || name == "elected-forwarder-ports" || name == "not-elected-forwarder-ports" || name == "not-config-forwarder-ports" || name == "mp-protected" || name == "nve-anycast-vtep" || name == "nve-ingress-replication" || name == "local-split-horizon-group-label")
+    if(name == "ethernet-segment-identifier" || name == "primary-service" || name == "secondary-service" || name == "service-carving-i-sidelected-result" || name == "service-carving-isid-not-elected-result" || name == "service-carving-evi-elected-result" || name == "service-carving-evi-not-elected-result" || name == "next-hop" || name == "service-carving-vpws-permanent-result" || name == "remote-split-horizon-group-label" || name == "interface-name" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "esi-type" || name == "esi-system-identifier" || name == "esi-port-key" || name == "esi-system-priority" || name == "ethernet-segment-name" || name == "ethernet-segment-state" || name == "if-handle" || name == "main-port-role" || name == "main-port-mac" || name == "num-up-p-ws" || name == "route-target" || name == "rt-origin" || name == "es-bgp-gates" || name == "es-l2fib-gates" || name == "mac-flushing-mode-config" || name == "load-balance-mode-config" || name == "load-balance-mode-is-default" || name == "load-balance-mode-oper" || name == "force-single-home" || name == "source-mac-oper" || name == "source-mac-origin" || name == "peering-timer" || name == "peering-timer-left" || name == "recovery-timer" || name == "recovery-timer-left" || name == "carving-timer" || name == "carving-timer-left" || name == "service-carving-mode" || name == "primary-services-input" || name == "secondary-services-input" || name == "forwarder-ports" || name == "permanent-forwarder-ports" || name == "elected-forwarder-ports" || name == "not-elected-forwarder-ports" || name == "not-config-forwarder-ports" || name == "mp-protected" || name == "nve-anycast-vtep" || name == "nve-ingress-replication" || name == "local-split-horizon-group-label-valid" || name == "local-split-horizon-group-label")
         return true;
     return false;
 }
@@ -8890,12 +9995,14 @@ Evpn::Active::Active()
     evis(std::make_shared<Evpn::Active::Evis>())
 	,summary(std::make_shared<Evpn::Active::Summary>())
 	,evi_detail(std::make_shared<Evpn::Active::EviDetail>())
+	,internal_labels(std::make_shared<Evpn::Active::InternalLabels>())
 	,ethernet_segments(std::make_shared<Evpn::Active::EthernetSegments>())
 	,ac_ids(std::make_shared<Evpn::Active::AcIds>())
 {
     evis->parent = this;
     summary->parent = this;
     evi_detail->parent = this;
+    internal_labels->parent = this;
     ethernet_segments->parent = this;
     ac_ids->parent = this;
 
@@ -8911,6 +10018,7 @@ bool Evpn::Active::has_data() const
     return (evis !=  nullptr && evis->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (evi_detail !=  nullptr && evi_detail->has_data())
+	|| (internal_labels !=  nullptr && internal_labels->has_data())
 	|| (ethernet_segments !=  nullptr && ethernet_segments->has_data())
 	|| (ac_ids !=  nullptr && ac_ids->has_data());
 }
@@ -8921,6 +10029,7 @@ bool Evpn::Active::has_operation() const
 	|| (evis !=  nullptr && evis->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (evi_detail !=  nullptr && evi_detail->has_operation())
+	|| (internal_labels !=  nullptr && internal_labels->has_operation())
 	|| (ethernet_segments !=  nullptr && ethernet_segments->has_operation())
 	|| (ac_ids !=  nullptr && ac_ids->has_operation());
 }
@@ -8977,6 +10086,15 @@ std::shared_ptr<Entity> Evpn::Active::get_child_by_name(const std::string & chil
         return evi_detail;
     }
 
+    if(child_yang_name == "internal-labels")
+    {
+        if(internal_labels == nullptr)
+        {
+            internal_labels = std::make_shared<Evpn::Active::InternalLabels>();
+        }
+        return internal_labels;
+    }
+
     if(child_yang_name == "ethernet-segments")
     {
         if(ethernet_segments == nullptr)
@@ -9017,6 +10135,11 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::get_children() cons
         children["evi-detail"] = evi_detail;
     }
 
+    if(internal_labels != nullptr)
+    {
+        children["internal-labels"] = internal_labels;
+    }
+
     if(ethernet_segments != nullptr)
     {
         children["ethernet-segments"] = ethernet_segments;
@@ -9040,7 +10163,7 @@ void Evpn::Active::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Evpn::Active::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evis" || name == "summary" || name == "evi-detail" || name == "ethernet-segments" || name == "ac-ids")
+    if(name == "evis" || name == "summary" || name == "evi-detail" || name == "internal-labels" || name == "ethernet-segments" || name == "ac-ids")
         return true;
     return false;
 }
@@ -9291,6 +10414,7 @@ Evpn::Active::Summary::Summary()
     global_source_mac{YType::str, "global-source-mac"},
     peering_time{YType::uint32, "peering-time"},
     recovery_time{YType::uint32, "recovery-time"},
+    carving_time{YType::uint32, "carving-time"},
     mac_secure_move_count{YType::uint32, "mac-secure-move-count"},
     mac_secure_move_interval{YType::uint32, "mac-secure-move-interval"},
     mac_secure_freeze_time{YType::uint32, "mac-secure-freeze-time"},
@@ -9331,6 +10455,7 @@ bool Evpn::Active::Summary::has_data() const
 	|| global_source_mac.is_set
 	|| peering_time.is_set
 	|| recovery_time.is_set
+	|| carving_time.is_set
 	|| mac_secure_move_count.is_set
 	|| mac_secure_move_interval.is_set
 	|| mac_secure_freeze_time.is_set
@@ -9365,6 +10490,7 @@ bool Evpn::Active::Summary::has_operation() const
 	|| ydk::is_set(global_source_mac.yfilter)
 	|| ydk::is_set(peering_time.yfilter)
 	|| ydk::is_set(recovery_time.yfilter)
+	|| ydk::is_set(carving_time.yfilter)
 	|| ydk::is_set(mac_secure_move_count.yfilter)
 	|| ydk::is_set(mac_secure_move_interval.yfilter)
 	|| ydk::is_set(mac_secure_freeze_time.yfilter)
@@ -9414,6 +10540,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Active::Summary::get_name_l
     if (global_source_mac.is_set || is_set(global_source_mac.yfilter)) leaf_name_data.push_back(global_source_mac.get_name_leafdata());
     if (peering_time.is_set || is_set(peering_time.yfilter)) leaf_name_data.push_back(peering_time.get_name_leafdata());
     if (recovery_time.is_set || is_set(recovery_time.yfilter)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
+    if (carving_time.is_set || is_set(carving_time.yfilter)) leaf_name_data.push_back(carving_time.get_name_leafdata());
     if (mac_secure_move_count.is_set || is_set(mac_secure_move_count.yfilter)) leaf_name_data.push_back(mac_secure_move_count.get_name_leafdata());
     if (mac_secure_move_interval.is_set || is_set(mac_secure_move_interval.yfilter)) leaf_name_data.push_back(mac_secure_move_interval.get_name_leafdata());
     if (mac_secure_freeze_time.is_set || is_set(mac_secure_freeze_time.yfilter)) leaf_name_data.push_back(mac_secure_freeze_time.get_name_leafdata());
@@ -9567,6 +10694,12 @@ void Evpn::Active::Summary::set_value(const std::string & value_path, const std:
         recovery_time.value_namespace = name_space;
         recovery_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "carving-time")
+    {
+        carving_time = value;
+        carving_time.value_namespace = name_space;
+        carving_time.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mac-secure-move-count")
     {
         mac_secure_move_count = value;
@@ -9703,6 +10836,10 @@ void Evpn::Active::Summary::set_filter(const std::string & value_path, YFilter y
     {
         recovery_time.yfilter = yfilter;
     }
+    if(value_path == "carving-time")
+    {
+        carving_time.yfilter = yfilter;
+    }
     if(value_path == "mac-secure-move-count")
     {
         mac_secure_move_count.yfilter = yfilter;
@@ -9739,7 +10876,7 @@ void Evpn::Active::Summary::set_filter(const std::string & value_path, YFilter y
 
 bool Evpn::Active::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "router-id" || name == "as" || name == "ev-is" || name == "local-mac-routes" || name == "local-ipv4-mac-routes" || name == "local-ipv6-mac-routes" || name == "es-global-mac-routes" || name == "remote-mac-routes" || name == "remote-soo-mac-routes" || name == "remote-ipv4-mac-routes" || name == "remote-ipv6-mac-routes" || name == "local-imcast-routes" || name == "remote-imcast-routes" || name == "labels" || name == "es-entries" || name == "neighbor-entries" || name == "local-ead-routes" || name == "remote-ead-routes" || name == "global-source-mac" || name == "peering-time" || name == "recovery-time" || name == "mac-secure-move-count" || name == "mac-secure-move-interval" || name == "mac-secure-freeze-time" || name == "mac-secure-retry-count" || name == "cost-out" || name == "startup-cost-in-time" || name == "l2rib-throttle" || name == "logging-df-election-enabled")
+    if(name == "router-id" || name == "as" || name == "ev-is" || name == "local-mac-routes" || name == "local-ipv4-mac-routes" || name == "local-ipv6-mac-routes" || name == "es-global-mac-routes" || name == "remote-mac-routes" || name == "remote-soo-mac-routes" || name == "remote-ipv4-mac-routes" || name == "remote-ipv6-mac-routes" || name == "local-imcast-routes" || name == "remote-imcast-routes" || name == "labels" || name == "es-entries" || name == "neighbor-entries" || name == "local-ead-routes" || name == "remote-ead-routes" || name == "global-source-mac" || name == "peering-time" || name == "recovery-time" || name == "carving-time" || name == "mac-secure-move-count" || name == "mac-secure-move-interval" || name == "mac-secure-freeze-time" || name == "mac-secure-retry-count" || name == "cost-out" || name == "startup-cost-in-time" || name == "l2rib-throttle" || name == "logging-df-election-enabled")
         return true;
     return false;
 }
@@ -13018,6 +14155,7 @@ Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDisco
     is_local_ead{YType::boolean, "is-local-ead"},
     encap{YType::uint8, "encap"},
     redundancy_single_active{YType::boolean, "redundancy-single-active"},
+    redundancy_single_flow_active{YType::boolean, "redundancy-single-flow-active"},
     num_paths{YType::uint32, "num-paths"}
 {
 
@@ -13055,6 +14193,7 @@ bool Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAuto
 	|| is_local_ead.is_set
 	|| encap.is_set
 	|| redundancy_single_active.is_set
+	|| redundancy_single_flow_active.is_set
 	|| num_paths.is_set;
 }
 
@@ -13086,6 +14225,7 @@ bool Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAuto
 	|| ydk::is_set(is_local_ead.yfilter)
 	|| ydk::is_set(encap.yfilter)
 	|| ydk::is_set(redundancy_single_active.yfilter)
+	|| ydk::is_set(redundancy_single_flow_active.yfilter)
 	|| ydk::is_set(num_paths.yfilter);
 }
 
@@ -13122,6 +14262,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Active::EviDetail::EviChild
     if (is_local_ead.is_set || is_set(is_local_ead.yfilter)) leaf_name_data.push_back(is_local_ead.get_name_leafdata());
     if (encap.is_set || is_set(encap.yfilter)) leaf_name_data.push_back(encap.get_name_leafdata());
     if (redundancy_single_active.is_set || is_set(redundancy_single_active.yfilter)) leaf_name_data.push_back(redundancy_single_active.get_name_leafdata());
+    if (redundancy_single_flow_active.is_set || is_set(redundancy_single_flow_active.yfilter)) leaf_name_data.push_back(redundancy_single_flow_active.get_name_leafdata());
     if (num_paths.is_set || is_set(num_paths.yfilter)) leaf_name_data.push_back(num_paths.get_name_leafdata());
 
     return leaf_name_data;
@@ -13266,6 +14407,12 @@ void Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAuto
         redundancy_single_active.value_namespace = name_space;
         redundancy_single_active.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active = value;
+        redundancy_single_flow_active.value_namespace = name_space;
+        redundancy_single_flow_active.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "num-paths")
     {
         num_paths = value;
@@ -13336,6 +14483,10 @@ void Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAuto
     {
         redundancy_single_active.yfilter = yfilter;
     }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active.yfilter = yfilter;
+    }
     if(value_path == "num-paths")
     {
         num_paths.yfilter = yfilter;
@@ -13344,7 +14495,7 @@ void Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAuto
 
 bool Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ethernet-segment-identifier" || name == "path-buffer" || name == "evi" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "ethernet-tag" || name == "ethernet-vpnid" || name == "type" || name == "ethernet-tag-xr" || name == "local-next-hop" || name == "local-label" || name == "is-local-ead" || name == "encap" || name == "redundancy-single-active" || name == "num-paths")
+    if(name == "ethernet-segment-identifier" || name == "path-buffer" || name == "evi" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "ethernet-tag" || name == "ethernet-vpnid" || name == "type" || name == "ethernet-tag-xr" || name == "local-next-hop" || name == "local-label" || name == "is-local-ead" || name == "encap" || name == "redundancy-single-active" || name == "redundancy-single-flow-active" || name == "num-paths")
         return true;
     return false;
 }
@@ -15689,6 +16840,1023 @@ bool Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer::has_leaf_or_ch
     return false;
 }
 
+Evpn::Active::InternalLabels::InternalLabels()
+{
+
+    yang_name = "internal-labels"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Evpn::Active::InternalLabels::~InternalLabels()
+{
+}
+
+bool Evpn::Active::InternalLabels::has_data() const
+{
+    for (std::size_t index=0; index<internal_label.size(); index++)
+    {
+        if(internal_label[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Evpn::Active::InternalLabels::has_operation() const
+{
+    for (std::size_t index=0; index<internal_label.size(); index++)
+    {
+        if(internal_label[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Evpn::Active::InternalLabels::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-evpn-oper:evpn/active/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::Active::InternalLabels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "internal-labels";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Active::InternalLabels::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Active::InternalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "internal-label")
+    {
+        auto c = std::make_shared<Evpn::Active::InternalLabels::InternalLabel>();
+        c->parent = this;
+        internal_label.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::InternalLabels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : internal_label)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Evpn::Active::InternalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Evpn::Active::InternalLabels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Evpn::Active::InternalLabels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "internal-label")
+        return true;
+    return false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::InternalLabel()
+    :
+    evi{YType::int32, "evi"},
+    esi1{YType::str, "esi1"},
+    esi2{YType::str, "esi2"},
+    esi3{YType::str, "esi3"},
+    esi4{YType::str, "esi4"},
+    esi5{YType::str, "esi5"},
+    ethernet_tag{YType::int32, "ethernet-tag"},
+    evi_xr{YType::uint32, "evi-xr"},
+    esi{YType::str, "esi"},
+    tag{YType::uint32, "tag"},
+    internal_label{YType::uint32, "internal-label"},
+    encap{YType::uint8, "encap"},
+    mac_num_paths{YType::uint32, "mac-num-paths"},
+    ead_num_paths{YType::uint32, "ead-num-paths"},
+    evi_num_paths{YType::uint32, "evi-num-paths"},
+    sum_num_paths{YType::uint32, "sum-num-paths"},
+    sum_num_active_paths{YType::uint32, "sum-num-active-paths"},
+    resolved{YType::boolean, "resolved"},
+    ecmp_disable{YType::boolean, "ecmp-disable"},
+    redundancy_single_active{YType::boolean, "redundancy-single-active"},
+    redundancy_single_flow_active{YType::boolean, "redundancy-single-flow-active"}
+{
+
+    yang_name = "internal-label"; yang_parent_name = "internal-labels"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::~InternalLabel()
+{
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::has_data() const
+{
+    for (std::size_t index=0; index<mac_path_buffer.size(); index++)
+    {
+        if(mac_path_buffer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<ead_path_buffer.size(); index++)
+    {
+        if(ead_path_buffer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<evi_path_buffer.size(); index++)
+    {
+        if(evi_path_buffer[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<summary_path_buffer.size(); index++)
+    {
+        if(summary_path_buffer[index]->has_data())
+            return true;
+    }
+    return evi.is_set
+	|| esi1.is_set
+	|| esi2.is_set
+	|| esi3.is_set
+	|| esi4.is_set
+	|| esi5.is_set
+	|| ethernet_tag.is_set
+	|| evi_xr.is_set
+	|| esi.is_set
+	|| tag.is_set
+	|| internal_label.is_set
+	|| encap.is_set
+	|| mac_num_paths.is_set
+	|| ead_num_paths.is_set
+	|| evi_num_paths.is_set
+	|| sum_num_paths.is_set
+	|| sum_num_active_paths.is_set
+	|| resolved.is_set
+	|| ecmp_disable.is_set
+	|| redundancy_single_active.is_set
+	|| redundancy_single_flow_active.is_set;
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::has_operation() const
+{
+    for (std::size_t index=0; index<mac_path_buffer.size(); index++)
+    {
+        if(mac_path_buffer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ead_path_buffer.size(); index++)
+    {
+        if(ead_path_buffer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<evi_path_buffer.size(); index++)
+    {
+        if(evi_path_buffer[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<summary_path_buffer.size(); index++)
+    {
+        if(summary_path_buffer[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(evi.yfilter)
+	|| ydk::is_set(esi1.yfilter)
+	|| ydk::is_set(esi2.yfilter)
+	|| ydk::is_set(esi3.yfilter)
+	|| ydk::is_set(esi4.yfilter)
+	|| ydk::is_set(esi5.yfilter)
+	|| ydk::is_set(ethernet_tag.yfilter)
+	|| ydk::is_set(evi_xr.yfilter)
+	|| ydk::is_set(esi.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(encap.yfilter)
+	|| ydk::is_set(mac_num_paths.yfilter)
+	|| ydk::is_set(ead_num_paths.yfilter)
+	|| ydk::is_set(evi_num_paths.yfilter)
+	|| ydk::is_set(sum_num_paths.yfilter)
+	|| ydk::is_set(sum_num_active_paths.yfilter)
+	|| ydk::is_set(resolved.yfilter)
+	|| ydk::is_set(ecmp_disable.yfilter)
+	|| ydk::is_set(redundancy_single_active.yfilter)
+	|| ydk::is_set(redundancy_single_flow_active.yfilter);
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-evpn-oper:evpn/active/internal-labels/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "internal-label";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Active::InternalLabels::InternalLabel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
+    if (esi1.is_set || is_set(esi1.yfilter)) leaf_name_data.push_back(esi1.get_name_leafdata());
+    if (esi2.is_set || is_set(esi2.yfilter)) leaf_name_data.push_back(esi2.get_name_leafdata());
+    if (esi3.is_set || is_set(esi3.yfilter)) leaf_name_data.push_back(esi3.get_name_leafdata());
+    if (esi4.is_set || is_set(esi4.yfilter)) leaf_name_data.push_back(esi4.get_name_leafdata());
+    if (esi5.is_set || is_set(esi5.yfilter)) leaf_name_data.push_back(esi5.get_name_leafdata());
+    if (ethernet_tag.is_set || is_set(ethernet_tag.yfilter)) leaf_name_data.push_back(ethernet_tag.get_name_leafdata());
+    if (evi_xr.is_set || is_set(evi_xr.yfilter)) leaf_name_data.push_back(evi_xr.get_name_leafdata());
+    if (esi.is_set || is_set(esi.yfilter)) leaf_name_data.push_back(esi.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (encap.is_set || is_set(encap.yfilter)) leaf_name_data.push_back(encap.get_name_leafdata());
+    if (mac_num_paths.is_set || is_set(mac_num_paths.yfilter)) leaf_name_data.push_back(mac_num_paths.get_name_leafdata());
+    if (ead_num_paths.is_set || is_set(ead_num_paths.yfilter)) leaf_name_data.push_back(ead_num_paths.get_name_leafdata());
+    if (evi_num_paths.is_set || is_set(evi_num_paths.yfilter)) leaf_name_data.push_back(evi_num_paths.get_name_leafdata());
+    if (sum_num_paths.is_set || is_set(sum_num_paths.yfilter)) leaf_name_data.push_back(sum_num_paths.get_name_leafdata());
+    if (sum_num_active_paths.is_set || is_set(sum_num_active_paths.yfilter)) leaf_name_data.push_back(sum_num_active_paths.get_name_leafdata());
+    if (resolved.is_set || is_set(resolved.yfilter)) leaf_name_data.push_back(resolved.get_name_leafdata());
+    if (ecmp_disable.is_set || is_set(ecmp_disable.yfilter)) leaf_name_data.push_back(ecmp_disable.get_name_leafdata());
+    if (redundancy_single_active.is_set || is_set(redundancy_single_active.yfilter)) leaf_name_data.push_back(redundancy_single_active.get_name_leafdata());
+    if (redundancy_single_flow_active.is_set || is_set(redundancy_single_flow_active.yfilter)) leaf_name_data.push_back(redundancy_single_flow_active.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Active::InternalLabels::InternalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer>();
+        c->parent = this;
+        mac_path_buffer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "ead-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer>();
+        c->parent = this;
+        ead_path_buffer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "evi-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer>();
+        c->parent = this;
+        evi_path_buffer.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "summary-path-buffer")
+    {
+        auto c = std::make_shared<Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer>();
+        c->parent = this;
+        summary_path_buffer.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::InternalLabels::InternalLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : mac_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : ead_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : evi_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : summary_path_buffer)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "evi")
+    {
+        evi = value;
+        evi.value_namespace = name_space;
+        evi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi1")
+    {
+        esi1 = value;
+        esi1.value_namespace = name_space;
+        esi1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi2")
+    {
+        esi2 = value;
+        esi2.value_namespace = name_space;
+        esi2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi3")
+    {
+        esi3 = value;
+        esi3.value_namespace = name_space;
+        esi3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi4")
+    {
+        esi4 = value;
+        esi4.value_namespace = name_space;
+        esi4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi5")
+    {
+        esi5 = value;
+        esi5.value_namespace = name_space;
+        esi5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-tag")
+    {
+        ethernet_tag = value;
+        ethernet_tag.value_namespace = name_space;
+        ethernet_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evi-xr")
+    {
+        evi_xr = value;
+        evi_xr.value_namespace = name_space;
+        evi_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi")
+    {
+        esi = value;
+        esi.value_namespace = name_space;
+        esi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tag")
+    {
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encap")
+    {
+        encap = value;
+        encap.value_namespace = name_space;
+        encap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-num-paths")
+    {
+        mac_num_paths = value;
+        mac_num_paths.value_namespace = name_space;
+        mac_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ead-num-paths")
+    {
+        ead_num_paths = value;
+        ead_num_paths.value_namespace = name_space;
+        ead_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evi-num-paths")
+    {
+        evi_num_paths = value;
+        evi_num_paths.value_namespace = name_space;
+        evi_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sum-num-paths")
+    {
+        sum_num_paths = value;
+        sum_num_paths.value_namespace = name_space;
+        sum_num_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sum-num-active-paths")
+    {
+        sum_num_active_paths = value;
+        sum_num_active_paths.value_namespace = name_space;
+        sum_num_active_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resolved")
+    {
+        resolved = value;
+        resolved.value_namespace = name_space;
+        resolved.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ecmp-disable")
+    {
+        ecmp_disable = value;
+        ecmp_disable.value_namespace = name_space;
+        ecmp_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-single-active")
+    {
+        redundancy_single_active = value;
+        redundancy_single_active.value_namespace = name_space;
+        redundancy_single_active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active = value;
+        redundancy_single_flow_active.value_namespace = name_space;
+        redundancy_single_flow_active.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "evi")
+    {
+        evi.yfilter = yfilter;
+    }
+    if(value_path == "esi1")
+    {
+        esi1.yfilter = yfilter;
+    }
+    if(value_path == "esi2")
+    {
+        esi2.yfilter = yfilter;
+    }
+    if(value_path == "esi3")
+    {
+        esi3.yfilter = yfilter;
+    }
+    if(value_path == "esi4")
+    {
+        esi4.yfilter = yfilter;
+    }
+    if(value_path == "esi5")
+    {
+        esi5.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-tag")
+    {
+        ethernet_tag.yfilter = yfilter;
+    }
+    if(value_path == "evi-xr")
+    {
+        evi_xr.yfilter = yfilter;
+    }
+    if(value_path == "esi")
+    {
+        esi.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "encap")
+    {
+        encap.yfilter = yfilter;
+    }
+    if(value_path == "mac-num-paths")
+    {
+        mac_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "ead-num-paths")
+    {
+        ead_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "evi-num-paths")
+    {
+        evi_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "sum-num-paths")
+    {
+        sum_num_paths.yfilter = yfilter;
+    }
+    if(value_path == "sum-num-active-paths")
+    {
+        sum_num_active_paths.yfilter = yfilter;
+    }
+    if(value_path == "resolved")
+    {
+        resolved.yfilter = yfilter;
+    }
+    if(value_path == "ecmp-disable")
+    {
+        ecmp_disable.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-single-active")
+    {
+        redundancy_single_active.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-single-flow-active")
+    {
+        redundancy_single_flow_active.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-path-buffer" || name == "ead-path-buffer" || name == "evi-path-buffer" || name == "summary-path-buffer" || name == "evi" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "ethernet-tag" || name == "evi-xr" || name == "esi" || name == "tag" || name == "internal-label" || name == "encap" || name == "mac-num-paths" || name == "ead-num-paths" || name == "evi-num-paths" || name == "sum-num-paths" || name == "sum-num-active-paths" || name == "resolved" || name == "ecmp-disable" || name == "redundancy-single-active" || name == "redundancy-single-flow-active")
+        return true;
+    return false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::MacPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "mac-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::~MacPathBuffer()
+{
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-evpn-oper:evpn/active/internal-labels/internal-label/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::MacPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::EadPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "ead-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::~EadPathBuffer()
+{
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-evpn-oper:evpn/active/internal-labels/internal-label/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ead-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::EadPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::EviPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "evi-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::~EviPathBuffer()
+{
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-evpn-oper:evpn/active/internal-labels/internal-label/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evi-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::EviPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::SummaryPathBuffer()
+    :
+    next_hop{YType::str, "next-hop"},
+    output_label{YType::uint32, "output-label"},
+    srte_tunnel{YType::str, "srte-tunnel"}
+{
+
+    yang_name = "summary-path-buffer"; yang_parent_name = "internal-label"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::~SummaryPathBuffer()
+{
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::has_data() const
+{
+    return next_hop.is_set
+	|| output_label.is_set
+	|| srte_tunnel.is_set;
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(output_label.yfilter)
+	|| ydk::is_set(srte_tunnel.yfilter);
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-evpn-oper:evpn/active/internal-labels/internal-label/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary-path-buffer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (output_label.is_set || is_set(output_label.yfilter)) leaf_name_data.push_back(output_label.get_name_leafdata());
+    if (srte_tunnel.is_set || is_set(srte_tunnel.yfilter)) leaf_name_data.push_back(srte_tunnel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-label")
+    {
+        output_label = value;
+        output_label.value_namespace = name_space;
+        output_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel = value;
+        srte_tunnel.value_namespace = name_space;
+        srte_tunnel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "output-label")
+    {
+        output_label.yfilter = yfilter;
+    }
+    if(value_path == "srte-tunnel")
+    {
+        srte_tunnel.yfilter = yfilter;
+    }
+}
+
+bool Evpn::Active::InternalLabels::InternalLabel::SummaryPathBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "output-label" || name == "srte-tunnel")
+        return true;
+    return false;
+}
+
 Evpn::Active::EthernetSegments::EthernetSegments()
 {
 
@@ -15795,6 +17963,9 @@ Evpn::Active::EthernetSegments::EthernetSegment::EthernetSegment()
     esi4{YType::str, "esi4"},
     esi5{YType::str, "esi5"},
     esi_type{YType::enumeration, "esi-type"},
+    esi_system_identifier{YType::str, "esi-system-identifier"},
+    esi_port_key{YType::uint32, "esi-port-key"},
+    esi_system_priority{YType::uint32, "esi-system-priority"},
     ethernet_segment_name{YType::str, "ethernet-segment-name"},
     ethernet_segment_state{YType::uint32, "ethernet-segment-state"},
     if_handle{YType::str, "if-handle"},
@@ -15816,6 +17987,8 @@ Evpn::Active::EthernetSegments::EthernetSegment::EthernetSegment()
     peering_timer_left{YType::uint32, "peering-timer-left"},
     recovery_timer{YType::uint32, "recovery-timer"},
     recovery_timer_left{YType::uint32, "recovery-timer-left"},
+    carving_timer{YType::uint32, "carving-timer"},
+    carving_timer_left{YType::uint32, "carving-timer-left"},
     service_carving_mode{YType::enumeration, "service-carving-mode"},
     primary_services_input{YType::str, "primary-services-input"},
     secondary_services_input{YType::str, "secondary-services-input"},
@@ -15827,6 +18000,7 @@ Evpn::Active::EthernetSegments::EthernetSegment::EthernetSegment()
     mp_protected{YType::boolean, "mp-protected"},
     nve_anycast_vtep{YType::boolean, "nve-anycast-vtep"},
     nve_ingress_replication{YType::boolean, "nve-ingress-replication"},
+    local_split_horizon_group_label_valid{YType::boolean, "local-split-horizon-group-label-valid"},
     local_split_horizon_group_label{YType::uint32, "local-split-horizon-group-label"}
 {
 
@@ -15896,6 +18070,9 @@ bool Evpn::Active::EthernetSegments::EthernetSegment::has_data() const
 	|| esi4.is_set
 	|| esi5.is_set
 	|| esi_type.is_set
+	|| esi_system_identifier.is_set
+	|| esi_port_key.is_set
+	|| esi_system_priority.is_set
 	|| ethernet_segment_name.is_set
 	|| ethernet_segment_state.is_set
 	|| if_handle.is_set
@@ -15917,6 +18094,8 @@ bool Evpn::Active::EthernetSegments::EthernetSegment::has_data() const
 	|| peering_timer_left.is_set
 	|| recovery_timer.is_set
 	|| recovery_timer_left.is_set
+	|| carving_timer.is_set
+	|| carving_timer_left.is_set
 	|| service_carving_mode.is_set
 	|| primary_services_input.is_set
 	|| secondary_services_input.is_set
@@ -15928,6 +18107,7 @@ bool Evpn::Active::EthernetSegments::EthernetSegment::has_data() const
 	|| mp_protected.is_set
 	|| nve_anycast_vtep.is_set
 	|| nve_ingress_replication.is_set
+	|| local_split_horizon_group_label_valid.is_set
 	|| local_split_horizon_group_label.is_set;
 }
 
@@ -15991,6 +18171,9 @@ bool Evpn::Active::EthernetSegments::EthernetSegment::has_operation() const
 	|| ydk::is_set(esi4.yfilter)
 	|| ydk::is_set(esi5.yfilter)
 	|| ydk::is_set(esi_type.yfilter)
+	|| ydk::is_set(esi_system_identifier.yfilter)
+	|| ydk::is_set(esi_port_key.yfilter)
+	|| ydk::is_set(esi_system_priority.yfilter)
 	|| ydk::is_set(ethernet_segment_name.yfilter)
 	|| ydk::is_set(ethernet_segment_state.yfilter)
 	|| ydk::is_set(if_handle.yfilter)
@@ -16012,6 +18195,8 @@ bool Evpn::Active::EthernetSegments::EthernetSegment::has_operation() const
 	|| ydk::is_set(peering_timer_left.yfilter)
 	|| ydk::is_set(recovery_timer.yfilter)
 	|| ydk::is_set(recovery_timer_left.yfilter)
+	|| ydk::is_set(carving_timer.yfilter)
+	|| ydk::is_set(carving_timer_left.yfilter)
 	|| ydk::is_set(service_carving_mode.yfilter)
 	|| ydk::is_set(primary_services_input.yfilter)
 	|| ydk::is_set(secondary_services_input.yfilter)
@@ -16023,6 +18208,7 @@ bool Evpn::Active::EthernetSegments::EthernetSegment::has_operation() const
 	|| ydk::is_set(mp_protected.yfilter)
 	|| ydk::is_set(nve_anycast_vtep.yfilter)
 	|| ydk::is_set(nve_ingress_replication.yfilter)
+	|| ydk::is_set(local_split_horizon_group_label_valid.yfilter)
 	|| ydk::is_set(local_split_horizon_group_label.yfilter);
 }
 
@@ -16051,6 +18237,9 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Active::EthernetSegments::E
     if (esi4.is_set || is_set(esi4.yfilter)) leaf_name_data.push_back(esi4.get_name_leafdata());
     if (esi5.is_set || is_set(esi5.yfilter)) leaf_name_data.push_back(esi5.get_name_leafdata());
     if (esi_type.is_set || is_set(esi_type.yfilter)) leaf_name_data.push_back(esi_type.get_name_leafdata());
+    if (esi_system_identifier.is_set || is_set(esi_system_identifier.yfilter)) leaf_name_data.push_back(esi_system_identifier.get_name_leafdata());
+    if (esi_port_key.is_set || is_set(esi_port_key.yfilter)) leaf_name_data.push_back(esi_port_key.get_name_leafdata());
+    if (esi_system_priority.is_set || is_set(esi_system_priority.yfilter)) leaf_name_data.push_back(esi_system_priority.get_name_leafdata());
     if (ethernet_segment_name.is_set || is_set(ethernet_segment_name.yfilter)) leaf_name_data.push_back(ethernet_segment_name.get_name_leafdata());
     if (ethernet_segment_state.is_set || is_set(ethernet_segment_state.yfilter)) leaf_name_data.push_back(ethernet_segment_state.get_name_leafdata());
     if (if_handle.is_set || is_set(if_handle.yfilter)) leaf_name_data.push_back(if_handle.get_name_leafdata());
@@ -16072,6 +18261,8 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Active::EthernetSegments::E
     if (peering_timer_left.is_set || is_set(peering_timer_left.yfilter)) leaf_name_data.push_back(peering_timer_left.get_name_leafdata());
     if (recovery_timer.is_set || is_set(recovery_timer.yfilter)) leaf_name_data.push_back(recovery_timer.get_name_leafdata());
     if (recovery_timer_left.is_set || is_set(recovery_timer_left.yfilter)) leaf_name_data.push_back(recovery_timer_left.get_name_leafdata());
+    if (carving_timer.is_set || is_set(carving_timer.yfilter)) leaf_name_data.push_back(carving_timer.get_name_leafdata());
+    if (carving_timer_left.is_set || is_set(carving_timer_left.yfilter)) leaf_name_data.push_back(carving_timer_left.get_name_leafdata());
     if (service_carving_mode.is_set || is_set(service_carving_mode.yfilter)) leaf_name_data.push_back(service_carving_mode.get_name_leafdata());
     if (primary_services_input.is_set || is_set(primary_services_input.yfilter)) leaf_name_data.push_back(primary_services_input.get_name_leafdata());
     if (secondary_services_input.is_set || is_set(secondary_services_input.yfilter)) leaf_name_data.push_back(secondary_services_input.get_name_leafdata());
@@ -16083,6 +18274,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Active::EthernetSegments::E
     if (mp_protected.is_set || is_set(mp_protected.yfilter)) leaf_name_data.push_back(mp_protected.get_name_leafdata());
     if (nve_anycast_vtep.is_set || is_set(nve_anycast_vtep.yfilter)) leaf_name_data.push_back(nve_anycast_vtep.get_name_leafdata());
     if (nve_ingress_replication.is_set || is_set(nve_ingress_replication.yfilter)) leaf_name_data.push_back(nve_ingress_replication.get_name_leafdata());
+    if (local_split_horizon_group_label_valid.is_set || is_set(local_split_horizon_group_label_valid.yfilter)) leaf_name_data.push_back(local_split_horizon_group_label_valid.get_name_leafdata());
     if (local_split_horizon_group_label.is_set || is_set(local_split_horizon_group_label.yfilter)) leaf_name_data.push_back(local_split_horizon_group_label.get_name_leafdata());
 
     return leaf_name_data;
@@ -16315,6 +18507,24 @@ void Evpn::Active::EthernetSegments::EthernetSegment::set_value(const std::strin
         esi_type.value_namespace = name_space;
         esi_type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "esi-system-identifier")
+    {
+        esi_system_identifier = value;
+        esi_system_identifier.value_namespace = name_space;
+        esi_system_identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi-port-key")
+    {
+        esi_port_key = value;
+        esi_port_key.value_namespace = name_space;
+        esi_port_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "esi-system-priority")
+    {
+        esi_system_priority = value;
+        esi_system_priority.value_namespace = name_space;
+        esi_system_priority.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ethernet-segment-name")
     {
         ethernet_segment_name = value;
@@ -16441,6 +18651,18 @@ void Evpn::Active::EthernetSegments::EthernetSegment::set_value(const std::strin
         recovery_timer_left.value_namespace = name_space;
         recovery_timer_left.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "carving-timer")
+    {
+        carving_timer = value;
+        carving_timer.value_namespace = name_space;
+        carving_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "carving-timer-left")
+    {
+        carving_timer_left = value;
+        carving_timer_left.value_namespace = name_space;
+        carving_timer_left.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "service-carving-mode")
     {
         service_carving_mode = value;
@@ -16507,6 +18729,12 @@ void Evpn::Active::EthernetSegments::EthernetSegment::set_value(const std::strin
         nve_ingress_replication.value_namespace = name_space;
         nve_ingress_replication.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "local-split-horizon-group-label-valid")
+    {
+        local_split_horizon_group_label_valid = value;
+        local_split_horizon_group_label_valid.value_namespace = name_space;
+        local_split_horizon_group_label_valid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "local-split-horizon-group-label")
     {
         local_split_horizon_group_label = value;
@@ -16544,6 +18772,18 @@ void Evpn::Active::EthernetSegments::EthernetSegment::set_filter(const std::stri
     if(value_path == "esi-type")
     {
         esi_type.yfilter = yfilter;
+    }
+    if(value_path == "esi-system-identifier")
+    {
+        esi_system_identifier.yfilter = yfilter;
+    }
+    if(value_path == "esi-port-key")
+    {
+        esi_port_key.yfilter = yfilter;
+    }
+    if(value_path == "esi-system-priority")
+    {
+        esi_system_priority.yfilter = yfilter;
     }
     if(value_path == "ethernet-segment-name")
     {
@@ -16629,6 +18869,14 @@ void Evpn::Active::EthernetSegments::EthernetSegment::set_filter(const std::stri
     {
         recovery_timer_left.yfilter = yfilter;
     }
+    if(value_path == "carving-timer")
+    {
+        carving_timer.yfilter = yfilter;
+    }
+    if(value_path == "carving-timer-left")
+    {
+        carving_timer_left.yfilter = yfilter;
+    }
     if(value_path == "service-carving-mode")
     {
         service_carving_mode.yfilter = yfilter;
@@ -16673,6 +18921,10 @@ void Evpn::Active::EthernetSegments::EthernetSegment::set_filter(const std::stri
     {
         nve_ingress_replication.yfilter = yfilter;
     }
+    if(value_path == "local-split-horizon-group-label-valid")
+    {
+        local_split_horizon_group_label_valid.yfilter = yfilter;
+    }
     if(value_path == "local-split-horizon-group-label")
     {
         local_split_horizon_group_label.yfilter = yfilter;
@@ -16681,7 +18933,7 @@ void Evpn::Active::EthernetSegments::EthernetSegment::set_filter(const std::stri
 
 bool Evpn::Active::EthernetSegments::EthernetSegment::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ethernet-segment-identifier" || name == "primary-service" || name == "secondary-service" || name == "service-carving-i-sidelected-result" || name == "service-carving-isid-not-elected-result" || name == "service-carving-evi-elected-result" || name == "service-carving-evi-not-elected-result" || name == "next-hop" || name == "service-carving-vpws-permanent-result" || name == "remote-split-horizon-group-label" || name == "interface-name" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "esi-type" || name == "ethernet-segment-name" || name == "ethernet-segment-state" || name == "if-handle" || name == "main-port-role" || name == "main-port-mac" || name == "num-up-p-ws" || name == "route-target" || name == "rt-origin" || name == "es-bgp-gates" || name == "es-l2fib-gates" || name == "mac-flushing-mode-config" || name == "load-balance-mode-config" || name == "load-balance-mode-is-default" || name == "load-balance-mode-oper" || name == "force-single-home" || name == "source-mac-oper" || name == "source-mac-origin" || name == "peering-timer" || name == "peering-timer-left" || name == "recovery-timer" || name == "recovery-timer-left" || name == "service-carving-mode" || name == "primary-services-input" || name == "secondary-services-input" || name == "forwarder-ports" || name == "permanent-forwarder-ports" || name == "elected-forwarder-ports" || name == "not-elected-forwarder-ports" || name == "not-config-forwarder-ports" || name == "mp-protected" || name == "nve-anycast-vtep" || name == "nve-ingress-replication" || name == "local-split-horizon-group-label")
+    if(name == "ethernet-segment-identifier" || name == "primary-service" || name == "secondary-service" || name == "service-carving-i-sidelected-result" || name == "service-carving-isid-not-elected-result" || name == "service-carving-evi-elected-result" || name == "service-carving-evi-not-elected-result" || name == "next-hop" || name == "service-carving-vpws-permanent-result" || name == "remote-split-horizon-group-label" || name == "interface-name" || name == "esi1" || name == "esi2" || name == "esi3" || name == "esi4" || name == "esi5" || name == "esi-type" || name == "esi-system-identifier" || name == "esi-port-key" || name == "esi-system-priority" || name == "ethernet-segment-name" || name == "ethernet-segment-state" || name == "if-handle" || name == "main-port-role" || name == "main-port-mac" || name == "num-up-p-ws" || name == "route-target" || name == "rt-origin" || name == "es-bgp-gates" || name == "es-l2fib-gates" || name == "mac-flushing-mode-config" || name == "load-balance-mode-config" || name == "load-balance-mode-is-default" || name == "load-balance-mode-oper" || name == "force-single-home" || name == "source-mac-oper" || name == "source-mac-origin" || name == "peering-timer" || name == "peering-timer-left" || name == "recovery-timer" || name == "recovery-timer-left" || name == "carving-timer" || name == "carving-timer-left" || name == "service-carving-mode" || name == "primary-services-input" || name == "secondary-services-input" || name == "forwarder-ports" || name == "permanent-forwarder-ports" || name == "elected-forwarder-ports" || name == "not-elected-forwarder-ports" || name == "not-config-forwarder-ports" || name == "mp-protected" || name == "nve-anycast-vtep" || name == "nve-ingress-replication" || name == "local-split-horizon-group-label-valid" || name == "local-split-horizon-group-label")
         return true;
     return false;
 }
@@ -17796,12 +20048,14 @@ Evpn::Standby::Standby()
     evis(std::make_shared<Evpn::Standby::Evis>())
 	,summary(std::make_shared<Evpn::Standby::Summary>())
 	,evi_detail(std::make_shared<Evpn::Standby::EviDetail>())
+	,internal_labels(std::make_shared<Evpn::Standby::InternalLabels>())
 	,ethernet_segments(std::make_shared<Evpn::Standby::EthernetSegments>())
 	,ac_ids(std::make_shared<Evpn::Standby::AcIds>())
 {
     evis->parent = this;
     summary->parent = this;
     evi_detail->parent = this;
+    internal_labels->parent = this;
     ethernet_segments->parent = this;
     ac_ids->parent = this;
 
@@ -17817,6 +20071,7 @@ bool Evpn::Standby::has_data() const
     return (evis !=  nullptr && evis->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (evi_detail !=  nullptr && evi_detail->has_data())
+	|| (internal_labels !=  nullptr && internal_labels->has_data())
 	|| (ethernet_segments !=  nullptr && ethernet_segments->has_data())
 	|| (ac_ids !=  nullptr && ac_ids->has_data());
 }
@@ -17827,6 +20082,7 @@ bool Evpn::Standby::has_operation() const
 	|| (evis !=  nullptr && evis->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (evi_detail !=  nullptr && evi_detail->has_operation())
+	|| (internal_labels !=  nullptr && internal_labels->has_operation())
 	|| (ethernet_segments !=  nullptr && ethernet_segments->has_operation())
 	|| (ac_ids !=  nullptr && ac_ids->has_operation());
 }
@@ -17883,6 +20139,15 @@ std::shared_ptr<Entity> Evpn::Standby::get_child_by_name(const std::string & chi
         return evi_detail;
     }
 
+    if(child_yang_name == "internal-labels")
+    {
+        if(internal_labels == nullptr)
+        {
+            internal_labels = std::make_shared<Evpn::Standby::InternalLabels>();
+        }
+        return internal_labels;
+    }
+
     if(child_yang_name == "ethernet-segments")
     {
         if(ethernet_segments == nullptr)
@@ -17923,6 +20188,11 @@ std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::get_children() con
         children["evi-detail"] = evi_detail;
     }
 
+    if(internal_labels != nullptr)
+    {
+        children["internal-labels"] = internal_labels;
+    }
+
     if(ethernet_segments != nullptr)
     {
         children["ethernet-segments"] = ethernet_segments;
@@ -17946,7 +20216,7 @@ void Evpn::Standby::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Evpn::Standby::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evis" || name == "summary" || name == "evi-detail" || name == "ethernet-segments" || name == "ac-ids")
+    if(name == "evis" || name == "summary" || name == "evi-detail" || name == "internal-labels" || name == "ethernet-segments" || name == "ac-ids")
         return true;
     return false;
 }
@@ -18197,6 +20467,7 @@ Evpn::Standby::Summary::Summary()
     global_source_mac{YType::str, "global-source-mac"},
     peering_time{YType::uint32, "peering-time"},
     recovery_time{YType::uint32, "recovery-time"},
+    carving_time{YType::uint32, "carving-time"},
     mac_secure_move_count{YType::uint32, "mac-secure-move-count"},
     mac_secure_move_interval{YType::uint32, "mac-secure-move-interval"},
     mac_secure_freeze_time{YType::uint32, "mac-secure-freeze-time"},
@@ -18237,6 +20508,7 @@ bool Evpn::Standby::Summary::has_data() const
 	|| global_source_mac.is_set
 	|| peering_time.is_set
 	|| recovery_time.is_set
+	|| carving_time.is_set
 	|| mac_secure_move_count.is_set
 	|| mac_secure_move_interval.is_set
 	|| mac_secure_freeze_time.is_set
@@ -18271,6 +20543,7 @@ bool Evpn::Standby::Summary::has_operation() const
 	|| ydk::is_set(global_source_mac.yfilter)
 	|| ydk::is_set(peering_time.yfilter)
 	|| ydk::is_set(recovery_time.yfilter)
+	|| ydk::is_set(carving_time.yfilter)
 	|| ydk::is_set(mac_secure_move_count.yfilter)
 	|| ydk::is_set(mac_secure_move_interval.yfilter)
 	|| ydk::is_set(mac_secure_freeze_time.yfilter)
@@ -18320,6 +20593,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::Summary::get_name_
     if (global_source_mac.is_set || is_set(global_source_mac.yfilter)) leaf_name_data.push_back(global_source_mac.get_name_leafdata());
     if (peering_time.is_set || is_set(peering_time.yfilter)) leaf_name_data.push_back(peering_time.get_name_leafdata());
     if (recovery_time.is_set || is_set(recovery_time.yfilter)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
+    if (carving_time.is_set || is_set(carving_time.yfilter)) leaf_name_data.push_back(carving_time.get_name_leafdata());
     if (mac_secure_move_count.is_set || is_set(mac_secure_move_count.yfilter)) leaf_name_data.push_back(mac_secure_move_count.get_name_leafdata());
     if (mac_secure_move_interval.is_set || is_set(mac_secure_move_interval.yfilter)) leaf_name_data.push_back(mac_secure_move_interval.get_name_leafdata());
     if (mac_secure_freeze_time.is_set || is_set(mac_secure_freeze_time.yfilter)) leaf_name_data.push_back(mac_secure_freeze_time.get_name_leafdata());
@@ -18473,6 +20747,12 @@ void Evpn::Standby::Summary::set_value(const std::string & value_path, const std
         recovery_time.value_namespace = name_space;
         recovery_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "carving-time")
+    {
+        carving_time = value;
+        carving_time.value_namespace = name_space;
+        carving_time.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mac-secure-move-count")
     {
         mac_secure_move_count = value;
@@ -18609,6 +20889,10 @@ void Evpn::Standby::Summary::set_filter(const std::string & value_path, YFilter 
     {
         recovery_time.yfilter = yfilter;
     }
+    if(value_path == "carving-time")
+    {
+        carving_time.yfilter = yfilter;
+    }
     if(value_path == "mac-secure-move-count")
     {
         mac_secure_move_count.yfilter = yfilter;
@@ -18645,7 +20929,7 @@ void Evpn::Standby::Summary::set_filter(const std::string & value_path, YFilter 
 
 bool Evpn::Standby::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "router-id" || name == "as" || name == "ev-is" || name == "local-mac-routes" || name == "local-ipv4-mac-routes" || name == "local-ipv6-mac-routes" || name == "es-global-mac-routes" || name == "remote-mac-routes" || name == "remote-soo-mac-routes" || name == "remote-ipv4-mac-routes" || name == "remote-ipv6-mac-routes" || name == "local-imcast-routes" || name == "remote-imcast-routes" || name == "labels" || name == "es-entries" || name == "neighbor-entries" || name == "local-ead-routes" || name == "remote-ead-routes" || name == "global-source-mac" || name == "peering-time" || name == "recovery-time" || name == "mac-secure-move-count" || name == "mac-secure-move-interval" || name == "mac-secure-freeze-time" || name == "mac-secure-retry-count" || name == "cost-out" || name == "startup-cost-in-time" || name == "l2rib-throttle" || name == "logging-df-election-enabled")
+    if(name == "router-id" || name == "as" || name == "ev-is" || name == "local-mac-routes" || name == "local-ipv4-mac-routes" || name == "local-ipv6-mac-routes" || name == "es-global-mac-routes" || name == "remote-mac-routes" || name == "remote-soo-mac-routes" || name == "remote-ipv4-mac-routes" || name == "remote-ipv6-mac-routes" || name == "local-imcast-routes" || name == "remote-imcast-routes" || name == "labels" || name == "es-entries" || name == "neighbor-entries" || name == "local-ead-routes" || name == "remote-ead-routes" || name == "global-source-mac" || name == "peering-time" || name == "recovery-time" || name == "carving-time" || name == "mac-secure-move-count" || name == "mac-secure-move-interval" || name == "mac-secure-freeze-time" || name == "mac-secure-retry-count" || name == "cost-out" || name == "startup-cost-in-time" || name == "l2rib-throttle" || name == "logging-df-election-enabled")
         return true;
     return false;
 }
@@ -19608,1216 +21892,6 @@ void Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto::set_filter(const
 bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "router-id" || name == "auto-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::TwoByteAs()
-    :
-    two_byte_as{YType::uint16, "two-byte-as"},
-    four_byte_index{YType::uint32, "four-byte-index"}
-{
-
-    yang_name = "two-byte-as"; yang_parent_name = "rd-auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::~TwoByteAs()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::has_data() const
-{
-    return two_byte_as.is_set
-	|| four_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(two_byte_as.yfilter)
-	|| ydk::is_set(four_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "two-byte-as";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
-    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "two-byte-as")
-    {
-        two_byte_as = value;
-        two_byte_as.value_namespace = name_space;
-        two_byte_as.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "four-byte-index")
-    {
-        four_byte_index = value;
-        four_byte_index.value_namespace = name_space;
-        four_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "two-byte-as")
-    {
-        two_byte_as.yfilter = yfilter;
-    }
-    if(value_path == "four-byte-index")
-    {
-        four_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "two-byte-as" || name == "four-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::FourByteAs()
-    :
-    four_byte_as{YType::uint32, "four-byte-as"},
-    two_byte_index{YType::uint16, "two-byte-index"}
-{
-
-    yang_name = "four-byte-as"; yang_parent_name = "rd-auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::~FourByteAs()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::has_data() const
-{
-    return four_byte_as.is_set
-	|| two_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(four_byte_as.yfilter)
-	|| ydk::is_set(two_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "four-byte-as";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (four_byte_as.is_set || is_set(four_byte_as.yfilter)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "four-byte-as")
-    {
-        four_byte_as = value;
-        four_byte_as.value_namespace = name_space;
-        four_byte_as.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index = value;
-        two_byte_index.value_namespace = name_space;
-        two_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "four-byte-as")
-    {
-        four_byte_as.yfilter = yfilter;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "four-byte-as" || name == "two-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::V4Addr()
-    :
-    ipv4_address{YType::str, "ipv4-address"},
-    two_byte_index{YType::uint16, "two-byte-index"}
-{
-
-    yang_name = "v4-addr"; yang_parent_name = "rd-auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::~V4Addr()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::has_data() const
-{
-    return ipv4_address.is_set
-	|| two_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(two_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "v4-addr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index = value;
-        two_byte_index.value_namespace = name_space;
-        two_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-address" || name == "two-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::RdConfigured()
-    :
-    rd{YType::enumeration, "rd"}
-    	,
-    auto_(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto>())
-	,two_byte_as(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs>())
-	,four_byte_as(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs>())
-	,v4_addr(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr>())
-{
-    auto_->parent = this;
-    two_byte_as->parent = this;
-    four_byte_as->parent = this;
-    v4_addr->parent = this;
-
-    yang_name = "rd-configured"; yang_parent_name = "element"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::~RdConfigured()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::has_data() const
-{
-    return rd.is_set
-	|| (auto_ !=  nullptr && auto_->has_data())
-	|| (two_byte_as !=  nullptr && two_byte_as->has_data())
-	|| (four_byte_as !=  nullptr && four_byte_as->has_data())
-	|| (v4_addr !=  nullptr && v4_addr->has_data());
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rd.yfilter)
-	|| (auto_ !=  nullptr && auto_->has_operation())
-	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
-	|| (four_byte_as !=  nullptr && four_byte_as->has_operation())
-	|| (v4_addr !=  nullptr && v4_addr->has_operation());
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rd-configured";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "auto")
-    {
-        if(auto_ == nullptr)
-        {
-            auto_ = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto>();
-        }
-        return auto_;
-    }
-
-    if(child_yang_name == "two-byte-as")
-    {
-        if(two_byte_as == nullptr)
-        {
-            two_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs>();
-        }
-        return two_byte_as;
-    }
-
-    if(child_yang_name == "four-byte-as")
-    {
-        if(four_byte_as == nullptr)
-        {
-            four_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs>();
-        }
-        return four_byte_as;
-    }
-
-    if(child_yang_name == "v4-addr")
-    {
-        if(v4_addr == nullptr)
-        {
-            v4_addr = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr>();
-        }
-        return v4_addr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(auto_ != nullptr)
-    {
-        children["auto"] = auto_;
-    }
-
-    if(two_byte_as != nullptr)
-    {
-        children["two-byte-as"] = two_byte_as;
-    }
-
-    if(four_byte_as != nullptr)
-    {
-        children["four-byte-as"] = four_byte_as;
-    }
-
-    if(v4_addr != nullptr)
-    {
-        children["v4-addr"] = v4_addr;
-    }
-
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rd")
-    {
-        rd = value;
-        rd.value_namespace = name_space;
-        rd.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rd")
-    {
-        rd.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auto" || name == "two-byte-as" || name == "four-byte-as" || name == "v4-addr" || name == "rd")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::Auto()
-    :
-    router_id{YType::str, "router-id"},
-    auto_index{YType::uint16, "auto-index"}
-{
-
-    yang_name = "auto"; yang_parent_name = "rd-configured"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::~Auto()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::has_data() const
-{
-    return router_id.is_set
-	|| auto_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(router_id.yfilter)
-	|| ydk::is_set(auto_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
-    if (auto_index.is_set || is_set(auto_index.yfilter)) leaf_name_data.push_back(auto_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "router-id")
-    {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "auto-index")
-    {
-        auto_index = value;
-        auto_index.value_namespace = name_space;
-        auto_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "router-id")
-    {
-        router_id.yfilter = yfilter;
-    }
-    if(value_path == "auto-index")
-    {
-        auto_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "router-id" || name == "auto-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::TwoByteAs()
-    :
-    two_byte_as{YType::uint16, "two-byte-as"},
-    four_byte_index{YType::uint32, "four-byte-index"}
-{
-
-    yang_name = "two-byte-as"; yang_parent_name = "rd-configured"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::~TwoByteAs()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::has_data() const
-{
-    return two_byte_as.is_set
-	|| four_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(two_byte_as.yfilter)
-	|| ydk::is_set(four_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "two-byte-as";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
-    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "two-byte-as")
-    {
-        two_byte_as = value;
-        two_byte_as.value_namespace = name_space;
-        two_byte_as.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "four-byte-index")
-    {
-        four_byte_index = value;
-        four_byte_index.value_namespace = name_space;
-        four_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "two-byte-as")
-    {
-        two_byte_as.yfilter = yfilter;
-    }
-    if(value_path == "four-byte-index")
-    {
-        four_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "two-byte-as" || name == "four-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::FourByteAs()
-    :
-    four_byte_as{YType::uint32, "four-byte-as"},
-    two_byte_index{YType::uint16, "two-byte-index"}
-{
-
-    yang_name = "four-byte-as"; yang_parent_name = "rd-configured"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::~FourByteAs()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::has_data() const
-{
-    return four_byte_as.is_set
-	|| two_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(four_byte_as.yfilter)
-	|| ydk::is_set(two_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "four-byte-as";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (four_byte_as.is_set || is_set(four_byte_as.yfilter)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "four-byte-as")
-    {
-        four_byte_as = value;
-        four_byte_as.value_namespace = name_space;
-        four_byte_as.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index = value;
-        two_byte_index.value_namespace = name_space;
-        two_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "four-byte-as")
-    {
-        four_byte_as.yfilter = yfilter;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "four-byte-as" || name == "two-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::V4Addr()
-    :
-    ipv4_address{YType::str, "ipv4-address"},
-    two_byte_index{YType::uint16, "two-byte-index"}
-{
-
-    yang_name = "v4-addr"; yang_parent_name = "rd-configured"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::~V4Addr()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::has_data() const
-{
-    return ipv4_address.is_set
-	|| two_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(two_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "v4-addr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index = value;
-        two_byte_index.value_namespace = name_space;
-        two_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-address" || name == "two-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::RtAuto()
-    :
-    rt{YType::enumeration, "rt"}
-    	,
-    two_byte_as(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs>())
-	,four_byte_as(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs>())
-	,v4_addr(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr>())
-	,es_import(std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport>())
-{
-    two_byte_as->parent = this;
-    four_byte_as->parent = this;
-    v4_addr->parent = this;
-    es_import->parent = this;
-
-    yang_name = "rt-auto"; yang_parent_name = "element"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::~RtAuto()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::has_data() const
-{
-    return rt.is_set
-	|| (two_byte_as !=  nullptr && two_byte_as->has_data())
-	|| (four_byte_as !=  nullptr && four_byte_as->has_data())
-	|| (v4_addr !=  nullptr && v4_addr->has_data())
-	|| (es_import !=  nullptr && es_import->has_data());
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rt.yfilter)
-	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
-	|| (four_byte_as !=  nullptr && four_byte_as->has_operation())
-	|| (v4_addr !=  nullptr && v4_addr->has_operation())
-	|| (es_import !=  nullptr && es_import->has_operation());
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rt-auto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rt.is_set || is_set(rt.yfilter)) leaf_name_data.push_back(rt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "two-byte-as")
-    {
-        if(two_byte_as == nullptr)
-        {
-            two_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs>();
-        }
-        return two_byte_as;
-    }
-
-    if(child_yang_name == "four-byte-as")
-    {
-        if(four_byte_as == nullptr)
-        {
-            four_byte_as = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs>();
-        }
-        return four_byte_as;
-    }
-
-    if(child_yang_name == "v4-addr")
-    {
-        if(v4_addr == nullptr)
-        {
-            v4_addr = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr>();
-        }
-        return v4_addr;
-    }
-
-    if(child_yang_name == "es-import")
-    {
-        if(es_import == nullptr)
-        {
-            es_import = std::make_shared<Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport>();
-        }
-        return es_import;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(two_byte_as != nullptr)
-    {
-        children["two-byte-as"] = two_byte_as;
-    }
-
-    if(four_byte_as != nullptr)
-    {
-        children["four-byte-as"] = four_byte_as;
-    }
-
-    if(v4_addr != nullptr)
-    {
-        children["v4-addr"] = v4_addr;
-    }
-
-    if(es_import != nullptr)
-    {
-        children["es-import"] = es_import;
-    }
-
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rt")
-    {
-        rt = value;
-        rt.value_namespace = name_space;
-        rt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rt")
-    {
-        rt.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "two-byte-as" || name == "four-byte-as" || name == "v4-addr" || name == "es-import" || name == "rt")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::TwoByteAs()
-    :
-    two_byte_as{YType::uint16, "two-byte-as"},
-    four_byte_index{YType::uint32, "four-byte-index"}
-{
-
-    yang_name = "two-byte-as"; yang_parent_name = "rt-auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::~TwoByteAs()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::has_data() const
-{
-    return two_byte_as.is_set
-	|| four_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(two_byte_as.yfilter)
-	|| ydk::is_set(four_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "two-byte-as";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
-    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "two-byte-as")
-    {
-        two_byte_as = value;
-        two_byte_as.value_namespace = name_space;
-        two_byte_as.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "four-byte-index")
-    {
-        four_byte_index = value;
-        four_byte_index.value_namespace = name_space;
-        four_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "two-byte-as")
-    {
-        two_byte_as.yfilter = yfilter;
-    }
-    if(value_path == "four-byte-index")
-    {
-        four_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "two-byte-as" || name == "four-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::FourByteAs()
-    :
-    four_byte_as{YType::uint32, "four-byte-as"},
-    two_byte_index{YType::uint16, "two-byte-index"}
-{
-
-    yang_name = "four-byte-as"; yang_parent_name = "rt-auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::~FourByteAs()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::has_data() const
-{
-    return four_byte_as.is_set
-	|| two_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(four_byte_as.yfilter)
-	|| ydk::is_set(two_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "four-byte-as";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (four_byte_as.is_set || is_set(four_byte_as.yfilter)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "four-byte-as")
-    {
-        four_byte_as = value;
-        four_byte_as.value_namespace = name_space;
-        four_byte_as.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index = value;
-        two_byte_index.value_namespace = name_space;
-        two_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "four-byte-as")
-    {
-        four_byte_as.yfilter = yfilter;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "four-byte-as" || name == "two-byte-index")
-        return true;
-    return false;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::V4Addr()
-    :
-    ipv4_address{YType::str, "ipv4-address"},
-    two_byte_index{YType::uint16, "two-byte-index"}
-{
-
-    yang_name = "v4-addr"; yang_parent_name = "rt-auto"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::~V4Addr()
-{
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::has_data() const
-{
-    return ipv4_address.is_set
-	|| two_byte_index.is_set;
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(two_byte_index.yfilter);
-}
-
-std::string Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "v4-addr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index = value;
-        two_byte_index.value_namespace = name_space;
-        two_byte_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index.yfilter = yfilter;
-    }
-}
-
-bool Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-address" || name == "two-byte-index")
         return true;
     return false;
 }

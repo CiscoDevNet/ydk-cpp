@@ -1117,7 +1117,7 @@ bool Ip::Cinetd::Services::Ipv4::SmallServers::has_leaf_or_child_of_name(const s
 Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::TcpSmallServers()
     :
     access_control_list_name{YType::str, "access-control-list-name"},
-    small_server{YType::uint32, "small-server"}
+    small_server{YType::str, "small-server"}
 {
 
     yang_name = "tcp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
@@ -1215,7 +1215,7 @@ bool Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::has_leaf_or_chil
 Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::UdpSmallServers()
     :
     access_control_list_name{YType::str, "access-control-list-name"},
-    small_server{YType::uint32, "small-server"}
+    small_server{YType::str, "small-server"}
 {
 
     yang_name = "udp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
@@ -2557,6 +2557,7 @@ bool Ip::Cinetd::Services::Ipv6::has_leaf_or_child_of_name(const std::string & n
 Ip::Cinetd::Services::Ipv6::SmallServers::SmallServers()
     :
     tcp_small_servers(nullptr) // presence node
+	,udp_small_servers(nullptr) // presence node
 {
 
     yang_name = "small-servers"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
@@ -2568,13 +2569,15 @@ Ip::Cinetd::Services::Ipv6::SmallServers::~SmallServers()
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::has_data() const
 {
-    return (tcp_small_servers !=  nullptr && tcp_small_servers->has_data());
+    return (tcp_small_servers !=  nullptr && tcp_small_servers->has_data())
+	|| (udp_small_servers !=  nullptr && udp_small_servers->has_data());
 }
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::has_operation() const
 {
     return is_set(yfilter)
-	|| (tcp_small_servers !=  nullptr && tcp_small_servers->has_operation());
+	|| (tcp_small_servers !=  nullptr && tcp_small_servers->has_operation())
+	|| (udp_small_servers !=  nullptr && udp_small_servers->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Ipv6::SmallServers::get_absolute_path() const
@@ -2611,6 +2614,15 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::get_child_by_n
         return tcp_small_servers;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ip-udp-cfg:udp-small-servers")
+    {
+        if(udp_small_servers == nullptr)
+        {
+            udp_small_servers = std::make_shared<Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers>();
+        }
+        return udp_small_servers;
+    }
+
     return nullptr;
 }
 
@@ -2621,6 +2633,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::Small
     if(tcp_small_servers != nullptr)
     {
         children["tcp-small-servers"] = tcp_small_servers;
+    }
+
+    if(udp_small_servers != nullptr)
+    {
+        children["Cisco-IOS-XR-ip-udp-cfg:udp-small-servers"] = udp_small_servers;
     }
 
     return children;
@@ -2636,7 +2653,7 @@ void Ip::Cinetd::Services::Ipv6::SmallServers::set_filter(const std::string & va
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tcp-small-servers")
+    if(name == "tcp-small-servers" || name == "udp-small-servers")
         return true;
     return false;
 }
@@ -2644,7 +2661,7 @@ bool Ip::Cinetd::Services::Ipv6::SmallServers::has_leaf_or_child_of_name(const s
 Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::TcpSmallServers()
     :
     access_control_list_name{YType::str, "access-control-list-name"},
-    small_server{YType::uint32, "small-server"}
+    small_server{YType::str, "small-server"}
 {
 
     yang_name = "tcp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
@@ -2733,6 +2750,104 @@ void Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::set_filter(const
 }
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-control-list-name" || name == "small-server")
+        return true;
+    return false;
+}
+
+Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::UdpSmallServers()
+    :
+    access_control_list_name{YType::str, "access-control-list-name"},
+    small_server{YType::str, "small-server"}
+{
+
+    yang_name = "udp-small-servers"; yang_parent_name = "small-servers"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::~UdpSmallServers()
+{
+}
+
+bool Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::has_data() const
+{
+    return access_control_list_name.is_set
+	|| small_server.is_set;
+}
+
+bool Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(access_control_list_name.yfilter)
+	|| ydk::is_set(small_server.yfilter);
+}
+
+std::string Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-tcp-cfg:ip/cinetd/services/ipv6/small-servers/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-udp-cfg:udp-small-servers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (access_control_list_name.is_set || is_set(access_control_list_name.yfilter)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
+    if (small_server.is_set || is_set(small_server.yfilter)) leaf_name_data.push_back(small_server.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "access-control-list-name")
+    {
+        access_control_list_name = value;
+        access_control_list_name.value_namespace = name_space;
+        access_control_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "small-server")
+    {
+        small_server = value;
+        small_server.value_namespace = name_space;
+        small_server.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-control-list-name")
+    {
+        access_control_list_name.yfilter = yfilter;
+    }
+    if(value_path == "small-server")
+    {
+        small_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "access-control-list-name" || name == "small-server")
         return true;
@@ -3124,6 +3239,14 @@ bool Ip::ForwardProtocol::Udp::Ports::Port::has_leaf_or_child_of_name(const std:
         return true;
     return false;
 }
+
+const Enum::YLeaf Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::SmallServer::no_limit {0, "no-limit"};
+
+const Enum::YLeaf Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::SmallServer::no_limit {0, "no-limit"};
+
+const Enum::YLeaf Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::SmallServer::no_limit {0, "no-limit"};
+
+const Enum::YLeaf Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::SmallServer::no_limit {0, "no-limit"};
 
 
 }

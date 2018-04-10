@@ -319,7 +319,7 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop : public ydk::E
 
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf afi; //type: uint32
+        ydk::YLeaf afi; //type: MgmtStaticLspAfi
         class Address; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address> address;
@@ -397,7 +397,7 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop : public 
 
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf afi; //type: uint32
+        ydk::YLeaf afi; //type: MgmtStaticLspAfi
         class Address; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address> address;
@@ -630,7 +630,7 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop : public
 
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf afi; //type: uint32
+        ydk::YLeaf afi; //type: MgmtStaticLspAfi
         class Address; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address> address;
@@ -708,7 +708,7 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop : 
 
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf afi; //type: uint32
+        ydk::YLeaf afi; //type: MgmtStaticLspAfi
         class Address; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address> address;
@@ -756,6 +756,7 @@ class MplsStatic::Summary : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        ydk::YLeaf lsp_count; //type: uint32
         ydk::YLeaf label_count; //type: uint32
         ydk::YLeaf label_error_count; //type: uint32
         ydk::YLeaf label_discrepancy_count; //type: uint32
@@ -764,8 +765,8 @@ class MplsStatic::Summary : public ydk::Entity
         ydk::YLeaf interface_count; //type: uint32
         ydk::YLeaf interface_foward_reference_count; //type: uint32
         ydk::YLeaf mpls_enabled_interface_count; //type: uint32
-        ydk::YLeaf ipv4_route_count; //type: uint32
-        ydk::YLeaf ipv6_route_count; //type: uint32
+        ydk::YLeaf ipv4_res_nh_count; //type: uint32
+        ydk::YLeaf ipv6_res_nh_count; //type: uint32
         ydk::YLeaf lsd_connected; //type: boolean
         ydk::YLeaf im_connected; //type: boolean
         ydk::YLeaf rsi_connected; //type: boolean
@@ -979,7 +980,7 @@ class MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop : public ydk::Entit
 
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf afi; //type: uint32
+        ydk::YLeaf afi; //type: MgmtStaticLspAfi
         class Address; //type: MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address> address;
@@ -1057,7 +1058,7 @@ class MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop : public ydk:
 
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf afi; //type: uint32
+        ydk::YLeaf afi; //type: MgmtStaticLspAfi
         class Address; //type: MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address> address;
@@ -1096,6 +1097,15 @@ class MgmtMplsStaticPathStatus : public ydk::Enum
         static const ydk::Enum::YLeaf resolve_failed;
         static const ydk::Enum::YLeaf frr_backup;
         static const ydk::Enum::YLeaf backup;
+
+};
+
+class MgmtStaticLspAfi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
@@ -1140,6 +1150,7 @@ class MgmtMplsStaticLabelStatus : public ydk::Enum
         static const ydk::Enum::YLeaf rewrite_next_hop_interface_down;
         static const ydk::Enum::YLeaf label_discrepancy;
         static const ydk::Enum::YLeaf rewrite_discrepancy;
+        static const ydk::Enum::YLeaf rewrite_nexthop_unresolved;
         static const ydk::Enum::YLeaf label_status_unknown;
 
 };

@@ -140,6 +140,7 @@ class DhcpClient::Nodes::Node::ClientStats::ClientStat : public ydk::Entity
         ydk::YLeaf num_t1_timer_event; //type: uint32
         ydk::YLeaf num_t2_timer_event; //type: uint32
         ydk::YLeaf num_lease_timer_event; //type: uint32
+        ydk::YLeaf num_vbind_timer_event; //type: uint32
         ydk::YLeaf num_discovers_sent_successfully; //type: uint32
         ydk::YLeaf num_requests_sent_successfully; //type: uint32
         ydk::YLeaf num_releases_sent_successfully; //type: uint32
@@ -160,6 +161,8 @@ class DhcpClient::Nodes::Node::ClientStats::ClientStat : public ydk::Entity
         ydk::YLeaf num_t2_timer_stop; //type: uint32
         ydk::YLeaf num_lease_timer_start; //type: uint32
         ydk::YLeaf num_lease_timer_stop; //type: uint32
+        ydk::YLeaf num_vbind_timer_start; //type: uint32
+        ydk::YLeaf num_vbind_timer_stop; //type: uint32
         ydk::YLeaf num_invalid_events; //type: uint32
         ydk::YLeaf num_discovers_failed; //type: uint32
         ydk::YLeaf num_requests_failed; //type: uint32

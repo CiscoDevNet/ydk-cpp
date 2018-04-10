@@ -262,10 +262,10 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf grant; //type: Ipv6AclGrantEnum
         ydk::YLeaf protocol_operator; //type: Ipv6AclOperatorEnum
-        ydk::YLeaf protocol; //type: one of enumeration, uint32
-        ydk::YLeaf protocol2; //type: one of enumeration, uint32
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
-        ydk::YLeaf precedence; //type: one of enumeration, uint32
+        ydk::YLeaf protocol; //type: one of uint32, enumeration
+        ydk::YLeaf protocol2; //type: one of uint32, enumeration
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
+        ydk::YLeaf precedence; //type: one of uint32, enumeration
         ydk::YLeaf counter_name; //type: string
         ydk::YLeaf log_option; //type: Ipv6AclLoggingEnum
         ydk::YLeaf capture; //type: boolean
@@ -367,8 +367,8 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf source_operator; //type: Ipv6AclOperatorEnum
-        ydk::YLeaf first_source_port; //type: one of enumeration, uint32
-        ydk::YLeaf second_source_port; //type: one of enumeration, uint32
+        ydk::YLeaf first_source_port; //type: one of uint32, enumeration
+        ydk::YLeaf second_source_port; //type: one of uint32, enumeration
 
 }; // Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort
 
@@ -390,8 +390,8 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf destination_operator; //type: Ipv6AclOperatorEnum
-        ydk::YLeaf first_destination_port; //type: one of enumeration, uint32
-        ydk::YLeaf second_destination_port; //type: one of enumeration, uint32
+        ydk::YLeaf first_destination_port; //type: one of uint32, enumeration
+        ydk::YLeaf second_destination_port; //type: one of uint32, enumeration
 
 }; // Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort
 
@@ -434,8 +434,8 @@ class Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tcp_bits_match_operator; //type: Ipv6AclTcpMatchOperatorEnum
-        ydk::YLeaf tcp_bits; //type: one of enumeration, uint32
-        ydk::YLeaf tcp_bits_mask; //type: one of enumeration, uint32
+        ydk::YLeaf tcp_bits; //type: one of uint32, enumeration
+        ydk::YLeaf tcp_bits_mask; //type: one of uint32, enumeration
 
 }; // Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp
 

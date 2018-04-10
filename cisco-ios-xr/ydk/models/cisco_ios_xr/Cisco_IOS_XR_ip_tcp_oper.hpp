@@ -209,7 +209,7 @@ class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf id; //type: string
         ydk::YLeaf pcb; //type: uint64
         ydk::YLeaf vrf_id; //type: uint32
         ydk::YLeaf packets_sent; //type: uint64
@@ -302,18 +302,239 @@ class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf async_session; //type: boolean
-        ydk::YLeafList data_write_success_num; //type: list of  uint32
-        ydk::YLeafList data_read_success_num; //type: list of  uint32
-        ydk::YLeafList data_write_error_num; //type: list of  uint32
-        ydk::YLeafList data_read_error_num; //type: list of  uint32
-        ydk::YLeafList control_write_success_num; //type: list of  uint32
-        ydk::YLeafList control_read_success_num; //type: list of  uint32
-        ydk::YLeafList control_write_error_num; //type: list of  uint32
-        ydk::YLeafList control_read_error_num; //type: list of  uint32
-        ydk::YLeafList data_write_byte; //type: list of  uint64
-        ydk::YLeafList data_read_byte; //type: list of  uint64
+        class DataWriteSuccessNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum
+        class DataReadSuccessNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum
+        class DataWriteErrorNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum
+        class DataReadErrorNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum
+        class ControlWriteSuccessNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum
+        class ControlReadSuccessNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum
+        class ControlWriteErrorNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum
+        class ControlReadErrorNum; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum
+        class DataWriteByte; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte
+        class DataReadByte; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum> > data_write_success_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum> > data_read_success_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum> > data_write_error_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum> > data_read_error_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum> > control_write_success_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum> > control_read_success_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum> > control_write_error_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum> > control_read_error_num;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte> > data_write_byte;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte> > data_read_byte;
+        
 }; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum : public ydk::Entity
+{
+    public:
+        DataWriteSuccessNum();
+        ~DataWriteSuccessNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum : public ydk::Entity
+{
+    public:
+        DataReadSuccessNum();
+        ~DataReadSuccessNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum : public ydk::Entity
+{
+    public:
+        DataWriteErrorNum();
+        ~DataWriteErrorNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum : public ydk::Entity
+{
+    public:
+        DataReadErrorNum();
+        ~DataReadErrorNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum : public ydk::Entity
+{
+    public:
+        ControlWriteSuccessNum();
+        ~ControlWriteSuccessNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum : public ydk::Entity
+{
+    public:
+        ControlReadSuccessNum();
+        ~ControlReadSuccessNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum : public ydk::Entity
+{
+    public:
+        ControlWriteErrorNum();
+        ~ControlWriteErrorNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum : public ydk::Entity
+{
+    public:
+        ControlReadErrorNum();
+        ~ControlReadErrorNum();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte : public ydk::Entity
+{
+    public:
+        DataWriteByte();
+        ~DataWriteByte();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint64
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte
+
+
+class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte : public ydk::Entity
+{
+    public:
+        DataReadByte();
+        ~DataReadByte();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint64
+
+}; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte
 
 
 class TcpConnection::Nodes::Node::Statistics::Summary : public ydk::Entity
@@ -420,8 +641,55 @@ class TcpConnection::Nodes::Node::Statistics::Summary : public ydk::Entity
         ydk::YLeaf iq_sock_aborts; //type: uint32
         ydk::YLeaf iq_ingress_drops; //type: uint32
         ydk::YLeaf total_i_qs; //type: uint32
+        class IqsTotalIngpacket; //type: TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket
+        class IqsTotalEgpacket; //type: TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket> > iqs_total_ingpacket;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket> > iqs_total_egpacket;
+        
 }; // TcpConnection::Nodes::Node::Statistics::Summary
+
+
+class TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket : public ydk::Entity
+{
+    public:
+        IqsTotalIngpacket();
+        ~IqsTotalIngpacket();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket
+
+
+class TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket : public ydk::Entity
+{
+    public:
+        IqsTotalEgpacket();
+        ~IqsTotalEgpacket();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket
 
 
 class TcpConnection::Nodes::Node::ExtendedInformation : public ydk::Entity
@@ -510,7 +778,7 @@ class TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_id; //type: uint32
+        ydk::YLeaf pcb_id; //type: string
         ydk::YLeaf l4_protocol; //type: uint32
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf foreign_port; //type: uint16
@@ -842,7 +1110,7 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_id; //type: uint32
+        ydk::YLeaf pcb_id; //type: string
         ydk::YLeaf address_family; //type: TcpAddressFamily
         ydk::YLeaf pcb; //type: uint64
         ydk::YLeaf so; //type: uint64
@@ -918,8 +1186,6 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation : public
         ydk::YLeaf fib_pd_ctx_size; //type: uint32
         ydk::YLeaf num_labels; //type: uint32
         ydk::YLeaf local_app_instance; //type: uint32
-        ydk::YLeafList fib_pd_ctx; //type: list of  uint32
-        ydk::YLeafList fib_label_output; //type: list of  uint32
         class LocalAddress; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress
         class ForeignAddress; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress
         class SocketOptionFlags; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags
@@ -929,6 +1195,8 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation : public
         class RequestFlags; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags
         class ReceiveBufStateFlags; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags
         class SendBufStateFlags; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags
+        class FibPdCtx; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx
+        class FibLabelOutput; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput
         class Timer; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer
         class SackBlk; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk
         class SendSackHole; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole
@@ -942,6 +1210,8 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation : public
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags> request_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags> receive_buf_state_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags> send_buf_state_flags;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx> > fib_pd_ctx;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput> > fib_label_output;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer> > timer;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk> > sack_blk;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole> > send_sack_hole;
@@ -1211,6 +1481,48 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBuf
 }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags
 
 
+class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx : public ydk::Entity
+{
+    public:
+        FibPdCtx();
+        ~FibPdCtx();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx
+
+
+class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput : public ydk::Entity
+{
+    public:
+        FibLabelOutput();
+        ~FibLabelOutput();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput
+
+
 class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer : public ydk::Entity
 {
     public:
@@ -1320,7 +1632,7 @@ class TcpConnection::Nodes::Node::BriefInformations::BriefInformation : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_id; //type: uint32
+        ydk::YLeaf pcb_id; //type: string
         ydk::YLeaf af_name; //type: TcpAddressFamily
         ydk::YLeaf pcb; //type: uint64
         ydk::YLeaf connection_state; //type: TcpConnState
@@ -1693,10 +2005,55 @@ class TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession : public ydk::En
         ydk::YLeaf is_us_operational_up; //type: NsrStatus
         ydk::YLeaf is_ds_operational_up; //type: NsrStatus
         ydk::YLeaf is_only_receive_path_replication; //type: boolean
-        ydk::YLeafList local_address; //type: list of  string
-        ydk::YLeafList foreign_address; //type: list of  string
+        class LocalAddress; //type: TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress
+        class ForeignAddress; //type: TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress
 
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress> > local_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress> > foreign_address;
+        
 }; // TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession
+
+
+class TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress : public ydk::Entity
+{
+    public:
+        LocalAddress();
+        ~LocalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress
+
+
+class TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress : public ydk::Entity
+{
+    public:
+        ForeignAddress();
+        ~ForeignAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress
 
 
 class TcpNsr::Nodes::Node::Session::DetailSessions : public ydk::Entity
@@ -1782,13 +2139,15 @@ class TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession : public ydk::
         ydk::YLeaf max_number_of_held_packet_reach_time; //type: uint32
         ydk::YLeaf max_number_of_held_internal_ack; //type: int32
         ydk::YLeaf max_number_of_held_internal_ack_reach_time; //type: uint32
-        ydk::YLeafList local_address; //type: list of  string
-        ydk::YLeafList foreign_address; //type: list of  string
         class SetInformation; //type: TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation
+        class LocalAddress; //type: TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress
+        class ForeignAddress; //type: TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress
         class PacketHoldQueue; //type: TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue
         class InternalAckHoldQueue; //type: TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation> set_information;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress> > local_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress> > foreign_address;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue> > packet_hold_queue;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue> > internal_ack_hold_queue;
         
@@ -1831,6 +2190,48 @@ class TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformatio
         ydk::YLeaf is_sscb_init_sync_ready; //type: boolean
 
 }; // TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation
+
+
+class TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress : public ydk::Entity
+{
+    public:
+        LocalAddress();
+        ~LocalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress
+
+
+class TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress : public ydk::Entity
+{
+    public:
+        ForeignAddress();
+        ~ForeignAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: string
+
+}; // TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress
 
 
 class TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue : public ydk::Entity

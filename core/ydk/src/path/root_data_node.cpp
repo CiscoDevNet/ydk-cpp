@@ -122,11 +122,6 @@ ydk::path::RootDataImpl::create_datanode(const std::string& path, const std::str
     }
 
     DataNode* rdn = dn;
-    // created data node is the last child
-    while(!rdn->get_children().empty())
-    {
-        rdn = rdn->get_children()[0].get();
-    }
 
     //at this stage we have dn so for the remaining segments use dn as the parent
     if(segments.size() > 1)
@@ -212,7 +207,7 @@ ydk::path::RootDataImpl::find(const std::string& path)
     }
 
     auto s = get_schema_node().get_statement();
-    if(s.keyword == "rpc")
+    if(s.keyword == "rpc" || s.keyword == "action")
     {
         schema_path+="input/";
     }
@@ -220,7 +215,7 @@ ydk::path::RootDataImpl::find(const std::string& path)
     schema_path+=path;
 
     YLOG_DEBUG("Looking for schema nodes path in root: '{}'", schema_path);
-    const struct lys_node* found_snode = ly_ctx_get_node(m_node->schema->module->ctx, nullptr, schema_path.c_str());
+    const struct lys_node* found_snode = ly_ctx_get_node(m_node->schema->module->ctx, nullptr, schema_path.c_str(), 1);
 
     if(found_snode)
     {

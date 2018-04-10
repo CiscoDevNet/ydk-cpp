@@ -2699,7 +2699,8 @@ PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepIn
     pcep_flag_s{YType::boolean, "pcep-flag-s"},
     pcep_flag_r{YType::boolean, "pcep-flag-r"},
     pcep_flag_a{YType::boolean, "pcep-flag-a"},
-    pcep_flag_o{YType::uint8, "pcep-flag-o"}
+    pcep_flag_o{YType::uint8, "pcep-flag-o"},
+    pcep_flag_c{YType::uint8, "pcep-flag-c"}
     	,
     rsvp_error(std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError>())
 {
@@ -2720,6 +2721,7 @@ bool PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Lspp
 	|| pcep_flag_r.is_set
 	|| pcep_flag_a.is_set
 	|| pcep_flag_o.is_set
+	|| pcep_flag_c.is_set
 	|| (rsvp_error !=  nullptr && rsvp_error->has_data());
 }
 
@@ -2732,6 +2734,7 @@ bool PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Lspp
 	|| ydk::is_set(pcep_flag_r.yfilter)
 	|| ydk::is_set(pcep_flag_a.yfilter)
 	|| ydk::is_set(pcep_flag_o.yfilter)
+	|| ydk::is_set(pcep_flag_c.yfilter)
 	|| (rsvp_error !=  nullptr && rsvp_error->has_operation());
 }
 
@@ -2752,6 +2755,7 @@ std::vector<std::pair<std::string, LeafData> > PceLspData::TunnelDetailInfos::Tu
     if (pcep_flag_r.is_set || is_set(pcep_flag_r.yfilter)) leaf_name_data.push_back(pcep_flag_r.get_name_leafdata());
     if (pcep_flag_a.is_set || is_set(pcep_flag_a.yfilter)) leaf_name_data.push_back(pcep_flag_a.get_name_leafdata());
     if (pcep_flag_o.is_set || is_set(pcep_flag_o.yfilter)) leaf_name_data.push_back(pcep_flag_o.get_name_leafdata());
+    if (pcep_flag_c.is_set || is_set(pcep_flag_c.yfilter)) leaf_name_data.push_back(pcep_flag_c.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2821,6 +2825,12 @@ void PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Lspp
         pcep_flag_o.value_namespace = name_space;
         pcep_flag_o.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "pcep-flag-c")
+    {
+        pcep_flag_c = value;
+        pcep_flag_c.value_namespace = name_space;
+        pcep_flag_c.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2849,11 +2859,15 @@ void PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Lspp
     {
         pcep_flag_o.yfilter = yfilter;
     }
+    if(value_path == "pcep-flag-c")
+    {
+        pcep_flag_c.yfilter = yfilter;
+    }
 }
 
 bool PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rsvp-error" || name == "pcepid" || name == "pcep-flag-d" || name == "pcep-flag-s" || name == "pcep-flag-r" || name == "pcep-flag-a" || name == "pcep-flag-o")
+    if(name == "rsvp-error" || name == "pcepid" || name == "pcep-flag-d" || name == "pcep-flag-s" || name == "pcep-flag-r" || name == "pcep-flag-a" || name == "pcep-flag-o" || name == "pcep-flag-c")
         return true;
     return false;
 }
@@ -13522,10 +13536,9 @@ bool PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformati
 
 PceTopology::PrefixInfos::PrefixInfo::Address::Address()
     :
-    af_name{YType::enumeration, "af-name"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
+    ip(std::make_shared<PceTopology::PrefixInfos::PrefixInfo::Address::Ip>())
 {
+    ip->parent = this;
 
     yang_name = "address"; yang_parent_name = "prefix-info"; is_top_level_class = false; has_list_ancestor = true;
 }
@@ -13536,17 +13549,13 @@ PceTopology::PrefixInfos::PrefixInfo::Address::~Address()
 
 bool PceTopology::PrefixInfos::PrefixInfo::Address::has_data() const
 {
-    return af_name.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
+    return (ip !=  nullptr && ip->has_data());
 }
 
 bool PceTopology::PrefixInfos::PrefixInfo::Address::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
+	|| (ip !=  nullptr && ip->has_operation());
 }
 
 std::string PceTopology::PrefixInfos::PrefixInfo::Address::get_segment_path() const
@@ -13560,6 +13569,92 @@ std::vector<std::pair<std::string, LeafData> > PceTopology::PrefixInfos::PrefixI
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ip")
+    {
+        if(ip == nullptr)
+        {
+            ip = std::make_shared<PceTopology::PrefixInfos::PrefixInfo::Address::Ip>();
+        }
+        return ip;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ip != nullptr)
+    {
+        children["ip"] = ip;
+    }
+
+    return children;
+}
+
+void PceTopology::PrefixInfos::PrefixInfo::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PceTopology::PrefixInfos::PrefixInfo::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PceTopology::PrefixInfos::PrefixInfo::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip")
+        return true;
+    return false;
+}
+
+PceTopology::PrefixInfos::PrefixInfo::Address::Ip::Ip()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "ip"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+PceTopology::PrefixInfos::PrefixInfo::Address::Ip::~Ip()
+{
+}
+
+bool PceTopology::PrefixInfos::PrefixInfo::Address::Ip::has_data() const
+{
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool PceTopology::PrefixInfos::PrefixInfo::Address::Ip::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string PceTopology::PrefixInfos::PrefixInfo::Address::Ip::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PceTopology::PrefixInfos::PrefixInfo::Address::Ip::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
     if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
     if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
     if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
@@ -13568,19 +13663,19 @@ std::vector<std::pair<std::string, LeafData> > PceTopology::PrefixInfos::PrefixI
 
 }
 
-std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::Address::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::Address::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PceTopology::PrefixInfos::PrefixInfo::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PceTopology::PrefixInfos::PrefixInfo::Address::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
@@ -13602,7 +13697,7 @@ void PceTopology::PrefixInfos::PrefixInfo::Address::set_value(const std::string 
     }
 }
 
-void PceTopology::PrefixInfos::PrefixInfo::Address::set_filter(const std::string & value_path, YFilter yfilter)
+void PceTopology::PrefixInfos::PrefixInfo::Address::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "af-name")
     {
@@ -13618,7 +13713,7 @@ void PceTopology::PrefixInfos::PrefixInfo::Address::set_filter(const std::string
     }
 }
 
-bool PceTopology::PrefixInfos::PrefixInfo::Address::has_leaf_or_child_of_name(const std::string & name) const
+bool PceTopology::PrefixInfos::PrefixInfo::Address::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
         return true;
@@ -19995,116 +20090,6 @@ void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::s
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "igp-information" || name == "srgb-information" || name == "node-name" || name == "ipv4-bgp-router-id-set" || name == "ipv4-bgp-router-id" || name == "ipv4te-router-id-set" || name == "ipv4te-router-id")
-        return true;
-    return false;
-}
-
-Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::IgpInformation()
-    :
-    domain_identifier{YType::uint64, "domain-identifier"},
-    autonomous_system_number{YType::uint32, "autonomous-system-number"}
-    	,
-    igp(std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp>())
-{
-    igp->parent = this;
-
-    yang_name = "igp-information"; yang_parent_name = "remote-node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::~IgpInformation()
-{
-}
-
-bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::has_data() const
-{
-    return domain_identifier.is_set
-	|| autonomous_system_number.is_set
-	|| (igp !=  nullptr && igp->has_data());
-}
-
-bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(domain_identifier.yfilter)
-	|| ydk::is_set(autonomous_system_number.yfilter)
-	|| (igp !=  nullptr && igp->has_operation());
-}
-
-std::string Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igp-information";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (domain_identifier.is_set || is_set(domain_identifier.yfilter)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
-    if (autonomous_system_number.is_set || is_set(autonomous_system_number.yfilter)) leaf_name_data.push_back(autonomous_system_number.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "igp")
-    {
-        if(igp == nullptr)
-        {
-            igp = std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp>();
-        }
-        return igp;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(igp != nullptr)
-    {
-        children["igp"] = igp;
-    }
-
-    return children;
-}
-
-void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "domain-identifier")
-    {
-        domain_identifier = value;
-        domain_identifier.value_namespace = name_space;
-        domain_identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "autonomous-system-number")
-    {
-        autonomous_system_number = value;
-        autonomous_system_number.value_namespace = name_space;
-        autonomous_system_number.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "domain-identifier")
-    {
-        domain_identifier.yfilter = yfilter;
-    }
-    if(value_path == "autonomous-system-number")
-    {
-        autonomous_system_number.yfilter = yfilter;
-    }
-}
-
-bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "igp" || name == "domain-identifier" || name == "autonomous-system-number")
         return true;
     return false;
 }

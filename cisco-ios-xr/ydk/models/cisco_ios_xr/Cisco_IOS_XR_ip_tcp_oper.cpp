@@ -831,7 +831,7 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::has_leaf_or_child_of_name(con
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Pcb()
     :
-    id{YType::uint32, "id"},
+    id{YType::str, "id"},
     pcb{YType::uint64, "pcb"},
     vrf_id{YType::uint32, "vrf-id"},
     packets_sent{YType::uint64, "packets-sent"},
@@ -1425,17 +1425,7 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::has_leaf_
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::AsyncSessionStats()
     :
-    async_session{YType::boolean, "async-session"},
-    data_write_success_num{YType::uint32, "data-write-success-num"},
-    data_read_success_num{YType::uint32, "data-read-success-num"},
-    data_write_error_num{YType::uint32, "data-write-error-num"},
-    data_read_error_num{YType::uint32, "data-read-error-num"},
-    control_write_success_num{YType::uint32, "control-write-success-num"},
-    control_read_success_num{YType::uint32, "control-read-success-num"},
-    control_write_error_num{YType::uint32, "control-write-error-num"},
-    control_read_error_num{YType::uint32, "control-read-error-num"},
-    data_write_byte{YType::uint64, "data-write-byte"},
-    data_read_byte{YType::uint64, "data-read-byte"}
+    async_session{YType::boolean, "async-session"}
 {
 
     yang_name = "async-session-stats"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true;
@@ -1447,54 +1437,54 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::~AsyncSess
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_data() const
 {
-    for (auto const & leaf : data_write_success_num.getYLeafs())
+    for (std::size_t index=0; index<data_write_success_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(data_write_success_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : data_read_success_num.getYLeafs())
+    for (std::size_t index=0; index<data_read_success_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(data_read_success_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : data_write_error_num.getYLeafs())
+    for (std::size_t index=0; index<data_write_error_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(data_write_error_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : data_read_error_num.getYLeafs())
+    for (std::size_t index=0; index<data_read_error_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(data_read_error_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : control_write_success_num.getYLeafs())
+    for (std::size_t index=0; index<control_write_success_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(control_write_success_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : control_read_success_num.getYLeafs())
+    for (std::size_t index=0; index<control_read_success_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(control_read_success_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : control_write_error_num.getYLeafs())
+    for (std::size_t index=0; index<control_write_error_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(control_write_error_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : control_read_error_num.getYLeafs())
+    for (std::size_t index=0; index<control_read_error_num.size(); index++)
     {
-        if(leaf.is_set)
+        if(control_read_error_num[index]->has_data())
             return true;
     }
-    for (auto const & leaf : data_write_byte.getYLeafs())
+    for (std::size_t index=0; index<data_write_byte.size(); index++)
     {
-        if(leaf.is_set)
+        if(data_write_byte[index]->has_data())
             return true;
     }
-    for (auto const & leaf : data_read_byte.getYLeafs())
+    for (std::size_t index=0; index<data_read_byte.size(); index++)
     {
-        if(leaf.is_set)
+        if(data_read_byte[index]->has_data())
             return true;
     }
     return async_session.is_set;
@@ -1502,68 +1492,58 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_d
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_operation() const
 {
-    for (auto const & leaf : data_write_success_num.getYLeafs())
+    for (std::size_t index=0; index<data_write_success_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(data_write_success_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : data_read_success_num.getYLeafs())
+    for (std::size_t index=0; index<data_read_success_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(data_read_success_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : data_write_error_num.getYLeafs())
+    for (std::size_t index=0; index<data_write_error_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(data_write_error_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : data_read_error_num.getYLeafs())
+    for (std::size_t index=0; index<data_read_error_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(data_read_error_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : control_write_success_num.getYLeafs())
+    for (std::size_t index=0; index<control_write_success_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(control_write_success_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : control_read_success_num.getYLeafs())
+    for (std::size_t index=0; index<control_read_success_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(control_read_success_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : control_write_error_num.getYLeafs())
+    for (std::size_t index=0; index<control_write_error_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(control_write_error_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : control_read_error_num.getYLeafs())
+    for (std::size_t index=0; index<control_read_error_num.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(control_read_error_num[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : data_write_byte.getYLeafs())
+    for (std::size_t index=0; index<data_write_byte.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(data_write_byte[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : data_read_byte.getYLeafs())
+    for (std::size_t index=0; index<data_read_byte.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(data_read_byte[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(async_session.yfilter)
-	|| ydk::is_set(data_write_success_num.yfilter)
-	|| ydk::is_set(data_read_success_num.yfilter)
-	|| ydk::is_set(data_write_error_num.yfilter)
-	|| ydk::is_set(data_read_error_num.yfilter)
-	|| ydk::is_set(control_write_success_num.yfilter)
-	|| ydk::is_set(control_read_success_num.yfilter)
-	|| ydk::is_set(control_write_error_num.yfilter)
-	|| ydk::is_set(control_read_error_num.yfilter)
-	|| ydk::is_set(data_write_byte.yfilter)
-	|| ydk::is_set(data_read_byte.yfilter);
+	|| ydk::is_set(async_session.yfilter);
 }
 
 std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_segment_path() const
@@ -1579,32 +1559,92 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
     if (async_session.is_set || is_set(async_session.yfilter)) leaf_name_data.push_back(async_session.get_name_leafdata());
 
-    auto data_write_success_num_name_datas = data_write_success_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), data_write_success_num_name_datas.begin(), data_write_success_num_name_datas.end());
-    auto data_read_success_num_name_datas = data_read_success_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), data_read_success_num_name_datas.begin(), data_read_success_num_name_datas.end());
-    auto data_write_error_num_name_datas = data_write_error_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), data_write_error_num_name_datas.begin(), data_write_error_num_name_datas.end());
-    auto data_read_error_num_name_datas = data_read_error_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), data_read_error_num_name_datas.begin(), data_read_error_num_name_datas.end());
-    auto control_write_success_num_name_datas = control_write_success_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), control_write_success_num_name_datas.begin(), control_write_success_num_name_datas.end());
-    auto control_read_success_num_name_datas = control_read_success_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), control_read_success_num_name_datas.begin(), control_read_success_num_name_datas.end());
-    auto control_write_error_num_name_datas = control_write_error_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), control_write_error_num_name_datas.begin(), control_write_error_num_name_datas.end());
-    auto control_read_error_num_name_datas = control_read_error_num.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), control_read_error_num_name_datas.begin(), control_read_error_num_name_datas.end());
-    auto data_write_byte_name_datas = data_write_byte.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), data_write_byte_name_datas.begin(), data_write_byte_name_datas.end());
-    auto data_read_byte_name_datas = data_read_byte.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), data_read_byte_name_datas.begin(), data_read_byte_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "data-write-success-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum>();
+        c->parent = this;
+        data_write_success_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "data-read-success-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum>();
+        c->parent = this;
+        data_read_success_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "data-write-error-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum>();
+        c->parent = this;
+        data_write_error_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "data-read-error-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum>();
+        c->parent = this;
+        data_read_error_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "control-write-success-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum>();
+        c->parent = this;
+        control_write_success_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "control-read-success-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum>();
+        c->parent = this;
+        control_read_success_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "control-write-error-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum>();
+        c->parent = this;
+        control_write_error_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "control-read-error-num")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum>();
+        c->parent = this;
+        control_read_error_num.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "data-write-byte")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte>();
+        c->parent = this;
+        data_write_byte.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "data-read-byte")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte>();
+        c->parent = this;
+        data_read_byte.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1612,6 +1652,96 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : data_write_success_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : data_read_success_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : data_write_error_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : data_read_error_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : control_write_success_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : control_read_success_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : control_write_error_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : control_read_error_num)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : data_write_byte)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : data_read_byte)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -1623,46 +1753,6 @@ void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::set_v
         async_session.value_namespace = name_space;
         async_session.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "data-write-success-num")
-    {
-        data_write_success_num.append(value);
-    }
-    if(value_path == "data-read-success-num")
-    {
-        data_read_success_num.append(value);
-    }
-    if(value_path == "data-write-error-num")
-    {
-        data_write_error_num.append(value);
-    }
-    if(value_path == "data-read-error-num")
-    {
-        data_read_error_num.append(value);
-    }
-    if(value_path == "control-write-success-num")
-    {
-        control_write_success_num.append(value);
-    }
-    if(value_path == "control-read-success-num")
-    {
-        control_read_success_num.append(value);
-    }
-    if(value_path == "control-write-error-num")
-    {
-        control_write_error_num.append(value);
-    }
-    if(value_path == "control-read-error-num")
-    {
-        control_read_error_num.append(value);
-    }
-    if(value_path == "data-write-byte")
-    {
-        data_write_byte.append(value);
-    }
-    if(value_path == "data-read-byte")
-    {
-        data_read_byte.append(value);
-    }
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1671,51 +1761,781 @@ void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::set_f
     {
         async_session.yfilter = yfilter;
     }
-    if(value_path == "data-write-success-num")
-    {
-        data_write_success_num.yfilter = yfilter;
-    }
-    if(value_path == "data-read-success-num")
-    {
-        data_read_success_num.yfilter = yfilter;
-    }
-    if(value_path == "data-write-error-num")
-    {
-        data_write_error_num.yfilter = yfilter;
-    }
-    if(value_path == "data-read-error-num")
-    {
-        data_read_error_num.yfilter = yfilter;
-    }
-    if(value_path == "control-write-success-num")
-    {
-        control_write_success_num.yfilter = yfilter;
-    }
-    if(value_path == "control-read-success-num")
-    {
-        control_read_success_num.yfilter = yfilter;
-    }
-    if(value_path == "control-write-error-num")
-    {
-        control_write_error_num.yfilter = yfilter;
-    }
-    if(value_path == "control-read-error-num")
-    {
-        control_read_error_num.yfilter = yfilter;
-    }
-    if(value_path == "data-write-byte")
-    {
-        data_write_byte.yfilter = yfilter;
-    }
-    if(value_path == "data-read-byte")
-    {
-        data_read_byte.yfilter = yfilter;
-    }
 }
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "async-session" || name == "data-write-success-num" || name == "data-read-success-num" || name == "data-write-error-num" || name == "data-read-error-num" || name == "control-write-success-num" || name == "control-read-success-num" || name == "control-write-error-num" || name == "control-read-error-num" || name == "data-write-byte" || name == "data-read-byte")
+    if(name == "data-write-success-num" || name == "data-read-success-num" || name == "data-write-error-num" || name == "data-read-error-num" || name == "control-write-success-num" || name == "control-read-success-num" || name == "control-write-error-num" || name == "control-read-error-num" || name == "data-write-byte" || name == "data-read-byte" || name == "async-session")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::DataWriteSuccessNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "data-write-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::~DataWriteSuccessNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data-write-success-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::DataReadSuccessNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "data-read-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::~DataReadSuccessNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data-read-success-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::DataWriteErrorNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "data-write-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::~DataWriteErrorNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data-write-error-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::DataReadErrorNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "data-read-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::~DataReadErrorNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data-read-error-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::ControlWriteSuccessNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "control-write-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::~ControlWriteSuccessNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "control-write-success-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::ControlReadSuccessNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "control-read-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::~ControlReadSuccessNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "control-read-success-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::ControlWriteErrorNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "control-write-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::~ControlWriteErrorNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "control-write-error-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::ControlReadErrorNum()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "control-read-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::~ControlReadErrorNum()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "control-read-error-num";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::DataWriteByte()
+    :
+    entry{YType::uint64, "entry"}
+{
+
+    yang_name = "data-write-byte"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::~DataWriteByte()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data-write-byte";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::DataReadByte()
+    :
+    entry{YType::uint64, "entry"}
+{
+
+    yang_name = "data-read-byte"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::~DataReadByte()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data-read-byte";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -1821,6 +2641,16 @@ TcpConnection::Nodes::Node::Statistics::Summary::~Summary()
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_data() const
 {
+    for (std::size_t index=0; index<iqs_total_ingpacket.size(); index++)
+    {
+        if(iqs_total_ingpacket[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<iqs_total_egpacket.size(); index++)
+    {
+        if(iqs_total_egpacket[index]->has_data())
+            return true;
+    }
     return syn_cache_count.is_set
 	|| num_open_sockets.is_set
 	|| total_pakets_sent.is_set
@@ -1913,6 +2743,16 @@ bool TcpConnection::Nodes::Node::Statistics::Summary::has_data() const
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_operation() const
 {
+    for (std::size_t index=0; index<iqs_total_ingpacket.size(); index++)
+    {
+        if(iqs_total_ingpacket[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<iqs_total_egpacket.size(); index++)
+    {
+        if(iqs_total_egpacket[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(syn_cache_count.yfilter)
 	|| ydk::is_set(num_open_sockets.yfilter)
@@ -2110,6 +2950,22 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "iqs-total-ingpacket")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket>();
+        c->parent = this;
+        iqs_total_ingpacket.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "iqs-total-egpacket")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket>();
+        c->parent = this;
+        iqs_total_egpacket.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -2117,6 +2973,24 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : iqs_total_ingpacket)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : iqs_total_egpacket)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -3010,7 +3884,161 @@ void TcpConnection::Nodes::Node::Statistics::Summary::set_filter(const std::stri
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "syn-cache-count" || name == "num-open-sockets" || name == "total-pakets-sent" || name == "send-packets-dropped" || name == "send-auth-packets-dropped" || name == "data-pakets-sent" || name == "data-bytes-sent" || name == "packets-retransmitted" || name == "bytes-retransmitted" || name == "ack-only-packets-sent" || name == "delay-ack-packets-sent" || name == "urgent-only-packets-sent" || name == "window-probe-packets-sent" || name == "window-update-packets-sent" || name == "control-packets-sent" || name == "rst-packets-sent" || name == "total-packets-received" || name == "received-packets-dropped" || name == "synacl-match-pkts-dropped" || name == "received-packets-dropped-stale-c-hdr" || name == "received-auth-packets-dropped" || name == "ack-packets-received" || name == "ackbytes-received" || name == "duplicated-ack-packets-received" || name == "ack-packets-for-unsent-received" || name == "data-packets-received-in-sequence" || name == "data-bytes-received-in-sequence" || name == "duplicate-packets-received" || name == "duplicate-bytes-received" || name == "partial-duplicate-ack-received" || name == "partial-duplicate-bytes-received" || name == "out-of-order-packets-received" || name == "out-of-order-bytes-received" || name == "after-window-packets-received" || name == "after-window-bytes-received" || name == "window-probe-packets-received" || name == "window-update-packets-received" || name == "packets-received-after-close-packet" || name == "bad-checksum-packets-received" || name == "too-short-packets-received" || name == "malformed-packets-received" || name == "no-port-packets-received" || name == "connections-requested" || name == "connections-accepted" || name == "connections-established" || name == "connections-forcibly-closed" || name == "connections-closed" || name == "connections-dropped" || name == "embryonic-connection-dropped" || name == "connections-failed" || name == "established-connections-reset" || name == "retransmit-timeouts" || name == "retransmit-dropped" || name == "keep-alive-timeouts" || name == "keep-alive-dropped" || name == "keep-alive-probes" || name == "paws-dropped" || name == "persist-dropped" || name == "try-lock-dropped" || name == "connection-rate-limited" || name == "syn-cache-added" || name == "syn-cache-completed" || name == "syn-cache-timed-out" || name == "syn-cache-overflow" || name == "syn-cache-reset" || name == "syn-cache-unreach" || name == "syn-cache-bucket-oflow" || name == "syn-cache-aborted" || name == "syn-cache-duplicate-sy-ns" || name == "syn-cache-dropped" || name == "pulse-errors" || name == "socket-layer-packets" || name == "reassembly-packets" || name == "recovered-packets" || name == "packet-failures" || name == "mss-up" || name == "mss-down" || name == "truncated-write-iov" || name == "no-throttle" || name == "low-water-mark-throttle" || name == "high-water-mark-throttle" || name == "stalled-timer-tickle-count" || name == "stalled-timer-tickle-time" || name == "iq-sock-writes" || name == "iq-sock-retries" || name == "iq-sock-aborts" || name == "iq-ingress-drops" || name == "total-i-qs")
+    if(name == "iqs-total-ingpacket" || name == "iqs-total-egpacket" || name == "syn-cache-count" || name == "num-open-sockets" || name == "total-pakets-sent" || name == "send-packets-dropped" || name == "send-auth-packets-dropped" || name == "data-pakets-sent" || name == "data-bytes-sent" || name == "packets-retransmitted" || name == "bytes-retransmitted" || name == "ack-only-packets-sent" || name == "delay-ack-packets-sent" || name == "urgent-only-packets-sent" || name == "window-probe-packets-sent" || name == "window-update-packets-sent" || name == "control-packets-sent" || name == "rst-packets-sent" || name == "total-packets-received" || name == "received-packets-dropped" || name == "synacl-match-pkts-dropped" || name == "received-packets-dropped-stale-c-hdr" || name == "received-auth-packets-dropped" || name == "ack-packets-received" || name == "ackbytes-received" || name == "duplicated-ack-packets-received" || name == "ack-packets-for-unsent-received" || name == "data-packets-received-in-sequence" || name == "data-bytes-received-in-sequence" || name == "duplicate-packets-received" || name == "duplicate-bytes-received" || name == "partial-duplicate-ack-received" || name == "partial-duplicate-bytes-received" || name == "out-of-order-packets-received" || name == "out-of-order-bytes-received" || name == "after-window-packets-received" || name == "after-window-bytes-received" || name == "window-probe-packets-received" || name == "window-update-packets-received" || name == "packets-received-after-close-packet" || name == "bad-checksum-packets-received" || name == "too-short-packets-received" || name == "malformed-packets-received" || name == "no-port-packets-received" || name == "connections-requested" || name == "connections-accepted" || name == "connections-established" || name == "connections-forcibly-closed" || name == "connections-closed" || name == "connections-dropped" || name == "embryonic-connection-dropped" || name == "connections-failed" || name == "established-connections-reset" || name == "retransmit-timeouts" || name == "retransmit-dropped" || name == "keep-alive-timeouts" || name == "keep-alive-dropped" || name == "keep-alive-probes" || name == "paws-dropped" || name == "persist-dropped" || name == "try-lock-dropped" || name == "connection-rate-limited" || name == "syn-cache-added" || name == "syn-cache-completed" || name == "syn-cache-timed-out" || name == "syn-cache-overflow" || name == "syn-cache-reset" || name == "syn-cache-unreach" || name == "syn-cache-bucket-oflow" || name == "syn-cache-aborted" || name == "syn-cache-duplicate-sy-ns" || name == "syn-cache-dropped" || name == "pulse-errors" || name == "socket-layer-packets" || name == "reassembly-packets" || name == "recovered-packets" || name == "packet-failures" || name == "mss-up" || name == "mss-down" || name == "truncated-write-iov" || name == "no-throttle" || name == "low-water-mark-throttle" || name == "high-water-mark-throttle" || name == "stalled-timer-tickle-count" || name == "stalled-timer-tickle-time" || name == "iq-sock-writes" || name == "iq-sock-retries" || name == "iq-sock-aborts" || name == "iq-ingress-drops" || name == "total-i-qs")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::IqsTotalIngpacket()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "iqs-total-ingpacket"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::~IqsTotalIngpacket()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "iqs-total-ingpacket";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::IqsTotalEgpacket()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "iqs-total-egpacket"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::~IqsTotalEgpacket()
+{
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "iqs-total-egpacket";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -3292,7 +4320,7 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ConnectionId()
     :
-    pcb_id{YType::uint32, "pcb-id"},
+    pcb_id{YType::str, "pcb-id"},
     l4_protocol{YType::uint32, "l4-protocol"},
     local_port{YType::uint16, "local-port"},
     foreign_port{YType::uint16, "foreign-port"}
@@ -4951,7 +5979,7 @@ bool TcpConnection::Nodes::Node::DetailInformations::has_leaf_or_child_of_name(c
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::DetailInformation()
     :
-    pcb_id{YType::uint32, "pcb-id"},
+    pcb_id{YType::str, "pcb-id"},
     address_family{YType::enumeration, "address-family"},
     pcb{YType::uint64, "pcb"},
     so{YType::uint64, "so"},
@@ -5026,9 +6054,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::DetailInforma
     output_ifhandle{YType::uint32, "output-ifhandle"},
     fib_pd_ctx_size{YType::uint32, "fib-pd-ctx-size"},
     num_labels{YType::uint32, "num-labels"},
-    local_app_instance{YType::uint32, "local-app-instance"},
-    fib_pd_ctx{YType::uint32, "fib-pd-ctx"},
-    fib_label_output{YType::uint32, "fib-label-output"}
+    local_app_instance{YType::uint32, "local-app-instance"}
     	,
     local_address(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress>())
 	,foreign_address(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress>())
@@ -5059,6 +6085,16 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::~DetailInform
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_data() const
 {
+    for (std::size_t index=0; index<fib_pd_ctx.size(); index++)
+    {
+        if(fib_pd_ctx[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<fib_label_output.size(); index++)
+    {
+        if(fib_label_output[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<timer.size(); index++)
     {
         if(timer[index]->has_data())
@@ -5072,16 +6108,6 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_data
     for (std::size_t index=0; index<send_sack_hole.size(); index++)
     {
         if(send_sack_hole[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : fib_pd_ctx.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : fib_label_output.getYLeafs())
-    {
-        if(leaf.is_set)
             return true;
     }
     return pcb_id.is_set
@@ -5173,6 +6199,16 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_data
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_operation() const
 {
+    for (std::size_t index=0; index<fib_pd_ctx.size(); index++)
+    {
+        if(fib_pd_ctx[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<fib_label_output.size(); index++)
+    {
+        if(fib_label_output[index]->has_operation())
+            return true;
+    }
     for (std::size_t index=0; index<timer.size(); index++)
     {
         if(timer[index]->has_operation())
@@ -5186,16 +6222,6 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_oper
     for (std::size_t index=0; index<send_sack_hole.size(); index++)
     {
         if(send_sack_hole[index]->has_operation())
-            return true;
-    }
-    for (auto const & leaf : fib_pd_ctx.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : fib_label_output.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
             return true;
     }
     return is_set(yfilter)
@@ -5275,8 +6301,6 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_oper
 	|| ydk::is_set(fib_pd_ctx_size.yfilter)
 	|| ydk::is_set(num_labels.yfilter)
 	|| ydk::is_set(local_app_instance.yfilter)
-	|| ydk::is_set(fib_pd_ctx.yfilter)
-	|| ydk::is_set(fib_label_output.yfilter)
 	|| (local_address !=  nullptr && local_address->has_operation())
 	|| (foreign_address !=  nullptr && foreign_address->has_operation())
 	|| (socket_option_flags !=  nullptr && socket_option_flags->has_operation())
@@ -5376,10 +6400,6 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
     if (num_labels.is_set || is_set(num_labels.yfilter)) leaf_name_data.push_back(num_labels.get_name_leafdata());
     if (local_app_instance.is_set || is_set(local_app_instance.yfilter)) leaf_name_data.push_back(local_app_instance.get_name_leafdata());
 
-    auto fib_pd_ctx_name_datas = fib_pd_ctx.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), fib_pd_ctx_name_datas.begin(), fib_pd_ctx_name_datas.end());
-    auto fib_label_output_name_datas = fib_label_output.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), fib_label_output_name_datas.begin(), fib_label_output_name_datas.end());
     return leaf_name_data;
 
 }
@@ -5467,6 +6487,22 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
         return send_buf_state_flags;
     }
 
+    if(child_yang_name == "fib-pd-ctx")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx>();
+        c->parent = this;
+        fib_pd_ctx.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "fib-label-output")
+    {
+        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput>();
+        c->parent = this;
+        fib_label_output.push_back(c);
+        return c;
+    }
+
     if(child_yang_name == "timer")
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer>();
@@ -5541,6 +6577,24 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Detai
     if(send_buf_state_flags != nullptr)
     {
         children["send-buf-state-flags"] = send_buf_state_flags;
+    }
+
+    count = 0;
+    for (auto const & c : fib_pd_ctx)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : fib_label_output)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     count = 0;
@@ -6031,14 +7085,6 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::set_valu
         local_app_instance.value_namespace = name_space;
         local_app_instance.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fib-pd-ctx")
-    {
-        fib_pd_ctx.append(value);
-    }
-    if(value_path == "fib-label-output")
-    {
-        fib_label_output.append(value);
-    }
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6347,19 +7393,11 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::set_filt
     {
         local_app_instance.yfilter = yfilter;
     }
-    if(value_path == "fib-pd-ctx")
-    {
-        fib_pd_ctx.yfilter = yfilter;
-    }
-    if(value_path == "fib-label-output")
-    {
-        fib_label_output.yfilter = yfilter;
-    }
 }
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-address" || name == "foreign-address" || name == "socket-option-flags" || name == "socket-state-flags" || name == "feature-flags" || name == "state-flags" || name == "request-flags" || name == "receive-buf-state-flags" || name == "send-buf-state-flags" || name == "timer" || name == "sack-blk" || name == "send-sack-hole" || name == "pcb-id" || name == "address-family" || name == "pcb" || name == "so" || name == "tcpcb" || name == "vrf-id" || name == "connection-state" || name == "established-time" || name == "local-pid" || name == "local-port" || name == "foreign-port" || name == "packet-priority" || name == "packet-tos" || name == "packet-ttl" || name == "hash-index" || name == "current-receive-queue-size" || name == "max-receive-queue-size" || name == "current-send-queue-size" || name == "max-send-queue-size" || name == "current-receive-queue-packet-size" || name == "max-receive-queue-packet-size" || name == "save-queue-size" || name == "send-initial-sequence-num" || name == "send-unack-sequence-num" || name == "send-next-sequence-num" || name == "send-max-sequence-num" || name == "send-window-size" || name == "send-congestion-window-size" || name == "receive-initial-sequence-num" || name == "receive-next-sequence-num" || name == "receive-adv-window-size" || name == "receive-window-size" || name == "mss" || name == "peer-mss" || name == "srtt" || name == "rtto" || name == "krtt" || name == "srtv" || name == "min-rtt" || name == "max-rtt" || name == "retries" || name == "ack-hold-time" || name == "giveup-time" || name == "keep-alive-time" || name == "syn-wait-time" || name == "rxsy-naclname" || name == "soft-error" || name == "sock-error" || name == "is-retrans-forever" || name == "min-mss" || name == "max-mss" || name == "connect-retries" || name == "connect-retry-interval" || name == "receive-window-scale" || name == "send-window-scale" || name == "request-receive-window-scale" || name == "rqst-send-wnd-scale" || name == "time-stamp-recent" || name == "time-stamp-recent-age" || name == "last-ack-sent" || name == "sendbuf-lowwat" || name == "recvbuf-lowwat" || name == "sendbuf-hiwat" || name == "recvbuf-hiwat" || name == "sendbuf-notify-thresh" || name == "recvbuf-datasize" || name == "queue-length" || name == "queue-zero-length" || name == "queue-limit" || name == "socket-error" || name == "auto-rearm" || name == "send-pdu-count" || name == "output-ifhandle" || name == "fib-pd-ctx-size" || name == "num-labels" || name == "local-app-instance" || name == "fib-pd-ctx" || name == "fib-label-output")
+    if(name == "local-address" || name == "foreign-address" || name == "socket-option-flags" || name == "socket-state-flags" || name == "feature-flags" || name == "state-flags" || name == "request-flags" || name == "receive-buf-state-flags" || name == "send-buf-state-flags" || name == "fib-pd-ctx" || name == "fib-label-output" || name == "timer" || name == "sack-blk" || name == "send-sack-hole" || name == "pcb-id" || name == "address-family" || name == "pcb" || name == "so" || name == "tcpcb" || name == "vrf-id" || name == "connection-state" || name == "established-time" || name == "local-pid" || name == "local-port" || name == "foreign-port" || name == "packet-priority" || name == "packet-tos" || name == "packet-ttl" || name == "hash-index" || name == "current-receive-queue-size" || name == "max-receive-queue-size" || name == "current-send-queue-size" || name == "max-send-queue-size" || name == "current-receive-queue-packet-size" || name == "max-receive-queue-packet-size" || name == "save-queue-size" || name == "send-initial-sequence-num" || name == "send-unack-sequence-num" || name == "send-next-sequence-num" || name == "send-max-sequence-num" || name == "send-window-size" || name == "send-congestion-window-size" || name == "receive-initial-sequence-num" || name == "receive-next-sequence-num" || name == "receive-adv-window-size" || name == "receive-window-size" || name == "mss" || name == "peer-mss" || name == "srtt" || name == "rtto" || name == "krtt" || name == "srtv" || name == "min-rtt" || name == "max-rtt" || name == "retries" || name == "ack-hold-time" || name == "giveup-time" || name == "keep-alive-time" || name == "syn-wait-time" || name == "rxsy-naclname" || name == "soft-error" || name == "sock-error" || name == "is-retrans-forever" || name == "min-mss" || name == "max-mss" || name == "connect-retries" || name == "connect-retry-interval" || name == "receive-window-scale" || name == "send-window-scale" || name == "request-receive-window-scale" || name == "rqst-send-wnd-scale" || name == "time-stamp-recent" || name == "time-stamp-recent-age" || name == "last-ack-sent" || name == "sendbuf-lowwat" || name == "recvbuf-lowwat" || name == "sendbuf-hiwat" || name == "recvbuf-hiwat" || name == "sendbuf-notify-thresh" || name == "recvbuf-datasize" || name == "queue-length" || name == "queue-zero-length" || name == "queue-limit" || name == "socket-error" || name == "auto-rearm" || name == "send-pdu-count" || name == "output-ifhandle" || name == "fib-pd-ctx-size" || name == "num-labels" || name == "local-app-instance")
         return true;
     return false;
 }
@@ -8079,6 +9117,160 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufS
     return false;
 }
 
+TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::FibPdCtx()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "fib-pd-ctx"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::~FibPdCtx()
+{
+}
+
+bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-pd-ctx";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::FibLabelOutput()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "fib-label-output"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::~FibLabelOutput()
+{
+}
+
+bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fib-label-output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::Timer()
     :
     timer_type{YType::enumeration, "timer-type"},
@@ -8500,7 +9692,7 @@ bool TcpConnection::Nodes::Node::BriefInformations::has_leaf_or_child_of_name(co
 
 TcpConnection::Nodes::Node::BriefInformations::BriefInformation::BriefInformation()
     :
-    pcb_id{YType::uint32, "pcb-id"},
+    pcb_id{YType::str, "pcb-id"},
     af_name{YType::enumeration, "af-name"},
     pcb{YType::uint64, "pcb"},
     connection_state{YType::enumeration, "connection-state"},
@@ -10180,9 +11372,7 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::BriefSession()
     is_admin_configured_up{YType::boolean, "is-admin-configured-up"},
     is_us_operational_up{YType::enumeration, "is-us-operational-up"},
     is_ds_operational_up{YType::enumeration, "is-ds-operational-up"},
-    is_only_receive_path_replication{YType::boolean, "is-only-receive-path-replication"},
-    local_address{YType::str, "local-address"},
-    foreign_address{YType::str, "foreign-address"}
+    is_only_receive_path_replication{YType::boolean, "is-only-receive-path-replication"}
 {
 
     yang_name = "brief-session"; yang_parent_name = "brief-sessions"; is_top_level_class = false; has_list_ancestor = true;
@@ -10194,14 +11384,14 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::~BriefSession()
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_data() const
 {
-    for (auto const & leaf : local_address.getYLeafs())
+    for (std::size_t index=0; index<local_address.size(); index++)
     {
-        if(leaf.is_set)
+        if(local_address[index]->has_data())
             return true;
     }
-    for (auto const & leaf : foreign_address.getYLeafs())
+    for (std::size_t index=0; index<foreign_address.size(); index++)
     {
-        if(leaf.is_set)
+        if(foreign_address[index]->has_data())
             return true;
     }
     return id.is_set
@@ -10219,14 +11409,14 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_data() const
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_operation() const
 {
-    for (auto const & leaf : local_address.getYLeafs())
+    for (std::size_t index=0; index<local_address.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(local_address[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : foreign_address.getYLeafs())
+    for (std::size_t index=0; index<foreign_address.size(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(foreign_address[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -10240,9 +11430,7 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_operation() 
 	|| ydk::is_set(is_admin_configured_up.yfilter)
 	|| ydk::is_set(is_us_operational_up.yfilter)
 	|| ydk::is_set(is_ds_operational_up.yfilter)
-	|| ydk::is_set(is_only_receive_path_replication.yfilter)
-	|| ydk::is_set(local_address.yfilter)
-	|| ydk::is_set(foreign_address.yfilter);
+	|| ydk::is_set(is_only_receive_path_replication.yfilter);
 }
 
 std::string TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_segment_path() const
@@ -10268,16 +11456,28 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Bri
     if (is_ds_operational_up.is_set || is_set(is_ds_operational_up.yfilter)) leaf_name_data.push_back(is_ds_operational_up.get_name_leafdata());
     if (is_only_receive_path_replication.is_set || is_set(is_only_receive_path_replication.yfilter)) leaf_name_data.push_back(is_only_receive_path_replication.get_name_leafdata());
 
-    auto local_address_name_datas = local_address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), local_address_name_datas.begin(), local_address_name_datas.end());
-    auto foreign_address_name_datas = foreign_address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), foreign_address_name_datas.begin(), foreign_address_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "local-address")
+    {
+        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress>();
+        c->parent = this;
+        local_address.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "foreign-address")
+    {
+        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress>();
+        c->parent = this;
+        foreign_address.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -10285,6 +11485,24 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Bri
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto const & c : local_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : foreign_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -10356,14 +11574,6 @@ void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::set_value(const 
         is_only_receive_path_replication.value_namespace = name_space;
         is_only_receive_path_replication.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "local-address")
-    {
-        local_address.append(value);
-    }
-    if(value_path == "foreign-address")
-    {
-        foreign_address.append(value);
-    }
 }
 
 void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10412,19 +11622,165 @@ void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::set_filter(const
     {
         is_only_receive_path_replication.yfilter = yfilter;
     }
-    if(value_path == "local-address")
-    {
-        local_address.yfilter = yfilter;
-    }
-    if(value_path == "foreign-address")
-    {
-        foreign_address.yfilter = yfilter;
-    }
 }
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "id" || name == "address-family" || name == "pcb" || name == "sscb" || name == "local-port" || name == "foreign-port" || name == "vrf-id" || name == "is-admin-configured-up" || name == "is-us-operational-up" || name == "is-ds-operational-up" || name == "is-only-receive-path-replication" || name == "local-address" || name == "foreign-address")
+    if(name == "local-address" || name == "foreign-address" || name == "id" || name == "address-family" || name == "pcb" || name == "sscb" || name == "local-port" || name == "foreign-port" || name == "vrf-id" || name == "is-admin-configured-up" || name == "is-us-operational-up" || name == "is-ds-operational-up" || name == "is-only-receive-path-replication")
+        return true;
+    return false;
+}
+
+TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::LocalAddress()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "local-address"; yang_parent_name = "brief-session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::~LocalAddress()
+{
+}
+
+bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::ForeignAddress()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "foreign-address"; yang_parent_name = "brief-session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::~ForeignAddress()
+{
+}
+
+bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "foreign-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -10564,9 +11920,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::DetailSession()
     max_number_of_held_packet{YType::int32, "max-number-of-held-packet"},
     max_number_of_held_packet_reach_time{YType::uint32, "max-number-of-held-packet-reach-time"},
     max_number_of_held_internal_ack{YType::int32, "max-number-of-held-internal-ack"},
-    max_number_of_held_internal_ack_reach_time{YType::uint32, "max-number-of-held-internal-ack-reach-time"},
-    local_address{YType::str, "local-address"},
-    foreign_address{YType::str, "foreign-address"}
+    max_number_of_held_internal_ack_reach_time{YType::uint32, "max-number-of-held-internal-ack-reach-time"}
     	,
     set_information(std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation>())
 {
@@ -10581,6 +11935,16 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::~DetailSession()
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_data() const
 {
+    for (std::size_t index=0; index<local_address.size(); index++)
+    {
+        if(local_address[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<foreign_address.size(); index++)
+    {
+        if(foreign_address[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<packet_hold_queue.size(); index++)
     {
         if(packet_hold_queue[index]->has_data())
@@ -10589,16 +11953,6 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_data() con
     for (std::size_t index=0; index<internal_ack_hold_queue.size(); index++)
     {
         if(internal_ack_hold_queue[index]->has_data())
-            return true;
-    }
-    for (auto const & leaf : local_address.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : foreign_address.getYLeafs())
-    {
-        if(leaf.is_set)
             return true;
     }
     return id.is_set
@@ -10650,6 +12004,16 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_data() con
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation() const
 {
+    for (std::size_t index=0; index<local_address.size(); index++)
+    {
+        if(local_address[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<foreign_address.size(); index++)
+    {
+        if(foreign_address[index]->has_operation())
+            return true;
+    }
     for (std::size_t index=0; index<packet_hold_queue.size(); index++)
     {
         if(packet_hold_queue[index]->has_operation())
@@ -10658,16 +12022,6 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation(
     for (std::size_t index=0; index<internal_ack_hold_queue.size(); index++)
     {
         if(internal_ack_hold_queue[index]->has_operation())
-            return true;
-    }
-    for (auto const & leaf : local_address.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : foreign_address.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
             return true;
     }
     return is_set(yfilter)
@@ -10715,8 +12069,6 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation(
 	|| ydk::is_set(max_number_of_held_packet_reach_time.yfilter)
 	|| ydk::is_set(max_number_of_held_internal_ack.yfilter)
 	|| ydk::is_set(max_number_of_held_internal_ack_reach_time.yfilter)
-	|| ydk::is_set(local_address.yfilter)
-	|| ydk::is_set(foreign_address.yfilter)
 	|| (set_information !=  nullptr && set_information->has_operation());
 }
 
@@ -10776,10 +12128,6 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
     if (max_number_of_held_internal_ack.is_set || is_set(max_number_of_held_internal_ack.yfilter)) leaf_name_data.push_back(max_number_of_held_internal_ack.get_name_leafdata());
     if (max_number_of_held_internal_ack_reach_time.is_set || is_set(max_number_of_held_internal_ack_reach_time.yfilter)) leaf_name_data.push_back(max_number_of_held_internal_ack_reach_time.get_name_leafdata());
 
-    auto local_address_name_datas = local_address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), local_address_name_datas.begin(), local_address_name_datas.end());
-    auto foreign_address_name_datas = foreign_address.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), foreign_address_name_datas.begin(), foreign_address_name_datas.end());
     return leaf_name_data;
 
 }
@@ -10793,6 +12141,22 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
             set_information = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation>();
         }
         return set_information;
+    }
+
+    if(child_yang_name == "local-address")
+    {
+        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress>();
+        c->parent = this;
+        local_address.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "foreign-address")
+    {
+        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress>();
+        c->parent = this;
+        foreign_address.push_back(c);
+        return c;
     }
 
     if(child_yang_name == "packet-hold-queue")
@@ -10821,6 +12185,24 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Det
     if(set_information != nullptr)
     {
         children["set-information"] = set_information;
+    }
+
+    count = 0;
+    for (auto const & c : local_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : foreign_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     count = 0;
@@ -11110,14 +12492,6 @@ void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::set_value(cons
         max_number_of_held_internal_ack_reach_time.value_namespace = name_space;
         max_number_of_held_internal_ack_reach_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "local-address")
-    {
-        local_address.append(value);
-    }
-    if(value_path == "foreign-address")
-    {
-        foreign_address.append(value);
-    }
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11298,19 +12672,11 @@ void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::set_filter(con
     {
         max_number_of_held_internal_ack_reach_time.yfilter = yfilter;
     }
-    if(value_path == "local-address")
-    {
-        local_address.yfilter = yfilter;
-    }
-    if(value_path == "foreign-address")
-    {
-        foreign_address.yfilter = yfilter;
-    }
 }
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "set-information" || name == "packet-hold-queue" || name == "internal-ack-hold-queue" || name == "id" || name == "address-family" || name == "pcb" || name == "sscb" || name == "local-port" || name == "foreign-port" || name == "vrf-id" || name == "is-admin-configured-up" || name == "is-us-operational-up" || name == "is-ds-operational-up" || name == "is-only-receive-path-replication" || name == "cookie" || name == "is-session-replicated" || name == "is-session-synced" || name == "fist-standby-sequence-number" || name == "fssn-offset" || name == "nsr-down-reason" || name == "nsr-down-time" || name == "sequence-number-of-init-sync" || name == "is-init-sync-in-progress" || name == "is-init-sync-second-phase" || name == "init-sync-error" || name == "is-init-sync-error-local" || name == "init-sync-start-time" || name == "init-sync-end-time" || name == "init-sync-flags" || name == "sequence-number-of-init-sync-up-stream" || name == "peer-endp-hdl-up-stream" || name == "init-sync-start-time-up-stream" || name == "init-sync-end-time-up-stream" || name == "fist-standby-sequence-number-up-stream" || name == "nsr-down-reason-up-stream" || name == "nsr-down-time-up-stream" || name == "sequence-number-of-init-sync-down-stream" || name == "peer-endp-hdl-down-stream" || name == "init-sync-start-time-down-stream" || name == "init-sync-end-time-down-stream" || name == "fist-standby-sequence-number-down-stream" || name == "nsr-down-reason-down-stream" || name == "nsr-down-time-down-stream" || name == "max-number-of-held-packet" || name == "max-number-of-held-packet-reach-time" || name == "max-number-of-held-internal-ack" || name == "max-number-of-held-internal-ack-reach-time" || name == "local-address" || name == "foreign-address")
+    if(name == "set-information" || name == "local-address" || name == "foreign-address" || name == "packet-hold-queue" || name == "internal-ack-hold-queue" || name == "id" || name == "address-family" || name == "pcb" || name == "sscb" || name == "local-port" || name == "foreign-port" || name == "vrf-id" || name == "is-admin-configured-up" || name == "is-us-operational-up" || name == "is-ds-operational-up" || name == "is-only-receive-path-replication" || name == "cookie" || name == "is-session-replicated" || name == "is-session-synced" || name == "fist-standby-sequence-number" || name == "fssn-offset" || name == "nsr-down-reason" || name == "nsr-down-time" || name == "sequence-number-of-init-sync" || name == "is-init-sync-in-progress" || name == "is-init-sync-second-phase" || name == "init-sync-error" || name == "is-init-sync-error-local" || name == "init-sync-start-time" || name == "init-sync-end-time" || name == "init-sync-flags" || name == "sequence-number-of-init-sync-up-stream" || name == "peer-endp-hdl-up-stream" || name == "init-sync-start-time-up-stream" || name == "init-sync-end-time-up-stream" || name == "fist-standby-sequence-number-up-stream" || name == "nsr-down-reason-up-stream" || name == "nsr-down-time-up-stream" || name == "sequence-number-of-init-sync-down-stream" || name == "peer-endp-hdl-down-stream" || name == "init-sync-start-time-down-stream" || name == "init-sync-end-time-down-stream" || name == "fist-standby-sequence-number-down-stream" || name == "nsr-down-reason-down-stream" || name == "nsr-down-time-down-stream" || name == "max-number-of-held-packet" || name == "max-number-of-held-packet-reach-time" || name == "max-number-of-held-internal-ack" || name == "max-number-of-held-internal-ack-reach-time")
         return true;
     return false;
 }
@@ -11626,6 +12992,160 @@ void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sscb" || name == "pid" || name == "client-name" || name == "client-instance" || name == "set-id" || name == "sso-role" || name == "mode" || name == "address-family" || name == "well-known-port" || name == "local-node" || name == "local-instance" || name == "protect-node" || name == "protect-instance" || name == "number-of-sessions" || name == "number-of-synced-sessions-up-stream" || name == "number-of-synced-sessions-down-stream" || name == "is-init-sync-in-progress" || name == "is-sscb-init-sync-ready")
+        return true;
+    return false;
+}
+
+TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::LocalAddress()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "local-address"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::~LocalAddress()
+{
+}
+
+bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::ForeignAddress()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "foreign-address"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::~ForeignAddress()
+{
+}
+
+bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::has_data() const
+{
+    return entry.is_set;
+}
+
+bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "foreign-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }

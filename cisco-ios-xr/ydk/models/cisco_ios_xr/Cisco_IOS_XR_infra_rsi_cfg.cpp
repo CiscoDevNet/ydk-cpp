@@ -2742,7 +2742,11 @@ GlobalAf::Afs::Af::Af()
     saf_name{YType::enumeration, "saf-name"},
     topology_name{YType::str, "topology-name"},
     create{YType::empty, "create"}
+    	,
+    maximum_prefix(nullptr) // presence node
+	,bgp(std::make_shared<GlobalAf::Afs::Af::Bgp>())
 {
+    bgp->parent = this;
 
     yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false;
 }
@@ -2756,7 +2760,9 @@ bool GlobalAf::Afs::Af::has_data() const
     return af_name.is_set
 	|| saf_name.is_set
 	|| topology_name.is_set
-	|| create.is_set;
+	|| create.is_set
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data())
+	|| (bgp !=  nullptr && bgp->has_data());
 }
 
 bool GlobalAf::Afs::Af::has_operation() const
@@ -2765,7 +2771,9 @@ bool GlobalAf::Afs::Af::has_operation() const
 	|| ydk::is_set(af_name.yfilter)
 	|| ydk::is_set(saf_name.yfilter)
 	|| ydk::is_set(topology_name.yfilter)
-	|| ydk::is_set(create.yfilter);
+	|| ydk::is_set(create.yfilter)
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation());
 }
 
 std::string GlobalAf::Afs::Af::get_absolute_path() const
@@ -2797,6 +2805,24 @@ std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::get_name_leaf_
 
 std::shared_ptr<Entity> GlobalAf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
+    {
+        if(maximum_prefix == nullptr)
+        {
+            maximum_prefix = std::make_shared<GlobalAf::Afs::Af::MaximumPrefix>();
+        }
+        return maximum_prefix;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
+    {
+        if(bgp == nullptr)
+        {
+            bgp = std::make_shared<GlobalAf::Afs::Af::Bgp>();
+        }
+        return bgp;
+    }
+
     return nullptr;
 }
 
@@ -2804,6 +2830,16 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::get_children()
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(maximum_prefix != nullptr)
+    {
+        children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
+    }
+
+    if(bgp != nullptr)
+    {
+        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
+    }
+
     return children;
 }
 
@@ -2857,7 +2893,1617 @@ void GlobalAf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilt
 
 bool GlobalAf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
+    if(name == "maximum-prefix" || name == "bgp" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::MaximumPrefix::MaximumPrefix()
+    :
+    prefix_limit{YType::uint32, "prefix-limit"},
+    mid_threshold{YType::uint32, "mid-threshold"}
+{
+
+    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::MaximumPrefix::~MaximumPrefix()
+{
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_data() const
+{
+    return prefix_limit.is_set
+	|| mid_threshold.is_set;
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_limit.yfilter)
+	|| ydk::is_set(mid_threshold.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::MaximumPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
+    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::MaximumPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit = value;
+        prefix_limit.value_namespace = name_space;
+        prefix_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold = value;
+        mid_threshold.value_namespace = name_space;
+        mid_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit.yfilter = yfilter;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit" || name == "mid-threshold")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::Bgp()
+    :
+    export_route_policy{YType::str, "export-route-policy"},
+    import_route_policy{YType::str, "import-route-policy"},
+    import_vrf_options{YType::boolean, "import-vrf-options"}
+    	,
+    import_route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets>())
+	,export_route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets>())
+	,vrf_to_global_export_route_policy(nullptr) // presence node
+	,export_vrf_options(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportVrfOptions>())
+	,global_to_vrf_import_route_policy(nullptr) // presence node
+{
+    import_route_targets->parent = this;
+    export_route_targets->parent = this;
+    export_vrf_options->parent = this;
+
+    yang_name = "bgp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::~Bgp()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::has_data() const
+{
+    return export_route_policy.is_set
+	|| import_route_policy.is_set
+	|| import_vrf_options.is_set
+	|| (import_route_targets !=  nullptr && import_route_targets->has_data())
+	|| (export_route_targets !=  nullptr && export_route_targets->has_data())
+	|| (vrf_to_global_export_route_policy !=  nullptr && vrf_to_global_export_route_policy->has_data())
+	|| (export_vrf_options !=  nullptr && export_vrf_options->has_data())
+	|| (global_to_vrf_import_route_policy !=  nullptr && global_to_vrf_import_route_policy->has_data());
+}
+
+bool GlobalAf::Afs::Af::Bgp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(export_route_policy.yfilter)
+	|| ydk::is_set(import_route_policy.yfilter)
+	|| ydk::is_set(import_vrf_options.yfilter)
+	|| (import_route_targets !=  nullptr && import_route_targets->has_operation())
+	|| (export_route_targets !=  nullptr && export_route_targets->has_operation())
+	|| (vrf_to_global_export_route_policy !=  nullptr && vrf_to_global_export_route_policy->has_operation())
+	|| (export_vrf_options !=  nullptr && export_vrf_options->has_operation())
+	|| (global_to_vrf_import_route_policy !=  nullptr && global_to_vrf_import_route_policy->has_operation());
+}
+
+std::string GlobalAf::Afs::Af::Bgp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-cfg:bgp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (export_route_policy.is_set || is_set(export_route_policy.yfilter)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
+    if (import_route_policy.is_set || is_set(import_route_policy.yfilter)) leaf_name_data.push_back(import_route_policy.get_name_leafdata());
+    if (import_vrf_options.is_set || is_set(import_vrf_options.yfilter)) leaf_name_data.push_back(import_vrf_options.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "import-route-targets")
+    {
+        if(import_route_targets == nullptr)
+        {
+            import_route_targets = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets>();
+        }
+        return import_route_targets;
+    }
+
+    if(child_yang_name == "export-route-targets")
+    {
+        if(export_route_targets == nullptr)
+        {
+            export_route_targets = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets>();
+        }
+        return export_route_targets;
+    }
+
+    if(child_yang_name == "vrf-to-global-export-route-policy")
+    {
+        if(vrf_to_global_export_route_policy == nullptr)
+        {
+            vrf_to_global_export_route_policy = std::make_shared<GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy>();
+        }
+        return vrf_to_global_export_route_policy;
+    }
+
+    if(child_yang_name == "export-vrf-options")
+    {
+        if(export_vrf_options == nullptr)
+        {
+            export_vrf_options = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportVrfOptions>();
+        }
+        return export_vrf_options;
+    }
+
+    if(child_yang_name == "global-to-vrf-import-route-policy")
+    {
+        if(global_to_vrf_import_route_policy == nullptr)
+        {
+            global_to_vrf_import_route_policy = std::make_shared<GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy>();
+        }
+        return global_to_vrf_import_route_policy;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(import_route_targets != nullptr)
+    {
+        children["import-route-targets"] = import_route_targets;
+    }
+
+    if(export_route_targets != nullptr)
+    {
+        children["export-route-targets"] = export_route_targets;
+    }
+
+    if(vrf_to_global_export_route_policy != nullptr)
+    {
+        children["vrf-to-global-export-route-policy"] = vrf_to_global_export_route_policy;
+    }
+
+    if(export_vrf_options != nullptr)
+    {
+        children["export-vrf-options"] = export_vrf_options;
+    }
+
+    if(global_to_vrf_import_route_policy != nullptr)
+    {
+        children["global-to-vrf-import-route-policy"] = global_to_vrf_import_route_policy;
+    }
+
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "export-route-policy")
+    {
+        export_route_policy = value;
+        export_route_policy.value_namespace = name_space;
+        export_route_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "import-route-policy")
+    {
+        import_route_policy = value;
+        import_route_policy.value_namespace = name_space;
+        import_route_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "import-vrf-options")
+    {
+        import_vrf_options = value;
+        import_vrf_options.value_namespace = name_space;
+        import_vrf_options.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "export-route-policy")
+    {
+        export_route_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-route-policy")
+    {
+        import_route_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-vrf-options")
+    {
+        import_vrf_options.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "import-route-targets" || name == "export-route-targets" || name == "vrf-to-global-export-route-policy" || name == "export-vrf-options" || name == "global-to-vrf-import-route-policy" || name == "export-route-policy" || name == "import-route-policy" || name == "import-vrf-options")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::ImportRouteTargets()
+    :
+    route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets>())
+{
+    route_targets->parent = this;
+
+    yang_name = "import-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::~ImportRouteTargets()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::has_data() const
+{
+    return (route_targets !=  nullptr && route_targets->has_data());
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::has_operation() const
+{
+    return is_set(yfilter)
+	|| (route_targets !=  nullptr && route_targets->has_operation());
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "import-route-targets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ImportRouteTargets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-targets")
+    {
+        if(route_targets == nullptr)
+        {
+            route_targets = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets>();
+        }
+        return route_targets;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(route_targets != nullptr)
+    {
+        children["route-targets"] = route_targets;
+    }
+
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-targets")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTargets()
+{
+
+    yang_name = "route-targets"; yang_parent_name = "import-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::~RouteTargets()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_data() const
+{
+    for (std::size_t index=0; index<route_target.size(); index++)
+    {
+        if(route_target[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_operation() const
+{
+    for (std::size_t index=0; index<route_target.size(); index++)
+    {
+        if(route_target[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-targets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-target")
+    {
+        auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget>();
+        c->parent = this;
+        route_target.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : route_target)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-target")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::RouteTarget()
+    :
+    type{YType::enumeration, "type"}
+{
+
+    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::~RouteTarget()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_data() const
+{
+    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    {
+        if(as_or_four_byte_as[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    {
+        if(ipv4_address[index]->has_data())
+            return true;
+    }
+    return type.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_operation() const
+{
+    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    {
+        if(as_or_four_byte_as[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    {
+        if(ipv4_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-target" <<"[type='" <<type <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "as-or-four-byte-as")
+    {
+        auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
+        c->parent = this;
+        as_or_four_byte_as.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "ipv4-address")
+    {
+        auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
+        c->parent = this;
+        ipv4_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : as_or_four_byte_as)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : ipv4_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-or-four-byte-as" || name == "ipv4-address" || name == "type")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::AsOrFourByteAs()
+    :
+    as_xx{YType::uint32, "as-xx"},
+    as{YType::uint32, "as"},
+    as_index{YType::uint32, "as-index"},
+    stitching_rt{YType::uint32, "stitching-rt"}
+{
+
+    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::~AsOrFourByteAs()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_data() const
+{
+    return as_xx.is_set
+	|| as.is_set
+	|| as_index.is_set
+	|| stitching_rt.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as_index.yfilter)
+	|| ydk::is_set(stitching_rt.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "as-or-four-byte-as" <<"[as-xx='" <<as_xx <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as_index.is_set || is_set(as_index.yfilter)) leaf_name_data.push_back(as_index.get_name_leafdata());
+    if (stitching_rt.is_set || is_set(stitching_rt.yfilter)) leaf_name_data.push_back(stitching_rt.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as")
+    {
+        as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-index")
+    {
+        as_index = value;
+        as_index.value_namespace = name_space;
+        as_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt = value;
+        stitching_rt.value_namespace = name_space;
+        stitching_rt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as-index")
+    {
+        as_index.yfilter = yfilter;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-xx" || name == "as" || name == "as-index" || name == "stitching-rt")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::Ipv4Address()
+    :
+    address{YType::str, "address"},
+    address_index{YType::uint32, "address-index"},
+    stitching_rt{YType::uint32, "stitching-rt"}
+{
+
+    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_data() const
+{
+    return address.is_set
+	|| address_index.is_set
+	|| stitching_rt.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_index.yfilter)
+	|| ydk::is_set(stitching_rt.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-address" <<"[address='" <<address <<"']" <<"[address-index='" <<address_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_index.is_set || is_set(address_index.yfilter)) leaf_name_data.push_back(address_index.get_name_leafdata());
+    if (stitching_rt.is_set || is_set(stitching_rt.yfilter)) leaf_name_data.push_back(stitching_rt.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-index")
+    {
+        address_index = value;
+        address_index.value_namespace = name_space;
+        address_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt = value;
+        stitching_rt.value_namespace = name_space;
+        stitching_rt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-index")
+    {
+        address_index.yfilter = yfilter;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-index" || name == "stitching-rt")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::ExportRouteTargets()
+    :
+    route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets>())
+{
+    route_targets->parent = this;
+
+    yang_name = "export-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::~ExportRouteTargets()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::has_data() const
+{
+    return (route_targets !=  nullptr && route_targets->has_data());
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::has_operation() const
+{
+    return is_set(yfilter)
+	|| (route_targets !=  nullptr && route_targets->has_operation());
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "export-route-targets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ExportRouteTargets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-targets")
+    {
+        if(route_targets == nullptr)
+        {
+            route_targets = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets>();
+        }
+        return route_targets;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(route_targets != nullptr)
+    {
+        children["route-targets"] = route_targets;
+    }
+
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-targets")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTargets()
+{
+
+    yang_name = "route-targets"; yang_parent_name = "export-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::~RouteTargets()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_data() const
+{
+    for (std::size_t index=0; index<route_target.size(); index++)
+    {
+        if(route_target[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_operation() const
+{
+    for (std::size_t index=0; index<route_target.size(); index++)
+    {
+        if(route_target[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-targets";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-target")
+    {
+        auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget>();
+        c->parent = this;
+        route_target.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : route_target)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-target")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::RouteTarget()
+    :
+    type{YType::enumeration, "type"}
+{
+
+    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::~RouteTarget()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_data() const
+{
+    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    {
+        if(as_or_four_byte_as[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    {
+        if(ipv4_address[index]->has_data())
+            return true;
+    }
+    return type.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_operation() const
+{
+    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    {
+        if(as_or_four_byte_as[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    {
+        if(ipv4_address[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-target" <<"[type='" <<type <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "as-or-four-byte-as")
+    {
+        auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
+        c->parent = this;
+        as_or_four_byte_as.push_back(c);
+        return c;
+    }
+
+    if(child_yang_name == "ipv4-address")
+    {
+        auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
+        c->parent = this;
+        ipv4_address.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : as_or_four_byte_as)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto const & c : ipv4_address)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-or-four-byte-as" || name == "ipv4-address" || name == "type")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::AsOrFourByteAs()
+    :
+    as_xx{YType::uint32, "as-xx"},
+    as{YType::uint32, "as"},
+    as_index{YType::uint32, "as-index"},
+    stitching_rt{YType::uint32, "stitching-rt"}
+{
+
+    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::~AsOrFourByteAs()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_data() const
+{
+    return as_xx.is_set
+	|| as.is_set
+	|| as_index.is_set
+	|| stitching_rt.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as_index.yfilter)
+	|| ydk::is_set(stitching_rt.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "as-or-four-byte-as" <<"[as-xx='" <<as_xx <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as_index.is_set || is_set(as_index.yfilter)) leaf_name_data.push_back(as_index.get_name_leafdata());
+    if (stitching_rt.is_set || is_set(stitching_rt.yfilter)) leaf_name_data.push_back(stitching_rt.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as")
+    {
+        as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-index")
+    {
+        as_index = value;
+        as_index.value_namespace = name_space;
+        as_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt = value;
+        stitching_rt.value_namespace = name_space;
+        stitching_rt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as-index")
+    {
+        as_index.yfilter = yfilter;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-xx" || name == "as" || name == "as-index" || name == "stitching-rt")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::Ipv4Address()
+    :
+    address{YType::str, "address"},
+    address_index{YType::uint32, "address-index"},
+    stitching_rt{YType::uint32, "stitching-rt"}
+{
+
+    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_data() const
+{
+    return address.is_set
+	|| address_index.is_set
+	|| stitching_rt.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_index.yfilter)
+	|| ydk::is_set(stitching_rt.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-address" <<"[address='" <<address <<"']" <<"[address-index='" <<address_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_index.is_set || is_set(address_index.yfilter)) leaf_name_data.push_back(address_index.get_name_leafdata());
+    if (stitching_rt.is_set || is_set(stitching_rt.yfilter)) leaf_name_data.push_back(stitching_rt.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-index")
+    {
+        address_index = value;
+        address_index.value_namespace = name_space;
+        address_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt = value;
+        stitching_rt.value_namespace = name_space;
+        stitching_rt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-index")
+    {
+        address_index.yfilter = yfilter;
+    }
+    if(value_path == "stitching-rt")
+    {
+        stitching_rt.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-index" || name == "stitching-rt")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::VrfToGlobalExportRoutePolicy()
+    :
+    route_policy_name{YType::str, "route-policy-name"},
+    allow_imported_vpn{YType::boolean, "allow-imported-vpn"}
+{
+
+    yang_name = "vrf-to-global-export-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::~VrfToGlobalExportRoutePolicy()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::has_data() const
+{
+    return route_policy_name.is_set
+	|| allow_imported_vpn.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(allow_imported_vpn.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf-to-global-export-route-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (allow_imported_vpn.is_set || is_set(allow_imported_vpn.yfilter)) leaf_name_data.push_back(allow_imported_vpn.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allow-imported-vpn")
+    {
+        allow_imported_vpn = value;
+        allow_imported_vpn.value_namespace = name_space;
+        allow_imported_vpn.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "allow-imported-vpn")
+    {
+        allow_imported_vpn.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "allow-imported-vpn")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportVrfOptions::ExportVrfOptions()
+    :
+    allow_imported_vpn{YType::boolean, "allow-imported-vpn"},
+    import_stitching_rt{YType::boolean, "import-stitching-rt"}
+{
+
+    yang_name = "export-vrf-options"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::ExportVrfOptions::~ExportVrfOptions()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportVrfOptions::has_data() const
+{
+    return allow_imported_vpn.is_set
+	|| import_stitching_rt.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportVrfOptions::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(allow_imported_vpn.yfilter)
+	|| ydk::is_set(import_stitching_rt.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::ExportVrfOptions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "export-vrf-options";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::ExportVrfOptions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (allow_imported_vpn.is_set || is_set(allow_imported_vpn.yfilter)) leaf_name_data.push_back(allow_imported_vpn.get_name_leafdata());
+    if (import_stitching_rt.is_set || is_set(import_stitching_rt.yfilter)) leaf_name_data.push_back(import_stitching_rt.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportVrfOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportVrfOptions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportVrfOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "allow-imported-vpn")
+    {
+        allow_imported_vpn = value;
+        allow_imported_vpn.value_namespace = name_space;
+        allow_imported_vpn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "import-stitching-rt")
+    {
+        import_stitching_rt = value;
+        import_stitching_rt.value_namespace = name_space;
+        import_stitching_rt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::ExportVrfOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-imported-vpn")
+    {
+        allow_imported_vpn.yfilter = yfilter;
+    }
+    if(value_path == "import-stitching-rt")
+    {
+        import_stitching_rt.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::ExportVrfOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-imported-vpn" || name == "import-stitching-rt")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::GlobalToVrfImportRoutePolicy()
+    :
+    route_policy_name{YType::str, "route-policy-name"},
+    advertise_as_vpn{YType::boolean, "advertise-as-vpn"}
+{
+
+    yang_name = "global-to-vrf-import-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::~GlobalToVrfImportRoutePolicy()
+{
+}
+
+bool GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_data() const
+{
+    return route_policy_name.is_set
+	|| advertise_as_vpn.is_set;
+}
+
+bool GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(advertise_as_vpn.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global-to-vrf-import-route-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (advertise_as_vpn.is_set || is_set(advertise_as_vpn.yfilter)) leaf_name_data.push_back(advertise_as_vpn.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advertise-as-vpn")
+    {
+        advertise_as_vpn = value;
+        advertise_as_vpn.value_namespace = name_space;
+        advertise_as_vpn.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "advertise-as-vpn")
+    {
+        advertise_as_vpn.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "advertise-as-vpn")
         return true;
     return false;
 }

@@ -562,7 +562,6 @@ class PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::TransientPolic
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList offset; //type: list of  uint8
         class PmapVarListArr; //type: PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::TransientPolicyMapType::TransientPolicyMapNames::TransientPolicyMapName::Definition::PolicyMapBg::PmapVarList::PmapVarListArr
 
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_oper::PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::TransientPolicyMapType::TransientPolicyMapNames::TransientPolicyMapName::Definition::PolicyMapBg::PmapVarList::PmapVarListArr> > pmap_var_list_arr;
@@ -664,8 +663,6 @@ class PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::TransientPolic
 
         ydk::YLeaf event_type; //type: PeventTypeEn
         ydk::YLeaf cond_eval; //type: PeventCondEvalEn
-        ydk::YLeaf avl_tree; //type: uint64
-        ydk::YLeaf flags; //type: uint32
         class ClassInfop; //type: PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::TransientPolicyMapType::TransientPolicyMapNames::TransientPolicyMapName::Definition::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_oper::PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::TransientPolicyMapType::TransientPolicyMapNames::TransientPolicyMapName::Definition::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop> class_infop;

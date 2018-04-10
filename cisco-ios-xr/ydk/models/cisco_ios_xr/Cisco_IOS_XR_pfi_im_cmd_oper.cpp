@@ -14505,6 +14505,12 @@ const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_aoc {353, "im-attr-media-10
 const Enum::YLeaf ImAttrMedia::im_attr_media_40gbase_aoc {354, "im-attr-media-40gbase-aoc"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_40gbase_acu {355, "im-attr-media-40gbase-acu"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_100gbase_acu {356, "im-attr-media-100gbase-acu"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_cu1m {357, "im-attr-media-10gbase-cu1m"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_cu3m {358, "im-attr-media-10gbase-cu3m"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_cu5m {359, "im-attr-media-10gbase-cu5m"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_acu7m {360, "im-attr-media-10gbase-acu7m"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_10gbase_acu10m {361, "im-attr-media-10gbase-acu10m"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_4x10g_base_lr {362, "im-attr-media-4x10g-base-lr"};
 
 const Enum::YLeaf ImAttrDuplex::im_attr_duplex_unknown {0, "im-attr-duplex-unknown"};
 const Enum::YLeaf ImAttrDuplex::im_attr_duplex_half {1, "im-attr-duplex-half"};

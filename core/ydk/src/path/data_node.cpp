@@ -27,19 +27,17 @@
 
 namespace ydk
 {
-namespace path
-{
-
-static void check_ly_schema_node_for_path(lyd_node* node, const std::string & path)
-{
-    if(node == nullptr || node->schema == nullptr || node->schema->priv == nullptr)
-    {
-        YLOG_ERROR("Couldn't fetch schema node {}!", path);
-        throw(YCoreError{"Couldn't fetch schema node " + path});
-    }
-}
-
-}
+	namespace path
+	{
+		static void check_ly_schema_node_for_path(lyd_node* node, const std::string & path)
+		{
+			if(node == nullptr || node->schema == nullptr || node->schema->priv == nullptr)
+			{
+				YLOG_ERROR("Could not fetch schema node '{}'", path);
+				throw(YCoreError{"Could not fetch schema node: " + path});
+			}
+		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -111,14 +109,40 @@ ydk::path::DataNodeImpl::populate_new_schemas_from_path(const std::string& path)
     snode->populate_new_schemas_from_path(path);
 }
 
+std::shared_ptr<ydk::path::DataNode>
+ydk::path::DataNodeImpl::operator()(const ydk::path::Session& session)
+{
+    return session.invoke(*this);
+}
+
+ydk::path::DataNode&
+ydk::path::DataNodeImpl::create_action(const std::string& path)
+{
+    return create_datanode(path, "");
+}
+
 ydk::path::DataNode&
 ydk::path::DataNodeImpl::create_datanode(const std::string& path, const std::string& value)
 {
+    std::string v = value;
+    if(value.substr(0, 5) == "<?xml") {
+        for(unsigned int i = 5; i<value.length(); i++) {
+            if (value[i] == '>'){
+                v = value.substr(i+1);
+                break;
+            }
+        }
+
+        if(v != value){
+            YLOG_DEBUG("Replacing 'value' with '{}'", v);
+        }
+    }
+
     YLOG_DEBUG("Populating schemas for {}", path);
     populate_new_schemas_from_path(path);
-    YLOG_DEBUG("Populating schemas for {}", value);
-    populate_new_schemas_from_path(value);
-    return create_helper(path, value);
+    YLOG_DEBUG("Populating schemas for {}", v);
+    populate_new_schemas_from_path(v);
+    return create_helper(path, v);
 }
 
 ydk::path::DataNode&
@@ -308,20 +332,15 @@ ydk::path::DataNodeImpl::find(const std::string& path)
     if(m_node == nullptr) {
         return results;
     }
-    std::string spath{path};
 
-    auto s = get_schema_node().get_statement();
-    if(s.keyword == "rpc"){
-        spath="input/" + spath;
-    }
-    YLOG_DEBUG("Getting child schema with path '{}' in {}", spath, m_node->schema->name);
+    YLOG_DEBUG("Getting child schema with path '{}' in {}", path, m_node->schema->name);
     const lys_node* found_snode =
-        ly_ctx_get_node(m_node->schema->module->ctx, m_node->schema, spath.c_str());
+        ly_ctx_get_node(m_node->schema->module->ctx, m_node->schema, path.c_str(), 0);
 
     if(found_snode)
     {
         YLOG_DEBUG("Getting data nodes with path '{}'", path);
-        ly_set* result_set = lyd_find_xpath(m_node, path.c_str());
+        ly_set* result_set = lyd_find_path(m_node, path.c_str());
         if( result_set )
         {
             if (result_set->number > 0)
@@ -334,7 +353,6 @@ ydk::path::DataNodeImpl::find(const std::string& path)
             }
             ly_set_free(result_set);
         }
-
     }
 
     return results;
@@ -484,13 +502,16 @@ ydk::path::DataNodeImpl::remove_annotation(const ydk::path::Annotation& an)
 
     lyd_attr* attr = m_node->attr;
     while(attr){
-        lys_module *module = attr->module;
-        if(module){
-            Annotation an1{module->ns, attr->name, attr->value};
-            if (an == an1){
-                lyd_free_attr(m_node->schema->module->ctx, m_node, attr, 0);
-                return true;
-            }
+        lyd_node* node = attr->parent;
+        if (node && node->schema) {
+			lys_module* module = node->schema->module;
+			if(module){
+				Annotation an1{module->ns, attr->name, attr->value_str};
+				if (an == an1){
+					lyd_free_attr(m_node->schema->module->ctx, m_node, attr, 0);
+					return true;
+				}
+			}
         }
     }
 
@@ -505,15 +526,55 @@ ydk::path::DataNodeImpl::annotations()
     if(m_node) {
         lyd_attr* attr = m_node->attr;
         while(attr) {
-            lys_module *module = attr->module;
-            if(module) {
-                ann.emplace_back(module->ns, attr->name, attr->value);
-
+            lyd_node* node = attr->parent;
+            if (node && node->schema) {
+    			lys_module* module = node->schema->module;
+				if(module) {
+					ann.emplace_back(module->ns, attr->name, attr->value_str);
+				}
             }
             attr = attr->next;
         }
     }
 
-
     return ann;
+}
+
+static bool statement_is_action(const ydk::path::Statement & s)
+{
+    return (s.keyword == "action");
+}
+
+std::string ydk::path::DataNodeImpl::get_action_node_path() const
+{
+    if(statement_is_action(get_schema_node().get_statement()))
+    {
+        return get_path();
+    }
+
+    for(auto & child_data_node : get_children())
+    {
+        auto p = child_data_node->get_action_node_path();
+        if(p.size() > 0)
+        {
+            return p;
+        }
+    }
+    return "";
+}
+
+bool ydk::path::DataNodeImpl::has_action_node() const
+{
+    if(statement_is_action(get_schema_node().get_statement()))
+    {
+        return true;
+    }
+    for(auto & child_data_node : get_children())
+    {
+        if(child_data_node->has_action_node())
+        {
+            return true;
+        }
+    }
+    return false;
 }

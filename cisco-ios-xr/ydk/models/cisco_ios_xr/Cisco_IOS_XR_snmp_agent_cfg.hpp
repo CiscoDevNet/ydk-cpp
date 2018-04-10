@@ -49,6 +49,7 @@ class Snmp : public ydk::Entity
         class Administration; //type: Snmp::Administration
         class Agent; //type: Snmp::Agent
         class Trap; //type: Snmp::Trap
+        class DropPacket; //type: Snmp::DropPacket
         class Ipv6; //type: Snmp::Ipv6
         class Ipv4; //type: Snmp::Ipv4
         class System; //type: Snmp::System
@@ -72,6 +73,7 @@ class Snmp : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Administration> administration;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Agent> agent;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Trap> trap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::DropPacket> drop_packet;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Ipv4> ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::System> system;
@@ -489,6 +491,28 @@ class Snmp::Trap : public ydk::Entity
 }; // Snmp::Trap
 
 
+class Snmp::DropPacket : public ydk::Entity
+{
+    public:
+        DropPacket();
+        ~DropPacket();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf unknown_user; //type: empty
+
+}; // Snmp::DropPacket
+
+
 class Snmp::Ipv6 : public ydk::Entity
 {
     public:
@@ -531,8 +555,8 @@ class Snmp::Ipv6::Tos : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: SnmpTos
-        ydk::YLeaf precedence; //type: one of enumeration, uint32
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf precedence; //type: one of uint32, enumeration
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Snmp::Ipv6::Tos
 
@@ -579,8 +603,8 @@ class Snmp::Ipv4::Tos : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: SnmpTos
-        ydk::YLeaf precedence; //type: one of enumeration, uint32
-        ydk::YLeaf dscp; //type: one of enumeration, uint32
+        ydk::YLeaf precedence; //type: one of uint32, enumeration
+        ydk::YLeaf dscp; //type: one of uint32, enumeration
 
 }; // Snmp::Ipv4::Tos
 
@@ -789,6 +813,7 @@ class Snmp::Notification : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        ydk::YLeaf ipsla; //type: boolean
         class Snmp_; //type: Snmp::Notification::Snmp_
         class Diametermib; //type: Snmp::Notification::Diametermib
         class Vpls; //type: Snmp::Notification::Vpls
@@ -799,7 +824,7 @@ class Snmp::Notification : public ydk::Entity
         class Oam; //type: Snmp::Notification::Oam
         class FabricCrs; //type: Snmp::Notification::FabricCrs
         class Flash; //type: Snmp::Notification::Flash
-        class CiscoIOSXRFreqsyncCfgFrequencySynchronization; //type: Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization
+        class FrequencySynchronization; //type: Snmp::Notification::FrequencySynchronization
         class EntityRedundancy; //type: Snmp::Notification::EntityRedundancy
         class ConfigCopy; //type: Snmp::Notification::ConfigCopy
         class SelectiveVrfDownload; //type: Snmp::Notification::SelectiveVrfDownload
@@ -818,12 +843,12 @@ class Snmp::Notification : public ydk::Entity
         class MplsTe; //type: Snmp::Notification::MplsTe
         class MplsFrr; //type: Snmp::Notification::MplsFrr
         class MplsL3Vpn; //type: Snmp::Notification::MplsL3Vpn
-        class CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization; //type: Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization
         class Optical; //type: Snmp::Notification::Optical
         class OpticalOts; //type: Snmp::Notification::OpticalOts
         class Otn; //type: Snmp::Notification::Otn
         class Bridge; //type: Snmp::Notification::Bridge
         class Sensor; //type: Snmp::Notification::Sensor
+        class CiscoEntityExt; //type: Snmp::Notification::CiscoEntityExt
         class Entity; //type: Snmp::Notification::Entity
         class EntityState; //type: Snmp::Notification::EntityState
         class FruControl; //type: Snmp::Notification::FruControl
@@ -842,7 +867,7 @@ class Snmp::Notification : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Oam> oam;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FabricCrs> fabric_crs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Flash> flash;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization> cisco_ios_xr_freqsync_cfg_frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FrequencySynchronization> frequency_synchronization;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::EntityRedundancy> entity_redundancy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::ConfigCopy> config_copy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SelectiveVrfDownload> selective_vrf_download;
@@ -861,12 +886,12 @@ class Snmp::Notification : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsTe> mpls_te;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsFrr> mpls_frr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::MplsL3Vpn> mpls_l3vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization> cisco_ios_xr_ncs4k_freqsync_cfg_frequency_synchronization_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Optical> optical;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::OpticalOts> optical_ots;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Otn> otn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bridge> bridge;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Sensor> sensor;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::CiscoEntityExt> cisco_entity_ext;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Entity> entity_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::EntityState> entity_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FruControl> fru_control;
@@ -1134,11 +1159,11 @@ class Snmp::Notification::Flash : public ydk::Entity
 }; // Snmp::Notification::Flash
 
 
-class Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization : public ydk::Entity
+class Snmp::Notification::FrequencySynchronization : public ydk::Entity
 {
     public:
-        CiscoIOSXRFreqsyncCfgFrequencySynchronization();
-        ~CiscoIOSXRFreqsyncCfgFrequencySynchronization();
+        FrequencySynchronization();
+        ~FrequencySynchronization();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1153,7 +1178,7 @@ class Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization : public
 
         ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::CiscoIOSXRFreqsyncCfgFrequencySynchronization
+}; // Snmp::Notification::FrequencySynchronization
 
 
 class Snmp::Notification::EntityRedundancy : public ydk::Entity
@@ -1815,28 +1840,6 @@ class Snmp::Notification::MplsL3Vpn : public ydk::Entity
 }; // Snmp::Notification::MplsL3Vpn
 
 
-class Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization : public ydk::Entity
-{
-    public:
-        CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization();
-        ~CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Snmp::Notification::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization
-
-
 class Snmp::Notification::Optical : public ydk::Entity
 {
     public:
@@ -1945,6 +1948,28 @@ class Snmp::Notification::Sensor : public ydk::Entity
         ydk::YLeaf enable; //type: empty
 
 }; // Snmp::Notification::Sensor
+
+
+class Snmp::Notification::CiscoEntityExt : public ydk::Entity
+{
+    public:
+        CiscoEntityExt();
+        ~CiscoEntityExt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Snmp::Notification::CiscoEntityExt
 
 
 class Snmp::Notification::Entity : public ydk::Entity
@@ -2199,42 +2224,19 @@ class Snmp::Correlator::Rules::Rule : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class NonStateful; //type: Snmp::Correlator::Rules::Rule::NonStateful
+        ydk::YLeaf timeout; //type: uint32
+        class RootCauses; //type: Snmp::Correlator::Rules::Rule::RootCauses
+        class NonRootCauses; //type: Snmp::Correlator::Rules::Rule::NonRootCauses
         class AppliedTo; //type: Snmp::Correlator::Rules::Rule::AppliedTo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful> non_stateful; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::RootCauses> root_causes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonRootCauses> non_root_causes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::AppliedTo> applied_to;
         
 }; // Snmp::Correlator::Rules::Rule
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful : public ydk::Entity
-{
-    public:
-        NonStateful();
-        ~NonStateful();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf timeout; //type: uint32
-        class RootCauses; //type: Snmp::Correlator::Rules::Rule::NonStateful::RootCauses
-        class NonRootCauses; //type: Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::RootCauses> root_causes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses> non_root_causes;
-        
-}; // Snmp::Correlator::Rules::Rule::NonStateful
-
-
-class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::RootCauses : public ydk::Entity
 {
     public:
         RootCauses();
@@ -2250,14 +2252,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RootCause; //type: Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause
+        class RootCause; //type: Snmp::Correlator::Rules::Rule::RootCauses::RootCause
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause> > root_cause;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::RootCauses::RootCause> > root_cause;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::RootCauses
+}; // Snmp::Correlator::Rules::Rule::RootCauses
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::RootCauses::RootCause : public ydk::Entity
 {
     public:
         RootCause();
@@ -2275,14 +2277,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause : public
 
         ydk::YLeaf oid; //type: string
         ydk::YLeaf created; //type: empty
-        class VarBinds; //type: Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
+        class VarBinds; //type: Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds> var_binds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds> var_binds;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause
+}; // Snmp::Correlator::Rules::Rule::RootCauses::RootCause
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds : public ydk::Entity
 {
     public:
         VarBinds();
@@ -2298,14 +2300,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBind
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class VarBind; //type: Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind
+        class VarBind; //type: Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind> > var_bind;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind> > var_bind;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
+}; // Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind : public ydk::Entity
 {
     public:
         VarBind();
@@ -2322,14 +2324,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBind
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf oid; //type: string
-        class Match; //type: Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match
+        class Match; //type: Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match> match;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match> match;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind
+}; // Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match : public ydk::Entity
 {
     public:
         Match();
@@ -2348,10 +2350,10 @@ class Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBind
         ydk::YLeaf value_; //type: string
         ydk::YLeaf index_; //type: string
 
-}; // Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::Match
+}; // Snmp::Correlator::Rules::Rule::RootCauses::RootCause::VarBinds::VarBind::Match
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::NonRootCauses : public ydk::Entity
 {
     public:
         NonRootCauses();
@@ -2367,14 +2369,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class NonRootCause; //type: Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause
+        class NonRootCause; //type: Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause> > non_root_cause;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause> > non_root_cause;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses
+}; // Snmp::Correlator::Rules::Rule::NonRootCauses
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause : public ydk::Entity
 {
     public:
         NonRootCause();
@@ -2392,14 +2394,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause : 
 
         ydk::YLeaf oid; //type: string
         ydk::YLeaf created; //type: empty
-        class VarBinds; //type: Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds
+        class VarBinds; //type: Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds> var_binds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds> var_binds;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause
+}; // Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds : public ydk::Entity
 {
     public:
         VarBinds();
@@ -2415,14 +2417,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::V
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class VarBind; //type: Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind
+        class VarBind; //type: Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind> > var_bind;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind> > var_bind;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds
+}; // Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind : public ydk::Entity
 {
     public:
         VarBind();
@@ -2439,14 +2441,14 @@ class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::V
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf oid; //type: string
-        class Match; //type: Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match
+        class Match; //type: Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match> match;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match> match;
         
-}; // Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind
+}; // Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind
 
 
-class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match : public ydk::Entity
+class Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match : public ydk::Entity
 {
     public:
         Match();
@@ -2465,7 +2467,7 @@ class Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::V
         ydk::YLeaf value_; //type: string
         ydk::YLeaf index_; //type: string
 
-}; // Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::Match
+}; // Snmp::Correlator::Rules::Rule::NonRootCauses::NonRootCause::VarBinds::VarBind::Match
 
 
 class Snmp::Correlator::Rules::Rule::AppliedTo : public ydk::Entity

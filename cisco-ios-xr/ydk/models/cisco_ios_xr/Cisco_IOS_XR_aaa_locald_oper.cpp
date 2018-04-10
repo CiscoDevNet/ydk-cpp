@@ -18,6 +18,7 @@ Aaa::Aaa()
 	,task_map(std::make_shared<Aaa::TaskMap>())
 	,taskgroups(std::make_shared<Aaa::Taskgroups>())
 	,users(std::make_shared<Aaa::Users>())
+	,password_policies(std::make_shared<Aaa::PasswordPolicies>())
 	,usergroups(std::make_shared<Aaa::Usergroups>())
 	,authen_method(std::make_shared<Aaa::AuthenMethod>())
 	,current_usergroup(std::make_shared<Aaa::CurrentUsergroup>())
@@ -30,6 +31,7 @@ Aaa::Aaa()
     task_map->parent = this;
     taskgroups->parent = this;
     users->parent = this;
+    password_policies->parent = this;
     usergroups->parent = this;
     authen_method->parent = this;
     current_usergroup->parent = this;
@@ -51,6 +53,7 @@ bool Aaa::has_data() const
 	|| (task_map !=  nullptr && task_map->has_data())
 	|| (taskgroups !=  nullptr && taskgroups->has_data())
 	|| (users !=  nullptr && users->has_data())
+	|| (password_policies !=  nullptr && password_policies->has_data())
 	|| (usergroups !=  nullptr && usergroups->has_data())
 	|| (authen_method !=  nullptr && authen_method->has_data())
 	|| (current_usergroup !=  nullptr && current_usergroup->has_data())
@@ -67,6 +70,7 @@ bool Aaa::has_operation() const
 	|| (task_map !=  nullptr && task_map->has_operation())
 	|| (taskgroups !=  nullptr && taskgroups->has_operation())
 	|| (users !=  nullptr && users->has_operation())
+	|| (password_policies !=  nullptr && password_policies->has_operation())
 	|| (usergroups !=  nullptr && usergroups->has_operation())
 	|| (authen_method !=  nullptr && authen_method->has_operation())
 	|| (current_usergroup !=  nullptr && current_usergroup->has_operation())
@@ -136,6 +140,15 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
             users = std::make_shared<Aaa::Users>();
         }
         return users;
+    }
+
+    if(child_yang_name == "password-policies")
+    {
+        if(password_policies == nullptr)
+        {
+            password_policies = std::make_shared<Aaa::PasswordPolicies>();
+        }
+        return password_policies;
     }
 
     if(child_yang_name == "usergroups")
@@ -224,6 +237,11 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
         children["users"] = users;
     }
 
+    if(password_policies != nullptr)
+    {
+        children["password-policies"] = password_policies;
+    }
+
     if(usergroups != nullptr)
     {
         children["usergroups"] = usergroups;
@@ -292,7 +310,7 @@ std::map<std::pair<std::string, std::string>, std::string> Aaa::get_namespace_id
 
 bool Aaa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "all-tasks" || name == "currentuser-detail" || name == "task-map" || name == "taskgroups" || name == "users" || name == "usergroups" || name == "authen-method" || name == "current-usergroup" || name == "diameter" || name == "radius" || name == "tacacs")
+    if(name == "all-tasks" || name == "currentuser-detail" || name == "task-map" || name == "taskgroups" || name == "users" || name == "password-policies" || name == "usergroups" || name == "authen-method" || name == "current-usergroup" || name == "diameter" || name == "radius" || name == "tacacs")
         return true;
     return false;
 }
@@ -1835,6 +1853,700 @@ void Aaa::Users::User::TaskMap::Tasks::set_filter(const std::string & value_path
 bool Aaa::Users::User::TaskMap::Tasks::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "task-id" || name == "read" || name == "write" || name == "execute" || name == "debug")
+        return true;
+    return false;
+}
+
+Aaa::PasswordPolicies::PasswordPolicies()
+{
+
+    yang_name = "password-policies"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::PasswordPolicies::~PasswordPolicies()
+{
+}
+
+bool Aaa::PasswordPolicies::has_data() const
+{
+    for (std::size_t index=0; index<password_policy.size(); index++)
+    {
+        if(password_policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::PasswordPolicies::has_operation() const
+{
+    for (std::size_t index=0; index<password_policy.size(); index++)
+    {
+        if(password_policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::PasswordPolicies::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::PasswordPolicies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "password-policies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::PasswordPolicies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::PasswordPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "password-policy")
+    {
+        auto c = std::make_shared<Aaa::PasswordPolicies::PasswordPolicy>();
+        c->parent = this;
+        password_policy.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::PasswordPolicies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : password_policy)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Aaa::PasswordPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::PasswordPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::PasswordPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "password-policy")
+        return true;
+    return false;
+}
+
+Aaa::PasswordPolicies::PasswordPolicy::PasswordPolicy()
+    :
+    name{YType::str, "name"},
+    name_xr{YType::str, "name-xr"},
+    min_len{YType::uint8, "min-len"},
+    max_len{YType::uint8, "max-len"},
+    spl_char{YType::uint8, "spl-char"},
+    upper_case{YType::uint8, "upper-case"},
+    lower_case{YType::uint8, "lower-case"},
+    numeric{YType::uint8, "numeric"},
+    min_char_change{YType::uint8, "min-char-change"},
+    num_of_users{YType::uint8, "num-of-users"},
+    max_fail_attempts{YType::uint32, "max-fail-attempts"},
+    usr_count{YType::uint8, "usr-count"},
+    err_count{YType::uint8, "err-count"},
+    lock_out_count{YType::uint8, "lock-out-count"}
+    	,
+    life_time(std::make_shared<Aaa::PasswordPolicies::PasswordPolicy::LifeTime>())
+	,lock_out_time(std::make_shared<Aaa::PasswordPolicies::PasswordPolicy::LockOutTime>())
+{
+    life_time->parent = this;
+    lock_out_time->parent = this;
+
+    yang_name = "password-policy"; yang_parent_name = "password-policies"; is_top_level_class = false; has_list_ancestor = false;
+}
+
+Aaa::PasswordPolicies::PasswordPolicy::~PasswordPolicy()
+{
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::has_data() const
+{
+    return name.is_set
+	|| name_xr.is_set
+	|| min_len.is_set
+	|| max_len.is_set
+	|| spl_char.is_set
+	|| upper_case.is_set
+	|| lower_case.is_set
+	|| numeric.is_set
+	|| min_char_change.is_set
+	|| num_of_users.is_set
+	|| max_fail_attempts.is_set
+	|| usr_count.is_set
+	|| err_count.is_set
+	|| lock_out_count.is_set
+	|| (life_time !=  nullptr && life_time->has_data())
+	|| (lock_out_time !=  nullptr && lock_out_time->has_data());
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(name_xr.yfilter)
+	|| ydk::is_set(min_len.yfilter)
+	|| ydk::is_set(max_len.yfilter)
+	|| ydk::is_set(spl_char.yfilter)
+	|| ydk::is_set(upper_case.yfilter)
+	|| ydk::is_set(lower_case.yfilter)
+	|| ydk::is_set(numeric.yfilter)
+	|| ydk::is_set(min_char_change.yfilter)
+	|| ydk::is_set(num_of_users.yfilter)
+	|| ydk::is_set(max_fail_attempts.yfilter)
+	|| ydk::is_set(usr_count.yfilter)
+	|| ydk::is_set(err_count.yfilter)
+	|| ydk::is_set(lock_out_count.yfilter)
+	|| (life_time !=  nullptr && life_time->has_operation())
+	|| (lock_out_time !=  nullptr && lock_out_time->has_operation());
+}
+
+std::string Aaa::PasswordPolicies::PasswordPolicy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/password-policies/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::PasswordPolicies::PasswordPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "password-policy" <<"[name='" <<name <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::PasswordPolicies::PasswordPolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
+    if (min_len.is_set || is_set(min_len.yfilter)) leaf_name_data.push_back(min_len.get_name_leafdata());
+    if (max_len.is_set || is_set(max_len.yfilter)) leaf_name_data.push_back(max_len.get_name_leafdata());
+    if (spl_char.is_set || is_set(spl_char.yfilter)) leaf_name_data.push_back(spl_char.get_name_leafdata());
+    if (upper_case.is_set || is_set(upper_case.yfilter)) leaf_name_data.push_back(upper_case.get_name_leafdata());
+    if (lower_case.is_set || is_set(lower_case.yfilter)) leaf_name_data.push_back(lower_case.get_name_leafdata());
+    if (numeric.is_set || is_set(numeric.yfilter)) leaf_name_data.push_back(numeric.get_name_leafdata());
+    if (min_char_change.is_set || is_set(min_char_change.yfilter)) leaf_name_data.push_back(min_char_change.get_name_leafdata());
+    if (num_of_users.is_set || is_set(num_of_users.yfilter)) leaf_name_data.push_back(num_of_users.get_name_leafdata());
+    if (max_fail_attempts.is_set || is_set(max_fail_attempts.yfilter)) leaf_name_data.push_back(max_fail_attempts.get_name_leafdata());
+    if (usr_count.is_set || is_set(usr_count.yfilter)) leaf_name_data.push_back(usr_count.get_name_leafdata());
+    if (err_count.is_set || is_set(err_count.yfilter)) leaf_name_data.push_back(err_count.get_name_leafdata());
+    if (lock_out_count.is_set || is_set(lock_out_count.yfilter)) leaf_name_data.push_back(lock_out_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::PasswordPolicies::PasswordPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "life-time")
+    {
+        if(life_time == nullptr)
+        {
+            life_time = std::make_shared<Aaa::PasswordPolicies::PasswordPolicy::LifeTime>();
+        }
+        return life_time;
+    }
+
+    if(child_yang_name == "lock-out-time")
+    {
+        if(lock_out_time == nullptr)
+        {
+            lock_out_time = std::make_shared<Aaa::PasswordPolicies::PasswordPolicy::LockOutTime>();
+        }
+        return lock_out_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::PasswordPolicies::PasswordPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(life_time != nullptr)
+    {
+        children["life-time"] = life_time;
+    }
+
+    if(lock_out_time != nullptr)
+    {
+        children["lock-out-time"] = lock_out_time;
+    }
+
+    return children;
+}
+
+void Aaa::PasswordPolicies::PasswordPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr = value;
+        name_xr.value_namespace = name_space;
+        name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-len")
+    {
+        min_len = value;
+        min_len.value_namespace = name_space;
+        min_len.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-len")
+    {
+        max_len = value;
+        max_len.value_namespace = name_space;
+        max_len.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "spl-char")
+    {
+        spl_char = value;
+        spl_char.value_namespace = name_space;
+        spl_char.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper-case")
+    {
+        upper_case = value;
+        upper_case.value_namespace = name_space;
+        upper_case.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lower-case")
+    {
+        lower_case = value;
+        lower_case.value_namespace = name_space;
+        lower_case.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "numeric")
+    {
+        numeric = value;
+        numeric.value_namespace = name_space;
+        numeric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-char-change")
+    {
+        min_char_change = value;
+        min_char_change.value_namespace = name_space;
+        min_char_change.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-users")
+    {
+        num_of_users = value;
+        num_of_users.value_namespace = name_space;
+        num_of_users.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-fail-attempts")
+    {
+        max_fail_attempts = value;
+        max_fail_attempts.value_namespace = name_space;
+        max_fail_attempts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "usr-count")
+    {
+        usr_count = value;
+        usr_count.value_namespace = name_space;
+        usr_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "err-count")
+    {
+        err_count = value;
+        err_count.value_namespace = name_space;
+        err_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lock-out-count")
+    {
+        lock_out_count = value;
+        lock_out_count.value_namespace = name_space;
+        lock_out_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::PasswordPolicies::PasswordPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr.yfilter = yfilter;
+    }
+    if(value_path == "min-len")
+    {
+        min_len.yfilter = yfilter;
+    }
+    if(value_path == "max-len")
+    {
+        max_len.yfilter = yfilter;
+    }
+    if(value_path == "spl-char")
+    {
+        spl_char.yfilter = yfilter;
+    }
+    if(value_path == "upper-case")
+    {
+        upper_case.yfilter = yfilter;
+    }
+    if(value_path == "lower-case")
+    {
+        lower_case.yfilter = yfilter;
+    }
+    if(value_path == "numeric")
+    {
+        numeric.yfilter = yfilter;
+    }
+    if(value_path == "min-char-change")
+    {
+        min_char_change.yfilter = yfilter;
+    }
+    if(value_path == "num-of-users")
+    {
+        num_of_users.yfilter = yfilter;
+    }
+    if(value_path == "max-fail-attempts")
+    {
+        max_fail_attempts.yfilter = yfilter;
+    }
+    if(value_path == "usr-count")
+    {
+        usr_count.yfilter = yfilter;
+    }
+    if(value_path == "err-count")
+    {
+        err_count.yfilter = yfilter;
+    }
+    if(value_path == "lock-out-count")
+    {
+        lock_out_count.yfilter = yfilter;
+    }
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "life-time" || name == "lock-out-time" || name == "name" || name == "name-xr" || name == "min-len" || name == "max-len" || name == "spl-char" || name == "upper-case" || name == "lower-case" || name == "numeric" || name == "min-char-change" || name == "num-of-users" || name == "max-fail-attempts" || name == "usr-count" || name == "err-count" || name == "lock-out-count")
+        return true;
+    return false;
+}
+
+Aaa::PasswordPolicies::PasswordPolicy::LifeTime::LifeTime()
+    :
+    years{YType::uint8, "years"},
+    months{YType::uint8, "months"},
+    days{YType::uint8, "days"},
+    hours{YType::uint8, "hours"},
+    mins{YType::uint8, "mins"},
+    secs{YType::uint8, "secs"}
+{
+
+    yang_name = "life-time"; yang_parent_name = "password-policy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::PasswordPolicies::PasswordPolicy::LifeTime::~LifeTime()
+{
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::LifeTime::has_data() const
+{
+    return years.is_set
+	|| months.is_set
+	|| days.is_set
+	|| hours.is_set
+	|| mins.is_set
+	|| secs.is_set;
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::LifeTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(years.yfilter)
+	|| ydk::is_set(months.yfilter)
+	|| ydk::is_set(days.yfilter)
+	|| ydk::is_set(hours.yfilter)
+	|| ydk::is_set(mins.yfilter)
+	|| ydk::is_set(secs.yfilter);
+}
+
+std::string Aaa::PasswordPolicies::PasswordPolicy::LifeTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "life-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::PasswordPolicies::PasswordPolicy::LifeTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (years.is_set || is_set(years.yfilter)) leaf_name_data.push_back(years.get_name_leafdata());
+    if (months.is_set || is_set(months.yfilter)) leaf_name_data.push_back(months.get_name_leafdata());
+    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
+    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
+    if (mins.is_set || is_set(mins.yfilter)) leaf_name_data.push_back(mins.get_name_leafdata());
+    if (secs.is_set || is_set(secs.yfilter)) leaf_name_data.push_back(secs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::PasswordPolicies::PasswordPolicy::LifeTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::PasswordPolicies::PasswordPolicy::LifeTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Aaa::PasswordPolicies::PasswordPolicy::LifeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "years")
+    {
+        years = value;
+        years.value_namespace = name_space;
+        years.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "months")
+    {
+        months = value;
+        months.value_namespace = name_space;
+        months.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "days")
+    {
+        days = value;
+        days.value_namespace = name_space;
+        days.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hours")
+    {
+        hours = value;
+        hours.value_namespace = name_space;
+        hours.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mins")
+    {
+        mins = value;
+        mins.value_namespace = name_space;
+        mins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secs")
+    {
+        secs = value;
+        secs.value_namespace = name_space;
+        secs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::PasswordPolicies::PasswordPolicy::LifeTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "years")
+    {
+        years.yfilter = yfilter;
+    }
+    if(value_path == "months")
+    {
+        months.yfilter = yfilter;
+    }
+    if(value_path == "days")
+    {
+        days.yfilter = yfilter;
+    }
+    if(value_path == "hours")
+    {
+        hours.yfilter = yfilter;
+    }
+    if(value_path == "mins")
+    {
+        mins.yfilter = yfilter;
+    }
+    if(value_path == "secs")
+    {
+        secs.yfilter = yfilter;
+    }
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::LifeTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "years" || name == "months" || name == "days" || name == "hours" || name == "mins" || name == "secs")
+        return true;
+    return false;
+}
+
+Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::LockOutTime()
+    :
+    years{YType::uint8, "years"},
+    months{YType::uint8, "months"},
+    days{YType::uint8, "days"},
+    hours{YType::uint8, "hours"},
+    mins{YType::uint8, "mins"},
+    secs{YType::uint8, "secs"}
+{
+
+    yang_name = "lock-out-time"; yang_parent_name = "password-policy"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::~LockOutTime()
+{
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::has_data() const
+{
+    return years.is_set
+	|| months.is_set
+	|| days.is_set
+	|| hours.is_set
+	|| mins.is_set
+	|| secs.is_set;
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(years.yfilter)
+	|| ydk::is_set(months.yfilter)
+	|| ydk::is_set(days.yfilter)
+	|| ydk::is_set(hours.yfilter)
+	|| ydk::is_set(mins.yfilter)
+	|| ydk::is_set(secs.yfilter);
+}
+
+std::string Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lock-out-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (years.is_set || is_set(years.yfilter)) leaf_name_data.push_back(years.get_name_leafdata());
+    if (months.is_set || is_set(months.yfilter)) leaf_name_data.push_back(months.get_name_leafdata());
+    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
+    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
+    if (mins.is_set || is_set(mins.yfilter)) leaf_name_data.push_back(mins.get_name_leafdata());
+    if (secs.is_set || is_set(secs.yfilter)) leaf_name_data.push_back(secs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "years")
+    {
+        years = value;
+        years.value_namespace = name_space;
+        years.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "months")
+    {
+        months = value;
+        months.value_namespace = name_space;
+        months.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "days")
+    {
+        days = value;
+        days.value_namespace = name_space;
+        days.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hours")
+    {
+        hours = value;
+        hours.value_namespace = name_space;
+        hours.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mins")
+    {
+        mins = value;
+        mins.value_namespace = name_space;
+        mins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secs")
+    {
+        secs = value;
+        secs.value_namespace = name_space;
+        secs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "years")
+    {
+        years.yfilter = yfilter;
+    }
+    if(value_path == "months")
+    {
+        months.yfilter = yfilter;
+    }
+    if(value_path == "days")
+    {
+        days.yfilter = yfilter;
+    }
+    if(value_path == "hours")
+    {
+        hours.yfilter = yfilter;
+    }
+    if(value_path == "mins")
+    {
+        mins.yfilter = yfilter;
+    }
+    if(value_path == "secs")
+    {
+        secs.yfilter = yfilter;
+    }
+}
+
+bool Aaa::PasswordPolicies::PasswordPolicy::LockOutTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "years" || name == "months" || name == "days" || name == "hours" || name == "mins" || name == "secs")
         return true;
     return false;
 }

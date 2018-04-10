@@ -712,7 +712,8 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddre
     interface_name{YType::str, "interface-name"},
     location{YType::str, "location"},
     is_router{YType::boolean, "is-router"},
-    serg_flags{YType::uint32, "serg-flags"}
+    serg_flags{YType::uint32, "serg-flags"},
+    vrfid{YType::uint32, "vrfid"}
     	,
     last_reached_time(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::LastReachedTime>())
 {
@@ -737,6 +738,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Host
 	|| location.is_set
 	|| is_router.is_set
 	|| serg_flags.is_set
+	|| vrfid.is_set
 	|| (last_reached_time !=  nullptr && last_reached_time->has_data());
 }
 
@@ -753,6 +755,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Host
 	|| ydk::is_set(location.yfilter)
 	|| ydk::is_set(is_router.yfilter)
 	|| ydk::is_set(serg_flags.yfilter)
+	|| ydk::is_set(vrfid.yfilter)
 	|| (last_reached_time !=  nullptr && last_reached_time->has_operation());
 }
 
@@ -777,6 +780,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::N
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
     if (is_router.is_set || is_set(is_router.yfilter)) leaf_name_data.push_back(is_router.get_name_leafdata());
     if (serg_flags.is_set || is_set(serg_flags.yfilter)) leaf_name_data.push_back(serg_flags.get_name_leafdata());
+    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -870,6 +874,12 @@ void Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Host
         serg_flags.value_namespace = name_space;
         serg_flags.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrfid")
+    {
+        vrfid = value;
+        vrfid.value_namespace = name_space;
+        vrfid.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -914,11 +924,15 @@ void Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Host
     {
         serg_flags.yfilter = yfilter;
     }
+    if(value_path == "vrfid")
+    {
+        vrfid.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "last-reached-time" || name == "host-address" || name == "reachability-state" || name == "link-layer-address" || name == "encapsulation" || name == "selected-encapsulation" || name == "origin-encapsulation" || name == "interface-name" || name == "location" || name == "is-router" || name == "serg-flags")
+    if(name == "last-reached-time" || name == "host-address" || name == "reachability-state" || name == "link-layer-address" || name == "encapsulation" || name == "selected-encapsulation" || name == "origin-encapsulation" || name == "interface-name" || name == "location" || name == "is-router" || name == "serg-flags" || name == "vrfid")
         return true;
     return false;
 }

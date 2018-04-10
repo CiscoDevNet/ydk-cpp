@@ -12,6 +12,125 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ifmgr_cfg {
 
+InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::RegularAddress()
+    :
+    address{YType::str, "address"},
+    prefix_length{YType::uint32, "prefix-length"},
+    zone{YType::str, "zone"},
+    route_tag{YType::uint32, "route-tag"}
+{
+
+    yang_name = "regular-address"; yang_parent_name = "regular-addresses"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::~RegularAddress()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::has_data() const
+{
+    return address.is_set
+	|| prefix_length.is_set
+	|| zone.is_set
+	|| route_tag.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(zone.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "regular-address" <<"[address='" <<address <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (zone.is_set || is_set(zone.yfilter)) leaf_name_data.push_back(zone.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "zone")
+    {
+        zone = value;
+        zone.value_namespace = name_space;
+        zone.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "zone")
+    {
+        zone.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::RegularAddresses::RegularAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length" || name == "zone" || name == "route-tag")
+        return true;
+    return false;
+}
+
 InterfaceConfigurations::InterfaceConfiguration::Ipv6Network::Addresses::AutoConfiguration::AutoConfiguration()
     :
     enable{YType::empty, "enable"},
@@ -11331,428 +11450,6 @@ bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Loggi
     return false;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization()
-    :
-    ssm_disable{YType::empty, "ssm-disable"},
-    time_of_day_priority{YType::uint32, "time-of-day-priority"},
-    selection_input{YType::empty, "selection-input"},
-    enable{YType::empty, "enable"},
-    priority{YType::uint32, "priority"},
-    wait_to_restore_time{YType::uint32, "wait-to-restore-time"}
-    	,
-    input_quality_level(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel>())
-	,output_quality_level(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel>())
-{
-    input_quality_level->parent = this;
-    output_quality_level->parent = this;
-
-    yang_name = "frequency-synchronization"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::~CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::has_data() const
-{
-    return ssm_disable.is_set
-	|| time_of_day_priority.is_set
-	|| selection_input.is_set
-	|| enable.is_set
-	|| priority.is_set
-	|| wait_to_restore_time.is_set
-	|| (input_quality_level !=  nullptr && input_quality_level->has_data())
-	|| (output_quality_level !=  nullptr && output_quality_level->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ssm_disable.yfilter)
-	|| ydk::is_set(time_of_day_priority.yfilter)
-	|| ydk::is_set(selection_input.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(wait_to_restore_time.yfilter)
-	|| (input_quality_level !=  nullptr && input_quality_level->has_operation())
-	|| (output_quality_level !=  nullptr && output_quality_level->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ncs4k-freqsync-cfg:frequency-synchronization";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ssm_disable.is_set || is_set(ssm_disable.yfilter)) leaf_name_data.push_back(ssm_disable.get_name_leafdata());
-    if (time_of_day_priority.is_set || is_set(time_of_day_priority.yfilter)) leaf_name_data.push_back(time_of_day_priority.get_name_leafdata());
-    if (selection_input.is_set || is_set(selection_input.yfilter)) leaf_name_data.push_back(selection_input.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (wait_to_restore_time.is_set || is_set(wait_to_restore_time.yfilter)) leaf_name_data.push_back(wait_to_restore_time.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input-quality-level")
-    {
-        if(input_quality_level == nullptr)
-        {
-            input_quality_level = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel>();
-        }
-        return input_quality_level;
-    }
-
-    if(child_yang_name == "output-quality-level")
-    {
-        if(output_quality_level == nullptr)
-        {
-            output_quality_level = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel>();
-        }
-        return output_quality_level;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(input_quality_level != nullptr)
-    {
-        children["input-quality-level"] = input_quality_level;
-    }
-
-    if(output_quality_level != nullptr)
-    {
-        children["output-quality-level"] = output_quality_level;
-    }
-
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ssm-disable")
-    {
-        ssm_disable = value;
-        ssm_disable.value_namespace = name_space;
-        ssm_disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-of-day-priority")
-    {
-        time_of_day_priority = value;
-        time_of_day_priority.value_namespace = name_space;
-        time_of_day_priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "selection-input")
-    {
-        selection_input = value;
-        selection_input.value_namespace = name_space;
-        selection_input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wait-to-restore-time")
-    {
-        wait_to_restore_time = value;
-        wait_to_restore_time.value_namespace = name_space;
-        wait_to_restore_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ssm-disable")
-    {
-        ssm_disable.yfilter = yfilter;
-    }
-    if(value_path == "time-of-day-priority")
-    {
-        time_of_day_priority.yfilter = yfilter;
-    }
-    if(value_path == "selection-input")
-    {
-        selection_input.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "wait-to-restore-time")
-    {
-        wait_to_restore_time.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input-quality-level" || name == "output-quality-level" || name == "ssm-disable" || name == "time-of-day-priority" || name == "selection-input" || name == "enable" || name == "priority" || name == "wait-to-restore-time")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::InputQualityLevel()
-    :
-    quality_level_option{YType::enumeration, "quality-level-option"},
-    exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
-    min_quality_level_value{YType::enumeration, "min-quality-level-value"},
-    max_quality_level_value{YType::enumeration, "max-quality-level-value"}
-{
-
-    yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::~InputQualityLevel()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::has_data() const
-{
-    return quality_level_option.is_set
-	|| exact_quality_level_value.is_set
-	|| min_quality_level_value.is_set
-	|| max_quality_level_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(quality_level_option.yfilter)
-	|| ydk::is_set(exact_quality_level_value.yfilter)
-	|| ydk::is_set(min_quality_level_value.yfilter)
-	|| ydk::is_set(max_quality_level_value.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input-quality-level";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
-    if (exact_quality_level_value.is_set || is_set(exact_quality_level_value.yfilter)) leaf_name_data.push_back(exact_quality_level_value.get_name_leafdata());
-    if (min_quality_level_value.is_set || is_set(min_quality_level_value.yfilter)) leaf_name_data.push_back(min_quality_level_value.get_name_leafdata());
-    if (max_quality_level_value.is_set || is_set(max_quality_level_value.yfilter)) leaf_name_data.push_back(max_quality_level_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "exact-quality-level-value")
-    {
-        exact_quality_level_value = value;
-        exact_quality_level_value.value_namespace = name_space;
-        exact_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min-quality-level-value")
-    {
-        min_quality_level_value = value;
-        min_quality_level_value.value_namespace = name_space;
-        min_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value = value;
-        max_quality_level_value.value_namespace = name_space;
-        max_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option.yfilter = yfilter;
-    }
-    if(value_path == "exact-quality-level-value")
-    {
-        exact_quality_level_value.yfilter = yfilter;
-    }
-    if(value_path == "min-quality-level-value")
-    {
-        min_quality_level_value.yfilter = yfilter;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
-    :
-    quality_level_option{YType::enumeration, "quality-level-option"},
-    exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
-    min_quality_level_value{YType::enumeration, "min-quality-level-value"},
-    max_quality_level_value{YType::enumeration, "max-quality-level-value"}
-{
-
-    yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::has_data() const
-{
-    return quality_level_option.is_set
-	|| exact_quality_level_value.is_set
-	|| min_quality_level_value.is_set
-	|| max_quality_level_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(quality_level_option.yfilter)
-	|| ydk::is_set(exact_quality_level_value.yfilter)
-	|| ydk::is_set(min_quality_level_value.yfilter)
-	|| ydk::is_set(max_quality_level_value.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output-quality-level";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (quality_level_option.is_set || is_set(quality_level_option.yfilter)) leaf_name_data.push_back(quality_level_option.get_name_leafdata());
-    if (exact_quality_level_value.is_set || is_set(exact_quality_level_value.yfilter)) leaf_name_data.push_back(exact_quality_level_value.get_name_leafdata());
-    if (min_quality_level_value.is_set || is_set(min_quality_level_value.yfilter)) leaf_name_data.push_back(min_quality_level_value.get_name_leafdata());
-    if (max_quality_level_value.is_set || is_set(max_quality_level_value.yfilter)) leaf_name_data.push_back(max_quality_level_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option = value;
-        quality_level_option.value_namespace = name_space;
-        quality_level_option.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "exact-quality-level-value")
-    {
-        exact_quality_level_value = value;
-        exact_quality_level_value.value_namespace = name_space;
-        exact_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "min-quality-level-value")
-    {
-        min_quality_level_value = value;
-        min_quality_level_value.value_namespace = name_space;
-        min_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value = value;
-        max_quality_level_value.value_namespace = name_space;
-        max_quality_level_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "quality-level-option")
-    {
-        quality_level_option.yfilter = yfilter;
-    }
-    if(value_path == "exact-quality-level-value")
-    {
-        exact_quality_level_value.yfilter = yfilter;
-    }
-    if(value_path == "min-quality-level-value")
-    {
-        min_quality_level_value.yfilter = yfilter;
-    }
-    if(value_path == "max-quality-level-value")
-    {
-        max_quality_level_value.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CiscoIOSXRNcs4KFreqsyncCfgFrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
-        return true;
-    return false;
-}
-
 InterfaceConfigurations::InterfaceConfiguration::Portmode::Portmode()
     :
     speed_sel{YType::enumeration, "speed-sel"},
@@ -17511,6 +17208,187 @@ void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoV
 bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ho-vc-hour24ho-vc-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::HoVcHour24HoVcReport()
+    :
+    ho_vc_report{YType::enumeration, "ho-vc-report"},
+    enable{YType::enumeration, "enable"}
+{
+
+    yang_name = "ho-vc-hour24ho-vc-report"; yang_parent_name = "ho-vc-hour24ho-vc-reports"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::~HoVcHour24HoVcReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::has_data() const
+{
+    return ho_vc_report.is_set
+	|| enable.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ho_vc_report.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ho-vc-hour24ho-vc-report" <<"[ho-vc-report='" <<ho_vc_report <<"']";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ho_vc_report.is_set || is_set(ho_vc_report.yfilter)) leaf_name_data.push_back(ho_vc_report.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ho-vc-report")
+    {
+        ho_vc_report = value;
+        ho_vc_report.value_namespace = name_space;
+        ho_vc_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ho-vc-report")
+    {
+        ho_vc_report.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-report" || name == "enable")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThresholds()
+{
+
+    yang_name = "ho-vc-hour24ho-vc-thresholds"; yang_parent_name = "ho-vc-hour24ho-vc"; is_top_level_class = false; has_list_ancestor = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::~HoVcHour24HoVcThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::has_data() const
+{
+    for (std::size_t index=0; index<ho_vc_hour24ho_vc_threshold.size(); index++)
+    {
+        if(ho_vc_hour24ho_vc_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<ho_vc_hour24ho_vc_threshold.size(); index++)
+    {
+        if(ho_vc_hour24ho_vc_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ho-vc-hour24ho-vc-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ho-vc-hour24ho-vc-threshold")
+    {
+        auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold>();
+        c->parent = this;
+        ho_vc_hour24ho_vc_threshold.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto const & c : ho_vc_hour24ho_vc_threshold)
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-hour24ho-vc-threshold")
         return true;
     return false;
 }
